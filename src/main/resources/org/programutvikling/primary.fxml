@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="314.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="73.0" layoutY="36.0" text="Logg inn">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Label>
+            <TextField layoutX="76.0" layoutY="133.0" onAction="#inputBrukernavn" promptText="Brukernavn eller e-post" style="-fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff; -fx-background-color: transparent;" />
+            <PasswordField layoutX="76.0" layoutY="182.0" onAction="#inputPassord" promptText="Passord" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button layoutX="76.0" layoutY="236.0" mnemonicParsing="false" onAction="#btnLogin" styleClass="btnLogin" stylesheets="@Secondary.css" text="Logg inn " textFill="#000000a1" />
+            <Button layoutX="76.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnGjest" styleClass="btnGjest" stylesheets="@Secondary.css" text="Fortsett med gjestebruker" textFill="#000000a1" />
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#b7b7b7" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="115.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="105.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
+
