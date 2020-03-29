@@ -1,0 +1,7 @@
+org/programutvikling/komponent/KomponentRegister.class
+org/programutvikling/komponent/Komponent.class
+module-info.class
+org/programutvikling/gui/PrimaryController.class
+org/programutvikling/App.class
+org/programutvikling/bruker/Logikk.class
+org/programutvikling/gui/SecondaryController.class

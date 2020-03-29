@@ -17,12 +17,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+
+        scene = new Scene(loadFXML("primary"), 940, 880);
+        System.out.println(App.class.getResource("primary"));
         stage.setScene(scene);
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -31,7 +33,9 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        //setRoot("org/programutvikling/primary.fxml");
         launch();
     }
 
