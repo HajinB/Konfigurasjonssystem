@@ -1,0 +1,21 @@
+.btnLogin {
+    -fx-background-color: #0598ff;
+    -fx-text-fill: #ffffff;
+}
+.btnLogin:hover{
+    -fx-text-fill: #353535;
+}
+
+
+.btnGjest {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #878787;
+    -fx-border-color: #ababab;
+    -fx-border-radius: 2px;
+}
+
+.btnGjest:hover{
+    -fx-text-fill: #454545;
+    -fx-border-color: #0598ff;
+    -fx-border-radius: 2px;
+}

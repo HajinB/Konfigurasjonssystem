@@ -1,16 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.SecondaryController">
-    <children>
-        <Label text="Secondary View" />
-        <Button fx:id="secondaryButton" text="Switch to Primary View" onAction="#switchToPrimary" />
-    </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-</VBox>
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.SecondaryController">
+   <top>
+      <AnchorPane prefHeight="15.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar fx:id="menyBar" layoutY="-3.0" prefHeight="26.0" prefWidth="900.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#btnLukkMeny" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#btnLoggUt" text="Logg ut" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane prefHeight="658.0" prefWidth="908.0">
+               <children>
+                  <TableView fx:id="tblView" layoutX="56.0" layoutY="123.0" prefHeight="242.0" prefWidth="570.0">
+                    <columns>
+                      <TableColumn fx:id="kolonneVNr" onEditCommit="#kolonneVNrEdit" prefWidth="100.0" resizable="false" text="Varenr." />
+                      <TableColumn fx:id="kolonneType" onEditCommit="#kolonneTypeEdit" prefWidth="100.0" resizable="false" text="Varetype" />
+                        <TableColumn fx:id="kolonneVNavn" onEditCommit="#kolonneVNavnEdit" prefWidth="100.0" resizable="false" text="Varenavn" />
+                        <TableColumn fx:id="kolonneBesk" onEditCommit="#kolonneBeskEdit" prefWidth="100.0" resizable="false" text="Beskrivelse" />
+                        <TableColumn fx:id="kolonnePris" onEditCommit="#kolonnePrisEdit" prefWidth="100.0" resizable="false" text="Pris" />
+                        <TableColumn fx:id="kolonneAnt" onEditCommit="#kolonneAntEdit" prefWidth="75.0" text="Antall" />
+                    </columns>
+                  </TableView>
+                  <ToolBar layoutX="55.0" layoutY="365.0" prefHeight="40.0" prefWidth="570.0">
+                    <items>
+                        <Button layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#btnNy" prefWidth="100.0" text="Legg til ny" />
+                      <Button mnemonicParsing="false" onAction="#btnFraFil" prefWidth="100.0" text="Legg til fra fil" />
+                        <Button mnemonicParsing="false" onAction="#btnFjern" text="Fjern" />
+                    </items>
+                  </ToolBar>
+                  <VBox layoutX="656.0" layoutY="122.0" prefHeight="282.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Filtrer:  " />
+                        <Label>
+                           <font>
+                              <Font size="1.0" />
+                           </font>
+                        </Label>
+                        <TitledPane animated="false" prefWidth="200.0" text="Produsent">
+                          <content>
+                              <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefWidth="200.0">
+                                 <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                                       <children>
+                                          <CheckBox layoutX="27.0" layoutY="5.0" mnemonicParsing="false" onAction="#chkAsus" text="ASUS" />
+                                          <CheckBox layoutX="27.0" layoutY="31.0" mnemonicParsing="false" onAction="#chkHP" text="HP" />
+                                          <CheckBox layoutX="27.0" layoutY="57.0" mnemonicParsing="false" onAction="#chkDELL" text="DELL" />
+                                          <CheckBox layoutX="27.0" layoutY="81.0" mnemonicParsing="false" onAction="#chkAcer" text="Acer" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="141.0" prefWidth="200.0" text="Varetype">
+                          <content>
+                              <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
+                                 <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                                       <children>
+                                          <CheckBox layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#chkProsessor" text="Prosessor" />
+                                          <CheckBox layoutX="26.0" layoutY="41.0" mnemonicParsing="false" onAction="#chkSkjermkort" text="Skjermkort" />
+                                          <CheckBox layoutX="26.0" layoutY="72.0" mnemonicParsing="false" onAction="#chkMinne" text="Minne" />
+                                          <CheckBox layoutX="26.0" layoutY="98.0" mnemonicParsing="false" onAction="#chkHarddisk" text="Harddisk" />
+                                          <CheckBox layoutX="26.0" layoutY="124.0" mnemonicParsing="false" onAction="#chkTastatur" text="Tastatur" />
+                                          <CheckBox layoutX="26.0" layoutY="149.0" mnemonicParsing="false" onAction="#chkMus" text="Mus" />
+                                          <CheckBox layoutX="26.0" layoutY="178.0" mnemonicParsing="false" onAction="#chkSkjerm" text="Skjerm" />
+                                          <CheckBox layoutX="26.0" layoutY="205.0" mnemonicParsing="false" onAction="#chkAnnet" text="Annet" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                          </content>
+                        </TitledPane>
+                        <Label>
+                           <font>
+                              <Font size="4.0" />
+                           </font></Label>
+                        <Label text="Søk: " />
+                        <TextField onAction="#inputSok" prefHeight="26.0" prefWidth="130.0" />
+                     </children>
+                  </VBox>
+                  <Label layoutX="57.0" layoutY="31.0" text="Velkommen superbruker!">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="57.0" layoutY="479.0" prefHeight="26.0" prefWidth="130.0" />
+                  <TextField layoutX="220.0" layoutY="479.0" prefHeight="26.0" prefWidth="130.0" />
+                  <Label layoutX="57.0" layoutY="462.0" text="Varenummer: " />
+                  <Label layoutX="220.0" layoutY="462.0" text="Navn: " />
+                  <Label layoutX="560.0" layoutY="462.0" text="Beskrivelse: " />
+                  <TextArea layoutX="560.0" layoutY="480.0" prefHeight="200.0" prefWidth="294.0" />
+                  <TextField layoutX="389.0" layoutY="479.0" prefHeight="26.0" prefWidth="130.0" />
+                  <Label layoutX="389.0" layoutY="462.0" text="Pris: " />
+                  <Label layoutX="56.0" layoutY="82.0" text="Komponenter i nettbutikk">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
+</fx:root>

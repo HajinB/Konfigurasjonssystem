@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.PrimaryController">
    <center>
       <AnchorPane prefHeight="314.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
@@ -21,8 +21,8 @@
             </Label>
             <TextField layoutX="76.0" layoutY="133.0" onAction="#inputBrukernavn" promptText="Brukernavn eller e-post" style="-fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff; -fx-background-color: transparent;" />
             <PasswordField layoutX="76.0" layoutY="182.0" onAction="#inputPassord" promptText="Passord" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button layoutX="76.0" layoutY="236.0" mnemonicParsing="false" onAction="#btnLogin" styleClass="btnLogin" stylesheets="@Secondary.css" text="Logg inn " textFill="#000000a1" />
-            <Button layoutX="76.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnGjest" styleClass="btnGjest" stylesheets="@Secondary.css" text="Fortsett med gjestebruker" textFill="#000000a1" />
+            <Button layoutX="76.0" layoutY="236.0" mnemonicParsing="false" onAction="#btnLogin" styleClass="btnLogin" stylesheets="@CSS/Login.css" text="Logg inn " textFill="#000000a1" />
+            <Button layoutX="76.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnGjest" styleClass="btnGjest" stylesheets="@CSS/Login.css" text="Fortsett med gjestebruker" textFill="#000000a1" />
          </children>
          <effect>
             <DropShadow blurType="GAUSSIAN" color="#b7b7b7" height="10.0" radius="4.5" width="10.0" />
@@ -44,5 +44,4 @@
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER" />
    </right>
-</BorderPane>
-
+</fx:root>
