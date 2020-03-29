@@ -1,7 +1,11 @@
-org/programutvikling/komponent/KomponentRegister.class
 org/programutvikling/komponent/Komponent.class
+org/programutvikling/komponent/io/FileSaverJobj.class
+org/programutvikling/komponent/io/FileOpener.class
+org/programutvikling/bruker/Logikk.class
+org/programutvikling/gui/SecondaryController.class
+org/programutvikling/komponent/KomponentRegister.class
+org/programutvikling/komponent/io/FileOpenerJobj.class
 module-info.class
 org/programutvikling/gui/PrimaryController.class
 org/programutvikling/App.class
-org/programutvikling/bruker/Logikk.class
-org/programutvikling/gui/SecondaryController.class
+org/programutvikling/komponent/io/FileSaver.class
