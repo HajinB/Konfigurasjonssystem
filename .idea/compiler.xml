@@ -9,5 +9,8 @@
         <module name="Konfigurasjonssystem" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Konfigurasjonssystem" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
