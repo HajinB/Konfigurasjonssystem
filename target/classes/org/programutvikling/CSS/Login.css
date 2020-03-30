@@ -27,15 +27,8 @@
 
 /*Design av input */
 
-.inputPassord {
+.input {
     -fx-background-color: transparent;
-    -fx-border-color: #0598ff;
+    -fx-border-color: #70A4C8;
     -fx-border-width: 0px 0px 2px 0px;
-}
-
-.inputBrukernavn {
-    -fx-background-color: transparent;
-    -fx-border-width: 0px 0px 2px 0px;
-    -fx-border-color: #0598ff;
-
 }
