@@ -1,21 +1,34 @@
-.btnLogin {
-    -fx-background-color: #0598ff;
-    -fx-text-fill: #ffffff;
-}
-.btnLogin:hover{
-    -fx-text-fill: #353535;
-}
 
 
-.btnGjest {
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #878787;
-    -fx-border-color: #ababab;
-    -fx-border-radius: 2px;
+/*Design av knapper */
+.button {
+    -fx-background-color: #70A4C8;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
 }
 
-.btnGjest:hover{
-    -fx-text-fill: #454545;
-    -fx-border-color: #0598ff;
-    -fx-border-radius: 2px;
+.button:hover {
+    -fx-background-color:#388DC8;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.button:pressed {
+    -fx-background-color: #0071BF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+    -fx-border-radius: 6px ;
+}
+
+/*Design av input */
+
+.input {
+    -fx-background-color: transparent;
+    -fx-border-color: #70A4C8;
+    -fx-border-width: 0px 0px 2px 0px;
 }

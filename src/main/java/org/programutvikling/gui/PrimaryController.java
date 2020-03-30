@@ -20,11 +20,6 @@ public class PrimaryController {
     private PasswordField inputPassord;
 
     @FXML
-    private void switchToSecondary() throws IOException {
-
-    }
-
-    @FXML
     void btnGjest(ActionEvent event) throws IOException {
         App.setRoot("secondary");
     }

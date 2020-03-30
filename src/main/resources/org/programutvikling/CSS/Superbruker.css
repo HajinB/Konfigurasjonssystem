@@ -1,0 +1,81 @@
+
+/*Menybar */
+.menyBar {
+    -fx-background-color: #ffffff;
+}
+
+
+.anchorCenter {
+    -fx-background-color: #F9f9f9;
+}
+
+
+/* Tableview */
+.tblOverskrift {
+    -fx-background-color: transparent;
+    -fx-border-width: 0px 0px 0px 0px;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 10px;
+}
+
+.tblView {
+    -fx-border-color: #ffffff;
+    -fx-effect: dropshadow( one-pass-box , #e2e2e2 , 0 , 0 , 2 , 2 );
+}
+
+.column {
+    -fx-background-color: #ffffff;
+    -fx-border-width: 0px 0px 0.5px 0px;
+    -fx-border-color: #70A4C8;
+    -fx-font-size: 14px;
+    -fx-font-weight: none;
+    -fx-text-fill: white;
+}
+
+.column:hover {
+    -fx-background-color: #ffffff;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #388DC8;
+    -fx-font-size: 14px;
+    -fx-font-weight: none;
+    -fx-text-fill: white;
+}
+
+.column:pressed {
+    -fx-background-color: #0071BF;
+    -fx-font-weight: none;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+/* Legg til ny komponent pane*/
+.nyKomponentPane {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 6px;
+    -fx-effect: dropshadow( three-pass-box , #e2e2e2 , 1 , 1 , 1 , 1 )
+}
+
+/* knapper */
+.button {
+    -fx-background-color: #70A4C8;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color:#388DC8;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.button:pressed {
+    -fx-background-color: #0071BF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+    -fx-border-radius: 6px ;
+}

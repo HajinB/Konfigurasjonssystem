@@ -2,7 +2,6 @@ package org.programutvikling.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -40,28 +39,19 @@ public class SecondaryController {
     private TableColumn<?, ?> kolonneAnt;
 
     @FXML
-    private CheckBox chkAsus;
-
-    @FXML
-    private CheckBox chkHP;
-
-    @FXML
-    private CheckBox chkDELL;
-
-    @FXML
-    private CheckBox chkAcer;
-
-    @FXML
     private TextField inputVarenummer;
 
     @FXML
-    private TextField inputNavn;
-
-    @FXML
-    private TextArea inputBeskrivelse;
+    private TextField inputVarenavn;
 
     @FXML
     private TextField inputPris;
+
+    @FXML
+    private TextField inputVaretype;
+
+    @FXML
+    private TextArea inputBeskrivelse;
 
     @FXML
     void btnFjern(ActionEvent event) {
@@ -74,57 +64,17 @@ public class SecondaryController {
     }
 
     @FXML
+    void btnLeggTil(ActionEvent event) {
+
+    }
+
+    @FXML
     void btnLoggUt(ActionEvent event) {
 
     }
 
     @FXML
     void btnLukkMeny(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnNy(ActionEvent event) {
-
-    }
-
-    @FXML
-    void chkAnnet(ActionEvent event) {
-
-    }
-
-    @FXML
-    void chkHarddisk(ActionEvent event) {
-
-    }
-
-    @FXML
-    void chkMinne(ActionEvent event) {
-
-    }
-
-    @FXML
-    void chkMus(ActionEvent event) {
-
-    }
-
-    @FXML
-    void chkProsessor(ActionEvent event) {
-
-    }
-
-    @FXML
-    void chkSkjerm(ActionEvent event) {
-
-    }
-
-    @FXML
-    void chkSkjermkort(ActionEvent event) {
-
-    }
-
-    @FXML
-    void chkTastatur(ActionEvent event) {
 
     }
 
@@ -164,8 +114,7 @@ public class SecondaryController {
     }
 
     @FXML
-    private void switchToPrimary() throws IOException {
+    private void btnLoggUt() throws IOException {
         App.setRoot("primary");
     }
-
 }
