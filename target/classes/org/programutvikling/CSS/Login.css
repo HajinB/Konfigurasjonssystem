@@ -32,3 +32,8 @@
     -fx-border-color: #70A4C8;
     -fx-border-width: 0px 0px 2px 0px;
 }
+
+.loggInnPane {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+}

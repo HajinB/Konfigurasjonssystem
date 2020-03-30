@@ -19,13 +19,13 @@
 }
 
 .tblView {
-    -fx-border-color: #ffffff;
-    -fx-effect: dropshadow( one-pass-box , #e2e2e2 , 0 , 0 , 2 , 2 );
+    -fx-effect: dropshadow( one-pass-box , #e2e2e2 , 0 , 0 , 0 , 0 );
+    -fx-background-radius: 5px;
 }
 
 .column {
     -fx-background-color: #ffffff;
-    -fx-border-width: 0px 0px 0.5px 0px;
+    -fx-border-width: 0px 0px 0px 0px;
     -fx-border-color: #70A4C8;
     -fx-font-size: 14px;
     -fx-font-weight: none;
@@ -51,7 +51,7 @@
 /* Legg til ny komponent pane*/
 .nyKomponentPane {
     -fx-background-color: #ffffff;
-    -fx-border-radius: 6px;
+    -fx-background-radius: 5 px;
     -fx-effect: dropshadow( three-pass-box , #e2e2e2 , 1 , 1 , 1 , 1 )
 }
 
