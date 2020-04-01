@@ -1,5 +1,7 @@
 package org.programutvikling.bruker;
 
-public class Bruker {
+import java.io.Serializable;
+
+public class Bruker implements Serializable {
 
 }
