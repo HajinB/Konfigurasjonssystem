@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Design av login og superbruker, radius">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Midlertidig lagring av Komponent + KomponentValidator">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/KomponentValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Superbruker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Superbruker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,13 +151,27 @@
     <MESSAGE value="runConfig lagt til" />
     <MESSAGE value="Design av login og superbruker, lagt til default code for buttons og ryddet litt i css" />
     <MESSAGE value="Design av login og superbruker, noen små endringer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Design av login og superbruker, noen små endringer" />
+    <MESSAGE value="Midlertidig lagring av Komponent + KomponentValidator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Midlertidig lagring av Komponent + KomponentValidator" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="315" y="7" key="CommitChangelistDialog2" timestamp="1585578612666">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1585744913495">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1585744913495" />
+    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585745320920">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1585745320920" />
+    <state x="263" y="0" key="CommitChangelistDialog2" timestamp="1585746104301">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="263" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1585746104301" />
     <state x="315" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585578612666" />
+    <state x="740" y="99" key="FileChooserDialogImpl" timestamp="1585744691547">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1585744691547" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1585741402464">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
