@@ -6,7 +6,6 @@
     exports org.programutvikling.gui;
 }*/
 
-
 module org.programutvikling {
         requires javafx.controls;
         requires javafx.fxml;

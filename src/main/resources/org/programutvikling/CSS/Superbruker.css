@@ -2,6 +2,7 @@
 /*Menybar */
 .menyBar {
     -fx-background-color: #ffffff;
+    -fx-font-size: 13px;
 }
 
 
