@@ -62,4 +62,5 @@ public class Komponent implements Serializable {
         return String.format("%s;%s;%s;%s;\n",
                 type.getValue(), name.getValue(), description.getValue(), price.getValue());
     }
+
 }
