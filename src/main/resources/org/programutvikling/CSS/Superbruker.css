@@ -6,7 +6,7 @@
 
 
 .anchorCenter {
-    -fx-background-color: #F9f9f9;
+    -fx-background-color: #eeeeee;
 }
 
 
@@ -19,8 +19,11 @@
 }
 
 .tblView {
-    -fx-effect: dropshadow( one-pass-box , #e2e2e2 , 0 , 0 , 0 , 0 );
+    -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.4 , 0.4 , 1 , 1 );
     -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 0.5px;
+    -fx-border-color: white;
 }
 
 .column {
@@ -51,17 +54,21 @@
 /* Legg til ny komponent pane*/
 .nyKomponentPane {
     -fx-background-color: #ffffff;
-    -fx-background-radius: 5 px;
-    -fx-effect: dropshadow( three-pass-box , #e2e2e2 , 1 , 1 , 1 , 1 )
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.5 , 0.5 , 1 , 1 )
 }
 
 /* knapper */
 .button {
     -fx-background-color: #70A4C8;
+    -fx-border-color: #6796B6;
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 6px;
     -fx-font-weight: bold;
     -fx-background-radius: 6px;
     -fx-font-size: 13px;
     -fx-text-fill: white;
+    -fx-effect: dropshadow(one-pass-box , #f2f2f2 , 1 , 1 , 1 , 1 )
 }
 
 .button:hover {
@@ -78,4 +85,20 @@
     -fx-font-size: 13px;
     -fx-text-fill: white;
     -fx-border-radius: 6px ;
+}
+
+.input {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+
+    -fx-border-radius: 3px ;
+    -fx-border-color: #bbbbbb;
+    -fx-font-size: 13px;
+
+}
+
+.inputSok {
+
+    -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.5 , 0.5 , 1 , 1 )
+
 }
