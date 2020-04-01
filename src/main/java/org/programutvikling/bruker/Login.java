@@ -7,16 +7,14 @@ public class Login {
 /*
     public static int sjekkBrukernavn(String brukernavn){
 //returnerer 0 hvis det er feil -
-        //returnerer 1 hvis admin
-        //returnerer 2 hvis bruker
+        Sjekker om boolean admin = true
         return 1;
 
     }
 
     public static int sjekkPassord(String brukernavn){
 //returnerer 0 hvis det er feil -
-        //returnerer 1 hvis admin
-        //returnerer 2 hvis bruker
+        Sjekker om boolean admin = true
         return 1;
     }
  */
