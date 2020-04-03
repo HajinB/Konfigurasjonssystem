@@ -1,11 +1,11 @@
-package org.programutvikling.komponent;
+package org.programutvikling.component;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
-public class Komponent implements Serializable {
+public class Component implements Serializable {
 
     private static final long serialVersionUID = 1;
 
@@ -18,7 +18,7 @@ public class Komponent implements Serializable {
         return serialVersionUID;
     }
 
-    public Komponent(String type, String name, String description, double price) {
+    public Component(String type, String name, String description, double price) {
         // Validator av type, name og price(sjekke om den er 0?) her
 
         this.type = new SimpleStringProperty(type);
@@ -28,7 +28,9 @@ public class Komponent implements Serializable {
     }
     // Get- og set-metoder
 
-    public String getType() {return type.getValue();}
+    public String getType() {
+        return type.getValue();
+    }
 
     public final void setType(String type) {
         // validator
@@ -36,7 +38,9 @@ public class Komponent implements Serializable {
         this.name.set(type);
     }
 
-    public String getName() {return name.getValue();}
+    public String getName() {
+        return name.getValue();
+    }
 
     public final void setName(String name) {
         //validator
@@ -44,13 +48,17 @@ public class Komponent implements Serializable {
         this.name.set(name);
     }
 
-    public String getDescription() {return description.getValue();}
+    public String getDescription() {
+        return description.getValue();
+    }
 
     public final void setDescription(String description) {
         this.description.set(description);
     }
 
-    public double getPrice() {return price.getValue();}
+    public double getPrice() {
+        return price.getValue();
+    }
 
     public final void setPrice(double price) {
         // evt validator

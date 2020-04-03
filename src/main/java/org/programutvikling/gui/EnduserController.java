@@ -1,4 +1,4 @@
 package org.programutvikling.gui;
 
-public class SluttbrukerController {
+public class EnduserController {
 }

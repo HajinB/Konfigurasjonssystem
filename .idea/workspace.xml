@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Endret det meste til engelsk, er bare Controller igjen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/Bruker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/Bruker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/BrukerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/BrukerRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/Bruker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/BrukerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/BrukerValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/exceptions/InvalidBrukernavnException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/exceptions/InvalidUsernameException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/exceptions/InvalidPassordException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/exceptions/InvalidPasswordException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SluttbrukerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/KomponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/KomponentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileOpener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileOpenerJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerJobj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileSaverJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaverJobj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,19 +98,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="BrukerValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.programutvikling.bruker.BrukerValidator" />
-      <module name="Konfigurasjonssystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.programutvikling.bruker.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.programutvikling.App" />
       <module name="Konfigurasjonssystem" />
@@ -105,14 +105,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.programutvikling.user.UserValidator" />
+      <module name="Konfigurasjonssystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.programutvikling.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.BrukerValidator" />
       <item itemvalue="Maven.Konfigurasjonssystem [clean,compile...]" />
+      <item itemvalue="Application.UserValidator" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BrukerValidator" />
+        <item itemvalue="Application.UserValidator" />
       </list>
     </recent_temporary>
   </component>
@@ -130,6 +143,7 @@
       <workItem from="1585561096585" duration="12873000" />
       <workItem from="1585726934920" duration="1124000" />
       <workItem from="1585735556343" duration="5300000" />
+      <workItem from="1585911510778" duration="1885000" />
     </task>
     <task id="LOCAL-00001" summary="runConfig lagt til">
       <created>1585505781643</created>
@@ -202,7 +216,8 @@
     <MESSAGE value="Omstrukturering, lagde pakken &quot;Bruker&quot;" />
     <MESSAGE value="Fjernet Logikk" />
     <MESSAGE value="kladd BrukerValidator" />
-    <option name="LAST_COMMIT_MESSAGE" value="kladd BrukerValidator" />
+    <MESSAGE value="Endret det meste til engelsk, er bare Controller igjen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Endret det meste til engelsk, er bare Controller igjen" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1585755616983">
@@ -213,14 +228,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="226" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1585747030808" />
-    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585745320920">
+    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585912603170">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1585745320920" />
-    <state x="263" y="0" key="CommitChangelistDialog2" timestamp="1585755577016">
+    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1585912603170" />
+    <state x="229" y="0" key="CommitChangelistDialog2" timestamp="1585913515241">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="263" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1585755577016" />
+    <state x="229" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1585913515241" />
     <state x="315" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585578612666" />
     <state x="189" y="97" key="DiffContextDialog" timestamp="1585755555803">
       <screen x="0" y="0" width="1280" height="680" />
@@ -254,23 +269,23 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585758408922" />
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1585755580876">
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1585782017194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1585755580876" />
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1585782017194" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585578335080" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585726983902">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585726983902" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585758654006">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1585757726825" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585758654006" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1585746647579">
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585912933746">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1585746647579" />
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1585912933746" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585758654006" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1585912216400">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1585912216400" />
   </component>
 </project>

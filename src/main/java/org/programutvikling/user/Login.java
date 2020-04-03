@@ -1,4 +1,4 @@
-package org.programutvikling.bruker;
+package org.programutvikling.user;
 
 public class Login {
     // Sjekker brukerprivelegier
