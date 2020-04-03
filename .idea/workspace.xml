@@ -1,20 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Endret det meste til engelsk, er bare Controller igjen">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_archetype_fxml_0_0_32.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_132.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_132.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_132.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_132.xml" beforeDir="false" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="kladd BrukerValidator">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test/FileSaverTxtTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/bruker/UserPreferences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/Converter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/Dialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/Filbehandling.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistrerKomponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/AppendingObjectOutputStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileOpenerTxt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileSaverTxt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/InvalidComponentFormatException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Konfigurasjonssystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Konfigurasjonssystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/primary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/PrimaryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/SecondaryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/KomponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/KomponentRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileOpener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileOpener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileOpenerJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileOpenerJobj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileSaverJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/io/FileSaverJobj.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/sluttbruker.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/sluttbruker.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/primary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/SecondaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/SecondaryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/Komponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/Komponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/KomponentRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/KomponentRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/io/FileOpenerJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/io/FileOpenerJobj.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/io/FileSaverJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/io/FileSaverJobj.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,8 +120,8 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -94,20 +129,25 @@
       <recent name="org.programutvikling" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.programutvikling.App" />
-      <module name="Konfigurasjonssystem" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.programutvikling.user.UserValidator" />
+    <configuration name="BrukerValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.programutvikling.bruker.BrukerValidator" />
       <module name="Konfigurasjonssystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.programutvikling.user.*" />
+          <option name="PATTERN" value="org.programutvikling.bruker.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,14 +155,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.programutvikling.App" />
+      <module name="Konfigurasjonssystem" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.UserValidator" />
+      <item itemvalue="Application.BrukerValidator" />
       <item itemvalue="Maven.Konfigurasjonssystem [clean,compile...]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UserValidator" />
+        <item itemvalue="Application.BrukerValidator" />
       </list>
     </recent_temporary>
   </component>
@@ -140,7 +187,6 @@
       <workItem from="1585561096585" duration="12873000" />
       <workItem from="1585726934920" duration="1124000" />
       <workItem from="1585735556343" duration="5300000" />
-      <workItem from="1585911510778" duration="1885000" />
     </task>
     <task id="LOCAL-00001" summary="runConfig lagt til">
       <created>1585505781643</created>
@@ -205,6 +251,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="runConfig lagt til" />
     <MESSAGE value="Design av login og superbruker, lagt til default code for buttons og ryddet litt i css" />
@@ -213,14 +270,9 @@
     <MESSAGE value="Omstrukturering, lagde pakken &quot;Bruker&quot;" />
     <MESSAGE value="Fjernet Logikk" />
     <MESSAGE value="kladd BrukerValidator" />
-    <MESSAGE value="Endret det meste til engelsk, er bare Controller igjen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Endret det meste til engelsk, er bare Controller igjen" />
+    <option name="LAST_COMMIT_MESSAGE" value="kladd BrukerValidator" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="71" key="#Project_Structure" timestamp="1585919435876">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="71" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1585919435876" />
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1585755616983">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -229,19 +281,15 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="226" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1585747030808" />
-    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585912603170">
+    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585745320920">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1585912603170" />
-    <state x="503" y="276" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1585917988079">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1585745320920" />
+    <state x="263" y="0" key="CommitChangelistDialog2" timestamp="1585755577016">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="503" y="276" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1585917988079" />
-    <state x="315" y="7" key="CommitChangelistDialog2" timestamp="1585919639344">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="229" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1585913515241" />
-    <state x="315" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585919639344" />
+    <state x="263" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1585755577016" />
+    <state x="315" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585578612666" />
     <state x="189" y="97" key="DiffContextDialog" timestamp="1585755555803">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -250,51 +298,73 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1585744691547" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1585919639380">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="595" height="163" key="GridCell.Tab.0.bottom" timestamp="1585781321007">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="595" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1585781321007" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585919639380" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1585919639379">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585758563585" />
+    <state width="595" height="163" key="GridCell.Tab.0.center" timestamp="1585781321006">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="595" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1585781321006" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585919639379" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1585919639379">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585758563584" />
+    <state width="595" height="163" key="GridCell.Tab.0.left" timestamp="1585781321005">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="595" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1585781321005" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585919639379" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1585919639380">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585758563584" />
+    <state width="595" height="163" key="GridCell.Tab.0.right" timestamp="1585781321007">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="595" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1585781321007" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585919639380" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585758563584" />
     <state x="453" y="134" key="RollbackChangesDialog" timestamp="1585758408922">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585758408922" />
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1585782017194">
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1585755580876">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1585782017194" />
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1585755580876" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585578335080" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585726983902">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585726983902" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585919441497">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585758654006">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1585912933746" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585919441497" />
-    <state x="361" y="71" key="scopes" timestamp="1585917951330">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="71" key="scopes/0.0.1536.824@0.0.1536.824" timestamp="1585917951330" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1585912216400">
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1585757726825" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585758654006" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1585746647579">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1585912216400" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1585746647579" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/komponent/Komponent.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

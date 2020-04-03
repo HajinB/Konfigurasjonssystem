@@ -15,13 +15,23 @@ public class App extends Application {
 
     private static Scene scene;
 
+
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
 
         scene = new Scene(loadFXML("primary"));
+
         System.out.println(App.class.getResource("primary"));
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+
+        //scene = buildUI(primaryStage);
+        if (scene == null) throw new NullPointerException();
+
+        scene.getRoot().applyCss();
+
     }
 
     public static void setRoot(String fxml) throws IOException {
