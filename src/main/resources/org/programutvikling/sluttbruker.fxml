@@ -12,11 +12,11 @@
 <?import javafx.scene.text.Font?>
 
 
-<SplitPane dividerPositions="0.0441358024691358, 0.2802469135802469" orientation="VERTICAL" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.0441358024691358, 0.2802469135802469" orientation="VERTICAL" prefHeight="700.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/">
   <items>
-      <MenuBar prefWidth="900.0">
+      <MenuBar prefWidth="1040.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Fil">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
