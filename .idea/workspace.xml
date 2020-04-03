@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="kladd BrukerValidator">
-      <change afterPath="$PROJECT_DIR$/FileDirectory/Components/readme.txt" afterDir="false" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -148,7 +147,7 @@
       <workItem from="1585561096585" duration="12873000" />
       <workItem from="1585726934920" duration="1124000" />
       <workItem from="1585735556343" duration="5300000" />
-      <workItem from="1585933650256" duration="56000" />
+      <workItem from="1585933650256" duration="114000" />
     </task>
     <task id="LOCAL-00001" summary="runConfig lagt til">
       <created>1585505781643</created>
@@ -228,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585931396084</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="kladd BrukerValidator">
+      <created>1585933712481</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1585933712481</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,9 +260,9 @@
     <MESSAGE value="Midlertidig lagring av Komponent + KomponentValidator" />
     <MESSAGE value="Omstrukturering, lagde pakken &quot;Bruker&quot;" />
     <MESSAGE value="Fjernet Logikk" />
-    <MESSAGE value="kladd BrukerValidator" />
     <MESSAGE value="Oppsett for autosave - men har bugs.." />
-    <option name="LAST_COMMIT_MESSAGE" value="Oppsett for autosave - men har bugs.." />
+    <MESSAGE value="kladd BrukerValidator" />
+    <option name="LAST_COMMIT_MESSAGE" value="kladd BrukerValidator" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" />
