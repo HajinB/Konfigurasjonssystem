@@ -6,12 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.programutvikling.App;
 
 
 //https://ducmanhphan.github.io/2019-10-17-Creating-JavaFX-project-with-Maven/
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 public class PrimaryController {
+
+
 
     @FXML
     private TextField inputBrukernavn;
