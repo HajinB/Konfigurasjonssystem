@@ -12,11 +12,12 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
 
-public class Filbehandling {
+public class FileHandling {
 
     private Path directoryPath;
     public void populateComboBox(){
@@ -72,22 +73,29 @@ public class Filbehandling {
 
         //alt + cmd + B = go to implementation
     static void openFile(ComponentRegister register, String selectedPath) {
+
         File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
         Path path = Paths.get(selectedPath);
         String fileExt = getFileExt(file);
-        FileOpener opener = null;
+        FileOpener opener = new FileOpenerJobj();
 
-        switch (fileExt) {
+
+        /*switch (fileExt) {
             case ".txt" : opener = new FileOpenerTxt(); break;
             case ".jobj" : opener = new FileOpenerJobj(); break;
             default : Dialog.showErrorDialog("Du kan bare åpne txt eller jobj filer.");
-        }
+        }*/
 
-
+        System.out.println(fileExt);
+        register.log();
+        System.out.println(opener);
+        System.out.println(path.toString());
         if(opener != null) {
             try {
                 opener.open(register, path);
+                System.out.println("ETTER OPENER HER");
             } catch (IOException e) {
+                System.out.println(Arrays.toString(e.getStackTrace()));
                 Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
             }
         }

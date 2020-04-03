@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import org.programutvikling.App;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.component.Component;
-import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 
 import java.io.File;
@@ -25,9 +24,10 @@ public class SecondaryController {
     Preferences prefs;
 
     String componentPath;// = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
-    Filbehandling filbehandling;
+    FileHandling fileHandling;
     private RegistryComponentLogic registryComponentLogic;
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
+
     @FXML
     private MenuBar menyBar;
     @FXML
@@ -88,8 +88,8 @@ public class SecondaryController {
     public void initialize() throws IOException {
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
-        //Komponent komponent = new Komponent("cpu", "ffsaddfs", "asffsa", 299.00);
-        //componentRegister.addKomponent(komponent);
+        Component component = new Component("cpu", "ffsaddfs", "asffsa", 299.00);
+        componentRegister.addComponent(component);
         //System.out.println(directoryPath.toString());
             //bare lag en metode som gjør alt dette!
 
@@ -97,23 +97,26 @@ public class SecondaryController {
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
         registryComponentLogic = new RegistryComponentLogic(gridPane);
-        updateList();
+
         System.out.println(componentRegister.toString());
 
         //test prints
         File file = new File(String.valueOf(userPreferences.getPathToUser()));
         String path = file.getAbsolutePath();
         System.out.println(file.isFile());
+        System.out.println(userPreferences.getPathToUser());
 
-
+        updateList();
         //åpne jobj (som forhåpentligvis har lagret seg) ved init.
 
                                               //her må det egentlig stå componentpath - når
                 // userPreferences.getPathToUser(); fungerer
                // Filbehandling.loadAppConfigurationFile(componentRegister, "FileDirectory/Components/ComponentList" +
               //  ".jobj");
-
-        Filbehandling.loadAppConfigurationFile(componentRegister, userPreferences.getPathToUser());
+        if(file.exists()){
+        FileHandling.loadAppConfigurationFile(componentRegister, userPreferences.getPathToUser());
+        componentRegister.log();
+    }
 
 
     }
@@ -136,7 +139,7 @@ public class SecondaryController {
 
     @FXML
     void btnOpenJobj(ActionEvent event) {
-        Filbehandling.openFile(componentRegister, "FileDirectory/Components/ComponentList.jobj");
+        FileHandling.openFile(componentRegister, "FileDirectory/Components/ComponentList.jobj");
     }
 
 
@@ -201,8 +204,8 @@ public class SecondaryController {
 
         //kan gjøres mer åpen/generalisert, denne saveFileJobj funksjonen, sånn at man bare kan legge på extension i
         // egen metode.. Denne er nå bare åpen for jobj ish
-        Filbehandling.saveFileJobj(componentRegister,
-                Paths.get("FileDirectory/Components/ComponentList.jobj"));
+        FileHandling.saveFileJobj(componentRegister,
+                Paths.get(userPreferences.getPathToUser()));
 
 
         System.out.println("FileDirectory/Components/" + "ComponentList" + ".jobj" + " was autosaved");

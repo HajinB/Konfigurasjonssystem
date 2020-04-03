@@ -1,6 +1,7 @@
 package org.programutvikling.component.io;
 
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.computer.Computer;
 import org.programutvikling.gui.Dialog;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -18,7 +19,7 @@ import java.util.List;
 public class FileOpenerJobj implements FileOpener {
 
 
-    @Override
+   /* @Override
     public void open(ComponentRegister componentRegister, Path filePath) throws IOException {
         try (InputStream fin = Files.newInputStream(filePath);
              ObjectInputStream oin = new ObjectInputStream(fin))
@@ -26,13 +27,18 @@ public class FileOpenerJobj implements FileOpener {
             ComponentRegister register = (ComponentRegister) oin.readObject();
             //register.removeAll();
             register.getRegister().forEach(componentRegister::addComponent);
-            System.out.println();
+            register.log();
         } catch (ClassNotFoundException e) {
             e.printStackTrace(); // debug information here
             throw new IOException("Something is wrong with the implementation. See debug information");
         }
+    }*/
+
+    @Override
+    public void open(Computer computer, Path filePath) throws IOException {
+
     }
-}
+
 
 
 /*
@@ -76,22 +82,18 @@ public class FileOpenerJobj implements FileOpener {
 }
 */
 
-/*
+
     @Override
-    public void open(componentRegister componentRegister, Path filePath) throws IOException {
+    public void open(ComponentRegister componentRegister, Path filePath) throws IOException {
         try (InputStream fin = Files.newInputStream(filePath);
              ObjectInputStream oin = new ObjectInputStream(fin))
         {
-            componentRegister register = (componentRegister) oin.readObject();
-            componentRegister.removeAll();
-            register.getRegister().forEach(componentRegister::addKomponent);
+            ComponentRegister registerInput = (ComponentRegister) oin.readObject();
+           // componentRegister.removeAll();
+            registerInput.getRegister().forEach(componentRegister::addComponent);
         } catch (ClassNotFoundException e) {
             e.printStackTrace(); // debug information here
             throw new IOException("Something is wrong with the implementation. See debug information");
         }
     }
-
-
-    }
-    /*
- */
+}
