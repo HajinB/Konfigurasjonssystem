@@ -4,6 +4,7 @@ public class UserValidator {
     // ingen tall
     public static final String NO_NUMBERS = "^[\\D]+$";
     public static final String ONLY_NUMBERS = "^[\\d]+$";
+    public static final String NO_SPACES = "^[\\S]+$";
     public static final int PASSWORD_LENGTH = 6;
     public static final int ZIP_LENGTH = 4;
     public static final String EMAIL_VERIFICATION = "^[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*@[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*\\.[a-zæøåA-ZÆØÅ]{2,3}$";
@@ -11,7 +12,7 @@ public class UserValidator {
 
 
     static boolean username(String username) {
-        return (!username.isBlank());
+        return !username.isBlank() && username.matches(NO_SPACES);
     }
     static boolean password(String password) {
         return password.length() > PASSWORD_LENGTH;

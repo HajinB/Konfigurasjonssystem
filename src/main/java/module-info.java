@@ -10,6 +10,7 @@ module org.programutvikling {
         requires javafx.controls;
         requires javafx.fxml;
         requires org.junit.jupiter.api;
+        requires org.junit.jupiter.engine;
         requires java.prefs;
 
 
