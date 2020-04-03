@@ -77,14 +77,14 @@ public class FileHandling {
         File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
         Path path = Paths.get(selectedPath);
         String fileExt = getFileExt(file);
-        FileOpener opener = new FileOpenerJobj();
+        FileOpener opener = null;
 
 
-        /*switch (fileExt) {
+        switch (fileExt) {
             case ".txt" : opener = new FileOpenerTxt(); break;
             case ".jobj" : opener = new FileOpenerJobj(); break;
             default : Dialog.showErrorDialog("Du kan bare åpne txt eller jobj filer.");
-        }*/
+        }
 
         System.out.println(fileExt);
         register.log();

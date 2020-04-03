@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComponentRegister implements Serializable {
+    private transient static final long serialVersionUID = 1;
+
     private transient ObservableList<Component> componentRegister = FXCollections.observableArrayList();
 
     public List<Component> getRegister() {
@@ -26,19 +28,34 @@ public class ComponentRegister implements Serializable {
         componentRegister.add(component);
     }
 
-
     public void attachTableView(TableView tv) {
         tv.setItems(componentRegister);
     }
 
+    /*
+    @Override
     public String toString(){
-        StringBuilder melding = new StringBuilder();
-        for(Component k:componentRegister){
-            melding.append(k);
-        }
-        return melding.toString();
-    }
+        String melding = "";
 
+        for(int i = 0; i<componentRegister.size(); i++){
+            melding = "Type: "+getRegister().get(i).getType()+"\n" +
+                        "Name: " +getRegister().get(i).getName()+"\n"+
+                    "Description: " +getRegister().get(i).getName()+"\n"+
+                    "Price: " + getRegister().get(i).getPrice()+"\n";
+        }
+        return melding;
+    }
+*/
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Component c : componentRegister) {
+            sb.append(c.toString());
+            sb.append(System.lineSeparator());
+        }
+
+        return sb.toString();
+    }
     public void log(){
         System.out.println(componentRegister.toString());
     }
@@ -50,8 +67,8 @@ public class ComponentRegister implements Serializable {
         s.writeObject(new ArrayList<>(componentRegister));
     }
 
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        List<Component> list = (List<Component>) s.readObject();
+    private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+        List<Component> list = (List<Component>) inputStream.readObject();
         componentRegister = FXCollections.observableArrayList();
         componentRegister.addAll(list);
     }

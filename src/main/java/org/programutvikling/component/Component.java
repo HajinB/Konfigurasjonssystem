@@ -68,11 +68,10 @@ public class Component implements Serializable {
         // evt validator
         this.price.set(price);
     }
-
     // toString
     @Override
     public String toString() {
-        return String.format("%s;%s;%s;%s;\n",
+        return String.format("%s;%s;%s;%s",
                 type.getValue(), name.getValue(), description.getValue(), price.getValue());
     }
 
@@ -94,7 +93,6 @@ public class Component implements Serializable {
         this.name = new SimpleStringProperty();
         this.description = new SimpleStringProperty();
         this.price = new SimpleDoubleProperty();
-
 
         setType(type);
         setName(name);

@@ -81,16 +81,18 @@ public class FileOpenerJobj implements FileOpener {
     }
 }
 */
-
-
     @Override
     public void open(ComponentRegister componentRegister, Path filePath) throws IOException {
         try (InputStream fin = Files.newInputStream(filePath);
              ObjectInputStream oin = new ObjectInputStream(fin))
         {
             ComponentRegister registerInput = (ComponentRegister) oin.readObject();
-           // componentRegister.removeAll();
-            registerInput.getRegister().forEach(componentRegister::addComponent);
+            componentRegister.removeAll();
+            //registerInput.getRegister().forEach(componentRegister::addComponent);
+            //componentRegister.getRegister().add((Component) registerInput);
+            componentRegister.getRegister().addAll(registerInput.getRegister());
+            System.out.println(componentRegister.toString());
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace(); // debug information here
             throw new IOException("Something is wrong with the implementation. See debug information");

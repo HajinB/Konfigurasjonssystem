@@ -88,40 +88,45 @@ public class SecondaryController {
     public void initialize() throws IOException {
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
-        Component component = new Component("cpu", "ffsaddfs", "asffsa", 299.00);
-        componentRegister.addComponent(component);
+
         //System.out.println(directoryPath.toString());
             //bare lag en metode som gjør alt dette!
-
-
+        getUserPathAndLoadRegister();
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
         registryComponentLogic = new RegistryComponentLogic(gridPane);
 
-        System.out.println(componentRegister.toString());
-
-        //test prints
-        File file = new File(String.valueOf(userPreferences.getPathToUser()));
-        String path = file.getAbsolutePath();
-        System.out.println(file.isFile());
-        System.out.println(userPreferences.getPathToUser());
-
+        //System.out.println(componentRegister.toString());
         updateList();
+
+
+    }
+        //test prints
+
+
+
+
+
         //åpne jobj (som forhåpentligvis har lagret seg) ved init.
 
                                               //her må det egentlig stå componentpath - når
                 // userPreferences.getPathToUser(); fungerer
                // Filbehandling.loadAppConfigurationFile(componentRegister, "FileDirectory/Components/ComponentList" +
               //  ".jobj");
+
+
+
+    private void getUserPathAndLoadRegister() throws IOException {
+        File file = new File(String.valueOf(userPreferences.getPathToUser()));
+        String path = file.getAbsolutePath();
+
         if(file.exists()){
-        FileHandling.loadAppConfigurationFile(componentRegister, userPreferences.getPathToUser());
-        componentRegister.log();
+            FileHandling.loadAppConfigurationFile(componentRegister, userPreferences.getPathToUser());
+            System.out.println(componentRegister.toString());
+        }
     }
 
-
-    }
-
-        //todo delete filen componentlist etter den er loada inn i initialize?
+    //todo delete filen componentlist etter den er loada inn i initialize?
         // slik at man lager en ny hver gang? auto save..
 
         //bør man delete den rett før man kjører savejobj? er det det som er greia?
@@ -163,15 +168,11 @@ public class SecondaryController {
     }
 
     private void updateList() {
-
-        componentRegister.attachTableView(tblView);
+        //componentRegister.attachTableView(tblView);
     }
 
     private void loadFromDirectory() {
-
-
     }
-
 
     int componentname = 1;
     Path directoryPath = Paths.get("FileDirectory");
@@ -182,8 +183,6 @@ public class SecondaryController {
         userPreferences.setPreference(stage);
     }
 
-
-
     @FXML
         //Komponent(String type, String name, String description, double price)
     void btnLeggTil(ActionEvent event) throws IOException {
@@ -191,7 +190,6 @@ public class SecondaryController {
 
         //todo denne folderen/directory path bør kunne bli satt av brukeren i settings elns(?)
         //File folder = new File("FileDirectory/");
-
         //directoryPath = Paths.("FileDirectory");
         //directoryPath = new File(folder.getPath());
         // componentRegister.getRegister().add(opprettKomponentFraGUI());
@@ -201,12 +199,10 @@ public class SecondaryController {
         //todo sjekk om dette faktisk sletter filen at runtime??
         //deletefile("FileDirectory/Components/ComponentList.jobj");
 
-
         //kan gjøres mer åpen/generalisert, denne saveFileJobj funksjonen, sånn at man bare kan legge på extension i
         // egen metode.. Denne er nå bare åpen for jobj ish
         FileHandling.saveFileJobj(componentRegister,
                 Paths.get(userPreferences.getPathToUser()));
-
 
         System.out.println("FileDirectory/Components/" + "ComponentList" + ".jobj" + " was autosaved");
         //Filbehandling.saveFileJobj(componentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
