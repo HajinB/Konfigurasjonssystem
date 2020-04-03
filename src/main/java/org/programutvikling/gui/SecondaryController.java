@@ -5,12 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import org.programutvikling.App;
-import org.programutvikling.bruker.UserPreferences;
-import org.programutvikling.komponent.Komponent;
-import org.programutvikling.komponent.KomponentRegister;
+import org.programutvikling.user.UserPreferences;
+import org.programutvikling.component.Component;
+import org.programutvikling.component.Component;
+import org.programutvikling.component.ComponentRegister;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,8 +26,8 @@ public class SecondaryController {
 
     String componentPath;// = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
     Filbehandling filbehandling;
-    RegistrerKomponent registrerKomponent;
-    UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
+    private RegistryComponentLogic registryComponentLogic;
+    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     @FXML
     private MenuBar menyBar;
     @FXML
@@ -52,9 +52,9 @@ public class SecondaryController {
     private TextField inputPris;
     //private RegistrerKomponent registerKomponent;
     @FXML
-    private GridPane gridPaneSuperbruker;
+    private GridPane gridPane;
 
-    private KomponentRegister komponentRegister = new KomponentRegister();
+    private ComponentRegister componentRegister = new ComponentRegister();
 
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
@@ -89,16 +89,16 @@ public class SecondaryController {
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //Komponent komponent = new Komponent("cpu", "ffsaddfs", "asffsa", 299.00);
-        //komponentRegister.addKomponent(komponent);
+        //componentRegister.addKomponent(komponent);
         //System.out.println(directoryPath.toString());
             //bare lag en metode som gjør alt dette!
 
 
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
-        registrerKomponent = new RegistrerKomponent(gridPaneSuperbruker);
+        registryComponentLogic = new RegistryComponentLogic(gridPane);
         updateList();
-        System.out.println(komponentRegister.toString());
+        System.out.println(componentRegister.toString());
 
         //test prints
         File file = new File(String.valueOf(userPreferences.getPathToUser()));
@@ -110,10 +110,10 @@ public class SecondaryController {
 
                                               //her må det egentlig stå componentpath - når
                 // userPreferences.getPathToUser(); fungerer
-               // Filbehandling.loadAppConfigurationFile(komponentRegister, "FileDirectory/Components/ComponentList" +
+               // Filbehandling.loadAppConfigurationFile(componentRegister, "FileDirectory/Components/ComponentList" +
               //  ".jobj");
 
-        Filbehandling.loadAppConfigurationFile(komponentRegister, userPreferences.getPathToUser());
+        Filbehandling.loadAppConfigurationFile(componentRegister, userPreferences.getPathToUser());
 
 
     }
@@ -129,14 +129,14 @@ public class SecondaryController {
 
         //http://javafxportal.blogspot.com/2012/03/java-deleting-file-or-directory.html
 
-        //    System.out.println(komponentRegister.getRegister().get(1));
+        //    System.out.println(componentRegister.getRegister().get(1));
 
-                /*filbehandling.loadJobjFromDirectory(stage, komponentRegister, Paths.get("FileDirectory/ConfigMain" +
+                /*filbehandling.loadJobjFromDirectory(stage, componentRegister, Paths.get("FileDirectory/ConfigMain" +
                         ".jobj"));*/
 
     @FXML
-    void btnOpenJob(ActionEvent event) {
-        Filbehandling.openFile(komponentRegister, "FileDirectory/Components/ComponentList.jobj");
+    void btnOpenJobj(ActionEvent event) {
+        Filbehandling.openFile(componentRegister, "FileDirectory/Components/ComponentList.jobj");
     }
 
 
@@ -146,23 +146,22 @@ public class SecondaryController {
     }
 
 
-    private Komponent opprettKomponentFraGUI() {
-        Komponent komponent = new Komponent(inputVaretype.getText(),
+    private Component createComponentFromGUI() {
+        return new Component(inputVaretype.getText(),
                 inputVarenavn.getText(),
                 inputBeskrivelse.getText(),
                 doubleStrConverter.stringTilDouble(inputPris.getText()));
-        return komponent;
     }
 
     @FXML
     void btnFraFil(ActionEvent event) {
 
-        Komponent komponent = new Komponent("2", "ffsaddfs", "asffsa", 299.00);
+        Component komponent = new Component("2", "ffsaddfs", "asffsa", 299.00);
     }
 
     private void updateList() {
 
-        komponentRegister.attachTableView(tblView);
+        componentRegister.attachTableView(tblView);
     }
 
     private void loadFromDirectory() {
@@ -192,8 +191,8 @@ public class SecondaryController {
 
         //directoryPath = Paths.("FileDirectory");
         //directoryPath = new File(folder.getPath());
-        // komponentRegister.getRegister().add(opprettKomponentFraGUI());
-        komponentRegister.addKomponent(opprettKomponentFraGUI());
+        // componentRegister.getRegister().add(opprettKomponentFraGUI());
+        componentRegister.addComponent(createComponentFromGUI());
 
 
         //todo sjekk om dette faktisk sletter filen at runtime??
@@ -202,19 +201,19 @@ public class SecondaryController {
 
         //kan gjøres mer åpen/generalisert, denne saveFileJobj funksjonen, sånn at man bare kan legge på extension i
         // egen metode.. Denne er nå bare åpen for jobj ish
-        Filbehandling.saveFileJobj(komponentRegister,
+        Filbehandling.saveFileJobj(componentRegister,
                 Paths.get("FileDirectory/Components/ComponentList.jobj"));
 
 
         System.out.println("FileDirectory/Components/" + "ComponentList" + ".jobj" + " was autosaved");
-        //Filbehandling.saveFileJobj(komponentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
+        //Filbehandling.saveFileJobj(componentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
 
                 /*
                 Komponent komponent = registerKomponent.RegistrerKomponent();
-                komponentRegister.addKomponent(komponent);
+                componentRegister.addKomponent(komponent);
                 System.out.println(komponent.toString());
                 */
-        System.out.println(komponentRegister.toString());
+        System.out.println(componentRegister.toString());
 
     }
 

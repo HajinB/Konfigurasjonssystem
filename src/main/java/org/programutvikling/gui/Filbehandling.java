@@ -2,11 +2,10 @@ package org.programutvikling.gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import org.programutvikling.komponent.Komponent;
-import org.programutvikling.komponent.KomponentRegister;
-import org.programutvikling.komponent.io.*;
+import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.Component;
+import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.io.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,14 +26,15 @@ public class Filbehandling {
         ObservableList<String> liste =
                 FXCollections.observableArrayList();
 
-        for (int i = 0; i < listOfFiles.length; i++) {
-            if (listOfFiles[i].isFile()) {
-                System.out.println("File " + listOfFiles[i].getName());
-                liste.add(listOfFiles[i].getName());
+        assert listOfFiles != null;
+        for (File listOfFile : listOfFiles) {
+            if (listOfFile.isFile()) {
+                System.out.println("File " + listOfFile.getName());
+                liste.add(listOfFile.getName());
 
 
-            } else if (listOfFiles[i].isDirectory()) {
-                System.out.println("Directory " + listOfFiles[i].getName());
+            } else if (listOfFile.isDirectory()) {
+                System.out.println("Directory " + listOfFile.getName());
             }
         }
         if(liste.size()>0) {
@@ -54,60 +54,56 @@ public class Filbehandling {
     }
 
 
-     public static void loadAppConfigurationFile(KomponentRegister komponentRegister, String directory) throws IOException {
+     static void loadAppConfigurationFile(ComponentRegister componentRegister, String directory) throws IOException {
          File file = new File("FileDirectory/Components/sadffsda.jobj");
-        // loadJobjFromDirectory(komponentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
-         openFile(komponentRegister, directory);
+        // loadJobjFromDirectory(componentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
+         openFile(componentRegister, directory);
     }
 
-    public void loadAllFilesFromDirectory(KomponentRegister komponentRegister, Path directory) throws IOException {
+    public void loadAllFilesFromDirectory(ComponentRegister componentRegister, Path directory) throws IOException {
         File folder = new File("FileDirectory");  //kanskje selvvalg eller variabel her (?) som path
         File[] listOfFiles = folder.listFiles();
 
         FileOpenerJobj fileOpenerJobj = new FileOpenerJobj();
-        fileOpenerJobj.open(komponentRegister, Paths.get(listOfFiles[0].getPath()));
-        System.out.println(komponentRegister.getRegister().get(0).getName());
+        assert listOfFiles != null;
+        fileOpenerJobj.open(componentRegister, Paths.get(listOfFiles[0].getPath()));
+        System.out.println(componentRegister.getRegister().get(0).getName());
     }
 
         //alt + cmd + B = go to implementation
-    static void openFile(KomponentRegister register, String selectedPath) {
+    static void openFile(ComponentRegister register, String selectedPath) {
         File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
         Path path = Paths.get(selectedPath);
-        if (selectedPath != null) {
-            String fileExt = getFileExt(file);
-            FileOpener opener = null;
+        String fileExt = getFileExt(file);
+        FileOpener opener = null;
 
-            switch (fileExt) {
-                case ".txt" : opener = new FileOpenerTxt(); break;
-                case ".jobj" : opener = new FileOpenerJobj(); break;
-                default : Dialog.showErrorDialog("Du kan bare åpne txt eller jobj filer.");
-            }
-
+        switch (fileExt) {
+            case ".txt" : opener = new FileOpenerTxt(); break;
+            case ".jobj" : opener = new FileOpenerJobj(); break;
+            default : Dialog.showErrorDialog("Du kan bare åpne txt eller jobj filer.");
+        }
 
 
-            if(opener != null) {
-                try {
-                    opener.open(register, path);
-                } catch (IOException e) {
-                    Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
-                }
+        if(opener != null) {
+            try {
+                opener.open(register, path);
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
             }
         }
     }
 
 
-    static void saveFileTxt(KomponentRegister register, Path directoryPath) {
+    static void saveFileTxt(ComponentRegister register, Path directoryPath) {
         if (directoryPath != null) {
             FileSaver saver = new FileSaverTxt();
-            if (saver != null) {
-                try {
-                    saver.save(register, directoryPath);
-                    Dialog.showSuccessDialog("Registeret ble lagret!");
-                } catch (IOException e) {
-                    Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
-                }
-
+            try {
+                saver.save(register, directoryPath);
+                Dialog.showSuccessDialog("Registeret ble lagret!");
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
             }
+
         }
     }
 //todo: må ha en måte å lagre dette på, lokalt for brukeren slik at det loades inn (load configs metode)
@@ -131,21 +127,19 @@ public class Filbehandling {
 
         return directoryPath;
     }
-    public static List<?> convertListToReadable(List<Komponent> nonReadableList){
+    public static List<?> convertListToReadable(List<Component> nonReadableList){
 
-        List<Komponent> nyListe = new ArrayList<>();
+        List<Component> nyListe = new ArrayList<>();
 
-        for (Komponent k : nonReadableList) {
-            nyListe.add(k);
-        }
+        nyListe.addAll(nonReadableList);
         return nyListe;
     }
 
-    static void saveFileJobj(KomponentRegister register, Path directoryPath) throws IOException {
+    static void saveFileJobj(ComponentRegister register, Path directoryPath) throws IOException {
        // File selectedFile = getPath;
 
         //FileSaverJobj binSaver = null;
-        //binSaver.save((KomponentRegister) register, Paths.get("HTMLDirectory/"));
+        //binSaver.save((componentRegister) register, Paths.get("HTMLDirectory/"));
 
         if (directoryPath != null) {
             FileSaver saver = null;
@@ -154,13 +148,11 @@ public class Filbehandling {
                //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
 
 
-            if(saver != null) {
-                try {
-                    saver.save(register, directoryPath);
-                    Dialog.showSuccessDialog("Registeret ble lagret!");
-                } catch (IOException e) {
-                    Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
-                }
+            try {
+                saver.save(register, directoryPath);
+                Dialog.showSuccessDialog("Registeret ble lagret!");
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
             }
         }
 

@@ -1,9 +1,10 @@
-package org.programutvikling.komponent.io;
+package org.programutvikling.component.io;
 
 import org.programutvikling.gui.Converter;
-import org.programutvikling.komponent.Komponent;
-import org.programutvikling.komponent.KomponentRegister;
-import org.programutvikling.komponent.io.FileOpener;
+import org.programutvikling.component.Component;
+import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.io.FileOpener;
+
 
 
 import java.io.BufferedReader;
@@ -15,19 +16,19 @@ public class FileOpenerTxt implements FileOpener {
     Converter.DoubleStringConverter doubleStringConverter;
 
     @Override
-    public void open(KomponentRegister register, Path filePath) throws IOException {
+    public void open(ComponentRegister register, Path filePath) throws IOException {
         register.removeAll();
         // try-with-resources lukker automatisk filen
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
 
             while ((line = bufferedReader.readLine()) != null) {
-                register.addKomponent(parseKomponent(line));
+                register.addComponent(parseComponent(line));
             }
         }
     }
 //(String type, String name, String description, double price)
-    private Komponent parseKomponent(String line) throws InvalidComponentFormatException {
+    private Component parseComponent(String line) throws InvalidComponentFormatException {
 
 
         String[] split = line.split(",");
@@ -43,7 +44,7 @@ public class FileOpenerTxt implements FileOpener {
 
         //try {
             //double price = doubleStringConverter.stringTilDouble(split[3]);
-            return new Komponent(type, name, description, price);
+            return new Component(type, name, description, price);
 
         }
 

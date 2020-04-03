@@ -1,9 +1,11 @@
-package org.programutvikling.komponent.io;
+package org.programutvikling.component.io;
 
 import javafx.collections.ObservableList;
+import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.io.FileSaver;
 import org.programutvikling.gui.Filbehandling;
-import org.programutvikling.komponent.Komponent;
-import org.programutvikling.komponent.KomponentRegister;
+import org.programutvikling.component.Component;
+import org.programutvikling.component.ComponentRegister;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -50,7 +52,7 @@ import java.nio.file.Paths;
 // then write the file again with all the old objects and then the new objects).
 public class FileSaverJobj implements FileSaver {
     @Override
-    public void save(KomponentRegister registry, Path filePath) throws IOException {
+    public void save(ComponentRegister registry, Path filePath) throws IOException {
         //Path path = Paths.get("kari.jobj");
         try (OutputStream os = Files.newOutputStream(filePath);
              ObjectOutputStream out = new ObjectOutputStream(os))
@@ -61,7 +63,7 @@ public class FileSaverJobj implements FileSaver {
 }
 
     /* @Override
-     public void save(KomponentRegister komponentRegister, Path filePath) throws IOException {
+     public void save(componentRegister componentRegister, Path filePath) throws IOException {
          try (OutputStream os = Files.newOutputStream(filePath);
 
               //try( FileOutputStream os = (FileOutputStream) Files.newOutputStream(filePath);
@@ -69,12 +71,12 @@ public class FileSaverJobj implements FileSaver {
               ObjectOutputStream out = new ObjectOutputStream(os))
          {
              //out.flush();
-             //out.writeObject(komponentRegister);
+             //out.writeObject(componentRegister);
              //out.writeObject(Filbehandling.convertListToReadable(personRegister.personArrayList));
 
             out.reset();
-            //out.writeObject(komponentRegister);
-             out.writeObject(Filbehandling.convertListToReadable((ObservableList<Komponent>) komponentRegister
+            //out.writeObject(componentRegister);
+             out.writeObject(Filbehandling.convertListToReadable((ObservableList<Komponent>) componentRegister
              .getRegister()));
 
             out.flush();
@@ -84,7 +86,7 @@ public class FileSaverJobj implements FileSaver {
      }*/
     /*
     @Override
-    public void save(KomponentRegister komponentRegister, Path filePath) throws IOException {
+    public void save(componentRegister componentRegister, Path filePath) throws IOException {
         ObjectOutputStream oos = null;
         FileOutputStream fout = null;
         try {
@@ -96,7 +98,7 @@ public class FileSaverJobj implements FileSaver {
             fout.flush();
 
             //hvorfor gir denne nullpointerexception når man har åpnaprogrammet på nytt??????
-            oos.writeObject(komponentRegister);
+            oos.writeObject(componentRegister);
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {

@@ -1,4 +1,4 @@
-package org.programutvikling.bruker;
+package org.programutvikling.user;
 
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -13,7 +13,7 @@ public class UserPreferences {
 
     private Preferences prefs = Preferences.userNodeForPackage(UserPreferences.class);
     String pathToUserDefinedDir;
-    String pathToUser;
+    private String pathToUser;
     //denne metoden lager en slags cache som persisterer - altså lagres lokalt.
 
     public UserPreferences(String pathToUser){

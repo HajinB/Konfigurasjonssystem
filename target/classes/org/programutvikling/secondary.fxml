@@ -21,17 +21,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/" fx:controller="org.programutvikling.gui.SecondaryController">
    <top>
-      <AnchorPane prefHeight="15.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="15.0" prefWidth="1040.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar fx:id="menyBar" layoutY="-3.0" prefHeight="26.0" prefWidth="1040.0" styleClass="menyBar" stylesheets="@CSS/Superbruker.css">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="Fil">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#btnLoggUt" text="Logg ut" />
                         <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Set directory" />
-                        <MenuItem mnemonicParsing="false" onAction="#btnOpenJob" text="Unspecified Action" />
+                        <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Open jobj file" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -171,7 +171,7 @@
                         <Font name="System Bold" size="29.0" />
                      </font>
                   </Label>
-                  <Label layoutX="29.0" layoutY="95.0" prefHeight="26.0" prefWidth="194.0" text="Legg til ny komponent">
+                  <Label layoutX="29.0" layoutY="95.0" prefHeight="26.0" prefWidth="194.0" text="Legg til ny component">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>

@@ -10,12 +10,12 @@ module org.programutvikling {
         requires javafx.controls;
         requires javafx.fxml;
         requires org.junit.jupiter.api;
-    requires java.prefs;
+        requires java.prefs;
 
 
-    opens org.programutvikling to javafx.fxml;
+        opens org.programutvikling to javafx.fxml;
         opens org.programutvikling.gui to javafx.fxml;
-        opens org.programutvikling.bruker to javafx.fxml;
-        opens org.programutvikling.komponent to javafx.base;
+        opens org.programutvikling.user to javafx.fxml;
+        opens org.programutvikling.component to javafx.base;
         exports org.programutvikling;
         }

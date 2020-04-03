@@ -1,8 +1,8 @@
 
 import org.junit.jupiter.api.Test;
-import org.programutvikling.komponent.Komponent;
-import org.programutvikling.komponent.KomponentRegister;
-import org.programutvikling.komponent.io.FileSaverJobj;
+import org.programutvikling.component.Component;
+import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.io.FileSaverJobj;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,19 +22,19 @@ class FileSaverTxtTest {
 
 
     @Test
-    public void test() throws IOException {
-        Komponent komponentTest = new Komponent("CPU","Intel Core i9-9900K", "Socket-LGA1151, 8-Core, 16-Thread, 3" +
+    void test() throws IOException {
+        Component componentTest = new Component("CPU","Intel Core i9-9900K", "Socket-LGA1151, 8-Core, 16-Thread, 3" +
                 ".60/5" +
                 ".0GHz, Coffee Lake Refresh, uten kjøler\n", 6999.99);
-        KomponentRegister komponentRegister = new KomponentRegister();
-        komponentRegister.addKomponent(komponentTest);
+        ComponentRegister componentRegister = new ComponentRegister();
+        componentRegister.addComponent(componentTest);
 
-        String contents = komponentTest.toString();
+        String contents = componentTest.toString();
 
         File path = new File("Directory");
         FileSaverJobj saver = new FileSaverJobj();
         // call teh metod
-        saver.save(komponentRegister, Paths.get(path.getPath()));
+        saver.save(componentRegister, Paths.get(path.getPath()));
 
         // tacke a reference to the file
         File file = new File(String.valueOf(path));

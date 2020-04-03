@@ -29,7 +29,6 @@ public class App extends Application {
 
         //scene = buildUI(primaryStage);
         if (scene == null) throw new NullPointerException();
-
         scene.getRoot().applyCss();
 
     }
@@ -44,7 +43,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-
         //setRoot("org/programutvikling/primary.fxml");
         launch();
     }

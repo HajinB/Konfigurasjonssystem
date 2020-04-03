@@ -31,7 +31,7 @@
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#btnLoggUt" text="Logg ut" />
                         <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Set directory" />
-                        <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Unspecified Action" />
+                        <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Open jobj file" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">

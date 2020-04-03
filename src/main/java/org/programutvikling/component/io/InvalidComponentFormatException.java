@@ -1,4 +1,4 @@
-package org.programutvikling.komponent.io;
+package org.programutvikling.component.io;
 
 
 import java.io.IOException;
