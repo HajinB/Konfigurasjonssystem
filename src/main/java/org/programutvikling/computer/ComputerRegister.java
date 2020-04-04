@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public class ComputerRegister extends ComponentRegister {
 
-    ArrayList<Computer> computerRegisterList =  new ArrayList<>();
+    ArrayList<ArrayList<Computer>> computerRegisterList =  new ArrayList<>();
 }

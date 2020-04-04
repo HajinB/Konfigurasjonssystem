@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Konfigurasjonssystem-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Konfigurasjonssystem-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerRegister.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +120,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Konfigurasjonssystem [clean,compile...]">
+  <component name="RunManager" selected="JUnit.UserValidatorTest">
     <configuration name="BrukerValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.programutvikling.bruker.BrukerValidator" />
       <module name="Konfigurasjonssystem" />
@@ -191,8 +191,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserValidatorTest.name" />
         <item itemvalue="JUnit.UserValidatorTest" />
+        <item itemvalue="JUnit.UserValidatorTest.name" />
         <item itemvalue="JUnit.FileSaverTxtTest" />
         <item itemvalue="Application.BrukerValidator" />
         <item itemvalue="Application.BrukerValidator" />
@@ -214,6 +214,7 @@
       <workItem from="1585726934920" duration="1124000" />
       <workItem from="1585735556343" duration="5300000" />
       <workItem from="1585950279884" duration="2403000" />
+      <workItem from="1586008130635" duration="747000" />
     </task>
     <task id="LOCAL-00001" summary="runConfig lagt til">
       <created>1585505781643</created>
@@ -306,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585975131160</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fiksa buggen - auto-save funker nå(set-metoden er tydeligivs kopla til writeobject">
+      <created>1585979357371</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1585979357371</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
