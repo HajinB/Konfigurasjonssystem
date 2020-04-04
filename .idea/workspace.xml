@@ -1,44 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Endret det meste til engelsk, er bare Controller igjen">
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Konfigurasjonssystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Konfigurasjonssystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/AppendingObjectOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/AppendingObjectOutputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerJobj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaverJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaverJobj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/InputThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/InputThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/InputThreadable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/InputThreadable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/Dialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/sluttbruker.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/sluttbruker.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Konfigurasjonssystem-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Konfigurasjonssystem-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/Component.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/Component.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerJobj.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileSaverJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileSaverJobj.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/Dialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/Dialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/SecondaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/SecondaryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/komponent/io/AppendingObjectOutputStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/sluttbruker.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/sluttbruker.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserPreferences.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserPreferences.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/FileSaverTxtTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,7 +299,14 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1585939827004</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Endret det meste til engelsk, er bare Controller igjen">
+      <created>1585975131160</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1585975131160</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,84 +335,57 @@
     <MESSAGE value="kladd BrukerValidator" />
     <MESSAGE value="Oppsett for autosave - men har bugs.." />
     <MESSAGE value="Testing User" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing User" />
+    <MESSAGE value="Fiksa buggen - auto-save funker nå(set-metoden er tydeligivs kopla til writeobject" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fiksa buggen - auto-save funker nå(set-metoden er tydeligivs kopla til writeobject" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="238" y="0" key="#UserValidatorTest" timestamp="1585952917138">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="238" y="0" key="#UserValidatorTest/0.0.1280.680@0.0.1280.680" timestamp="1585952917138" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585952818938">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1585952818938" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1585938055575">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1585938055575" />
-    <state x="438" y="226" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585939472109">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="438" y="226" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1585939472109" />
-    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585933854745" />
-    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1585933854745" />
-    <state x="225" y="0" key="CommitChangelistDialog2" timestamp="1585939824221">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1585939824221" />
-    <state x="315" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state x="189" y="97" key="DiffContextDialog" timestamp="1585933854745" />
-    <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1585933854745" />
-    <state x="740" y="99" key="FileChooserDialogImpl" timestamp="1585933854745" />
-    <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1585933854745" />
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1585954491693">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1585954491693" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1585954491693">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1585954491693" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1585954491693">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1585954491693" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1585954491693">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1585954491693" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state x="453" y="134" key="RollbackChangesDialog" timestamp="1585933854745" />
-    <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1585952830512">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1585952830512" />
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1585939830298">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1585939830298" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585933854745" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585950155084">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1585950155084" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585954127692">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1585954127692" />
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1585954050050">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1585954050050" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1585933854745" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1585933854745" />
+    <state x="238" y="0" key="#UserValidatorTest" />
+    <state x="238" y="0" key="#UserValidatorTest/0.0.1280.680@0.0.1280.680" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" />
+    <state x="438" y="226" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" />
+    <state x="438" y="226" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" />
+    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" />
+    <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" />
+    <state x="225" y="0" key="CommitChangelistDialog2" />
+    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" />
+    <state x="315" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" />
+    <state x="189" y="97" key="DiffContextDialog" />
+    <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" />
+    <state x="740" y="99" key="FileChooserDialogImpl" />
+    <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" />
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom" />
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" />
+    <state x="453" y="134" key="RollbackChangesDialog" />
+    <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" />
+    <state x="121" y="0" key="SettingsEditor" />
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" />
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2" />
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" />
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" />
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" />
+    <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog" />
+    <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
