@@ -14,8 +14,6 @@ import org.programutvikling.App;
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 public class PrimaryController {
 
-
-
     @FXML
     private TextField inputBrukernavn;
 
@@ -29,6 +27,7 @@ public class PrimaryController {
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
+        openUserView();
 //        //returnerer 1 hvis admin, 2 hvis sluttbruker, 0 hvis feil feks.
 //        if(Logikk.sjekkBrukernavn(inputBrukernavn.getText()) == 1 &&  Logikk.sjekkPassord(inputPassord.getText()) == 1) {
 //            App.setRoot("secondary");
@@ -36,6 +35,15 @@ public class PrimaryController {
 
     }
 
+    private void openUserView() throws IOException {
+        if(isUser()){
+            App.setRoot("sluttbruker");
+        }
+    }
+
+    private boolean isUser() {
+        return inputPassord.getText().equals("bruker");
+    }
 
 
 }

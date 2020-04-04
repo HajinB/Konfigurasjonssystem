@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 
 public class Dialog {
 
-    static void showErrorDialog(String msg) {
+    public static void showErrorDialog(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Feil!");
         alert.setHeaderText("Ugyldig data!");

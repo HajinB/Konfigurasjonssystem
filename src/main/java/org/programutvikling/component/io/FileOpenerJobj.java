@@ -62,14 +62,13 @@ public class FileOpenerJobj implements FileOpener {
         }
     }
 }
-
-
-/*
-    @Override DENNE FUNGERER EGENTLIG:
-    public void open(componentRegister componentRegister, Path selectedPath) {
+*/
+    @Override
+    public void open(ComponentRegister componentRegister, Path selectedPath) {
         try (InputStream fin = Files.newInputStream(selectedPath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
-            List<Komponent> listeinn = (List<Komponent>) oin.readObject(); // kan kastes til Person
+
+            ArrayList<Component> listeinn = (ArrayList<Component>) oin.readObject(); // kan kastes til Person
             //System.out.println(personlista);
             componentRegister.getRegister().addAll(listeinn);
             //componentRegister.getRegister().add((Komponent) listeinn);
@@ -77,10 +76,9 @@ public class FileOpenerJobj implements FileOpener {
             Dialog.showErrorDialog("filtype er feil");
             //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");
         }
-
     }
 }
-*/
+/*
     @Override
     public void open(ComponentRegister componentRegister, Path filePath) throws IOException {
         try (InputStream fin = Files.newInputStream(filePath);
@@ -99,3 +97,4 @@ public class FileOpenerJobj implements FileOpener {
         }
     }
 }
+*/

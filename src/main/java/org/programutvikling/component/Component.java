@@ -39,7 +39,7 @@ public class Component implements Serializable {
 
     public final void setType(String type) {
         // validator
-        this.name.set(type);
+        this.type.set(type);
     }
 
     public String getName() {
@@ -77,7 +77,7 @@ public class Component implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType());
+        s.writeUTF(getType()); //denne er null på andre gjennomkjøring . le
         s.writeUTF(getName());
         s.writeUTF(getDescription());
         s.writeDouble(getPrice());

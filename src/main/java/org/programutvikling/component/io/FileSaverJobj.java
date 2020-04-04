@@ -1,6 +1,9 @@
 package org.programutvikling.component.io;
 
+import javafx.collections.ObservableList;
+import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.gui.FileHandling;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -44,39 +47,43 @@ import java.nio.file.Path;
 // you need to read all the existing objects,
 // then write the file again with all the old objects and then the new objects).
 public class FileSaverJobj implements FileSaver {
+
+    /*
     @Override
-    public void save(ComponentRegister registry, Path filePath) throws IOException {
-        //Path path = Paths.get("kari.jobj");
+    public void save(ComponentRegister componentRegister, Path filePath) throws IOException {
         try (OutputStream os = Files.newOutputStream(filePath);
              ObjectOutputStream out = new ObjectOutputStream(os))
         {
-            out.writeObject(registry);
+            out.writeObject(componentRegister);
         }
     }
-}
+}*/
 
-    /* @Override
-     public void save(componentRegister componentRegister, Path filePath) throws IOException {
-         try (OutputStream os = Files.newOutputStream(filePath);
 
-              //try( FileOutputStream os = (FileOutputStream) Files.newOutputStream(filePath);
-              //try(FileOutputStream os = new FileOutputStream(String.valueOf(Files.newOutputStream(filePath)), false);
-              ObjectOutputStream out = new ObjectOutputStream(os))
-         {
-             //out.flush();
-             //out.writeObject(componentRegister);
-             //out.writeObject(Filbehandling.convertListToReadable(personRegister.personArrayList));
+
+
+
+    @Override
+    public void save(ComponentRegister componentRegister, Path filePath) throws IOException {
+        try (OutputStream os = Files.newOutputStream(filePath);
+
+             //try( FileOutputStream os = (FileOutputStream) Files.newOutputStream(filePath);
+             //try(FileOutputStream os = new FileOutputStream(String.valueOf(Files.newOutputStream(filePath)), false);
+             ObjectOutputStream out = new ObjectOutputStream(os)) {
+            //out.flush();
+            //out.writeObject(componentRegister);
+            //out.writeObject(Filbehandling.convertListToReadable(personRegister.personArrayList));
 
             out.reset();
             //out.writeObject(componentRegister);
-             out.writeObject(Filbehandling.convertListToReadable((ObservableList<Komponent>) componentRegister
-             .getRegister()));
+            out.writeObject(componentRegister.getReadableList(componentRegister.getRegister()));
 
             out.flush();
 
-             out.close();
-         }
-     }*/
+            out.close();
+        }
+    }
+}
     /*
     @Override
     public void save(componentRegister componentRegister, Path filePath) throws IOException {

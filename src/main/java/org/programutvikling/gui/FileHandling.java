@@ -79,7 +79,7 @@ public class FileHandling {
         String fileExt = getFileExt(file);
         FileOpener opener = null;
 
-
+        //todo: skriv om denne switchen til polymorphisme PLIS
         switch (fileExt) {
             case ".txt" : opener = new FileOpenerTxt(); break;
             case ".jobj" : opener = new FileOpenerJobj(); break;
@@ -92,7 +92,8 @@ public class FileHandling {
         System.out.println(path.toString());
         if(opener != null) {
             try {
-                opener.open(register, path);
+                opener.open(register, path); //todo her kan man legge inn en thread gjennom en metode istede for å
+                // calle fileopenerTxt/jobj direkte.
                 System.out.println("ETTER OPENER HER");
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
@@ -135,13 +136,7 @@ public class FileHandling {
 
         return directoryPath;
     }
-    public static List<?> convertListToReadable(List<Component> nonReadableList){
 
-        List<Component> nyListe = new ArrayList<>();
-
-        nyListe.addAll(nonReadableList);
-        return nyListe;
-    }
 
     static void saveFileJobj(ComponentRegister register, Path directoryPath) throws IOException {
        // File selectedFile = getPath;

@@ -7,5 +7,5 @@ import java.nio.file.Path;
 public interface InputThreadable {
     void openFileThread(ComponentRegister komponentregister, Path filePath);
 
-    String call();
+    Void call();
 }

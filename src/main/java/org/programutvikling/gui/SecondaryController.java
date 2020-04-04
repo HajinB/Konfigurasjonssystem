@@ -1,5 +1,6 @@
 package org.programutvikling.gui;
 
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -7,6 +8,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.App;
+import org.programutvikling.component.io.InputThread;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -17,21 +19,26 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.prefs.Preferences;
 
-//todo: få til å loade alle files fra components folderen - ikke bare forhåndsvalgt fil
+//todo: få til å loade alle nødvendige files fra components folderen - ikke bare forhåndsvalgt fil
+
+//todo:
 
 public class SecondaryController {
     private Stage stage;
     Preferences prefs;
-
     String componentPath;// = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
     FileHandling fileHandling;
     private RegistryComponentLogic registryComponentLogic;
+
+    //default path:
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
     @FXML
     private MenuBar menyBar;
     @FXML
     private Label tblOverskrift;
+
+
     @FXML
     private TableView<?> tblView;
     @FXML
@@ -53,6 +60,8 @@ public class SecondaryController {
     //private RegistrerKomponent registerKomponent;
     @FXML
     private GridPane gridPane;
+    @FXML
+    private Button btnLeggTil;
 
     private ComponentRegister componentRegister = new ComponentRegister();
 
@@ -66,11 +75,9 @@ public class SecondaryController {
 
     private static void deletefile(String file) {
         File f1 = new File(file);
-
         boolean success = f1.delete();
 
         if (!success) {
-
             System.out.println("Deletion failed.");
 
             //System.exit(0);
@@ -88,35 +95,65 @@ public class SecondaryController {
     public void initialize() throws IOException {
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
-
         //System.out.println(directoryPath.toString());
             //bare lag en metode som gjør alt dette!
-        getUserPathAndLoadRegister();
+        loadRegisterFromFile();
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
         registryComponentLogic = new RegistryComponentLogic(gridPane);
 
         //System.out.println(componentRegister.toString());
         updateList();
+    }
 
+
+    @FXML
+    void btnOpen(ActionEvent event) {
+        //bruker openfilethread somegen klasse som arver Task - så setter man metoder til å være failed eller done
+        // (skrur av knappene i det milisekundet det tar å laste inn en fil)
+        openFileWithThreadSleep();
+
+
+        //GJør åpningen i new trheead!!!!!
+       /* JComboBox cb = (JComboBox)e.getSource();
+        String petName = (String)cb.getSelectedItem();
+        updateLabel(petName);*/
+        /*string selected = openCombobox.getSele
+        BufferedReader reader = Files.newBufferedReader(Paths.get(path))*/
 
     }
-        //test prints
+
+    private void openFileWithThreadSleep() {
+        InputThread task = new InputThread(componentRegister, userPreferences.getPathToUser());
+        task.setOnSucceeded(this::threadDone);
+        task.setOnFailed(this::threadFailed);
+        startThread(task);
+    }
+
+    private void startThread(InputThread task) {
+        Thread th = new Thread(task);
+        th.setDaemon(true);
+        gridPane.setDisable(true);//prøver å slå av hele gridpane
+        th.start();
+        task.call();  //call bruker filepathen fra konstruktøren til å åpne/laste inn
+    }
+
+    private void threadDone(WorkerStateEvent e) {
+        Dialog.showSuccessDialog("Opening complete");
+        //btnLeggTil.getclass.setDisable(false);
+        gridPane.setDisable(false);
+        //btnSaveID.setDisable(false);
+    }
 
 
+    private void threadFailed(WorkerStateEvent event) {
+        var e = event.getSource().getException();
+        Dialog.showErrorDialog("Avviket sier: " + e.getMessage());
+        gridPane.setDisable(false);
+        gridPane.setDisable(false);
+    }
 
-
-
-        //åpne jobj (som forhåpentligvis har lagret seg) ved init.
-
-                                              //her må det egentlig stå componentpath - når
-                // userPreferences.getPathToUser(); fungerer
-               // Filbehandling.loadAppConfigurationFile(componentRegister, "FileDirectory/Components/ComponentList" +
-              //  ".jobj");
-
-
-
-    private void getUserPathAndLoadRegister() throws IOException {
+    private void loadRegisterFromFile() throws IOException {
         File file = new File(String.valueOf(userPreferences.getPathToUser()));
         String path = file.getAbsolutePath();
 

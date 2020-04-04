@@ -1,4 +1,10 @@
 package org.programutvikling.computer;
 
-public class ComputerRegister {
+import org.programutvikling.component.ComponentRegister;
+
+import java.util.ArrayList;
+
+public class ComputerRegister extends ComponentRegister {
+
+    ArrayList<Computer> computerRegisterList =  new ArrayList<>();
 }

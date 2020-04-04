@@ -60,7 +60,13 @@ public class ComponentRegister implements Serializable {
         System.out.println(componentRegister.toString());
     }
 
+    public static ArrayList<Component> getReadableList(List nonReadableList){
 
+        ArrayList<Component> nyListe = new ArrayList<>();
+
+        nyListe.addAll(nonReadableList);
+        return nyListe;
+    }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
@@ -72,6 +78,5 @@ public class ComponentRegister implements Serializable {
         componentRegister = FXCollections.observableArrayList();
         componentRegister.addAll(list);
     }
-
 }
 

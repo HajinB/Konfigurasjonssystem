@@ -1,4 +1,4 @@
-package org.programutvikling.komponent.io;
+package org.programutvikling.component.io;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -17,8 +17,6 @@ public class AppendingObjectOutputStream extends ObjectOutputStream {
     @Override
     protected void writeStreamHeader() throws IOException {
         // do not write a header, but reset:
-        // this line added after another question
-        // showed a problem with the original
         reset();
     }
 
