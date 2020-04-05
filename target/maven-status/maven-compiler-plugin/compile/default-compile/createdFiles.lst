@@ -13,6 +13,7 @@ org/programutvikling/component/io/FileSaverJobj.class
 org/programutvikling/component/io/FileSaver.class
 org/programutvikling/component/io/AppendingObjectOutputStream.class
 org/programutvikling/user/UserPreferences.class
+org/programutvikling/gui/SecondaryUserTabController.class
 org/programutvikling/user/UserRegister.class
 org/programutvikling/user/User.class
 org/programutvikling/computer/ComputerRegister.class

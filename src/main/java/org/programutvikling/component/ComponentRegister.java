@@ -28,8 +28,10 @@ public class ComponentRegister implements Serializable {
         componentRegister.add(component);
     }
 
-    public void attachTableView(TableView tv) {
-        tv.setItems(componentRegister);
+    public void attachTableView(TableView<Component> tv) {
+        if(!componentRegister.isEmpty())
+            tv.setItems(componentRegister);
+
     }
 
     /*

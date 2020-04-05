@@ -4,6 +4,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -37,8 +38,6 @@ public class SecondaryController {
     private MenuBar menyBar;
     @FXML
     private Label tblOverskrift;
-
-
     @FXML
     private TextField inputVaretype;
     @FXML
@@ -93,11 +92,23 @@ public class SecondaryController {
     private TableColumn<Component, Double> kolonnePris;
     @FXML
     public void initialize() throws IOException {
+        updateList();
+        kolonneType.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
+        kolonneVNavn.setCellValueFactory(new PropertyValueFactory<Component, String>("name"));
+        kolonneBesk.setCellValueFactory(new PropertyValueFactory<Component, String>("description"));
+        kolonnePris.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
+
+        kolonneType.setCellFactory(TextFieldTableCell.forTableColumn());
+        kolonneVNavn.setCellFactory(TextFieldTableCell.forTableColumn());
+        kolonneBesk.setCellFactory(TextFieldTableCell.forTableColumn());
+        kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(new Converter.StringDoubleConverter()));
+
+
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //System.out.println(directoryPath.toString());
             //bare lag en metode som gjør alt dette!
-        componentRegister.attachTableView(tblView);
+
         loadRegisterFromFile();
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
@@ -105,6 +116,11 @@ public class SecondaryController {
         kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(strDoubleConverter));
         //System.out.println(componentRegister.toString());
         updateList();
+        refreshTable();
+    }
+    @FXML
+    public void refreshTable() {
+        tblView.refresh();
     }
 
 
@@ -207,7 +223,7 @@ public class SecondaryController {
     }
 
     private void updateList() {
-        //componentRegister.attachTableView(tblView);
+        componentRegister.attachTableView(tblView);
     }
 
     private void loadFromDirectory() {
@@ -275,24 +291,33 @@ public class SecondaryController {
     }
 
     @FXML
-    void kolonneBeskEdit(ActionEvent event) {
+    void kolonneTypeEdit(TableColumn.CellEditEvent<Component, String> event) {
+        event.getRowValue().setType(event.getNewValue());
+        updateList();
+    }
+
+    @FXML
+    void kolonneVNavnEdit(TableColumn.CellEditEvent<Component, String> event) {
+        event.getRowValue().setName(event.getNewValue());
+        updateList();
+    }
+
+    @FXML
+    void kolonneBeskEdit(TableColumn.CellEditEvent<Component, String> event) {
+        event.getRowValue().setDescription(event.getNewValue());
+        updateList();
 
     }
 
     @FXML
-    void kolonnePrisEdit(ActionEvent event) {
+    void kolonnePrisEdit(TableColumn.CellEditEvent<Component, Double> event) {
+
+            event.getRowValue().setPrice(event.getNewValue());
+            updateList();
 
     }
 
-    @FXML
-    void kolonneTypeEdit(ActionEvent event) {
 
-    }
-
-    @FXML
-    void kolonneVNavnEdit(ActionEvent event) {
-
-    }
 
     @FXML
     void kolonneVNrEdit(ActionEvent event) {

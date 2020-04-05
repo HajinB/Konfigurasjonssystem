@@ -18,5 +18,6 @@ module org.programutvikling {
         opens org.programutvikling.gui to javafx.fxml;
         opens org.programutvikling.user to javafx.fxml;
         opens org.programutvikling.component to javafx.base;
+        opens org.programutvikling.computer to javafx.base;
         exports org.programutvikling;
         }
