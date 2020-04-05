@@ -2,6 +2,7 @@ package org.programutvikling.component.io;
 
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.Dialog;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -71,6 +72,22 @@ public class FileOpenerJobj implements FileOpener {
             ArrayList<Component> listeinn = (ArrayList<Component>) oin.readObject(); // kan kastes til Person
             //System.out.println(personlista);
             componentRegister.getRegister().addAll(listeinn);
+            //componentRegister.getRegister().add((Komponent) listeinn);
+        } catch (IOException | ClassNotFoundException i) {
+            Dialog.showErrorDialog("filtype er feil");
+            //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");
+        }
+    }
+            //fins det bedre måter enn dette? vha polymorfisme?
+    public void open(ComputerRegister computerRegister, Path selectedPath) {
+        try (InputStream fin = Files.newInputStream(selectedPath);
+             ObjectInputStream oin = new ObjectInputStream(fin)) {
+
+            ComputerRegister listeinn = (ComputerRegister) oin.readObject(); // kan kastes til Person
+            //System.out.println(personlista);
+            //computerRegister.getRegister().addAll(listeinn);
+            listeinn.getRegister().forEach(computerRegister::addComponent);
+
             //componentRegister.getRegister().add((Komponent) listeinn);
         } catch (IOException | ClassNotFoundException i) {
             Dialog.showErrorDialog("filtype er feil");

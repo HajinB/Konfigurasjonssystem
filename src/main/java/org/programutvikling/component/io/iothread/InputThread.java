@@ -1,4 +1,4 @@
-package org.programutvikling.component.io;
+package org.programutvikling.component.io.iothread;
 
 import javafx.concurrent.Task;
 
@@ -16,11 +16,13 @@ public class InputThread extends Task<Void> {
     FileHandling fileHandling = new FileHandling();
 
     String filePath;
-    ComponentRegister komponentRegister;
+    //ArrayList<Component> komponentRegisterList = new ArrayList<>();
+    ComponentRegister componentRegisterThread = new ComponentRegister();
+    //componentregister blir ikke her faktisk lagra gjennom
 
     public InputThread(ComponentRegister komponentRegister, String filepath) {
         this.filePath = filepath;
-        this.komponentRegister = komponentRegister;
+        componentRegisterThread.getRegister().addAll(komponentRegister.getRegister());
         call();
     }
 
@@ -33,8 +35,9 @@ public class InputThread extends Task<Void> {
     public Void call() {
 
         try {
-            fileHandling.loadAllFilesFromDirectory(komponentRegister, Paths.get(filePath));
             sleep(3000);
+            fileHandling.loadAllFilesFromDirectory(componentRegisterThread, Paths.get(filePath));
+
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

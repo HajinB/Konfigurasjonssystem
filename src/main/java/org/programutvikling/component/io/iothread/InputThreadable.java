@@ -1,4 +1,4 @@
-package org.programutvikling.component.io;
+package org.programutvikling.component.io.iothread;
 
 import org.programutvikling.component.ComponentRegister;
 

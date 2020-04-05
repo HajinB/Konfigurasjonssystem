@@ -20,6 +20,7 @@ import java.util.List;
 public class FileHandling {
 
     private Path directoryPath;
+
     public void populateComboBox(){
 
         File folder = new File("Directory");  //kanskje selvvalg eller variabel her (?) som path
@@ -44,9 +45,9 @@ public class FileHandling {
             // være combobox for superbruker?
             //openCombobox = new ComboBox<>(options);
             System.out.println(liste);
-            /*openCombobox.getItems().addAll(options.get(0));
-            openCombobox.setItems(options);
-            System.out.println("added to combobox");*/
+            //openCombobox.getItems().addAll(options.get(0));
+            //openCombobox.setItems(options);
+            System.out.println("added to combobox");
             //todo send denne arrayen et sted hvor den kan populere div ting
             //openComboBox = new ComboBox(options);
 

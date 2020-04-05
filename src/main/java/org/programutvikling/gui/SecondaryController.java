@@ -4,15 +4,15 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.App;
-import org.programutvikling.component.io.InputThread;
+import org.programutvikling.component.io.iothread.InputThread;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -40,16 +40,6 @@ public class SecondaryController {
 
 
     @FXML
-    private TableView<?> tblView;
-    @FXML
-    private TableColumn<?, ?> kolonneType;
-    @FXML
-    private TableColumn<?, ?> kolonneVNavn;
-    @FXML
-    private TableColumn<?, ?> kolonneBesk;
-    @FXML
-    private TableColumn<?, ?> kolonnePris;
-    @FXML
     private TextField inputVaretype;
     @FXML
     private TextField inputVarenavn;
@@ -65,8 +55,8 @@ public class SecondaryController {
 
     private ComponentRegister componentRegister = new ComponentRegister();
 
-    private Converter.DoubleStringConverter doubleStrConverter
-            = new Converter.DoubleStringConverter();
+    private Converter.StringDoubleConverter strDoubleConverter
+            = new Converter.StringDoubleConverter();
 
     @FXML
     private Label lblBekreftelse;
@@ -92,16 +82,27 @@ public class SecondaryController {
 
 
     @FXML
+    private TableView<Component> tblView;
+    @FXML
+    private TableColumn<Component, String> kolonneType;
+    @FXML
+    private TableColumn<Component, String> kolonneVNavn;
+    @FXML
+    private TableColumn<Component, String> kolonneBesk;
+    @FXML
+    private TableColumn<Component, Double> kolonnePris;
+    @FXML
     public void initialize() throws IOException {
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //System.out.println(directoryPath.toString());
             //bare lag en metode som gjør alt dette!
+        componentRegister.attachTableView(tblView);
         loadRegisterFromFile();
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
         registryComponentLogic = new RegistryComponentLogic(gridPane);
-
+        kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(strDoubleConverter));
         //System.out.println(componentRegister.toString());
         updateList();
     }
@@ -181,7 +182,8 @@ public class SecondaryController {
 
     @FXML
     void btnOpenJobj(ActionEvent event) {
-        FileHandling.openFile(componentRegister, "FileDirectory/Components/ComponentList.jobj");
+        openFileWithThreadSleep();
+        //FileHandling.openFile(componentRegister, "FileDirectory/Components/ComponentList.jobj");
     }
 
 
@@ -195,7 +197,7 @@ public class SecondaryController {
         return new Component(inputVaretype.getText(),
                 inputVarenavn.getText(),
                 inputBeskrivelse.getText(),
-                doubleStrConverter.stringTilDouble(inputPris.getText()));
+                strDoubleConverter.stringTilDouble(inputPris.getText()));
     }
 
     @FXML
@@ -250,6 +252,10 @@ public class SecondaryController {
                 System.out.println(komponent.toString());
                 */
         System.out.println(componentRegister.toString());
+
+    }
+    @FXML
+    void btnLeggTilBruker(ActionEvent event) throws IOException {
 
     }
 

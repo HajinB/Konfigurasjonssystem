@@ -14,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class FileOpenerTxt implements FileOpener {
-    Converter.DoubleStringConverter doubleStringConverter;
 
     @Override
     public void open(ComponentRegister register, Path filePath) throws IOException {
@@ -54,6 +53,7 @@ public class FileOpenerTxt implements FileOpener {
             return new Component(type, name, description, price);
 
         }
+
 
 
     private double parseDouble(String str, String errorMessage) throws IllegalArgumentException {
