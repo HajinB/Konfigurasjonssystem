@@ -2,17 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="885069ea-4133-45de-bb2a-5e4d8b198fe7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryUserTabController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/OpenerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ThreadHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Component.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/iothread/InputThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/iothread/InputThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryUserTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryUserTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserPreferences.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Konfigurasjonssystem-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Konfigurasjonssystem-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/Component.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/Component.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerJobj.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/SecondaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/SecondaryController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserPreferences.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserPreferences.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
@@ -87,6 +103,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last.edited.regexp" value="TEst eytuiworu qrqqpipop" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/programutvikling/gui" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -104,6 +121,7 @@
       <recent name="org.programutvikling.user" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.programutvikling.gui" />
       <recent name="" />
       <recent name="org.programutvikling" />
     </key>
@@ -132,7 +150,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Konfigurasjonssystem [clean,compile...]">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="BrukerValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.programutvikling.bruker.BrukerValidator" />
       <module name="Konfigurasjonssystem" />
@@ -227,7 +245,7 @@
       <workItem from="1585735556343" duration="5300000" />
       <workItem from="1585950279884" duration="2403000" />
       <workItem from="1586008130635" duration="5087000" />
-      <workItem from="1586118039297" duration="3633000" />
+      <workItem from="1586118039297" duration="15949000" />
     </task>
     <task id="LOCAL-00001" summary="runConfig lagt til">
       <created>1585505781643</created>
@@ -355,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586119611947</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="satt opp tblview">
+      <created>1586121961862</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1586121961862</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +412,8 @@
     <MESSAGE value="Testing User" />
     <MESSAGE value="Fiksa buggen - auto-save funker nå(set-metoden er tydeligivs kopla til writeobject" />
     <MESSAGE value="La til metoder for populering av combobox" />
-    <option name="LAST_COMMIT_MESSAGE" value="La til metoder for populering av combobox" />
+    <MESSAGE value="satt opp tblview" />
+    <option name="LAST_COMMIT_MESSAGE" value="satt opp tblview" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />

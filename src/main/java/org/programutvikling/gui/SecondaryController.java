@@ -10,6 +10,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.App;
+import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.component.io.iothread.InputThread;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.component.Component;
@@ -18,6 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.Optional;
 import java.util.prefs.Preferences;
 
 //todo: få til å loade alle nødvendige files fra components folderen - ikke bare forhåndsvalgt fil
@@ -81,6 +84,8 @@ public class SecondaryController {
 
 
     @FXML
+    private ChoiceBox<String> choiceBoxVaretype;
+    @FXML
     private TableView<Component> tblView;
     @FXML
     private TableColumn<Component, String> kolonneType;
@@ -91,7 +96,9 @@ public class SecondaryController {
     @FXML
     private TableColumn<Component, Double> kolonnePris;
     @FXML
+    ComponentTypes componentTypes = new ComponentTypes();
     public void initialize() throws IOException {
+        choiceBoxVaretype.setItems(componentTypes.getConcreteTypeListName());
         updateList();
         kolonneType.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
         kolonneVNavn.setCellValueFactory(new PropertyValueFactory<Component, String>("name"));
@@ -118,6 +125,10 @@ public class SecondaryController {
         updateList();
         refreshTable();
     }
+
+
+
+
     @FXML
     public void refreshTable() {
         tblView.refresh();
@@ -129,8 +140,6 @@ public class SecondaryController {
         //bruker openfilethread somegen klasse som arver Task - så setter man metoder til å være failed eller done
         // (skrur av knappene i det milisekundet det tar å laste inn en fil)
         openFileWithThreadSleep();
-
-
         //GJør åpningen i new trheead!!!!!
        /* JComboBox cb = (JComboBox)e.getSource();
         String petName = (String)cb.getSelectedItem();
@@ -139,6 +148,7 @@ public class SecondaryController {
         BufferedReader reader = Files.newBufferedReader(Paths.get(path))*/
 
     }
+
 
     private void openFileWithThreadSleep() {
         InputThread task = new InputThread(componentRegister, userPreferences.getPathToUser());
@@ -152,7 +162,7 @@ public class SecondaryController {
         th.setDaemon(true);
         gridPane.setDisable(true);//prøver å slå av hele gridpane
         th.start();
-        task.call();  //call bruker filepathen fra konstruktøren til å åpne/laste inn
+        task.call();  //call bruker filepathen fra konstruktøren til InputThread til å åpne/laste inn
     }
 
     private void threadDone(WorkerStateEvent e) {
@@ -171,12 +181,9 @@ public class SecondaryController {
     }
 
     private void loadRegisterFromFile() throws IOException {
-        File file = new File(String.valueOf(userPreferences.getPathToUser()));
-        String path = file.getAbsolutePath();
-
+        File file = new File((userPreferences.getPathToUser()));
         if(file.exists()){
-            FileHandling.loadAppConfigurationFile(componentRegister, userPreferences.getPathToUser());
-            System.out.println(componentRegister.toString());
+            FileHandling.loadAppFiles(componentRegister, userPreferences.getPathToUser());
         }
     }
 
@@ -206,11 +213,30 @@ public class SecondaryController {
     @FXML
     void btnFjern(ActionEvent event) {
         //fjern fra directory og array ?
+        if (tblView.getSelectionModel().isEmpty()) {
+            lblBekreftelse.setText("Velg en rad for å slette den"); //bytt til tblview label
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Slette rad");
+            alert.setHeaderText("Vil du slette den valgte raden?");
+            //gjør en gang til - "vil du slette for godt"?
+
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                Component selectedComponent = tblView.getSelectionModel().getSelectedItem();
+
+                componentRegister.removeComponent((selectedComponent));
+                //etter man har sletta fra lista burde man vi brukeren valget mellom å slette for godt eller slette
+                // fra viewen? elns?
+                updateList();
+                lblBekreftelse.setText("");
+            }
+        }
     }
 
 
     private Component createComponentFromGUI() {
-        return new Component(inputVaretype.getText(),
+        return new Component(choiceBoxVaretype.getValue(),
                 inputVarenavn.getText(),
                 inputBeskrivelse.getText(),
                 strDoubleConverter.stringTilDouble(inputPris.getText()));
@@ -226,13 +252,6 @@ public class SecondaryController {
         componentRegister.attachTableView(tblView);
     }
 
-    private void loadFromDirectory() {
-    }
-
-    int componentname = 1;
-    Path directoryPath = Paths.get("FileDirectory");
-
-
     @FXML
     void btnSetDirectory(ActionEvent event) {
         userPreferences.setPreference(stage);
@@ -241,35 +260,15 @@ public class SecondaryController {
     @FXML
         //Komponent(String type, String name, String description, double price)
     void btnLeggTil(ActionEvent event) throws IOException {
-        // Komponent komponent = registrerKomponent.opprettKomponentFraGUIFelt();
-
-        //todo denne folderen/directory path bør kunne bli satt av brukeren i settings elns(?)
-        //File folder = new File("FileDirectory/");
-        //directoryPath = Paths.("FileDirectory");
-        //directoryPath = new File(folder.getPath());
-        // componentRegister.getRegister().add(opprettKomponentFraGUI());
         componentRegister.addComponent(createComponentFromGUI());
+        SaveRegister();
+    }
 
-
-        //todo sjekk om dette faktisk sletter filen at runtime??
-        //deletefile("FileDirectory/Components/ComponentList.jobj");
-
-        //kan gjøres mer åpen/generalisert, denne saveFileJobj funksjonen, sånn at man bare kan legge på extension i
-        // egen metode.. Denne er nå bare åpen for jobj ish
+    private void SaveRegister() throws IOException {
         FileHandling.saveFileJobj(componentRegister,
                 Paths.get(userPreferences.getPathToUser()));
-
-        System.out.println("FileDirectory/Components/" + "ComponentList" + ".jobj" + " was autosaved");
-        //Filbehandling.saveFileJobj(componentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
-
-                /*
-                Komponent komponent = registerKomponent.RegistrerKomponent();
-                componentRegister.addKomponent(komponent);
-                System.out.println(komponent.toString());
-                */
-        System.out.println(componentRegister.toString());
-
     }
+
     @FXML
     void btnLeggTilBruker(ActionEvent event) throws IOException {
 

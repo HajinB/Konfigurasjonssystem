@@ -3,17 +3,13 @@ package org.programutvikling.gui;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
 
@@ -21,7 +17,48 @@ public class FileHandling {
 
     private Path directoryPath;
 
-    public void populateComboBox(){
+    private static String getFileExt(File file) {
+        String fileName = file.getName();
+        return fileName.substring(fileName.lastIndexOf('.'));
+    }
+
+    static void saveFileTxt(ComponentRegister register, Path directoryPath) {
+        if (directoryPath != null) {
+            FileSaver saver = new FileSaverTxt();
+            try {
+                saver.save(register, directoryPath);
+                Dialog.showSuccessDialog("Registeret ble lagret!");
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
+            }
+
+        }
+    }
+
+    static void saveFileJobj(ComponentRegister register, Path directoryPath) throws IOException {
+        // File selectedFile = getPath;
+
+        //FileSaverJobj binSaver = null;
+        //binSaver.save((componentRegister) register, Paths.get("HTMLDirectory/"));
+
+        if (directoryPath != null) {
+            FileSaver saver = null;
+
+            saver = new FileSaverJobj();
+            //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
+
+
+            try {
+                saver.save(register, directoryPath);
+                Dialog.showSuccessDialog("Registeret ble lagret!");
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
+            }
+        }
+
+    }
+
+    public void populateComboBoxes() {
 
         File folder = new File("Directory");  //kanskje selvvalg eller variabel her (?) som path
         File[] listOfFiles = folder.listFiles();
@@ -39,7 +76,7 @@ public class FileHandling {
                 System.out.println("Directory " + listOfFile.getName());
             }
         }
-        if(liste.size()>0) {
+        if (liste.size() > 0) {
 
             //todo her må vi ha metoder for å skille ut typene for å populere comboboxene til sluttbruker - skal typer
             // være combobox for superbruker?
@@ -55,11 +92,12 @@ public class FileHandling {
         }
     }
 
+    //alt + cmd + B = go to implementation
 
-     static void loadAppConfigurationFile(ComponentRegister componentRegister, String directory) throws IOException {
-         File file = new File("FileDirectory/Components/sadffsda.jobj");
+    static void loadAppFiles(ComponentRegister componentRegister, String directory) throws IOException {
+        File file = new File("FileDirectory/Components/sadffsda.jobj");
         // loadJobjFromDirectory(componentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
-         openFile(componentRegister, directory);
+        openFile(componentRegister, directory);
     }
 
     public void loadAllFilesFromDirectory(ComponentRegister componentRegister, Path directory) throws IOException {
@@ -71,99 +109,48 @@ public class FileHandling {
         fileOpenerJobj.open(componentRegister, Paths.get(listOfFiles[0].getPath()));
         System.out.println(componentRegister.getRegister().get(0).getName());
     }
+//todo: må ha en måte å lagre dette på, lokalt for brukeren slik at det loades inn (load configs metode)
 
-        //alt + cmd + B = go to implementation
     static void openFile(ComponentRegister register, String selectedPath) {
 
         File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
-        Path path = Paths.get(selectedPath);
         String fileExt = getFileExt(file);
-        FileOpener opener = null;
+        OpenerFactory openerFactory = new OpenerFactory();
+        FileOpener opener = openerFactory.createOpener(fileExt);
 
-        //todo: skriv om denne switchen til polymorphisme PLIS
-        switch (fileExt) {
-            case ".txt" : opener = new FileOpenerTxt(); break;
-            case ".jobj" : opener = new FileOpenerJobj(); break;
-            default : Dialog.showErrorDialog("Du kan bare åpne txt eller jobj filer.");
-        }
-
-        System.out.println(fileExt);
-        register.log();
-        System.out.println(opener);
-        System.out.println(path.toString());
-        if(opener != null) {
+        if (opener != null && selectedPath !=null){
             try {
+                Path path = Paths.get(selectedPath);
                 opener.open(register, path); //todo her kan man legge inn en thread gjennom en metode istede for å
                 // calle fileopenerTxt/jobj direkte.
-                System.out.println("ETTER OPENER HER");
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
                 Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
             }
-        }
-    }
-
-
-    static void saveFileTxt(ComponentRegister register, Path directoryPath) {
-        if (directoryPath != null) {
-            FileSaver saver = new FileSaverTxt();
-            try {
-                saver.save(register, directoryPath);
-                Dialog.showSuccessDialog("Registeret ble lagret!");
-            } catch (IOException e) {
-                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
-            }
-
-        }
-    }
-//todo: må ha en måte å lagre dette på, lokalt for brukeren slik at det loades inn (load configs metode)
-
-    void setCurrentDirectoryPath(Path directoryPath){
-        //Path configPath = Paths.get("FileDirectory");
-        if(directoryPath != null) {
-            this.directoryPath = Paths.get(directoryPath + "/ConfigMain.jobj");
         }else{
+            Dialog.showErrorDialog("opener eller path er null;");
+
+        }
+    }
+
+    public Path getCurrentDirectoryPath() {
+        //initialiserer directory pathen, men vil la bruker endre dette i settings
+        Path configPath = Paths.get("FileDirectory");
+        // filbehandling.setCurrentDirectoryPath(configPath);
+        this.directoryPath = Paths.get(configPath + "/ConfigMain.jobj");
+
+        return directoryPath;
+    }
+
+    void setCurrentDirectoryPath(Path directoryPath) {
+        //Path configPath = Paths.get("FileDirectory");
+        if (directoryPath != null) {
+            this.directoryPath = Paths.get(directoryPath + "/ConfigMain.jobj");
+        } else {
             System.out.println("wth");
         }
 
     }
 
 
-    public Path getCurrentDirectoryPath(){
-        //initialiserer directory pathen, men vil la bruker endre dette i settings
-        Path configPath = Paths.get("FileDirectory");
-       // filbehandling.setCurrentDirectoryPath(configPath);
-        this.directoryPath = Paths.get(configPath + "/ConfigMain.jobj");
-
-        return directoryPath;
-    }
-
-
-    static void saveFileJobj(ComponentRegister register, Path directoryPath) throws IOException {
-       // File selectedFile = getPath;
-
-        //FileSaverJobj binSaver = null;
-        //binSaver.save((componentRegister) register, Paths.get("HTMLDirectory/"));
-
-        if (directoryPath != null) {
-            FileSaver saver = null;
-
-               saver = new FileSaverJobj();
-               //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
-
-
-            try {
-                saver.save(register, directoryPath);
-                Dialog.showSuccessDialog("Registeret ble lagret!");
-            } catch (IOException e) {
-                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
-            }
-        }
-
-    }
-
-    private static String getFileExt(File file) {
-        String fileName = file.getName();
-        return fileName.substring(fileName.lastIndexOf('.'));
-    }
 }

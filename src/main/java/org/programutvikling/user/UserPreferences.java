@@ -11,7 +11,8 @@ import java.util.prefs.Preferences;
 
 public class UserPreferences {
 
-    //denne metoden lager en slags cache/node som persisterer - altså lagres lokalt(?).
+    //denne metoden lager en slags cache/node som persisterer - altså lagres lokalt i en pre-definert mappe - (type
+    // OS default "c/user/programfiles. ish?
     private Preferences prefs = Preferences.userNodeForPackage(UserPreferences.class);
     String pathToUserDefinedDir;
     private String pathToUser;

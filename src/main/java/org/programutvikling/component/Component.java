@@ -25,7 +25,6 @@ public class Component implements Serializable {
 
     public Component(String type, String name, String description, double price) {
         // Validator av type, name og price(sjekke om den er 0?) her
-
         this.type = new SimpleStringProperty(type);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);

@@ -10,10 +10,12 @@
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/user/exceptions/InvalidPasswordException.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/user/Login.java
+/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/Filter.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/Dialog.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/PrimaryController.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/FileHandling.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/FileOpener.java
+/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/ComponentTypes.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/FileSaverJobj.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/user/UserRegister.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/InvalidComponentFormatException.java
@@ -26,6 +28,7 @@
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/iothread/InputThreadable.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/iothread/InputThread.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/SecondaryController.java
+/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/ThreadHandler.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/FileOpenerTxt.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/Converter.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/ComponentValidator.java

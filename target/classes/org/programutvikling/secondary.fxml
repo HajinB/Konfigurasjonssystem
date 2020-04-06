@@ -134,7 +134,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <ChoiceBox prefWidth="150.0" GridPane.rowIndex="1" />
+                                          <ChoiceBox fx:id="choiceBoxVaretype" prefWidth="150.0" GridPane.rowIndex="1" />
                                        </children>
                                        <padding>
                                           <Insets bottom="2.0" />
@@ -161,9 +161,7 @@
                                     <Label prefHeight="18.0" prefWidth="4.0" />
                                 </items>
                               </ToolBar>
-                              <TableView fx:id="tblView" editable="true" layoutX="360.0" layoutY="166.0"
-                                         prefHeight="478.0"
-                                         prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
+                              <TableView fx:id="tblView" editable="true" layoutX="360.0" layoutY="166.0" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
                                 <columns>
                                   <TableColumn fx:id="kolonneType" onEditCommit="#kolonneTypeEdit" prefWidth="100.0" resizable="false" styleClass="column" text="Varetype" />
                                     <TableColumn fx:id="kolonneVNavn" onEditCommit="#kolonneVNavnEdit" prefWidth="200.0" resizable="false" styleClass="column" text="Varenavn" />
@@ -311,8 +309,7 @@
                                     <Label prefHeight="18.0" prefWidth="4.0" />
                                  </items>
                               </ToolBar>
-                              <TableView fx:id="tblView1" editable="true" layoutX="360.0" layoutY="166.0" prefHeight="478.0"
-                                         prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
+                              <TableView fx:id="tblView1" editable="true" layoutX="360.0" layoutY="166.0" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
                                  <columns>
                                     <TableColumn fx:id="kolonneType1" onEditCommit="#kolonneTypeEdit" prefWidth="133.5999755859375" resizable="false" styleClass="column" text="Navn" />
                                     <TableColumn fx:id="kolonneVNavn1" onEditCommit="#kolonneVNavnEdit" prefWidth="151.20001220703125" resizable="false" styleClass="column" text="Mailadresse" />

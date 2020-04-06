@@ -18,7 +18,6 @@ public class InputThread extends Task<Void> {
     String filePath;
     //ArrayList<Component> komponentRegisterList = new ArrayList<>();
     ComponentRegister componentRegisterThread = new ComponentRegister();
-    //componentregister blir ikke her faktisk lagra gjennom
 
     public InputThread(ComponentRegister komponentRegister, String filepath) {
         this.filePath = filepath;
@@ -29,7 +28,6 @@ public class InputThread extends Task<Void> {
     public void openFileThread(ComponentRegister komponentregister, Path filePath) {
 
     }
-
 
     @Override
     public Void call() {

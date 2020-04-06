@@ -8,6 +8,7 @@ import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.user.UserPreferences;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.prefs.Preferences;
 
@@ -18,6 +19,7 @@ public class EnduserController {
 
     ComputerRegister computerRegister = new ComputerRegister();
     ComponentRegister componentRegister = new ComponentRegister();
+    FileHandling fileHandling = new FileHandling();
 
     @FXML
     private Label lblTotalpris;
@@ -44,7 +46,7 @@ public class EnduserController {
     }
 
     private void loadElementsFromFile() {
-        FileHandling.openFile(componentRegister, userPreferences.getPathToUser());
+        fileHandling.openFile(componentRegister, userPreferences.getPathToUser());
 
     }
 

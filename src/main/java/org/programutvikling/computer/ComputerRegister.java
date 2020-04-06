@@ -10,10 +10,5 @@ public class ComputerRegister extends ComponentRegister {
 
     ArrayList<Computer> computerRegisterList =  new ArrayList<>();
 
-    @Override
-    public List<Component> getRegister() {
-        return super.getRegister();
-    }
-
 
 }

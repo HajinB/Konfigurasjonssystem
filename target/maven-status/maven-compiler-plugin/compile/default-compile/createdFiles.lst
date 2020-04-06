@@ -11,7 +11,10 @@ org/programutvikling/gui/PrimaryController.class
 org/programutvikling/App.class
 org/programutvikling/component/io/FileSaverJobj.class
 org/programutvikling/component/io/FileSaver.class
+org/programutvikling/gui/Filter.class
+org/programutvikling/gui/ThreadHandler.class
 org/programutvikling/component/io/AppendingObjectOutputStream.class
+org/programutvikling/component/ComponentTypes.class
 org/programutvikling/user/UserPreferences.class
 org/programutvikling/gui/SecondaryUserTabController.class
 org/programutvikling/user/UserRegister.class
