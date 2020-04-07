@@ -7,15 +7,12 @@ import javafx.scene.control.Label;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.user.UserPreferences;
-
-import java.io.File;
 import java.io.IOException;
-import java.util.prefs.Preferences;
 
-public class EnduserController {
+
+public class EnduserController extends SecondaryController {
     private UserPreferences superUserPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
-
 
     ComputerRegister computerRegister = new ComputerRegister();
     ComponentRegister componentRegister = new ComponentRegister();
@@ -38,8 +35,6 @@ public class EnduserController {
         //sender ut gridpane for å få tak i nodes i en annen class.
         //System.out.println(componentRegister.toString());
         updateList();
-
-
     }
 
     private void updateList() {

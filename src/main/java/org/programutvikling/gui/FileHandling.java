@@ -2,6 +2,7 @@ package org.programutvikling.gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.*;
 
@@ -58,6 +59,11 @@ public class FileHandling {
 
     }
 
+    static String getStringPathFromFile(File path) {
+        System.out.println(path.getPath());
+        return path.getPath();
+    }
+
     public void populateComboBoxes() {
 
         File folder = new File("Directory");  //kanskje selvvalg eller variabel her (?) som path
@@ -100,10 +106,13 @@ public class FileHandling {
         openFile(componentRegister, directory);
     }
 
-    public void loadAllFilesFromDirectory(ComponentRegister componentRegister, Path directory) throws IOException {
+    public void loadSelectedFile(ComponentRegister componentRegister, String path){
+        openFile(componentRegister, path);
+    }
+
+    public void loadAllFilesFromDirectory(ComponentRegister componentRegister) throws IOException {
         File folder = new File("FileDirectory");  //kanskje selvvalg eller variabel her (?) som path
         File[] listOfFiles = folder.listFiles();
-
         FileOpenerJobj fileOpenerJobj = new FileOpenerJobj();
         assert listOfFiles != null;
         fileOpenerJobj.open(componentRegister, Paths.get(listOfFiles[0].getPath()));
@@ -113,10 +122,7 @@ public class FileHandling {
 
     static void openFile(ComponentRegister register, String selectedPath) {
 
-        File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
-        String fileExt = getFileExt(file);
-        OpenerFactory openerFactory = new OpenerFactory();
-        FileOpener opener = openerFactory.createOpener(fileExt);
+        FileOpener opener = getFileOpener(selectedPath);
 
         if (opener != null && selectedPath !=null){
             try {
@@ -131,6 +137,13 @@ public class FileHandling {
             Dialog.showErrorDialog("opener eller path er null;");
 
         }
+    }
+
+    private static FileOpener getFileOpener(String selectedPath) {
+        File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
+        String fileExt = getFileExt(file);
+        OpenerFactory openerFactory = new OpenerFactory();
+        return openerFactory.createOpener(fileExt);
     }
 
     public Path getCurrentDirectoryPath() {

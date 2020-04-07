@@ -4,13 +4,14 @@
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/App.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/AppendingObjectOutputStream.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/SecondaryUserTabController.java
+/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/computer/Saveable.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/user/exceptions/InvalidUsernameException.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/FileOpenerJobj.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/ComponentRegister.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/user/exceptions/InvalidPasswordException.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/user/Login.java
-/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/Filter.java
+/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/OpenerFactory.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/Dialog.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/PrimaryController.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/FileHandling.java
@@ -23,9 +24,9 @@
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/Component.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/user/User.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/computer/ComputerRegister.java
+/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/Saveable.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/EnduserController.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/computer/Computer.java
-/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/iothread/InputThreadable.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/iothread/InputThread.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/SecondaryController.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/ThreadHandler.java

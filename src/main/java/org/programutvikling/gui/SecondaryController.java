@@ -8,6 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.programutvikling.App;
 import org.programutvikling.component.ComponentTypes;
@@ -29,14 +30,9 @@ import java.util.prefs.Preferences;
 
 public class SecondaryController {
     private Stage stage;
-    Preferences prefs;
-    String componentPath;// = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
-    FileHandling fileHandling;
     private RegistryComponentLogic registryComponentLogic;
-
     //default path:
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
-
     @FXML
     private MenuBar menyBar;
     @FXML
@@ -51,7 +47,7 @@ public class SecondaryController {
     private TextField inputPris;
     //private RegistrerKomponent registerKomponent;
     @FXML
-    private GridPane gridPane;
+    private GridPane gridPaneSuperbruker;
     @FXML
     private Button btnLeggTil;
 
@@ -59,6 +55,8 @@ public class SecondaryController {
 
     private Converter.StringDoubleConverter strDoubleConverter
             = new Converter.StringDoubleConverter();
+
+    ThreadHandler threadHandler;
 
     @FXML
     private Label lblBekreftelse;
@@ -97,9 +95,23 @@ public class SecondaryController {
     private TableColumn<Component, Double> kolonnePris;
     @FXML
     ComponentTypes componentTypes = new ComponentTypes();
+
     public void initialize() throws IOException {
-        choiceBoxVaretype.setItems(componentTypes.getConcreteTypeListName());
+        initChoiceBox();
+        initColumns();
+        loadRegisterFromDirectory();
+        //sender ut gridpane for å få tak i nodes i en annen class.
+        registryComponentLogic = new RegistryComponentLogic(gridPaneSuperbruker);
         updateList();
+        refreshTable();
+        threadHandler = new ThreadHandler(stage, gridPaneSuperbruker);
+    }
+
+    private void initChoiceBox() {
+        choiceBoxVaretype.setItems(componentTypes.getConcreteTypeListName());
+    }
+
+    private void initColumns() {
         kolonneType.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
         kolonneVNavn.setCellValueFactory(new PropertyValueFactory<Component, String>("name"));
         kolonneBesk.setCellValueFactory(new PropertyValueFactory<Component, String>("description"));
@@ -109,106 +121,52 @@ public class SecondaryController {
         kolonneVNavn.setCellFactory(TextFieldTableCell.forTableColumn());
         kolonneBesk.setCellFactory(TextFieldTableCell.forTableColumn());
         kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(new Converter.StringDoubleConverter()));
-
-
-        //componentPath = userPreferences.getPathToUser();
-        //Path userDirPath =
-        //System.out.println(directoryPath.toString());
-            //bare lag en metode som gjør alt dette!
-
-        loadRegisterFromFile();
-        //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
-        //sender ut gridpane for å få tak i nodes i en annen class.
-        registryComponentLogic = new RegistryComponentLogic(gridPane);
         kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(strDoubleConverter));
-        //System.out.println(componentRegister.toString());
-        updateList();
-        refreshTable();
     }
-
-
-
 
     @FXML
     public void refreshTable() {
         tblView.refresh();
     }
 
+    private void updateList() {
+        componentRegister.attachTableView(tblView);
+    }
 
     @FXML
     void btnOpen(ActionEvent event) {
         //bruker openfilethread somegen klasse som arver Task - så setter man metoder til å være failed eller done
         // (skrur av knappene i det milisekundet det tar å laste inn en fil)
-        openFileWithThreadSleep();
         //GJør åpningen i new trheead!!!!!
        /* JComboBox cb = (JComboBox)e.getSource();
         String petName = (String)cb.getSelectedItem();
         updateLabel(petName);*/
         /*string selected = openCombobox.getSele
         BufferedReader reader = Files.newBufferedReader(Paths.get(path))*/
-
     }
 
-
-    private void openFileWithThreadSleep() {
-        InputThread task = new InputThread(componentRegister, userPreferences.getPathToUser());
-        task.setOnSucceeded(this::threadDone);
-        task.setOnFailed(this::threadFailed);
-        startThread(task);
+    private void openFileWithThreadSleep(ComponentRegister componentRegister, String s) {
+        openInputThread(componentRegister, s);
     }
 
-    private void startThread(InputThread task) {
-        Thread th = new Thread(task);
-        th.setDaemon(true);
-        gridPane.setDisable(true);//prøver å slå av hele gridpane
-        th.start();
-        task.call();  //call bruker filepathen fra konstruktøren til InputThread til å åpne/laste inn
-    }
-
-    private void threadDone(WorkerStateEvent e) {
-        Dialog.showSuccessDialog("Opening complete");
-        //btnLeggTil.getclass.setDisable(false);
-        gridPane.setDisable(false);
-        //btnSaveID.setDisable(false);
-    }
-
-
-    private void threadFailed(WorkerStateEvent event) {
-        var e = event.getSource().getException();
-        Dialog.showErrorDialog("Avviket sier: " + e.getMessage());
-        gridPane.setDisable(false);
-        gridPane.setDisable(false);
-    }
-
-    private void loadRegisterFromFile() throws IOException {
+    private void loadRegisterFromDirectory() throws IOException {
         File file = new File((userPreferences.getPathToUser()));
-        if(file.exists()){
+        if (file.exists()) {
             FileHandling.loadAppFiles(componentRegister, userPreferences.getPathToUser());
         }
     }
 
-    //todo delete filen componentlist etter den er loada inn i initialize?
-        // slik at man lager en ny hver gang? auto save..
-
-        //bør man delete den rett før man kjører savejobj? er det det som er greia?
-
-        //todo det som skjer er at den prøver å appende på filen som er der, slik at den ikke er riktig
-        // format, altså den appender binary filene til en arraylist til en eksisterende fil  - da finner
-        // ikke openjobj filen..
-
-        //http://javafxportal.blogspot.com/2012/03/java-deleting-file-or-directory.html
-
-        //    System.out.println(componentRegister.getRegister().get(1));
-
-                /*filbehandling.loadJobjFromDirectory(stage, componentRegister, Paths.get("FileDirectory/ConfigMain" +
-                        ".jobj"));*/
-
     @FXML
     void btnOpenJobj(ActionEvent event) {
-        openFileWithThreadSleep();
+        openFileWithThreadSleep(componentRegister, userPreferences.getPathToUser());
         //FileHandling.openFile(componentRegister, "FileDirectory/Components/ComponentList.jobj");
     }
 
+
+    private boolean checkAlertForOk(Alert alert) {
+        Optional<ButtonType> action = alert.showAndWait();
+        return action.get() == ButtonType.OK;
+    }
 
     @FXML
     void btnFjern(ActionEvent event) {
@@ -216,24 +174,24 @@ public class SecondaryController {
         if (tblView.getSelectionModel().isEmpty()) {
             lblBekreftelse.setText("Velg en rad for å slette den"); //bytt til tblview label
         } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Slette rad");
-            alert.setHeaderText("Vil du slette den valgte raden?");
+           Alert alert = Dialog.getAlert("Slette rad", "Vil du slette den valgte raden?" );
             //gjør en gang til - "vil du slette for godt"?
 
-            Optional<ButtonType> action = alert.showAndWait();
-            if (action.get() == ButtonType.OK) {
-                Component selectedComponent = tblView.getSelectionModel().getSelectedItem();
-
-                componentRegister.removeComponent((selectedComponent));
-                //etter man har sletta fra lista burde man vi brukeren valget mellom å slette for godt eller slette
-                // fra viewen? elns?
-                updateList();
-                lblBekreftelse.setText("");
+            if(checkAlertForOk(alert)){
+                slettRad();
             }
+
         }
     }
 
+    private void slettRad() {
+        Component selectedComponent = tblView.getSelectionModel().getSelectedItem();
+        componentRegister.removeComponent((selectedComponent));
+        //etter man har sletta fra lista burde man vi brukeren valget mellom å slette for godt eller slette
+        // fra viewen? elns?
+        updateList();
+        lblBekreftelse.setText("");
+    }
 
     private Component createComponentFromGUI() {
         return new Component(choiceBoxVaretype.getValue(),
@@ -244,12 +202,12 @@ public class SecondaryController {
 
     @FXML
     void btnFraFil(ActionEvent event) {
-
-        Component komponent = new Component("2", "ffsaddfs", "asffsa", 299.00);
+        openFileFromChooserWithThreadSleep(componentRegister);
     }
 
-    private void updateList() {
-        componentRegister.attachTableView(tblView);
+    boolean inputValidated(){
+        //send inputfields til en metode - valider de en egen klasse.
+        return true;
     }
 
     @FXML
@@ -260,8 +218,56 @@ public class SecondaryController {
     @FXML
         //Komponent(String type, String name, String description, double price)
     void btnLeggTil(ActionEvent event) throws IOException {
-        componentRegister.addComponent(createComponentFromGUI());
-        SaveRegister();
+        if(inputValidated()) {
+            componentRegister.addComponent(createComponentFromGUI());
+            SaveRegister();
+        }
+    }
+
+    void openFileFromChooserWithThreadSleep(ComponentRegister componentRegister) {
+        FileChooser fileChooser = new FileChooser();
+        File path = fileChooser.showOpenDialog(stage);
+        //path her blir ikke riktig.
+        String chosenPath = FileHandling.getStringPathFromFile(path);
+        openInputThread(componentRegister, chosenPath);
+    }
+
+    private void startThread(InputThread task) {
+        Thread th = new Thread(task);
+        th.setDaemon(true);
+        disableGUI();
+        th.start();
+        task.call();  //call bruker filepathen fra konstruktøren til InputThread til å åpne/laste inn
+    }
+
+    private void disableGUI() {
+        gridPaneSuperbruker.setDisable(true);//prøver å slå av hele gridpane
+    }
+    private void enableGUI() {
+        gridPaneSuperbruker.setDisable(false);//kan ikke gjøres her
+    }
+
+
+    private void threadDone(WorkerStateEvent e) {
+        Dialog.showSuccessDialog("Opening complete");
+        //btnLeggTil.getclass.setDisable(false);
+        enableGUI();
+        //btnSaveID.setDisable(false);
+    }
+
+
+
+    private void threadFailed(WorkerStateEvent event) {
+        var e = event.getSource().getException();
+        Dialog.showErrorDialog("Avviket sier: " + e.getMessage());
+        enableGUI();
+    }
+
+    void openInputThread(ComponentRegister componentRegister, String s) {
+        InputThread task = new InputThread(componentRegister, s);
+        task.setOnSucceeded(this::threadDone);
+        task.setOnFailed(this::threadFailed);
+        startThread(task);
     }
 
     private void SaveRegister() throws IOException {
@@ -281,11 +287,6 @@ public class SecondaryController {
 
     @FXML
     void inputSok(KeyEvent event) {
-
-    }
-
-    @FXML
-    void kolonneAntEdit(ActionEvent event) {
 
     }
 
@@ -316,11 +317,5 @@ public class SecondaryController {
 
     }
 
-
-
-    @FXML
-    void kolonneVNrEdit(ActionEvent event) {
-
-    }
 
 }
