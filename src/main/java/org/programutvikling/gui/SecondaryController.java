@@ -1,5 +1,7 @@
 package org.programutvikling.gui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,11 +35,20 @@ public class SecondaryController {
     //default path:
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
+    //For choicebox producttype - Bør vurderes å lage et annet sted??
+    ObservableList <String> producttypeList = FXCollections.observableArrayList("Velg varetype", "Prosessor", "Skjermkort", "Minne",
+            "Harddisk", "Tastatur", "Mus", "Skjerm");
+
+    private ComponentRegister componentRegister = new ComponentRegister();
+
+    private Converter.DoubleStringConverter doubleStrConverter
+            = new Converter.DoubleStringConverter();
+
     @FXML
     private MenuBar menyBar;
-    @FXML
-    private Label tblOverskrift;
 
+    @FXML
+    private ChoiceBox<String> choiceBoxVare;
 
     @FXML
     private TableView<?> tblView;
@@ -49,8 +60,7 @@ public class SecondaryController {
     private TableColumn<?, ?> kolonneBesk;
     @FXML
     private TableColumn<?, ?> kolonnePris;
-    @FXML
-    private TextField inputVaretype;
+
     @FXML
     private TextField inputVarenavn;
     @FXML
@@ -62,11 +72,6 @@ public class SecondaryController {
     private GridPane gridPane;
     @FXML
     private Button btnLeggTil;
-
-    private ComponentRegister componentRegister = new ComponentRegister();
-
-    private Converter.DoubleStringConverter doubleStrConverter
-            = new Converter.DoubleStringConverter();
 
     @FXML
     private Label lblBekreftelse;
@@ -90,22 +95,32 @@ public class SecondaryController {
         this.stage = stage;
     }
 
+    public void dataChoiceBox () {
+        choiceBoxVare.setValue("Velg varetype");
+        choiceBoxVare.getItems().addAll(producttypeList);
+
+    }
+
+
 
     @FXML
     public void initialize() throws IOException {
+
+        dataChoiceBox();
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //System.out.println(directoryPath.toString());
             //bare lag en metode som gjør alt dette!
         loadRegisterFromFile();
+
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
         registryComponentLogic = new RegistryComponentLogic(gridPane);
 
         //System.out.println(componentRegister.toString());
         updateList();
-    }
 
+    }
 
     @FXML
     void btnOpen(ActionEvent event) {
@@ -192,7 +207,7 @@ public class SecondaryController {
 
 
     private Component createComponentFromGUI() {
-        return new Component(inputVaretype.getText(),
+        return new Component(choiceBoxVare.getValue(),
                 inputVarenavn.getText(),
                 inputBeskrivelse.getText(),
                 doubleStrConverter.stringTilDouble(inputPris.getText()));
@@ -263,10 +278,6 @@ public class SecondaryController {
 
     }
 
-    @FXML
-    void kolonneAntEdit(ActionEvent event) {
-
-    }
 
     @FXML
     void kolonneBeskEdit(ActionEvent event) {
@@ -288,9 +299,7 @@ public class SecondaryController {
 
     }
 
-    @FXML
-    void kolonneVNrEdit(ActionEvent event) {
 
+    public void btnLeggTilBruker(ActionEvent event) {
     }
-
 }

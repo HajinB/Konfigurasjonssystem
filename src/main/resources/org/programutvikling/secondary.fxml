@@ -134,7 +134,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <ChoiceBox prefWidth="150.0" GridPane.rowIndex="1" />
+                                          <ChoiceBox fx:id="choiceBoxVare" prefWidth="150.0" GridPane.rowIndex="1" />
                                        </children>
                                        <padding>
                                           <Insets bottom="2.0" />
