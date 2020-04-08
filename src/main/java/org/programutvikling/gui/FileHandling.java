@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.ItemUsable;
 import org.programutvikling.component.io.*;
+import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerRegister;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,10 +21,7 @@ public class FileHandling {
 
     private Path directoryPath;
 
-    private static String getFileExt(File file) {
-        String fileName = file.getName();
-        return fileName.substring(fileName.lastIndexOf('.'));
-    }
+
 
     static void saveFileTxt(ComponentRegister register, Path directoryPath) {
         if (directoryPath != null) {
@@ -66,7 +66,7 @@ public class FileHandling {
 
     public void populateComboBoxes() {
 
-        File folder = new File("Directory");  //kanskje selvvalg eller variabel her (?) som path
+        File folder = new File("Directory");
         File[] listOfFiles = folder.listFiles();
         ObservableList<String> liste =
                 FXCollections.observableArrayList();
@@ -83,7 +83,6 @@ public class FileHandling {
             }
         }
         if (liste.size() > 0) {
-
             //todo her må vi ha metoder for å skille ut typene for å populere comboboxene til sluttbruker - skal typer
             // være combobox for superbruker?
             //openCombobox = new ComboBox<>(options);
@@ -93,7 +92,6 @@ public class FileHandling {
             System.out.println("added to combobox");
             //todo send denne arrayen et sted hvor den kan populere div ting
             //openComboBox = new ComboBox(options);
-
             //openCombobox.setItems(options);
         }
     }
@@ -110,7 +108,7 @@ public class FileHandling {
         openFile(componentRegister, path);
     }
 
-    public void loadAllFilesFromDirectory(ComponentRegister componentRegister) throws IOException {
+    public void loadAllFilesFromDirectory(ComponentRegister componentRegister, Path path) throws IOException {
         File folder = new File("FileDirectory");  //kanskje selvvalg eller variabel her (?) som path
         File[] listOfFiles = folder.listFiles();
         FileOpenerJobj fileOpenerJobj = new FileOpenerJobj();
@@ -118,16 +116,22 @@ public class FileHandling {
         fileOpenerJobj.open(componentRegister, Paths.get(listOfFiles[0].getPath()));
         System.out.println(componentRegister.getRegister().get(0).getName());
     }
-//todo: må ha en måte å lagre dette på, lokalt for brukeren slik at det loades inn (load configs metode)
 
-    static void openFile(ComponentRegister register, String selectedPath) {
+        //open file kan nå ta de fleste
+    static void openFile(Object object, String selectedPath) {
+        ComponentRegister register = (ComponentRegister) object;
+        //factory - lag en versjon av den factorien du hadde der ista - med object som blir til componentregister eller
+        openComponentRegister(register, selectedPath);
+    }
 
+    private static void openComponentRegister(ComponentRegister register, String selectedPath) {
         FileOpener opener = getFileOpener(selectedPath);
 
         if (opener != null && selectedPath !=null){
             try {
                 Path path = Paths.get(selectedPath);
-                opener.open(register, path); //todo her kan man legge inn en thread gjennom en metode istede for å
+                opener.open(register, path); //todo her kan man legge inn en thread gjennom en metode istede
+                System.out.println("etter opener");
                 // calle fileopenerTxt/jobj direkte.
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
@@ -135,9 +139,28 @@ public class FileHandling {
             }
         }else{
             Dialog.showErrorDialog("opener eller path er null;");
-
         }
     }
+
+    private static Object createOpenableRegister(Object object){
+        if(getFileName(object.getClass().getName()).equals("ComponentRegister")) {
+            return new ComponentRegister();
+        }
+        else if(getFileName(object.getClass().getName()).equals("ComputerRegister")) {
+            return new ComputerRegister();
+        }
+        return object;
+    }
+
+    private static String getFileName(String fileName){
+        return fileName.substring(fileName.lastIndexOf('.'));
+    }
+
+    private static String getFileExt(File file) {
+        String fileName = file.getName();
+        return fileName.substring(fileName.lastIndexOf('.'));
+    }
+
 
     private static FileOpener getFileOpener(String selectedPath) {
         File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
@@ -146,24 +169,8 @@ public class FileHandling {
         return openerFactory.createOpener(fileExt);
     }
 
-    public Path getCurrentDirectoryPath() {
-        //initialiserer directory pathen, men vil la bruker endre dette i settings
-        Path configPath = Paths.get("FileDirectory");
-        // filbehandling.setCurrentDirectoryPath(configPath);
-        this.directoryPath = Paths.get(configPath + "/ConfigMain.jobj");
 
-        return directoryPath;
+    public void OpenSelectedComputerTxtFiles(ComputerRegister computerRegister, String pathToUser) {
+        openFile(computerRegister, pathToUser);
     }
-
-    void setCurrentDirectoryPath(Path directoryPath) {
-        //Path configPath = Paths.get("FileDirectory");
-        if (directoryPath != null) {
-            this.directoryPath = Paths.get(directoryPath + "/ConfigMain.jobj");
-        } else {
-            System.out.println("wth");
-        }
-
-    }
-
-
 }

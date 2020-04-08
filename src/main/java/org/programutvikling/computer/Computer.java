@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.ItemUsable;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -15,7 +16,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer implements Serializable, Saveable {
+public class Computer implements Serializable, ItemUsable {
         //mange computere skal opprettes - så vi har EN computer, som består av et array av components , basically
     // det samme som komponentregister ( computer er ikke en ordentlig datamodell som komponent er) -
 
@@ -24,7 +25,7 @@ public class Computer implements Serializable, Saveable {
     // parametre "lagComputer(...)
 
     double priceTotal;
-    private transient ObservableList<Component> componentsThatMakeComputer = FXCollections.observableArrayList();
+    private transient ObservableList<Component> listOfComponents = FXCollections.observableArrayList();
     private ComponentRegister componentRegister;
     private transient static final long serialVersionUID = 1;
     String type;
@@ -68,9 +69,13 @@ public class Computer implements Serializable, Saveable {
         this.type = type;
         this.name = name;
         this.description = description;
+        assert componentRegister != null;
         componentRegister.getRegister().addAll(components);
         this.price = calculatePrice(componentRegister);
+    }
 
+    List getComponentList(){
+        return listOfComponents;
     }
 
 

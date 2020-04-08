@@ -10,7 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Component implements Serializable {
+public class Component implements Serializable, ItemUsable {
 
     private static final long serialVersionUID = 1;
 

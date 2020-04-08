@@ -1,6 +1,7 @@
 package org.programutvikling.component.io;
 
 import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.Converter;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -32,6 +33,7 @@ public class FileOpenerTxt implements FileOpener {
     public void open(Computer computer, Path filePath) throws IOException {
 
     }
+
 
     //(String type, String name, String description, double price)
     private Component parseComponent(String line) throws InvalidComponentFormatException {

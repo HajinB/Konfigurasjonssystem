@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.ItemUsable;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.user.UserPreferences;
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class EnduserController extends SecondaryController {
     ComputerRegister computerRegister = new ComputerRegister();
     ComponentRegister componentRegister = new ComponentRegister();
     FileHandling fileHandling = new FileHandling();
+    ComputerRegister computersListOfParts = new ComputerRegister();
 
     @FXML
     private Label lblTotalpris;
@@ -26,6 +28,7 @@ public class EnduserController extends SecondaryController {
 
     @FXML
     public void initialize() throws IOException {
+        initItemFiles();
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //System.out.println(directoryPath.toString());
@@ -37,12 +40,16 @@ public class EnduserController extends SecondaryController {
         updateList();
     }
 
+    public void initItemFiles(){
+        //computerRegister.addComponent();
+
+    }
+
     private void updateList() {
     }
 
     private void loadElementsFromFile() {
-        fileHandling.openFile(componentRegister, userPreferences.getPathToUser());
-
+        fileHandling.OpenSelectedComputerTxtFiles(computerRegister, userPreferences.getPathToUser());
     }
 
 

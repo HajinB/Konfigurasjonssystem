@@ -12,6 +12,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.programutvikling.App;
 import org.programutvikling.component.ComponentTypes;
+import org.programutvikling.component.ItemUsable;
 import org.programutvikling.component.io.iothread.InputThread;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.component.Component;
