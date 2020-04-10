@@ -6,11 +6,13 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.converter.DoubleStringConverter;
 import org.programutvikling.App;
 import org.programutvikling.component.io.InputThread;
+import org.programutvikling.component.io.InvalidComponentFormatException;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -43,40 +45,39 @@ public class SecondaryController {
 
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
+    @FXML
+    private TableColumn<Component, String> columnType;
 
     @FXML
-    private MenuBar menyBar;
+    private TableColumn<Component, String> columnProdName;
 
     @FXML
-    private ChoiceBox<String> choiceBoxVare;
+    private TableColumn<Component, String> columnDesc;
 
     @FXML
-    private TableView<?> tblView;
-    @FXML
-    private TableColumn<?, ?> kolonneType;
-    @FXML
-    private TableColumn<?, ?> kolonneVNavn;
-    @FXML
-    private TableColumn<?, ?> kolonneBesk;
-    @FXML
-    private TableColumn<?, ?> kolonnePris;
+    private TableColumn<Component, Double> columnPrice;
 
     @FXML
-    private TextField inputVarenavn;
-    @FXML
-    private TextArea inputBeskrivelse;
-    @FXML
-    private TextField inputPris;
-    //private RegistrerKomponent registerKomponent;
-    @FXML
-    private GridPane gridPane;
-    @FXML
-    private Button btnLeggTil;
+    private Tab tabComponents;
 
     @FXML
-    private Label lblBekreftelse;
+    private GridPane componentReg;
+
     @FXML
-    private TextField inputSok;
+    private Label lblComponentMsg;
+
+    @FXML
+    private ChoiceBox<String> cbType;
+
+    @FXML
+    private TextField componentSearch;
+
+    @FXML
+    private ChoiceBox<?> cpTypeFilter;
+
+    @FXML
+    private TableView<Component> tblViewComponent;
+
 
     private static void deletefile(String file) {
         File f1 = new File(file);
@@ -95,35 +96,28 @@ public class SecondaryController {
         this.stage = stage;
     }
 
-    public void dataChoiceBox () {
-        choiceBoxVare.setValue("Velg varetype");
-        choiceBoxVare.getItems().addAll(producttypeList);
-
-    }
-
-
 
     @FXML
     public void initialize() throws IOException {
 
-        dataChoiceBox();
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //System.out.println(directoryPath.toString());
             //bare lag en metode som gjør alt dette!
+
         loadRegisterFromFile();
+        cbType.setValue("Velg varetype");
 
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
-        registryComponentLogic = new RegistryComponentLogic(gridPane);
+        registryComponentLogic = new RegistryComponentLogic(componentReg);
 
         //System.out.println(componentRegister.toString());
-        updateList();
-
+        updateComponentList();
     }
 
     @FXML
-    void btnOpen(ActionEvent event) {
+    void btnAddFromFile(ActionEvent event) {
         //bruker openfilethread somegen klasse som arver Task - så setter man metoder til å være failed eller done
         // (skrur av knappene i det milisekundet det tar å laste inn en fil)
         openFileWithThreadSleep();
@@ -148,7 +142,7 @@ public class SecondaryController {
     private void startThread(InputThread task) {
         Thread th = new Thread(task);
         th.setDaemon(true);
-        gridPane.setDisable(true);//prøver å slå av hele gridpane
+        componentReg.setDisable(true);//prøver å slå av hele gridpane
         th.start();
         task.call();  //call bruker filepathen fra konstruktøren til å åpne/laste inn
     }
@@ -156,7 +150,7 @@ public class SecondaryController {
     private void threadDone(WorkerStateEvent e) {
         Dialog.showSuccessDialog("Opening complete");
         //btnLeggTil.getclass.setDisable(false);
-        gridPane.setDisable(false);
+        componentReg.setDisable(false);
         //btnSaveID.setDisable(false);
     }
 
@@ -164,8 +158,8 @@ public class SecondaryController {
     private void threadFailed(WorkerStateEvent event) {
         var e = event.getSource().getException();
         Dialog.showErrorDialog("Avviket sier: " + e.getMessage());
-        gridPane.setDisable(false);
-        gridPane.setDisable(false);
+        componentReg.setDisable(false);
+        componentReg.setDisable(false);
     }
 
     private void loadRegisterFromFile() throws IOException {
@@ -201,27 +195,29 @@ public class SecondaryController {
 
 
     @FXML
-    void btnFjern(ActionEvent event) {
+    void btnDelete(ActionEvent event) {
         //fjern fra directory og array ?
     }
 
 
+    /* Funker ikke om vi bruker gridpane
     private Component createComponentFromGUI() {
         return new Component(choiceBoxVare.getValue(),
                 inputVarenavn.getText(),
                 inputBeskrivelse.getText(),
                 doubleStrConverter.stringTilDouble(inputPris.getText()));
+    }*/
+    private void updateComponentList() {
+        componentRegister.attachTableView(tblViewComponent);
     }
 
     @FXML
-    void btnFraFil(ActionEvent event) {
+    void btnOpenFile(ActionEvent event) {
 
         Component komponent = new Component("2", "ffsaddfs", "asffsa", 299.00);
     }
 
-    private void updateList() {
-        //componentRegister.attachTableView(tblView);
-    }
+
 
     private void loadFromDirectory() {
     }
@@ -235,9 +231,20 @@ public class SecondaryController {
         userPreferences.setPreference(stage);
     }
 
-    @FXML
+    private void registerComponent() {
+
+        Component newComponent = registryComponentLogic.createComponentsFromGUIInputIFields();
+        if (newComponent != null) {
+            componentRegister.addComponent(newComponent);
+        }
+    }
+
+
+   @FXML
         //Komponent(String type, String name, String description, double price)
-    void btnLeggTil(ActionEvent event) throws IOException {
+    void btnAddComponent(ActionEvent event) throws IOException {
+        registerComponent();
+        updateComponentList();
         // Komponent komponent = registrerKomponent.opprettKomponentFraGUIFelt();
 
         //todo denne folderen/directory path bør kunne bli satt av brukeren i settings elns(?)
@@ -245,7 +252,7 @@ public class SecondaryController {
         //directoryPath = Paths.("FileDirectory");
         //directoryPath = new File(folder.getPath());
         // componentRegister.getRegister().add(opprettKomponentFraGUI());
-        componentRegister.addComponent(createComponentFromGUI());
+        // componentRegister.addComponent(createComponentFromGUI());
 
 
         //todo sjekk om dette faktisk sletter filen at runtime??
@@ -269,37 +276,98 @@ public class SecondaryController {
     }
 
     @FXML
-    void btnLoggUt(ActionEvent event) throws IOException {
+    void btnLogOut(ActionEvent event) throws IOException {
         App.setRoot("primary");
     }
 
-    @FXML
-    void inputSok(KeyEvent event) {
-
-    }
-
+    // Tableview edit
 
     @FXML
-    void kolonneBeskEdit(ActionEvent event) {
+    void columnAdressEdit(ActionEvent event) {
 
     }
 
     @FXML
-    void kolonnePrisEdit(ActionEvent event) {
+    void columnCtyEdit(ActionEvent event) {
 
     }
 
     @FXML
-    void kolonneTypeEdit(ActionEvent event) {
+    void columnDescEdit(ActionEvent event) {
 
     }
 
     @FXML
-    void kolonneVNavnEdit(ActionEvent event) {
+    void columnPostalEdit(ActionEvent event) {
 
     }
 
+    @FXML
+    void columnPriceEdit(ActionEvent event) {
 
-    public void btnLeggTilBruker(ActionEvent event) {
+    }
+
+    @FXML
+    void columnProdNameEdit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void columnTypeEdit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void columnUMailEdit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void columnUNameEdit(ActionEvent event) {
+
+    }
+
+    //user-fane
+
+    @FXML
+    private Tab tabUsers;
+
+    @FXML
+    private GridPane userReg;
+
+    @FXML
+    private Label lblUserMsg;
+
+    @FXML
+    private TextField userSearch;
+
+    @FXML
+    private TableView<?> tblViewUser;
+
+    @FXML
+    void btnAddUser(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnDeleteUser(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnUserFromFile(ActionEvent event) {
+
+    }
+
+    public void productPriceEdit(TableColumn.CellEditEvent cellEditEvent) {
+
+    }
+
+    public void columnPDescEdit(TableColumn.CellEditEvent cellEditEvent) {
+
+    }
+
+    public void columnPNameEdit(TableColumn.CellEditEvent cellEditEvent) {
+
     }
 }

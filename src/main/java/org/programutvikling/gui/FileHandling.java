@@ -3,17 +3,13 @@ package org.programutvikling.gui;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
 
@@ -68,7 +64,7 @@ public class FileHandling {
         FileOpenerJobj fileOpenerJobj = new FileOpenerJobj();
         assert listOfFiles != null;
         fileOpenerJobj.open(componentRegister, Paths.get(listOfFiles[0].getPath()));
-        System.out.println(componentRegister.getRegister().get(0).getName());
+        System.out.println(componentRegister.getRegister().get(0).getProductName());
     }
 
         //alt + cmd + B = go to implementation

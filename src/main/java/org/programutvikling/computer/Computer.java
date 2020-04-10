@@ -1,8 +1,5 @@
 package org.programutvikling.computer;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.TableView;
 import org.programutvikling.component.Component;
 
 import java.io.IOException;
@@ -30,7 +27,7 @@ public class Computer implements Serializable {
 
     double calculatePrice(){
         for(int i= 0; i<computerRegister.size();i++) {
-            priceTotal = priceTotal + computerRegister.get(3).getPrice();
+            priceTotal = priceTotal + computerRegister.get(3).getProductPrice();
         }
             //3 er indexen til pris.
     return priceTotal;
