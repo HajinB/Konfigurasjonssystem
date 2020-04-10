@@ -45,17 +45,6 @@ public class SecondaryController {
 
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
-    @FXML
-    private TableColumn<Component, String> columnType;
-
-    @FXML
-    private TableColumn<Component, String> columnProdName;
-
-    @FXML
-    private TableColumn<Component, String> columnDesc;
-
-    @FXML
-    private TableColumn<Component, Double> columnPrice;
 
     @FXML
     private Tab tabComponents;
@@ -106,7 +95,6 @@ public class SecondaryController {
             //bare lag en metode som gjør alt dette!
 
         loadRegisterFromFile();
-        cbType.setValue("Velg varetype");
 
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
@@ -193,9 +181,13 @@ public class SecondaryController {
         FileHandling.openFile(componentRegister, "FileDirectory/Components/ComponentList.jobj");
     }
 
-
+    //https://www.youtube.com/watch?v=EVEiePe_UVw hvordan slette fra tableview
     @FXML
     void btnDelete(ActionEvent event) {
+        ObservableList <Component> allProduct, SingleProduct;
+        allProduct = tblViewComponent.getItems();
+        SingleProduct = tblViewComponent.getSelectionModel().getSelectedItems();
+        SingleProduct.forEach(allProduct::remove);
         //fjern fra directory og array ?
     }
 

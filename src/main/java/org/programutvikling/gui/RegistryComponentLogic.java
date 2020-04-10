@@ -19,11 +19,12 @@ class RegistryComponentLogic {
 
     Component createComponentsFromGUIInputIFields() {
         try {
-            createComponent();
+            Component c = createComponent();
             resetFields();
+            return c;
         } catch (NumberFormatException nfe) {
                 Dialog.showErrorDialog("Skriv inn tall");
-            } catch (IllegalArgumentException iae) {
+        } catch (IllegalArgumentException iae) {
                 Dialog.showErrorDialog(iae.getMessage());
             }
         return null;

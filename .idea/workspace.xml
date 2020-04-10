@@ -4,28 +4,12 @@
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Component.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Superbruker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Superbruker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/primary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/CSS/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/CSS/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/CSS/Superbruker.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/CSS/Superbruker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/Component.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/Component.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/SecondaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/SecondaryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/primary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +208,7 @@
       <workItem from="1585735556343" duration="5300000" />
       <workItem from="1585950279884" duration="2403000" />
       <workItem from="1586077948654" duration="1879000" />
+      <workItem from="1586555458208" duration="782000" />
     </task>
     <task id="LOCAL-00001" summary="runConfig lagt til">
       <created>1585505781643</created>
@@ -309,7 +294,13 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1585939827004</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL−00014" summary="Ordnet TableView, navn (engelsk) og litt design">
+      <created>1586546840705</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1586546840705</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +329,8 @@
     <MESSAGE value="kladd BrukerValidator" />
     <MESSAGE value="Oppsett for autosave - men har bugs.." />
     <MESSAGE value="Testing User" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing User" />
+    <MESSAGE value="Ordnet TableView, navn (engelsk) og litt design" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ordnet TableView, navn (engelsk) og litt design" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1585952917138">
@@ -372,26 +364,26 @@
     <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1585933854745" />
     <state x="740" y="99" key="FileChooserDialogImpl" timestamp="1585933854745" />
     <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1585933854745" />
-    <state width="1493" height="193" key="GridCell.Tab.0.bottom" timestamp="1586546761196">
+    <state width="1493" height="193" key="GridCell.Tab.0.bottom" timestamp="1586556360502">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1585954491693" />
-    <state width="1493" height="193" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586546761196" />
-    <state width="1493" height="193" key="GridCell.Tab.0.center" timestamp="1586546761196">
+    <state width="1493" height="193" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586556360502" />
+    <state width="1493" height="193" key="GridCell.Tab.0.center" timestamp="1586556360501">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1585954491693" />
-    <state width="1493" height="193" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586546761196" />
-    <state width="1493" height="193" key="GridCell.Tab.0.left" timestamp="1586546761195">
+    <state width="1493" height="193" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586556360501" />
+    <state width="1493" height="193" key="GridCell.Tab.0.left" timestamp="1586556360501">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1585954491693" />
-    <state width="1493" height="193" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586546761195" />
-    <state width="1493" height="193" key="GridCell.Tab.0.right" timestamp="1586546761196">
+    <state width="1493" height="193" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586556360501" />
+    <state width="1493" height="193" key="GridCell.Tab.0.right" timestamp="1586556360502">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1585954491693" />
-    <state width="1493" height="193" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586546761196" />
+    <state width="1493" height="193" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586556360502" />
     <state x="453" y="134" key="RollbackChangesDialog" timestamp="1586373850500">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -407,11 +399,11 @@
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585933854745" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585933854745" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586546805004">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586556423158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1585950155084" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1586546805004" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1586556423158" />
     <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585954127692">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
