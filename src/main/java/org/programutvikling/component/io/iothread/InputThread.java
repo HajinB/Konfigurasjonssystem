@@ -19,26 +19,26 @@ public class InputThread extends Task<Void> {
 
     String filePath;
     ArrayList<Component> componentRegisterList = new ArrayList<>();
-    //ComponentRegister componentRegisterThread;
-    ArrayList<Object> objects = new ArrayList<>();
+    ComponentRegister componentRegisterThread;
 
-    public InputThread(ArrayList<Object> objects, String filepath) {
+    public InputThread(ComponentRegister componentRegisterInn, String filepath) {
         this.filePath = filepath;
-        this.objects.clear();
-        this.objects.add(objects);
+        this.componentRegisterThread = componentRegisterInn;
         call();
     }
+
+
 
     @Override
     public Void call() {
 
         try {
-            fileHandling.loadSelectedFile(objects, filePath);
+            fileHandling.loadAllFilesFromDirectory(componentRegisterThread, Paths.get(filePath));
             sleep(3000);
 
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
-        return null;   //er det bedre å returnere en verdi enn å
+        return null;
     }
 }

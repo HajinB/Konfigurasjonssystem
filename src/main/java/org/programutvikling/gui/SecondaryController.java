@@ -15,6 +15,8 @@ import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.component.ItemUsable;
 import org.programutvikling.component.io.iothread.InputThread;
 import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.component.io.InvalidComponentFormatException;
+import org.programutvikling.component.io.iothread.InputThread;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;

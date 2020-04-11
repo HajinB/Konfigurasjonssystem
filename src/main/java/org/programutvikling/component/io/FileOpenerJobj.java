@@ -101,6 +101,22 @@ public class FileOpenerJobj implements FileOpener {
             //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");
         }
     }
+            //fins det bedre måter enn dette? vha polymorfisme?
+    public void open(ComputerRegister computerRegister, Path selectedPath) {
+        try (InputStream fin = Files.newInputStream(selectedPath);
+             ObjectInputStream oin = new ObjectInputStream(fin)) {
+
+            ComputerRegister listeinn = (ComputerRegister) oin.readObject(); // kan kastes til Person
+            //System.out.println(personlista);
+            //computerRegister.getRegister().addAll(listeinn);
+            listeinn.getRegister().forEach(computerRegister::addComponent);
+
+            //componentRegister.getRegister().add((Komponent) listeinn);
+        } catch (IOException | ClassNotFoundException i) {
+            Dialog.showErrorDialog("filtype er feil");
+            //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");
+        }
+    }
 }
 /*
     @Override
