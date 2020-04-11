@@ -237,7 +237,7 @@ public class SecondaryController {
     void btnLeggTil(ActionEvent event) throws IOException {
         if(inputValidated()) {
             componentRegister.addComponent(createComponentFromGUI());
-            SaveRegister();
+            SaveAll();
         }
     }
 
@@ -294,7 +294,7 @@ public class SecondaryController {
         startThread(task);
     }
 
-    private void SaveRegister() throws IOException {
+    private void SaveAll() throws IOException {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objects = createObjectList(componentRegister, userRegister, computerRegister);
