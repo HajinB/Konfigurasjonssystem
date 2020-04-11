@@ -8,8 +8,6 @@ import org.programutvikling.component.ItemUsable;
 import org.programutvikling.component.io.*;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
-import org.programutvikling.user.User;
-import org.programutvikling.user.UserRegister;
 
 import java.io.File;
 import java.io.IOException;

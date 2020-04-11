@@ -32,10 +32,6 @@ public class Computer implements Serializable, ItemUsable {
     private  String description;
     private  double price;
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -48,9 +44,6 @@ public class Computer implements Serializable, ItemUsable {
         this.price = price;
     }
 
-    public String getType() {
-        return type;
-    }
 
     public String getName() {
         return name;

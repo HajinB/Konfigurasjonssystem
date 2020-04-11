@@ -1,4 +1,5 @@
 
+
 /*Design av knapper */
 .button {
     -fx-background-color: #70A4C8;
@@ -24,29 +25,6 @@
     -fx-border-radius: 6px ;
 }
 
-/*Fortsett som gjest - knapp*/
-
-.btnGuest {
-    -fx-border-color: white;
-    -fx-text-fill: #70A4C8 ;
-    -fx-background-color: transparent;
-
-}
-
-.btnGuest:hover {
-    -fx-background-color: transparent;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-text-fill: #388DC8;
-}
-
-.btnGuest:pressed {
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-text-fill: #006ec3;
-    -fx-background-color: transparent;
-
-}
 /*Design av input */
 
 .input {
@@ -55,15 +33,7 @@
     -fx-border-width: 0px 0px 2px 0px;
 }
 
-/* Design av bakgrunn */
-.loginPane {
-    -fx-background-radius: 6px;
+.loggInnPane {
+    -fx-background-radius: 5px;
     -fx-background-color: white;
-    -fx-border-radius: 5px;
-    -fx-effect: dropshadow( three-pass-box , #a8a8a8, 1 , 1 , 1 , 1 )
-}
-
-.anchorPane {
-    -fx-background-color: #70A4C8;
-
 }

@@ -10,6 +10,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,12 +30,14 @@ class FileSaverTxtTest {
         ComponentRegister componentRegister = new ComponentRegister();
         componentRegister.addComponent(componentTest);
 
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.add(componentRegister);
         String contents = componentTest.toString();
 
         File path = new File("Directory");
         FileSaverJobj saver = new FileSaverJobj();
         // call teh metod
-        saver.save(componentRegister, Paths.get(path.getPath()));
+        saver.save(objects, Paths.get(path.getPath()));
 
         // tacke a reference to the file
         File file = new File(String.valueOf(path));

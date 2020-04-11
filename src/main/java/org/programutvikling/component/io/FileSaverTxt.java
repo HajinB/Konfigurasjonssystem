@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 
 public class FileSaverTxt implements FileSaver {
-    @Override
 
     //hvordan kan denne save computer uten å måtte omorganisere?
     //hvordan kan man få interfacet til å ta flere typer? component og computer må arve fra samme interface - og det
