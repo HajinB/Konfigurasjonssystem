@@ -1,12 +1,11 @@
 package org.programutvikling.component.io;
 
-import org.programutvikling.component.ComponentRegister;
-
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public interface FileSaver {
 
-    void save(ComponentRegister componentRegister, Path filePath) throws IOException;
+    void save(ArrayList<Object> componentRegister, Path filePath) throws IOException;
 
 }

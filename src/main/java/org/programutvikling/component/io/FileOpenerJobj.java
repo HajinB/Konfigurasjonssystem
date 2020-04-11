@@ -2,6 +2,7 @@ package org.programutvikling.component.io;
 
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.Dialog;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -11,10 +12,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class FileOpenerJobj implements FileOpener {
 
@@ -63,14 +61,40 @@ public class FileOpenerJobj implements FileOpener {
     }
 }
 */
-    @Override
-    public void open(ComponentRegister componentRegister, Path selectedPath) {
+
+
+    //bør open være objekt istedet ? også kan vi lage en array som holder mange samtidig ??????????
+    // = profit
+
+    //så det egentlige problemet med å lage en ArrayList<Object> er tilbakesendingen - altså at controlleren skal
+    // sende de objektene som skal åpnes til denne metoden under her,  (slik vi gjør med componentregister her) -
+    public void open(ArrayList<Object> objects, Path selectedPath) {
         try (InputStream fin = Files.newInputStream(selectedPath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
-            ArrayList<Component> listeinn = (ArrayList<Component>) oin.readObject(); // kan kastes til Person
+            ArrayList<Object> listeinn = (ArrayList<Object>) oin.readObject(); // kan kastes til Person
             //System.out.println(personlista);
-            componentRegister.getRegister().addAll(listeinn);
+            objects.clear();
+            objects.addAll(listeinn);
+            //componentRegister.getRegister().add((Komponent) listeinn);
+
+        } catch (IOException | ClassNotFoundException i) {
+            Dialog.showErrorDialog("filtype er feil");
+            //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");
+        }
+    }
+            //fins det bedre måter enn dette? vha polymorfisme?
+    public void open(ComputerRegister computerRegister, Path selectedPath) {
+
+
+        try (InputStream fin = Files.newInputStream(selectedPath);
+             ObjectInputStream oin = new ObjectInputStream(fin)) {
+
+            ComputerRegister listeinn = (ComputerRegister) oin.readObject(); // kan kastes til Person
+            //System.out.println(personlista);
+            //computerRegister.getRegister().addAll(listeinn);
+            listeinn.getRegister().forEach(computerRegister::addComponent);
+
             //componentRegister.getRegister().add((Komponent) listeinn);
         } catch (IOException | ClassNotFoundException i) {
             Dialog.showErrorDialog("filtype er feil");

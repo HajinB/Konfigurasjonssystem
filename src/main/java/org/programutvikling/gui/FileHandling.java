@@ -2,13 +2,20 @@ package org.programutvikling.gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.ItemUsable;
 import org.programutvikling.component.io.*;
+import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.user.User;
+import org.programutvikling.user.UserRegister;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
@@ -16,9 +23,53 @@ import java.util.Arrays;
 public class FileHandling {
 
     private Path directoryPath;
-    public void populateComboBox(){
 
-        File folder = new File("Directory");  //kanskje selvvalg eller variabel her (?) som path
+
+
+    static void saveFileTxt(ArrayList<Object> register, Path directoryPath) {
+        if (directoryPath != null) {
+            FileSaver saver = new FileSaverTxt();
+            try {
+                saver.save(register, directoryPath);
+                Dialog.showSuccessDialog("Registeret ble lagret!");
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
+            }
+
+        }
+    }
+
+    static void saveFileJobj(ArrayList<Object> register, Path directoryPath) throws IOException {
+        // File selectedFile = getPath;
+
+        //FileSaverJobj binSaver = null;
+        //binSaver.save((componentRegister) register, Paths.get("HTMLDirectory/"));
+
+        if (directoryPath != null) {
+            FileSaver saver = null;
+
+            saver = new FileSaverJobj();
+            //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
+
+
+            try {
+                saver.save(register, directoryPath);
+                Dialog.showSuccessDialog("Registeret ble lagret!");
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
+            }
+        }
+
+    }
+
+    static String getStringPathFromFile(File path) {
+        System.out.println(path.getPath());
+        return path.getPath();
+    }
+
+    public void populateComboBoxes() {
+
+        File folder = new File("Directory");
         File[] listOfFiles = folder.listFiles();
         ObservableList<String> liste =
                 FXCollections.observableArrayList();
@@ -34,131 +85,96 @@ public class FileHandling {
                 System.out.println("Directory " + listOfFile.getName());
             }
         }
-        if(liste.size()>0) {
-
+        if (liste.size() > 0) {
             //todo her må vi ha metoder for å skille ut typene for å populere comboboxene til sluttbruker - skal typer
             // være combobox for superbruker?
             //openCombobox = new ComboBox<>(options);
             System.out.println(liste);
-            /*openCombobox.getItems().addAll(options.get(0));
-            openCombobox.setItems(options);
-            System.out.println("added to combobox");*/
+            //openCombobox.getItems().addAll(options.get(0));
+            //openCombobox.setItems(options);
+            System.out.println("added to combobox");
             //todo send denne arrayen et sted hvor den kan populere div ting
             //openComboBox = new ComboBox(options);
-
             //openCombobox.setItems(options);
         }
     }
 
+    //alt + cmd + B = go to implementation
 
-     static void loadAppConfigurationFile(ComponentRegister componentRegister, String directory) throws IOException {
-         File file = new File("FileDirectory/Components/sadffsda.jobj");
+    static void loadAppFiles(ArrayList<Object> objects, String directory) throws IOException {
+        File file = new File("FileDirectory/Components/sadffsda.jobj");
         // loadJobjFromDirectory(componentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
-         openFile(componentRegister, directory);
+        openFile(objects, directory);
     }
 
-    public void loadAllFilesFromDirectory(ComponentRegister componentRegister, Path directory) throws IOException {
+    public void loadSelectedFile(ArrayList<Object> objects, String path){
+        openFile(objects, path);
+    }
+
+    public void loadAllFilesFromDirectory(ArrayList<Object> objects, Path path) throws IOException {
         File folder = new File("FileDirectory");  //kanskje selvvalg eller variabel her (?) som path
         File[] listOfFiles = folder.listFiles();
-
         FileOpenerJobj fileOpenerJobj = new FileOpenerJobj();
         assert listOfFiles != null;
-        fileOpenerJobj.open(componentRegister, Paths.get(listOfFiles[0].getPath()));
-        System.out.println(componentRegister.getRegister().get(0).getProductName());
+        fileOpenerJobj.open(objects, Paths.get(listOfFiles[0].getPath()));
+
     }
 
-        //alt + cmd + B = go to implementation
-    static void openFile(ComponentRegister register, String selectedPath) {
+        //open file kan nå ta de fleste
+    static void openFile(ArrayList<Object> objects, String selectedPath) {
 
-        File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
-        Path path = Paths.get(selectedPath);
-        String fileExt = getFileExt(file);
-        FileOpener opener = null;
+        //factory - lag en versjon av den factorien du hadde der ista - med object som blir til componentregister eller
+        openObjects(objects, selectedPath);
+    }
 
-        //todo: skriv om denne switchen til polymorphisme PLIS
-        switch (fileExt) {
-            case ".txt" : opener = new FileOpenerTxt(); break;
-            case ".jobj" : opener = new FileOpenerJobj(); break;
-            default : Dialog.showErrorDialog("Du kan bare åpne txt eller jobj filer.");
-        }
 
-        System.out.println(fileExt);
-        register.log();
-        System.out.println(opener);
-        System.out.println(path.toString());
-        if(opener != null) {
+    private static void openObjects(ArrayList<Object> register, String selectedPath) {
+        FileOpener opener = getFileOpener(selectedPath);
+
+        if (opener != null && selectedPath !=null){
             try {
-                opener.open(register, path); //todo her kan man legge inn en thread gjennom en metode istede for å
+                Path path = Paths.get(selectedPath);
+                opener.open(register, path); //todo her kan man legge inn en thread gjennom en metode istede
+                System.out.println("etter opener");
                 // calle fileopenerTxt/jobj direkte.
-                System.out.println("ETTER OPENER HER");
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
                 Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
             }
-        }
-    }
-
-
-    static void saveFileTxt(ComponentRegister register, Path directoryPath) {
-        if (directoryPath != null) {
-            FileSaver saver = new FileSaverTxt();
-            try {
-                saver.save(register, directoryPath);
-                Dialog.showSuccessDialog("Registeret ble lagret!");
-            } catch (IOException e) {
-                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
-            }
-
-        }
-    }
-//todo: må ha en måte å lagre dette på, lokalt for brukeren slik at det loades inn (load configs metode)
-
-    void setCurrentDirectoryPath(Path directoryPath){
-        //Path configPath = Paths.get("FileDirectory");
-        if(directoryPath != null) {
-            this.directoryPath = Paths.get(directoryPath + "/ConfigMain.jobj");
         }else{
-            System.out.println("wth");
+            Dialog.showErrorDialog("opener eller path er null;");
         }
-
     }
 
-
-    public Path getCurrentDirectoryPath(){
-        //initialiserer directory pathen, men vil la bruker endre dette i settings
-        Path configPath = Paths.get("FileDirectory");
-       // filbehandling.setCurrentDirectoryPath(configPath);
-        this.directoryPath = Paths.get(configPath + "/ConfigMain.jobj");
-
-        return directoryPath;
+    private static Object createOpenableRegister(Object object){
+        if(getFileName(object.getClass().getName()).equals("ComponentRegister")) {
+            return new ComponentRegister();
+        }
+        else if(getFileName(object.getClass().getName()).equals("ComputerRegister")) {
+            return new ComputerRegister();
+        }
+        return object;
     }
 
-
-    static void saveFileJobj(ComponentRegister register, Path directoryPath) throws IOException {
-       // File selectedFile = getPath;
-
-        //FileSaverJobj binSaver = null;
-        //binSaver.save((componentRegister) register, Paths.get("HTMLDirectory/"));
-
-        if (directoryPath != null) {
-            FileSaver saver = null;
-
-               saver = new FileSaverJobj();
-               //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
-
-
-            try {
-                saver.save(register, directoryPath);
-                Dialog.showSuccessDialog("Registeret ble lagret!");
-            } catch (IOException e) {
-                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
-            }
-        }
-
+    private static String getFileName(String fileName){
+        return fileName.substring(fileName.lastIndexOf('.'));
     }
 
     private static String getFileExt(File file) {
         String fileName = file.getName();
         return fileName.substring(fileName.lastIndexOf('.'));
+    }
+
+
+    private static FileOpener getFileOpener(String selectedPath) {
+        File file = new File(String.valueOf(Paths.get(String.valueOf(selectedPath))));
+        String fileExt = getFileExt(file);
+        OpenerFactory openerFactory = new OpenerFactory();
+        return openerFactory.createOpener(fileExt);
+    }
+
+
+    public void OpenSelectedComputerTxtFiles(ArrayList<Object> objects, String pathToUser) {
+        openFile(objects, pathToUser);
     }
 }

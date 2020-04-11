@@ -23,4 +23,13 @@ public class Dialog {
         alert.showAndWait();
     }
 
+   static Alert getAlert(String title, String header) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        return alert;
+    }
+
+
+
 }

@@ -1,15 +1,11 @@
 package org.programutvikling.component.io;
 
-import javafx.collections.ObservableList;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.gui.FileHandling;
-
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 //Programmet skal støtte filbehandling slik at programmets data ikke går tapt når programmet avsluttes.
 //Det anbefales at besvarelsen allerede inneholder eksempeldata slik at sensor har noe å gå ut ifra.
@@ -64,7 +60,7 @@ public class FileSaverJobj implements FileSaver {
 
 
     @Override
-    public void save(ComponentRegister componentRegister, Path filePath) throws IOException {
+    public void save(ArrayList<Object> objects, Path filePath) throws IOException {
         try (OutputStream os = Files.newOutputStream(filePath);
 
              //try( FileOutputStream os = (FileOutputStream) Files.newOutputStream(filePath);
@@ -76,7 +72,7 @@ public class FileSaverJobj implements FileSaver {
 
             out.reset();
             //out.writeObject(componentRegister);
-            out.writeObject(componentRegister.getReadableList(componentRegister.getRegister()));
+            out.writeObject(objects);
 
             out.flush();
 

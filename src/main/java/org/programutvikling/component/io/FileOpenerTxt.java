@@ -1,6 +1,7 @@
 package org.programutvikling.component.io;
 
 import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.Converter;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -12,27 +13,39 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class FileOpenerTxt implements FileOpener {
-    Converter.DoubleStringConverter doubleStringConverter;
 
     @Override
-    public void open(ComponentRegister register, Path filePath) throws IOException {
-        register.removeAll();
+    public void open(ArrayList<Object> list, Path filePath) throws IOException {
+        list.clear();
         // try-with-resources lukker automatisk filen
+
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
 
             while ((line = bufferedReader.readLine()) != null) {
-                register.addComponent(parseComponent(line));
+                list.add(parseComponent(line));
             }
         }
     }
 
+
     @Override
     public void open(Computer computer, Path filePath) throws IOException {
+        computer.removeAll();
+        // try-with-resources lukker automatisk filen
 
+        try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                computer.addComponent(parseComponent(line));
+            }
+        }
     }
+
 
     //(String type, String name, String description, double price)
     private Component parseComponent(String line) throws InvalidComponentFormatException {
@@ -40,7 +53,7 @@ public class FileOpenerTxt implements FileOpener {
 
         String[] split = line.split(",");
         if(split.length != 4) {
-            throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
+            throw new InvalidComponentFormatException("Du må bruke , for å separere datafeltene.");
         }
 
         // extract all datafields from the string
@@ -51,9 +64,10 @@ public class FileOpenerTxt implements FileOpener {
 
         //try {
             //double price = doubleStringConverter.stringTilDouble(split[3]);
-            return new Component(type, name, description, price);
+            return new Computer(name, description, price);
 
         }
+
 
 
     private double parseDouble(String str, String errorMessage) throws IllegalArgumentException {

@@ -5,19 +5,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.ItemUsable;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.user.UserPreferences;
-
 import java.io.IOException;
-import java.util.prefs.Preferences;
 
-public class EnduserController {
+
+public class EnduserController extends SecondaryController {
     private UserPreferences superUserPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
-
     ComputerRegister computerRegister = new ComputerRegister();
     ComponentRegister componentRegister = new ComponentRegister();
+    FileHandling fileHandling = new FileHandling();
+    ComputerRegister computersListOfParts = new ComputerRegister();
 
     @FXML
     private Label lblTotalpris;
@@ -27,6 +28,7 @@ public class EnduserController {
 
     @FXML
     public void initialize() throws IOException {
+        initItemFiles();
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //System.out.println(directoryPath.toString());
@@ -36,7 +38,10 @@ public class EnduserController {
         //sender ut gridpane for å få tak i nodes i en annen class.
         //System.out.println(componentRegister.toString());
         updateList();
+    }
 
+    public void initItemFiles(){
+        //computerRegister.addComponent();
 
     }
 
@@ -44,8 +49,7 @@ public class EnduserController {
     }
 
     private void loadElementsFromFile() {
-        FileHandling.openFile(componentRegister, userPreferences.getPathToUser());
-
+        fileHandling.OpenSelectedComputerTxtFiles(objectsForSaving, userPreferences.getPathToUser());
     }
 
 
