@@ -163,7 +163,7 @@ public class SecondaryController {
     private void openFileWithThreadSleep(ComponentRegister componentRegister, String s) {
         //componentRegister.getRegister();
         ;
-        openInputThread(componentRegister.objectArrayListAdapter(), s);
+        openInputThread(componentRegister, s);
     }
 
     private void loadRegisterFromDirectory() throws IOException {
@@ -252,7 +252,7 @@ public class SecondaryController {
         String chosenPath = FileHandling.getStringPathFromFile(path);
         ArrayList<Object> objects = new ArrayList<>();
         objects.add(componentRegister);
-        openInputThread(objects, chosenPath);
+        openInputThread(componentRegister, chosenPath);
     }
 
     private void startThread(InputThread task) {
@@ -289,7 +289,7 @@ public class SecondaryController {
     //skal det åpnes bare componentregister også??? hvordan kan man gjøre det?
     //altså superbruker må jo kunne legge til Componentregister fra fil???
     //openInputThread bør jo da være kun for componentregister ? altså threadinga er bare for componentregister??
-    void openInputThread(ArrayList<Object> componentRegister, String s) {
+    void openInputThread(ComponentRegister componentRegister, String s) {
         InputThread task = new InputThread(componentRegister, s);
         task.setOnSucceeded(this::threadDone);
         task.setOnFailed(this::threadFailed);
