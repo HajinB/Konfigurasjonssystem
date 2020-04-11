@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.*;
+import org.programutvikling.computer.ComputerRegister;
 
 import java.io.File;
 import java.io.IOException;
@@ -160,5 +161,8 @@ public class FileHandling {
     private static String getFileExt(File file) {
         String fileName = file.getName();
         return fileName.substring(fileName.lastIndexOf('.'));
+    }
+
+    public void OpenSelectedComputerTxtFiles(ComputerRegister computerRegister, String pathToUser) {
     }
 }

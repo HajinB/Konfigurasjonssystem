@@ -33,10 +33,10 @@ public class InputThread extends Task<Void> {
     public Void call() {
 
         try {
-            fileHandling.loadSelectedFile(componentRegisterThread, filePath);
+            fileHandling.loadAllFilesFromDirectory(componentRegisterThread, Paths.get(filePath));
             sleep(3000);
 
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
         return null;
