@@ -26,6 +26,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController">
    <top>
@@ -176,24 +177,33 @@
                                     <ChoiceBox fx:id="cpTypeFilter" prefHeight="30.0" prefWidth="170.0" />
                                 </items>
                               </ToolBar>
-                              <TableView fx:id="tblViewComponent" layoutX="360.0" layoutY="166.0" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
+                              <TableView fx:id="tblViewComponent" editable="true" layoutX="360.0" layoutY="166.0" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
                                 <columns>
-                                   <TableColumn minWidth="100.0" onEditCommit="#columnTypeEdit" prefWidth="120.0" text="Varetype">
+                                   <TableColumn minWidth="100.0" onEditCommit="#productTypeEdited" prefWidth="120.0" text="Varetype">
                                       <cellValueFactory>
                                          <PropertyValueFactory property="productType" />
                                       </cellValueFactory>
+                                      <cellFactory>
+                                         <TextFieldTableCell fx:factory="forTableColumn" />
+                                      </cellFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="columnPName" minWidth="100.0" onEditCommit="#columnPNameEdit" prefWidth="150.0" text="Varenavn">
+                                   <TableColumn minWidth="100.0" onEditCommit="#productNameEdited" prefWidth="150.0" text="Varenavn">
                                       <cellValueFactory>
                                          <PropertyValueFactory property="productName" />
                                       </cellValueFactory>
+                                      <cellFactory>
+                                         <TextFieldTableCell fx:factory="forTableColumn" />
+                                      </cellFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="columnPDesc" minWidth="100" onEditCommit="#columnPDescEdit" prefWidth="230.0" text="Beskrivelse">
+                                   <TableColumn minWidth="100" onEditCommit="#productDescriptionEdited" prefWidth="230.0" text="Beskrivelse">
                                       <cellValueFactory>
                                          <PropertyValueFactory property="productDescription" />
                                       </cellValueFactory>
+                                      <cellFactory>
+                                         <TextFieldTableCell fx:factory="forTableColumn" />
+                                      </cellFactory>
                                    </TableColumn>
-                                   <TableColumn minWidth="100" onEditCommit="#productPriceEdit" prefWidth="140.0" text="Pris">
+                                   <TableColumn fx:id="productPriceColumn" minWidth="100" onEditCommit="#productPriceEdited" prefWidth="140.0" text="Pris">
                                       <cellValueFactory>
                                          <PropertyValueFactory property="productPrice" />
                                       </cellValueFactory>

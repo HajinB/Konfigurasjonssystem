@@ -1,13 +1,15 @@
 package org.programutvikling.gui;
 
+import javafx.util.converter.DoubleStringConverter;
+
 public class Converter {
 
-        public static class DoubleStringConverter {
+        public static class DoubleStringConverter extends javafx.util.converter.DoubleStringConverter {
             private boolean conversionSuccessful;
 
             public double stringTilDouble(String s) {
                 try {
-                    double result = Double.parseDouble(s);
+                    double result = super.fromString(s);
                     conversionSuccessful = true;
                     return result;
                 } catch(NumberFormatException e) {

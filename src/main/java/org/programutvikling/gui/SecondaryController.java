@@ -1,6 +1,5 @@
 package org.programutvikling.gui;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -37,10 +36,6 @@ public class SecondaryController {
     //default path:
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
-    //For choicebox producttype - Bør vurderes å lage et annet sted??
-    ObservableList <String> producttypeList = FXCollections.observableArrayList("Velg varetype", "Prosessor", "Skjermkort", "Minne",
-            "Harddisk", "Tastatur", "Mus", "Skjerm");
-
     private ComponentRegister componentRegister = new ComponentRegister();
 
     private Converter.DoubleStringConverter doubleStrConverter
@@ -67,6 +62,9 @@ public class SecondaryController {
     @FXML
     private TableView<Component> tblViewComponent;
 
+    @FXML
+    private TableColumn<Component, Double> productPriceColumn;
+
 
     private static void deletefile(String file) {
         File f1 = new File(file);
@@ -88,7 +86,6 @@ public class SecondaryController {
 
     @FXML
     public void initialize() throws IOException {
-
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //System.out.println(directoryPath.toString());
@@ -102,6 +99,7 @@ public class SecondaryController {
 
         //System.out.println(componentRegister.toString());
         updateComponentList();
+        productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
     }
 
     @FXML
@@ -199,9 +197,11 @@ public class SecondaryController {
                 inputBeskrivelse.getText(),
                 doubleStrConverter.stringTilDouble(inputPris.getText()));
     }*/
+
     private void updateComponentList() {
         componentRegister.attachTableView(tblViewComponent);
     }
+
 
     @FXML
     void btnOpenFile(ActionEvent event) {
@@ -273,6 +273,48 @@ public class SecondaryController {
     }
 
     // Tableview edit
+    // CellEdit - problem: Endringene er ikke varige (til neste gang man åpner).
+    // Går ikke an å endre pris heller??
+    @FXML
+    private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) {
+        try {
+            event.getRowValue().setProductType(event.getNewValue());
+        } catch (IllegalArgumentException e) {
+            Dialog.showErrorDialog("Ikke gyldig produkt: " + e.getMessage());
+        }
+        tblViewComponent.refresh();
+    }
+
+    @FXML
+    private void productNameEdited(TableColumn.CellEditEvent<Component, String> event) {
+        try {
+            event.getRowValue().setProductName(event.getNewValue());
+        } catch (IllegalArgumentException e) {
+            Dialog.showErrorDialog("Ugyldig navn: " + e.getMessage());
+        }
+        tblViewComponent.refresh();
+    }
+
+    @FXML
+    private void productDescriptionEdited (TableColumn.CellEditEvent<Component, String> event) {
+        try {
+            event.getRowValue().setProductDescription(event.getNewValue());
+        } catch (IllegalArgumentException e) {
+            Dialog.showErrorDialog("Ugyldig tegn i beskrivelse: " + e.getMessage());
+        }
+        tblViewComponent.refresh();
+    }
+
+    @FXML
+    private void productPriceEdited (TableColumn.CellEditEvent<Component, Double> event) {
+        try {
+            if(doubleStrConverter.wasSuccessful()){
+                event.getRowValue().setProductPrice(event.getNewValue());}
+        } catch (NumberFormatException e) {
+            Dialog.showErrorDialog("Ugyldig pris: " + e.getMessage());
+        }
+        tblViewComponent.refresh();
+    }
 
     @FXML
     void columnAdressEdit(ActionEvent event) {
@@ -284,28 +326,9 @@ public class SecondaryController {
 
     }
 
-    @FXML
-    void columnDescEdit(ActionEvent event) {
-
-    }
 
     @FXML
     void columnPostalEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnPriceEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnProdNameEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnTypeEdit(ActionEvent event) {
 
     }
 
@@ -351,15 +374,4 @@ public class SecondaryController {
 
     }
 
-    public void productPriceEdit(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
-    public void columnPDescEdit(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
-    public void columnPNameEdit(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
 }

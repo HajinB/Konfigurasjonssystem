@@ -30,21 +30,6 @@ public class Component implements Serializable {
         this.productPrice = new SimpleDoubleProperty(productPrice);
     }
     // Get- og set-metoder
-    public SimpleStringProperty productTypeProperty() {
-        return productType;
-    }
-
-    public SimpleStringProperty productNameProperty() {
-        return productName;
-    }
-
-    public SimpleStringProperty productDescriptionProperty() {
-        return productDescription;
-    }
-
-    public SimpleDoubleProperty productPriceProperty() {
-        return productPrice;
-    }
 
     public String getProductType() {
         return productType.getValue();
