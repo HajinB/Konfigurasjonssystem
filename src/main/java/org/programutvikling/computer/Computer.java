@@ -1,13 +1,6 @@
 package org.programutvikling.computer;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.TableView;
 import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.ItemUsable;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer implements Serializable, ItemUsable {
+public class Computer implements Serializable {
         //mange computere skal opprettes - så vi har EN computer, som består av et array av components , basically
     // det samme som komponentregister ( computer er ikke en ordentlig datamodell som komponent er) -
 
@@ -25,79 +18,78 @@ public class Computer implements Serializable, ItemUsable {
     // parametre "lagComputer(...)
 
     double priceTotal;
-    private transient ObservableList<Component> listOfComponents = FXCollections.observableArrayList();
-    private ComponentRegister componentRegister;
+    private transient ArrayList<Component> computerRegister = new ArrayList<>();
     private transient static final long serialVersionUID = 1;
-    String type;
-    String name;
-    String description;
-    double price;
 
-    public void setType(String type) {
-        this.type = type;
+    Computer(){
+
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public Computer(String type, String name, String description, List components) {
-        this.type = type;
-        this.name = name;
-        this.description = description;
-        assert componentRegister != null;
-        componentRegister.getRegister().addAll(components);
-        this.price = calculatePrice(componentRegister);
-    }
-
-    List getComponentList(){
-        return listOfComponents;
-    }
-
-
-    private double calculatePrice(ComponentRegister componentRegister){
-        if(componentRegister.getRegister().size()>0){
-        for(int i= 0; i<componentRegister.getRegister().size();i++) {
-            priceTotal = priceTotal + componentRegister.getRegister().get(3).getPrice();
+    double calculatePrice(){
+        for(int i= 0; i<computerRegister.size();i++) {
+            priceTotal = priceTotal + computerRegister.get(3).getProductPrice();
         }
             //3 er indexen til pris.
     return priceTotal;
-        }else{
-            return 0;
-        }
     }
 
+
     public List<Component> getRegister() {
-        return componentRegister.getRegister();
+        return computerRegister;
     }
 
     public void removeAll() {
-        componentRegister.getRegister().clear();
+        computerRegister.clear();
     }
+
+    public void addComponent(Component component) {
+        computerRegister.add(component);
+    }
+
+
+    /*
+    @Override
+    public String toString(){
+        String melding = "";
+
+        for(int i = 0; i<computerRegister.size(); i++){
+            melding = "Type: "+getRegister().get(i).getType()+"\n" +
+                        "Name: " +getRegister().get(i).getName()+"\n"+
+                    "Description: " +getRegister().get(i).getName()+"\n"+
+                    "Price: " + getRegister().get(i).getPrice()+"\n";
+        }
+        return melding;
+    }
+*/
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Component c : computerRegister) {
+            sb.append(c.toString());
+            sb.append(System.lineSeparator());
+        }
+
+        return sb.toString();
+    }
+    public void log(){
+        System.out.println(computerRegister.toString());
+    }
+
+
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        s.writeObject(new ArrayList<>(computerRegister));
+    }
+
+    private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+        List<Component> list = (List<Component>) inputStream.readObject();
+        computerRegister.addAll(list);
+    }
+
+
+
+
     }
 
 

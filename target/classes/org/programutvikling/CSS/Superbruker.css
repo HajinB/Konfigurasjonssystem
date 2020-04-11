@@ -33,7 +33,6 @@
     -fx-border-color: #70A4C8;
     -fx-font-size: 14px;
     -fx-font-weight: none;
-    -fx-text-fill: white;
 }
 
 .column:hover {
@@ -42,14 +41,12 @@
     -fx-border-color: #388DC8;
     -fx-font-size: 14px;
     -fx-font-weight: none;
-    -fx-text-fill: white;
 }
 
 .column:pressed {
     -fx-background-color: #0071BF;
     -fx-font-weight: none;
     -fx-font-size: 14px;
-    -fx-text-fill: white;
 }
 
 /* Legg til ny komponent pane*/

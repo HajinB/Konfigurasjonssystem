@@ -1,21 +1,15 @@
 package org.programutvikling.gui;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+
 import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.InvalidComponentFormatException;
 
 import java.io.IOException;
-import java.util.List;
 
 class RegistryComponentLogic {
-    Converter.StringDoubleConverter stringDoubleConverter = new Converter.StringDoubleConverter();
+    Converter.DoubleStringConverter doubleStringConverter = new Converter.DoubleStringConverter();
 
     private GridPane gridPane;
 
@@ -23,42 +17,52 @@ class RegistryComponentLogic {
         this.gridPane = gridPane;
     }
 
-    Component createComponentsFromGUIInputIFields() throws InvalidComponentFormatException {
-        return createComponent();
-}
-    ObservableList<Component> createListOfCategoryInComponentRegister(String s, ComponentRegister componentRegister){
-        ObservableList<Component> categoryList = FXCollections.observableArrayList();
-        List<Component> listInn = componentRegister.getRegister();
-
-        for (Component component : listInn) {
-            if (s.equals(component.getName())) {
-                categoryList.add(component);
+    Component createComponentsFromGUIInputIFields() {
+        try {
+            Component c = createComponent();
+            resetFields();
+            return c;
+        } catch (NumberFormatException nfe) {
+                Dialog.showErrorDialog("Skriv inn tall");
+        } catch (IllegalArgumentException iae) {
+                Dialog.showErrorDialog(iae.getMessage());
             }
-        }
-        return categoryList;
-    }
+        return null;
+}
 
     private Component createComponent() {
 
-    String type = getString((TextField)gridPane.lookup("#inputType"));
-    String varenavn = getString((TextField) gridPane.lookup("#inputVarenavn"));
-    String beskrivelse = getString((TextField) gridPane.lookup("#inputBeskrivelse"));
-    double pris = getDouble((TextField) gridPane.lookup("#inputPris"));
+    String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
+    String productName = getString((TextField) gridPane.lookup("#productName"));
+    String productDescription = getTextareaString((TextArea) gridPane.lookup("#productDescription"));
+    double productPrice = getDouble((TextField) gridPane.lookup("#productPrice"));
 
-    System.out.println(type);
-    return new Component(type, varenavn, beskrivelse, pris);
+    System.out.println(productType);
+    return new Component(productType, productName, productDescription, productPrice);
 }
 
     private String getString(TextField field) {
-        if(field != null) {
             return field.getText();
-        }
-        System.out.println("textfield er null/IO kommer ikke inn - sjekk ID feltene");
-        return "";
+    }
+
+    private String getCBString (ChoiceBox choiceBox) {
+        return String.valueOf(choiceBox.getValue());
+    }
+
+    private String getTextareaString (TextArea textArea) {
+        return textArea.getText();
     }
 
     private double getDouble(TextField field) {
 
-    return stringDoubleConverter.stringTilDouble(getString(field));
+    return doubleStringConverter.stringTilDouble(getString(field));
     }
+
+    private void resetFields() {
+        ((ChoiceBox) gridPane.lookup("#productType")).setValue(null);
+        ((TextField) gridPane.lookup("#productName")).setText("");
+        ((TextArea) gridPane.lookup("#productDescription")).setText("");
+        ((TextField) gridPane.lookup("#productPrice")).setText("");
+    }
+
 }
