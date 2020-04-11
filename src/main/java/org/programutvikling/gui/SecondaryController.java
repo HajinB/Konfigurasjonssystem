@@ -297,7 +297,7 @@ public class SecondaryController {
     private void SaveAll() throws IOException {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
-        ArrayList<Object> objects = createObjectList(componentRegister, userRegister, computerRegister);
+        ArrayList<Object> objects = createObjectList(componentRegister, null, null);
 
 
         FileHandling.saveFileJobj(objects,
