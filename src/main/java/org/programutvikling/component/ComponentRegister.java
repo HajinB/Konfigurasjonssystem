@@ -39,7 +39,7 @@ public class ComponentRegister implements Serializable {
     }
 
     public void removeComponent(Component component) {
-        String name = component.getName();
+        String name = component.getProductName();
         if (doesNameExist(name)) {
             componentObservableList.removeAll(component);
         }
@@ -52,7 +52,7 @@ public class ComponentRegister implements Serializable {
 
     public ObservableList<Component> filterByName(String name) {
         return componentObservableList.stream().
-                filter(p -> p.getName().toLowerCase().
+                filter(p -> p.getProductName().toLowerCase().
                         matches(String.format("%s%s%s", ".*", name.toLowerCase(), ".*"))).
                 collect(Collectors.toCollection(FXCollections::observableArrayList));
     }

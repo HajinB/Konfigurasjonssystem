@@ -47,7 +47,10 @@ public class SecondaryController {
     private RegistryComponentLogic registryComponentLogic;
     //default path:
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
+
+
     @FXML
+
     private MenuBar menyBar;
     @FXML
     private Label tblOverskrift;
@@ -76,23 +79,16 @@ public class SecondaryController {
     private TextArea inputBeskrivelse;
     @FXML
     private TextField inputPris;
+
+
+
+    @FXML
     private TableView<Component> tblViewComponent;
+
     @FXML
     private TableColumn<Component, Double> productPriceColumn;
-    @FXML
-    private GridPane gridPaneSuperbruker;
-    @FXML
-    private ChoiceBox<String> choiceBoxVaretype;
-    @FXML
-    private TableColumn<Component, String> kolonneType;
-    @FXML
-    private TableColumn<Component, String> kolonneVNavn;
-    @FXML
-    private TableColumn<Component, String> kolonneBesk;
-    @FXML
-    private TableColumn<Component, Double> kolonnePris;
-    @FXML
-    private Tab tabUsers;
+
+
     @FXML
     private GridPane userReg;
     @FXML
@@ -121,22 +117,30 @@ public class SecondaryController {
 
     @FXML
     public void initialize() throws IOException {
-        initChoiceBox();
-        initColumns();
+       // initChoiceBox();
+        //initColumns();
+        /*
         loadRegisterFromDirectory();
         //sender ut gridpane for å få tak i nodes i en annen class.
-        registryComponentLogic = new RegistryComponentLogic(gridPaneSuperbruker);
         updateList();
         refreshTable();
-        threadHandler = new ThreadHandler(stage, gridPaneSuperbruker);
+        threadHandler = new ThreadHandler(stage, componentReg);
         tblViewComponent.refresh();
         //componentPath = userPreferences.getPathToUser();
         //Path userDirPath =
         //System.out.println(directoryPath.toString());
         //bare lag en metode som gjør alt dette!
+        loadRegisterFromFile();
+        //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
+        //sender ut gridpane for å få tak i nodes i en annen class.
+        registryComponentLogic = new RegistryComponentLogic(componentReg);
+        //System.out.println(componentRegister.toString());
+        updateComponentList();
+        productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
+        */
 
         loadRegisterFromFile();
-
+        loadObjectsIntoClasses();
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
         registryComponentLogic = new RegistryComponentLogic(componentReg);
@@ -146,7 +150,7 @@ public class SecondaryController {
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
 
     }
-
+/*
     private void initChoiceBox() {
         choiceBoxVaretype.setItems(componentTypes.getConcreteTypeListName());
     }
@@ -163,7 +167,7 @@ public class SecondaryController {
         //kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(new Converter.DoubleStringConverter()));
         kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
     }
-
+*/
     @FXML
     public void refreshTable() {
         tblViewComponent.refresh();
@@ -343,21 +347,42 @@ public class SecondaryController {
         }
     */
     private void disableGUI() {
-        gridPaneSuperbruker.setDisable(true);//prøver å slå av hele gridpane
+        componentReg.setDisable(true);//prøver å slå av hele gridpane
     }
 
     private void enableGUI() {
-        gridPaneSuperbruker.setDisable(false);//kan ikke gjøres her
+        componentReg.setDisable(false);//kan ikke gjøres her
     }
 
     @FXML
         //Komponent(String type, String name, String description, double price)
     void btnAddComponent(ActionEvent event) throws IOException {
-        if (inputValidated()) {
+        /*if (inputValidated()) {
             registerComponent();
-            SaveAll();
-        }
 
+        }*/
+
+        registerComponent();
+        updateComponentList();
+        // Komponent komponent = registrerKomponent.opprettKomponentFraGUIFelt();
+
+        //todo denne folderen/directory path bør kunne bli satt av brukeren i settings elns(?)
+        //File folder = new File("FileDirectory/");
+        //directoryPath = Paths.("FileDirectory");
+        //directoryPath = new File(folder.getPath());
+        // componentRegister.getRegister().add(opprettKomponentFraGUI());
+        // componentRegister.addComponent(createComponentFromGUI());
+
+
+        //todo sjekk om dette faktisk sletter filen at runtime??
+        //deletefile("FileDirectory/Components/ComponentList.jobj");
+
+        //kan gjøres mer åpen/generalisert, denne saveFileJobj funksjonen, sånn at man bare kan legge på extension i
+        // egen metode.. Denne er nå bare åpen for jobj ish
+        /*FileHandling.saveFileJobj(objectsForSaving,
+                Paths.get(userPreferences.getPathToUser()));*/
+
+        SaveAll();
     }
 
     void openFileFromChooserWithThreadSleep(ComponentRegister componentRegister) {
@@ -385,7 +410,7 @@ public class SecondaryController {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objects = createObjectList(componentRegister, null, null);
 
-
+//todo husk å fyll inn der i createObjectList når vi får opp omputerregister og userregister
         FileHandling.saveFileJobj(objects,
                 Paths.get(userPreferences.getPathToUser()));
     }
@@ -419,19 +444,19 @@ public class SecondaryController {
 
     @FXML
     void kolonneTypeEdit(TableColumn.CellEditEvent<Component, String> event) {
-        event.getRowValue().setType(event.getNewValue());
+        event.getRowValue().setProductType(event.getNewValue());
         updateList();
     }
 
     @FXML
     void kolonneVNavnEdit(TableColumn.CellEditEvent<Component, String> event) {
-        event.getRowValue().setName(event.getNewValue());
+        event.getRowValue().setProductName(event.getNewValue());
         updateList();
     }
 
     @FXML
     void kolonneBeskEdit(TableColumn.CellEditEvent<Component, String> event) {
-        event.getRowValue().setDescription(event.getNewValue());
+        event.getRowValue().setProductDescription(event.getNewValue());
         updateList();
 
     }
@@ -439,7 +464,7 @@ public class SecondaryController {
     @FXML
     void kolonnePrisEdit(TableColumn.CellEditEvent<Component, Double> event) {
 
-        event.getRowValue().setPrice(event.getNewValue());
+        event.getRowValue().setProductPrice(event.getNewValue());
         updateList();
 
     }

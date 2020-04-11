@@ -1,19 +1,10 @@
 package org.programutvikling.computer;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.TableView;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ItemUsable;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Computer implements Serializable, ItemUsable {
@@ -73,7 +64,7 @@ public class Computer implements Serializable, ItemUsable {
     private double calculatePrice(ComponentRegister componentRegister){
         if(componentRegister.getRegister().size()>0){
         for(int i= 0; i<componentRegister.getRegister().size();i++) {
-            priceTotal = priceTotal + componentRegister.getRegister().get(i).getPrice();
+            priceTotal = priceTotal + componentRegister.getRegister().get(i).getProductPrice();
         }
     return priceTotal;
         }else{

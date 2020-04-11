@@ -62,7 +62,6 @@ public class FileSaverJobj implements FileSaver {
     @Override
     public void save(ArrayList<Object> objects, Path filePath) throws IOException {
         try (OutputStream os = Files.newOutputStream(filePath);
-
              //try( FileOutputStream os = (FileOutputStream) Files.newOutputStream(filePath);
              //try(FileOutputStream os = new FileOutputStream(String.valueOf(Files.newOutputStream(filePath)), false);
              ObjectOutputStream out = new ObjectOutputStream(os)) {

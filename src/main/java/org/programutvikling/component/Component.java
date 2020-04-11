@@ -1,8 +1,6 @@
 package org.programutvikling.component;
 
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.IOException;
@@ -14,10 +12,15 @@ public class Component implements Serializable, ItemUsable {
 
     private static final long serialVersionUID = 1;
 
-    private transient SimpleStringProperty type;
-    private transient SimpleStringProperty name;
-    private transient SimpleStringProperty description;
-    private transient SimpleDoubleProperty price;
+    /*    private transient SimpleStringProperty productType;
+    private transient SimpleStringProperty productName;
+    private transient SimpleStringProperty productDescription;
+    private transient SimpleDoubleProperty productPrice;*/
+
+    private transient SimpleStringProperty productType;
+    private transient SimpleStringProperty productName;
+    private transient SimpleStringProperty productDescription;
+    private transient SimpleDoubleProperty productPrice;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -25,61 +28,61 @@ public class Component implements Serializable, ItemUsable {
 
     public Component(String type, String name, String description, double price) {
         // Validator av type, name og price(sjekke om den er 0?) her
-        this.type = new SimpleStringProperty(type);
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty(description);
-        this.price = new SimpleDoubleProperty(price);
+        this.productType = new SimpleStringProperty(type);
+        this.productName = new SimpleStringProperty(name);
+        this.productDescription = new SimpleStringProperty(description);
+        this.productPrice = new SimpleDoubleProperty(price);
     }
     // Get- og set-metoder
 
-    public String getType() {
-        return type.getValue();
+    public String getProductType() {
+        return productType.getValue();
     }
 
-    public final void setType(String type) {
+    public final void setProductType(String productType) {
         // validator
-        this.type.set(type);
+        this.productType.set(productType);
     }
 
-    public String getName() {
-        return name.getValue();
+    public String getProductName() {
+        return productName.getValue();
     }
 
-    public final void setName(String name) {
+    public final void setProductName(String productName) {
         //validator
 
-        this.name.set(name);
+        this.productName.set(productName);
     }
 
-    public String getDescription() {
-        return description.getValue();
+    public String getProductDescription() {
+        return productDescription.getValue();
     }
 
-    public final void setDescription(String description) {
-        this.description.set(description);
+    public final void setProductDescription(String productDescription) {
+        this.productDescription.set(productDescription);
     }
 
-    public double getPrice() {
-        return price.getValue();
+    public double getProductPrice() {
+        return productPrice.getValue();
     }
 
-    public final void setPrice(double price) {
+    public final void setProductPrice(double productPrice) {
         // evt validator
-        this.price.set(price);
+        this.productPrice.set(productPrice);
     }
     // toString
     @Override
     public String toString() {
         return String.format("%s;%s;%s;%s",
-                type.getValue(), name.getValue(), description.getValue(), price.getValue());
+                productType.getValue(), productName.getValue(), productDescription.getValue(), productPrice.getValue());
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType()); //denne er null på andre gjennomkjøring . le
-        s.writeUTF(getName());
-        s.writeUTF(getDescription());
-        s.writeDouble(getPrice());
+        s.writeUTF(getProductType());
+        s.writeUTF(getProductName());
+        s.writeUTF(getProductDescription());
+        s.writeDouble(getProductPrice());
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
@@ -88,15 +91,15 @@ public class Component implements Serializable, ItemUsable {
         String description = s.readUTF();
         double price =  s.readDouble();
 
-        this.type = new SimpleStringProperty();
-        this.name = new SimpleStringProperty();
-        this.description = new SimpleStringProperty();
-        this.price = new SimpleDoubleProperty();
+        this.productType = new SimpleStringProperty();
+        this.productName = new SimpleStringProperty();
+        this.productDescription = new SimpleStringProperty();
+        this.productPrice = new SimpleDoubleProperty();
 
-        setType(type);
-        setName(name);
-        setDescription(description);
-        setPrice(price);
+        setProductType(type);
+        setProductName(name);
+        setProductDescription(description);
+        setProductPrice(price);
     }
 
 
