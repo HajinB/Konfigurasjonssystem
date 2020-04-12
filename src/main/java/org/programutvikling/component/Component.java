@@ -9,8 +9,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Component implements Serializable, ItemUsable {
-
-    private static final long serialVersionUID = 1;
+    private transient ComponentTypes componentTypes = new ComponentTypes();
+    private transient static final long serialVersionUID = 1;
 
     /*    private transient SimpleStringProperty productType;
     private transient SimpleStringProperty productName;

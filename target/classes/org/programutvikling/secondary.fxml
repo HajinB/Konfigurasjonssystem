@@ -135,17 +135,6 @@
                                              </font>
                                           </Label>
                                           <ChoiceBox id="productType" fx:id="cbType" prefHeight="30.0" prefWidth="230.0" GridPane.rowIndex="1">
-                                             <items>
-                                                <FXCollections fx:factory="observableArrayList">
-                                                   <String fx:value="Prosessor" />
-                                                   <String fx:value="Skjermkort" />
-                                                   <String fx:value="Minne" />
-                                                   <String fx:value="Harddisk" />
-                                                   <String fx:value="Taastatur" />
-                                                   <String fx:value="Mus" />
-                                                   <String fx:value="Skjerm" />
-                                                </FXCollections>
-                                             </items>
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>

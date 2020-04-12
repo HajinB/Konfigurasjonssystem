@@ -2,6 +2,9 @@ package org.programutvikling.gui;
 
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.SelectionModel;
 
 public class Dialog {
 
@@ -23,9 +26,15 @@ public class Dialog {
         alert.showAndWait();
     }
 
-   static Alert getAlert(String title, String header) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(title);
+   static Alert getConfirmationAlert(String title, String header, String selection) {
+       Alert alert = new Alert(AlertType.CONFIRMATION, "Delete " + selection + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+       alert.setTitle(title);
+       alert.setHeaderText(header);
+       return alert;
+    }
+
+    static Alert getConfirmationAlert(String title, String header) {
+        Alert alert = new Alert(AlertType.CONFIRMATION, title, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         alert.setHeaderText(header);
         return alert;
     }

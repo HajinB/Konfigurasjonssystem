@@ -9,10 +9,24 @@ import java.util.ArrayList;
 public class ComponentTypes {
 
     ObservableList<String> concreteTypeListName = FXCollections.observableArrayList();
-
+    String[] preList = {"Prosessor", "Skjermkort", "Minne", "Harddisk", "SSD", "Tastatur", "Mus", "Skjerm"};
+    /*
+                                                   <String fx:value="" />
+                                                   <String fx:value="" />
+                                                   <String fx:value="Minne" />
+                                                   <String fx:value="" />
+                                                   <String fx:value="Tastatur" />
+                                                   <String fx:value="Mus" />
+                                                   <String fx:value="Skjerm" />
+                                                </FXCollections>
+                                             </items>
+    */
     public ComponentTypes(){
-        String[] preList = {"Processor", "Motherboard", "Ram", "SSD", "CPU", "Monitor", "Other"};
         concreteTypeListName.addAll(preList);
+        }
+
+        public String[] getComponentTypesArray(){
+            return preList;
         }
 
     public ObservableList<String> getConcreteTypeListName() {

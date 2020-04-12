@@ -5,7 +5,6 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
@@ -25,6 +24,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.prefs.Preferences;
 
 //todo: få til å loade alle nødvendige files fra components folderen - ikke bare forhåndsvalgt fil
@@ -115,9 +117,34 @@ public class SecondaryController {
         this.stage = stage;
     }
 
+    private void saveTimer() {
+        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        executorService.scheduleWithFixedDelay(() -> {
+            try {
+                autoSave();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }, 0, 1, TimeUnit.MINUTES);
+
+
+    }
+    private void saveAll() throws IOException {
+
+        //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
+        ArrayList<Object> objectsToSave = createObjectList(componentRegister, null, null);
+
+//todo husk å fyll inn der i createObjectList når vi får opp omputerregister og userregister
+        FileHandling.autoSaveFileJobj(objectsToSave,
+                Paths.get(userPreferences.getPathToUser()));
+    }
+    private void autoSave() throws IOException {
+        saveAll();
+    }
+
     @FXML
     public void initialize() throws IOException {
-       // initChoiceBox();
+       initChoiceBox();
         //initColumns();
         /*
         loadRegisterFromDirectory();
@@ -150,27 +177,28 @@ public class SecondaryController {
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
 
     }
-/*
+
     private void initChoiceBox() {
-        choiceBoxVaretype.setItems(componentTypes.getConcreteTypeListName());
+        cbType.setItems(componentTypes.getConcreteTypeListName());
     }
+    /*
+        private void initColumns() {
+            kolonneType.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
+            kolonneVNavn.setCellValueFactory(new PropertyValueFactory<Component, String>("name"));
+            kolonneBesk.setCellValueFactory(new PropertyValueFactory<Component, String>("description"));
+            kolonnePris.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
 
-    private void initColumns() {
-        kolonneType.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
-        kolonneVNavn.setCellValueFactory(new PropertyValueFactory<Component, String>("name"));
-        kolonneBesk.setCellValueFactory(new PropertyValueFactory<Component, String>("description"));
-        kolonnePris.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
-
-        kolonneType.setCellFactory(TextFieldTableCell.forTableColumn());
-        kolonneVNavn.setCellFactory(TextFieldTableCell.forTableColumn());
-        kolonneBesk.setCellFactory(TextFieldTableCell.forTableColumn());
-        //kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(new Converter.DoubleStringConverter()));
-        kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-    }
-*/
+            kolonneType.setCellFactory(TextFieldTableCell.forTableColumn());
+            kolonneVNavn.setCellFactory(TextFieldTableCell.forTableColumn());
+            kolonneBesk.setCellFactory(TextFieldTableCell.forTableColumn());
+            //kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(new Converter.DoubleStringConverter()));
+            kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
+        }
+    */
     @FXML
-    public void refreshTable() {
+    public void refreshTableAndSave() throws IOException {
         tblViewComponent.refresh();
+        saveAll();
     }
 
     private void updateList() {
@@ -182,8 +210,6 @@ public class SecondaryController {
         //bruker openfilethread somegen klasse som arver Task - så setter man metoder til å være failed eller done
         // (skrur av knappene i det milisekundet det tar å laste inn en fil)
         openFileWithThreadSleep();
-
-
         //GJør åpningen i new trheead!!!!!
        /* JComboBox cb = (JComboBox)e.getSource();
         String petName = (String)cb.getSelectedItem();
@@ -204,23 +230,6 @@ public class SecondaryController {
         /*string selected = openCombobox.getSele
         BufferedReader reader = Files.newBufferedReader(Paths.get(path))*/
     }
-
-    //todo delete filen componentlist etter den er loada inn i initialize?
-    // slik at man lager en ny hver gang? auto save..
-
-    //bør man delete den rett før man kjører savejobj? er det det som er greia?
-
-    //todo det som skjer er at den prøver å appende på filen som er der, slik at den ikke er riktig
-    // format, altså den appender binary filene til en arraylist til en eksisterende fil  - da finner
-    // ikke openjobj filen..
-
-    //http://javafxportal.blogspot.com/2012/03/java-deleting-file-or-directory.html
-
-    //    System.out.println(componentRegister.getRegister().get(1));
-
-                /*filbehandling.loadJobjFromDirectory(stage, componentRegister, Paths.get("FileDirectory/ConfigMain" +
-                        ".jobj"));*/
-
     private void loadRegisterFromDirectory() throws IOException {
         File file = new File((userPreferences.getPathToUser()));
         if (file.exists()) {
@@ -229,22 +238,13 @@ public class SecondaryController {
         }
     }
 
-
-
-    private void openFileWithThreadSleep(ComponentRegister componentRegister, String s) {
-        //componentRegister.getRegister();
-        ;
-        openInputThread(componentRegister, s);
-    }
-
+    InputThread inputThread;
     private void openFileWithThreadSleep() {
-        InputThread task = new InputThread(componentRegister, userPreferences.getPathToUser());
-        task.setOnSucceeded(this::threadDone);
-        task.setOnFailed(this::threadFailed);
-        startThread(task);
+        inputThread = new InputThread(componentRegister, userPreferences.getPathToUser());
+        inputThread.setOnSucceeded(this::threadDone);
+        inputThread.setOnFailed(this::threadFailed);
+        startThread(inputThread);
     }
-
-
 
     private void startThread(InputThread task) {
         Thread th = new Thread(task);
@@ -259,6 +259,8 @@ public class SecondaryController {
         //btnLeggTil.getclass.setDisable(false);
         componentReg.setDisable(false);
         //btnSaveID.setDisable(false);
+        //ComponentRegister componentRegisterInn =
+        //her bør man instansiere objectsForSaving
     }
 
     private void threadFailed(WorkerStateEvent event) {
@@ -284,23 +286,20 @@ public class SecondaryController {
         FileHandling.openFile(objectsForSaving, "FileDirectory/Components/ComponentList.jobj");
     }
 
-    //https://www.youtube.com/watch?v=EVEiePe_UVw hvordan slette fra tableview
     @FXML
     void btnDelete(ActionEvent event) {
         ObservableList<Component> allProduct, SingleProduct;
         allProduct = tblViewComponent.getItems();
         SingleProduct = tblViewComponent.getSelectionModel().getSelectedItems();
-        SingleProduct.forEach(allProduct::remove);
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk yes for å slette",
+                tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.YES) {
+            SingleProduct.forEach(allProduct::remove);
+        }
         //fjern fra directory og array ?
     }
 
-    /* Funker ikke om vi bruker gridpane
-    private Component createComponentFromGUI() {
-        return new Component(choiceBoxVare.getValue(),
-                inputVarenavn.getText(),
-                inputBeskrivelse.getText(),
-                doubleStrConverter.stringTilDouble(inputPris.getText()));
-    }*/
     private void updateComponentList() {
         componentRegister.attachTableView(tblViewComponent);
     }
@@ -309,9 +308,6 @@ public class SecondaryController {
     void btnOpenFile(ActionEvent event) {
 
         Component komponent = new Component("2", "ffsaddfs", "asffsa", 299.00);
-    }
-
-    private void loadFromDirectory() {
     }
 
     @FXML
@@ -336,16 +332,6 @@ public class SecondaryController {
             componentRegister.addComponent(newComponent);
         }
     }
-
-    /*
-        private void registerComponent() {
-
-            Component newComponent = registryComponentLogic.createComponentsFromGUIInputIFields();
-            if (newComponent != null) {
-                componentRegister.addComponent(newComponent);
-            }
-        }
-    */
     private void disableGUI() {
         componentReg.setDisable(true);//prøver å slå av hele gridpane
     }
@@ -359,29 +345,9 @@ public class SecondaryController {
     void btnAddComponent(ActionEvent event) throws IOException {
         /*if (inputValidated()) {
             registerComponent();
-
         }*/
-
         registerComponent();
         updateComponentList();
-        // Komponent komponent = registrerKomponent.opprettKomponentFraGUIFelt();
-
-        //todo denne folderen/directory path bør kunne bli satt av brukeren i settings elns(?)
-        //File folder = new File("FileDirectory/");
-        //directoryPath = Paths.("FileDirectory");
-        //directoryPath = new File(folder.getPath());
-        // componentRegister.getRegister().add(opprettKomponentFraGUI());
-        // componentRegister.addComponent(createComponentFromGUI());
-
-
-        //todo sjekk om dette faktisk sletter filen at runtime??
-        //deletefile("FileDirectory/Components/ComponentList.jobj");
-
-        //kan gjøres mer åpen/generalisert, denne saveFileJobj funksjonen, sånn at man bare kan legge på extension i
-        // egen metode.. Denne er nå bare åpen for jobj ish
-        /*FileHandling.saveFileJobj(objectsForSaving,
-                Paths.get(userPreferences.getPathToUser()));*/
-
         SaveAll();
     }
 
@@ -473,37 +439,37 @@ public class SecondaryController {
     // CellEdit - problem: Endringene er ikke varige (til neste gang man åpner).
     // Går ikke an å endre pris heller??
     @FXML
-    private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) {
+    private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
         try {
             event.getRowValue().setProductType(event.getNewValue());
         } catch (IllegalArgumentException e) {
             Dialog.showErrorDialog("Ikke gyldig produkt: " + e.getMessage());
         }
-        tblViewComponent.refresh();
+        refreshTableAndSave();
     }
 
     @FXML
-    private void productNameEdited(TableColumn.CellEditEvent<Component, String> event) {
+    private void productNameEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
         try {
             event.getRowValue().setProductName(event.getNewValue());
         } catch (IllegalArgumentException e) {
             Dialog.showErrorDialog("Ugyldig navn: " + e.getMessage());
         }
-        tblViewComponent.refresh();
+        refreshTableAndSave();
     }
 
     @FXML
-    private void productDescriptionEdited(TableColumn.CellEditEvent<Component, String> event) {
+    private void productDescriptionEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
         try {
             event.getRowValue().setProductDescription(event.getNewValue());
         } catch (IllegalArgumentException e) {
             Dialog.showErrorDialog("Ugyldig tegn i beskrivelse: " + e.getMessage());
         }
-        tblViewComponent.refresh();
+        refreshTableAndSave();
     }
 
     @FXML
-    private void productPriceEdited(TableColumn.CellEditEvent<Component, Double> event) {
+    private void productPriceEdited(TableColumn.CellEditEvent<Component, Double> event) throws IOException {
         try {
             if (doubleStrConverter.wasSuccessful()) {
                 event.getRowValue().setProductPrice(event.getNewValue());
@@ -511,7 +477,8 @@ public class SecondaryController {
         } catch (NumberFormatException e) {
             Dialog.showErrorDialog("Ugyldig pris: " + e.getMessage());
         }
-        tblViewComponent.refresh();
+
+        refreshTableAndSave();
     }
 
     //user-fane

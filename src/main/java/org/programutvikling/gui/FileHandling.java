@@ -48,8 +48,6 @@ public class FileHandling {
 
             saver = new FileSaverJobj();
             //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
-
-
             try {
                 saver.save(register, directoryPath);
                 Dialog.showSuccessDialog("Registeret ble lagret!");
@@ -59,6 +57,22 @@ public class FileHandling {
         }
 
     }
+
+    static void autoSaveFileJobj(ArrayList<Object> register, Path directoryPath) throws IOException {
+        if (directoryPath != null) {
+            FileSaver saver = null;
+            saver = new FileSaverJobj();
+            try {
+                saver.save(register, directoryPath);
+
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
+            }
+        }
+
+    }
+
+
 
     static String getStringPathFromFile(File path) {
         System.out.println(path.getPath());
