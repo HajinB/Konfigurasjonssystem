@@ -6,6 +6,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -13,6 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -39,17 +41,12 @@ import java.util.prefs.Preferences;
 //todo:
 
 public class SecondaryController {
-    Preferences prefs;
-    String componentPath;// = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
-    FileHandling fileHandling;
     ArrayList<Object> objectsForSaving = new ArrayList<>();
     //private RegistrerKomponent registerKomponent;
     UserRegister userRegister = new UserRegister();
     ComputerRegister computerRegister;
     ThreadHandler threadHandler;
     ComponentTypes componentTypes = new ComponentTypes();
-    int componentname = 1;
-    Path directoryPath = Paths.get("FileDirectory");
     ComponentValidator componentValidator = new ComponentValidator();
     InputThread inputThread;
     private Stage stage;
@@ -57,7 +54,6 @@ public class SecondaryController {
     //default path:
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     @FXML
-
     private MenuBar menyBar;
     @FXML
     private Label tblOverskrift;
@@ -79,17 +75,9 @@ public class SecondaryController {
     @FXML
     private ChoiceBox<String> cpTypeFilter;
     @FXML
-    private TextField inputVaretype;
-    @FXML
-    private TextField inputVarenavn;
-    @FXML
-    private TextArea inputBeskrivelse;
-    @FXML
-    private TextField inputPris;
-    @FXML
     private TableView<Component> tblViewComponent;
     @FXML
-    private TableColumn<Component, Double> productPriceColumn;
+    private TableColumn<TableView<Component>, Double> productPriceColumn;
     @FXML
     private GridPane userReg;
     @FXML
@@ -111,6 +99,10 @@ public class SecondaryController {
             System.out.println("File deleted.");
         }
     }
+    public void shutdown() throws IOException {
+        // cleanup code here...
+        saveAll();
+    }
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -125,8 +117,6 @@ public class SecondaryController {
                 e.printStackTrace();
             }
         }, 0, 1, TimeUnit.MINUTES);
-
-
     }
 
     private void saveAll() throws IOException {
@@ -149,13 +139,10 @@ public class SecondaryController {
         loadRegisterFromFile();
         loadObjectsIntoClasses();
         cpTypeFilter.setValue("Ingen filter");
-        //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
-        //sender ut gridpane for å få tak i nodes i en annen class.
         registryComponentLogic = new RegistryComponentLogic(componentReg);
-
-        //System.out.println(componentRegister.toString());
         updateComponentList();
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
+        saveTimer();
 
     }
 
@@ -164,62 +151,15 @@ public class SecondaryController {
         cpTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
 
-    /*
-        private void initColumns() {
-            kolonneType.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
-            kolonneVNavn.setCellValueFactory(new PropertyValueFactory<Component, String>("name"));
-            kolonneBesk.setCellValueFactory(new PropertyValueFactory<Component, String>("description"));
-            kolonnePris.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
-
-            kolonneType.setCellFactory(TextFieldTableCell.forTableColumn());
-            kolonneVNavn.setCellFactory(TextFieldTableCell.forTableColumn());
-            kolonneBesk.setCellFactory(TextFieldTableCell.forTableColumn());
-            //kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(new Converter.DoubleStringConverter()));
-            kolonnePris.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-        }
-    */
     @FXML
     public void refreshTableAndSave() throws IOException {
         tblViewComponent.refresh();
         saveAll();
     }
 
-    private void updateList() {
-        componentRegister.attachTableView(tblViewComponent);
-    }
-
     @FXML
     void btnAddFromFile(ActionEvent event) {
-        //bruker openfilethread somegen klasse som arver Task - så setter man metoder til å være failed eller done
-        // (skrur av knappene i det milisekundet det tar å laste inn en fil)
         openFileWithThreadSleep();
-        //GJør åpningen i new trheead!!!!!
-       /* JComboBox cb = (JComboBox)e.getSource();
-        String petName = (String)cb.getSelectedItem();
-        updateLabel(petName);*/
-        /*string selected = openCombobox.getSele
-        BufferedReader reader = Files.newBufferedReader(Paths.get(path))*/
-
-    }
-
-    @FXML
-    void btnOpen(ActionEvent event) {
-        //bruker openfilethread somegen klasse som arver Task - så setter man metoder til å være failed eller done
-        // (skrur av knappene i det milisekundet det tar å laste inn en fil)
-        //GJør åpningen i new trheead!!!!!
-       /* JComboBox cb = (JComboBox)e.getSource();
-        String petName = (String)cb.getSelectedItem();
-        updateLabel(petName);*/
-        /*string selected = openCombobox.getSele
-        BufferedReader reader = Files.newBufferedReader(Paths.get(path))*/
-    }
-
-    private void loadRegisterFromDirectory() throws IOException {
-        File file = new File((userPreferences.getPathToUser()));
-        if (file.exists()) {
-            FileHandling.loadAppFiles(objectsForSaving, userPreferences.getPathToUser());
-            loadObjectsIntoClasses();
-        }
     }
 
     private void openFileWithThreadSleep() {
@@ -243,7 +183,7 @@ public class SecondaryController {
         componentReg.setDisable(false);
         //btnSaveID.setDisable(false);
         //ComponentRegister componentRegisterInn =
-        //her bør man instansiere objectsForSaving
+        //her bør man instansiere objectsForSaving ??? aner ikke hva som er best måte
     }
 
     private void threadFailed(WorkerStateEvent event) {
@@ -301,11 +241,6 @@ public class SecondaryController {
     @FXML
     void btnFraFil(ActionEvent event) {
         openFileFromChooserWithThreadSleep(componentRegister);
-    }
-
-    boolean inputValidated() {
-        //send inputfields til en metode - valider de en egen klasse.
-        return true;
     }
 
     private void registerComponent() throws InvalidComponentFormatException {
@@ -461,34 +396,6 @@ public class SecondaryController {
         App.setRoot("primary");
     }
 
-
-    @FXML
-    void kolonneTypeEdit(TableColumn.CellEditEvent<Component, String> event) {
-        event.getRowValue().setProductType(event.getNewValue());
-        updateList();
-    }
-
-    @FXML
-    void kolonneVNavnEdit(TableColumn.CellEditEvent<Component, String> event) {
-        event.getRowValue().setProductName(event.getNewValue());
-        updateList();
-    }
-
-    @FXML
-    void kolonneBeskEdit(TableColumn.CellEditEvent<Component, String> event) {
-        event.getRowValue().setProductDescription(event.getNewValue());
-        updateList();
-
-    }
-
-    @FXML
-    void kolonnePrisEdit(TableColumn.CellEditEvent<Component, Double> event) {
-
-        event.getRowValue().setProductPrice(event.getNewValue());
-        updateList();
-
-    }
-
     // Tableview edit
     // CellEdit - problem: Endringene er ikke varige (til neste gang man åpner).
     // Går ikke an å endre pris heller??
@@ -530,8 +437,9 @@ public class SecondaryController {
             }
         } catch (NumberFormatException e) {
             Dialog.showErrorDialog("Ugyldig pris: " + e.getMessage());
+        } catch(IllegalArgumentException i){
+            Dialog.showErrorDialog("Ugyldig alder: " + i.getMessage());
         }
-
         refreshTableAndSave();
     }
 

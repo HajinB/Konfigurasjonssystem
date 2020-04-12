@@ -1,10 +1,14 @@
 package org.programutvikling;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import org.programutvikling.gui.SecondaryController;
 
 import java.io.IOException;
 
@@ -26,11 +30,9 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
         //scene = buildUI(primaryStage);
         if (scene == null) throw new NullPointerException();
         scene.getRoot().applyCss();
-
     }
 
     public static void setRoot(String fxml) throws IOException {

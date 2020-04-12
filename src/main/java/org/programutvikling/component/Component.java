@@ -75,7 +75,7 @@ public class Component implements Serializable, ItemUsable {
 
     public final void setProductPrice(double productPrice) {
         // evt validator
-        this.productPrice.set(productPrice);
+        this.productPrice.setValue(productPrice);
     }
     // toString
     @Override

@@ -7,9 +7,9 @@ public class Converter {
         public static class DoubleStringConverter extends javafx.util.converter.DoubleStringConverter {
             private boolean conversionSuccessful;
 
-            public double stringTilDouble(String s) {
+            public Double stringTilDouble(String s) {
                 try {
-                    double result = super.fromString(s);
+                    Double result = super.fromString(s);
                     conversionSuccessful = true;
                     return result;
                 } catch(NumberFormatException e) {
