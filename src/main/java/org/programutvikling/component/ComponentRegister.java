@@ -30,6 +30,10 @@ public class ComponentRegister implements Serializable {
         return nyListe;
     }
 
+    public ObservableList<Component> getObservableRegister() {
+        return componentObservableList;
+    }
+
     public List<Component> getRegister() {
         return componentObservableList;
     }
@@ -46,16 +50,25 @@ public class ComponentRegister implements Serializable {
     }
 
     private boolean doesNameExist(String name) {
-        List<Component> filterByName = filterByName(name);
+        List<Component> filterByName = filterByProductName(name);
         return (filterByName.size() > 0);
     }
 
-    public ObservableList<Component> filterByName(String name) {
+
+    public ObservableList<Component> filterByProductName(String name) {
         return componentObservableList.stream().
                 filter(p -> p.getProductName().toLowerCase().
                         matches(String.format("%s%s%s", ".*", name.toLowerCase(), ".*"))).
                 collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
+
+    public ObservableList<Component> filterByProductType(String name) {
+        return componentObservableList.stream().
+                filter(p -> p.getProductType().toLowerCase().
+                        matches(String.format("%s%s%s",".*", name.toLowerCase(), ".*"))).
+                collect(Collectors.toCollection(FXCollections::observableArrayList));
+    }
+
 
     public void addComponent(Component component) {
         componentObservableList.add(component);
@@ -87,9 +100,12 @@ public class ComponentRegister implements Serializable {
     }
 
     private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+
         List<Component> list = (List<Component>) inputStream.readObject();
         componentObservableList = FXCollections.observableArrayList();
         componentObservableList.addAll(list);
     }
+
+
 }
 

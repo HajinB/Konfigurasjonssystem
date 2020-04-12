@@ -12,7 +12,6 @@ import java.io.IOException;
 
 
 public class EnduserController extends SecondaryController {
-    private UserPreferences superUserPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
     ComputerRegister computerRegister = new ComputerRegister();

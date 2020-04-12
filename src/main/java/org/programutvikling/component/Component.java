@@ -16,7 +16,7 @@ public class Component implements Serializable, ItemUsable {
     private transient SimpleStringProperty productName;
     private transient SimpleStringProperty productDescription;
     private transient SimpleDoubleProperty productPrice;*/
-
+    transient ComponentValidator componentValidator = new ComponentValidator();
     private transient SimpleStringProperty productType;
     private transient SimpleStringProperty productName;
     private transient SimpleStringProperty productDescription;
@@ -39,9 +39,16 @@ public class Component implements Serializable, ItemUsable {
         return productType.getValue();
     }
 
-    public final void setProductType(String productType) {
-        // validator
-        this.productType.set(productType);
+    public void setProductType(String productTypeIn) {
+                this.productType.setValue(productTypeIn);
+        }
+
+    public void editSetProductType(String productType) {
+        if (!ComponentValidator.isProductTypeOk(productType)) {
+            throw new IllegalArgumentException("Produkttype er ugyldig");
+        } else {
+            this.productType.set(productType);
+        }
     }
 
     public String getProductName() {

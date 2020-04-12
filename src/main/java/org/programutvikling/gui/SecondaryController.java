@@ -1,11 +1,14 @@
 package org.programutvikling.gui;
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -13,6 +16,7 @@ import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
+import org.programutvikling.component.ComponentValidator;
 import org.programutvikling.component.io.InvalidComponentFormatException;
 import org.programutvikling.component.io.iothread.InputThread;
 import org.programutvikling.computer.ComputerRegister;
@@ -59,6 +63,7 @@ public class SecondaryController {
     private ComponentRegister componentRegister = new ComponentRegister();
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
+    ComponentValidator componentValidator = new ComponentValidator();
     @FXML
     private Tab tabComponents;
     @FXML
@@ -138,6 +143,7 @@ public class SecondaryController {
         FileHandling.autoSaveFileJobj(objectsToSave,
                 Paths.get(userPreferences.getPathToUser()));
     }
+
     private void autoSave() throws IOException {
         saveAll();
     }
@@ -393,6 +399,40 @@ public class SecondaryController {
         return objects;
     }
 
+    @FXML
+    void search(KeyEvent event) {
+        FilteredList<Component> filteredData = new FilteredList<>(componentRegister.getObservableRegister(), p -> true);
+        /*FilteredList<Component> filteredData =
+                new FilteredList<Component>((FilteredList<Component>) componentRegister.getRegister(), p -> true);*/
+        componentSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(component -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                // sammenligner alle feltene med filteret.
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (component.getProductType().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (component.getProductName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches epost
+                } else if (component.getProductDescription().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches fødselsdato
+                } else
+                    return Double.toString(component.getProductPrice()).toLowerCase().matches(lowerCaseFilter); // Filter
+                // matches fødselsdato
+                // Does not match.
+            });
+        });
+        // 3. Lager en ny liste som er en sortertversjon
+        SortedList<Component> sortedData = new SortedList<>(filteredData);
+        // 4. "binder" denne sorterte listen og sammenligner det med tableviewens data
+        sortedData.comparatorProperty().bind(tblViewComponent.comparatorProperty());
+        // 5. legger til sortert og filtrert data
+        tblViewComponent.setItems(sortedData);
+        tblViewComponent.refresh();
+    }
+
     void loadObjectsIntoClasses() {
         //første index er componentregister
         //2. = userregister
@@ -441,7 +481,7 @@ public class SecondaryController {
     @FXML
     private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
         try {
-            event.getRowValue().setProductType(event.getNewValue());
+            event.getRowValue().editSetProductType(event.getNewValue());
         } catch (IllegalArgumentException e) {
             Dialog.showErrorDialog("Ikke gyldig produkt: " + e.getMessage());
         }
