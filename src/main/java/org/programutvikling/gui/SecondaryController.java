@@ -1,5 +1,6 @@
 package org.programutvikling.gui;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -49,12 +50,12 @@ public class SecondaryController {
     ComponentTypes componentTypes = new ComponentTypes();
     int componentname = 1;
     Path directoryPath = Paths.get("FileDirectory");
+    ComponentValidator componentValidator = new ComponentValidator();
+    InputThread inputThread;
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
     //default path:
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
-
-
     @FXML
 
     private MenuBar menyBar;
@@ -63,7 +64,6 @@ public class SecondaryController {
     private ComponentRegister componentRegister = new ComponentRegister();
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
-    ComponentValidator componentValidator = new ComponentValidator();
     @FXML
     private Tab tabComponents;
     @FXML
@@ -77,7 +77,7 @@ public class SecondaryController {
     @FXML
     private TextField componentSearch;
     @FXML
-    private ChoiceBox<?> cpTypeFilter;
+    private ChoiceBox<String> cpTypeFilter;
     @FXML
     private TextField inputVaretype;
     @FXML
@@ -86,16 +86,10 @@ public class SecondaryController {
     private TextArea inputBeskrivelse;
     @FXML
     private TextField inputPris;
-
-
-
     @FXML
     private TableView<Component> tblViewComponent;
-
     @FXML
     private TableColumn<Component, Double> productPriceColumn;
-
-
     @FXML
     private GridPane userReg;
     @FXML
@@ -134,6 +128,7 @@ public class SecondaryController {
 
 
     }
+
     private void saveAll() throws IOException {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
@@ -150,30 +145,10 @@ public class SecondaryController {
 
     @FXML
     public void initialize() throws IOException {
-       initChoiceBox();
-        //initColumns();
-        /*
-        loadRegisterFromDirectory();
-        //sender ut gridpane for å få tak i nodes i en annen class.
-        updateList();
-        refreshTable();
-        threadHandler = new ThreadHandler(stage, componentReg);
-        tblViewComponent.refresh();
-        //componentPath = userPreferences.getPathToUser();
-        //Path userDirPath =
-        //System.out.println(directoryPath.toString());
-        //bare lag en metode som gjør alt dette!
-        loadRegisterFromFile();
-        //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
-        //sender ut gridpane for å få tak i nodes i en annen class.
-        registryComponentLogic = new RegistryComponentLogic(componentReg);
-        //System.out.println(componentRegister.toString());
-        updateComponentList();
-        productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-        */
-
+        initChoiceBox();
         loadRegisterFromFile();
         loadObjectsIntoClasses();
+        cpTypeFilter.setValue("Ingen filter");
         //Path componentPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
         //sender ut gridpane for å få tak i nodes i en annen class.
         registryComponentLogic = new RegistryComponentLogic(componentReg);
@@ -185,8 +160,10 @@ public class SecondaryController {
     }
 
     private void initChoiceBox() {
-        cbType.setItems(componentTypes.getConcreteTypeListName());
+        cbType.setItems(componentTypes.getObservableTypeListName());
+        cpTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
+
     /*
         private void initColumns() {
             kolonneType.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
@@ -236,6 +213,7 @@ public class SecondaryController {
         /*string selected = openCombobox.getSele
         BufferedReader reader = Files.newBufferedReader(Paths.get(path))*/
     }
+
     private void loadRegisterFromDirectory() throws IOException {
         File file = new File((userPreferences.getPathToUser()));
         if (file.exists()) {
@@ -244,7 +222,6 @@ public class SecondaryController {
         }
     }
 
-    InputThread inputThread;
     private void openFileWithThreadSleep() {
         inputThread = new InputThread(componentRegister, userPreferences.getPathToUser());
         inputThread.setOnSucceeded(this::threadDone);
@@ -338,6 +315,7 @@ public class SecondaryController {
             componentRegister.addComponent(newComponent);
         }
     }
+
     private void disableGUI() {
         componentReg.setDisable(true);//prøver å slå av hele gridpane
     }
@@ -399,9 +377,50 @@ public class SecondaryController {
         return objects;
     }
 
+       /*Så hvis det er mulig å få opp alle prosessorer når man filtrer på det uten å måtte skrive noe inn på søkefeltet,
+    men samtidig kunne spesifisere ord som skal være i filtreringen,
+    hadde det vært superb. Hvis du skjønner hva jeg mener?*/
+
+     @FXML
+     private void filterByTypeSelected(){
+        filter();
+     }
+
+    private ObservableList<Component> filter() {
+        if(cpTypeFilter.getValue().equals("Ingen filter")) {
+            updateComponentList();
+            return componentRegister.getObservableRegister();
+        }
+        ObservableList<Component> result = null;
+        String filterString = cpTypeFilter.getValue().toString().toLowerCase();
+        result = componentRegister.filterByProductType(filterString);
+        if(result == null) {
+            tblViewComponent.setItems(FXCollections.observableArrayList());
+        } else {
+            tblViewComponent.setItems(result);
+        }
+        return result;
+    }
+
     @FXML
     void search(KeyEvent event) {
-        FilteredList<Component> filteredData = new FilteredList<>(componentRegister.getObservableRegister(), p -> true);
+         if(cpTypeFilter.getValue().toString().equals("Ingen filter") || cpTypeFilter.getValue() == null ){
+             FilteredList<Component> filteredData = getFiltered(componentRegister.getObservableRegister());
+             // 3. Lager en ny liste som er en sortertversjon
+            SortedList<Component> sortedData = new SortedList<>(filteredData);
+            // 4. "binder" denne sorterte listen og sammenligner det med tableviewens data
+            sortedData.comparatorProperty().bind(tblViewComponent.comparatorProperty());
+            // 5. legger til sortert og filtrert data
+            tblViewComponent.setItems(sortedData);
+            tblViewComponent.refresh();
+        }else{
+                 tblViewComponent.setItems(getFiltered(componentRegister.filterByProductType(cpTypeFilter.getValue().toLowerCase())));
+                 tblViewComponent.refresh();
+             }
+        }//skal sende en liste som allerede er filtrert basert på
+
+    private FilteredList<Component> getFiltered(ObservableList<Component> list) {
+        FilteredList<Component> filteredData = new FilteredList<>(list, p -> true);
         /*FilteredList<Component> filteredData =
                 new FilteredList<Component>((FilteredList<Component>) componentRegister.getRegister(), p -> true);*/
         componentSearch.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -424,14 +443,9 @@ public class SecondaryController {
                 // Does not match.
             });
         });
-        // 3. Lager en ny liste som er en sortertversjon
-        SortedList<Component> sortedData = new SortedList<>(filteredData);
-        // 4. "binder" denne sorterte listen og sammenligner det med tableviewens data
-        sortedData.comparatorProperty().bind(tblViewComponent.comparatorProperty());
-        // 5. legger til sortert og filtrert data
-        tblViewComponent.setItems(sortedData);
-        tblViewComponent.refresh();
+        return filteredData;
     }
+
 
     void loadObjectsIntoClasses() {
         //første index er componentregister

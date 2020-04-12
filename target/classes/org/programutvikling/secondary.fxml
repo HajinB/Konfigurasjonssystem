@@ -161,7 +161,8 @@
                                        </font>
                                     </TextField>
                                     <Label prefHeight="18.0" prefWidth="4.0" />
-                                    <ChoiceBox fx:id="cpTypeFilter" prefHeight="30.0" prefWidth="170.0" />
+                                    <ChoiceBox fx:id="cpTypeFilter" onAction="#filterByTypeSelected" prefHeight="30.0"
+                                               prefWidth="170.0" />
                                 </items>
                               </ToolBar>
                               <TableView fx:id="tblViewComponent" editable="true" layoutX="360.0" layoutY="166.0" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">

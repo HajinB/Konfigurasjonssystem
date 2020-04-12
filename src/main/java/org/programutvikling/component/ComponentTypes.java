@@ -9,7 +9,11 @@ import java.util.ArrayList;
 public class ComponentTypes {
 
     ObservableList<String> concreteTypeListName = FXCollections.observableArrayList();
+    ObservableList<String> concreteTypeListFilterName = FXCollections.observableArrayList();
     static String[] preList = {"Prosessor", "Skjermkort", "Minne", "Harddisk", "SSD", "Tastatur", "Mus", "Skjerm"};
+    static String[] filterList = {"Ingen filter","Prosessor", "Skjermkort", "Minne", "Harddisk", "SSD", "Tastatur",
+            "Mus",
+            "Skjerm"};
     /*
                                                    <String fx:value="" />
                                                    <String fx:value="" />
@@ -23,13 +27,18 @@ public class ComponentTypes {
     */
     public ComponentTypes(){
         concreteTypeListName.addAll(preList);
+        concreteTypeListFilterName.addAll(filterList);
         }
 
         public static String[] getComponentTypesArray(){
             return preList;
         }
 
-    public ObservableList<String> getConcreteTypeListName() {
+    public ObservableList<String> getObservableTypeListName() {
         return concreteTypeListName;
+    }
+
+    public ObservableList<String> getObservableTypeListNameForFilter() {
+        return concreteTypeListFilterName;
     }
 }
