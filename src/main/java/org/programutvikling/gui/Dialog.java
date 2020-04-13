@@ -3,6 +3,7 @@ package org.programutvikling.gui;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionModel;
 
@@ -25,12 +26,14 @@ public class Dialog {
 
         alert.showAndWait();
     }
-
-   static Alert getConfirmationAlert(String title, String header, String selection) {
-       Alert alert = new Alert(AlertType.CONFIRMATION, "Delete " + selection + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-       alert.setTitle(title);
-       alert.setHeaderText(header);
-       return alert;
+    static Alert getConfirmationAlert(String title, String header, String selection) {
+        ButtonType btnJa = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
+        ButtonType btnNei = new ButtonType("Nei", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Delete " + selection + " ?", btnJa, btnNei,
+                ButtonType.CANCEL);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        return alert;
     }
 
     static Alert getConfirmationAlert(String title, String header) {

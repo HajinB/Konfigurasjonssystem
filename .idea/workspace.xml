@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/Dialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="refactorv2.13.april" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -152,12 +153,12 @@
       <module name="Konfigurasjonssystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.programutvikling.user.*" />
+          <option name="PATTERN" value="org.programutvikling.model.user.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.programutvikling.user" />
-      <option name="MAIN_CLASS_NAME" value="org.programutvikling.user.UserValidatorTest" />
+      <option name="PACKAGE_NAME" value="org.programutvikling.model.user" />
+      <option name="MAIN_CLASS_NAME" value="org.programutvikling.model.user.UserValidatorTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -167,12 +168,12 @@
       <module name="Konfigurasjonssystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.programutvikling.user.*" />
+          <option name="PATTERN" value="org.programutvikling.model.user.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.programutvikling.user" />
-      <option name="MAIN_CLASS_NAME" value="org.programutvikling.user.UserValidatorTest" />
+      <option name="PACKAGE_NAME" value="org.programutvikling.model.user" />
+      <option name="MAIN_CLASS_NAME" value="org.programutvikling.model.user.UserValidatorTest" />
       <option name="METHOD_NAME" value="name" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -190,10 +191,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.UserValidatorTest.name" />
-        <item itemvalue="JUnit.UserValidatorTest" />
         <item itemvalue="JUnit.FileSaverTxtTest" />
+        <item itemvalue="JUnit.UserValidatorTest" />
         <item itemvalue="Application.BrukerValidator" />
-        <item itemvalue="Application.BrukerValidator" />
+        <item itemvalue="JUnit.UserValidatorTest.name" />
       </list>
     </recent_temporary>
   </component>
@@ -464,21 +465,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java</url>
-          <line>143</line>
+          <line>133</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java</url>
-          <line>148</line>
+          <line>138</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/model/component/ComponentValidator.java</url>
           <line>14</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/model/component/ComponentValidator.java</url>
           <line>13</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
