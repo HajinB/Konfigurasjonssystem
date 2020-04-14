@@ -44,8 +44,10 @@ public class ComponentRegister implements Serializable {
 
     public void removeComponent(Component component) {
         String name = component.getProductName();
-        if (doesNameExist(name)) {
-            componentObservableList.removeAll(component);
+        for(int i = 0; i<componentObservableList.size(); i++) {
+            if (componentObservableList.get(i).getProductName().equals(component.getProductName())) {
+                componentObservableList.remove(i);
+            }
         }
     }
 

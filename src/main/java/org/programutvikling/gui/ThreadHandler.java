@@ -31,12 +31,11 @@ public class ThreadHandler {
         startThread(inputThread);
     }
 */
-    ArrayList<Object> openInputThread(ComponentRegister componentRegister, String s) {
+    void openInputThread(ComponentRegister componentRegister, String s) {
         task = new InputThread(componentRegister, s);
         task.setOnSucceeded(this::threadDone);
         task.setOnFailed(this::threadFailed);
         startThread(task);
-        return task.getValue();
     }
 
     void startThread(InputThread task) {
@@ -48,15 +47,18 @@ public class ThreadHandler {
         task.call();  //call bruker filepathen fra konstruktøren til å åpne/laste inn
     }
 
-    ArrayList<Object> threadDone(WorkerStateEvent e) {
+   void threadDone(WorkerStateEvent e) {
         Dialog.showSuccessDialog("Opening complete");
         //btnLeggTil.getclass.setDisable(false);
         controller.enableGUI();
         //objectsLoaded.addAll(task.getValue());
         //btnSaveID.setDisable(false);
         //ComponentRegister componentRegisterInn =
+       ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
+               //getCleanObjectList.addAll(task.getValue());
+       ContextModel.getInstance().loadObjectsIntoClasses();
         //her bør man instansiere objectsForSaving ??? aner ikke hva som er best måte
-        return task.getValue();
+
     }
 
     void threadFailed(WorkerStateEvent event) {

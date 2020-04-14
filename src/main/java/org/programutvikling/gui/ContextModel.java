@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ContextModel {
 //"Singletons are useful to provide a unique source of data or functionality to other Java Objects."
+    //https://stackoverflow.com/questions/6059778/store-data-in-singleton-classes
     //todo: ContextModel er en singleton som lagrer alle objekter, som skal være mulig å aksesse fra alle controllers
     // - altså det er innom denne classen (som er oprettet EN gang, og bare en gang) -
     private ComponentRegister componentRegister;
@@ -38,7 +39,7 @@ public class ContextModel {
     }
 
 
-    void loadObjectsIntoClasses() {
+    public void loadObjectsIntoClasses() {
         //første index er componentregister
         //2. = userregister
         //3 = computerregister      disse tre er egentlig alt man trenger (for auto-load all files).

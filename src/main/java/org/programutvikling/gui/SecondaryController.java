@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -44,42 +45,27 @@ import java.util.prefs.Preferences;
 public class SecondaryController {
     @FXML
     BorderPane topLevelPane;
-    ArrayList<Object> objectsForSaving = new ArrayList<>();
+    //ArrayList<Object> objectsForSaving = new ArrayList<>();
     //private RegistrerKomponent registerKomponent;
-    UserRegister userRegister = new UserRegister();
-    ComputerRegister computerRegister;
     ComponentTypes componentTypes = new ComponentTypes();
-    ComponentValidator componentValidator = new ComponentValidator();
-    InputThread inputThread;
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
     //default path:
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     @FXML
     private ProgressBar progressBar;
-    @FXML
-    private MenuBar menyBar;
-    @FXML
-    private Label tblOverskrift;
 
     ContextModel currentContext = ContextModel.getInstance();
-
-    private ComponentRegister componentRegister = currentContext.getComponentRegister();
-
-
+    private ComputerRegister computerRegister = ContextModel.getInstance().getComputerRegister();
+    private ComponentRegister componentRegister = ContextModel.getInstance().getComponentRegister();
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
-
     @FXML
     private Tab tabComponents;
     @FXML
     private GridPane componentReg;
-
-
     @FXML
     private Label lblComponentMsg;
-    @FXML
-    private Button btnLeggTil;
     @FXML
     private ChoiceBox<String> cbType;
     @FXML
@@ -111,6 +97,7 @@ public class SecondaryController {
             System.out.println("File deleted.");
         }
     }
+
     public void shutdown() throws IOException {
         // cleanup code here...
         saveAll();
@@ -134,7 +121,7 @@ public class SecondaryController {
     private void saveAll() throws IOException {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
-        ArrayList<Object> objectsToSave = createObjectList(ContextModel.getInstance().getComponentRegister(), null);
+        ArrayList<Object> objectsToSave = createObjectList(componentRegister, computerRegister);
         //ContextModel.getInstance().getComponentRegister()
 
 //todo husk å fyll inn der i createObjectList når vi får opp omputerregister og userregister
@@ -156,9 +143,7 @@ public class SecondaryController {
         updateComponentList();
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         saveTimer();
-         threadHandler = new ThreadHandler(stage, componentReg, this);
-
-
+        threadHandler = new ThreadHandler(stage, componentReg, this);
     }
 
     private void initChoiceBox() {
@@ -191,7 +176,7 @@ public class SecondaryController {
     @FXML
     void btnOpenJobj(ActionEvent event) {
 
-        FileHandling.openFile(objectsForSaving, "FileDirectory/Components/ComponentList.jobj");
+        FileHandling.openFile(currentContext.getCleanObjectList(), "FileDirectory/Components/ComponentList.jobj");
     }
 
     @FXML
@@ -203,7 +188,14 @@ public class SecondaryController {
                 tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
-            SingleProduct.forEach(allProduct::remove);
+            //SingleProduct.forEach(allProduct::remove);
+            Component selectedComp = tblViewComponent.getSelectionModel().getSelectedItem();
+            System.out.println(selectedComp);
+           componentRegister.removeComponent(selectedComp);
+           componentRegister.getRegister().remove(selectedComp);
+            tblViewComponent.getItems().removeAll(selectedComp);
+            updateComponentList();
+            tblViewComponent.refresh();
         }
         //fjern fra directory og array ?
     }
@@ -256,10 +248,8 @@ public class SecondaryController {
         //path her blir ikke riktig.
         //String chosenPath = FileHandling.getStringPathFromFile(path);
         ArrayList<Object> objects = new ArrayList<>();
-        objectsForSaving.clear(); //npe her?
-        System.out.println(objectsForSaving);
-        objectsForSaving.addAll(threadHandler.openInputThread(componentRegister, chosenPath));
-        loadObjectsIntoClasses();
+        threadHandler.openInputThread(componentRegister, chosenPath);
+        updateComponentList();
     }
 
     //skal det åpnes bare componentregister også??? hvordan kan man gjøre det?

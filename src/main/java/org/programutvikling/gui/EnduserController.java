@@ -48,7 +48,7 @@ public class EnduserController extends SecondaryController {
     }
 
     private void loadElementsFromFile() {
-        fileHandling.OpenSelectedComputerTxtFiles(objectsForSaving, userPreferences.getPathToUser());
+        fileHandling.OpenSelectedComputerTxtFiles(currentContext.getCleanObjectList(), userPreferences.getPathToUser());
     }
 
 
