@@ -4,9 +4,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import org.programutvikling.component.Component;
-import org.programutvikling.component.io.InvalidComponentFormatException;
-
-import java.io.IOException;
 
 class RegistryComponentLogic {
     Converter.DoubleStringConverter doubleStringConverter = new Converter.DoubleStringConverter();
@@ -55,7 +52,7 @@ class RegistryComponentLogic {
 
     private double getDouble(TextField field) {
 
-        return doubleStringConverter.stringTilDouble(getString(field));
+        return doubleStringConverter.fromString(getString(field));
     }
 
     private void resetFields() {

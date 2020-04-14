@@ -403,7 +403,7 @@ public class SecondaryController {
         } catch (NumberFormatException e) {
             Dialog.showErrorDialog("Ugyldig pris: " + e.getMessage());
         } catch(IllegalArgumentException i){
-            Dialog.showErrorDialog("Ugyldig alder: " + i.getMessage());
+            Dialog.showErrorDialog("Ugyldige tegn: " + i.getMessage());
         }
         refreshTableAndSave();
     }

@@ -7,7 +7,8 @@ public class Converter {
         public static class DoubleStringConverter extends javafx.util.converter.DoubleStringConverter {
             private boolean conversionSuccessful;
 
-            public Double stringTilDouble(String s) {
+            @Override
+            public Double fromString(String s) {
                 try {
                     Double result = super.fromString(s);
                     conversionSuccessful = true;
