@@ -362,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586878493749</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="liten fix på fjernRad">
+      <created>1586882230946</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1586882230946</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,7 +409,8 @@
     <MESSAGE value="search on key press" />
     <MESSAGE value="cleaned + autosave" />
     <MESSAGE value="La til singleton ContextModel som opprettes EN gang- som holder all data - tror det funker sweet" />
-    <option name="LAST_COMMIT_MESSAGE" value="La til singleton ContextModel som opprettes EN gang- som holder all data - tror det funker sweet" />
+    <MESSAGE value="liten fix på fjernRad" />
+    <option name="LAST_COMMIT_MESSAGE" value="liten fix på fjernRad" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />
@@ -497,7 +505,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java</url>
-          <line>248</line>
+          <line>249</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

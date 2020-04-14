@@ -180,7 +180,7 @@ public class SecondaryController {
     }
 
     @FXML
-    void btnDelete(ActionEvent event) {
+    void btnDelete(ActionEvent event) throws IOException {
         ObservableList<Component> allProduct, SingleProduct;
         allProduct = tblViewComponent.getItems();
         SingleProduct = tblViewComponent.getSelectionModel().getSelectedItems();
@@ -194,6 +194,7 @@ public class SecondaryController {
             componentRegister.removeComponent(selectedComp);
             updateComponentList();
             tblViewComponent.refresh();
+            saveAll();
         }
         //fjern fra directory og array ?
     }
