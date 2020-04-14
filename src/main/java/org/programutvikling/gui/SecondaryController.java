@@ -187,13 +187,11 @@ public class SecondaryController {
         Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk yes for å slette",
                 tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
         alert.showAndWait();
-        if (alert.getResult() == ButtonType.YES) {
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
             //SingleProduct.forEach(allProduct::remove);
             Component selectedComp = tblViewComponent.getSelectionModel().getSelectedItem();
             System.out.println(selectedComp);
-           componentRegister.removeComponent(selectedComp);
-           componentRegister.getRegister().remove(selectedComp);
-            tblViewComponent.getItems().removeAll(selectedComp);
+            componentRegister.removeComponent(selectedComp);
             updateComponentList();
             tblViewComponent.refresh();
         }
