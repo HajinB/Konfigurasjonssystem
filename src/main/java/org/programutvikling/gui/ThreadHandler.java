@@ -1,6 +1,7 @@
 package org.programutvikling.gui;
 
 import javafx.concurrent.WorkerStateEvent;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.component.ComponentRegister;
@@ -16,23 +17,16 @@ public class ThreadHandler {
     SecondaryController controller;
     private InputThread task;
     private ArrayList<Object> objectsLoaded = new ArrayList<>();
+    ProgressBar progressBar = new ProgressBar();
 
     ThreadHandler(Stage stage, GridPane gridPane, SecondaryController controller) {
         this.stage = stage;
         this.gridPane = gridPane;
         this.controller = controller;
     }
+    void openInputThread(String s) {
+        task = new InputThread(ContextModel.getInstance().getComponentRegister(), s);
 
-/*
-    void openFileWithThreadSleep(ComponentRegister componentRegister, UserPreferences userPreferences) {
-        inputThread = new InputThread(componentRegister, userPreferences.getPathToUser());
-        inputThread.setOnSucceeded(this::threadDone);
-        inputThread.setOnFailed(this::threadFailed);
-        startThread(inputThread);
-    }
-*/
-    void openInputThread(ComponentRegister componentRegister, String s) {
-        task = new InputThread(componentRegister, s);
         task.setOnSucceeded(this::threadDone);
         task.setOnFailed(this::threadFailed);
         startThread(task);
@@ -43,16 +37,19 @@ public class ThreadHandler {
         th.setDaemon(true);
         controller.disableGUI();
         //gridPane.setDisable(true);//prøver å slå av hele gridpane
+        progressBar.setVisible(true);
         th.start();
         task.call();  //call bruker filepathen fra konstruktøren til å åpne/laste inn
     }
 
    void threadDone(WorkerStateEvent e) {
+       System.out.println("thread done");
         Dialog.showSuccessDialog("Opening complete");
         //btnLeggTil.getclass.setDisable(false);
         controller.enableGUI();
-       ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
-       ContextModel.getInstance().loadObjectsIntoClasses();
+       progressBar.setVisible(false);
+        ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
+        ContextModel.getInstance().loadObjectsIntoClasses();
         //her bør man instansiere objectsForSaving ??? aner ikke hva som er best måte
 
     }

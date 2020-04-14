@@ -9,7 +9,8 @@ import org.programutvikling.user.UserRegister;
 
 import java.util.ArrayList;
 
-public class ContextModel {
+public enum ContextModel {
+    INSTANCE;
 //"Singletons are useful to provide a unique source of data or functionality to other Java Objects."
     //https://stackoverflow.com/questions/6059778/store-data-in-singleton-classes
     //todo: ContextModel er en singleton som lagrer alle objekter, som skal være mulig å aksesse fra alle controllers
@@ -23,7 +24,7 @@ public class ContextModel {
     //https://en.wikipedia.org/wiki/Singleton_pattern
     //https://stackoverflow.com/questions/12166786/multiple-fxml-with-controllers-share-object
 
-    private final static ContextModel instance = new ContextModel();
+   // private final static ContextModel instance = new ContextModel();
         //https://dzone.com/articles/singleton-in-java
     private ContextModel(){
         FileHandling.openFile(objects,userPreferences.getPathToUser());
@@ -48,7 +49,7 @@ public class ContextModel {
     }
 
     public static ContextModel getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     public ComponentRegister getComponentRegister() {

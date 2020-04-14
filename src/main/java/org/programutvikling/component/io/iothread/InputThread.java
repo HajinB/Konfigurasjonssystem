@@ -29,6 +29,7 @@ public class InputThread extends Task<ArrayList<Object>> {
     public ArrayList<Object> call() {
 
         try {
+
             FileHandling.OpenSelectedComputerTxtFiles(componentRegisterList, filePath);
             sleep(3000);
 

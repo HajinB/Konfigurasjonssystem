@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.*;
 import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.user.UserPreferences;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +19,35 @@ import java.util.Arrays;
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
 
 public class FileHandling {
+    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
+    public void saveAll() throws IOException {
+
+        //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
+        ArrayList<Object> objects = createObjectList(ContextModel.getInstance().getComponentRegister(),
+                ContextModel.getInstance().getComputerRegister());
+
+//todo prøv å legg denne metoden i en annen klassse - den trenger ikke være her - userpreferences kan være en del av
+// context model..
+        FileHandling.saveFileJobj(objects,
+                Paths.get(userPreferences.getPathToUser()));
+    }
+
+    public UserPreferences getUserPreferences() {
+        return userPreferences;
+    }
+    public String getPathToUser(){
+        return userPreferences.getPathToUser();
+    }
+
+    ArrayList<Object> createObjectList(ComponentRegister componentRegister,
+                                       ComputerRegister computerRegister) {
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.add(componentRegister);
+        objects.add(computerRegister);
+
+        return objects;
+    }
 
     static void saveFileTxt(ArrayList<Object> register, Path directoryPath) {
         if (directoryPath != null) {
