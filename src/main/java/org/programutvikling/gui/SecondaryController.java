@@ -39,8 +39,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.prefs.Preferences;
 
-//todo: få til å loade alle nødvendige files fra components folderen - ikke bare forhåndsvalgt fil
-
 //todo:
 
 public class SecondaryController {
