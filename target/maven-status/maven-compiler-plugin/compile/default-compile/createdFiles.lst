@@ -1,5 +1,6 @@
 org/programutvikling/gui/FileHandling.class
 org/programutvikling/gui/Converter.class
+org/programutvikling/gui/Converter$DoubleStringConverter.class
 org/programutvikling/component/ComponentRegister.class
 org/programutvikling/component/io/FileSaverTxt.class
 org/programutvikling/computer/Saveable.class
@@ -24,6 +25,7 @@ org/programutvikling/computer/ComputerRegister.class
 org/programutvikling/computer/Computer.class
 org/programutvikling/gui/EnduserController.class
 org/programutvikling/component/io/FileOpenerTxt.class
+org/programutvikling/gui/ContextModel.class
 org/programutvikling/gui/SecondaryController.class
 org/programutvikling/user/exceptions/InvalidPasswordException.class
 org/programutvikling/user/Login.class
@@ -31,7 +33,6 @@ org/programutvikling/component/io/iothread/InputThread.class
 org/programutvikling/user/UserValidator.class
 org/programutvikling/component/io/OpenerFactory.class
 org/programutvikling/component/Saveable.class
-org/programutvikling/gui/Converter$StringDoubleConverter.class
 org/programutvikling/user/exceptions/InvalidUsernameException.class
 org/programutvikling/gui/RegistryComponentLogic.class
 org/programutvikling/component/io/FileOpener.class

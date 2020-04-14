@@ -51,11 +51,7 @@ public class ThreadHandler {
         Dialog.showSuccessDialog("Opening complete");
         //btnLeggTil.getclass.setDisable(false);
         controller.enableGUI();
-        //objectsLoaded.addAll(task.getValue());
-        //btnSaveID.setDisable(false);
-        //ComponentRegister componentRegisterInn =
        ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
-               //getCleanObjectList.addAll(task.getValue());
        ContextModel.getInstance().loadObjectsIntoClasses();
         //her bør man instansiere objectsForSaving ??? aner ikke hva som er best måte
 

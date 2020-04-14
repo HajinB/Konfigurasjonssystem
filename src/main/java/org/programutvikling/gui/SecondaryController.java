@@ -122,9 +122,7 @@ public class SecondaryController {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objectsToSave = createObjectList(componentRegister, computerRegister);
-        //ContextModel.getInstance().getComponentRegister()
-
-//todo husk å fyll inn der i createObjectList når vi får opp omputerregister og userregister
+        //todo husk å fyll inn der i createObjectList når vi får opp omputerregister og userregister
         FileHandling.autoSaveFileJobj(objectsToSave,
                 Paths.get(userPreferences.getPathToUser()));
     }

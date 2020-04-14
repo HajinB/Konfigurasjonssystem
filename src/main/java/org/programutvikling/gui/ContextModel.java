@@ -24,7 +24,7 @@ public class ContextModel {
     //https://stackoverflow.com/questions/12166786/multiple-fxml-with-controllers-share-object
 
     private final static ContextModel instance = new ContextModel();
-
+        //https://dzone.com/articles/singleton-in-java
     private ContextModel(){
         FileHandling.openFile(objects,userPreferences.getPathToUser());
         loadObjectsIntoClasses();
