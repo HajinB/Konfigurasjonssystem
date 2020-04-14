@@ -26,6 +26,7 @@ public class Dialog {
 
         alert.showAndWait();
     }
+
     static Alert getConfirmationAlert(String title, String header, String selection) {
         ButtonType btnJa = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
         ButtonType btnNei = new ButtonType("Nei", ButtonBar.ButtonData.CANCEL_CLOSE);

@@ -1,7 +1,5 @@
 package org.programutvikling.component.io;
 
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.Computer;
 
 import java.io.IOException;
@@ -17,7 +15,7 @@ public interface FileOpener {
 
     //interfacet vil kanskje ikke fungere fordi vi vil ha både muligheten til å åpne enkelt-komponenter og lister og
     // ferdig konfigurerte?
-    void open(ArrayList<Object> list, Path filePath) throws IOException;
+    ArrayList<Object> open(ArrayList<Object> list, Path filePath) throws IOException;
 
     void open(Computer computer, Path filePath) throws IOException;
 

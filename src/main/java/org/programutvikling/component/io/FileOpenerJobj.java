@@ -1,17 +1,13 @@
 package org.programutvikling.component.io;
 
-import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.App;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.Dialog;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.ComponentValidator;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class FileOpenerJobj implements FileOpener {
@@ -62,13 +58,12 @@ public class FileOpenerJobj implements FileOpener {
 }
 */
 
-
     //bør open være objekt istedet ? også kan vi lage en array som holder mange samtidig ??????????
     // = profit
 
     //så det egentlige problemet med å lage en ArrayList<Object> er tilbakesendingen - altså at controlleren skal
     // sende de objektene som skal åpnes til denne metoden under her,  (slik vi gjør med componentregister her) -
-    public void open(ArrayList<Object> objects, Path selectedPath) {
+    public ArrayList<Object> open(ArrayList<Object> objects, Path selectedPath) {
         try (InputStream fin = Files.newInputStream(selectedPath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
@@ -82,6 +77,7 @@ public class FileOpenerJobj implements FileOpener {
             Dialog.showErrorDialog("filtype er feil");
             //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");
         }
+        return objects;
     }
             //fins det bedre måter enn dette? vha polymorfisme?
     public void open(ComputerRegister computerRegister, Path selectedPath) {

@@ -10,9 +10,11 @@ public class ComponentValidator {
 
 
     static boolean isProductTypeOk(String inputStr){
+        /*
         String[] items = ComponentTypes.getComponentTypesArray();
         boolean bol  = Arrays.stream(items).anyMatch(inputStr::contains);
-        return bol && !inputStr.isBlank();
+        return bol && !inputStr.isBlank();*/
+        return true;
       //items.parallelStream().anyMatch(inputStr::contains);
         }
 

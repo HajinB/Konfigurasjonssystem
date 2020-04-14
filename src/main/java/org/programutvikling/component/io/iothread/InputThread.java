@@ -2,43 +2,39 @@ package org.programutvikling.component.io.iothread;
 
 import javafx.concurrent.Task;
 
-import java.io.IOException;
-import java.nio.file.*;
 import java.util.ArrayList;
 
 
-import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.gui.FileHandling;
 
 import static java.lang.Thread.sleep;
 
-public class InputThread extends Task<Void> {
+public class InputThread extends Task<ArrayList<Object>> {
 
     FileHandling fileHandling = new FileHandling();
 
     String filePath;
-    ArrayList<Component> componentRegisterList = new ArrayList<>();
+    private ArrayList<Object> componentRegisterList = new ArrayList<>();
     ComponentRegister componentRegisterThread;
 
-    public InputThread(ComponentRegister componentRegisterInn, String filepath) {
-        this.filePath = filepath;
-        this.componentRegisterThread = componentRegisterInn;
+    public InputThread(ComponentRegister listIn, String path) {
+        this.componentRegisterList.add(listIn);
+        this.filePath = path;
         call();
     }
 
 
-
     @Override
-    public Void call() {
+    public ArrayList<Object> call() {
 
         try {
-            fileHandling.loadAllFilesFromDirectory(componentRegisterThread.objectArrayListAdapter(), Paths.get(filePath));
+            FileHandling.OpenSelectedComputerTxtFiles(componentRegisterList, filePath);
             sleep(3000);
 
-        } catch (InterruptedException | IOException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return null;
+        return componentRegisterList;
     }
 }

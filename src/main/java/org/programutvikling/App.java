@@ -1,14 +1,11 @@
 package org.programutvikling;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import org.programutvikling.gui.SecondaryController;
+import org.programutvikling.gui.ContextModel;
 
 import java.io.IOException;
 
@@ -18,7 +15,6 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-
 
 
     @Override

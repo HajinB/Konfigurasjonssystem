@@ -40,7 +40,11 @@ public class Component implements Serializable, ItemUsable {
     }
 
     public void setProductType(String productTypeIn) {
-                this.productType.setValue(productTypeIn);
+        if (!ComponentValidator.isProductTypeOk(productTypeIn)) {
+            throw new IllegalArgumentException("Produkttype er ugyldig");
+        } else {
+            this.productType.set(productTypeIn);
+        };
         }
 
     public void editSetProductType(String productType) {

@@ -2,11 +2,10 @@ package org.programutvikling.gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.programutvikling.component.Component;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.ItemUsable;
 import org.programutvikling.component.io.*;
-import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
 
 import java.io.File;
@@ -20,9 +19,6 @@ import java.util.Arrays;
 
 public class FileHandling {
 
-    private Path directoryPath;
-
-
 
     static void saveFileTxt(ArrayList<Object> register, Path directoryPath) {
         if (directoryPath != null) {
@@ -33,16 +29,13 @@ public class FileHandling {
             } catch (IOException e) {
                 Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
             }
-
         }
     }
 
     static void saveFileJobj(ArrayList<Object> register, Path directoryPath) throws IOException {
         // File selectedFile = getPath;
-
         //FileSaverJobj binSaver = null;
         //binSaver.save((componentRegister) register, Paths.get("HTMLDirectory/"));
-
         if (directoryPath != null) {
             FileSaver saver = null;
 
@@ -55,7 +48,6 @@ public class FileHandling {
                 Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
             }
         }
-
     }
 
     static void autoSaveFileJobj(ArrayList<Object> register, Path directoryPath) throws IOException {
@@ -116,7 +108,7 @@ public class FileHandling {
     static void loadAppFiles(ArrayList<Object> objects, String directory) throws IOException {
         File file = new File("FileDirectory/Components/sadffsda.jobj");
         // loadJobjFromDirectory(componentRegister, Paths.get("FileDirectory/ConfigMain.jobj"));
-        openFile(objects, directory);
+        openObjects(objects, directory);
     }
 
     public void loadSelectedFile(ArrayList<Object> objects, String path){
@@ -129,7 +121,6 @@ public class FileHandling {
         FileOpenerJobj fileOpenerJobj = new FileOpenerJobj();
         assert listOfFiles != null;
         fileOpenerJobj.open(objects, Paths.get(listOfFiles[0].getPath()));
-
     }
 
         //open file kan nå ta de fleste
@@ -139,16 +130,17 @@ public class FileHandling {
         openObjects(objects, selectedPath);
     }
 
-
-    private static void openObjects(ArrayList<Object> register, String selectedPath) {
+    static ArrayList<Object> openObjects(ArrayList<Object> register, String selectedPath) {
+        //bruker getFileOpener for å få txt eller jobj opener.
         FileOpener opener = getFileOpener(selectedPath);
-
+        ArrayList<Object> objectsLoaded = new ArrayList<>();
         if (opener != null && selectedPath !=null){
             try {
                 Path path = Paths.get(selectedPath);
-                opener.open(register, path); //todo her kan man legge inn en thread gjennom en metode istede
+               objectsLoaded.addAll(opener.open(register, path)); //todo her kan man legge inn en thread
+                // gjennom en metode istede
                 System.out.println("etter opener");
-                // calle fileopenerTxt/jobj direkte.
+
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
                 Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
@@ -156,6 +148,7 @@ public class FileHandling {
         }else{
             Dialog.showErrorDialog("opener eller path er null;");
         }
+        return objectsLoaded;
     }
 
     private static Object createOpenableRegister(Object object){
@@ -185,8 +178,17 @@ public class FileHandling {
         return openerFactory.createOpener(fileExt);
     }
 
+    public static String getFilePathFromFileChooser(Stage stage){
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        String pathToFile = selectedFile.getPath();
 
-    public void OpenSelectedComputerTxtFiles(ArrayList<Object> objects, String pathToUser) {
-        openFile(objects, pathToUser);
+        return pathToFile;
+    }
+
+
+    public static ArrayList<Object> OpenSelectedComputerTxtFiles(ArrayList<Object> objects, String path) {
+        //String path = getFilePathFromFileChooser(stage);
+        return openObjects(objects, path);
     }
 }

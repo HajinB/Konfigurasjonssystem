@@ -1,12 +1,7 @@
 package org.programutvikling.component.io;
 
 import org.programutvikling.computer.Computer;
-import org.programutvikling.computer.ComputerRegister;
-import org.programutvikling.gui.Converter;
 import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.io.FileOpener;
-
 
 
 import java.io.BufferedReader;
@@ -18,7 +13,7 @@ import java.util.ArrayList;
 public class FileOpenerTxt implements FileOpener {
 
     @Override
-    public void open(ArrayList<Object> list, Path filePath) throws IOException {
+    public ArrayList<Object> open(ArrayList<Object> list, Path filePath) throws IOException {
         list.clear();
         // try-with-resources lukker automatisk filen
 
@@ -29,6 +24,7 @@ public class FileOpenerTxt implements FileOpener {
                 list.add(parseComponent(line));
             }
         }
+        return list;
     }
 
 

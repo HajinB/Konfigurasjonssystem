@@ -107,5 +107,10 @@ public class ComponentRegister implements Serializable {
     }
 
 
+    public void addList(ArrayList<Object> openObjects) {
+        for(Object o : openObjects) {
+            addComponent((Component) o);
+        }
+    }
 }
 
