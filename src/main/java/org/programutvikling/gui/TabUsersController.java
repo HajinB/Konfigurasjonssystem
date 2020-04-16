@@ -7,7 +7,7 @@ package org.programutvikling.gui;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 
-public class TabUsersController {
+public class TabUsersController{
 
     public void btnAddUser(ActionEvent actionEvent) {
 
