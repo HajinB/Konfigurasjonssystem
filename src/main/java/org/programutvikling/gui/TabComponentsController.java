@@ -56,11 +56,11 @@ public class TabComponentsController {
     @FXML
     private ChoiceBox<String> cbType;
     @FXML
-    private ChoiceBox<String> cbRecentFiles;
+    private ComboBox<String> cbRecentFiles;
     @FXML
     private TextField componentSearch;
     @FXML
-    private ChoiceBox<String> cpTypeFilter;
+    private ChoiceBox<String> cbTypeFilter;
     @FXML
     private TableView<Component> tblViewComponent;
     @FXML
@@ -126,7 +126,7 @@ public class TabComponentsController {
         initChoiceBox();
         //loadRegisterFromFile();
         /** wth??? dette fungerer ikke som jeg trodde rofl. er singleton persistant?*/
-        cpTypeFilter.setValue("Ingen filter");
+        cbTypeFilter.setValue("Ingen filter");
         registryComponentLogic = new RegistryComponentLogic(componentReg);
         updateComponentList();
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
@@ -136,9 +136,13 @@ public class TabComponentsController {
     }
 
     private void initChoiceBox() {
-        cbType.setItems(componentTypes.getObservableTypeListName());
-        cpTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
+       // initOpenRecentFiles();
+        System.out.println(cbType);
+        System.out.println(cbTypeFilter);
+        System.out.println(componentTypes.getObservableTypeListName());
 
+        cbType.setItems(componentTypes.getObservableTypeListName());
+        cbTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
     private void initOpenRecentFiles(){
         if(ContextModel.getInstance().getSavedPathRegister().getListOfSavedFilePaths().size()>0)
@@ -258,7 +262,7 @@ public class TabComponentsController {
     }
 
     private ObservableList<Component> filter() {
-        if (cpTypeFilter.getValue().equals("Ingen filter")) {
+        if (cbTypeFilter.getValue().equals("Ingen filter")) {
             updateComponentList();
             return componentRegister.getObservableRegister();
         }
@@ -273,14 +277,14 @@ public class TabComponentsController {
 
     private ObservableList<Component> getResultFromTypeFilter() {
         ObservableList<Component> result = null;
-        String filterString = cpTypeFilter.getValue().toLowerCase();
+        String filterString = cbTypeFilter.getValue().toLowerCase();
         result = componentRegister.filterByProductType(filterString);
         return result;
     }
 
     @FXML
     void search(KeyEvent event) {
-        if (cpTypeFilter.getValue().equals("Ingen filter") || cpTypeFilter.getValue() == null) {
+        if (cbTypeFilter.getValue().equals("Ingen filter") || cbTypeFilter.getValue() == null) {
             FilteredList<Component> filteredData = getFiltered(componentRegister.getObservableRegister());
             // 3. Lager en ny liste som er en sortertversjon
             SortedList<Component> sortedData = new SortedList<>(filteredData);
@@ -290,7 +294,7 @@ public class TabComponentsController {
             tblViewComponent.setItems(sortedData);
             tblViewComponent.refresh();
         } else {
-            tblViewComponent.setItems(getFiltered(componentRegister.filterByProductType(cpTypeFilter.getValue().toLowerCase())));
+            tblViewComponent.setItems(getFiltered(componentRegister.filterByProductType(cbTypeFilter.getValue().toLowerCase())));
             tblViewComponent.refresh();
         }
     }//skal sende en liste som allerede er filtrert basert på
