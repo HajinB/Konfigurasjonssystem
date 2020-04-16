@@ -1,5 +1,7 @@
 package org.programutvikling.gui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -9,10 +11,13 @@ import org.programutvikling.user.UserPreferences;
 import org.programutvikling.user.UserRegister;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public enum ContextModel {
+
     INSTANCE;
-//"Singletons are useful to provide a unique source of data or functionality to other Java Objects."
+    SavedPathRegister savedPathRegister;
+    //"Singletons are useful to provide a unique source of data or functionality to other Java Objects."
     //https://stackoverflow.com/questions/6059778/store-data-in-singleton-classes
     //todo: ContextModel er en singleton som lagrer alle objekter, som skal være mulig å aksesse fra alle controllers
     // - altså det er innom denne classen (som er oprettet EN gang, og bare en gang) -
@@ -32,6 +37,16 @@ public enum ContextModel {
         loadObjectsIntoClasses();
     }
 
+    public SavedPathRegister getSavedPathRegister() {
+        return savedPathRegister;
+    }
+    /*
+    public ObservableList<String> getObservableListOfSavedFilePaths(){
+       ObservableList<Component> observableList = FXCollections.observableArrayList();
+       observableList.add(listOfSavedFilePaths);
+
+    }
+*/
 
     public ArrayList<Object> getCurrentObjectList(){
         return objects;

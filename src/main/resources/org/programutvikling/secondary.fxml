@@ -34,10 +34,10 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Fil">
                   <items>
-                        <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Set directory" />
+                        <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Velg lagringsplass" />
+                        <MenuItem mnemonicParsing="false" onAction="#btnSaveToChosenPath" text="Lagre som..." />
                         <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Open jobj file" />
                         <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut" />
-                        <MenuItem mnemonicParsing="false" onAction="#btnSaveToChosenPath" text="Unspecified Action" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Endre">
@@ -209,6 +209,8 @@
                               </Label>
                               <Separator layoutX="28.0" layoutY="71.0" prefHeight="6.0" prefWidth="954.0" />
                               <Separator layoutX="339.0" layoutY="134.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
+                              <ChoiceBox fx:id="cbRecentFiles" layoutX="844.0" layoutY="14.0" prefWidth="150.0" />
+                              <Label layoutX="706.0" layoutY="19.0" prefHeight="17.0" prefWidth="133.0" text="Åpne nylige filer" />
                            </children>
                         </AnchorPane>
                      </content>

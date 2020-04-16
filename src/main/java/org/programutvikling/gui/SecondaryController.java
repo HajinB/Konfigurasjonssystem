@@ -4,9 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-
 import javafx.event.ActionEvent;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -14,25 +12,18 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-
 import javafx.stage.Stage;
-
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
-
 import org.programutvikling.component.io.InvalidComponentFormatException;
-
 import org.programutvikling.computer.ComputerRegister;
-
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -44,16 +35,16 @@ public class SecondaryController {
     @FXML
     BorderPane topLevelPane;
     ComponentTypes componentTypes = new ComponentTypes();
+    ThreadHandler threadHandler;
+    ContextModel model = ContextModel.INSTANCE;
+    FileHandling fileHandling = new FileHandling();
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
-    ThreadHandler threadHandler;
-
     //default path:
     //todo set metoden til userpreferences pathen fungerer ikke (får vi uttelling for å lagre brukerpath? - eller bør
     // den være umulig å endre)
     @FXML
     private ProgressBar progressBar;
-    ContextModel model = ContextModel.INSTANCE;
     private ComputerRegister computerRegister = model.getComputerRegister();
     private ComponentRegister componentRegister = model.getComponentRegister();
     private Converter.DoubleStringConverter doubleStrConverter
@@ -64,6 +55,8 @@ public class SecondaryController {
     private Label lblComponentMsg;
     @FXML
     private ChoiceBox<String> cbType;
+    @FXML
+    private ChoiceBox<String> cbRecentFiles;
     @FXML
     private TextField componentSearch;
     @FXML
@@ -113,7 +106,6 @@ public class SecondaryController {
             }
         }, 0, 1, TimeUnit.MINUTES);
     }
-FileHandling fileHandling = new FileHandling();
 
     private void saveAll() throws IOException {
 
@@ -140,12 +132,17 @@ FileHandling fileHandling = new FileHandling();
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         saveTimer();
         threadHandler = new ThreadHandler(stage, componentReg, this);
-        tblViewComponent.setOnMouseClicked(( MouseEvent event )-> tblViewComponent.sort());
+        tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
     }
 
     private void initChoiceBox() {
         cbType.setItems(componentTypes.getObservableTypeListName());
         cpTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
+
+    }
+    private void initOpenRecentFiles(){
+        if(ContextModel.getInstance().getSavedPathRegister().getListOfSavedFilePaths().size()>0)
+            cbRecentFiles.setItems(ContextModel.getInstance().getSavedPathRegister().getListOfSavedFilePaths());
     }
 
     @FXML
@@ -165,7 +162,7 @@ FileHandling fileHandling = new FileHandling();
         String path = file.getAbsolutePath();
         if (file.exists()) {
             //currentContext.getComponentRegister().getRegister().addAll(
-                    FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
+            FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
                     fileHandling.getPathToUser());
             System.out.println(componentRegister.toString());
             model.loadObjectsIntoClasses();
@@ -246,7 +243,7 @@ FileHandling fileHandling = new FileHandling();
         ArrayList<Object> objects = new ArrayList<>();
         threadHandler.openInputThread(chosenFile);
         //FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
-           // chosenFile);
+        // chosenFile);
         //FileHandling.openFile(objects, chosenFile);
 //        System.out.println("etter open objects i openFileFromChooserWithThreadSleep"+model.getCurrentObjectList());
         ContextModel.INSTANCE.loadObjectsIntoClasses();
@@ -255,18 +252,18 @@ FileHandling fileHandling = new FileHandling();
 
     }
 
-     @FXML
-     private void filterByTypeSelected(){
+    @FXML
+    private void filterByTypeSelected() {
         filter();
-     }
+    }
 
     private ObservableList<Component> filter() {
-        if(cpTypeFilter.getValue().equals("Ingen filter")) {
+        if (cpTypeFilter.getValue().equals("Ingen filter")) {
             updateComponentList();
             return componentRegister.getObservableRegister();
         }
         ObservableList<Component> result = getResultFromTypeFilter();
-        if(result == null) {
+        if (result == null) {
             tblViewComponent.setItems(FXCollections.observableArrayList());
         } else {
             tblViewComponent.setItems(result);
@@ -283,20 +280,20 @@ FileHandling fileHandling = new FileHandling();
 
     @FXML
     void search(KeyEvent event) {
-         if(cpTypeFilter.getValue().equals("Ingen filter") || cpTypeFilter.getValue() == null ){
-             FilteredList<Component> filteredData = getFiltered(componentRegister.getObservableRegister());
-             // 3. Lager en ny liste som er en sortertversjon
+        if (cpTypeFilter.getValue().equals("Ingen filter") || cpTypeFilter.getValue() == null) {
+            FilteredList<Component> filteredData = getFiltered(componentRegister.getObservableRegister());
+            // 3. Lager en ny liste som er en sortertversjon
             SortedList<Component> sortedData = new SortedList<>(filteredData);
             // 4. "binder" denne sorterte listen og sammenligner det med tableviewens data
             sortedData.comparatorProperty().bind(tblViewComponent.comparatorProperty());
             // 5. legger til sortert og filtrert data
             tblViewComponent.setItems(sortedData);
             tblViewComponent.refresh();
-        }else{
-                 tblViewComponent.setItems(getFiltered(componentRegister.filterByProductType(cpTypeFilter.getValue().toLowerCase())));
-                 tblViewComponent.refresh();
-             }
-        }//skal sende en liste som allerede er filtrert basert på
+        } else {
+            tblViewComponent.setItems(getFiltered(componentRegister.filterByProductType(cpTypeFilter.getValue().toLowerCase())));
+            tblViewComponent.refresh();
+        }
+    }//skal sende en liste som allerede er filtrert basert på
 
     private FilteredList<Component> getFiltered(ObservableList<Component> list) {
         FilteredList<Component> filteredData = new FilteredList<>(list, p -> true);
@@ -371,7 +368,7 @@ FileHandling fileHandling = new FileHandling();
             }
         } catch (NumberFormatException e) {
             Dialog.showErrorDialog("Ugyldig pris: " + e.getMessage());
-        } catch(IllegalArgumentException i){
+        } catch (IllegalArgumentException i) {
             Dialog.showErrorDialog("Ugyldige tegn: " + i.getMessage());
         }
         refreshTableAndSave();

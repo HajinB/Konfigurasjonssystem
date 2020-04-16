@@ -37,9 +37,10 @@ public class FileHandling {
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileHandling.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
                 null);
-        System.out.println("rett før saveAs"+objectsToSave);
+        System.out.println("rett før saveAs" + objectsToSave);
         System.out.println(ContextModel.INSTANCE.getComponentRegister().toString());
-        saveFile(objectsToSave, path);
+        Path pathAppend = Paths.get(path + ".jobj");
+        saveFile(objectsToSave, pathAppend);
     }
 
     static void saveFile(ArrayList<Object> register, Path directoryPath) throws IOException {
@@ -47,6 +48,8 @@ public class FileHandling {
             FileSaver saver = null;
             saver = getFileSaver(directoryPath.toString());
             //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
+          /**  ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().add(directoryPath.toString());*/
+            // ContextModel.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(directoryPath.toString());
             try {
                 saver.save(register, directoryPath);
                 Dialog.showSuccessDialog("Registeret ble lagret!");
@@ -56,7 +59,7 @@ public class FileHandling {
         }
     }
 
-    static void saveFileAuto(ArrayList<Object> register, Path directoryPath) throws IOException{
+    static void saveFileAuto(ArrayList<Object> register, Path directoryPath) throws IOException {
         if (directoryPath != null) {
             FileSaver saver = null;
             saver = getFileSaver(directoryPath.toString());
@@ -118,12 +121,13 @@ public class FileHandling {
         String fileName = file.getName();
         return fileName.substring(fileName.lastIndexOf('.'));
     }
+
     static String getStringPathFromFile(File path) {
         System.out.println(path.getPath());
         return path.getPath();
     }
 
-    private static FileSaver getFileSaver(String selectedPath){
+    private static FileSaver getFileSaver(String selectedPath) {
         String fileExt = getFileName(selectedPath);
         SaverFactory saverFactory = new SaverFactory();
         return saverFactory.createSaver(fileExt);
@@ -135,7 +139,7 @@ public class FileHandling {
         return openerFactory.createOpener(fileExt);
     }
 
-    public static String getFilePathFromSaveDialog(Stage stage){
+    public static String getFilePathFromSaveDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showSaveDialog(stage);
         String pathToFile = selectedFile.getPath();
@@ -156,6 +160,15 @@ public class FileHandling {
         return openObjects(objects, path);
     }
 
+    static ArrayList<Object> createObjectList(ComponentRegister componentRegister,
+                                              ComputerRegister computerRegister) {
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.add(componentRegister);
+        objects.add(computerRegister);
+
+        return objects;
+    }
+
     public void saveAll() throws IOException {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
@@ -174,15 +187,6 @@ public class FileHandling {
 
     public String getPathToUser() {
         return userPreferences.getPathToUser();
-    }
-
-    static ArrayList<Object> createObjectList(ComponentRegister componentRegister,
-                                              ComputerRegister computerRegister) {
-        ArrayList<Object> objects = new ArrayList<>();
-        objects.add(componentRegister);
-        objects.add(computerRegister);
-
-        return objects;
     }
 
     public void populateComboBoxes() {
