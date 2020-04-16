@@ -26,9 +26,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="topLevelPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="750.0"
-             prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController">
+<BorderPane fx:id="topLevelPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController">
    <top>
       <AnchorPane prefHeight="30.0" prefWidth="1040.0" BorderPane.alignment="CENTER">
          <children>
@@ -36,10 +34,10 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Fil">
                   <items>
-                        <MenuItem mnemonicParsing="false" onAction="#btnOpenFile" text="Åpne fil" />
                         <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Set directory" />
                         <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Open jobj file" />
                         <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut" />
+                        <MenuItem mnemonicParsing="false" onAction="#btnSaveToChosenPath" text="Unspecified Action" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Endre">
@@ -163,8 +161,7 @@
                                        </font>
                                     </TextField>
                                     <Label prefHeight="18.0" prefWidth="4.0" />
-                                    <ChoiceBox fx:id="cpTypeFilter" onAction="#filterByTypeSelected" prefHeight="30.0"
-                                               prefWidth="170.0" />
+                                    <ChoiceBox fx:id="cpTypeFilter" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" />
                                 </items>
                               </ToolBar>
                               <TableView fx:id="tblViewComponent" editable="true" layoutX="360.0" layoutY="166.0" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">

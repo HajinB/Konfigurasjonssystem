@@ -34,7 +34,6 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Fil">
                   <items>
-                        <MenuItem mnemonicParsing="false" onAction="#btnOpenFile" text="Åpne fil" />
                         <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Set directory" />
                         <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Open jobj file" />
                         <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut" />

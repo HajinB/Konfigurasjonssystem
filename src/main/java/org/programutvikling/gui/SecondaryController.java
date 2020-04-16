@@ -198,12 +198,6 @@ FileHandling fileHandling = new FileHandling();
     }
 
     @FXML
-    void btnOpenFile(ActionEvent event) {
-
-        Component komponent = new Component("2", "ffsaddfs", "asffsa", 299.00);
-    }
-
-    @FXML
     void btnSetDirectory(ActionEvent event) {
 
         fileHandling.getUserPreferences().setPreference(stage);

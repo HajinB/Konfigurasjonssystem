@@ -186,7 +186,6 @@ public class FileHandling {
     }
 
     public void populateComboBoxes() {
-
         File folder = new File("Directory");
         File[] listOfFiles = folder.listFiles();
         ObservableList<String> liste =
