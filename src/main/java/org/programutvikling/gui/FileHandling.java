@@ -48,6 +48,8 @@ public class FileHandling {
             FileSaver saver = null;
             saver = getFileSaver(directoryPath.toString());
             //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
+
+            //todo hvorfor er denne nullpointer?
           /**  ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().add(directoryPath.toString());*/
             // ContextModel.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(directoryPath.toString());
             try {
