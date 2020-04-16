@@ -6,15 +6,13 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.component.io.iothread.InputThread;
 
-import java.util.ArrayList;
-
 public class ThreadHandler {
     Stage stage;
     GridPane gridPane;
-    SecondaryController controller;
+    TabComponentsController controller;
     ProgressBar progressBar = new ProgressBar();
 
-    ThreadHandler(Stage stage, GridPane gridPane, SecondaryController controller) {
+    ThreadHandler(Stage stage, GridPane gridPane, TabComponentsController controller) {
         this.stage = stage;
         this.gridPane = gridPane;
         this.controller = controller;

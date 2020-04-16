@@ -8,7 +8,7 @@ import org.programutvikling.user.UserPreferences;
 import java.io.IOException;
 
 
-public class EnduserController extends SecondaryController {
+public class EnduserController extends TabComponentsController {
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
     @FXML

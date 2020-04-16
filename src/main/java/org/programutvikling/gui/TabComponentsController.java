@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 //todo:
 
-public class SecondaryController {
+public class TabComponentsController {
     @FXML
     BorderPane topLevelPane;
     ComponentTypes componentTypes = new ComponentTypes();
