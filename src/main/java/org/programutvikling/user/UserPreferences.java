@@ -23,12 +23,14 @@ public class UserPreferences {
         this.pathToUser=pathToUser;
     }
 
+
+
     public void setPreference(Stage stage){
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(stage);
 
         //setter nøkkelverdien brukeren velger med choosedirectory
-        prefs.put("userdirectory", String.valueOf(selectedDirectory));
+        prefs.put("userdirectory", String.valueOf(selectedDirectory)+"/Components/ComponentList.jobj");
 
         //henter ut faktisk path og navn til componentlist.jobj
         Path defaultPath = Paths.get(("FileDirectory/Components/ComponentList.jobj"));
@@ -36,7 +38,7 @@ public class UserPreferences {
         //henter denne cachen
         //pathToUser = prefs.get("userdirectory", "FileDirectory");
 
-        this.pathToUser=prefs.get("userdirectory", "FileDirectory");
+        this.pathToUser=prefs.get("userdirectory", "FileDirectory/Components/ComponentList.jobj");
 
         //preferences lagrer par med verdier, en key og en verdi. - i get setter man en default, hvis man ikke finner
         // nøkkelen..

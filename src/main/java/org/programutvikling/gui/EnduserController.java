@@ -40,7 +40,7 @@ public class EnduserController extends SecondaryController {
     }
 
     private void loadElementsFromFile() {
-        FileHandling.OpenSelectedComputerTxtFiles(model.getCleanObjectList(), userPreferences.getPathToUser());
+        FileHandling.openSelectedComputerTxtFiles(model.getCleanObjectList(), userPreferences.getPathToUser());
     }
 
 

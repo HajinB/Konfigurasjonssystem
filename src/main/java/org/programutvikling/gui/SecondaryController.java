@@ -4,9 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.concurrent.WorkerStateEvent;
+
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -14,19 +14,18 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.FileChooser;
+
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
-import org.programutvikling.component.ComponentValidator;
+
 import org.programutvikling.component.io.InvalidComponentFormatException;
-import org.programutvikling.component.io.iothread.InputThread;
+
 import org.programutvikling.computer.ComputerRegister;
-import org.programutvikling.user.UserPreferences;
-import org.programutvikling.user.UserRegister;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +36,7 @@ import java.util.Collection;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.prefs.Preferences;
+
 
 //todo:
 
@@ -120,7 +119,7 @@ FileHandling fileHandling = new FileHandling();
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objectsToSave = fileHandling.createObjectList(componentRegister, computerRegister);
-        FileHandling.saveFile(objectsToSave,
+        FileHandling.saveFileAuto(objectsToSave,
                 Paths.get(fileHandling.getPathToUser()));
     }
 
@@ -130,8 +129,11 @@ FileHandling fileHandling = new FileHandling();
 
     @FXML
     public void initialize() throws IOException {
+//        System.out.println(model.getComponentRegister().toString());
+        System.out.println(model.getCurrentObjectList());
         initChoiceBox();
-        loadRegisterFromFile();
+        //loadRegisterFromFile();
+        /** wth??? dette fungerer ikke som jeg trodde rofl. er singleton persistant?*/
         cpTypeFilter.setValue("Ingen filter");
         registryComponentLogic = new RegistryComponentLogic(componentReg);
         updateComponentList();
@@ -153,8 +155,9 @@ FileHandling fileHandling = new FileHandling();
     }
 
     @FXML
-    void btnAddFromFile(ActionEvent event) {
-        openFileFromChooserWithThreadSleep(componentRegister);
+    void btnAddFromFile(ActionEvent event) throws IOException {
+        openFileFromChooserWithThreadSleep();
+        saveAll();
     }
 
     private void loadRegisterFromFile() throws IOException {
@@ -162,7 +165,7 @@ FileHandling fileHandling = new FileHandling();
         String path = file.getAbsolutePath();
         if (file.exists()) {
             //currentContext.getComponentRegister().getRegister().addAll(
-                    FileHandling.openObjects(model.getCleanObjectList(),
+                    FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
                     fileHandling.getPathToUser());
             System.out.println(componentRegister.toString());
             model.loadObjectsIntoClasses();
@@ -170,8 +173,9 @@ FileHandling fileHandling = new FileHandling();
     }
 
     @FXML
-    void btnOpenJobj(ActionEvent event) {
-        openFileFromChooserWithThreadSleep(componentRegister);
+    void btnOpenJobj(ActionEvent event) throws IOException {
+        openFileFromChooserWithThreadSleep();
+        saveAll();
     }
 
     @FXML
@@ -190,7 +194,7 @@ FileHandling fileHandling = new FileHandling();
     }
 
     private void updateComponentList() {
-        componentRegister.attachTableView(tblViewComponent);
+        ContextModel.INSTANCE.getComponentRegister().attachTableView(tblViewComponent);
     }
 
     @FXML
@@ -201,7 +205,9 @@ FileHandling fileHandling = new FileHandling();
 
     @FXML
     void btnSetDirectory(ActionEvent event) {
+
         fileHandling.getUserPreferences().setPreference(stage);
+        System.out.println("ny directory path: " + fileHandling.getUserPreferences().getPathToUser());
     }
 
 
@@ -232,14 +238,27 @@ FileHandling fileHandling = new FileHandling();
         fileHandling.saveAll();
     }
 
-    void openFileFromChooserWithThreadSleep(ComponentRegister componentRegister) {
-        String chosenPath = FileHandling.getFilePathFromFileChooser(stage);
+    @FXML
+    void btnSaveToChosenPath(ActionEvent e) throws IOException {
+        String chosenPath = FileHandling.getFilePathFromSaveDialog(stage);
+
+        FileHandling.saveFileAs(chosenPath);
+    }
+
+    void openFileFromChooserWithThreadSleep() {
+        String chosenFile = FileHandling.getFilePathFromOpenDialog(stage);
         //path her blir ikke riktig.
         //String chosenPath = FileHandling.getStringPathFromFile(path);
         ArrayList<Object> objects = new ArrayList<>();
-        threadHandler.openInputThread(chosenPath);
-        model.loadObjectsIntoClasses();
+        threadHandler.openInputThread(chosenFile);
+        //FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
+           // chosenFile);
+        //FileHandling.openFile(objects, chosenFile);
+        System.out.println("etter open objects i openFileFromChooserWithThreadSleep"+model.getCurrentObjectList());
+        ContextModel.INSTANCE.loadObjectsIntoClasses();
+        tblViewComponent.refresh();
         updateComponentList();
+
     }
 
      @FXML
@@ -252,14 +271,19 @@ FileHandling fileHandling = new FileHandling();
             updateComponentList();
             return componentRegister.getObservableRegister();
         }
-        ObservableList<Component> result = null;
-        String filterString = cpTypeFilter.getValue().toLowerCase();
-        result = componentRegister.filterByProductType(filterString);
+        ObservableList<Component> result = getResultFromTypeFilter();
         if(result == null) {
             tblViewComponent.setItems(FXCollections.observableArrayList());
         } else {
             tblViewComponent.setItems(result);
         }
+        return result;
+    }
+
+    private ObservableList<Component> getResultFromTypeFilter() {
+        ObservableList<Component> result = null;
+        String filterString = cpTypeFilter.getValue().toLowerCase();
+        result = componentRegister.filterByProductType(filterString);
         return result;
     }
 

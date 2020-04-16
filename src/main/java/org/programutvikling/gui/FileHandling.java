@@ -33,6 +33,15 @@ public class FileHandling {
         }
     }
 
+    public static void saveFileAs(String chosenPath) throws IOException {
+        Path path = Paths.get(chosenPath);
+        ArrayList<Object> objectsToSave = FileHandling.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
+                null);
+        System.out.println("rett før saveAs"+objectsToSave);
+        System.out.println(ContextModel.INSTANCE.getComponentRegister().toString());
+        saveFile(objectsToSave, path);
+    }
+
     static void saveFile(ArrayList<Object> register, Path directoryPath) throws IOException {
         if (directoryPath != null) {
             FileSaver saver = null;
@@ -47,6 +56,18 @@ public class FileHandling {
         }
     }
 
+    static void saveFileAuto(ArrayList<Object> register, Path directoryPath) throws IOException{
+        if (directoryPath != null) {
+            FileSaver saver = null;
+            saver = getFileSaver(directoryPath.toString());
+            //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
+            try {
+                saver.save(register, directoryPath);
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
+            }
+        }
+    }
 
     //open file kan nå ta de fleste
     static void openFile(ArrayList<Object> objects, String selectedPath) {
@@ -55,7 +76,7 @@ public class FileHandling {
         openObjects(objects, selectedPath);
     }
 
-    static ArrayList<Object> openObjects(ArrayList<Object> register, String selectedPath) {
+    public static ArrayList<Object> openObjects(ArrayList<Object> register, String selectedPath) {
         //bruker getFileOpener for å få txt eller jobj opener.
         FileOpener opener = getFileOpener(selectedPath);
         ArrayList<Object> objectsLoaded = new ArrayList<>();
@@ -63,8 +84,10 @@ public class FileHandling {
             try {
                 Path path = Paths.get(selectedPath);
                 objectsLoaded.addAll(opener.open(register, path)); //todo her kan man legge inn en thread
+                System.out.println(objectsLoaded.size());
                 // gjennom en metode istede
-                System.out.println("etter opener");
+                System.out.println("etter opener" + objectsLoaded.size());
+
 
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
@@ -112,7 +135,15 @@ public class FileHandling {
         return openerFactory.createOpener(fileExt);
     }
 
-    public static String getFilePathFromFileChooser(Stage stage) {
+    public static String getFilePathFromSaveDialog(Stage stage){
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        String pathToFile = selectedFile.getPath();
+
+        return pathToFile;
+    }
+
+    public static String getFilePathFromOpenDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(stage);
         String pathToFile = selectedFile.getPath();
@@ -120,7 +151,7 @@ public class FileHandling {
         return pathToFile;
     }
 
-    public static ArrayList<Object> OpenSelectedComputerTxtFiles(ArrayList<Object> objects, String path) {
+    public static ArrayList<Object> openSelectedComputerTxtFiles(ArrayList<Object> objects, String path) {
         //String path = getFilePathFromFileChooser(stage);
         return openObjects(objects, path);
     }
@@ -133,7 +164,7 @@ public class FileHandling {
 
 //todo prøv å legg denne metoden i en annen klassse - den trenger ikke være her - userpreferences kan være en del av
 // context model..
-        FileHandling.saveFile(objects,
+        FileHandling.saveFileAuto(objects,
                 Paths.get(userPreferences.getPathToUser()));
     }
 
@@ -145,8 +176,8 @@ public class FileHandling {
         return userPreferences.getPathToUser();
     }
 
-    ArrayList<Object> createObjectList(ComponentRegister componentRegister,
-                                       ComputerRegister computerRegister) {
+    static ArrayList<Object> createObjectList(ComponentRegister componentRegister,
+                                              ComputerRegister computerRegister) {
         ArrayList<Object> objects = new ArrayList<>();
         objects.add(componentRegister);
         objects.add(computerRegister);

@@ -11,11 +11,8 @@ import java.util.ArrayList;
 public class ThreadHandler {
     Stage stage;
     GridPane gridPane;
-    InputThread inputThread;
     SecondaryController controller;
     ProgressBar progressBar = new ProgressBar();
-    private InputThread task;
-    private ArrayList<Object> objectsLoaded = new ArrayList<>();
 
     ThreadHandler(Stage stage, GridPane gridPane, SecondaryController controller) {
         this.stage = stage;
@@ -23,9 +20,8 @@ public class ThreadHandler {
         this.controller = controller;
     }
 
-    void openInputThread(String s) {
-        task = new InputThread(ContextModel.getInstance().getComponentRegister(), s);
-
+    void openInputThread(String path) {
+        InputThread task = new InputThread(path);
         task.setOnSucceeded(this::threadDone);
         task.setOnFailed(this::threadFailed);
         startThread(task);
@@ -47,11 +43,10 @@ public class ThreadHandler {
         //btnLeggTil.getclass.setDisable(false);
         controller.enableGUI();
         progressBar.setVisible(false);
-        task.getValue();
-        ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
-        ContextModel.getInstance().loadObjectsIntoClasses();
+        //task.getValue();
+        //ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
+        //ContextModel.getInstance().loadObjectsIntoClasses();
         //her bør man instansiere objectsForSaving ??? aner ikke hva som er best måte
-
     }
 
     void threadFailed(WorkerStateEvent event) {
