@@ -44,12 +44,21 @@ public class ComponentRegister implements Serializable {
 
     public void removeComponent(Component component) {
         String name = component.getProductName();
+        String description = component.getProductDescription();
+        double price = component.getProductPrice();
         for(int i = 0; i<componentObservableList.size(); i++) {
             if (componentObservableList.get(i).getProductName().equals(component.getProductName())) {
                 componentObservableList.remove(i);
             }
         }
     }
+    /*
+    private void isComponentInList(Component component){
+        for(int i = 0; i<componentObservableList.size(); i++) {
+        if(componentObservableList.get(i).getProductName().equals(component.getProductName())
+                    && componentObservableList.get(i).getProductDescription().equals(component.getProductName() );
+    }
+    }*/
 
     private boolean doesNameExist(String name) {
         List<Component> filterByName = filterByProductName(name);
@@ -108,11 +117,15 @@ public class ComponentRegister implements Serializable {
         componentObservableList.addAll(list);
     }
 
-
-    public void addList(ArrayList<Object> openObjects) {
-        for(Object o : openObjects) {
-            addComponent((Component) o);
-        }
+    public void appendToList(ComponentRegister componentRegister){
+        ArrayList<Component> temp = new ArrayList<>();
+        componentObservableList.addAll(componentRegister.getRegister());
     }
+/*
+    public void addList(ArrayList<Object> openObjects) {
+       for(Object c : openObjects.get(0).get ){
+           addComponent((Component) object);
+       }
+    }*/
 }
 

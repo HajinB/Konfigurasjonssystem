@@ -3,6 +3,7 @@ package org.programutvikling.component.io;
 import org.programutvikling.App;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.gui.ContextModel;
 import org.programutvikling.gui.Dialog;
 
 import java.io.*;
@@ -66,11 +67,14 @@ public class FileOpenerJobj implements FileOpener {
     public ArrayList<Object> open(ArrayList<Object> objects, Path selectedPath) {
         try (InputStream fin = Files.newInputStream(selectedPath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
-
+            System.out.println(selectedPath.toAbsolutePath());
             ArrayList<Object> listeinn = (ArrayList<Object>) oin.readObject(); // kan kastes til Person
             //System.out.println(personlista);
-            objects.clear();
+            //ContextModel.INSTANCE.getCleanObjectList().addAll(listeinn);
+           // objects.clear();
             objects.addAll(listeinn);
+
+            System.out.println(listeinn);
             //componentRegister.getRegister().add((Komponent) listeinn);
 
         } catch (IOException | ClassNotFoundException i) {

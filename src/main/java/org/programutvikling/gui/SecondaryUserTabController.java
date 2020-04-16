@@ -1,64 +1,9 @@
 package org.programutvikling.gui;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+//todo sett opp nested fxml controllers? altså sånn at user-tabben får en egen fxml? man kan dele opp controlleren
+// veldig lett da (?)   ((main controlleren blir så full)) - how to avoid - beste er å enten hente input fra en annen
+// class eller sende input fra controller til andre steder på en bra måte.
 
 public class SecondaryUserTabController {
-
-    @FXML
-    private GridPane userReg;
-
-    @FXML
-    private Label lblUserMsg;
-
-    @FXML
-    private TextField userSearch;
-
-    @FXML
-    private TableView<?> tblViewUser;
-
-    @FXML
-    void btnAddUser(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnDeleteUser(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnUserFromFile(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnAdressEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnCtyEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnPostalEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnUMailEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnUNameEdit(ActionEvent event) {
-
-    }
 
 }

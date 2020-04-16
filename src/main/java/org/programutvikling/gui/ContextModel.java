@@ -1,6 +1,7 @@
 package org.programutvikling.gui;
 
 import org.programutvikling.App;
+import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.user.User;
@@ -27,9 +28,13 @@ public enum ContextModel {
    // private final static ContextModel instance = new ContextModel();
         //https://dzone.com/articles/singleton-in-java
     private ContextModel(){
-        FileHandling.openFile(objects,userPreferences.getPathToUser());
+        FileHandling.openFile(objects, userPreferences.getPathToUser());
         loadObjectsIntoClasses();
+    }
 
+
+    public ArrayList<Object> getCurrentObjectList(){
+        return objects;
     }
 
     public ArrayList<Object> getCleanObjectList(){
@@ -39,11 +44,15 @@ public enum ContextModel {
         return objects;
     }
 
+    public void loadComponentRegisterIntoModel(ComponentRegister c){
+        componentRegister.appendToList((ComponentRegister) objects.get(0));
+        /** SKal man appende til listen når bruker åpner fil?*/
+        //componentRegister = (ComponentRegister) objects.get(0);
+    }
 
     public void loadObjectsIntoClasses() {
-        //første index er componentregister
-        //2. = userregister
-        //3 = computerregister      disse tre er egentlig alt man trenger (for auto-load all files).
+        System.out.println(objects.get(0));
+       // loadComponentRegisterIntoClass((ComponentRegister) objects.get(0));
         componentRegister = (ComponentRegister) (objects.get(0));
         computerRegister = (ComputerRegister) objects.get(1);
     }

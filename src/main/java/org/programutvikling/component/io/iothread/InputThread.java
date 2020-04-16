@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.gui.ContextModel;
 import org.programutvikling.gui.FileHandling;
 
 import static java.lang.Thread.sleep;
@@ -18,24 +19,20 @@ public class InputThread extends Task<ArrayList<Object>> {
     private ArrayList<Object> componentRegisterList = new ArrayList<>();
     ComponentRegister componentRegisterThread;
 
-    public InputThread(ComponentRegister listIn, String path) {
-        this.componentRegisterList.add(listIn);
+    public InputThread(String path) {
         this.filePath = path;
         call();
     }
-
-
     @Override
     public ArrayList<Object> call() {
 
         try {
-
-            FileHandling.OpenSelectedComputerTxtFiles(componentRegisterList, filePath);
             sleep(3000);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return componentRegisterList;
+        return FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(), filePath);
+        //return FileHandling.openSelectedComputerTxtFiles(ContextModel.getInstance().getCleanObjectList(), filePath);
     }
 }
