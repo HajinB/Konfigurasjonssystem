@@ -2,6 +2,7 @@ package org.programutvikling.component;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.programutvikling.component.io.InvalidComponentFormatException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -40,20 +41,20 @@ public class Component implements Serializable, ItemUsable {
     }
 
     public void setProductType(String productTypeIn) {
-        if (!ComponentValidator.isProductTypeOk(productTypeIn)) {
+        if (!ComponentValidator.isProductTypeValid(productTypeIn)) {
             throw new IllegalArgumentException("Produkttype er ugyldig");
         } else {
             this.productType.set(productTypeIn);
-        };
+        }
         }
 
-    public void editSetProductType(String productType) {
-        if (!ComponentValidator.isProductTypeOk(productType)) {
+    /*public void editSetProductType(String productType) {
+        if (!ComponentValidator.isProductTypeValid(productType)) {
             throw new IllegalArgumentException("Produkttype er ugyldig");
         } else {
             this.productType.set(productType);
         }
-    }
+    }*/
 
     public String getProductName() {
         return productName.getValue();
@@ -96,7 +97,7 @@ public class Component implements Serializable, ItemUsable {
         s.writeDouble(getProductPrice());
     }
 
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException, InvalidComponentFormatException {
         String type = s.readUTF();
         String name = s.readUTF();
         String description = s.readUTF();
@@ -107,10 +108,14 @@ public class Component implements Serializable, ItemUsable {
         this.productDescription = new SimpleStringProperty();
         this.productPrice = new SimpleDoubleProperty();
 
-        setProductType(type);
-        setProductName(name);
-        setProductDescription(description);
-        setProductPrice(price);
+        if(ComponentValidator.isComponentValid(type, name, description, price)) {
+            setProductType(type);
+            setProductName(name);
+            setProductDescription(description);
+            setProductPrice(price);
+        }else{
+            throw new InvalidComponentFormatException("Komponent er i ikke gyldig format");
+        }
     }
 
 

@@ -120,7 +120,7 @@ FileHandling fileHandling = new FileHandling();
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objectsToSave = fileHandling.createObjectList(componentRegister, computerRegister);
-        FileHandling.autoSaveFileJobj(objectsToSave,
+        FileHandling.saveFile(objectsToSave,
                 Paths.get(fileHandling.getPathToUser()));
     }
 
@@ -165,6 +165,7 @@ FileHandling fileHandling = new FileHandling();
                     FileHandling.openObjects(model.getCleanObjectList(),
                     fileHandling.getPathToUser());
             System.out.println(componentRegister.toString());
+            model.loadObjectsIntoClasses();
         }
     }
 
@@ -175,7 +176,7 @@ FileHandling fileHandling = new FileHandling();
 
     @FXML
     void btnDelete(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk yes for å slette",
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk ja for å slette",
                 tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
@@ -237,6 +238,7 @@ FileHandling fileHandling = new FileHandling();
         //String chosenPath = FileHandling.getStringPathFromFile(path);
         ArrayList<Object> objects = new ArrayList<>();
         threadHandler.openInputThread(chosenPath);
+        model.loadObjectsIntoClasses();
         updateComponentList();
     }
 
@@ -305,16 +307,6 @@ FileHandling fileHandling = new FileHandling();
         return filteredData;
     }
 
-
-    void loadObjectsIntoClasses() {
-        //første index er componentregister
-        //2. = userregister
-        //3 = computerregister      disse tre er egentlig alt man trenger (for auto-load all files).
-        //componentRegister = (ComponentRegister) (objectsForSaving.get(0));
-        //userRegister = (UserRegister) objectsForSaving.get(1);
-        //computerRegister = (ComputerRegister) objectsForSaving.get(2);
-    }
-
     @FXML
     void btnLogOut(ActionEvent event) throws IOException {
         App.setRoot("primary");
@@ -326,7 +318,7 @@ FileHandling fileHandling = new FileHandling();
     @FXML
     private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
         try {
-            event.getRowValue().editSetProductType(event.getNewValue());
+            event.getRowValue().setProductType(event.getNewValue());
         } catch (IllegalArgumentException e) {
             Dialog.showErrorDialog("Ikke gyldig produkt: " + e.getMessage());
         }

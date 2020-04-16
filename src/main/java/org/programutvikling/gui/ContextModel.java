@@ -39,7 +39,6 @@ public enum ContextModel {
         return objects;
     }
 
-
     public void loadObjectsIntoClasses() {
         //første index er componentregister
         //2. = userregister

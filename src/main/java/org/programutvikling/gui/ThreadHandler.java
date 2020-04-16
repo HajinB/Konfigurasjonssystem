@@ -4,9 +4,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.iothread.InputThread;
-import org.programutvikling.user.UserPreferences;
 
 import java.util.ArrayList;
 
@@ -15,15 +13,16 @@ public class ThreadHandler {
     GridPane gridPane;
     InputThread inputThread;
     SecondaryController controller;
+    ProgressBar progressBar = new ProgressBar();
     private InputThread task;
     private ArrayList<Object> objectsLoaded = new ArrayList<>();
-    ProgressBar progressBar = new ProgressBar();
 
     ThreadHandler(Stage stage, GridPane gridPane, SecondaryController controller) {
         this.stage = stage;
         this.gridPane = gridPane;
         this.controller = controller;
     }
+
     void openInputThread(String s) {
         task = new InputThread(ContextModel.getInstance().getComponentRegister(), s);
 
@@ -42,12 +41,13 @@ public class ThreadHandler {
         task.call();  //call bruker filepathen fra konstruktøren til å åpne/laste inn
     }
 
-   void threadDone(WorkerStateEvent e) {
-       System.out.println("thread done");
+    void threadDone(WorkerStateEvent e) {
+        System.out.println("thread done");
         Dialog.showSuccessDialog("Opening complete");
         //btnLeggTil.getclass.setDisable(false);
         controller.enableGUI();
-       progressBar.setVisible(false);
+        progressBar.setVisible(false);
+        task.getValue();
         ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
         ContextModel.getInstance().loadObjectsIntoClasses();
         //her bør man instansiere objectsForSaving ??? aner ikke hva som er best måte

@@ -3,6 +3,7 @@ org/programutvikling/gui/Converter.class
 org/programutvikling/gui/Converter$DoubleStringConverter.class
 org/programutvikling/component/ComponentRegister.class
 org/programutvikling/component/io/FileSaverTxt.class
+org/programutvikling/component/io/SaverFactory.class
 org/programutvikling/computer/Saveable.class
 org/programutvikling/component/io/FileOpenerJobj.class
 org/programutvikling/component/io/InvalidComponentFormatException.class
