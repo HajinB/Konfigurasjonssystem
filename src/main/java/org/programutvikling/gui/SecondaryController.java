@@ -248,7 +248,7 @@ FileHandling fileHandling = new FileHandling();
         //FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
            // chosenFile);
         //FileHandling.openFile(objects, chosenFile);
-        System.out.println("etter open objects i openFileFromChooserWithThreadSleep"+model.getCurrentObjectList());
+//        System.out.println("etter open objects i openFileFromChooserWithThreadSleep"+model.getCurrentObjectList());
         ContextModel.INSTANCE.loadObjectsIntoClasses();
         tblViewComponent.refresh();
         updateComponentList();
