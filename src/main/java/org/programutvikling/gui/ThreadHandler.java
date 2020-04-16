@@ -14,17 +14,17 @@ public class ThreadHandler {
     Stage stage;
     GridPane gridPane;
     InputThread inputThread;
-    SecondaryController controller;
+    SecondaryCompController controller;
     private InputThread task;
     private ArrayList<Object> objectsLoaded = new ArrayList<>();
     ProgressBar progressBar = new ProgressBar();
 
-    ThreadHandler(Stage stage, GridPane gridPane, SecondaryController controller) {
+    public ThreadHandler(Stage stage, GridPane gridPane, SecondaryController controller) {
         this.stage = stage;
         this.gridPane = gridPane;
         this.controller = controller;
     }
-    void openInputThread(String s) {
+    void openInputThread(ComponentRegister componentRegister, String s) {
         task = new InputThread(ContextModel.getInstance().getComponentRegister(), s);
 
         task.setOnSucceeded(this::threadDone);

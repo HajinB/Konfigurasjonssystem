@@ -4,12 +4,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.ItemUsable;
+import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.user.UserPreferences;
 import java.io.IOException;
 
 
 public class EnduserController extends SecondaryController {
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
+
+    ComputerRegister computerRegister = new ComputerRegister();
+    ComponentRegister componentRegister = new ComponentRegister();
+    FileHandling fileHandling = new FileHandling();
+    ComputerRegister computersListOfParts = new ComputerRegister();
 
     @FXML
     private Label lblTotalpris;
@@ -40,7 +48,7 @@ public class EnduserController extends SecondaryController {
     }
 
     private void loadElementsFromFile() {
-        FileHandling.OpenSelectedComputerTxtFiles(model.getCleanObjectList(), userPreferences.getPathToUser());
+        fileHandling.OpenSelectedComputerTxtFiles(currentContext.getCleanObjectList(), userPreferences.getPathToUser());
     }
 
 

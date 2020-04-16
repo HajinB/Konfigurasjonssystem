@@ -4,61 +4,54 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
-import org.programutvikling.component.ComponentValidator;
 import org.programutvikling.component.io.InvalidComponentFormatException;
-import org.programutvikling.component.io.iothread.InputThread;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.user.UserPreferences;
-import org.programutvikling.user.UserRegister;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.prefs.Preferences;
+
+//todo: få til å loade alle nødvendige files fra components folderen - ikke bare forhåndsvalgt fil
 
 //todo:
 
 public class SecondaryController {
     @FXML
     BorderPane topLevelPane;
+    //ArrayList<Object> objectsForSaving = new ArrayList<>();
+    //private RegistrerKomponent registerKomponent;
     ComponentTypes componentTypes = new ComponentTypes();
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
-    ThreadHandler threadHandler;
-
     //default path:
-    //todo set metoden til userpreferences pathen fungerer ikke (får vi uttelling for å lagre brukerpath? - eller bør
-    // den være umulig å endre)
+    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     @FXML
     private ProgressBar progressBar;
-    ContextModel model = ContextModel.INSTANCE;
-    private ComputerRegister computerRegister = model.getComputerRegister();
-    private ComponentRegister componentRegister = model.getComponentRegister();
+
+    ContextModel currentContext = ContextModel.getInstance();
+    private ComputerRegister computerRegister = ContextModel.getInstance().getComputerRegister();
+    private ComponentRegister componentRegister = ContextModel.getInstance().getComponentRegister();
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
+    @FXML
+    private Tab tabComponents;
     @FXML
     private GridPane componentReg;
     @FXML
@@ -114,31 +107,33 @@ public class SecondaryController {
             }
         }, 0, 1, TimeUnit.MINUTES);
     }
-FileHandling fileHandling = new FileHandling();
 
     private void saveAll() throws IOException {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
-        ArrayList<Object> objectsToSave = fileHandling.createObjectList(componentRegister, computerRegister);
+        ArrayList<Object> objectsToSave = createObjectList(componentRegister, computerRegister);
+        //ContextModel.getInstance().getComponentRegister()
+
+//todo husk å fyll inn der i createObjectList når vi får opp omputerregister og userregister
         FileHandling.autoSaveFileJobj(objectsToSave,
-                Paths.get(fileHandling.getPathToUser()));
+                Paths.get(userPreferences.getPathToUser()));
     }
 
     private void autoSave() throws IOException {
-        fileHandling.saveAll();
+        saveAll();
     }
-
+    ThreadHandler threadHandler;
     @FXML
     public void initialize() throws IOException {
         initChoiceBox();
         loadRegisterFromFile();
+        loadObjectsIntoClasses();
         cpTypeFilter.setValue("Ingen filter");
         registryComponentLogic = new RegistryComponentLogic(componentReg);
         updateComponentList();
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         saveTimer();
         threadHandler = new ThreadHandler(stage, componentReg, this);
-        tblViewComponent.setOnMouseClicked(( MouseEvent event )-> tblViewComponent.sort());
     }
 
     private void initChoiceBox() {
@@ -149,7 +144,7 @@ FileHandling fileHandling = new FileHandling();
     @FXML
     public void refreshTableAndSave() throws IOException {
         tblViewComponent.refresh();
-        fileHandling.saveAll();
+        saveAll();
     }
 
     @FXML
@@ -158,34 +153,20 @@ FileHandling fileHandling = new FileHandling();
     }
 
     private void loadRegisterFromFile() throws IOException {
-        File file = new File(String.valueOf(fileHandling.getPathToUser()));
+        File file = new File(String.valueOf(userPreferences.getPathToUser()));
         String path = file.getAbsolutePath();
         if (file.exists()) {
             //currentContext.getComponentRegister().getRegister().addAll(
-                    FileHandling.openObjects(model.getCleanObjectList(),
-                    fileHandling.getPathToUser());
+                    FileHandling.openObjects(currentContext.getCleanObjectList(),
+                    userPreferences.getPathToUser());
             System.out.println(componentRegister.toString());
         }
     }
 
     @FXML
     void btnOpenJobj(ActionEvent event) {
-        openFileFromChooserWithThreadSleep(componentRegister);
-    }
 
-    @FXML
-    void btnDelete(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk yes for å slette",
-                tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
-        alert.showAndWait();
-        if (alert.getResult() == alert.getButtonTypes().get(0)) {
-            Component selectedComp = tblViewComponent.getSelectionModel().getSelectedItem();
-            componentRegister.removeComponent(selectedComp);
-            updateComponentList();
-            tblViewComponent.refresh();
-            saveAll();
-        }
-        //fjern fra directory og array ?
+        FileHandling.openFile(currentContext.getCleanObjectList(), "FileDirectory/Components/ComponentList.jobj");
     }
 
     private void updateComponentList() {
@@ -200,7 +181,7 @@ FileHandling fileHandling = new FileHandling();
 
     @FXML
     void btnSetDirectory(ActionEvent event) {
-        fileHandling.getUserPreferences().setPreference(stage);
+        userPreferences.setPreference(stage);
     }
 
 
@@ -228,7 +209,7 @@ FileHandling fileHandling = new FileHandling();
         }*/
         registerComponent();
         updateComponentList();
-        fileHandling.saveAll();
+        SaveAll();
     }
 
     void openFileFromChooserWithThreadSleep(ComponentRegister componentRegister) {
@@ -236,9 +217,39 @@ FileHandling fileHandling = new FileHandling();
         //path her blir ikke riktig.
         //String chosenPath = FileHandling.getStringPathFromFile(path);
         ArrayList<Object> objects = new ArrayList<>();
-        threadHandler.openInputThread(chosenPath);
+        threadHandler.openInputThread(componentRegister, chosenPath);
         updateComponentList();
     }
+
+    //skal det åpnes bare componentregister også??? hvordan kan man gjøre det?
+    //altså superbruker må jo kunne legge til Componentregister fra fil???
+    //openInputThread bør jo da være kun for componentregister ? altså threadinga er bare for componentregister??
+
+
+    private void SaveAll() throws IOException {
+
+        //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
+        ArrayList<Object> objects = createObjectList(componentRegister, null);
+
+//todo husk å fyll inn der i createObjectList når vi får opp omputerregister og userregister evt fra en annen classe
+        FileHandling.saveFileJobj(objects,
+                Paths.get(userPreferences.getPathToUser()));
+    }
+
+    //1 - lagrer en svær object liste - det er denne som blir lagret som jobj.
+    //2 på init, eller ved oppstart, blir alt lastet inn i minnet.
+    private ArrayList<Object> createObjectList(ComponentRegister componentRegister,
+                                               ComputerRegister computerRegister) {
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.add(componentRegister);
+        objects.add(computerRegister);
+
+        return objects;
+    }
+
+       /*Så hvis det er mulig å få opp alle prosessorer når man filtrer på det uten å måtte skrive noe inn på søkefeltet,
+    men samtidig kunne spesifisere ord som skal være i filtreringen,
+    hadde det vært superb. Hvis du skjønner hva jeg mener?*/
 
      @FXML
      private void filterByTypeSelected(){
@@ -251,7 +262,7 @@ FileHandling fileHandling = new FileHandling();
             return componentRegister.getObservableRegister();
         }
         ObservableList<Component> result = null;
-        String filterString = cpTypeFilter.getValue().toLowerCase();
+        String filterString = cpTypeFilter.getValue().toString().toLowerCase();
         result = componentRegister.filterByProductType(filterString);
         if(result == null) {
             tblViewComponent.setItems(FXCollections.observableArrayList());
@@ -263,7 +274,7 @@ FileHandling fileHandling = new FileHandling();
 
     @FXML
     void search(KeyEvent event) {
-         if(cpTypeFilter.getValue().equals("Ingen filter") || cpTypeFilter.getValue() == null ){
+         if(cpTypeFilter.getValue().toString().equals("Ingen filter") || cpTypeFilter.getValue() == null ){
              FilteredList<Component> filteredData = getFiltered(componentRegister.getObservableRegister());
              // 3. Lager en ny liste som er en sortertversjon
             SortedList<Component> sortedData = new SortedList<>(filteredData);
