@@ -126,7 +126,7 @@ public class FileHandling {
     private static FileSaver getFileSaver(String selectedPath){
         String fileExt = getFileName(selectedPath);
         SaverFactory saverFactory = new SaverFactory();
-        return saverFactory.createOpener(fileExt);
+        return saverFactory.createSaver(fileExt);
     }
 
     private static FileOpener getFileOpener(String selectedPath) {

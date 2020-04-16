@@ -2,7 +2,7 @@ package org.programutvikling.component.io;
 
 public class SaverFactory {
 
-        public FileSaver createOpener(String s) {
+        public FileSaver createSaver(String s) {
             if (s.equals(".jobj")) {
                 return new FileSaverJobj();
             } else {

@@ -40,7 +40,6 @@ public class PrimaryController {
 //        if(Logikk.sjekkBrukernavn(inputBrukernavn.getText()) == 1 &&  Logikk.sjekkPassord(inputPassord.getText()) == 1) {
 //            App.setRoot("secondary");
 //        }
-
     }
 
     private void openUserView() throws IOException {

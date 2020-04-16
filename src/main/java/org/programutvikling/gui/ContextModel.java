@@ -51,7 +51,7 @@ public enum ContextModel {
     }
 
     public void loadObjectsIntoClasses() {
-        System.out.println(objects.get(0));
+       // System.out.println(objects.get(0));
        // loadComponentRegisterIntoClass((ComponentRegister) objects.get(0));
         componentRegister = (ComponentRegister) (objects.get(0));
         computerRegister = (ComputerRegister) objects.get(1);
