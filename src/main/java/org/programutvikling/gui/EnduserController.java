@@ -40,7 +40,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void loadElementsFromFile() {
-        FileHandling.openSelectedComputerTxtFiles(model.getCleanObjectList(), userPreferences.getPathToUser());
+        FileHandling.openSelectedComputerTxtFiles(ContextModel.INSTANCE.getCleanObjectList(), userPreferences.getPathToUser());
     }
 
 

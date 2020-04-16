@@ -36,7 +36,7 @@ public class TabComponentsController {
     BorderPane topLevelPane;
     ComponentTypes componentTypes = new ComponentTypes();
     ThreadHandler threadHandler;
-    ContextModel model = ContextModel.INSTANCE;
+    //ContextModel model = ContextModel.INSTANCE;
     FileHandling fileHandling = new FileHandling();
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
@@ -45,8 +45,8 @@ public class TabComponentsController {
     // den være umulig å endre)
     @FXML
     private ProgressBar progressBar;
-    private ComputerRegister computerRegister = model.getComputerRegister();
-    private ComponentRegister componentRegister = model.getComponentRegister();
+    private ComputerRegister computerRegister = ContextModel.INSTANCE.getComputerRegister();
+    private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
     @FXML
@@ -122,7 +122,7 @@ public class TabComponentsController {
     @FXML
     public void initialize() throws IOException {
 //        System.out.println(model.getComponentRegister().toString());
-        System.out.println(model.getCurrentObjectList());
+        System.out.println(ContextModel.INSTANCE.getCurrentObjectList());
         initChoiceBox();
         //loadRegisterFromFile();
         /** wth??? dette fungerer ikke som jeg trodde rofl. er singleton persistant?*/
@@ -169,7 +169,7 @@ public class TabComponentsController {
             FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
                     fileHandling.getPathToUser());
             System.out.println(componentRegister.toString());
-            model.loadObjectsIntoClasses();
+            ContextModel.INSTANCE.loadObjectsIntoClasses();
         }
     }
 

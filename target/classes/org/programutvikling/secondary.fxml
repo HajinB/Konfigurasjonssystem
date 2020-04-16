@@ -53,14 +53,14 @@
    <center>
       <TabPane prefHeight="750.0" prefWidth="1040.0" BorderPane.alignment="CENTER">
          <tabs>
-            <Tab fx:id="tabComponents" text="Komponenter">
+            <Tab fx:id="tabComponentRegister" text="Komponenter">
                <content>
-                  <fx:include source="tabComponents.fxml"/>
+                  <fx:include fx:id="tabComponents"  source="tabComponents.fxml"/>
                </content>
             </Tab>
-            <Tab fx:id="tabUsers" text="Brukere">
+            <Tab fx:id="tabUserRegister" text="Brukere">
                <content>
-                  <fx:include source="tabUsers.fxml"/>
+                  <fx:include fx:id="tabUsers" source="tabUsers.fxml"/>
                </content>
             </Tab>
          </tabs>
