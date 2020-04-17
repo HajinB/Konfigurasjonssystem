@@ -24,7 +24,7 @@
          <Button layoutX="55.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="30.0" prefWidth="200.0" styleClass="btnLogin" stylesheets="@CSS/Login.css" text="Logg inn " textFill="#000000a1" />
          <Button layoutX="61.0" layoutY="423.0" minHeight="20.0" minWidth="149.0" mnemonicParsing="false" onAction="#btnGuest" prefHeight="30.0" prefWidth="150.0" styleClass="btnGuest" stylesheets="@CSS/Login.css" text="Logg inn som gjest" textFill="#000000a1" />
          <Separator layoutY="400.0" prefHeight="0.0" prefWidth="310.0" />
-         <Label layoutX="78.0" layoutY="405.0" text="Har du ikke konto? " />
+         <Label layoutX="78.0" layoutY="405.0" text="Har du ikke konto?"/>
          <effect>
             <DropShadow blurType="GAUSSIAN" color="#b7b7b7" height="10.0" radius="4.5" width="10.0" />
          </effect>
