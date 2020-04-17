@@ -36,11 +36,17 @@ public class PrimaryController implements Initializable {
         openUserView();
     }
 
-    private void openUserView() throws IOException {
+    /*private void openUserView() throws IOException {
         if(isUser()){
             App.setRoot("sluttbruker");
         }
+    }*/
+
+    private void openUserView() throws IOException {
+        App.setRoot(("endUser"));
     }
+
+
 
     private boolean isUser() {
         return inputPassword.getText().equals("bruker");

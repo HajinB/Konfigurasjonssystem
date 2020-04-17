@@ -2,25 +2,67 @@ package org.programutvikling.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.gui.utility.EndUserService;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
+import org.programutvikling.App;
+import org.programutvikling.component.Component;
+import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.user.UserPreferences;
+
 import java.io.IOException;
+
 
 
 public class EnduserController extends TabComponentsController {
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     EndUserService endUserService = new EndUserService();
-    @FXML
-    private Label lblTotalpris;
+
+    private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
 
     @FXML
-    private ComboBox comboBoxHarddisk;
+    private ListView<?> shoppingListView;
+
+    @FXML
+    private Label lblTotalPrice;
+
+    @FXML
+    private TableView<Component> tblProsessor;
+
+    @FXML
+    private TableView<Component> tblSkjermkort;
+
+    @FXML
+    private TableView<Component> tblMinne;
+
+    @FXML
+    private TableView<Component> tblHarddisk;
+
+    @FXML
+    private TableView<Component> tblSSD;
+
+    @FXML
+    private TableView<Component> tblTastatur;
+
+    @FXML
+    private TableView<Component> tblMus;
+
+    @FXML
+    private TableView<Component> tblSkjerm;
+
+    @FXML
+    private TableView<Component> tblAnnet;
+
+    @FXML
+    void btnLogout (ActionEvent event) throws IOException {
+        App.setRoot("primary");
+    }
 
 
     @FXML
@@ -36,7 +78,7 @@ public class EnduserController extends TabComponentsController {
     private TableView<Component> tblViewHarddisk;
 
     @FXML
-    void btnCashier(ActionEvent event) {
+    void btnCashier(ActionEvent event){
 
     }
 
@@ -66,12 +108,28 @@ public class EnduserController extends TabComponentsController {
     void addComponentToComputer(){
 
     }
+    private void updateList() {
+        setTblProsessor(tblProsessor);
+
+    }
+    public void setTblProsessor(TableView<Component> tblProsessor) {
+        tblProsessor.setItems(componentRegister.getObservableRegister());
+        this.tblProsessor = tblProsessor;
+
+    }
 
     private void initTblViews() {
 
     }
 
-    public void initItemFiles(){
+
+    public void setTblProsessor(TableView<Component> tblProsessor) {
+            tblProsessor.setItems(componentRegister.getObservableRegister());
+            this.tblProsessor = tblProsessor;
+
+    }
+
+    public void initItemFiles() {
         //computerRegister.addComponent();
 
     }
