@@ -79,7 +79,7 @@ public enum ContextModel {
         //componentRegister = (ComponentRegister) objects.get(0);
     }
 
-    public void loadObjectsIntoClasses() {
+    public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
             if(objects.size()>0) {
                 //dette overwriter uansett.
                 if ((objects.size()==1)) {
@@ -135,5 +135,9 @@ public enum ContextModel {
 
     public ComputerRegister getComputerRegister() {
         return computerRegister;
+    }
+
+    public Computer getComputer() {
+        return computer;
     }
 }
