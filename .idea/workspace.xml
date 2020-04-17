@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Konfigurasjonssystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Konfigurasjonssystem.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ContextModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ContextModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/EndUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/EndUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/ContextModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/ContextModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
     </list>
@@ -392,7 +385,14 @@
       <option name="presentableId" value="LOCAL−00026" />
       <updated>1587071883946</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="prøver å legge til til computer/listview fra enduser (må få opp test av IO fra enduser asap)">
+      <created>1587141886138</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1587141886139</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +445,8 @@
     <MESSAGE value="Fixed saverFactory" />
     <MESSAGE value="La til combobox for nylige filer" />
     <MESSAGE value="To nye FXML filer for tabs og tilhørende controllers. En ny controller: MainController" />
-    <option name="LAST_COMMIT_MESSAGE" value="To nye FXML filer for tabs og tilhørende controllers. En ny controller: MainController" />
+    <MESSAGE value="prøver å legge til til computer/listview fra enduser (må få opp test av IO fra enduser asap)" />
+    <option name="LAST_COMMIT_MESSAGE" value="prøver å legge til til computer/listview fra enduser (må få opp test av IO fra enduser asap)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />

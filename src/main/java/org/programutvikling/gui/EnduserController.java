@@ -159,7 +159,16 @@ public class EnduserController extends TabComponentsController {
         Component selectedComp = tblSkjermkort.getSelectionModel().getSelectedItem();
         /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
         //ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+        if (selectedComp != null) {
+            getComputerComponentRegister().addComponent(selectedComp);
+            updateComputerListView();
+        }
         updateComputerListView();
+    }
+
+    private ComponentRegister getComputerComponentRegister() {
+        //dette gir NPE fordi computer ikke er instansiert i contextmodel(?)
+        return ContextModel.INSTANCE.getComputer().getComponentRegister();
     }
 
 

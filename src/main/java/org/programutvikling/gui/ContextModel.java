@@ -93,6 +93,11 @@ public enum ContextModel {
                     setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
                     computerRegister = (ComputerRegister) objects.get(1);
                     savedPathRegister = (SavedPathRegister) objects.get(2);
+                } if ((objects.size()==4)) {
+                    setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
+                    computerRegister = (ComputerRegister) objects.get(1);
+                    savedPathRegister = (SavedPathRegister) objects.get(2);
+                    computer = (Computer) objects.get(3);
                 }
             }
             //denne måten kunne ha appenda - men får npe
