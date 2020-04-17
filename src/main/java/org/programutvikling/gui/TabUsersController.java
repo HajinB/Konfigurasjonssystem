@@ -5,9 +5,22 @@ package org.programutvikling.gui;
 // class eller sende input fra controller til andre steder på en bra måte.
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 public class TabUsersController{
+    @FXML
+    private GridPane userReg;
+    @FXML
+    private Label lblUserMsg;
+    @FXML
+    private TextField userSearch;
+    @FXML
+    private TableView<?> tblViewUser;
 
     public void btnAddUser(ActionEvent actionEvent) {
 

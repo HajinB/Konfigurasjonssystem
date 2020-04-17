@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.programutvikling.gui.ContextModel;
 
@@ -18,6 +19,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        /*
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Pane p = fxmlLoader.load(getClass().getResource("foo.fxml").openStream());
+        FooController fooController = (FooController) fxmlLoader.getController();
+
+*/
 
         scene = new Scene(loadFXML("primary"));
 

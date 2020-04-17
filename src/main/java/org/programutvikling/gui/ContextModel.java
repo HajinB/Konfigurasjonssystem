@@ -21,7 +21,7 @@ public enum ContextModel {
     //https://stackoverflow.com/questions/6059778/store-data-in-singleton-classes
     //todo: ContextModel er en singleton som lagrer alle objekter, som skal være mulig å aksesse fra alle controllers
     // - altså det er innom denne classen (som er oprettet EN gang, og bare en gang) -
-    SavedPathRegister savedPathRegister;
+    SavedPathRegister savedPathRegister = new SavedPathRegister();
     private ComponentRegister componentRegister;
     private ComputerRegister computerRegister;
     private ArrayList<Object> objects = new ArrayList<>();
@@ -34,8 +34,8 @@ public enum ContextModel {
    // private final static ContextModel instance = new ContextModel();
         //https://dzone.com/articles/singleton-in-java
     private ContextModel(){
-        FileHandling.openFile(objects, userPreferences.getPathToUser());
-        loadObjectsIntoClasses();
+       /* FileHandling.openFile(objects, userPreferences.getPathToUser());
+        loadObjectsIntoClasses();*/
     }
 
     public SavedPathRegister getSavedPathRegister() {
@@ -69,10 +69,8 @@ public enum ContextModel {
     public void loadObjectsIntoClasses() {
        // System.out.println(objects.get(0));
        // loadComponentRegisterIntoClass((ComponentRegister) objects.get(0));
-
             componentRegister = (ComponentRegister) (objects.get(0));
             computerRegister = (ComputerRegister) objects.get(1);
-
     }
 
     public static ContextModel getInstance() {
@@ -80,11 +78,11 @@ public enum ContextModel {
     }
 
     public ComponentRegister getComponentRegister() {
-        return this.componentRegister;
+        return componentRegister;
     }
 
     public ComputerRegister getComputerRegister() {
-        return this.computerRegister;
+        return computerRegister;
     }
 
     //her

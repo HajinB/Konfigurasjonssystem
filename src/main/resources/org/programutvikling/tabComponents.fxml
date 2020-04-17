@@ -20,7 +20,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
+<AnchorPane fx:id="topLevelPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
     <ScrollPane pannable="true" prefHeight="700.0" prefWidth="1040.0">
         <content>
             <AnchorPane prefHeight="900.0" prefWidth="1040.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
@@ -167,7 +168,7 @@
                     <Separator layoutX="28.0" layoutY="71.0" prefHeight="6.0" prefWidth="954.0" />
                     <Separator layoutX="339.0" layoutY="134.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
                <Label layoutX="677.0" layoutY="23.0" prefHeight="17.0" prefWidth="141.0" text="Åpne nylige filer" />
-               <ComboBox fx:id="cbRecentFiles" layoutX="824.0" layoutY="18.0" prefHeight="27.0" prefWidth="170.0" />
+               <ComboBox fx:id="cbRecentFiles" layoutX="824.0" layoutY="18.0" onAction="#btnClickTheRecentFiles" prefHeight="27.0" prefWidth="170.0" />
                 </children>
             </AnchorPane>
         </content>

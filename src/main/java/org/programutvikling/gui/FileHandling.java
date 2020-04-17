@@ -11,10 +11,14 @@ import org.programutvikling.user.UserPreferences;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
 
@@ -36,9 +40,7 @@ public class FileHandling {
     public static void saveFileAs(String chosenPath) throws IOException {
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileHandling.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                null);
-        System.out.println("rett før saveAs" + objectsToSave);
-        System.out.println(ContextModel.INSTANCE.getComponentRegister().toString());
+                null);//todo her er det kanskje muilgheter for STOR BUG - setter null in i objectlisten...
         Path pathAppend = Paths.get(path + ".jobj");
         saveFile(objectsToSave, pathAppend);
     }
@@ -50,8 +52,9 @@ public class FileHandling {
             //Dialog.showErrorDialog("Du kan bare lagre til enten txt eller jobj filer.");
             //todo legg til "add til path osv"
             //todo hvorfor er denne nullpointer?
-          /**  ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().add(directoryPath.toString());*/
             // ContextModel.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(directoryPath.toString());
+            ContextModel.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(directoryPath.toString());
+
             try {
                 saver.save(register, directoryPath);
                 Dialog.showSuccessDialog("Registeret ble lagret!");
@@ -169,6 +172,26 @@ public class FileHandling {
         objects.add(computerRegister);
 
         return objects;
+    }
+
+    public  void populateRecentFiles() {
+
+        File tmpDir = new File(userPreferences.getPathToUser());
+        if(tmpDir.exists()) {
+            try (Stream<Path> walk = Files.walk(Paths.get(userPreferences.getPathToUser()))) {
+
+                List<String> result = walk.filter(Files::isRegularFile)
+                        .map(x -> x.toString()).collect(Collectors.toList());
+                System.out.println("result som scouuuring");
+                result.forEach(System.out::println);
+                ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().addAll(result);
+                ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().addAll(result);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
     public void saveAll() throws IOException {

@@ -47,10 +47,15 @@ public class ComponentRegister implements Serializable {
         String description = component.getProductDescription();
         double price = component.getProductPrice();
         for(int i = 0; i<componentObservableList.size(); i++) {
-            if (componentObservableList.get(i).getProductName().equals(component.getProductName())) {
+            if (isNameAndDescriptionInList(name, description, i)) {
                 componentObservableList.remove(i);
             }
         }
+    }
+
+    private boolean isNameAndDescriptionInList(String name, String description, int i) {
+        return componentObservableList.get(i).getProductName().equals(name) &&
+                componentObservableList.get(i).getProductDescription().equals(description);
     }
     /*
     private void isComponentInList(Component component){

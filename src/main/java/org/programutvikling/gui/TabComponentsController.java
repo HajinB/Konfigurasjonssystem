@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -33,10 +34,11 @@ import java.util.concurrent.TimeUnit;
 
 public class TabComponentsController {
     @FXML
-    BorderPane topLevelPane;
+    AnchorPane topLevelPane;
+
     ComponentTypes componentTypes = new ComponentTypes();
     ThreadHandler threadHandler;
-    //ContextModel model = ContextModel.INSTANCE;
+    ContextModel model = ContextModel.INSTANCE;
     FileHandling fileHandling = new FileHandling();
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
@@ -65,14 +67,7 @@ public class TabComponentsController {
     private TableView<Component> tblViewComponent;
     @FXML
     private TableColumn<TableView<Component>, Double> productPriceColumn;
-    @FXML
-    private GridPane userReg;
-    @FXML
-    private Label lblUserMsg;
-    @FXML
-    private TextField userSearch;
-    @FXML
-    private TableView<?> tblViewUser;
+
 
     private static void deletefile(String file) {
         File f1 = new File(file);
@@ -88,13 +83,9 @@ public class TabComponentsController {
     }
 
     public void shutdown() throws IOException {
-        // cleanup code here...
         saveAll();
     }
 
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
 
     private void saveTimer() {
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
@@ -110,7 +101,8 @@ public class TabComponentsController {
     private void saveAll() throws IOException {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
-        ArrayList<Object> objectsToSave = fileHandling.createObjectList(componentRegister, computerRegister);
+        ArrayList<Object> objectsToSave = fileHandling.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
+                ContextModel.INSTANCE.getComputerRegister());
         FileHandling.saveFileAuto(objectsToSave,
                 Paths.get(fileHandling.getPathToUser()));
     }
@@ -124,7 +116,7 @@ public class TabComponentsController {
 //        System.out.println(model.getComponentRegister().toString());
         System.out.println(ContextModel.INSTANCE.getCurrentObjectList());
         initChoiceBox();
-        //loadRegisterFromFile();
+
         /** wth??? dette fungerer ikke som jeg trodde rofl. er singleton persistant?*/
         cbTypeFilter.setValue("Ingen filter");
         registryComponentLogic = new RegistryComponentLogic(componentReg);
@@ -137,6 +129,8 @@ public class TabComponentsController {
 
     private void initChoiceBox() {
        // initOpenRecentFiles();
+        cbRecentFiles.setOnMouseClicked((MouseEvent event) -> updateRecentFiles());
+        updateRecentFiles();
         System.out.println(cbType);
         System.out.println(cbTypeFilter);
         System.out.println(componentTypes.getObservableTypeListName());
@@ -159,18 +153,16 @@ public class TabComponentsController {
     void btnAddFromFile(ActionEvent event) throws IOException {
         openFileFromChooserWithThreadSleep();
         saveAll();
+        updateComponentList();
     }
 
-    private void loadRegisterFromFile() throws IOException {
-        File file = new File(String.valueOf(fileHandling.getPathToUser()));
-        String path = file.getAbsolutePath();
-        if (file.exists()) {
-            //currentContext.getComponentRegister().getRegister().addAll(
-            FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
-                    fileHandling.getPathToUser());
-            System.out.println(componentRegister.toString());
-            ContextModel.INSTANCE.loadObjectsIntoClasses();
-        }
+    public void updateRecentFiles(){
+        cbRecentFiles.setItems(ContextModel.getInstance().getSavedPathRegister().getListOfSavedFilePaths());
+    }
+
+    @FXML
+    void btnClickTheRecentFiles(){
+        updateRecentFiles();
     }
 
     @FXML
@@ -196,6 +188,7 @@ public class TabComponentsController {
 
     private void updateComponentList() {
         ContextModel.INSTANCE.getComponentRegister().attachTableView(tblViewComponent);
+        //tblViewComponent.refresh();
     }
 
     @FXML
@@ -211,6 +204,7 @@ public class TabComponentsController {
         Component newComponent = registryComponentLogic.createComponentsFromGUIInputIFields();
         if (newComponent != null) {
             componentRegister.addComponent(newComponent);
+            updateComponentList();
         }
     }
 
@@ -233,12 +227,7 @@ public class TabComponentsController {
         fileHandling.saveAll();
     }
 
-    @FXML
-    void btnSaveToChosenPath(ActionEvent e) throws IOException {
-        String chosenPath = FileHandling.getFilePathFromSaveDialog(stage);
 
-        FileHandling.saveFileAs(chosenPath);
-    }
 
     void openFileFromChooserWithThreadSleep() {
         String chosenFile = FileHandling.getFilePathFromOpenDialog(stage);
@@ -326,10 +315,6 @@ public class TabComponentsController {
         return filteredData;
     }
 
-    @FXML
-    void btnLogOut(ActionEvent event) throws IOException {
-        App.setRoot("primary");
-    }
 
     // Tableview edit
     // CellEdit - problem: Endringene er ikke varige (til neste gang man åpner).
@@ -378,46 +363,5 @@ public class TabComponentsController {
         refreshTableAndSave();
     }
 
-    //user-fane
-
-    @FXML
-    void columnAdressEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnCtyEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnPostalEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnUMailEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void columnUNameEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnAddUser(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnDeleteUser(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnUserFromFile(ActionEvent event) {
-
-    }
 
 }
