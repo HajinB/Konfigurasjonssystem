@@ -8,29 +8,30 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.component.io.InvalidComponentFormatException;
 import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.gui.utility.FileUtility;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
-//todo:
+//todo: fiks openthread..
 
 public class TabComponentsController {
     @FXML
@@ -38,7 +39,6 @@ public class TabComponentsController {
 
     ComponentTypes componentTypes = new ComponentTypes();
     ThreadHandler threadHandler;
-    ContextModel model = ContextModel.INSTANCE;
     FileHandling fileHandling = new FileHandling();
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
@@ -47,8 +47,11 @@ public class TabComponentsController {
     // den være umulig å endre)
     @FXML
     private ProgressBar progressBar;
-    private ComputerRegister computerRegister = ContextModel.INSTANCE.getComputerRegister();
-    private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
+
+    /** Dette er ikke en grei måte å instansiere på - da blir objektet bare slik det først var når scenen ble åpna -
+     * vi må alltid accesse all data fra singleton på : COntextModel.INSTANCE.get....*/
+    //private ComputerRegister computerRegister = ContextModel.INSTANCE.getComputerRegister();
+    //private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
     @FXML
@@ -68,22 +71,16 @@ public class TabComponentsController {
     @FXML
     private TableColumn<TableView<Component>, Double> productPriceColumn;
 
-
-    private static void deletefile(String file) {
-        File f1 = new File(file);
-        boolean success = f1.delete();
-
-        if (!success) {
-            System.out.println("Deletion failed.");
-
-            //System.exit(0);
-        } else {
-            System.out.println("File deleted.");
-        }
-    }
-
-    public void shutdown() throws IOException {
-        saveAll();
+    @FXML
+    public void initialize() throws IOException {
+        initChoiceBox();
+        cbTypeFilter.setValue("Ingen filter");
+        registryComponentLogic = new RegistryComponentLogic(componentReg);
+        updateComponentList();
+        productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
+        saveTimer();
+        threadHandler = new ThreadHandler(stage, componentReg, this);
+        tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
     }
 
 
@@ -101,7 +98,7 @@ public class TabComponentsController {
     private void saveAll() throws IOException {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
-        ArrayList<Object> objectsToSave = fileHandling.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
+        ArrayList<Object> objectsToSave = FileUtility.createObjectList(getComponentRegister(),
                 ContextModel.INSTANCE.getComputerRegister());
         FileHandling.saveFileAuto(objectsToSave,
                 Paths.get(fileHandling.getPathToUser()));
@@ -111,53 +108,35 @@ public class TabComponentsController {
         fileHandling.saveAll();
     }
 
-    @FXML
-    public void initialize() throws IOException {
-//        System.out.println(model.getComponentRegister().toString());
-        System.out.println(ContextModel.INSTANCE.getCurrentObjectList());
-        initChoiceBox();
-
-        /** wth??? dette fungerer ikke som jeg trodde rofl. er singleton persistant?*/
-        cbTypeFilter.setValue("Ingen filter");
-        registryComponentLogic = new RegistryComponentLogic(componentReg);
-        updateComponentList();
-        productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-        saveTimer();
-        threadHandler = new ThreadHandler(stage, componentReg, this);
-        tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
-    }
 
     private void initChoiceBox() {
        // initOpenRecentFiles();
         cbRecentFiles.setOnMouseClicked((MouseEvent event) -> updateRecentFiles());
         updateRecentFiles();
-        System.out.println(cbType);
-        System.out.println(cbTypeFilter);
-        System.out.println(componentTypes.getObservableTypeListName());
-
         cbType.setItems(componentTypes.getObservableTypeListName());
         cbTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
     private void initOpenRecentFiles(){
-        if(ContextModel.getInstance().getSavedPathRegister().getListOfSavedFilePaths().size()>0)
-            cbRecentFiles.setItems(ContextModel.getInstance().getSavedPathRegister().getListOfSavedFilePaths());
+        if(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().size()>0)
+            cbRecentFiles.setItems(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
     }
 
     @FXML
     public void refreshTableAndSave() throws IOException {
         tblViewComponent.refresh();
+        updateComponentList();
         fileHandling.saveAll();
     }
 
     @FXML
     void btnAddFromFile(ActionEvent event) throws IOException {
         openFileFromChooserWithThreadSleep();
-        saveAll();
-        updateComponentList();
+        ContextModel.INSTANCE.loadObjectsIntoClasses();
+        refreshTableAndSave();
     }
 
     public void updateRecentFiles(){
-        cbRecentFiles.setItems(ContextModel.getInstance().getSavedPathRegister().getListOfSavedFilePaths());
+        cbRecentFiles.setItems(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
     }
 
     @FXML
@@ -178,32 +157,25 @@ public class TabComponentsController {
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             Component selectedComp = tblViewComponent.getSelectionModel().getSelectedItem();
-            componentRegister.removeComponent(selectedComp);
+            getComponentRegister().removeComponent(selectedComp);
             updateComponentList();
-            tblViewComponent.refresh();
             saveAll();
         }
         //fjern fra directory og array ?
     }
 
     private void updateComponentList() {
-        ContextModel.INSTANCE.getComponentRegister().attachTableView(tblViewComponent);
+        getComponentRegister().attachTableView(tblViewComponent);
         //tblViewComponent.refresh();
     }
 
-    @FXML
-    void btnSetDirectory(ActionEvent event) {
-
-        fileHandling.getUserPreferences().setPreference(stage);
-        System.out.println("ny directory path: " + fileHandling.getUserPreferences().getPathToUser());
-    }
 
 
     private void registerComponent() throws InvalidComponentFormatException {
 
         Component newComponent = registryComponentLogic.createComponentsFromGUIInputIFields();
         if (newComponent != null) {
-            componentRegister.addComponent(newComponent);
+            getComponentRegister().addComponent(newComponent);
             updateComponentList();
         }
     }
@@ -227,54 +199,58 @@ public class TabComponentsController {
         fileHandling.saveAll();
     }
 
-
-
-    void openFileFromChooserWithThreadSleep() {
-        String chosenFile = FileHandling.getFilePathFromOpenDialog(stage);
-        //path her blir ikke riktig.
-        //String chosenPath = FileHandling.getStringPathFromFile(path);
-        ArrayList<Object> objects = new ArrayList<>();
+    void openFileFromChooserWithThreadSleep() throws IOException {
+        String chosenFile = FileUtility.getFilePathFromOpenDialog(stage);
         threadHandler.openInputThread(chosenFile);
-        //FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(),
-        // chosenFile);
-        //FileHandling.openFile(objects, chosenFile);
-//        System.out.println("etter open objects i openFileFromChooserWithThreadSleep"+model.getCurrentObjectList());
-        ContextModel.INSTANCE.loadObjectsIntoClasses();
-        tblViewComponent.refresh();
-        updateComponentList();
-
     }
 
     @FXML
     private void filterByTypeSelected() {
         filter();
     }
+/*
+    @FXML
+    private void filterByTypeSelectedRelease() {
+        filter();
+    }
 
+@FXML
+private void filterByTypeSelectedTyped(){
+        filter();
+}*/
+
+
+
+/**https://stackoverflow.com/questions/49564002/keycode-event-for-backspace-in-javafx/49575995#49575995*/
     private ObservableList<Component> filter() {
         if (cbTypeFilter.getValue().equals("Ingen filter")) {
             updateComponentList();
-            return componentRegister.getObservableRegister();
+            return getObservableRegister();
         }
         ObservableList<Component> result = getResultFromTypeFilter();
-        if (result == null) {
-            tblViewComponent.setItems(FXCollections.observableArrayList());
-        } else {
-            tblViewComponent.setItems(result);
-        }
+        tblViewComponent.setItems(Objects.requireNonNullElseGet(result, FXCollections::observableArrayList));
         return result;
     }
 
     private ObservableList<Component> getResultFromTypeFilter() {
         ObservableList<Component> result = null;
         String filterString = cbTypeFilter.getValue().toLowerCase();
-        result = componentRegister.filterByProductType(filterString);
+        result = getComponentRegister().filterByProductType(filterString);
         return result;
     }
 
     @FXML
     void search(KeyEvent event) {
+       // componentSearch.setOnKeyTyped((KeyEvent event) -> event.getKeyChar() != KeyEvent.VK_BACK_SPACE);
+        if(event.getCode() == KeyCode.BACK_SPACE){
+            System.out.println("backspace was pressed");
+            tblViewComponent.setItems(
+                    getFiltered(getComponentRegister().getObservableRegister()));
+            tblViewComponent.refresh();
+        }
+
         if (cbTypeFilter.getValue().equals("Ingen filter") || cbTypeFilter.getValue() == null) {
-            FilteredList<Component> filteredData = getFiltered(componentRegister.getObservableRegister());
+            FilteredList<Component> filteredData = getFiltered(getObservableRegister());
             // 3. Lager en ny liste som er en sortertversjon
             SortedList<Component> sortedData = new SortedList<>(filteredData);
             // 4. "binder" denne sorterte listen og sammenligner det med tableviewens data
@@ -283,10 +259,19 @@ public class TabComponentsController {
             tblViewComponent.setItems(sortedData);
             tblViewComponent.refresh();
         } else {
-            tblViewComponent.setItems(getFiltered(componentRegister.filterByProductType(cbTypeFilter.getValue().toLowerCase())));
+            tblViewComponent.setItems(
+                    getFiltered(getComponentRegister()
+                            .filterByProductType(cbTypeFilter.getValue().toLowerCase())));
             tblViewComponent.refresh();
         }
     }//skal sende en liste som allerede er filtrert basert på
+
+    private ObservableList<Component> getObservableRegister() {
+        return ContextModel.INSTANCE.getComponentRegister().getObservableRegister();
+    }
+    private ComponentRegister getComponentRegister(){
+        return ContextModel.INSTANCE.getComponentRegister();
+    }
 
     private FilteredList<Component> getFiltered(ObservableList<Component> list) {
         FilteredList<Component> filteredData = new FilteredList<>(list, p -> true);
@@ -294,7 +279,7 @@ public class TabComponentsController {
                 new FilteredList<Component>((FilteredList<Component>) componentRegister.getRegister(), p -> true);*/
         componentSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(component -> {
-                // If filter text is empty, display all persons.
+                // If filter text is empty, display all components
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
@@ -315,10 +300,6 @@ public class TabComponentsController {
         return filteredData;
     }
 
-
-    // Tableview edit
-    // CellEdit - problem: Endringene er ikke varige (til neste gang man åpner).
-    // Går ikke an å endre pris heller??
     @FXML
     private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
         try {
@@ -362,6 +343,12 @@ public class TabComponentsController {
         }
         refreshTableAndSave();
     }
+
+
+    public void shutdown() throws IOException {
+        saveAll();
+    }
+
 
 
 }

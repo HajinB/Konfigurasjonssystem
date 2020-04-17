@@ -43,8 +43,12 @@ public class UserPreferences {
         //preferences lagrer par med verdier, en key og en verdi. - i get setter man en default, hvis man ikke finner
         // nøkkelen..
     }
-    public String getPathToUser() {
+    public String getStringPathToUser() {
         return pathToUser;
+    }
+
+    public Path getPathToUser() {
+        return Paths.get(pathToUser);
     }
 
     private void setPrefs(){

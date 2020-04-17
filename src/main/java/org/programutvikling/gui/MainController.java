@@ -4,17 +4,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.programutvikling.App;
+import org.programutvikling.gui.utility.FileUtility;
 
 import java.io.IOException;
 
 public class MainController {
 
 /**
+ *  https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
     https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
     https://stackoverflow.com/questions/32849277/javafx-controller-injection-does-not-work
  */
+
+
+    FileHandling fileHandling = new FileHandling();
     Stage stage;
     // Inject controller
     @FXML private TabComponentsController componentsController;
@@ -32,34 +38,21 @@ public class MainController {
 
     @FXML
     void btnSaveToChosenPath(ActionEvent e) throws IOException {
-        String chosenPath = FileHandling.getFilePathFromSaveDialog(this.stage);
+        String chosenPath = FileUtility.getFilePathFromSaveDialog(this.stage);
 
         FileHandling.saveFileAs(chosenPath);
         System.out.println(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().get(0));
-        //todo send SavedPathRegister til en metode som updater i tabCOmponentsController
-/*
-            //Load second scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("org/programutvikling/tabComponents.fxml"));
-            Parent root = loader.load();
-
-            //Get controller of scene2
-            TabComponentsController componentsController = loader.getController();
-            //Pass whatever data you want. You can have multiple method calls here
-            //scene2Controller.transferMessage(inputField.getText());
-            componentsController.
-*/
-
-        //Get controller of scene2
-
-
-        //https://stackoverflow.com/questions/14187963/passing-parameters-javafx-fxml
-
-        //todo Is it possible to set the controller in the FXML file? Beause removing the line: loader.setController(this) and adding the controller in the FXML file crashes the application – Halfacht Oct 20 '18 at 10:15
         //
-        //Not if the FXML is loaded from within the controller itself.
-        // If you load the FXML from the Main class, for example,
-        // you can define the controller in the FXML file and get a reference to it using loader.getController()
-        //todo how to access another controllers methods?
+/*
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("org/programutvikling/tabComponents.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        TabComponentsController tabComponentsController = loader.getController();
+        tabComponentsController.updateRecentFiles();
+        */
+
+        //
     }
 
     @FXML
@@ -71,9 +64,10 @@ public class MainController {
         //super.btnOpenJobj(actionEvent);
 
     }
-    @FXML
-    public void btnSetDirectory(ActionEvent actionEvent) {
-        //super.btnSetDirectory(actionEvent);
 
+    @FXML
+    void btnSetDirectory(ActionEvent event) {
+        fileHandling.getUserPreferences().setPreference(stage);
+        System.out.println("ny directory path: " + fileHandling.getUserPreferences().getStringPathToUser());
     }
 }

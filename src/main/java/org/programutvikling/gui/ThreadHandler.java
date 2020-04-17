@@ -28,7 +28,7 @@ public class ThreadHandler {
     void startThread(InputThread task) {
         Thread th = new Thread(task);
         th.setDaemon(true);
-        controller.disableGUI();
+        //controller.disableGUI();
         //gridPane.setDisable(true);//prøver å slå av hele gridpane
         progressBar.setVisible(true);
         th.start();
@@ -39,7 +39,7 @@ public class ThreadHandler {
         System.out.println("thread done");
         Dialog.showSuccessDialog("Opening complete");
         //btnLeggTil.getclass.setDisable(false);
-        controller.enableGUI();
+       // controller.enableGUI();
         progressBar.setVisible(false);
         //task.getValue();
         //ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
@@ -50,7 +50,7 @@ public class ThreadHandler {
     void threadFailed(WorkerStateEvent event) {
         var e = event.getSource().getException();
         Dialog.showErrorDialog("Avviket sier: " + e.getMessage());
-        controller.enableGUI();
+       // controller.enableGUI();
     }
 
 }

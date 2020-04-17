@@ -27,9 +27,6 @@ public class FileOpenerTxt implements FileOpener {
         return list;
     }
 
-
-    @Override
-
     //skal man åpne et computerregister (((skal egentlig være automatisk loada fra før - så brukeren har vel bare
     // muglihet til å laste inn og lagre EN og en computer?
     public void open(Computer computer, Path filePath) throws IOException {

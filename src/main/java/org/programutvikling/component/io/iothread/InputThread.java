@@ -16,8 +16,7 @@ public class InputThread extends Task<ArrayList<Object>> {
     FileHandling fileHandling = new FileHandling();
 
     String filePath;
-    private ArrayList<Object> componentRegisterList = new ArrayList<>();
-    ComponentRegister componentRegisterThread;
+
 
     public InputThread(String path) {
         this.filePath = path;
@@ -33,6 +32,5 @@ public class InputThread extends Task<ArrayList<Object>> {
             e.printStackTrace();
         }
         return FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(), filePath);
-        //return FileHandling.openSelectedComputerTxtFiles(ContextModel.getInstance().getCleanObjectList(), filePath);
     }
 }

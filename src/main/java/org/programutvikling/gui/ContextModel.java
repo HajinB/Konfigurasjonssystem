@@ -5,11 +5,15 @@ import javafx.collections.ObservableList;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.User;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.user.UserRegister;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,32 +26,41 @@ public enum ContextModel {
     //todo: ContextModel er en singleton som lagrer alle objekter, som skal være mulig å aksesse fra alle controllers
     // - altså det er innom denne classen (som er oprettet EN gang, og bare en gang) -
     SavedPathRegister savedPathRegister = new SavedPathRegister();
-    private ComponentRegister componentRegister;
-    private ComputerRegister computerRegister;
+    private ComponentRegister componentRegister = new ComponentRegister();
+    private ComputerRegister computerRegister = new ComputerRegister();
     private ArrayList<Object> objects = new ArrayList<>();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
-    //https://myfolderapp.wordpress.com/2010/04/12/singleton-in-the-javafx/
-    //https://en.wikipedia.org/wiki/Singleton_pattern
-    //https://stackoverflow.com/questions/12166786/multiple-fxml-with-controllers-share-object
-
-   // private final static ContextModel instance = new ContextModel();
-        //https://dzone.com/articles/singleton-in-java
     private ContextModel(){
-       /* FileHandling.openFile(objects, userPreferences.getPathToUser());
-        loadObjectsIntoClasses();*/
+        System.out.println(userPreferences.getPathToUser().toString());
+
+        if(FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
+            FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
+            loadObjectsIntoClasses();
+        }else{
+            System.out.println("ingen config fil ble funnet.");
+        }
+        //FileHandling.openObjects(objects, userPreferences.getPathToUser().toString());
+        //FileHandling.openObjects(objects, userPreferences.getPathToUser().toString());
+        //loadObjectsIntoClasses();
+    }
+
+    private void loadRegisterFromFile() throws IOException {
+        File file = new File(String.valueOf(FileHandling.getPathToUser()));
+        String path = file.getAbsolutePath();
+        if (file.exists()) {
+            FileHandling.openFile(ContextModel.INSTANCE.getCleanObjectList(), FileHandling.getPathToUser());
+            ContextModel.INSTANCE.loadObjectsIntoClasses();
+        }
+    }
+
+    public UserPreferences getUserPreferences() {
+        return userPreferences;
     }
 
     public SavedPathRegister getSavedPathRegister() {
         return savedPathRegister;
     }
-    /*
-    public ObservableList<String> getObservableListOfSavedFilePaths(){
-       ObservableList<Component> observableList = FXCollections.observableArrayList();
-       observableList.add(listOfSavedFilePaths);
-
-    }
-*/
 
     public ArrayList<Object> getCurrentObjectList(){
         return objects;
@@ -67,16 +80,45 @@ public enum ContextModel {
     }
 
     public void loadObjectsIntoClasses() {
-       // System.out.println(objects.get(0));
-       // loadComponentRegisterIntoClass((ComponentRegister) objects.get(0));
-            componentRegister = (ComponentRegister) (objects.get(0));
-            computerRegister = (ComputerRegister) objects.get(1);
+            if(objects.size()>0) {
+                //dette overwriter uansett.
+                setComponentRegister((ComponentRegister) objects.get(0)); //listen blir lagt til slik på Filbehandling
+                computerRegister = (ComputerRegister) objects.get(1);
+            }
+            //denne måten kunne ha appenda - men får npe
+            /* ComponentRegister componentRegister1 = (ComponentRegister) (objects.get(0));
+            ComputerRegister computerRegister1 = (ComputerRegister) objects.get(1);
+
+            INSTANCE.getComponentRegister().getRegister().addAll(componentRegister1.getRegister());
+            INSTANCE.getComputerRegister().getRegister().addAll(computerRegister1.getRegister());*/
     }
 
+    public void setComponentRegister(ComponentRegister componentRegister) {
+        this.componentRegister = componentRegister;
+    }
+
+    /*
+        public static ContextModel getInstance() {
+            return INSTANCE;
+        }
+    */
+/*
+    // synchronized keyword has been removed from here
     public static ContextModel getInstance() {
-        return INSTANCE;
+        // needed because once there is singleton available no need to acquire
+        // monitor again & again as it is costly
+        if (INSTANCE == null) {
+            synchronized (ContextModel.class) {
+                // this is needed if two threads are waiting at the monitor at the
+                // time when singleton was getting instantiated
+                if (INSTANCE == null) {
+                    INSTANCE = new ContextModel();
+                }
+            }
+        }
+        return singleton;
     }
-
+*/
     public ComponentRegister getComponentRegister() {
         return componentRegister;
     }
@@ -84,6 +126,4 @@ public enum ContextModel {
     public ComputerRegister getComputerRegister() {
         return computerRegister;
     }
-
-    //her
 }
