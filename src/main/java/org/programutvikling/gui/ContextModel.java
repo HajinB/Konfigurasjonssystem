@@ -25,15 +25,15 @@ public enum ContextModel {
     //https://stackoverflow.com/questions/6059778/store-data-in-singleton-classes
     //todo: ContextModel er en singleton som lagrer alle objekter, som skal være mulig å aksesse fra alle controllers
     // - altså det er innom denne classen (som er oprettet EN gang, og bare en gang) -
-    SavedPathRegister savedPathRegister = new SavedPathRegister();
+    private SavedPathRegister savedPathRegister = new SavedPathRegister();
     private ComponentRegister componentRegister = new ComponentRegister();
     private ComputerRegister computerRegister = new ComputerRegister();
+    private Computer computer = new Computer();
     private ArrayList<Object> objects = new ArrayList<>();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
     private ContextModel(){
         System.out.println(userPreferences.getPathToUser().toString());
-
         if(FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
             loadObjectsIntoClasses();
@@ -82,8 +82,18 @@ public enum ContextModel {
     public void loadObjectsIntoClasses() {
             if(objects.size()>0) {
                 //dette overwriter uansett.
-                setComponentRegister((ComponentRegister) objects.get(0)); //listen blir lagt til slik på Filbehandling
-                computerRegister = (ComputerRegister) objects.get(1);
+                if ((objects.size()==1)) {
+                    setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
+                }
+                if ((objects.size()==2)) {
+                    setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
+                    computerRegister = (ComputerRegister) objects.get(1);
+                }
+                if ((objects.size()==3)) {
+                    setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
+                    computerRegister = (ComputerRegister) objects.get(1);
+                    savedPathRegister = (SavedPathRegister) objects.get(2);
+                }
             }
             //denne måten kunne ha appenda - men får npe
             /* ComponentRegister componentRegister1 = (ComponentRegister) (objects.get(0));

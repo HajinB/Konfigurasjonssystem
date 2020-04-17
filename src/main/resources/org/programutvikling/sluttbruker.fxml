@@ -13,10 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
-            prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.programutvikling.gui.EnduserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.EnduserController">
    <top>
       <MenuBar prefHeight="30.0" prefWidth="1040.0" BorderPane.alignment="CENTER">
         <menus>
@@ -81,7 +78,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="389.0" layoutY="98.0" prefHeight="217.0" prefWidth="347.0">
+                  <TableView fx:id="tblViewSkjermkort" layoutX="389.0" layoutY="98.0" prefHeight="217.0" prefWidth="347.0">
                      <columns>
                         <TableColumn prefWidth="89.60004043579102" text="Navn" />
                         <TableColumn prefWidth="132.79998779296875" text="Beskrivelse" />

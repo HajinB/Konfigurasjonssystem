@@ -36,17 +36,19 @@ public class FileHandling {
     public static void saveFileAs(String chosenPath) throws IOException {
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                null);//todo her er det kanskje muilgheter for STOR BUG - setter null in i objectlisten...
+                null, null);//todo her er det kanskje muilgheter for STOR BUG - setter null in i objectlisten...
         Path pathAppend = Paths.get(path + ".jobj");
         saveFile(objectsToSave, pathAppend);
     }
 
-    static void saveFile(ArrayList<Object> register, Path directoryPath) throws IOException {
+    static void saveFile(ArrayList<Object> objectsToSave, Path directoryPath) throws IOException {
         if (directoryPath != null) {
             FileSaver saver = null;
             saver = FileUtility.getFileSaver(directoryPath.toString());
+
+            //kanskje man skal legge til savedpathregister et annet sted?
             ContextModel.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(directoryPath.toString());
-            tryToSave(register, directoryPath, saver);
+            tryToSave(objectsToSave, directoryPath, saver);
         }
     }
 
@@ -77,9 +79,14 @@ public class FileHandling {
             try {
                 Path path = Paths.get(selectedPath);
                 objectsLoaded.addAll(opener.open(register, path));
-                System.out.println(objectsLoaded.size() + " er størrelsen på lista inn");
-                System.out.println("etter opener" + objectsLoaded.size());
+                //System.out.println(objectsLoaded.size() + " er størrelsen på lista inn");
+                //System.out.println("etter opener" + objectsLoaded.size());
             } catch (IOException e) {
+
+                //Here are some cases which result in IOException.
+                //
+                //Reading from a closed inputstream
+                //https://stackoverflow.com/questions/13216148/java-what-throws-an-ioexception
                 System.out.println(Arrays.toString(e.getStackTrace()));
                 Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
             }
@@ -98,7 +105,7 @@ public class FileHandling {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objects = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                ContextModel.INSTANCE.getComputerRegister());
+                ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister());
         FileHandling.saveFileAuto(objects,
                 Paths.get(userPreferences.getStringPathToUser()));
     }

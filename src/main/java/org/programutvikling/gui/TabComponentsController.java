@@ -99,9 +99,9 @@ public class TabComponentsController {
 
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(getComponentRegister(),
-                ContextModel.INSTANCE.getComputerRegister());
+                ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister());
         FileHandling.saveFileAuto(objectsToSave,
-                Paths.get(fileHandling.getPathToUser()));
+                Paths.get(FileHandling.getPathToUser()));
     }
 
     private void autoSave() throws IOException {
@@ -132,16 +132,12 @@ public class TabComponentsController {
     void btnAddFromFile(ActionEvent event) throws IOException {
         openFileFromChooserWithThreadSleep();
         ContextModel.INSTANCE.loadObjectsIntoClasses();
+       // System.out.println(ContextModel.INSTANCE.getCurrentObjectList().toString());
         refreshTableAndSave();
     }
 
     public void updateRecentFiles(){
         cbRecentFiles.setItems(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
-    }
-
-    @FXML
-    void btnClickTheRecentFiles(){
-        updateRecentFiles();
     }
 
     @FXML

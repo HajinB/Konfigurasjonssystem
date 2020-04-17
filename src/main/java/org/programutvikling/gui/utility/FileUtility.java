@@ -8,6 +8,7 @@ import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.*;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.ContextModel;
+import org.programutvikling.gui.SavedPathRegister;
 import org.programutvikling.user.UserPreferences;
 
 import java.io.File;
@@ -57,11 +58,13 @@ UserPreferences userPreferences = ContextModel.INSTANCE.getUserPreferences();
     }
 
     public static ArrayList<Object> createObjectList(ComponentRegister componentRegister,
-                                              ComputerRegister computerRegister) {
+                                              ComputerRegister computerRegister, SavedPathRegister savedPathRegister) {
         ArrayList<Object> objects = new ArrayList<>();
         objects.add(componentRegister);
+        if(componentRegister!=null)
         objects.add(computerRegister);
-
+        if(savedPathRegister!=null)
+        objects.add(savedPathRegister);
         return objects;
     }
 

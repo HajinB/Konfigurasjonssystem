@@ -35,7 +35,6 @@ public class Computer implements Serializable, ItemUsable {
         this.price = price;
     }
 
-
     public String getName() {
         return name;
     }
@@ -48,13 +47,11 @@ public class Computer implements Serializable, ItemUsable {
         return price;
     }
 
-    public Computer(String name, String description, ComponentRegister componentRegister) {
-        this.name = name;
-        this.description = description;
-        assert componentRegister != null;
-        this.componentRegister = componentRegister;
-        this.price = calculatePrice(componentRegister);
+    public ComponentRegister getComponentRegister() {
+        return componentRegister;
     }
+
+
 
     List getComponentList(){
         return componentRegister.getRegister();

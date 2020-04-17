@@ -18,10 +18,10 @@ public class FileOpenerJobj implements FileOpener {
         try (InputStream fin = Files.newInputStream(selectedPath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
-
             ArrayList<Object> listeinn = (ArrayList<Object>) oin.readObject(); // kan kastes til Person
             objects.addAll(listeinn);
-
+            //ContextModel.INSTANCE.getCleanObjectList().addAll(listeinn);
+//dette gir NPE ?
             System.out.println("dette kastes til arrliobject: "+listeinn);
         } catch (IOException | ClassNotFoundException i) {
 
