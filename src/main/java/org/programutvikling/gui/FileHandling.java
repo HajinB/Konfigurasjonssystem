@@ -81,6 +81,7 @@ public class FileHandling {
             try {
                 Path path = Paths.get(selectedPath);
                 objectsLoaded = opener.open(register, path);
+                /**unngå addAll her, da kjøres opener mange ganger xD */
                 //objectsLoaded.addAll(opener.open(register, path));
                 //System.out.println(objectsLoaded.size() + " er størrelsen på lista inn");
                 //System.out.println("etter opener" + objectsLoaded.size());
