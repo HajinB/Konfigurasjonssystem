@@ -17,9 +17,10 @@ public class Computer implements Serializable, ItemUsable {
 
     double priceTotal;
     //private transient ObservableList<Component> listOfComponents = FXCollections.observableArrayList();
-    private ComponentRegister componentRegister;
+    private ComponentRegister componentRegister = new ComponentRegister();
     private transient static final long serialVersionUID = 1;
     private  String name;
+
 
     public void setName(String name) {
         this.name = name;
@@ -54,8 +55,8 @@ public class Computer implements Serializable, ItemUsable {
 
     @Override/**hvordan skal formatet på txtfilen til computer være?*/
     public String toString() {
-            return String.format("%s;%s;%s;%s;%s",
-                    getName(), calculatePrice(this.componentRegister), this.componentRegister.toString());
+            return
+                    this.componentRegister.toString();
     }
 
     public List<Component> getRegister() {

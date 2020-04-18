@@ -22,7 +22,6 @@ public class Component implements Serializable, ItemUsable {
     private transient SimpleStringProperty productName;
     private transient SimpleStringProperty productDescription;
     private transient SimpleDoubleProperty productPrice;
-
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -85,8 +84,8 @@ public class Component implements Serializable, ItemUsable {
     // toString
     @Override
     public String toString() {
-        return String.format("%s;%s;%s;%s",
-                productType.getValue(), productName.getValue(), productDescription.getValue(), productPrice.getValue());
+        return String.format("%s;%s;%s;%s", productType.getValue(), productName.getValue(),
+                productDescription.getValue(), productPrice.getValue());
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {

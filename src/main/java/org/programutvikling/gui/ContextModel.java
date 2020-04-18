@@ -1,21 +1,14 @@
 package org.programutvikling.gui;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import org.programutvikling.App;
-import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.user.User;
 import org.programutvikling.user.UserPreferences;
-import org.programutvikling.user.UserRegister;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public enum ContextModel {
 

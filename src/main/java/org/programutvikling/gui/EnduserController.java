@@ -6,8 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.io.FileSaverTxt;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.gui.utility.EndUserService;
 import javafx.scene.control.ListView;
@@ -15,16 +17,17 @@ import javafx.scene.control.TableView;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
 
 import java.io.IOException;
-
+import java.nio.file.Paths;
 
 
 public class EnduserController extends TabComponentsController {
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     EndUserService endUserService = new EndUserService();
-
+    Stage stage;
 
     //sånn instansiering fungerer ikke likevel..blir statisk - bør lage en klasse som henter fresh data ut fra
     // contextmodel
@@ -173,9 +176,10 @@ public class EnduserController extends TabComponentsController {
 
 
     @FXML
-    void btnSaveComputer(ActionEvent event) {
-
-
+    void btnSaveComputer(ActionEvent event) throws IOException {
+        FileSaverTxt fileSaverTxt = new FileSaverTxt();
+        String path = FileUtility.getFilePathFromSaveDialog(stage);
+        fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
         }
 
     }

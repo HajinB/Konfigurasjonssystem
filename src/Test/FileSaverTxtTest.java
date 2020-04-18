@@ -2,26 +2,42 @@
 import org.junit.jupiter.api.Test;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.io.FileSaverJobj;
+import org.programutvikling.component.ComponentValidator;
+import org.programutvikling.component.io.FileOpenerTxt;
+import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerRegister;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FileSaverTxtTest {
-
     @Test
-    void save() {
+    void save() throws IOException {
+        Component componentTest = new Component("MINNE","Intel Core i9-9900K", "Socket-LGA1151, 8-Core, 16-Thread, 3" +
+                ".60/5" +
+                ".0GHz, Coffee Lake Refresh, uten kjøler", 6999.99);
+        Component componentTest2 = new Component("SSD","SSD", "blasfbldblfs 8-Core, 16-Thread, 3" +
+                ".60/5" +
+                ".0GHz, Coffee Lake Refresh, uten kjøler", 5999.99);
 
+        Computer computer = new Computer();
+        computer.addComponent(componentTest);
+        computer.addComponent(componentTest2);
+        System.out.println(computer.toString());
+        Files.write(Paths.get("FileDirectory/Admin/test.txt"), computer.toString().getBytes());
     }
 
+    @Test
+    void open() throws IOException {
+        Computer computer = new Computer();
+        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
+        fileOpenerTxt.open(computer, Paths.get("FileDirectory/Admin/test.txt"));
+        System.out.println(computer);
+    }
+}
 
+/*
     @Test
     void test() throws IOException {
         Component componentTest = new Component("CPU","Intel Core i9-9900K", "Socket-LGA1151, 8-Core, 16-Thread, 3" +
@@ -47,8 +63,8 @@ class FileSaverTxtTest {
 
         // I assert that the file content is the same of the contents variable
         //assertSame(
-    }
-}
+    }*/
+
 
 /*
     static void saveFile(String contents, String path) throws IOException {
