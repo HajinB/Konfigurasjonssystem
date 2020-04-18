@@ -89,8 +89,8 @@ public class EnduserController extends TabComponentsController {
 
     void updateComputerListView(){
 
-       // if(ContextModel.INSTANCE.getComputer()!=null)
-//        shoppingListView.setItems(ContextModel.INSTANCE.getComputer().getComponentRegister().getObservableRegister());
+        if(ContextModel.INSTANCE.getComputer()!=null)
+            shoppingListView.setItems(ContextModel.INSTANCE.getComputer().getComponentRegister().getObservableRegister());
 
     }
 
@@ -153,7 +153,7 @@ public class EnduserController extends TabComponentsController {
        // tblProsessor.getSelectionModel().getSelectedCells();
         /**all adding av componenter må skje via enduserservice - legg til en metode der som legger til*/
         Component selectedComp = tblProsessor.getSelectionModel().getSelectedItem();
-        //ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+        ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
         updateComputerListView();
     }
 
@@ -161,7 +161,7 @@ public class EnduserController extends TabComponentsController {
     void btnAddSkjermkortToCart(ActionEvent event) {
         Component selectedComp = tblSkjermkort.getSelectionModel().getSelectedItem();
         /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
-        //ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+        ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
         if (selectedComp != null) {
             getComputerComponentRegister().addComponent(selectedComp);
             updateComputerListView();
