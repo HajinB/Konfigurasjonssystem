@@ -197,6 +197,9 @@ public class TabComponentsController {
 
     void openFileFromChooserWithThreadSleep() throws IOException {
         String chosenFile = FileUtility.getFilePathFromOpenDialog(stage);
+        if(chosenFile==null){
+            return;
+        }
         threadHandler.openInputThread(chosenFile);
     }
 

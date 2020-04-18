@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import org.programutvikling.component.io.FileOpener;
 import org.programutvikling.component.io.FileSaver;
 import org.programutvikling.component.io.FileSaverTxt;
+import org.programutvikling.component.io.InvalidComponentFormatException;
+import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
 
@@ -43,7 +45,7 @@ public class FileHandling {
 
     static void saveFile(ArrayList<Object> objectsToSave, Path directoryPath) throws IOException {
         if (directoryPath != null) {
-            FileSaver saver = null;
+            FileSaver saver;
             saver = FileUtility.getFileSaver(directoryPath.toString());
 
             //kanskje man skal legge til savedpathregister et annet sted?
@@ -78,7 +80,8 @@ public class FileHandling {
         if (opener != null && selectedPath != null) {
             try {
                 Path path = Paths.get(selectedPath);
-                objectsLoaded.addAll(opener.open(register, path));
+                objectsLoaded = opener.open(register, path);
+                //objectsLoaded.addAll(opener.open(register, path));
                 //System.out.println(objectsLoaded.size() + " er størrelsen på lista inn");
                 //System.out.println("etter opener" + objectsLoaded.size());
             } catch (IOException e) {
@@ -92,6 +95,7 @@ public class FileHandling {
             }
         } else {
             Dialog.showErrorDialog("opener eller path er null;");
+            return null;
         }
         return objectsLoaded;
     }

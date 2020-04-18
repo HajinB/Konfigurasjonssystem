@@ -52,9 +52,17 @@ UserPreferences userPreferences = ContextModel.INSTANCE.getUserPreferences();
     public static String getFilePathFromOpenDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(stage);
-        String pathToFile = selectedFile.getPath();
+        if (selectedFile == null) {
+            // handle cancellation properly
+           return null;
+        }
+        else {
+            String pathToFile = selectedFile.getPath();
 
-        return pathToFile;
+            return pathToFile;
+
+        }
+
     }
 
     public static ArrayList<Object> createObjectList(ComponentRegister componentRegister,

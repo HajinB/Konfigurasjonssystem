@@ -13,16 +13,22 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class FileOpenerJobj implements FileOpener {
-
+static int i = 0;
     public ArrayList<Object> open(ArrayList<Object> objects, Path selectedPath) {
+        ArrayList<Object> listeInn = null;
         try (InputStream fin = Files.newInputStream(selectedPath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
-            ArrayList<Object> listeinn = (ArrayList<Object>) oin.readObject(); // kan kastes til Person
-            objects.addAll(listeinn);
+            listeInn = (ArrayList<Object>) oin.readObject();
+            System.out.println(i);
+            i++;
+            System.out.println("dette kastes til arrliobject: "+listeInn);
+
+            objects.addAll(listeInn);
+           // System.out.println("slik ser OBJECTS ut ( den som skal loades inn i minne) -etter opening : " + objects
+            // .toString());
             //ContextModel.INSTANCE.getCleanObjectList().addAll(listeinn);
 //dette gir NPE ?
-            System.out.println("dette kastes til arrliobject: "+listeinn);
         } catch (IOException | ClassNotFoundException i) {
 
             if(selectedPath.toString().equals("FileDirectory/Components/ComponentList.jobj")){
@@ -31,6 +37,7 @@ public class FileOpenerJobj implements FileOpener {
             Dialog.showErrorDialog("filtype er feil");
             //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");
         }
-        return objects;
+        i=0;
+        return listeInn;
     }
 }

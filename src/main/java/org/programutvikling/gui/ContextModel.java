@@ -33,7 +33,7 @@ public enum ContextModel {
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
     private ContextModel(){
-        System.out.println(userPreferences.getPathToUser().toString());
+        System.out.println("hi from model constructor"+ userPreferences.getPathToUser().toString());
         if(FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
             loadObjectsIntoClasses();
@@ -80,10 +80,14 @@ public enum ContextModel {
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
-            if(objects.size()>0) {
+       /* while (objects.remove(null)) {
+        }*/
+        if(objects.size()>0) {
                 //dette overwriter uansett.
-                if ((objects.size()==1)) {
-                    setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
+                if ((objects.size()==1) ) {
+                    if(checkIfObjectIsComponentRegister()){
+                        setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
+                    }
                 }
                 if ((objects.size()==2)) {
                     setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
@@ -100,12 +104,17 @@ public enum ContextModel {
                     computer = (Computer) objects.get(3);
                 }
             }
+            objects.clear();
             //denne måten kunne ha appenda - men får npe
             /* ComponentRegister componentRegister1 = (ComponentRegister) (objects.get(0));
             ComputerRegister computerRegister1 = (ComputerRegister) objects.get(1);
 
             INSTANCE.getComponentRegister().getRegister().addAll(componentRegister1.getRegister());
             INSTANCE.getComputerRegister().getRegister().addAll(computerRegister1.getRegister());*/
+    }
+
+    private boolean checkIfObjectIsComponentRegister() {
+        return objects.get(0) instanceof ComponentRegister;
     }
 
     public void setComponentRegister(ComponentRegister componentRegister) {

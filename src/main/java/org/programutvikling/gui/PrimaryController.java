@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +17,7 @@ import org.programutvikling.gui.utility.FileUtility;
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 public class PrimaryController implements Initializable {
 
-    ContextModel model = ContextModel.INSTANCE;
+    //ContextModel model = ContextModel.INSTANCE;
 
     @FXML
     private TextField inputUsername;
@@ -55,12 +54,8 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        try {
-            loadRegisterFromFile();
-            FileUtility.populateRecentFiles();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //loadRegisterFromFile();
+        FileUtility.populateRecentFiles();
     }
 
     FileHandling fileHandling = new FileHandling();
