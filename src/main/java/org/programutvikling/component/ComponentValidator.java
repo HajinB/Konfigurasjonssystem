@@ -8,6 +8,11 @@ import java.util.List;
 
 public class ComponentValidator {
 
+    static boolean isComponentValid(Component component){
+        //return true;
+        return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductPriceValid(component.getProductPrice());
+    }
+
     static boolean isComponentValid(String type, String name, String description, double price){
         //return true;
         return isProductTypeValid(type) && isProductNameValid(name) && isProductPriceValid(price);
@@ -28,7 +33,7 @@ public class ComponentValidator {
                 return true;
             }
         }
-        System.out.println("produkttype navnet fins ikke i databasen vår");
+        System.out.println("produkttype-navnet fins ikke i databasen vår");
         return false;
         //items.parallelStream().anyMatch(inputStr::contains);
     }

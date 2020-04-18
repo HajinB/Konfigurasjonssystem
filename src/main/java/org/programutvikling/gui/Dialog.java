@@ -27,11 +27,13 @@ public class Dialog {
         alert.showAndWait();
     }
 
-    static Alert getConfirmationAlert(String title, String header, String selection) {
+    static Alert getConfirmationAlert(String title, String header, String alertText, String selection) {
         ButtonType btnJa = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
         ButtonType btnNei = new ButtonType("Nei", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(AlertType.CONFIRMATION, "Delete " + selection + " ?", btnJa, btnNei,
+
+        Alert alert = new Alert(AlertType.CONFIRMATION, alertText + selection + "?", btnJa, btnNei,
                 ButtonType.CANCEL);
+
         alert.setTitle(title);
         alert.setHeaderText(header);
         return alert;

@@ -148,7 +148,7 @@ public class TabComponentsController {
 
     @FXML
     void btnDelete(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk ja for å slette",
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk ja for å slette","Vil du slette ",
                 tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
@@ -206,6 +206,27 @@ public class TabComponentsController {
     @FXML
     private void filterByTypeSelected() {
         filter();
+    }
+
+
+
+    @FXML
+    void btnOpenRecentFile(ActionEvent event) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Åpne nylig fil", "Vil du åpne den valgte filen, og dermed " +
+                        "overskrive den nåværende listen?","Vil du åpne ",
+                cbRecentFiles.getSelectionModel().getSelectedItem());
+        alert.showAndWait();
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
+            if (chosenFile == null) {
+                System.out.println("velg en fil fra listen");
+                return;
+            }
+            threadHandler.openInputThread(chosenFile);
+            ContextModel.INSTANCE.loadObjectsIntoClasses();
+            // System.out.println(ContextModel.INSTANCE.getCurrentObjectList().toString());
+            refreshTableAndSave();
+        }
     }
 /*
     @FXML

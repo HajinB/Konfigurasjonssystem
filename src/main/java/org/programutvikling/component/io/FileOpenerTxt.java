@@ -11,66 +11,57 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class FileOpenerTxt implements FileOpener {
-
+/*
     @Override
-    public ArrayList<Object> open(ArrayList<Object> list, Path filePath) throws IOException {
-        list.clear();
+    public void open(Computer computer, Path filePath) throws IOException {
+        computer.getComponentRegister().getRegister().clear();
         // try-with-resources lukker automatisk filen
 
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
 
             while ((line = bufferedReader.readLine()) != null) {
-                list.add(parseComponent(line));
+                computer.addComponent(parseComponent(line));
             }
         }
-        return list;
-    }
+    }*/
 
     //skal man åpne et computerregister (((skal egentlig være automatisk loada fra før - så brukeren har vel bare
     // muglihet til å laste inn og lagre EN og en computer?
     public void open(Computer computer, Path filePath) throws IOException {
         computer.removeAll();
-        // try-with-resources lukker automatisk filen
-
-
         //todo vi må få ut NAVN - BESKRIVELSE - "REGISTER" registeret består av componenter, så parsecomponent vil
         // fungere.
-
-
         //driter i navn og beskrivelse for computer, står ikke at man trenger det i oppgaveteksten..
-
-
-
         //finn de 2 første feltene navn og beskrivelse før man sender til parsecomponent.
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
 
+            //.readline reads a line of text - så line er all tekst frem til "\n".
+            // så kanskje før denne while loopen ha noe (og kanskje skriv computer sånn:
+            //gaming pc;2999
+            //
             while ((line = bufferedReader.readLine()) != null) {
                 //må man lage en metode som tar bort navn og description fra datamaskinen?
+                //første to feltene feks er Navn og pris - så kommer componentregisteret - bør første line være NAVN;
+                /**husk at det er tostring til både component og componentregister som gjør dette*/
                 computer.addComponent(parseComponent(line));
             }
         }
     }
-
-
     //todo eksempel fra tostring :
-
     //Skriv de på forskjellige lines?
     // Gamingpc, bra gaming pc ass bro,
     // cpu1, cpu intel, bra cpu, 299,
      //harddisk, harddisk ssd, 2999
-
     //jobbPC, bra jobbpc bruh
-
-
     //(String type, String name, String description, double price)
     private Component parseComponent(String line) throws InvalidComponentFormatException {
 //hvordan skal man gjøre dette????? vi parser en component
 
-        String[] split = line.split(",");
+        String[] split = line.split(";");
         if(split.length != 4) {
-            throw new InvalidComponentFormatException("Du må bruke , for å separere datafeltene.");
+            throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
         }
 
         // extract all datafields from the string
@@ -96,5 +87,10 @@ public class FileOpenerTxt implements FileOpener {
         }
 
         return number;
+    }
+
+    @Override
+    public ArrayList<Object> open(ArrayList<Object> list, Path filePath) throws IOException {
+        return null;
     }
 }

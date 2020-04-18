@@ -166,8 +166,9 @@
                     </Label>
                     <Separator layoutX="28.0" layoutY="71.0" prefHeight="6.0" prefWidth="954.0" />
                     <Separator layoutX="339.0" layoutY="134.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
-               <Label layoutX="677.0" layoutY="23.0" prefHeight="17.0" prefWidth="141.0" text="Åpne nylige filer" />
-               <ComboBox fx:id="cbRecentFiles" layoutX="824.0" layoutY="18.0" prefHeight="27.0" prefWidth="170.0" />
+               <Label layoutX="824.0" layoutY="23.0" prefHeight="17.0" prefWidth="141.0" text="Åpne nylige filer" />
+               <ComboBox fx:id="cbRecentFiles" layoutX="824.0" layoutY="40.0" prefHeight="27.0" prefWidth="170.0" />
+               <Button layoutX="711.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnOpenRecentFile" text="Åpne nylig fil" />
                 </children>
             </AnchorPane>
         </content>

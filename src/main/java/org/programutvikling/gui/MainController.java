@@ -41,7 +41,7 @@ public class MainController {
         String chosenPath = FileUtility.getFilePathFromSaveDialog(this.stage);
 
         FileHandling.saveFileAs(chosenPath);
-        System.out.println(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().get(0));
+        //System.out.println(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().get(0));
         //
 /*
         FXMLLoader loader = new FXMLLoader();
@@ -62,7 +62,6 @@ public class MainController {
     @FXML
     public void btnOpenJobj(ActionEvent actionEvent) throws IOException {
         //super.btnOpenJobj(actionEvent);
-
     }
 
     @FXML

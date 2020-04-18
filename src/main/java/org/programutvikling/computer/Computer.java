@@ -20,32 +20,15 @@ public class Computer implements Serializable, ItemUsable {
     private ComponentRegister componentRegister;
     private transient static final long serialVersionUID = 1;
     private  String name;
-    private  String description;
-    private  double price;
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
 
     public ComponentRegister getComponentRegister() {
         return componentRegister;
@@ -69,10 +52,10 @@ public class Computer implements Serializable, ItemUsable {
         }
     }
 
-    @Override
+    @Override/**hvordan skal formatet på txtfilen til computer være?*/
     public String toString() {
             return String.format("%s;%s;%s;%s;%s",
-                    getName(), getComponentList(), getDescription(), this.componentRegister.toString());
+                    getName(), calculatePrice(this.componentRegister), this.componentRegister.toString());
     }
 
     public List<Component> getRegister() {

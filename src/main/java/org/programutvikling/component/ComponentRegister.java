@@ -87,6 +87,7 @@ public class ComponentRegister implements Serializable {
 
 
     public void addComponent(Component component) {
+        ComponentValidator.isComponentValid(component);
         componentObservableList.add(component);
     }
 

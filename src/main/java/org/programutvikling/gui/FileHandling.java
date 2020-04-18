@@ -38,7 +38,9 @@ public class FileHandling {
     public static void saveFileAs(String chosenPath) throws IOException {
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                null, null);//todo her er det kanskje muilgheter for STOR BUG - setter null in i objectlisten...
+                null, ContextModel.INSTANCE.getSavedPathRegister());//todo her er det kanskje muilgheter for STOR BUG - setter null in i
+        // objectlisten...
+        System.out.println("dette prøver man å lagre:"+objectsToSave);
         Path pathAppend = Paths.get(path + ".jobj");
         saveFile(objectsToSave, pathAppend);
     }

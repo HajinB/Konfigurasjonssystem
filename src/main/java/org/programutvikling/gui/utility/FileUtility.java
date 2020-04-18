@@ -76,6 +76,8 @@ UserPreferences userPreferences = ContextModel.INSTANCE.getUserPreferences();
         return objects;
     }
 
+    /**Denne metoden leter gjennom userpath etter nylige lagrede filepaths - men hvis brukeren ikke endrer filsted,
+     * finner den bare 1 fil*/
     public static void populateRecentFiles() {
         String pathToUser = ContextModel.INSTANCE.getUserPreferences().getStringPathToUser();
         if (doesFileExist(pathToUser)) {
@@ -93,7 +95,7 @@ UserPreferences userPreferences = ContextModel.INSTANCE.getUserPreferences();
         System.out.println("result som scouuuring");
         result.forEach(System.out::println);
         ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().addAll(result);
-        ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().addAll(result);
+        //ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().addAll(result);
     }
 
     public static boolean doesFileExist(String toString) {
