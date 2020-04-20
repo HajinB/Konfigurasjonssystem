@@ -38,7 +38,7 @@ public class MainController {
 
     @FXML
     void btnSaveToChosenPath(ActionEvent e) throws IOException {
-        String chosenPath = FileUtility.getFilePathFromSaveDialog(this.stage);
+        String chosenPath = FileUtility.getFilePathFromSaveJOBJDialog(this.stage);
 
         FileHandling.saveFileAs(chosenPath);
         //System.out.println(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().get(0));

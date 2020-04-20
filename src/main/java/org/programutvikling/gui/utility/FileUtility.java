@@ -41,8 +41,23 @@ UserPreferences userPreferences = ContextModel.INSTANCE.getUserPreferences();
         return openerFactory.createOpener(fileExt);
     }
 
-    public static String getFilePathFromSaveDialog(Stage stage) {
+    public static String getFilePathFromSaveTXTDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        String pathToFile = selectedFile.getPath();
+
+        return pathToFile;
+    }
+
+    public static String getFilePathFromSaveJOBJDialog(Stage stage) {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("JOBJ files (*.jobj)", "*.jobj");
+        fileChooser.getExtensionFilters().add(extFilter);
         File selectedFile = fileChooser.showSaveDialog(stage);
         String pathToFile = selectedFile.getPath();
 
