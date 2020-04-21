@@ -38,7 +38,8 @@ public class FileHandling {
     public static void saveFileAs(String chosenPath) throws IOException {
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                null, ContextModel.INSTANCE.getSavedPathRegister());//todo her er det kanskje muilgheter for STOR BUG - setter null in i
+                null, ContextModel.INSTANCE.getSavedPathRegister(), null);//todo her er det kanskje muilgheter for STOR
+        // BUG - setter null in i
         // objectlisten...
         System.out.println("dette prøver man å lagre:"+objectsToSave);
         Path pathAppend = Paths.get(path + ".jobj");
@@ -111,7 +112,8 @@ public class FileHandling {
     public void saveAll() throws IOException {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objects = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister());
+                ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister(),
+                ContextModel.INSTANCE.getComputer());
         FileHandling.saveFileAuto(objects,
                 Paths.get(userPreferences.getStringPathToUser()));
     }

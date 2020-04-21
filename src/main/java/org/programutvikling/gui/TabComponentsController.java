@@ -266,17 +266,17 @@ public class TabComponentsController {
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
                 if (component.getProductType().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches type
+                    return true; // Filter matches first name.
                 } else if (component.getProductName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches name
+                    return true; // Filter matches epost
                 } else if (component.getProductDescription().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches description
+                    return true; // Filter matches fødselsdato
                 } else
                     return Double.toString(component.getProductPrice()).toLowerCase().matches(lowerCaseFilter); // Filter
-
+                // matches fødselsdato
+                // Does not match.
             });
         });
-        // Does not match.
         return filteredData;
     }
 
