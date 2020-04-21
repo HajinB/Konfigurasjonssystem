@@ -7,14 +7,9 @@ import javafx.stage.Stage;
 import org.programutvikling.component.io.iothread.InputThread;
 
 public class ThreadHandler {
-    Stage stage;
-    GridPane gridPane;
     TabComponentsController controller;
-    ProgressBar progressBar = new ProgressBar();
 
-    ThreadHandler(Stage stage, GridPane gridPane, TabComponentsController controller) {
-        this.stage = stage;
-        this.gridPane = gridPane;
+    ThreadHandler(TabComponentsController controller) {
         this.controller = controller;
     }
 
@@ -29,22 +24,14 @@ public class ThreadHandler {
         Thread th = new Thread(task);
         th.setDaemon(true);
         controller.disableGUI();
-        //gridPane.setDisable(true);//prøver å slå av hele gridpane
-        //progressBar.setVisible(true);
         th.start();
-        task.call();  //call bruker filepathen fra konstruktøren til å åpne/laste inn
+        task.call();
     }
 
     void threadDone(WorkerStateEvent e) {
         System.out.println("thread done");
         Dialog.showSuccessDialog("Opening complete");
-        //btnLeggTil.getclass.setDisable(false);
         controller.enableGUI();
-        //progressBar.setVisible(false);
-        //task.getValue();
-        //ContextModel.getInstance().getCleanObjectList().addAll(task.getValue());
-        //ContextModel.getInstance().loadObjectsIntoClasses();
-        //her bør man instansiere objectsForSaving ??? aner ikke hva som er best måte
     }
 
     void threadFailed(WorkerStateEvent event) {

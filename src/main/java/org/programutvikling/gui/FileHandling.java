@@ -56,7 +56,7 @@ public class FileHandling {
         }
     }
 
-    static void saveFileAuto(ArrayList<Object> register, Path directoryPath) throws IOException {
+    public static void saveFileAuto(ArrayList<Object> register, Path directoryPath) throws IOException {
         if (directoryPath != null) {
             FileSaver saver = null;
             saver = FileUtility.getFileSaver(directoryPath.toString());
@@ -109,7 +109,6 @@ public class FileHandling {
     }
 
     public void saveAll() throws IOException {
-
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objects = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
                 ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister());

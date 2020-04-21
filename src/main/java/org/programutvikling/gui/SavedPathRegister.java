@@ -3,6 +3,7 @@ package org.programutvikling.gui;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.programutvikling.component.Component;
+import org.programutvikling.gui.utility.RegisterLogic;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,33 +20,15 @@ public class SavedPathRegister implements Serializable {
     private transient ObservableList<String> listOfSavedFilePaths = FXCollections.observableArrayList();
 
     public ObservableList<String> getListOfSavedFilePaths() {
-
-        return removeDuplicates(listOfSavedFilePaths);
+        return RegisterLogic.removeDuplicates(listOfSavedFilePaths);
     }
+
+
 
     public void addPathToListOfSavedFilePaths(String s){
         listOfSavedFilePaths.add(s);
     }
 
-    static ObservableList<String> removeDuplicates(ObservableList<String> list) {
-
-        // Store unique items in result.
-        ObservableList<String> result = FXCollections.observableArrayList();
-
-        // Record encountered Strings in HashSet.
-        HashSet<String> set = new HashSet<>();
-
-        // Loop over argument list.
-        for (String item : list) {
-
-            // If String is not in set, add it to the list and the set.
-            if (!set.contains(item)) {
-                result.add(item);
-                set.add(item);
-            }
-        }
-        return result;
-    }
 /*
     public void removeDuplicates(){
         listOfSavedFilePaths = listOfSavedFilePaths.stream().distinct().collect(Collectors.toList());

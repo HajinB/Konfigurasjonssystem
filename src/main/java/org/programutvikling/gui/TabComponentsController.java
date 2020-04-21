@@ -18,13 +18,9 @@ import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.component.io.InvalidComponentFormatException;
-import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.utility.FileUtility;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -42,20 +38,10 @@ public class TabComponentsController {
     FileHandling fileHandling = new FileHandling();
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
-    //default path:
-    //todo set metoden til userpreferences pathen fungerer ikke (får vi uttelling for å lagre brukerpath? - eller bør
-    // den være umulig å endre)
-    @FXML
-    private ProgressBar progressBar;
-
-    /** Dette er ikke en grei måte å instansiere på - da blir objektet bare slik det først var når scenen ble åpna -
-     * vi må alltid accesse all data fra singleton på : COntextModel.INSTANCE.get....*/
-    //private ComputerRegister computerRegister = ContextModel.INSTANCE.getComputerRegister();
-    //private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
     @FXML
-    private GridPane componentReg;
+    private GridPane componentRegNode;
     @FXML
     private Label lblComponentMsg;
     @FXML
@@ -73,22 +59,20 @@ public class TabComponentsController {
 
     @FXML
     public void initialize() throws IOException {
-        initChoiceBox();
-        cbTypeFilter.setValue("Ingen filter");
-        registryComponentLogic = new RegistryComponentLogic(componentReg);
+        initChoiceBoxes();
+        registryComponentLogic = new RegistryComponentLogic(componentRegNode);
         updateComponentList();
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         saveTimer();
-        threadHandler = new ThreadHandler(stage, componentReg, this);
-        tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
+        threadHandler = new ThreadHandler(this);
+       // tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
     }
-
 
     private void saveTimer() {
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.scheduleWithFixedDelay(() -> {
             try {
-                autoSave();
+               saveAll();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,43 +80,28 @@ public class TabComponentsController {
     }
 
     private void saveAll() throws IOException {
-
-        //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
-        ArrayList<Object> objectsToSave = FileUtility.createObjectList(getComponentRegister(),
-                ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister());
-        FileHandling.saveFileAuto(objectsToSave,
-                Paths.get(FileHandling.getPathToUser()));
-    }
-
-    private void autoSave() throws IOException {
         fileHandling.saveAll();
     }
 
-
-    private void initChoiceBox() {
-       // initOpenRecentFiles();
+    private void initChoiceBoxes() {
+        cbTypeFilter.setValue("Ingen filter");
         cbRecentFiles.setOnMouseClicked((MouseEvent event) -> updateRecentFiles());
         updateRecentFiles();
         cbType.setItems(componentTypes.getObservableTypeListName());
         cbTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
-    private void initOpenRecentFiles(){
-        if(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().size()>0)
-            cbRecentFiles.setItems(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
-    }
 
     @FXML
     public void refreshTableAndSave() throws IOException {
         tblViewComponent.refresh();
-        updateComponentList();
+       // updateComponentList();
         fileHandling.saveAll();
     }
 
     @FXML
     void btnAddFromFile(ActionEvent event) throws IOException {
         openFileFromChooserWithThreadSleep();
-        ContextModel.INSTANCE.loadObjectsIntoClasses();
-       // System.out.println(ContextModel.INSTANCE.getCurrentObjectList().toString());
+        ContextModel.INSTANCE.loadComponentRegisterIntoModel();
         refreshTableAndSave();
     }
 
@@ -228,17 +197,6 @@ public class TabComponentsController {
             refreshTableAndSave();
         }
     }
-/*
-    @FXML
-    private void filterByTypeSelectedRelease() {
-        filter();
-    }
-
-@FXML
-private void filterByTypeSelectedTyped(){
-        filter();
-}*/
-
 
 
 /**https://stackoverflow.com/questions/49564002/keycode-event-for-backspace-in-javafx/49575995#49575995*/
@@ -259,64 +217,66 @@ private void filterByTypeSelectedTyped(){
         return result;
     }
 
+
     @FXML
     void search(KeyEvent event) {
+        /** debugging backspace*/
        // componentSearch.setOnKeyTyped((KeyEvent event) -> event.getKeyChar() != KeyEvent.VK_BACK_SPACE);
         if(event.getCode() == KeyCode.BACK_SPACE){
-            System.out.println("backspace was pressed");
-            tblViewComponent.setItems(
-                    getFiltered(getComponentRegister().getObservableRegister()));
-            tblViewComponent.refresh();
-        }
+            System.out.println("ComponentSearch / backspace "+ componentSearch.getText());
+            //tblViewComponent.setItems(getFilteredList(getComponentRegister().getObservableRegister()));
+            setSearchedList();
+
+        }  /** debugging backspace*/
 
         if (cbTypeFilter.getValue().equals("Ingen filter") || cbTypeFilter.getValue() == null) {
-            FilteredList<Component> filteredData = getFiltered(getObservableRegister());
-            // 3. Lager en ny liste som er en sortertversjon
-            SortedList<Component> sortedData = new SortedList<>(filteredData);
-            // 4. "binder" denne sorterte listen og sammenligner det med tableviewens data
-            sortedData.comparatorProperty().bind(tblViewComponent.comparatorProperty());
-            // 5. legger til sortert og filtrert data
-            tblViewComponent.setItems(sortedData);
-            tblViewComponent.refresh();
+            setSearchedList();
+            //tblViewComponent.refresh();
         } else {
             tblViewComponent.setItems(
-                    getFiltered(getComponentRegister()
+                    getFilteredList(getComponentRegister()
                             .filterByProductType(cbTypeFilter.getValue().toLowerCase())));
-            tblViewComponent.refresh();
+            //tblViewComponent.refresh();
         }
     }//skal sende en liste som allerede er filtrert basert på
+
+    private void setSearchedList() {
+        FilteredList<Component> filteredData = getFilteredList(getObservableRegister());
+        SortedList<Component> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tblViewComponent.comparatorProperty());
+        // legger til sortert og filtrert data
+        tblViewComponent.setItems(sortedData);
+    }
 
     private ObservableList<Component> getObservableRegister() {
         return ContextModel.INSTANCE.getComponentRegister().getObservableRegister();
     }
+
     private ComponentRegister getComponentRegister(){
         return ContextModel.INSTANCE.getComponentRegister();
     }
 
-    private FilteredList<Component> getFiltered(ObservableList<Component> list) {
+    private FilteredList<Component> getFilteredList(ObservableList<Component> list) {
         FilteredList<Component> filteredData = new FilteredList<>(list, p -> true);
-        /*FilteredList<Component> filteredData =
-                new FilteredList<Component>((FilteredList<Component>) componentRegister.getRegister(), p -> true);*/
         componentSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(component -> {
                 // If filter text is empty, display all components
-                if (newValue == null || newValue.isEmpty()) {
+                if (newValue == null || newValue.isBlank()) {
                     return true;
                 }
-                // sammenligner alle feltene med filteret.
                 String lowerCaseFilter = newValue.toLowerCase();
                 if (component.getProductType().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
+                    return true; // Filter matches type
                 } else if (component.getProductName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches epost
+                    return true; // Filter matches name
                 } else if (component.getProductDescription().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches fødselsdato
+                    return true; // Filter matches description
                 } else
                     return Double.toString(component.getProductPrice()).toLowerCase().matches(lowerCaseFilter); // Filter
-                // matches fødselsdato
-                // Does not match.
+
             });
         });
+        // Does not match.
         return filteredData;
     }
 

@@ -8,6 +8,7 @@ import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.*;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.ContextModel;
+import org.programutvikling.gui.FileHandling;
 import org.programutvikling.gui.SavedPathRegister;
 import org.programutvikling.user.UserPreferences;
 
@@ -17,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -117,6 +119,9 @@ UserPreferences userPreferences = ContextModel.INSTANCE.getUserPreferences();
         File tmp = new File(toString);
         return tmp.exists();
     }
+
+
+
 
     public void populateComboBoxes() {
         File folder = new File("Directory");

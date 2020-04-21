@@ -15,7 +15,6 @@ public class Computer implements Serializable, ItemUsable {
     // skal jo endre på feltene via tableview - er på en måte lettere med felt, også en metode som har x antall
     // parametre "lagComputer(...)
 
-    double priceTotal;
     //private transient ObservableList<Component> listOfComponents = FXCollections.observableArrayList();
     private ComponentRegister componentRegister = new ComponentRegister();
     private transient static final long serialVersionUID = 1;
@@ -42,25 +41,12 @@ public class Computer implements Serializable, ItemUsable {
     }
 
 
-    private double calculatePrice(ComponentRegister componentRegister){
-        if(componentRegister.getRegister().size()>0){
-        for(int i= 0; i<componentRegister.getRegister().size();i++) {
-            priceTotal = priceTotal + componentRegister.getRegister().get(i).getProductPrice();
-        }
-    return priceTotal;
-        }else{
-            return 0;
-        }
-    }
-
-    @Override/**hvordan skal formatet på txtfilen til computer være?*/
+    /**hvordan skal formatet på txtfilen til computer være? - tror ikke man bør lagre totalpris, da dette er noe man
+     * kan regne ut lett (i excel) .*/
+    @Override
     public String toString() {
             return
                     this.componentRegister.toString();
-    }
-
-    public List<Component> getRegister() {
-        return componentRegister.getRegister();
     }
 
     public void removeAll() {
@@ -69,6 +55,18 @@ public class Computer implements Serializable, ItemUsable {
 
     public void addComponent(Component parseComponent) {
         componentRegister.addComponent((parseComponent));
+    }
+
+    public double calculatePrice(){
+        if(this.componentRegister.getRegister().size()>0){
+            Double priceTotal = 0.0;
+            for(int i= 0; i<this.componentRegister.getRegister().size();i++) {
+                priceTotal = priceTotal + componentRegister.getRegister().get(i).getProductPrice();
+            }
+            return priceTotal;
+        }else{
+            return 0;
+        }
     }
 }
 

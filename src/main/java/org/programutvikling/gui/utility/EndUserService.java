@@ -12,7 +12,9 @@ public class EndUserService {
     ComponentRegister tastaturRegister = new ComponentRegister();
     ComponentRegister annetRegister = new ComponentRegister();
 
-    public EndUserService(){
+    //kunne man ha gjort dette med et componentregister-list? altså list som har
+
+    public EndUserService() {
         updateEndUserRegisters();
     }
 
@@ -44,33 +46,24 @@ public class EndUserService {
         return annetRegister;
     }
 
-
-    /**Skulle ønske vi kunne bruke den filtreringsmetoden fra controlleren - eller skriver om den slik at man kan
-     * gjenbruke*/
     public void updateEndUserRegisters() {
+
         clearRegisters(prosessorRegister, skjermkortRegister, minneRegister, harddiskRegister, ssdRegister,
                 tastaturRegister, annetRegister);
+
         ComponentRegister dataBaseRegister = ContextModel.INSTANCE.getComponentRegister();
-        for (int i = 0; i < dataBaseRegister.getRegister().size(); i++) {
-            if (dataBaseRegister.getRegister().get(i).getProductType().toLowerCase().equals("prosessor")) {
-                prosessorRegister.getRegister().add(dataBaseRegister.getRegister().get(i));
-            }if (dataBaseRegister.getRegister().get(i).getProductType().toLowerCase().equals("skjermkort")) {
-                skjermkortRegister.getRegister().add(dataBaseRegister.getRegister().get(i));
-            }if (dataBaseRegister.getRegister().get(i).getProductType().toLowerCase().equals("minne")) {
-                minneRegister.getRegister().add(dataBaseRegister.getRegister().get(i));
-            }if (dataBaseRegister.getRegister().get(i).getProductType().toLowerCase().equals("harddisk")) {
-                harddiskRegister.getRegister().add(dataBaseRegister.getRegister().get(i));
-            }if (dataBaseRegister.getRegister().get(i).getProductType().toLowerCase().equals("ssd")) {
-                ssdRegister.getRegister().add(dataBaseRegister.getRegister().get(i));
-            }if (dataBaseRegister.getRegister().get(i).getProductType().toLowerCase().equals("tastatur")) {
-                tastaturRegister.getRegister().add(dataBaseRegister.getRegister().get(i));
-            }if (dataBaseRegister.getRegister().get(i).getProductType().toLowerCase().equals("annet")) {
-                annetRegister.getRegister().add(dataBaseRegister.getRegister().get(i));
-            }
-        }
+        prosessorRegister.getRegister().addAll(dataBaseRegister.filterByProductType("prosessor"));
+        skjermkortRegister.getRegister().addAll(dataBaseRegister.filterByProductType("skjermkort"));
+        minneRegister.getRegister().addAll(dataBaseRegister.filterByProductType("minne"));
+        minneRegister.getRegister().addAll(dataBaseRegister.filterByProductType("harddisk"));
+        ssdRegister.getRegister().addAll(dataBaseRegister.filterByProductType("ssd"));
+        prosessorRegister.getRegister().addAll(dataBaseRegister.filterByProductType("tastatur"));
+        prosessorRegister.getRegister().addAll(dataBaseRegister.filterByProductType("annet"));
     }
-    private void clearRegisters(ComponentRegister ... c){
-        for(ComponentRegister i : c) {
+
+
+    private void clearRegisters(ComponentRegister... c) {
+        for (ComponentRegister i : c) {
             i.getRegister().clear();
         }
     }

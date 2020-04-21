@@ -73,15 +73,15 @@ public class ComponentRegister implements Serializable {
 
     public ObservableList<Component> filterByProductName(String name) {
         return componentObservableList.stream().
-                filter(p -> p.getProductName().toLowerCase().
-                        matches(String.format("%s%s%s", ".*", name.toLowerCase(), ".*"))).
+                filter(component -> component.getProductName().toLowerCase().matches(String.format("%s%s%s", ".*",
+                        name.toLowerCase(), ".*"))).
                 collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    public ObservableList<Component> filterByProductType(String name) {
+    public ObservableList<Component> filterByProductType(String type) {
         return componentObservableList.stream().
                 filter(p -> p.getProductType().toLowerCase().
-                        matches(String.format("%s%s%s",".*", name.toLowerCase(), ".*"))).
+                        matches(String.format("%s%s%s",".*", type.toLowerCase(), ".*"))).
                 collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 

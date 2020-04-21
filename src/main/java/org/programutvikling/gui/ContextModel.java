@@ -66,10 +66,8 @@ public enum ContextModel {
         return objects;
     }
 
-    public void loadComponentRegisterIntoModel(ComponentRegister c){
+    public void loadComponentRegisterIntoModel(){
         componentRegister.appendToList((ComponentRegister) objects.get(0));
-        /** SKal man appende til listen når bruker åpner fil?*/
-        //componentRegister = (ComponentRegister) objects.get(0);
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
