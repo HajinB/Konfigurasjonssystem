@@ -145,7 +145,7 @@
                     </Label>
                     <Separator layoutX="28.0" layoutY="71.0" prefHeight="6.0" prefWidth="954.0" />
                     <Separator layoutX="339.0" layoutY="134.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
-                      <TextField fx:id="componentSearch" layoutX="640.0" layoutY="618.0" onKeyPressed="#search"
+                      <TextField fx:id="componentSearch" layoutX="640.0" layoutY="618.0" onKeyTyped="#search"
                                  prefHeight="31.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css">
                           <font>
                               <Font size="13.0" />

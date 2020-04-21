@@ -33,9 +33,6 @@ public enum ContextModel {
         }else{
             System.out.println("ingen config fil ble funnet.");
         }
-        //FileHandling.openObjects(objects, userPreferences.getPathToUser().toString());
-        //FileHandling.openObjects(objects, userPreferences.getPathToUser().toString());
-        //loadObjectsIntoClasses();
     }
 
     private void loadRegisterFromFile() throws IOException {
@@ -67,12 +64,12 @@ public enum ContextModel {
     }
 
     public void loadComponentRegisterIntoModel(){
+        if(objects.get(0) instanceof ComponentRegister)
         componentRegister.appendToList((ComponentRegister) objects.get(0));
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
-       /* while (objects.remove(null)) {
-        }*/
+       /**går det ann å skrive dette på en annen måte? factory method feks??*/
         if(objects.size()>0) {
                 //dette overwriter uansett.
                 if ((objects.size()==1) ) {

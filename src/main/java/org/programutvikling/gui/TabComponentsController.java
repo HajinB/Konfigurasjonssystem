@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +18,7 @@ import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.component.io.InvalidComponentFormatException;
 import org.programutvikling.gui.utility.FileUtility;
+import org.programutvikling.gui.utility.Search;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -26,13 +26,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-
-//todo: fiks openthread..
-
 public class TabComponentsController {
     @FXML
     AnchorPane topLevelPane;
-
     ComponentTypes componentTypes = new ComponentTypes();
     ThreadHandler threadHandler;
     FileHandling fileHandling = new FileHandling();
@@ -63,20 +59,16 @@ public class TabComponentsController {
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
         updateComponentList();
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-        saveTimer();
         threadHandler = new ThreadHandler(this);
-       // tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
+        tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
     }
 
-    private void saveTimer() {
-        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        executorService.scheduleWithFixedDelay(() -> {
-            try {
-               saveAll();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }, 0, 1, TimeUnit.MINUTES);
+    private ObservableList<Component> getObservableRegister() {
+        return ContextModel.INSTANCE.getComponentRegister().getObservableRegister();
+    }
+
+    private ComponentRegister getComponentRegister() {
+        return ContextModel.INSTANCE.getComponentRegister();
     }
 
     private void saveAll() throws IOException {
@@ -94,7 +86,7 @@ public class TabComponentsController {
     @FXML
     public void refreshTableAndSave() throws IOException {
         tblViewComponent.refresh();
-       // updateComponentList();
+        updateComponentList();
         fileHandling.saveAll();
     }
 
@@ -105,19 +97,13 @@ public class TabComponentsController {
         refreshTableAndSave();
     }
 
-    public void updateRecentFiles(){
+    public void updateRecentFiles() {
         cbRecentFiles.setItems(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
     }
 
     @FXML
-    void btnOpenJobj(ActionEvent event) throws IOException {
-        openFileFromChooserWithThreadSleep();
-        saveAll();
-    }
-
-    @FXML
     void btnDelete(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk ja for å slette","Vil du slette ",
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk ja for å slette", "Vil du slette ",
                 tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
@@ -126,7 +112,6 @@ public class TabComponentsController {
             updateComponentList();
             saveAll();
         }
-        //fjern fra directory og array ?
     }
 
     private void updateComponentList() {
@@ -134,9 +119,7 @@ public class TabComponentsController {
         //tblViewComponent.refresh();
     }
 
-
-
-    private void registerComponent() throws InvalidComponentFormatException {
+    private void registerComponent(){
 
         Component newComponent = registryComponentLogic.createComponentsFromGUIInputIFields();
         if (newComponent != null) {
@@ -166,10 +149,29 @@ public class TabComponentsController {
 
     void openFileFromChooserWithThreadSleep() throws IOException {
         String chosenFile = FileUtility.getFilePathFromOpenDialog(stage);
-        if(chosenFile==null){
+        if (chosenFile == null) {
             return;
         }
         threadHandler.openInputThread(chosenFile);
+    }
+
+    @FXML
+    void btnOpenRecentFile(ActionEvent event) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Åpne nylig fil", "Vil du åpne den valgte filen, og dermed " +
+                        "overskrive den nåværende listen?", "Vil du åpne ",
+                cbRecentFiles.getSelectionModel().getSelectedItem());
+        alert.showAndWait();
+        String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
+        if (chosenFile.equals(cbRecentFiles.getPromptText())) {
+            System.out.println("velg en fil fra listen");
+            return;
+        }
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+
+            threadHandler.openInputThread(chosenFile);
+            ContextModel.INSTANCE.loadComponentRegisterIntoModel();
+            refreshTableAndSave();
+        }
     }
 
     @FXML
@@ -177,29 +179,6 @@ public class TabComponentsController {
         filter();
     }
 
-
-
-    @FXML
-    void btnOpenRecentFile(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Åpne nylig fil", "Vil du åpne den valgte filen, og dermed " +
-                        "overskrive den nåværende listen?","Vil du åpne ",
-                cbRecentFiles.getSelectionModel().getSelectedItem());
-        alert.showAndWait();
-        if (alert.getResult() == alert.getButtonTypes().get(0)) {
-            String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
-            if (chosenFile == null) {
-                System.out.println("velg en fil fra listen");
-                return;
-            }
-            threadHandler.openInputThread(chosenFile);
-            ContextModel.INSTANCE.loadObjectsIntoClasses();
-            // System.out.println(ContextModel.INSTANCE.getCurrentObjectList().toString());
-            refreshTableAndSave();
-        }
-    }
-
-
-/**https://stackoverflow.com/questions/49564002/keycode-event-for-backspace-in-javafx/49575995#49575995*/
     private ObservableList<Component> filter() {
         if (cbTypeFilter.getValue().equals("Ingen filter")) {
             updateComponentList();
@@ -217,68 +196,26 @@ public class TabComponentsController {
         return result;
     }
 
-
     @FXML
     void search(KeyEvent event) {
-        /** debugging backspace*/
-       // componentSearch.setOnKeyTyped((KeyEvent event) -> event.getKeyChar() != KeyEvent.VK_BACK_SPACE);
-        if(event.getCode() == KeyCode.BACK_SPACE){
-            System.out.println("ComponentSearch / backspace "+ componentSearch.getText());
-            //tblViewComponent.setItems(getFilteredList(getComponentRegister().getObservableRegister()));
-            setSearchedList();
-
-        }  /** debugging backspace*/
-
         if (cbTypeFilter.getValue().equals("Ingen filter") || cbTypeFilter.getValue() == null) {
             setSearchedList();
-            //tblViewComponent.refresh();
         } else {
             tblViewComponent.setItems(
-                    getFilteredList(getComponentRegister()
-                            .filterByProductType(cbTypeFilter.getValue().toLowerCase())));
-            //tblViewComponent.refresh();
+                    Search.getFilteredList(getComponentRegister()
+                            .filterByProductType(cbTypeFilter.getValue().toLowerCase()), componentSearch.getText()));
         }
-    }//skal sende en liste som allerede er filtrert basert på
+    }
 
     private void setSearchedList() {
-        FilteredList<Component> filteredData = getFilteredList(getObservableRegister());
+        FilteredList<Component> filteredData = Search.getFilteredList(getObservableRegister(), componentSearch.getText());
         SortedList<Component> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tblViewComponent.comparatorProperty());
-        // legger til sortert og filtrert data
         tblViewComponent.setItems(sortedData);
     }
 
-    private ObservableList<Component> getObservableRegister() {
-        return ContextModel.INSTANCE.getComponentRegister().getObservableRegister();
-    }
 
-    private ComponentRegister getComponentRegister(){
-        return ContextModel.INSTANCE.getComponentRegister();
-    }
 
-    private FilteredList<Component> getFilteredList(ObservableList<Component> list) {
-        FilteredList<Component> filteredData = new FilteredList<>(list, p -> true);
-        componentSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(component -> {
-                // If filter text is empty, display all components
-                if (newValue == null || newValue.isBlank()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
-                if (component.getProductType().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
-                } else if (component.getProductName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches epost
-                } else if (component.getProductDescription().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches fødselsdato
-                } else
-                    return Double.toString(component.getProductPrice()).toLowerCase().matches(lowerCaseFilter); // Filter
-                // matches fødselsdato
-                // Does not match.
-            });
-        });
-        return filteredData;
-    }
 
     @FXML
     private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
@@ -323,12 +260,4 @@ public class TabComponentsController {
         }
         refreshTableAndSave();
     }
-
-
-    public void shutdown() throws IOException {
-        saveAll();
-    }
-
-
-
 }
