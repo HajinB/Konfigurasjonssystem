@@ -5,26 +5,32 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
-import org.programutvikling.component.io.InvalidComponentFormatException;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.gui.utility.Search;
+import org.programutvikling.gui.utility.TemporaryComponent;
 
 import java.io.IOException;
 import java.util.Objects;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.Optional;
 
 public class TabComponentsController {
     @FXML
@@ -42,6 +48,7 @@ public class TabComponentsController {
     private Label lblComponentMsg;
     @FXML
     private ChoiceBox<String> cbType;
+
     @FXML
     private ComboBox<String> cbRecentFiles;
     @FXML
@@ -67,6 +74,80 @@ public class TabComponentsController {
         return ContextModel.INSTANCE.getComponentRegister().getObservableRegister();
     }
 
+    @FXML
+    void dblClickPopup(MouseEvent event) {
+        tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                TableRow row;
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                    Node node = ((Node) event.getTarget()).getParent();
+
+                    if (node instanceof TableRow) {
+                        row = (TableRow) node;
+                    } else {
+                        // clicking on text part
+                        row = (TableRow) node.getParent();
+                    }
+                    try {
+                        openEditWindow(row);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void openEditWindow(TableRow row) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/programutvikling/editPopup.fxml"));
+        loader.setControllerFactory(type -> {
+            if (type == TabComponentsController.class) {
+                return this ;
+            } else {
+                try {
+                    return type.newInstance();
+                } catch (RuntimeException e) {
+                    throw e ;
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        Component c = (Component) row.getItem();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(
+                new Scene(
+                        (Pane) loader.load()
+                )
+        );
+
+        /**HER SENDER VI TIL NY CONTROLLER*/
+        EditPopupController popupController =
+                loader.<EditPopupController>getController();
+        popupController.initData(c, stage);
+
+        stage.show();
+
+        /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
+        stage.setOnHidden(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we){
+                System.out.println("detected");
+                if(TemporaryComponent.INSTANCE.getIsEdited()){
+                    deleteComponent(c); //deletecomponent sletter flere hvis det er duplikater.
+                    getComponentRegister().addComponent(TemporaryComponent.INSTANCE.getTempComponent());
+                    TemporaryComponent.INSTANCE.resetTemps();
+                    updateComponentList();
+                    tblViewComponent.refresh();
+                    //delete old component
+                    //add new component
+                }
+            }
+        });
+    }
+    /*foreksempel denne - MÅ jo ikke eksistere. - men den gjør metodekall litt kortere.**/
     private ComponentRegister getComponentRegister() {
         return ContextModel.INSTANCE.getComponentRegister();
     }
@@ -108,10 +189,14 @@ public class TabComponentsController {
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             Component selectedComp = tblViewComponent.getSelectionModel().getSelectedItem();
-            getComponentRegister().removeComponent(selectedComp);
-            updateComponentList();
+            deleteComponent(selectedComp);
             saveAll();
         }
+    }
+
+    private void deleteComponent(Component selectedComp) {
+        getComponentRegister().removeComponent(selectedComp);
+        updateComponentList();
     }
 
     private void updateComponentList() {
@@ -139,7 +224,7 @@ public class TabComponentsController {
     @FXML
         //Komponent(String type, String name, String description, double price)
     void btnAddComponent(ActionEvent event) throws IOException {
-        /*if (inputValidated()) {
+        /*if (inputValidated()) { needed? eller skjer dette i konstruktøren?
             registerComponent();
         }*/
         registerComponent();
@@ -170,6 +255,7 @@ public class TabComponentsController {
 
             threadHandler.openInputThread(chosenFile);
             ContextModel.INSTANCE.loadComponentRegisterIntoModel();
+
             refreshTableAndSave();
         }
     }

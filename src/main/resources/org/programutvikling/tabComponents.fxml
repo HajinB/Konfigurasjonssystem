@@ -114,7 +114,7 @@
                             <Font name="System Bold" size="17.0" />
                         </font>
                     </Label>
-                    <TableView fx:id="tblViewComponent" editable="true" layoutX="359.0" layoutY="130.0" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
+                    <TableView fx:id="tblViewComponent" editable="true" layoutX="359.0" layoutY="130.0" onMousePressed="#dblClickPopup" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
                         <columns>
                             <TableColumn minWidth="100.0" onEditCommit="#productTypeEdited" prefWidth="120.0" text="Varetype">
                                 <cellValueFactory>
@@ -145,8 +145,7 @@
                     </Label>
                     <Separator layoutX="28.0" layoutY="71.0" prefHeight="6.0" prefWidth="954.0" />
                     <Separator layoutX="339.0" layoutY="134.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
-                      <TextField fx:id="componentSearch" layoutX="640.0" layoutY="618.0" onKeyTyped="#search"
-                                 prefHeight="31.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css">
+                      <TextField fx:id="componentSearch" layoutX="640.0" layoutY="618.0" onKeyTyped="#search" prefHeight="31.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css">
                           <font>
                               <Font size="13.0" />
                           </font>

@@ -1,5 +1,6 @@
 package org.programutvikling.gui;
 
+import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
@@ -24,7 +25,7 @@ public enum ContextModel {
     private Computer computer = new Computer();
     private ArrayList<Object> objects = new ArrayList<>();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
-
+    private ArrayList<Component> tempComponent= new ArrayList<>();
     private ContextModel(){
         System.out.println("hi from model constructor"+ userPreferences.getPathToUser().toString());
         if(FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
@@ -34,6 +35,7 @@ public enum ContextModel {
             System.out.println("ingen config fil ble funnet.");
         }
     }
+
 
     private void loadRegisterFromFile() throws IOException {
         File file = new File(String.valueOf(FileHandling.getPathToUser()));

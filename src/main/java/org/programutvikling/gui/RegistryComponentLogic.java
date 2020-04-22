@@ -27,6 +27,14 @@ class RegistryComponentLogic {
         return null;
     }
 
+    public void setComponentPopup(Component item) {
+        /**kanskje det bør være en metode som velger en faktisk choicebox valg her?*/
+//        ((ChoiceBox) gridPane.lookup("#popupProductType")).setValue(item.getProductType());
+        ((TextField) gridPane.lookup("#popupProductName")).setText(item.getProductName());
+        ((TextArea) gridPane.lookup("#popupProductDescription")).setText(item.getProductDescription());
+        ((TextField) gridPane.lookup("#popupProductPrice")).setText(Double.toString(item.getProductPrice()));
+    }
+
     private Component createComponent() {
 
         String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
@@ -37,6 +45,8 @@ class RegistryComponentLogic {
         System.out.println(productType);
         return new Component(productType, productName, productDescription, productPrice);
     }
+
+
 
     private String getString(TextField field) {
         return field.getText();
@@ -61,5 +71,6 @@ class RegistryComponentLogic {
         ((TextArea) gridPane.lookup("#productDescription")).setText("");
         ((TextField) gridPane.lookup("#productPrice")).setText("");
     }
+
 
 }

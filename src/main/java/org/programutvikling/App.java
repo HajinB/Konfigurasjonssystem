@@ -26,6 +26,11 @@ public class App extends Application {
     private static Scene scene;
     FileHandling fileHandling = new FileHandling();
 
+    public static FXMLLoader getLoader(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         /*
@@ -50,34 +55,31 @@ public class App extends Application {
         // For catching program exit via OS native close button
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we){
-
-                //Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Lagre før lukking");
-                Dialog dialog = new Dialog();
-
-                //endre knapper her til de dialog ?
                 Alert alert = Dialog.getConfirmationAlert("Avslutning", "", "Vil du lagre endringene dine", "");
                 Optional<ButtonType> result = alert.showAndWait();
 
                 if (result.get() == alert.getButtonTypes().get(0)) {
-                        System.out.println("Stage is closing - writing data to disk");
-                        Thread thread = new Thread(() -> {
-                            System.out.println("Saving database to file");
+                    System.out.println("Stage is closing - writing data to disk");
+                    Thread thread = new Thread(() -> {
+                        System.out.println("Saving database to file");
 
-                            try {
-                                fileHandling.saveAll();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                        try {
+                            fileHandling.saveAll();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
-                            System.out.println("Save complete");
-                        });
-                        thread.run();
-                    } else {
-                        System.out.println("Stage is closing - purging data");
-                    }
+                        System.out.println("Save complete");
+                    });
+                    thread.run();
+                } else {
+                    System.out.println("Stage is closing - purging data");
                 }
-                });
-        }
+            }
+        });
+    }
+
+
 
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
