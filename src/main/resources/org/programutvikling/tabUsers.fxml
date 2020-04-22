@@ -4,9 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-
 <?import org.programutvikling.gui.customTextField.ZipField?>
+
 <AnchorPane prefHeight="775.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabUsersController">
     <ScrollPane pannable="true" prefHeight="775.0" prefWidth="1040.0">
         <content>
