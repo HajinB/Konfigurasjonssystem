@@ -42,6 +42,8 @@ public class TabComponentsController {
     private RegistryComponentLogic registryComponentLogic;
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
+    final Tooltip tooltip = new Tooltip("Dobbeltklikk en rad for å redigere");
+
     @FXML
     private GridPane componentRegNode;
     @FXML
@@ -68,6 +70,7 @@ public class TabComponentsController {
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         threadHandler = new ThreadHandler(this);
         tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
+        tblViewComponent.setTooltip(tooltip);
     }
 
     private ObservableList<Component> getObservableRegister() {
@@ -116,7 +119,6 @@ public class TabComponentsController {
                 }
             }
         });
-
 
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -192,7 +194,7 @@ public class TabComponentsController {
 
     @FXML
     void btnDelete(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "trykk ja for å slette", "Vil du slette ",
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette", "Vil du slette ",
                 tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
@@ -309,15 +311,9 @@ public class TabComponentsController {
     }
 
 
-
-
     @FXML
     private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
-        try {
-            event.getRowValue().setProductType(event.getNewValue());
-        } catch (IllegalArgumentException e) {
-            Dialog.showErrorDialog("Ikke gyldig produkt: " + e.getMessage());
-        }
+        event.getRowValue().setProductType(event.getNewValue());
         refreshTableAndSave();
     }
 
@@ -336,7 +332,7 @@ public class TabComponentsController {
         try {
             event.getRowValue().setProductDescription(event.getNewValue());
         } catch (IllegalArgumentException e) {
-            Dialog.showErrorDialog("Ugyldig tegn i beskrivelse: " + e.getMessage());
+            Dialog.showErrorDialog("Noe gikk galt: " + e.getMessage());
         }
         refreshTableAndSave();
     }

@@ -41,7 +41,7 @@ public class FileHandling {
                 null, ContextModel.INSTANCE.getSavedPathRegister(), null);//todo her er det kanskje muilgheter for STOR
         // BUG - setter null in i
         // objectlisten...
-        System.out.println("dette prøver man å lagre:"+objectsToSave);
+        System.out.println("Dette prøver man å lagre:"+objectsToSave);
         Path pathAppend = Paths.get(path + ".jobj");
         saveFile(objectsToSave, pathAppend);
     }

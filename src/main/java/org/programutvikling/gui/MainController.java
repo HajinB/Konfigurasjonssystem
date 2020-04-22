@@ -22,16 +22,13 @@ public class MainController {
 
     FileHandling fileHandling = new FileHandling();
     Stage stage;
-    // Inject controller
+
     @FXML private TabComponentsController componentsController;
 /*
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TabComponentsController.fxml"));
     TabComponentsController tabComponentsController = fxmlLoader.<TabComponentsController>getController();
 */
 
-    // Inject tab content.
-
-    // Inject controller
     @FXML
     private TabUsersController usersController;
 
@@ -67,6 +64,6 @@ public class MainController {
     @FXML
     void btnSetDirectory(ActionEvent event) {
         fileHandling.getUserPreferences().setPreference(stage);
-        System.out.println("ny directory path: " + fileHandling.getUserPreferences().getStringPathToUser());
+        System.out.println("Ny directory path: " + fileHandling.getUserPreferences().getStringPathToUser());
     }
 }

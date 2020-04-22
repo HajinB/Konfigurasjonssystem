@@ -124,9 +124,6 @@ UserPreferences userPreferences = ContextModel.INSTANCE.getUserPreferences();
         return tmp.exists();
     }
 
-
-
-
     public void populateComboBoxes() {
         File folder = new File("Directory");
         File[] listOfFiles = folder.listFiles();
