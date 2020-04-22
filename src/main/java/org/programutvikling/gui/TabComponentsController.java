@@ -144,7 +144,6 @@ public class TabComponentsController {
                     //deleteComponent(c); //deletecomponent sletter flere hvis det er duplikater.
                     getObservableRegister().set(getObservableRegister().indexOf(c),
                             TemporaryComponent.INSTANCE.getTempComponent());
-
                     TemporaryComponent.INSTANCE.resetTemps();
                     updateComponentList();
                     tblViewComponent.refresh();
