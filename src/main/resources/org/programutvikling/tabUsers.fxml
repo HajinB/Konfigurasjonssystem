@@ -6,6 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import org.programutvikling.gui.customTextField.ZipField?>
 <AnchorPane prefHeight="775.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabUsersController">
     <ScrollPane pannable="true" prefHeight="775.0" prefWidth="1040.0">
         <content>
@@ -73,11 +74,11 @@
                                             <Insets top="5.0" />
                                         </GridPane.margin>
                                     </Label>
-                                    <TextField layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn postnummer" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="7">
+                                    <ZipField layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn postnummer" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="7">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
-                                    </TextField>
+                                    </ZipField>
                                     <Label text="Poststed" GridPane.rowIndex="8">
                                         <font>
                                             <Font size="13.0" />
