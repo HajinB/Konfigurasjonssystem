@@ -20,4 +20,5 @@ module org.programutvikling {
         opens org.programutvikling.component to javafx.base;
         opens org.programutvikling.computer to javafx.base;
         exports org.programutvikling;
+        exports org.programutvikling.gui.customTextField;
         }

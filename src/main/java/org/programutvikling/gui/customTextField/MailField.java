@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 
 public class MailField extends TextField {
     private final String MAIL_REGEX = "^[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*@[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*\\.[a-zæøåA-ZÆØÅ]{2,3}$";
+
     public MailField() {
         super();
 

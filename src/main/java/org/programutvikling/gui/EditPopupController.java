@@ -11,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentTypes;
+import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.TemporaryComponent;
 
 import java.net.URL;
@@ -31,7 +32,7 @@ public class EditPopupController extends TabComponentsController implements Init
     private TextArea txtPopupProductDescription;
 
     @FXML
-    private TextField txtPopupProductPrice;
+    private PriceField txtPopupProductPrice;
 
     @FXML
     private ChoiceBox<String> cbType;
