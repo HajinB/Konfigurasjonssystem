@@ -141,6 +141,11 @@ public class TabComponentsController {
                     TemporaryComponent.INSTANCE.resetTemps();
                     updateComponentList();
                     tblViewComponent.refresh();
+                    try {
+                        saveAll();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     //delete old component
                     //add new component
                 }
