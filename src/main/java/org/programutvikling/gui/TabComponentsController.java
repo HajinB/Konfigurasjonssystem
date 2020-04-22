@@ -80,13 +80,14 @@ public class TabComponentsController {
             @Override
             public void handle(MouseEvent event) {
                 TableRow row;
+
                 if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
                     Node node = ((Node) event.getTarget()).getParent();
 
                     if (node instanceof TableRow) {
                         row = (TableRow) node;
                     } else {
-                        // clicking on text part
+                        //hvis man trykker på tekst
                         row = (TableRow) node.getParent();
                     }
                     try {
@@ -97,11 +98,11 @@ public class TabComponentsController {
                 }
             }
         });
-
     }
 
     private void openEditWindow(TableRow row) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/programutvikling/editPopup.fxml"));
+        //setControllerFactory er for å kunne instansiere en controller med verdier i konstruktøren
         loader.setControllerFactory(type -> {
             if (type == TabComponentsController.class) {
                 return this ;
@@ -115,7 +116,8 @@ public class TabComponentsController {
                 }
             }
         });
-        Component c = (Component) row.getItem();
+
+
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(
@@ -124,7 +126,8 @@ public class TabComponentsController {
                 )
         );
 
-        /**HER SENDER VI TIL NY CONTROLLER*/
+        Component c = (Component) row.getItem();
+        /**HER SENDER VI TIL NY CONTROLLER, bruker ikke */
         EditPopupController popupController =
                 loader.<EditPopupController>getController();
         popupController.initData(c, stage);
@@ -136,8 +139,10 @@ public class TabComponentsController {
             public void handle(WindowEvent we){
                 System.out.println("detected");
                 if(TemporaryComponent.INSTANCE.getIsEdited()){
-                    deleteComponent(c); //deletecomponent sletter flere hvis det er duplikater.
-                    getComponentRegister().addComponent(TemporaryComponent.INSTANCE.getTempComponent());
+                    //deleteComponent(c); //deletecomponent sletter flere hvis det er duplikater.
+                    getObservableRegister().set(getObservableRegister().indexOf(c),
+                            TemporaryComponent.INSTANCE.getTempComponent());
+
                     TemporaryComponent.INSTANCE.resetTemps();
                     updateComponentList();
                     tblViewComponent.refresh();
@@ -146,8 +151,6 @@ public class TabComponentsController {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //delete old component
-                    //add new component
                 }
             }
         });

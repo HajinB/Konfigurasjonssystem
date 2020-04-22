@@ -226,7 +226,8 @@
       <workItem from="1587116353181" duration="11515000" />
       <workItem from="1587201940647" duration="10989000" />
       <workItem from="1587321451055" duration="3499000" />
-      <workItem from="1587391191563" duration="34581000" />
+      <workItem from="1587391191563" duration="35571000" />
+      <workItem from="1587521115243" duration="1373000" />
     </task>
     <task id="LOCAL-00001" summary="runConfig lagt til">
       <created>1585505781643</created>
@@ -483,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587515418109</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="fungerende popup-edit-window">
+      <created>1587515613735</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1587515613735</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
