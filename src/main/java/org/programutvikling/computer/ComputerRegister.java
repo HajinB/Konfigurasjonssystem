@@ -10,5 +10,4 @@ public class ComputerRegister extends ComponentRegister {
 
     ArrayList<Computer> computerRegisterList =  new ArrayList<>();
 
-
 }

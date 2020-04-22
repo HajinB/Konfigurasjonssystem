@@ -4,6 +4,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import org.programutvikling.component.Component;
+import org.programutvikling.gui.customTextField.PriceField;
 
 class RegistryComponentLogic {
     Converter.DoubleStringConverter doubleStringConverter = new Converter.DoubleStringConverter();
@@ -32,7 +33,7 @@ class RegistryComponentLogic {
 //        ((ChoiceBox) gridPane.lookup("#popupProductType")).setValue(item.getProductType());
         ((TextField) gridPane.lookup("#popupProductName")).setText(item.getProductName());
         ((TextArea) gridPane.lookup("#popupProductDescription")).setText(item.getProductDescription());
-        ((TextField) gridPane.lookup("#popupProductPrice")).setText(Double.toString(item.getProductPrice()));
+        ((PriceField) gridPane.lookup("#popupProductPrice")).setText(Double.toString(item.getProductPrice()));
     }
 
     private Component createComponent() {
@@ -40,7 +41,7 @@ class RegistryComponentLogic {
         String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
         String productName = getString((TextField) gridPane.lookup("#productName"));
         String productDescription = getTextareaString((TextArea) gridPane.lookup("#productDescription"));
-        double productPrice = getDouble((TextField) gridPane.lookup("#productPrice"));
+        double productPrice = getDouble((PriceField) gridPane.lookup("#productPrice"));
 
         System.out.println(productType);
         return new Component(productType, productName, productDescription, productPrice);
@@ -69,7 +70,7 @@ class RegistryComponentLogic {
         ((ChoiceBox) gridPane.lookup("#productType")).setValue(null);
         ((TextField) gridPane.lookup("#productName")).setText("");
         ((TextArea) gridPane.lookup("#productDescription")).setText("");
-        ((TextField) gridPane.lookup("#productPrice")).setText("");
+        ((PriceField) gridPane.lookup("#productPrice")).setText("");
     }
 
 
