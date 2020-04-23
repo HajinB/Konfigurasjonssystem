@@ -9,23 +9,27 @@ import javafx.stage.Stage;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.io.FileOpenerTxt;
 import org.programutvikling.component.io.FileSaverTxt;
+import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerValidator;
 import org.programutvikling.gui.utility.EndUserService;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
 
 
 public class EnduserController extends TabComponentsController {
     EndUserService endUserService = new EndUserService();
     Stage stage;
+    ComputerValidator computerValidator = new ComputerValidator();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     //sånn instansiering fungerer ikke likevel..blir statisk - bør lage en klasse som henter fresh data ut fra
     // contextmodel
     private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
-
     @FXML
     private ListView<Component> shoppingListView;
 
@@ -69,6 +73,82 @@ public class EnduserController extends TabComponentsController {
 
     }
 
+    Computer getComputer() {
+        return ContextModel.INSTANCE.getComputer();
+    }
+
+    @FXML
+    void btnAddProsessorToCart(ActionEvent event) {
+        if (computerValidator.prosessorValidator(getComputer())) {
+            addComponentToCart(tblProsessor);
+        }else{
+            replaceComponentInCart("prosessor", tblProsessor);
+        }
+    }
+
+    @FXML
+    void btnAddHarddiskToCart(ActionEvent event) {
+        if (computerValidator.harddiskValidator(getComputer())) {
+            addComponentToCart(tblHarddisk);
+        }else{
+            replaceComponentInCart("harddisk", tblHarddisk);
+        }
+    }
+
+    @FXML
+    void
+    btnAddMinneToCart(ActionEvent event) {
+        if(computerValidator.minneValidator(getComputer())) {
+            addComponentToCart(tblMinne);
+        }else{
+            replaceComponentInCart("minne", tblMinne);
+        }
+
+    }
+
+    @FXML
+    void btnAddSkjermToCart(ActionEvent e) {
+        addComponentToCart(tblSkjerm);
+
+    }
+
+    @FXML
+    void btnAddAnnetToCart(ActionEvent event) {
+        addComponentToCart(tblAnnet);
+
+    }
+
+    @FXML
+    void btnAddTastaturToCart(ActionEvent event) {
+        addComponentToCart(tblTastatur);
+    }
+
+    @FXML
+    void
+    btnAddMusToCart(ActionEvent event) {
+        addComponentToCart(tblMus);
+    }
+
+    @FXML
+    void btnAddSkjermkortToCart(ActionEvent event) {
+        addComponentToCart(tblSkjermkort);
+    }
+
+
+    @FXML
+    public void btnOpenComputer(ActionEvent event) throws IOException {
+        String path = FileUtility.getFilePathFromOpenDialog(stage);
+        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
+        fileOpenerTxt.open(ContextModel.INSTANCE.getComputer(), Paths.get(path));
+    }
+
+    @FXML
+    public void btnSavePC(ActionEvent event) throws IOException {
+        FileSaverTxt fileSaverTxt = new FileSaverTxt();
+        String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
+        fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
+    }
+
     @FXML
     public void initialize() throws IOException {
         endUserService.updateEndUserRegisters();
@@ -80,10 +160,15 @@ public class EnduserController extends TabComponentsController {
         updateComputerListView();
     }
 
+    //By default, a ListView calls the toString()
+    // method of its items and it displays the string in its cell.
+    // In the updateItem() method of your custom ListCell, you can populate the text and graphic for the cell to
+    // display anything you want in the cell based on the item in that cell.
+    //https://examples.javacodegeeks.com/desktop-java/javafx/listview-javafx/javafx-listview-example/
     void updateComputerListView() {
-
         if (ContextModel.INSTANCE.getComputer() != null)
             shoppingListView.setItems(ContextModel.INSTANCE.getComputer().getComponentRegister().getObservableRegister());
+
         updateTotalPrice();
     }
 
@@ -115,11 +200,15 @@ public class EnduserController extends TabComponentsController {
         setTblHarddisk(tblHarddisk);
         setTblSkjermkort(tblSkjermkort);
         setTblMinne(tblMinne);
+        setTblAnnet(tblAnnet);
+        setTblTastatur(tblTastatur);
+        //fortsett for alle her
 
     }
 
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
+     * mangler kabinett tableview og hovedkort tableview
      */
     private void setTblMinne(TableView<Component> tblMinne) {
         tblMinne.setItems(endUserService.getMinneRegister().getObservableRegister());
@@ -139,12 +228,20 @@ public class EnduserController extends TabComponentsController {
     public void setTblHarddisk(TableView<Component> tblHarddisk) {
         tblHarddisk.setItems(endUserService.getHarddiskRegister().getObservableRegister());
         this.tblHarddisk = tblHarddisk;
+    }
 
+    public void setTblTastatur(TableView<Component> tblTastatur) {
+        tblTastatur.setItems(endUserService.getTastaturRegister().getObservableRegister());
+        this.tblTastatur = tblTastatur;
+    }
+
+    public void setTblAnnet(TableView<Component> tblAnnet) {
+        tblAnnet.setItems(endUserService.getAnnetRegister().getObservableRegister());
+        this.tblAnnet = tblAnnet;
     }
 
     public void initItemFiles() {
         //computerRegister.addComponent();
-
     }
 
     private void loadElementsFromFile() {
@@ -152,18 +249,8 @@ public class EnduserController extends TabComponentsController {
     }
 
 
-    @FXML
-    void btnAddProsessorToCart(ActionEvent event) {
-        // tblProsessor.getSelectionModel().getSelectedCells();
-        /**all adding av componenter må skje via enduserservice - legg til en metode der som legger til*/
-        Component selectedComp = tblProsessor.getSelectionModel().getSelectedItem();
-        ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
-        updateComputerListView();
-    }
-
-    @FXML
-    void btnAddSkjermkortToCart(ActionEvent event) {
-        Component selectedComp = tblSkjermkort.getSelectionModel().getSelectedItem();
+    private void addComponentToCart(TableView<Component> tbl) {
+        Component selectedComp = tbl.getSelectionModel().getSelectedItem();
         /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
         if (selectedComp != null) {
             ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
@@ -172,15 +259,24 @@ public class EnduserController extends TabComponentsController {
         updateComputerListView();
     }
 
+    private void replaceComponentInCart(String s, TableView<Component> tblProsessor) {
+        Component selectedComp = tblProsessor.getSelectionModel().getSelectedItem();
+        if (selectedComp != null) {
+            /**FJERN EN AV DE AV DEN GITTE TYPEN - så legg til*/
+            /**evt legg til confirmation alert her*/
+            List<Component> list = getComputer().getComponentRegister().filterByProductType(s);
+            if(list.size()>0) {
+                getComputer().getComponentRegister().getRegister().remove(list.get(0));
+            }
+            ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+            updateComputerListView();
+        }
+    }
+
+
     private ComponentRegister getComputerComponentRegister() {
-        //dette gir NPE fordi computer ikke er instansiert i contextmodel(?)
         return ContextModel.INSTANCE.getComputer().getComponentRegister();
     }
 
 
-    public void btnSavePC(ActionEvent event) throws IOException {
-        FileSaverTxt fileSaverTxt = new FileSaverTxt();
-        String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
-        fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
-    }
 }

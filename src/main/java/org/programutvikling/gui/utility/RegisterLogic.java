@@ -10,8 +10,7 @@ public class RegisterLogic {
     public static boolean containsDuplicates(ObservableList<String> list) {
         ObservableList<String> result = makeUnique(list);
         return result.size() == list.size();
-        }
-
+    }
 
     public static ObservableList<String> removeDuplicates(ObservableList<String> list) {
         ObservableList<String> result = makeUnique(list);

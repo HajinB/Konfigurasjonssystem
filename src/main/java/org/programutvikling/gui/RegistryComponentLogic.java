@@ -5,6 +5,8 @@ import javafx.scene.layout.GridPane;
 
 import org.programutvikling.component.Component;
 import org.programutvikling.gui.customTextField.PriceField;
+import org.programutvikling.gui.utility.Converter;
+import org.programutvikling.gui.utility.Dialog;
 
 class RegistryComponentLogic {
     Converter.DoubleStringConverter doubleStringConverter = new Converter.DoubleStringConverter();
@@ -21,7 +23,7 @@ class RegistryComponentLogic {
             resetFields();
             return c;
         } catch (NumberFormatException nfe) {
-            Dialog.showErrorDialog("Skriv inn tall");
+            org.programutvikling.gui.utility.Dialog.showErrorDialog("Skriv inn tall");
         } catch (IllegalArgumentException iae) {
             Dialog.showErrorDialog(iae.getMessage());
         }

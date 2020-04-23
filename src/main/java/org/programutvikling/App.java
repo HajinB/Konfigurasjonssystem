@@ -7,15 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.programutvikling.gui.ContextModel;
-import org.programutvikling.gui.Dialog;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.FileHandling;
-import org.programutvikling.gui.utility.FileUtility;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -26,10 +22,6 @@ public class App extends Application {
     private static Scene scene;
     FileHandling fileHandling = new FileHandling();
 
-    public static FXMLLoader getLoader(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {

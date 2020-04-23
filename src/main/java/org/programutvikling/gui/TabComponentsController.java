@@ -9,7 +9,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -24,15 +23,18 @@ import javafx.stage.WindowEvent;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
+import org.programutvikling.gui.utility.Converter;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.gui.utility.Search;
 import org.programutvikling.gui.utility.TemporaryComponent;
 
 import java.io.IOException;
 import java.util.Objects;
-import java.util.Optional;
 
 public class TabComponentsController {
+    MainController mainController;
+    final Tooltip tooltip = new Tooltip("Dobbeltklikk en rad for å redigere");
     @FXML
     AnchorPane topLevelPane;
     ComponentTypes componentTypes = new ComponentTypes();
@@ -42,12 +44,10 @@ public class TabComponentsController {
     private RegistryComponentLogic registryComponentLogic;
     private Converter.DoubleStringConverter doubleStrConverter
             = new Converter.DoubleStringConverter();
-    final Tooltip tooltip = new Tooltip("Dobbeltklikk en rad for å redigere");
-
     @FXML
     private GridPane componentRegNode;
     @FXML
-    private Label lblComponentMsg;
+    public Label lblComponentMsg;
     @FXML
     private ChoiceBox<String> cbType;
 
@@ -62,29 +62,26 @@ public class TabComponentsController {
     @FXML
     private TableColumn<TableView<Component>, Double> productPriceColumn;
 
+
+
     @FXML
     public void initialize() throws IOException {
         initChoiceBoxes();
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
-        updateComponentList();
+        updateView();
         productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         threadHandler = new ThreadHandler(this);
         tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
         tblViewComponent.setTooltip(tooltip);
     }
 
-    private ObservableList<Component> getObservableRegister() {
-        return ContextModel.INSTANCE.getComponentRegister().getObservableRegister();
-    }
-
     @FXML
-    void dblClickPopup(MouseEvent event) {
+    void dblClickTblRow(MouseEvent event) {
         tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 TableRow row;
-
-                if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                if (isDoubleClick(event)) {
                     Node node = ((Node) event.getTarget()).getParent();
 
                     if (node instanceof TableRow) {
@@ -100,84 +97,25 @@ public class TabComponentsController {
                     }
                 }
             }
-        });
-    }
 
-    private void openEditWindow(TableRow row) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/programutvikling/editPopup.fxml"));
-        //setControllerFactory er for å kunne instansiere en controller med verdier i konstruktøren
-        loader.setControllerFactory(type -> {
-            if (type == TabComponentsController.class) {
-                return this ;
-            } else {
-                try {
-                    return type.newInstance();
-                } catch (RuntimeException e) {
-                    throw e ;
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+            private boolean isDoubleClick(MouseEvent event) {
+                return event.isPrimaryButtonDown() && event.getClickCount() == 2;
             }
         });
-
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(
-                new Scene(
-                        (Pane) loader.load()
-                )
-        );
-
-        Component c = (Component) row.getItem();
-        /**HER SENDER VI TIL NY CONTROLLER, bruker ikke */
-        EditPopupController popupController =
-                loader.<EditPopupController>getController();
-        popupController.initData(c, stage);
-
-        stage.show();
-
-        /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
-        stage.setOnHidden(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we){
-                System.out.println("detected");
-                if(TemporaryComponent.INSTANCE.getIsEdited()){
-                    //deleteComponent(c); //deletecomponent sletter flere hvis det er duplikater.
-                    getObservableRegister().set(getObservableRegister().indexOf(c),
-                            TemporaryComponent.INSTANCE.getTempComponent());
-                    TemporaryComponent.INSTANCE.resetTemps();
-                    updateComponentList();
-                    tblViewComponent.refresh();
-                    try {
-                        saveAll();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-    }
-    /*foreksempel denne - MÅ jo ikke eksistere. - men den gjør metodekall litt kortere.**/
-    private ComponentRegister getComponentRegister() {
-        return ContextModel.INSTANCE.getComponentRegister();
-    }
-
-    private void saveAll() throws IOException {
-        fileHandling.saveAll();
-    }
-
-    private void initChoiceBoxes() {
-        cbTypeFilter.setValue("Ingen filter");
-        cbRecentFiles.setOnMouseClicked((MouseEvent event) -> updateRecentFiles());
-        updateRecentFiles();
-        cbType.setItems(componentTypes.getObservableTypeListName());
-        cbTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
 
     @FXML
-    public void refreshTableAndSave() throws IOException {
-        tblViewComponent.refresh();
-        updateComponentList();
-        fileHandling.saveAll();
+    void search(KeyEvent event) {
+        if (cbTypeFilter.getValue().equals("Ingen filter") || cbTypeFilter.getValue() == null) {
+            setSearchedList();
+        } else {
+            tblViewComponent.setItems(getSearchedAndFilteredList());
+        }
+    }
+
+    ObservableList<Component> getSearchedAndFilteredList(){
+       return Search.getFilteredList(getComponentRegister()
+                .filterByProductType(cbTypeFilter.getValue().toLowerCase()), componentSearch.getText());
     }
 
     @FXML
@@ -187,9 +125,44 @@ public class TabComponentsController {
         refreshTableAndSave();
     }
 
-    public void updateRecentFiles() {
-        cbRecentFiles.setItems(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
+    @FXML
+    void btnAddComponent(ActionEvent event) throws IOException {
+        registerComponent();
+        updateView();
+        fileHandling.saveAll();
     }
+
+    @FXML
+    void btnOpenRecentFile(ActionEvent event) throws IOException {
+        Alert alert = org.programutvikling.gui.utility.Dialog.getConfirmationAlert(
+                "Åpne nylig fil",
+                "Vil du åpne den valgte filen, og dermed " +
+                        "overskrive den nåværende listen?",
+                "Vil du åpne ",
+                cbRecentFiles.getSelectionModel().getSelectedItem());
+        alert.showAndWait();
+        String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
+        if (isFileSelectionEmpty(chosenFile)) {
+            System.out.println("velg en fil fra listen");
+            return;
+        }
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            threadHandler.openInputThread(chosenFile);
+            ContextModel.INSTANCE.loadComponentRegisterIntoModel();
+
+            refreshTableAndSave();
+        }
+    }
+
+    private boolean isFileSelectionEmpty(String chosenFile) {
+        return chosenFile.equals(cbRecentFiles.getPromptText());
+    }
+
+    @FXML
+    private void filterByTypeSelected() {
+        filter();
+    }
+
 
     @FXML
     void btnDelete(ActionEvent event) throws IOException {
@@ -203,42 +176,102 @@ public class TabComponentsController {
         }
     }
 
+    /**utility methods for controller*/
+    private void handlePopUp(Stage stage, Component c) {
+        /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
+        stage.setOnHidden(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                System.out.println("detected");
+                if (TemporaryComponent.INSTANCE.getIsEdited()) {
+                    getObservableRegister().set(getObservableRegister().indexOf(c),
+                            TemporaryComponent.INSTANCE.getTempComponent());
+                    TemporaryComponent.INSTANCE.resetTemps();
+                    updateView();
+                    tblViewComponent.refresh();
+                    try {
+                        saveAll();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+
+    private void openEditWindow(TableRow row) throws IOException {
+        FXMLLoader loader = getFxmlLoader("editPopup.fxml");
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(
+                new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
+        );
+        Component c = (Component) row.getItem();
+        EditPopupController popupController =
+                loader.<EditPopupController>getController();
+        popupController.initData(c, stage);
+        stage.show();
+        handlePopUp(stage, c);
+    }
+
+    private FXMLLoader getFxmlLoader(String fxml) throws IOException {
+        FXMLGetter fxmlGetter = new FXMLGetter();
+        FXMLLoader loader = fxmlGetter.getFxmlLoader("editPopup.fxml");
+       return loader;
+    }
+
+    private ComponentRegister getComponentRegister() {
+        return ContextModel.INSTANCE.getComponentRegister();
+    }
+
+    private void saveAll() throws IOException {
+        fileHandling.saveAll();
+    }
+
+    private ObservableList<Component> getObservableRegister() {
+        return ContextModel.INSTANCE.getComponentRegister().getObservableRegister();
+    }
+
+    private void initChoiceBoxes() {
+        cbTypeFilter.setValue("Ingen filter");
+        cbRecentFiles.setOnMouseClicked((MouseEvent event) -> updateRecentFiles());
+        updateRecentFiles();
+        cbType.setItems(componentTypes.getObservableTypeListName());
+        cbTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
+    }
+
+    private void updateRecentFiles() {
+        cbRecentFiles.setItems(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
+    }
+
+    private void refreshTableAndSave() throws IOException {
+        tblViewComponent.refresh();
+        updateView();
+        fileHandling.saveAll();
+    }
+    public void updateView() {
+        getComponentRegister().attachTableView(tblViewComponent);
+        tblViewComponent.refresh();
+    }
     private void deleteComponent(Component selectedComp) {
         getComponentRegister().removeComponent(selectedComp);
-        updateComponentList();
+        updateView();
     }
 
-    private void updateComponentList() {
-        getComponentRegister().attachTableView(tblViewComponent);
-        //tblViewComponent.refresh();
-    }
-
-    private void registerComponent(){
-
+    private void registerComponent() {
         Component newComponent = registryComponentLogic.createComponentsFromGUIInputIFields();
         if (newComponent != null) {
             getComponentRegister().addComponent(newComponent);
-            updateComponentList();
+            updateView();
         }
     }
 
-    public void disableGUI() {
-        topLevelPane.setDisable(true);//prøver å slå av hele gridpane
+    void disableGUI() {
+        topLevelPane.setDisable(true);
     }
 
-    public void enableGUI() {
-        topLevelPane.setDisable(false);//kan ikke gjøres her
-    }
-
-    @FXML
-        //Komponent(String type, String name, String description, double price)
-    void btnAddComponent(ActionEvent event) throws IOException {
-        /*if (inputValidated()) { needed? eller skjer dette i konstruktøren?
-            registerComponent();
-        }*/
-        registerComponent();
-        updateComponentList();
-        fileHandling.saveAll();
+    void enableGUI() {
+        topLevelPane.setDisable(false);
     }
 
     void openFileFromChooserWithThreadSleep() throws IOException {
@@ -249,34 +282,9 @@ public class TabComponentsController {
         threadHandler.openInputThread(chosenFile);
     }
 
-    @FXML
-    void btnOpenRecentFile(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Åpne nylig fil", "Vil du åpne den valgte filen, og dermed " +
-                        "overskrive den nåværende listen?", "Vil du åpne ",
-                cbRecentFiles.getSelectionModel().getSelectedItem());
-        alert.showAndWait();
-        String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
-        if (chosenFile.equals(cbRecentFiles.getPromptText())) {
-            System.out.println("velg en fil fra listen");
-            return;
-        }
-        if (alert.getResult() == alert.getButtonTypes().get(0)) {
-
-            threadHandler.openInputThread(chosenFile);
-            ContextModel.INSTANCE.loadComponentRegisterIntoModel();
-
-            refreshTableAndSave();
-        }
-    }
-
-    @FXML
-    private void filterByTypeSelected() {
-        filter();
-    }
-
     private ObservableList<Component> filter() {
         if (cbTypeFilter.getValue().equals("Ingen filter")) {
-            updateComponentList();
+            updateView();
             return getObservableRegister();
         }
         ObservableList<Component> result = getResultFromTypeFilter();
@@ -291,17 +299,6 @@ public class TabComponentsController {
         return result;
     }
 
-    @FXML
-    void search(KeyEvent event) {
-        if (cbTypeFilter.getValue().equals("Ingen filter") || cbTypeFilter.getValue() == null) {
-            setSearchedList();
-        } else {
-            tblViewComponent.setItems(
-                    Search.getFilteredList(getComponentRegister()
-                            .filterByProductType(cbTypeFilter.getValue().toLowerCase()), componentSearch.getText()));
-        }
-    }
-
     private void setSearchedList() {
         FilteredList<Component> filteredData = Search.getFilteredList(getObservableRegister(), componentSearch.getText());
         SortedList<Component> sortedData = new SortedList<>(filteredData);
@@ -309,44 +306,8 @@ public class TabComponentsController {
         tblViewComponent.setItems(sortedData);
     }
 
+    public void init(MainController mainController) {
+        this.mainController=mainController;
 
-    @FXML
-    private void productTypeEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
-        event.getRowValue().setProductType(event.getNewValue());
-        refreshTableAndSave();
-    }
-
-    @FXML
-    private void productNameEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
-        try {
-            event.getRowValue().setProductName(event.getNewValue());
-        } catch (IllegalArgumentException e) {
-            Dialog.showErrorDialog("Ugyldig navn: " + e.getMessage());
-        }
-        refreshTableAndSave();
-    }
-
-    @FXML
-    private void productDescriptionEdited(TableColumn.CellEditEvent<Component, String> event) throws IOException {
-        try {
-            event.getRowValue().setProductDescription(event.getNewValue());
-        } catch (IllegalArgumentException e) {
-            Dialog.showErrorDialog("Noe gikk galt: " + e.getMessage());
-        }
-        refreshTableAndSave();
-    }
-
-    @FXML
-    private void productPriceEdited(TableColumn.CellEditEvent<Component, Double> event) throws IOException {
-        try {
-            if (doubleStrConverter.wasSuccessful()) {
-                event.getRowValue().setProductPrice(event.getNewValue());
-            }
-        } catch (NumberFormatException e) {
-            Dialog.showErrorDialog("Ugyldig pris: " + e.getMessage());
-        } catch (IllegalArgumentException i) {
-            Dialog.showErrorDialog("Ugyldige tegn: " + i.getMessage());
-        }
-        refreshTableAndSave();
     }
 }

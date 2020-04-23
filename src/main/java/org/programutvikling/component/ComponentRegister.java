@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
+
+import static java.util.stream.Collectors.toCollection;
 
 
 public class ComponentRegister implements Serializable {
@@ -18,16 +18,16 @@ public class ComponentRegister implements Serializable {
 
     private transient ObservableList<Component> componentObservableList = FXCollections.observableArrayList();
 
-    public ArrayList<Object> objectArrayListAdapter() {
-        ArrayList<Object> objects = new ArrayList<>();
-        objects.addAll(componentObservableList);
-        return objects;
-    }
-
     public static ArrayList<Component> getReadableList(List nonReadableList) {
         ArrayList<Component> nyListe = new ArrayList<>();
         nyListe.addAll(nonReadableList);
         return nyListe;
+    }
+
+    public ArrayList<Object> objectArrayListAdapter() {
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.addAll(componentObservableList);
+        return objects;
     }
 
     public ObservableList<Component> getObservableRegister() {
@@ -46,7 +46,7 @@ public class ComponentRegister implements Serializable {
         String name = component.getProductName();
         String description = component.getProductDescription();
         double price = component.getProductPrice();
-        for(int i = 0; i<componentObservableList.size(); i++) {
+        for (int i = 0; i < componentObservableList.size(); i++) {
             if (isNameAndDescriptionInList(name, description, i)) {
                 componentObservableList.remove(i);
             }
@@ -75,14 +75,14 @@ public class ComponentRegister implements Serializable {
         return componentObservableList.stream().
                 filter(component -> component.getProductName().toLowerCase().matches(String.format("%s%s%s", ".*",
                         name.toLowerCase(), ".*"))).
-                collect(Collectors.toCollection(FXCollections::observableArrayList));
+                collect(toCollection(FXCollections::observableArrayList));
     }
 
     public ObservableList<Component> filterByProductType(String type) {
         return componentObservableList.stream().
                 filter(p -> p.getProductType().toLowerCase().
-                        matches(String.format("%s%s%s",".*", type.toLowerCase(), ".*"))).
-                collect(Collectors.toCollection(FXCollections::observableArrayList));
+                        matches(String.format("%s%s%s", ".*", type.toLowerCase(), ".*"))).
+                collect(toCollection(FXCollections::observableArrayList));
     }
 
 
@@ -123,15 +123,70 @@ public class ComponentRegister implements Serializable {
         componentObservableList.addAll(list);
     }
 
-    public void appendToList(ComponentRegister componentRegister){
+    public void appendToList(ComponentRegister componentRegister) {
         ArrayList<Component> temp = new ArrayList<>();
         componentObservableList.addAll(componentRegister.getRegister());
     }
+
+    public void removeDuplicates() {
+/*
+        ArrayList<Component> newList = (ArrayList<Component>) getRegister().stream()
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println(getObservableRegister().size());
+*/
+        System.out.println(getRegister().size());
+        HashSet<Object> seen = new HashSet<>();
+/*
+        getRegister().removeIf(e-> (!seen.add(e.getProductName())) &&
+                (!seen.add(e.getProductType())) &&
+                (!seen.add(e.getProductPrice())) &&
+                (!seen.add(e.getProductDescription())) );
+                */
+
+        getRegister().removeIf(e -> (!seen.add(e.getProductName())));
+        //List<Component> list = seen;
+        System.out.println(getRegister().size());
+    }
+
+    public void removeDuplicates2() {
+        Map<String, Component> map = new LinkedHashMap<>();
+        for (Component ays : getRegister()) {
+            map.put(ays.getProductName(), ays);
+            map.put(ays.getProductName(), ays);
+        }
+        getRegister().clear();
+        getRegister().addAll(map.values());
+    }
+
+    public int countByType(String s) {
+        List<Component> list = filterByProductType(s);
+        return list.size();
+    }
+
+
+}
+/*
+        // Clear the list
+        this.getRegister().clear();
+        // add the elements of set
+        // with no duplicates to the list
+        this.getRegister().addAll(seen);
+        System.out.println(this.getRegister().size());
+        System.out.println(newList.size());
+
+        // return the list
+    }
+  */
+
+
+
+
 /*
     public void addList(ArrayList<Object> openObjects) {
        for(Object c : openObjects.get(0).get ){
            addComponent((Component) object);
        }
     }*/
-}
+
 

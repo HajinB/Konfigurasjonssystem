@@ -45,20 +45,16 @@ public class EditPopupController extends TabComponentsController implements Init
 
     @FXML
     void btnEditComponent(ActionEvent event) {
-        //delete selected person from tableview in controller
-
-
-        //legg til component i ContextModel
         double price = Double.parseDouble(txtPopupProductPrice.getText());
 
         Component component = new Component(cbType.getValue(), txtPopupProductName.getText(),
                 txtPopupProductDescription.getText(),
                 price
         );
+        //bruker 
         TemporaryComponent.INSTANCE.setEdited(true);
         TemporaryComponent.INSTANCE.storeTempComponent(component);
         stage.close();
-
     }
 
     @Override

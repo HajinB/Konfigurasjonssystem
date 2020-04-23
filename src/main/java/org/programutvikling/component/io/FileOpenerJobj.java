@@ -1,10 +1,6 @@
 package org.programutvikling.component.io;
 
-import org.programutvikling.App;
-import org.programutvikling.computer.Computer;
-import org.programutvikling.computer.ComputerRegister;
-import org.programutvikling.gui.ContextModel;
-import org.programutvikling.gui.Dialog;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 
 import java.io.*;
@@ -23,12 +19,7 @@ static int i = 0;
             System.out.println(i);
             i++;
             System.out.println("dette kastes til arrliobject: "+listeInn);
-
             objects.addAll(listeInn);
-           // System.out.println("slik ser OBJECTS ut ( den som skal loades inn i minne) -etter opening : " + objects
-            // .toString());
-            //ContextModel.INSTANCE.getCleanObjectList().addAll(listeinn);
-//dette gir NPE ?
         } catch (IOException | ClassNotFoundException i) {
 
             if(selectedPath.toString().equals("FileDirectory/Components/ComponentList.jobj")){

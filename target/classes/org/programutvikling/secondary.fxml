@@ -19,9 +19,10 @@
                         <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Endre">
+                <Menu mnemonicParsing="false" text="Verktøy">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <MenuItem mnemonicParsing="false" onAction="#btnRemoveDuplicates"
+                              text="Fjern duplikater fra registeret" />
                   </items>
                 </Menu>
               </menus>

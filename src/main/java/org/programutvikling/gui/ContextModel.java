@@ -67,7 +67,7 @@ public enum ContextModel {
 
     public void loadComponentRegisterIntoModel(){
         if(objects.get(0) instanceof ComponentRegister)
-        componentRegister.appendToList((ComponentRegister) objects.get(0));
+        setComponentRegister((ComponentRegister) objects.get(0));
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....

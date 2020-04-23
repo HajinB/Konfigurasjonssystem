@@ -102,24 +102,24 @@
                             <Font name="System Bold" size="17.0" />
                         </font>
                     </Label>
-                    <TableView fx:id="tblViewComponent" editable="true" layoutX="359.0" layoutY="130.0" onMousePressed="#dblClickPopup" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
+                    <TableView fx:id="tblViewComponent" editable="true" layoutX="359.0" layoutY="130.0" onMousePressed="#dblClickTblRow" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
                         <columns>
-                            <TableColumn minWidth="100.0" onEditCommit="#productTypeEdited" prefWidth="120.0" text="Varetype">
+                            <TableColumn minWidth="100.0" prefWidth="120.0" text="Varetype">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="productType" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn minWidth="100.0" onEditCommit="#productNameEdited" prefWidth="150.0" text="Varenavn">
+                            <TableColumn minWidth="100.0" prefWidth="150.0" text="Varenavn">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="productName" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn minWidth="100" onEditCommit="#productDescriptionEdited" prefWidth="230.0" text="Beskrivelse">
+                            <TableColumn minWidth="100" prefWidth="230.0" text="Beskrivelse">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="productDescription" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="productPriceColumn" minWidth="100" onEditCommit="#productPriceEdited" prefWidth="140.0" text="Pris">
+                            <TableColumn fx:id="productPriceColumn" minWidth="100" prefWidth="140.0" text="Pris">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="productPrice" />
                                 </cellValueFactory>

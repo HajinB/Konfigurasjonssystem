@@ -1,10 +1,8 @@
 package org.programutvikling.gui;
 
 import javafx.concurrent.WorkerStateEvent;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 import org.programutvikling.component.io.iothread.InputThread;
+import org.programutvikling.gui.utility.Dialog;
 
 public class ThreadHandler {
     TabComponentsController controller;

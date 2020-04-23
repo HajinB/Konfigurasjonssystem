@@ -1,6 +1,4 @@
-package org.programutvikling.gui;
-
-import javafx.util.converter.DoubleStringConverter;
+package org.programutvikling.gui.utility;
 
 public class Converter {
 

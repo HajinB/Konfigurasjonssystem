@@ -1,16 +1,13 @@
 package org.programutvikling.gui;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.programutvikling.component.io.FileOpener;
 import org.programutvikling.component.io.FileSaver;
 import org.programutvikling.component.io.FileSaverTxt;
-import org.programutvikling.component.io.InvalidComponentFormatException;
-import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.computer.Computer;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,11 +20,11 @@ public class FileHandling {
     //private static UserPreferences userPreferences;
     private static UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
 
-    static void saveFileTxt(ArrayList<Object> register, Path directoryPath) {
+    public static void saveFileTxt(Computer computer, Path directoryPath) {
         if (directoryPath != null) {
-            FileSaver saver = new FileSaverTxt();
+            FileSaverTxt saver = new FileSaverTxt();
             try {
-                saver.save(register, directoryPath);
+                saver.save(computer, directoryPath);
                 Dialog.showSuccessDialog("Registeret ble lagret!");
             } catch (IOException e) {
                 Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
@@ -42,7 +39,7 @@ public class FileHandling {
         // BUG - setter null in i
         // objectlisten...
         System.out.println("Dette prøver man å lagre:"+objectsToSave);
-        Path pathAppend = Paths.get(path + ".jobj");
+        Path pathAppend = Paths.get(String.valueOf(path));
         saveFile(objectsToSave, pathAppend);
     }
 
@@ -89,7 +86,6 @@ public class FileHandling {
                 //System.out.println(objectsLoaded.size() + " er størrelsen på lista inn");
                 //System.out.println("etter opener" + objectsLoaded.size());
             } catch (IOException e) {
-
                 //Here are some cases which result in IOException.
                 //
                 //Reading from a closed inputstream

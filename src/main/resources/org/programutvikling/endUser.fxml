@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.EnduserController">
    <top>
       <MenuBar prefHeight="30.0" prefWidth="1040.0" BorderPane.alignment="CENTER">
@@ -22,6 +21,7 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#btnLogout" text="Logg ut" />
+                  <MenuItem mnemonicParsing="false" onAction="#btnOpenComputer" text="Åpne PC" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -150,7 +150,7 @@
                         </TableColumn>
                      </columns>
                   </TableView>
-                  <Button layoutX="256.0" layoutY="589.0" mnemonicParsing="false" text="Legg i handlekurv" />
+                  <Button layoutX="256.0" layoutY="589.0" mnemonicParsing="false" onAction="#btnAddMinneToCart" text="Legg i handlekurv" />
                   <Label layoutX="389.0" layoutY="344.0" text="Harddisk">
                      <font>
                         <Font name="System Bold" size="17.0" />
@@ -175,7 +175,7 @@
                         </TableColumn>
                      </columns>
                   </TableView>
-                  <Button layoutX="623.0" layoutY="589.0" mnemonicParsing="false" text="Legg i handlekurv" />
+                  <Button layoutX="623.0" layoutY="589.0" mnemonicParsing="false" onAction="#btnAddHarddiskToCart" text="Legg i handlekurv" />
                   <Label layoutX="21.0" layoutY="622.0" text="SSD">
                      <font>
                         <Font name="System Bold" size="17.0" />
@@ -200,7 +200,8 @@
                         </TableColumn>
                      </columns>
                   </TableView>
-                  <Button layoutX="257.0" layoutY="867.0" mnemonicParsing="false" text="Legg i handlekurv" />
+                  <Button layoutX="257.0" onAction="#btnAddTastaturToCart" layoutY="867.0" mnemonicParsing="false"
+                          text="Legg i handlekurv" />
                   <Label layoutX="389.0" layoutY="622.0" text="Tastatur">
                      <font>
                         <Font name="System Bold" size="17.0" />
@@ -225,7 +226,8 @@
                         </TableColumn>
                      </columns>
                   </TableView>
-                  <Button layoutX="625.0" layoutY="867.0" mnemonicParsing="false" text="Legg i handlekurv" />
+                  <Button onAction="#btnAddMusToCart" layoutX="625.0" layoutY="867.0" mnemonicParsing="false"
+                          text="Legg i handlekurv" />
                   <Label layoutX="20.0" layoutY="906.0" text="Mus">
                      <font>
                         <Font name="System Bold" size="17.0" />
@@ -250,7 +252,8 @@
                         </TableColumn>
                      </columns>
                   </TableView>
-                  <Button layoutX="257.0" layoutY="1152.0" mnemonicParsing="false" text="Legg i handlekurv" />
+                  <Button layoutX="257.0" onAction="#btnAddSkjermToCart" layoutY="1152.0" mnemonicParsing="false"
+                          text="Legg i handlekurv" />
                   <Label layoutX="389.0" layoutY="906.0" text="Skjerm">
                      <font>
                         <Font name="System Bold" size="17.0" />
@@ -275,7 +278,8 @@
                         </TableColumn>
                      </columns>
                   </TableView>
-                  <Button layoutX="625.0" layoutY="1152.0" mnemonicParsing="false" text="Legg i handlekurv" />
+                  <Button layoutX="625.0" onAction="#btnAddAnnetToCart" layoutY="1152.0" mnemonicParsing="false"
+                          text="Legg i handlekurv" />
                   <Label layoutX="21.0" layoutY="1192.0" text="Annet">
                      <font>
                         <Font name="System Bold" size="17.0" />

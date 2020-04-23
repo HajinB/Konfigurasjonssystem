@@ -1,5 +1,7 @@
 package org.programutvikling.component.io;
 
+import org.programutvikling.computer.Computer;
+
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -19,5 +21,10 @@ public class FileSaverJobj implements FileSaver {
             out.flush();
 
         }
+    }
+
+    @Override
+    public void save(Computer computer, Path filePath) throws IOException {
+
     }
 }

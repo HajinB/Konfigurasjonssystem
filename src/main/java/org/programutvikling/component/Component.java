@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Component implements Serializable, ItemUsable {
     private transient ComponentTypes componentTypes = new ComponentTypes();
@@ -87,6 +88,51 @@ public class Component implements Serializable, ItemUsable {
         return String.format("%s;%s;%s;%s", productType.getValue(), productName.getValue(),
                 productDescription.getValue(), productPrice.getValue());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Component component = (Component) o;
+        return productType.equals(component.productType) &&
+                productName.equals(component.productName) &&
+                productDescription.equals(component.productDescription) &&
+                productPrice.equals(component.productPrice);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productType, productName, productDescription, productPrice);
+    }
+/*
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        final Component component = (Component) obj;
+        if (this == component) {
+            return true;
+        } else {
+            return (this.productName.getValue().equals(component.getProductName()) &&
+                    this.productDescription.getValue().equals(component.getProductDescription()) &&
+                    this.productType.getValue().equals(component.getProductType()) &&
+                            this.productPrice.getValue().equals(component.getProductPrice()));
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hashno = 7;
+        hashno = 13 * hashno + (productName == null ? 0 : productName.hashCode());
+        return hashno;
+    }
+
+    @Override
+    public int compareTo(Address other)
+    {
+        return (aptNo - other.aptNo);
+    } */
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
