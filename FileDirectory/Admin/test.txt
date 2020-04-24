@@ -1,0 +1,2 @@
+MINNE;Intel Core i9-9900K;Socket-LGA1151, 8-Core, 16-Thread, 3.60/5.0GHz, Coffee Lake Refresh, uten kjøler;6999.99
+SSD;SSD;blasfbldblfs 8-Core, 16-Thread, 3.60/5.0GHz, Coffee Lake Refresh, uten kjøler;5999.99

@@ -39,14 +39,52 @@ public class EnduserController extends TabComponentsController {
     private Label lblTotalPrice;
 
     @FXML
-    private TableView<Component> tblProsessor,tblProcessor, tblVideo,tblMemory, tblHardDisc, tblSkjermkort,
-            tblHarddisk,tblTastatur, tblSSD,
-            tblMinne, tblMus, tblSkjerm, tblAnnet;
+    private TableView<Component> tblProcessor;
 
     @FXML
-    private TableColumn skjermkortClmPrice, prosessorClmPrice, harddiskClmPrice, tastaturClmPrice, minneClmPrice,
-            musClmPrice, skjermClmPrice, AnnetClmPrice;
+    private TableView<Component> tblVideo;
 
+    @FXML
+    private TableView<Component> tblMemory;
+
+    @FXML
+    private TableView<Component> tblHardDisc;
+
+    @FXML
+    private TableView<Component> tblSSD;
+
+    @FXML
+    private TableView<Component> tblTastatur;
+
+    @FXML
+    private TableView<Component> tblMus;
+
+    @FXML
+    private TableView<Component> tblSkjerm;
+
+    @FXML
+    private TableView<Component> tblAnnet;
+
+    @FXML
+    void btnLogout(ActionEvent event) throws IOException {
+        App.setRoot("primary");
+    }
+
+    @FXML
+    void btnCashier(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void initialize() throws IOException {
+        endUserService.updateEndUserRegisters();
+        System.out.println(endUserService.getHarddiskRegister().toString());
+        updateComponentViews();
+        initItemFiles();
+        loadElementsFromFile();
+        updateList();
+        updateComputerListView();
+    }
 
     @FXML
     void btnLogout(ActionEvent event) throws IOException {
@@ -178,34 +216,7 @@ public class EnduserController extends TabComponentsController {
         String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
         fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
     }
-    @FXML
-    public void initialize() throws IOException {
-        endUserService.updateEndUserRegisters();
-        System.out.println(endUserService.getHarddiskRegister().toString());
-        updateComponentViews();
-        initItemFiles();
-        loadElementsFromFile();
-        updateList();
-        updateComputerListView();
-        setCellFactoryListView();
 
-        setTblCellFactory();
-
-        //clmPrice.setCellValueFactory(new PropertyValueFactory<Component, Double>("Price"));
-
-
-        //tblSkjermkort.getColumns().get(2).setCellFactory(priceCellFactory);
-
-
-        //må vi sette opp column for price?
-
-       // må alle tableviews arve fra en ting for å kunne ha samme setcellfactory ??? altså hvis jeg vil ha "kr" bak
-        // alle prisfelt - må man da ha det for alle ?
-        //må gjøre cellfactory på en column!!!!!!
-    }
-    private void loadElementsFromFile() {
-        FileHandling.openSelectedComputerTxtFiles(ContextModel.INSTANCE.getCleanObjectList(), userPreferences.getStringPathToUser());
-    }
 
     private void setTblCellFactory() {
         Callback<TableColumn, TableCell> priceCellFactory =
@@ -230,7 +241,7 @@ public class EnduserController extends TabComponentsController {
                     setText(c.getProductName()+ "\n" +String.format("%.2f",c.getProductPrice()) + ",-");
                     //Change listener implemented.
                     shoppingListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<?
-                                                                    extends Component> observable, Component oldValue, Component newValue) -> {
+                            extends Component> observable, Component oldValue, Component newValue) -> {
                         if(shoppingListView.isFocused()){
                             //prøver å displaye hele componenten hvis selectedrow er targeted ( kan gjøres på samme
                             // måte som tableview)
@@ -243,11 +254,6 @@ public class EnduserController extends TabComponentsController {
         });
     }
 
-    //By default, a ListView calls the toString()
-    // method of its items and it displays the string in its cell.
-    // In the updateItem() method of your custom ListCell, you can populate the text and graphic for the cell to
-    // display anything you want in the cell based on the item in that cell.
-    //https://examples.javacodegeeks.com/desktop-java/javafx/listview-javafx/javafx-listview-example/
     void updateComputerListView() {
 
         if (ContextModel.INSTANCE.getComputer() != null)
@@ -283,12 +289,9 @@ public class EnduserController extends TabComponentsController {
         setTblHardDisc(tblHardDisc);
         setTblVideo(tblVideo);
         setTblMemory(tblMemory);
-        setTblProcessor(tblProsessor);
-        setTblHardDisc(tblHarddisk);
         setTblAnnet(tblAnnet);
         setTblTastatur(tblTastatur);
         //fortsett for alle her
-
     }
 
     /**
@@ -312,6 +315,16 @@ public class EnduserController extends TabComponentsController {
     public void setTblHardDisc(TableView<Component> tblHardDisc) {
         tblHardDisc.setItems(endUserService.getHarddiskRegister().getObservableRegister());
         this.tblHardDisc = tblHardDisc;
+
+    }
+
+    public void initItemFiles() {
+        //computerRegister.addComponent();
+
+    }
+
+    private void loadElementsFromFile() {
+        FileHandling.openSelectedComputerTxtFiles(ContextModel.INSTANCE.getCleanObjectList(), userPreferences.getStringPathToUser());
     }
 
     public void setTblTastatur(TableView<Component> tblTastatur) {
@@ -323,6 +336,7 @@ public class EnduserController extends TabComponentsController {
         tblAnnet.setItems(endUserService.getAnnetRegister().getObservableRegister());
         this.tblAnnet = tblAnnet;
     }
+
 
     @FXML
     void btnBuyProcessor(ActionEvent event) {
@@ -349,6 +363,12 @@ public class EnduserController extends TabComponentsController {
         return ContextModel.INSTANCE.getComputer().getComponentRegister();
     }
 
+
+    public void btnSavePC(ActionEvent event) throws IOException {
+        FileSaverTxt fileSaverTxt = new FileSaverTxt();
+        String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
+        fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
+    }
 
     public void btnBuyComputer(ActionEvent event) {
 
@@ -389,5 +409,4 @@ public class EnduserController extends TabComponentsController {
     public void btnDeleteFromCart(ActionEvent event) {
 
     }
-
 }
