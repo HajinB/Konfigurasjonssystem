@@ -20,9 +20,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
+import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
@@ -60,7 +62,7 @@ public class TabComponentsController {
     @FXML
     private TableView<Component> tblViewComponent;
     @FXML
-    private TableColumn<TableView<Component>, Double> productPriceColumn;
+    private TableColumn productPriceColumn;
 
 
 
@@ -73,6 +75,19 @@ public class TabComponentsController {
         threadHandler = new ThreadHandler(this);
         tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
         tblViewComponent.setTooltip(tooltip);
+        setTblCellFactory();
+    }
+
+    private void setTblCellFactory() {
+        Callback<TableColumn, TableCell> priceCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new PriceFormatCell();
+                    }
+                };
+
+        PriceFormatCell priceFormatCell = new PriceFormatCell();
+        productPriceColumn.setCellFactory(priceCellFactory);
     }
 
     @FXML

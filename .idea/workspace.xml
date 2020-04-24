@@ -3,10 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/EndUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/EndUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Konfigurasjonssystem-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Konfigurasjonssystem-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,6 +53,7 @@
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="Tom" />
+        <option value="Hajin &lt;s238727@oslomet.no&gt;" />
       </list>
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -245,7 +252,7 @@
       <workItem from="1587521115243" duration="3781000" />
       <workItem from="1587599023059" duration="26311000" />
       <workItem from="1587720873115" duration="2481000" />
-      <workItem from="1587724730800" duration="5508000" />
+      <workItem from="1587724730800" duration="8249000" />
     </task>
     <task id="LOCAL-00001" summary="runConfig lagt til">
       <created>1585505781643</created>
@@ -537,7 +544,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587733157868</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="computervalidation + tblview formatting">
+      <created>1587734024870</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1587734024870</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Endret GUI-enduser og endret komponentnavn til engelsk i kodingen.&#10;&#10;(cherry picked from commit d9debd9516f3cb70c01cc4888d27b50cad4048c7)">
+      <created>1587734261347</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1587734261347</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +593,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fjernet Logikk" />
     <MESSAGE value="kladd BrukerValidator" />
     <MESSAGE value="Oppsett for autosave - men har bugs.." />
     <MESSAGE value="Testing User" />
@@ -597,7 +617,8 @@
     <MESSAGE value="fungerende popup-edit-window v2" />
     <MESSAGE value="computervalidation" />
     <MESSAGE value="computervalidation + tblview formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="computervalidation + tblview formatting" />
+    <MESSAGE value="Endret GUI-enduser og endret komponentnavn til engelsk i kodingen.&#10;&#10;(cherry picked from commit d9debd9516f3cb70c01cc4888d27b50cad4048c7)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Endret GUI-enduser og endret komponentnavn til engelsk i kodingen.&#10;&#10;(cherry picked from commit d9debd9516f3cb70c01cc4888d27b50cad4048c7)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1587242454320" />

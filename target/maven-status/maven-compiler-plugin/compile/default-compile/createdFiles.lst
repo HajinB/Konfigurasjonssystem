@@ -51,6 +51,7 @@ org/programutvikling/gui/ContextModel.class
 org/programutvikling/user/exceptions/InvalidPasswordException.class
 org/programutvikling/user/Login.class
 org/programutvikling/component/io/iothread/InputThread.class
+org/programutvikling/gui/TabComponentsController$3.class
 org/programutvikling/gui/customTextField/PriceField.class
 org/programutvikling/user/UserValidator.class
 org/programutvikling/component/io/OpenerFactory.class

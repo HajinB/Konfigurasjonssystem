@@ -20,44 +20,44 @@ public class ComputerValidator {
         return computer.getComponentRegister().countByType(type) < maxValue;
     }
 
-    public boolean kabinettValidator(Computer computer) {
+    public boolean cabinetValidator(Computer computer) {
         //hvis det står count == 0, betyr det at det bare er plass til 1 i den typen.
         return computer.getComponentRegister().countByType("kabinett") == 0;
     }
 
-    public boolean prosessorValidator(Computer computer) {
+    public boolean processorValidator(Computer computer) {
         return computer.getComponentRegister().countByType("prosessor") < 2;
     }
 
-    public boolean skjermkortValidator(Computer computer) {
+    public boolean videoValidator(Computer computer) {
         return computer.getComponentRegister().countByType("skjermkort") < 2;
     }
 
-    public boolean hovedkortValidator(Computer computer) {
+    public boolean motherboardValidator(Computer computer) {
         return computer.getComponentRegister().countByType("hovedkort") == 0;
     }
 
-    public boolean minneValidator(Computer computer) {
+    public boolean memoryValidator(Computer computer) {
         return computer.getComponentRegister().countByType("minne") < 4;
     }
 
-    public boolean harddiskValidator(Computer computer) {
+    public boolean hardDiscValidator(Computer computer) {
         return computer.getComponentRegister().countByType("harddisk") < 3;
     }
 
-    public boolean tastaturValidator(Computer computer) {
+    public boolean keyboardValidator(Computer computer) {
         return computer.getComponentRegister().countByType("tastatur") == 0;
     }
 
-    public boolean musValidator(Computer computer) {
+    public boolean mouseValidator(Computer computer) {
         return computer.getComponentRegister().countByType("mus") == 0;
     }
 
-    public boolean skjermValidator(Computer computer) {
+    public boolean screenValidator(Computer computer) {
         return computer.getComponentRegister().countByType("skjerm") < 3;
     }
 
-    public boolean annetValidator(Computer computer) {
+    public boolean otherValidator(Computer computer) {
         return computer.getComponentRegister().countByType("annet") < 4;
     }
 }

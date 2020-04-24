@@ -1,20 +1,19 @@
 package org.programutvikling.gui.utility;
 
-import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.gui.ContextModel;
 
 public class EndUserService {
-    ComponentRegister kabinettRegister = new ComponentRegister();
-    ComponentRegister prosessorRegister = new ComponentRegister();
-    ComponentRegister skjermkortRegister = new ComponentRegister();
-    ComponentRegister minneRegister = new ComponentRegister();
-    ComponentRegister harddiskRegister = new ComponentRegister();
-    ComponentRegister hovedkortRegister = new ComponentRegister();
-    ComponentRegister tastaturRegister = new ComponentRegister();
-    ComponentRegister annetRegister = new ComponentRegister();
-    ComponentRegister musRegister = new ComponentRegister();
-    ComponentRegister skjermRegister = new ComponentRegister();
+    ComponentRegister cabinetRegister = new ComponentRegister();
+    ComponentRegister processorRegister = new ComponentRegister();
+    ComponentRegister videoRegister = new ComponentRegister();
+    ComponentRegister memoryRegister = new ComponentRegister();
+    ComponentRegister hardDiscRegister = new ComponentRegister();
+    ComponentRegister motherboardRegister = new ComponentRegister();
+    ComponentRegister keyboardRegister = new ComponentRegister();
+    ComponentRegister otherRegister = new ComponentRegister();
+    ComponentRegister mouseRegister = new ComponentRegister();
+    ComponentRegister screenRegister = new ComponentRegister();
 
     //kunne man ha gjort dette med et componentregister-list? altså list som har
 
@@ -22,62 +21,62 @@ public class EndUserService {
         updateEndUserRegisters();
     }
 
-    public ComponentRegister getProsessorRegister() {
-        return prosessorRegister;
+    public ComponentRegister getProcessorRegister() {
+        return processorRegister;
     }
 
-    public ComponentRegister getSkjermkortRegister() {
-        return skjermkortRegister;
+    public ComponentRegister getVideoRegister() {
+        return videoRegister;
     }
 
-    public ComponentRegister getMinneRegister() {
-        return minneRegister;
+    public ComponentRegister getMemoryRegister() {
+        return memoryRegister;
     }
 
-    public ComponentRegister getHarddiskRegister() {
-        return harddiskRegister;
+    public ComponentRegister getHardDiscRegister() {
+        return hardDiscRegister;
     }
 
-    public ComponentRegister getKabinettRegister() {
-        return kabinettRegister;
+    public ComponentRegister getCabinetRegister() {
+        return cabinetRegister;
     }
 
-    public ComponentRegister getHovedkortRegister() {
-        return hovedkortRegister;
+    public ComponentRegister getMotherboardRegister() {
+        return motherboardRegister;
     }
 
-    public ComponentRegister getMusRegister() {
-        return musRegister;
+    public ComponentRegister getMouseRegister() {
+        return mouseRegister;
     }
 
-    public ComponentRegister getSkjermRegister() {
-        return skjermRegister;
+    public ComponentRegister getScreenRegister() {
+        return screenRegister;
     }
 
-    public ComponentRegister getTastaturRegister() {
-        return tastaturRegister;
+    public ComponentRegister getKeyboardRegister() {
+        return keyboardRegister;
     }
 
-    public ComponentRegister getAnnetRegister() {
-        return annetRegister;
+    public ComponentRegister getOtherRegister() {
+        return otherRegister;
     }
 
     public void updateEndUserRegisters() {
 
-        clearRegisters(hovedkortRegister, kabinettRegister, skjermkortRegister, skjermRegister, musRegister,
-                prosessorRegister, minneRegister, harddiskRegister, annetRegister, tastaturRegister);
+        clearRegisters(motherboardRegister, cabinetRegister, videoRegister, screenRegister, mouseRegister,
+                processorRegister, memoryRegister, hardDiscRegister, otherRegister, keyboardRegister);
 
         ComponentRegister dataBaseRegister = ContextModel.INSTANCE.getComponentRegister();
-        hovedkortRegister.getRegister().addAll(dataBaseRegister.filterByProductType("hovedkort"));
-        kabinettRegister.getRegister().addAll(dataBaseRegister.filterByProductType("kabinett"));
-        skjermRegister.getRegister().addAll(dataBaseRegister.filterByProductType("skjerm"));
-        musRegister.getRegister().addAll(dataBaseRegister.filterByProductType("mus"));
-        prosessorRegister.getRegister().addAll(dataBaseRegister.filterByProductType("prosessor"));
-        skjermkortRegister.getRegister().addAll(dataBaseRegister.filterByProductType("skjermkort"));
-        minneRegister.getRegister().addAll(dataBaseRegister.filterByProductType("minne"));
-        harddiskRegister.getRegister().addAll(dataBaseRegister.filterByProductType("harddisk"));
-        tastaturRegister.getRegister().addAll(dataBaseRegister.filterByProductType("tastatur"));
-        annetRegister.getRegister().addAll(dataBaseRegister.filterByProductType("annet"));
+        motherboardRegister.getRegister().addAll(dataBaseRegister.filterByProductType("hovedkort"));
+        cabinetRegister.getRegister().addAll(dataBaseRegister.filterByProductType("kabinett"));
+        screenRegister.getRegister().addAll(dataBaseRegister.filterByProductType("skjerm"));
+        mouseRegister.getRegister().addAll(dataBaseRegister.filterByProductType("mus"));
+        processorRegister.getRegister().addAll(dataBaseRegister.filterByProductType("prosessor"));
+        videoRegister.getRegister().addAll(dataBaseRegister.filterByProductType("skjermkort"));
+        memoryRegister.getRegister().addAll(dataBaseRegister.filterByProductType("minne"));
+        hardDiscRegister.getRegister().addAll(dataBaseRegister.filterByProductType("harddisk"));
+        keyboardRegister.getRegister().addAll(dataBaseRegister.filterByProductType("tastatur"));
+        otherRegister.getRegister().addAll(dataBaseRegister.filterByProductType("annet"));
     }
 
 
