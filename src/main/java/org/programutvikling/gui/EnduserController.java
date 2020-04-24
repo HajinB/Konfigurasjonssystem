@@ -40,10 +40,8 @@ public class EnduserController extends TabComponentsController {
     @FXML
     private TableView<Component> tblProcessor, tblScreen, tblOther,
             tblMemory, tblMouse, tblVideoCard, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
-
     @FXML
     private TableColumn videoPriceClm;
-
 
     @FXML
     public void initialize() throws IOException {

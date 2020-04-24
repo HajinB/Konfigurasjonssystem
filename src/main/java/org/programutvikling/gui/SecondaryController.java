@@ -19,28 +19,17 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class MainController implements Initializable {
+public class SecondaryController implements Initializable {
 
 /**
  *  https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
     https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
     https://stackoverflow.com/questions/32849277/javafx-controller-injection-does-not-work
  */
-
-
     FileHandling fileHandling = new FileHandling();
     Stage stage;
 
     @FXML private TabComponentsController tabComponentsController;
-
-/*
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TabComponentsController.fxml"));
-    TabComponentsController tabComponentsController = fxmlLoader.<TabComponentsController>getController();
-*/
-
-    @FXML
-    private TabUsersController usersController;
-
 
     @FXML
     void btnSaveToChosenPath(ActionEvent e) throws IOException {
@@ -49,15 +38,16 @@ public class MainController implements Initializable {
         FileHandling.saveFileAs(chosenPath);
     }
 
-
-
     @FXML
     void btnLogOut(ActionEvent event) throws IOException {
         App.setRoot("primary");
     }
     @FXML
     public void btnOpenJobj(ActionEvent actionEvent) throws IOException {
-
+        tabComponentsController.openFileFromChooserWithThreadSleep();
+        ContextModel.INSTANCE.loadComponentRegisterIntoModel();
+        tabComponentsController.updateView();
+        fileHandling.saveAll();
     }
 
     @FXML

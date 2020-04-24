@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
+
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import org.programutvikling.App;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 
 //https://ducmanhphan.github.io/2019-10-17-Creating-JavaFX-project-with-Maven/
@@ -27,7 +31,50 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnGuest(ActionEvent event) throws IOException {
-        App.setRoot("secondary");
+// here runs the JavaFX thread
+// Boolean as generic parameter since you want to return it
+        Task<Boolean> task = getTask();
+
+        loadInThread(task);
+
+    }
+
+    private void loadInThread(Task<Boolean> task) {
+        Alert alert = Dialog.getLoadingDialog("loading...");
+        task.setOnRunning((e) -> alert.showAndWait());
+        task.setOnSucceeded((e) -> {
+            alert.close();
+            //hide dialog ?
+            try {
+                Boolean returnValue = task.get();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            } catch (ExecutionException ex) {
+                ex.printStackTrace();
+            }
+            // process return value again in JavaFX thread
+        });
+        task.setOnFailed((e) -> {
+            // eventual error handling by catching exceptions from task.get()
+        });
+        new Thread(task).start();
+    }
+
+    private Task<Boolean> getTask() {
+        return new Task<Boolean>() {
+                @Override public Boolean call() throws IOException, InterruptedException {
+                    // do your operation in here
+                    Thread.sleep(2000);
+                    App.setRoot("secondary");
+                    return true;
+                }
+                @Override
+                protected void succeeded() {
+                    // one hook - overriding
+                    super.succeeded();
+                    System.out.println("Succeded");
+                }
+            };
     }
 
     @FXML

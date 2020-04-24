@@ -11,8 +11,8 @@ public class Dialog {
 
     public static void showErrorDialog(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Feil!");
-        alert.setHeaderText("Ugyldig data!");
+        alert.setTitle("Error");
+        alert.setHeaderText("Ugyldig operasjon");
         alert.setContentText(msg);
 
         alert.showAndWait();
@@ -41,6 +41,12 @@ public class Dialog {
         ButtonType btnNei = new ButtonType("Nei", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(AlertType.CONFIRMATION, title, btnJa, btnNei);
         alert.setHeaderText(header);
+        return alert;
+    }
+
+    public static Alert getLoadingDialog(String s) {
+        Alert alert = new Alert(AlertType.NONE, s);
+        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
         return alert;
     }
 }

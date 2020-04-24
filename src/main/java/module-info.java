@@ -13,7 +13,6 @@ module org.programutvikling {
         requires org.junit.jupiter.engine;
         requires java.prefs;
 
-
         opens org.programutvikling to javafx.fxml;
         opens org.programutvikling.gui to javafx.fxml;
         opens org.programutvikling.user to javafx.fxml;

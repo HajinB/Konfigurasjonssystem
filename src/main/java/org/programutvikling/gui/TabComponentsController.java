@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -35,7 +36,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class TabComponentsController {
-    MainController mainController;
+    SecondaryController secondaryController;
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en rad for å redigere");
     @FXML
     AnchorPane topLevelPane;
@@ -51,21 +52,17 @@ public class TabComponentsController {
     @FXML
     public Label lblComponentMsg;
     @FXML
-    private ChoiceBox<String> cbType;
-
+    private ChoiceBox<String> cbType, cbTypeFilter;
     @FXML
     private ComboBox<String> cbRecentFiles;
     @FXML
     private TextField componentSearch;
     @FXML
-    private ChoiceBox<String> cbTypeFilter;
-    @FXML
     private TableView<Component> tblViewComponent;
     @FXML
     private TableColumn productPriceColumn;
-
-
-
+    @FXML
+    private ContextMenu cm;
     @FXML
     public void initialize() throws IOException {
         initChoiceBoxes();
@@ -76,6 +73,21 @@ public class TabComponentsController {
         tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
         tblViewComponent.setTooltip(tooltip);
         setTblCellFactory();
+
+        tblViewComponent.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                if(t.getButton() == MouseButton.SECONDARY) {
+                    cm.show(tblViewComponent, t.getScreenX(), t.getScreenY());
+                }
+            }
+        });
+    }
+
+    @FXML
+    void cmDeleteRow(ActionEvent event) throws IOException {
+        askForDeletion(tblViewComponent.getSelectionModel().getSelectedItem());
+        //deleteComponent();
     }
 
     private void setTblCellFactory() {
@@ -135,9 +147,7 @@ public class TabComponentsController {
 
     @FXML
     void btnAddFromFile(ActionEvent event) throws IOException {
-        openFileFromChooserWithThreadSleep();
-        ContextModel.INSTANCE.loadComponentRegisterIntoModel();
-        refreshTableAndSave();
+
     }
 
     @FXML
@@ -149,18 +159,21 @@ public class TabComponentsController {
 
     @FXML
     void btnOpenRecentFile(ActionEvent event) throws IOException {
-        Alert alert = org.programutvikling.gui.utility.Dialog.getConfirmationAlert(
+        if((cbRecentFiles.getSelectionModel().isEmpty())){
+            Dialog.showErrorDialog("velg en fil fra listen");
+            //System.out.println("velg en fil fra listen");
+            return;
+        }
+        String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
+
+        Alert alert = Dialog.getConfirmationAlert(
                 "Åpne nylig fil",
                 "Vil du åpne den valgte filen, og dermed " +
                         "overskrive den nåværende listen?",
                 "Vil du åpne ",
                 cbRecentFiles.getSelectionModel().getSelectedItem());
         alert.showAndWait();
-        String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
-        if (isFileSelectionEmpty(chosenFile)) {
-            System.out.println("velg en fil fra listen");
-            return;
-        }
+
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             threadHandler.openInputThread(chosenFile);
             ContextModel.INSTANCE.loadComponentRegisterIntoModel();
@@ -170,7 +183,7 @@ public class TabComponentsController {
     }
 
     private boolean isFileSelectionEmpty(String chosenFile) {
-        return chosenFile.equals(cbRecentFiles.getPromptText());
+        return chosenFile.equals("Åpne nylige filer");
     }
 
     @FXML
@@ -178,15 +191,17 @@ public class TabComponentsController {
         filter();
     }
 
-
     @FXML
     void btnDelete(ActionEvent event) throws IOException {
+        askForDeletion(tblViewComponent.getSelectionModel().getSelectedItem());
+    }
+
+    private void askForDeletion(Component selectedItem) throws IOException {
         Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette", "Vil du slette ",
-                tblViewComponent.getSelectionModel().getSelectedItems().get(0).getProductName());
+                selectedItem.getProductName());
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
-            Component selectedComp = tblViewComponent.getSelectionModel().getSelectedItem();
-            deleteComponent(selectedComp);
+            deleteComponent(selectedItem);
             saveAll();
         }
     }
@@ -212,7 +227,6 @@ public class TabComponentsController {
             }
         });
     }
-
 
     private void openEditWindow(TableRow row) throws IOException {
         FXMLLoader loader = getFxmlLoader("editPopup.fxml");
@@ -321,8 +335,8 @@ public class TabComponentsController {
         tblViewComponent.setItems(sortedData);
     }
 
-    public void init(MainController mainController) {
-        this.mainController=mainController;
+    public void init(SecondaryController secondaryController) {
+        this.secondaryController = secondaryController;
 
     }
 }

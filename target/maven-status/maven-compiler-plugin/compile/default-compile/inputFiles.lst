@@ -28,9 +28,9 @@
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/FileSaver.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/ContextModel.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/module-info.java
+/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/AdminController.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/FileSaverTxt.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/customTextField/PriceField.java
-/Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/MainController.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/user/Login.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/gui/utility/EndUserService.java
 /Users/tomhenrikmeltingbasmo/Documents/GitHub/Konfigurasjonssystem/src/main/java/org/programutvikling/component/io/SaverFactory.java

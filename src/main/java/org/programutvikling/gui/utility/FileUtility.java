@@ -60,8 +60,15 @@ UserPreferences userPreferences = ContextModel.INSTANCE.getUserPreferences();
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter =
                 new FileChooser.ExtensionFilter("JOBJ files (*.jobj)", "*.jobj");
+
         fileChooser.getExtensionFilters().add(extFilter);
+
         File selectedFile = fileChooser.showSaveDialog(stage);
+
+        if (selectedFile == null) {
+            return null;
+
+        }
         String pathToFile = selectedFile.getPath();
 
         return pathToFile;

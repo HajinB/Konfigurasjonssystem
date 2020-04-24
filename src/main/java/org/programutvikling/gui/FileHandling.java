@@ -33,6 +33,10 @@ public class FileHandling {
     }
 
     public static void saveFileAs(String chosenPath) throws IOException {
+        if (chosenPath == null) {
+            return;
+        }
+
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
                 null, ContextModel.INSTANCE.getSavedPathRegister(), null);//todo her er det kanskje muilgheter for STOR

@@ -6,7 +6,6 @@ org/programutvikling/App.class
 org/programutvikling/component/io/FileSaverJobj.class
 org/programutvikling/gui/customTextField/ZipField.class
 org/programutvikling/component/io/FileSaver.class
-org/programutvikling/gui/MainController.class
 org/programutvikling/gui/ThreadHandler.class
 org/programutvikling/component/ComponentTypes.class
 org/programutvikling/user/UserPreferences.class
@@ -56,4 +55,5 @@ org/programutvikling/gui/customTextField/PriceField.class
 org/programutvikling/user/UserValidator.class
 org/programutvikling/component/io/OpenerFactory.class
 org/programutvikling/user/exceptions/InvalidUsernameException.class
+org/programutvikling/gui/AdminController.class
 org/programutvikling/component/io/FileOpener.class

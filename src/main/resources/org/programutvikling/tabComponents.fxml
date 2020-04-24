@@ -4,7 +4,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -19,8 +21,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<?import org.programutvikling.gui.customTextField.*?>
-
+<?import org.programutvikling.gui.customTextField.PriceField?>
 <AnchorPane fx:id="topLevelPane" prefHeight="775.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
     <ScrollPane pannable="true" prefHeight="775.0" prefWidth="1040.0">
         <content>
@@ -139,6 +140,13 @@
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>
+                  <contextMenu>
+                     <ContextMenu fx:id="cm">
+                       <items>
+                         <MenuItem onAction="#cmDeleteRow" mnemonicParsing="false" text="Delete row" />
+                       </items>
+                     </ContextMenu>
+                  </contextMenu>
                     </TableView>
                     <Label layoutX="426.0" layoutY="14.0" text="Velkommen *navn* ">
                         <font>
