@@ -1,18 +1,19 @@
 package org.programutvikling.gui;
 
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.FileOpenerTxt;
 import org.programutvikling.component.io.FileSaverTxt;
 import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerValidator;
+import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.EndUserService;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
@@ -25,6 +26,7 @@ import java.util.List;
 public class EnduserController extends TabComponentsController {
     EndUserService endUserService = new EndUserService();
     Stage stage;
+    ComputerValidator computerValidator = new ComputerValidator();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     //sånn instansiering fungerer ikke likevel..blir statisk - bør lage en klasse som henter fresh data ut fra
     // contextmodel
@@ -57,6 +59,34 @@ public class EnduserController extends TabComponentsController {
     }
     Computer getComputer() {
         return ContextModel.INSTANCE.getComputer();
+    }
+    public void initItemFiles() {
+        //computerRegister.addComponent();
+    }
+
+
+    private void addComponentToCart(TableView<Component> tbl) {
+        Component selectedComp = tbl.getSelectionModel().getSelectedItem();
+        /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
+        if (selectedComp != null) {
+            ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+            updateComputerListView();
+        }
+        updateComputerListView();
+    }
+
+    private void replaceComponentInCart(String s, TableView<Component> tblProsessor) {
+        Component selectedComp = tblProsessor.getSelectionModel().getSelectedItem();
+        if (selectedComp != null) {
+            /**FJERN EN AV DE AV DEN GITTE TYPEN - så legg til*/
+            /**evt legg til confirmation alert her*/
+            List<Component> list = getComputer().getComponentRegister().filterByProductType(s);
+            if (list.size() > 0) {
+                getComputer().getComponentRegister().getRegister().remove(list.get(0));
+            }
+            ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+            updateComputerListView();
+        }
     }
 
     @FXML
@@ -173,6 +203,9 @@ public class EnduserController extends TabComponentsController {
         // alle prisfelt - må man da ha det for alle ?
         //må gjøre cellfactory på en column!!!!!!
     }
+    private void loadElementsFromFile() {
+        FileHandling.openSelectedComputerTxtFiles(ContextModel.INSTANCE.getCleanObjectList(), userPreferences.getStringPathToUser());
+    }
 
     private void setTblCellFactory() {
         Callback<TableColumn, TableCell> priceCellFactory =
@@ -197,7 +230,7 @@ public class EnduserController extends TabComponentsController {
                     setText(c.getProductName()+ "\n" +String.format("%.2f",c.getProductPrice()) + ",-");
                     //Change listener implemented.
                     shoppingListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<?
-                                                extends Component> observable, Component oldValue, Component newValue) -> {
+                                                                    extends Component> observable, Component oldValue, Component newValue) -> {
                         if(shoppingListView.isFocused()){
                             //prøver å displaye hele componenten hvis selectedrow er targeted ( kan gjøres på samme
                             // måte som tableview)
@@ -250,10 +283,8 @@ public class EnduserController extends TabComponentsController {
         setTblHardDisc(tblHardDisc);
         setTblVideo(tblVideo);
         setTblMemory(tblMemory);
-        setTblProsessor(tblProsessor);
-        setTblHarddisk(tblHarddisk);
-        setTblSkjermkort(tblSkjermkort);
-        setTblMinne(tblMinne);
+        setTblProcessor(tblProsessor);
+        setTblHardDisc(tblHarddisk);
         setTblAnnet(tblAnnet);
         setTblTastatur(tblTastatur);
         //fortsett for alle her
@@ -281,6 +312,7 @@ public class EnduserController extends TabComponentsController {
     public void setTblHardDisc(TableView<Component> tblHardDisc) {
         tblHardDisc.setItems(endUserService.getHarddiskRegister().getObservableRegister());
         this.tblHardDisc = tblHardDisc;
+    }
 
     public void setTblTastatur(TableView<Component> tblTastatur) {
         tblTastatur.setItems(endUserService.getTastaturRegister().getObservableRegister());
@@ -290,38 +322,6 @@ public class EnduserController extends TabComponentsController {
     public void setTblAnnet(TableView<Component> tblAnnet) {
         tblAnnet.setItems(endUserService.getAnnetRegister().getObservableRegister());
         this.tblAnnet = tblAnnet;
-    }
-
-    public void initItemFiles() {
-        //computerRegister.addComponent();
-
-    }
-
-    private void loadElementsFromFile() {
-        FileHandling.openSelectedComputerTxtFiles(ContextModel.INSTANCE.getCleanObjectList(), userPreferences.getStringPathToUser());
-    }
-    private void addComponentToCart(TableView<Component> tbl) {
-        Component selectedComp = tbl.getSelectionModel().getSelectedItem();
-        /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
-        if (selectedComp != null) {
-            ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
-            updateComputerListView();
-        }
-        updateComputerListView();
-    }
-
-    private void replaceComponentInCart(String s, TableView<Component> tblProsessor) {
-        Component selectedComp = tblProsessor.getSelectionModel().getSelectedItem();
-        if (selectedComp != null) {
-            /**FJERN EN AV DE AV DEN GITTE TYPEN - så legg til*/
-            /**evt legg til confirmation alert her*/
-            List<Component> list = getComputer().getComponentRegister().filterByProductType(s);
-            if (list.size() > 0) {
-                getComputer().getComponentRegister().getRegister().remove(list.get(0));
-            }
-            ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
-            updateComputerListView();
-        }
     }
 
     @FXML
@@ -350,9 +350,44 @@ public class EnduserController extends TabComponentsController {
     }
 
 
-    public void btnSavePC(ActionEvent event) throws IOException {
-        FileSaverTxt fileSaverTxt = new FileSaverTxt();
-        String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
-        fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
+    public void btnBuyComputer(ActionEvent event) {
+
     }
+
+    public void btnBuyScreen(ActionEvent event) {
+
+    }
+
+    public void btnBuyMemory(ActionEvent event) {
+
+    }
+
+    public void btnBuyHardDisc(ActionEvent event) {
+
+    }
+
+    public void btnBuyCabinet(ActionEvent event) {
+
+    }
+
+    public void btnBuyKeyBoard(ActionEvent event) {
+
+    }
+
+    public void btnBuyMouse(ActionEvent event) {
+
+    }
+
+    public void btnBuyOther(ActionEvent event) {
+
+    }
+
+    public void btnBuyMotherBoard(ActionEvent event) {
+
+    }
+
+    public void btnDeleteFromCart(ActionEvent event) {
+
+    }
+
 }
