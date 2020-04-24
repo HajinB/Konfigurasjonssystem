@@ -1,11 +1,12 @@
 package org.programutvikling.gui;
 
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
@@ -13,6 +14,7 @@ import org.programutvikling.component.io.FileOpenerTxt;
 import org.programutvikling.component.io.FileSaverTxt;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerValidator;
+import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.EndUserService;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
@@ -29,7 +31,6 @@ public class EnduserController extends TabComponentsController {
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     //sånn instansiering fungerer ikke likevel..blir statisk - bør lage en klasse som henter fresh data ut fra
     // contextmodel
-    private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
     @FXML
     private ListView<Component> shoppingListView;
 
@@ -37,31 +38,12 @@ public class EnduserController extends TabComponentsController {
     private Label lblTotalPrice;
 
     @FXML
-    private TableView<Component> tblProsessor;
+    private TableView<Component> tblProsessor, tblSkjermkort,tblHarddisk,tblTastatur,
+    tblMinne, tblMus, tblSkjerm, tblAnnet;
 
     @FXML
-    private TableView<Component> tblSkjermkort;
-
-    @FXML
-    private TableView<Component> tblMinne;
-
-    @FXML
-    private TableView<Component> tblHarddisk;
-
-    @FXML
-    private TableView<Component> tblSSD;
-
-    @FXML
-    private TableView<Component> tblTastatur;
-
-    @FXML
-    private TableView<Component> tblMus;
-
-    @FXML
-    private TableView<Component> tblSkjerm;
-
-    @FXML
-    private TableView<Component> tblAnnet;
+    private TableColumn skjermkortClmPrice, prosessorClmPrice, harddiskClmPrice, tastaturClmPrice, minneClmPrice,
+            musClmPrice, skjermClmPrice, AnnetClmPrice;
 
     @FXML
     void btnLogout(ActionEvent event) throws IOException {
@@ -176,6 +158,57 @@ public class EnduserController extends TabComponentsController {
         loadElementsFromFile();
         updateList();
         updateComputerListView();
+        setCellFactoryListView();
+
+        setTblCellFactory();
+
+        //clmPrice.setCellValueFactory(new PropertyValueFactory<Component, Double>("Price"));
+
+
+        //tblSkjermkort.getColumns().get(2).setCellFactory(priceCellFactory);
+
+
+        //må vi sette opp column for price?
+
+       // må alle tableviews arve fra en ting for å kunne ha samme setcellfactory ??? altså hvis jeg vil ha "kr" bak
+        // alle prisfelt - må man da ha det for alle ?
+        //må gjøre cellfactory på en column!!!!!!
+    }
+
+    private void setTblCellFactory() {
+        Callback<TableColumn, TableCell> priceCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new PriceFormatCell();
+                    }
+                };
+
+        PriceFormatCell priceFormatCell = new PriceFormatCell();
+        skjermkortClmPrice.setCellFactory(priceCellFactory);
+    }
+
+    private void setCellFactoryListView() {
+        shoppingListView.setCellFactory(param -> new ListCell<Component>() {
+            @Override
+            protected void updateItem(Component c, boolean empty){
+                super.updateItem(c, empty);
+                if(empty || c == null || c.getProductName() == null){
+                    setText("");
+                } else{
+                    setText(c.getProductName()+ "\n" +String.format("%.2f",c.getProductPrice()) + ",-");
+                    //Change listener implemented.
+                    shoppingListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<?
+                                                extends Component> observable, Component oldValue, Component newValue) -> {
+                        if(shoppingListView.isFocused()){
+                            //prøver å displaye hele componenten hvis selectedrow er targeted ( kan gjøres på samme
+                            // måte som tableview)
+                            lblComponentMsg.setText(selectedProperty().toString());
+                        }
+                    });
+                }
+
+            }
+        });
     }
 
     //By default, a ListView calls the toString()

@@ -96,8 +96,8 @@ public class ComponentRegister implements Serializable {
             tv.setItems(componentObservableList);
     }
 
-    @Override
-    public String toString() {
+
+    public String toStringListView() {
 
         String melding = "";
         for(int i = 0; i<componentObservableList.size();i++) {
@@ -107,11 +107,11 @@ public class ComponentRegister implements Serializable {
         return melding;
     }
 
-
-    public String toStringSave(){
+    @Override
+    public String toString(){
         StringBuilder sb = new StringBuilder();
         for (Component c : componentObservableList) {
-            sb.append(c.toStringSave());
+            sb.append(c.toString());
             sb.append(System.lineSeparator());
         }
 

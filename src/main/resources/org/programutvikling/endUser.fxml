@@ -93,7 +93,7 @@
                               <PropertyValueFactory property="productDescription" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="79.2000732421875" text="Pris">
+                        <TableColumn  prefWidth="79.2000732421875" text="Pris">
                            <cellValueFactory>
                               <PropertyValueFactory property="productPrice" />
                            </cellValueFactory>
@@ -118,7 +118,7 @@
                               <PropertyValueFactory property="productDescription" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="79.2000732421875" text="Pris">
+                        <TableColumn fx:id="skjermkortClmPrice" prefWidth="79.2000732421875" text="Pris">
                            <cellValueFactory>
                               <PropertyValueFactory property="productPrice" />
                            </cellValueFactory>
@@ -271,7 +271,7 @@
                               <PropertyValueFactory property="productDescription" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="79.2000732421875" text="Pris">
+                        <TableColumn  prefWidth="79.2000732421875" text="Pris">
                            <cellValueFactory>
                               <PropertyValueFactory property="productPrice" />
                            </cellValueFactory>

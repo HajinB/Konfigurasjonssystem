@@ -43,8 +43,8 @@ public class Computer implements Serializable, ItemUsable {
 
     /**hvordan skal formatet på txtfilen til computer være? - tror ikke man bør lagre totalpris, da dette er noe man
      * kan regne ut lett (i excel) .*/
-    @Override
-    public String toString() {
+
+    public String toStringListView() {
         String melding = "";
         for(int i = 0; i<getComponentList().size();i++) {
             melding =
@@ -73,9 +73,10 @@ public class Computer implements Serializable, ItemUsable {
         }
     }
 
-    public String toStringSave() {
+    @Override
+    public String toString() {
 
-            return this.componentRegister.toStringSave();
+            return this.componentRegister.toString();
     }
 }
 

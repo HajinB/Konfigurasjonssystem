@@ -11,6 +11,7 @@ org/programutvikling/gui/ThreadHandler.class
 org/programutvikling/component/ComponentTypes.class
 org/programutvikling/user/UserPreferences.class
 org/programutvikling/gui/SavedPathRegister.class
+org/programutvikling/gui/CustomPriceTableColumn/PriceFormatCell.class
 org/programutvikling/computer/ComputerValidator.class
 org/programutvikling/user/UserRegister.class
 org/programutvikling/gui/TabComponentsController$2.class
@@ -20,6 +21,7 @@ org/programutvikling/computer/Computer.class
 org/programutvikling/gui/EnduserController.class
 org/programutvikling/component/Saveable.class
 org/programutvikling/App$1.class
+org/programutvikling/gui/EnduserController$1.class
 org/programutvikling/gui/utility/FileUtility.class
 org/programutvikling/gui/RegistryComponentLogic.class
 org/programutvikling/component/ComponentValidator.class
@@ -31,9 +33,9 @@ org/programutvikling/component/io/FileSaverTxt.class
 org/programutvikling/component/io/SaverFactory.class
 org/programutvikling/gui/FXMLGetter.class
 org/programutvikling/component/io/FileOpenerJobj.class
-org/programutvikling/gui/utility/Pair.class
 module-info.class
 org/programutvikling/component/Component.class
+org/programutvikling/gui/EnduserController$2.class
 org/programutvikling/component/ItemUsable.class
 org/programutvikling/gui/PrimaryController.class
 org/programutvikling/gui/EditPopupController.class

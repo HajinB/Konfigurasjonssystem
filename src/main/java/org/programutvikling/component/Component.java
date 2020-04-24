@@ -82,15 +82,15 @@ public class Component implements Serializable, ItemUsable {
         // evt validator
         this.productPrice.setValue(productPrice);
     }
-    // toString
-    @Override
-    public String toString() {
+
+    public String toStringListView() {
         return  productName.getValue() + " " +
                  productPrice.getValue() + ",-";
     }
 
-
-    public String toStringSave() {
+    // toString
+    @Override
+    public String toString() {
         return String.format("%s;%s;%s;%s", productType.getValue(), productName.getValue(),
                 productDescription.getValue(), productPrice.getValue());
     }
