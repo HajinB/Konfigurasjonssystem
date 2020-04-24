@@ -26,31 +26,28 @@ public class TabUsersController{
 
     }
 
-    public void btnUserFromFile(ActionEvent actionEvent) {
-
-    }
-
     public void btnDeleteUser(ActionEvent actionEvent) {
 
     }
 
-    public void columnUNameEdit(TableColumn.CellEditEvent cellEditEvent) {
+
+    public void userName(TableColumn.CellEditEvent cellEditEvent) {
 
     }
 
-    public void columnUMailEdit(TableColumn.CellEditEvent cellEditEvent) {
+    public void userMail(TableColumn.CellEditEvent cellEditEvent) {
 
     }
 
-    public void columnCtyEdit(TableColumn.CellEditEvent cellEditEvent) {
+    public void userAdress(TableColumn.CellEditEvent cellEditEvent) {
 
     }
 
-    public void columnAdressEdit(TableColumn.CellEditEvent cellEditEvent) {
+    public void userZipCode(TableColumn.CellEditEvent cellEditEvent) {
 
     }
 
-    public void columnPostalEdit(TableColumn.CellEditEvent cellEditEvent) {
+    public void userCity(TableColumn.CellEditEvent cellEditEvent) {
 
     }
 }

@@ -1,20 +1,18 @@
 package org.programutvikling.gui;
 
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.FileOpenerTxt;
 import org.programutvikling.component.io.FileSaverTxt;
 import org.programutvikling.computer.Computer;
-import org.programutvikling.computer.ComputerValidator;
-import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.EndUserService;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
@@ -27,10 +25,11 @@ import java.util.List;
 public class EnduserController extends TabComponentsController {
     EndUserService endUserService = new EndUserService();
     Stage stage;
-    ComputerValidator computerValidator = new ComputerValidator();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     //sånn instansiering fungerer ikke likevel..blir statisk - bør lage en klasse som henter fresh data ut fra
     // contextmodel
+    private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
+
     @FXML
     private ListView<Component> shoppingListView;
 
@@ -38,12 +37,14 @@ public class EnduserController extends TabComponentsController {
     private Label lblTotalPrice;
 
     @FXML
-    private TableView<Component> tblProsessor, tblSkjermkort,tblHarddisk,tblTastatur,
-    tblMinne, tblMus, tblSkjerm, tblAnnet;
+    private TableView<Component> tblProsessor,tblProcessor, tblVideo,tblMemory, tblHardDisc, tblSkjermkort,
+            tblHarddisk,tblTastatur, tblSSD,
+            tblMinne, tblMus, tblSkjerm, tblAnnet;
 
     @FXML
     private TableColumn skjermkortClmPrice, prosessorClmPrice, harddiskClmPrice, tastaturClmPrice, minneClmPrice,
             musClmPrice, skjermClmPrice, AnnetClmPrice;
+
 
     @FXML
     void btnLogout(ActionEvent event) throws IOException {
@@ -54,7 +55,6 @@ public class EnduserController extends TabComponentsController {
     void btnCashier(ActionEvent event) {
 
     }
-
     Computer getComputer() {
         return ContextModel.INSTANCE.getComputer();
     }
@@ -110,7 +110,7 @@ public class EnduserController extends TabComponentsController {
     @FXML
     void btnAddTastaturToCart(ActionEvent event) {
         if(computerValidator.tastaturValidator(getComputer()))
-        addComponentToCart(tblTastatur);
+            addComponentToCart(tblTastatur);
         else{
             replaceComponentInCart("tastatur", tblAnnet);
         }
@@ -120,7 +120,7 @@ public class EnduserController extends TabComponentsController {
     void
     btnAddMusToCart(ActionEvent event) {
         if(computerValidator.musValidator(getComputer()))
-        addComponentToCart(tblMus);
+            addComponentToCart(tblMus);
         else{
             replaceComponentInCart("mus", tblMus);
         }
@@ -129,7 +129,7 @@ public class EnduserController extends TabComponentsController {
     @FXML
     void btnAddSkjermkortToCart(ActionEvent event) {
         if(computerValidator.skjermkortValidator(getComputer()))
-        addComponentToCart(tblSkjermkort);
+            addComponentToCart(tblSkjermkort);
         else{
             replaceComponentInCart("skjermkort", tblSkjermkort);
         }
@@ -148,7 +148,6 @@ public class EnduserController extends TabComponentsController {
         String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
         fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
     }
-
     @FXML
     public void initialize() throws IOException {
         endUserService.updateEndUserRegisters();
@@ -217,16 +216,17 @@ public class EnduserController extends TabComponentsController {
     // display anything you want in the cell based on the item in that cell.
     //https://examples.javacodegeeks.com/desktop-java/javafx/listview-javafx/javafx-listview-example/
     void updateComputerListView() {
+
         if (ContextModel.INSTANCE.getComputer() != null)
             shoppingListView.setItems(ContextModel.INSTANCE.getComputer().getComponentRegister().getObservableRegister());
-            updateTotalPrice();
+        updateTotalPrice();
     }
 
     private void updateComponentViews() {
         endUserService.updateEndUserRegisters();
-        ComponentRegister harddiskRegister = new ComponentRegister();
-        harddiskRegister.getRegister().addAll(endUserService.getHarddiskRegister().getRegister());
-        System.out.println(harddiskRegister.toString());
+        ComponentRegister hardDiscRegister = new ComponentRegister();
+        hardDiscRegister.getRegister().addAll(endUserService.getHarddiskRegister().getRegister());
+        System.out.println(hardDiscRegister.toString());
         //System.out.println(endUserService.getHarddiskRegister().toString());
         //endUserService.getHarddiskRegister().attachTableView(tblViewHarddisk);
         //tblViewHarddisk.setItems(endUserService.getHarddiskRegister().getObservableRegister());
@@ -246,6 +246,10 @@ public class EnduserController extends TabComponentsController {
 
     private void updateList() {
         updateTotalPrice();
+        setTblProcessor(tblProcessor);
+        setTblHardDisc(tblHardDisc);
+        setTblVideo(tblVideo);
+        setTblMemory(tblMemory);
         setTblProsessor(tblProsessor);
         setTblHarddisk(tblHarddisk);
         setTblSkjermkort(tblSkjermkort);
@@ -258,27 +262,25 @@ public class EnduserController extends TabComponentsController {
 
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
-     * mangler kabinett tableview og hovedkort tableview
      */
-    private void setTblMinne(TableView<Component> tblMinne) {
-        tblMinne.setItems(endUserService.getMinneRegister().getObservableRegister());
-        this.tblMinne = tblMinne;
+    private void setTblMemory(TableView<Component> tblMemory) {
+        tblMemory.setItems(endUserService.getMinneRegister().getObservableRegister());
+        this.tblMemory = tblMemory;
     }
 
-    private void setTblSkjermkort(TableView<Component> tblSkjermkort) {
-        tblSkjermkort.setItems(endUserService.getSkjermkortRegister().getObservableRegister());
-        this.tblSkjermkort = tblSkjermkort;
+    private void setTblVideo(TableView<Component> tblVideo) {
+        tblVideo.setItems(endUserService.getSkjermkortRegister().getObservableRegister());
+        this.tblVideo = tblVideo;
     }
 
-    public void setTblProsessor(TableView<Component> tblProsessor) {
-        tblProsessor.setItems(endUserService.getProsessorRegister().getObservableRegister());
-        this.tblProsessor = tblProsessor;
+    public void setTblProcessor(TableView<Component> tblProcessor) {
+        tblProcessor.setItems(endUserService.getProsessorRegister().getObservableRegister());
+        this.tblProcessor = tblProcessor;
     }
 
-    public void setTblHarddisk(TableView<Component> tblHarddisk) {
-        tblHarddisk.setItems(endUserService.getHarddiskRegister().getObservableRegister());
-        this.tblHarddisk = tblHarddisk;
-    }
+    public void setTblHardDisc(TableView<Component> tblHardDisc) {
+        tblHardDisc.setItems(endUserService.getHarddiskRegister().getObservableRegister());
+        this.tblHardDisc = tblHardDisc;
 
     public void setTblTastatur(TableView<Component> tblTastatur) {
         tblTastatur.setItems(endUserService.getTastaturRegister().getObservableRegister());
@@ -292,13 +294,12 @@ public class EnduserController extends TabComponentsController {
 
     public void initItemFiles() {
         //computerRegister.addComponent();
+
     }
 
     private void loadElementsFromFile() {
         FileHandling.openSelectedComputerTxtFiles(ContextModel.INSTANCE.getCleanObjectList(), userPreferences.getStringPathToUser());
     }
-
-
     private void addComponentToCart(TableView<Component> tbl) {
         Component selectedComp = tbl.getSelectionModel().getSelectedItem();
         /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
@@ -323,10 +324,35 @@ public class EnduserController extends TabComponentsController {
         }
     }
 
+    @FXML
+    void btnBuyProcessor(ActionEvent event) {
+        // tblProcessor.getSelectionModel().getSelectedCells();
+        /**all adding av componenter må skje via enduserservice - legg til en metode der som legger til*/
+        Component selectedComp = tblProcessor.getSelectionModel().getSelectedItem();
+        ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+        updateComputerListView();
+    }
+
+    @FXML
+    void btnBuyVideo(ActionEvent event) {
+        Component selectedComp = tblVideo.getSelectionModel().getSelectedItem();
+        /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
+        if (selectedComp != null) {
+            ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+            updateComputerListView();
+        }
+        updateComputerListView();
+    }
 
     private ComponentRegister getComputerComponentRegister() {
+        //dette gir NPE fordi computer ikke er instansiert i contextmodel(?)
         return ContextModel.INSTANCE.getComputer().getComponentRegister();
     }
 
 
+    public void btnSavePC(ActionEvent event) throws IOException {
+        FileSaverTxt fileSaverTxt = new FileSaverTxt();
+        String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
+        fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
+    }
 }
