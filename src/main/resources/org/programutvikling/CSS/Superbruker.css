@@ -84,6 +84,34 @@
     -fx-border-radius: 6px ;
 }
 
+.btnDelete {
+    -fx-background-color: #BDBDBD;
+    -fx-border-color: #919191;
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 6px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(one-pass-box , #f2f2f2 , 1 , 1 , 1 , 1 )
+}
+
+.btnDelete:hover {
+    -fx-background-color:#70A4C8;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.btnDelete:pressed {
+    -fx-background-color: #0071BF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+    -fx-border-radius: 6px ;
+}
+
 .input {
     -fx-background-color: white;
     -fx-background-radius: 5px;
