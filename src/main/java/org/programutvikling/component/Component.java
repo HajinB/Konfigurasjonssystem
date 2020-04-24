@@ -85,6 +85,12 @@ public class Component implements Serializable, ItemUsable {
     // toString
     @Override
     public String toString() {
+        return  productName.getValue() + " " +
+                 productPrice.getValue() + ",-";
+    }
+
+
+    public String toStringSave() {
         return String.format("%s;%s;%s;%s", productType.getValue(), productName.getValue(),
                 productDescription.getValue(), productPrice.getValue());
     }

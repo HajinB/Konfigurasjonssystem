@@ -45,19 +45,19 @@ public class ComputerValidator {
         return computer.getComponentRegister().countByType("harddisk") < 3;
     }
 
-    boolean tastaturValidator(Computer computer) {
+    public boolean tastaturValidator(Computer computer) {
         return computer.getComponentRegister().countByType("tastatur") == 0;
     }
 
-    boolean musValidator(Computer computer) {
+    public boolean musValidator(Computer computer) {
         return computer.getComponentRegister().countByType("mus") == 0;
     }
 
-    boolean skjermValidator(Computer computer) {
+    public boolean skjermValidator(Computer computer) {
         return computer.getComponentRegister().countByType("skjerm") < 3;
     }
 
-    boolean annetValidator(Computer computer) {
+    public boolean annetValidator(Computer computer) {
         return computer.getComponentRegister().countByType("annet") < 4;
     }
 }

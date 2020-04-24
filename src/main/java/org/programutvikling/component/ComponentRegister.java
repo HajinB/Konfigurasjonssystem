@@ -98,9 +98,20 @@ public class ComponentRegister implements Serializable {
 
     @Override
     public String toString() {
+
+        String melding = "";
+        for(int i = 0; i<componentObservableList.size();i++) {
+            melding =
+                    componentObservableList.get(i).getProductName() +" "+ componentObservableList.get(i).getProductPrice() + ",-";
+        }
+        return melding;
+    }
+
+
+    public String toStringSave(){
         StringBuilder sb = new StringBuilder();
         for (Component c : componentObservableList) {
-            sb.append(c.toString());
+            sb.append(c.toStringSave());
             sb.append(System.lineSeparator());
         }
 
@@ -164,7 +175,12 @@ public class ComponentRegister implements Serializable {
         return list.size();
     }
 
+/*
+    public ObservableList<Component> getObservableRegisterForListView() {
 
+        //wrap listen i en ny klasse - som har en egen tostring (?)
+
+    }*/
 }
 /*
         // Clear the list

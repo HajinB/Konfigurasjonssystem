@@ -45,8 +45,12 @@ public class Computer implements Serializable, ItemUsable {
      * kan regne ut lett (i excel) .*/
     @Override
     public String toString() {
-            return
-                    this.componentRegister.toString();
+        String melding = "";
+        for(int i = 0; i<getComponentList().size();i++) {
+            melding =
+                    getComponentRegister().getRegister().get(i).getProductName() +" "+ getComponentRegister().getRegister().get(i).getProductPrice() + ",-";
+        }
+        return melding;
     }
 
     public void removeAll() {
@@ -67,6 +71,11 @@ public class Computer implements Serializable, ItemUsable {
         }else{
             return 0;
         }
+    }
+
+    public String toStringSave() {
+
+            return this.componentRegister.toStringSave();
     }
 }
 

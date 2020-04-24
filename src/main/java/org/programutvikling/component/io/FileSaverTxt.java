@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class FileSaverTxt implements FileSaver {
     public void save(Computer computer, Path filePath) throws IOException {
-        Files.write(filePath, computer.toString().getBytes());
+        Files.write(filePath, computer.toStringSave().getBytes());
     }
 
     public void save(ArrayList<Object> componentRegister, Path filePath) throws IOException {

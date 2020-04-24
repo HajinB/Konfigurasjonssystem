@@ -81,7 +81,7 @@ public class EnduserController extends TabComponentsController {
     void btnAddProsessorToCart(ActionEvent event) {
         if (computerValidator.prosessorValidator(getComputer())) {
             addComponentToCart(tblProsessor);
-        }else{
+        } else {
             replaceComponentInCart("prosessor", tblProsessor);
         }
     }
@@ -90,7 +90,7 @@ public class EnduserController extends TabComponentsController {
     void btnAddHarddiskToCart(ActionEvent event) {
         if (computerValidator.harddiskValidator(getComputer())) {
             addComponentToCart(tblHarddisk);
-        }else{
+        } else {
             replaceComponentInCart("harddisk", tblHarddisk);
         }
     }
@@ -98,9 +98,9 @@ public class EnduserController extends TabComponentsController {
     @FXML
     void
     btnAddMinneToCart(ActionEvent event) {
-        if(computerValidator.minneValidator(getComputer())) {
+        if (computerValidator.minneValidator(getComputer())) {
             addComponentToCart(tblMinne);
-        }else{
+        } else {
             replaceComponentInCart("minne", tblMinne);
         }
 
@@ -108,32 +108,50 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     void btnAddSkjermToCart(ActionEvent e) {
-        addComponentToCart(tblSkjerm);
+        if (computerValidator.skjermValidator(getComputer())) {
+            addComponentToCart(tblSkjerm);
+        } else {
+            replaceComponentInCart("skjerm", tblSkjerm);
+        }
 
     }
 
     @FXML
     void btnAddAnnetToCart(ActionEvent event) {
-        addComponentToCart(tblAnnet);
-
+        if (computerValidator.annetValidator(getComputer()))
+            addComponentToCart(tblAnnet);
+        else {
+            replaceComponentInCart("annet", tblAnnet);
+        }
     }
 
     @FXML
     void btnAddTastaturToCart(ActionEvent event) {
+        if(computerValidator.tastaturValidator(getComputer()))
         addComponentToCart(tblTastatur);
+        else{
+            replaceComponentInCart("tastatur", tblAnnet);
+        }
     }
 
     @FXML
     void
     btnAddMusToCart(ActionEvent event) {
+        if(computerValidator.musValidator(getComputer()))
         addComponentToCart(tblMus);
+        else{
+            replaceComponentInCart("mus", tblMus);
+        }
     }
 
     @FXML
     void btnAddSkjermkortToCart(ActionEvent event) {
+        if(computerValidator.skjermkortValidator(getComputer()))
         addComponentToCart(tblSkjermkort);
+        else{
+            replaceComponentInCart("skjermkort", tblSkjermkort);
+        }
     }
-
 
     @FXML
     public void btnOpenComputer(ActionEvent event) throws IOException {
@@ -168,8 +186,7 @@ public class EnduserController extends TabComponentsController {
     void updateComputerListView() {
         if (ContextModel.INSTANCE.getComputer() != null)
             shoppingListView.setItems(ContextModel.INSTANCE.getComputer().getComponentRegister().getObservableRegister());
-
-        updateTotalPrice();
+            updateTotalPrice();
     }
 
     private void updateComponentViews() {
@@ -265,7 +282,7 @@ public class EnduserController extends TabComponentsController {
             /**FJERN EN AV DE AV DEN GITTE TYPEN - så legg til*/
             /**evt legg til confirmation alert her*/
             List<Component> list = getComputer().getComponentRegister().filterByProductType(s);
-            if(list.size()>0) {
+            if (list.size() > 0) {
                 getComputer().getComponentRegister().getRegister().remove(list.get(0));
             }
             ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
