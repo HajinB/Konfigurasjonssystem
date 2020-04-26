@@ -94,7 +94,7 @@
         </AnchorPane>
     </left>
     <center>
-        <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <ScrollPane prefHeight="200.0" prefWidth="200.0" vvalue="0.05" BorderPane.alignment="CENTER">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1550.0" prefWidth="776.0">
                     <children>
@@ -105,7 +105,7 @@
                                         <Font name="System Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <TitledPane alignment="CENTER_RIGHT" expanded="false" prefWidth="365.0">
+                                <TitledPane alignment="CENTER_RIGHT" expanded="false">
                                     <content>
                                         <TableView fx:id="tblProcessor" prefHeight="230.0">
                                             <columns>
@@ -200,7 +200,7 @@
                                 </Label>
                                 <TitledPane alignment="CENTER_RIGHT" expanded="false" prefWidth="365.0">
                                     <content>
-                                        <TableView fx:id="tblMouse" prefHeight="217.0" prefWidth="347.0">
+                                        <TableView fx:id="tblMouse" prefHeight="230.0">
                                             <columns>
                                                 <TableColumn prefWidth="101.59997940063477" text="Navn">
                                                     <cellValueFactory>
@@ -229,9 +229,9 @@
                                         <Font name="System Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <TitledPane alignment="CENTER_RIGHT" expanded="false" prefWidth="365.0">
+                                <TitledPane alignment="CENTER_RIGHT" expanded="false">
                                     <content>
-                                        <TableView fx:id="tblOther" prefHeight="217.0" prefWidth="347.0">
+                                        <TableView fx:id="tblOther" prefHeight="230.0">
                                             <columns>
                                                 <TableColumn prefWidth="101.59997940063477" text="Navn">
                                                     <cellValueFactory>
@@ -264,7 +264,7 @@
                                         <Font name="System Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <TitledPane alignment="CENTER_RIGHT" expanded="false" prefWidth="365.0">
+                                <TitledPane alignment="CENTER_RIGHT" expanded="false">
                                     <content>
                                         <TableView fx:id="tblVideoCard" prefHeight="230.0">
                                             <columns>
@@ -300,7 +300,7 @@
                                 </Label>
                                 <TitledPane alignment="CENTER_RIGHT" expanded="false" prefWidth="365.0">
                                     <content>
-                                        <TableView fx:id="tblMotherBoard" prefHeight="217.0" prefWidth="347.0">
+                                        <TableView fx:id="tblMotherBoard" prefHeight="230.0">
                                             <columns>
                                                 <TableColumn prefWidth="101.59997940063477" text="Navn">
                                                     <cellValueFactory>
@@ -331,7 +331,7 @@
                                 </Label>
                                 <TitledPane alignment="CENTER_RIGHT" expanded="false" prefWidth="365.0">
                                     <content>
-                                        <TableView fx:id="tblHardDisc" prefHeight="217.0">
+                                        <TableView fx:id="tblHardDisc" prefHeight="230.0">
                                             <columns>
                                                 <TableColumn prefWidth="101.59997940063477" text="Navn">
                                                     <cellValueFactory>
@@ -391,9 +391,9 @@
                                         <Font name="System Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <TitledPane alignment="CENTER_RIGHT" expanded="false" prefWidth="365.0">
+                                <TitledPane alignment="CENTER_RIGHT" expanded="false">
                                     <content>
-                                        <TableView fx:id="tblScreen" prefHeight="217.0" prefWidth="347.0">
+                                        <TableView fx:id="tblScreen" prefHeight="230.0">
                                             <columns>
                                                 <TableColumn prefWidth="101.59997940063477" text="Navn">
                                                     <cellValueFactory>

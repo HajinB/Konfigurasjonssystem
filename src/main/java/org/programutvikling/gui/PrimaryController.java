@@ -61,7 +61,7 @@ public class PrimaryController implements Initializable {
         return new Task<Boolean>() {
                 @Override public Boolean call() throws IOException, InterruptedException {
                     // do your operation in here
-                    Thread.sleep(2000);
+                    Thread.sleep(2000); //Endre til 1000?
                     App.setRoot("secondary");
                     return true;
                 }
@@ -73,6 +73,14 @@ public class PrimaryController implements Initializable {
                 }
             };
     }
+/*
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("Load.css").toExternalForm());
+        dialogPane.getStyleClass().add("myDialog");
+    }*/
+
+
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
@@ -91,13 +99,13 @@ public class PrimaryController implements Initializable {
 
 
 
+
     private boolean isUser() {
         return inputPassword.getText().equals("bruker");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         //loadRegisterFromFile();
         FileUtility.populateRecentFiles();
     }
