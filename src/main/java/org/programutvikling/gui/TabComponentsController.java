@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -383,7 +382,7 @@ public class TabComponentsController {
     }
 
     void openFileFromChooserWithThreadSleep() throws IOException {
-        String chosenFile = FileUtility.getFilePathFromOpenDialog(stage);
+        String chosenFile = FileUtility.getFilePathFromOpenJobjDialog(stage);
         if (chosenFile == null) {
             return;
         }

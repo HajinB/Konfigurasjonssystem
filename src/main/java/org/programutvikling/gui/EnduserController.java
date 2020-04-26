@@ -4,6 +4,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.App;
@@ -34,22 +35,107 @@ public class EnduserController extends TabComponentsController {
     private ListView<Component> shoppingListView;
     @FXML
     private Label lblTotalPrice;
-    @FXML
-    private TableView<Component> tblProcessor, tblScreen, tblOther,
-            tblMemory, tblMouse, tblVideoCard, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
-    @FXML
-    private TableColumn videoPriceCln;
 
+    @FXML
+    TableView<Computer> tblCompletedComputers;
+
+    @FXML
+    private TableView<Component>
+            tblProcessor, tblVideoCard, tblScreen,
+            tblOther, tblMemory, tblMouse, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
+
+    @FXML
+    TableColumn<Computer, Double> computerPriceCln;
+
+    @FXML
+    private TableColumn
+            processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln,
+            memoryPriceCln, mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln;
     @FXML
     public void initialize() throws IOException {
         endUserService.updateEndUserRegisters();
-        updateComponentViews();
-        initItemFiles();
         loadElementsFromFile();
+        updateComponentViews();
         updateList();
         updateComputerListView();
         setTblCellFactory();
         setCellFactoryListView();
+        /*
+         <cellValueFactory>
+                                <PropertyValueFactory property="productPrice"/>
+                            </cellValueFactory>*/
+        computerPriceCln.setCellValueFactory(new PropertyValueFactory<Computer, Double>("productPrice"));
+        //tblcomputer trenger en override av update items - som inni settexten bruker en annen metode for å hente
+        // navn og totalpris.
+    }
+
+    private void setTblCellFactory() {
+        Callback<TableColumn, TableCell> priceCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new PriceFormatCell();
+                    }
+                };
+        PriceFormatCell priceFormatCell = new PriceFormatCell();
+
+        computerPriceCln.setCellFactory(list -> new TableCell<Computer, Double>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+//todo tableviewen til completed computers finner ikke calculate price - bytt den til tableview?
+                    //hva skal man sette her for å få til å vise pris?
+                    //hvorfor får jeg ikke tak i Computeren fra her?????
+                    setText(Double.toString(getPrice()));
+                }
+            }
+        });
+
+        processorPriceCln.setCellFactory(priceCellFactory);
+        videoCardPriceCln.setCellFactory(priceCellFactory);
+        screenPriceCln.setCellFactory(priceCellFactory);
+        otherPriceCln.setCellFactory(priceCellFactory);
+        memoryPriceCln.setCellFactory(priceCellFactory);
+        cabinetPriceCln.setCellFactory(priceCellFactory);
+        motherBoardPriceCln.setCellFactory(priceCellFactory);
+        mousePriceCln.setCellFactory(priceCellFactory);
+        hardDiscPriceCln.setCellFactory(priceCellFactory);
+        keyboardPriceCln.setCellFactory(priceCellFactory);
+
+
+
+        //tblHardDisc.getSelectionModel().getTableView().getColumns().get(2);
+        //tblHardDisc.getSelectionModel().getTableView().getColumns().get(2).setCellFactory(priceCellFactory);
+    }
+
+    private double getPrice() {
+
+        //hvordan skal man få prisen i tableview?
+        return getComputer().calculatePrice();
+    }
+
+    private void updateCompletedComputers(){
+        if(ContextModel.INSTANCE.getComputerRegister().getObservableRegister().size()>0)
+        tblCompletedComputers.setItems(ContextModel.INSTANCE.getComputerRegister().getObservableRegister());
+    }
+
+    private void updateList() {
+        updateTotalPrice();
+        setTblProcessor(tblProcessor);
+        setTblVideoCard(tblVideoCard);
+        setTblScreen(tblScreen);
+        setTblOther(tblOther);
+        setTblMemory(tblMemory);
+        setTblCabinet(tblCabinet);
+        setTblMotherBoard(tblMotherBoard);
+        setTblMouse(tblMouse);
+        setTblHardDisc(tblHardDisc);
+        setTblKeyboard(tblKeyboard);
+        //setTblAnnet(tblAnnet);
+        // setTblTastatur(tblTastatur);
+        //fortsett for alle her
     }
 
     @FXML
@@ -75,7 +161,7 @@ public class EnduserController extends TabComponentsController {
         Component selectedComp = tbl.getSelectionModel().getSelectedItem();
         /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
         if (selectedComp != null) {
-            ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+            getComputer().addComponent(selectedComp);
             updateComputerListView();
         }
         updateComputerListView();
@@ -90,7 +176,7 @@ public class EnduserController extends TabComponentsController {
             if (list.size() > 0) {
                 getComputer().getComponentRegister().getRegister().remove(list.get(0));
             }
-            ContextModel.INSTANCE.getComputer().addComponent(selectedComp);
+            getComputer().addComponent(selectedComp);
             updateComputerListView();
         }
     }
@@ -98,30 +184,26 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     public void btnOpenComputer(ActionEvent event) throws IOException {
-        String path = FileUtility.getFilePathFromOpenDialog(stage);
+        String path = FileUtility.getFilePathFromOpenTxtDialog(stage);
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
-        fileOpenerTxt.open(ContextModel.INSTANCE.getComputer(), Paths.get(path));
+        fileOpenerTxt.open(getComputer(), Paths.get(path));
+        updateTotalPrice();
     }
 
     @FXML
     public void btnSavePC(ActionEvent event) throws IOException {
         FileSaverTxt fileSaverTxt = new FileSaverTxt();
         String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
-        fileSaverTxt.save(ContextModel.INSTANCE.getComputer(), Paths.get(path));
+        if(path==null){
+            return;
+        }
+        fileSaverTxt.save(getComputer(), Paths.get(path));
+        ContextModel.INSTANCE.getComputerRegister().addComputer(getComputer());
+        System.out.println(getComputer());
+        updateCompletedComputers();
     }
 
 
-    private void setTblCellFactory() {
-        Callback<TableColumn, TableCell> priceCellFactory =
-                new Callback<TableColumn, TableCell>() {
-                    public TableCell call(TableColumn p) {
-                        return new PriceFormatCell();
-                    }
-                };
-
-        PriceFormatCell priceFormatCell = new PriceFormatCell();
-        videoPriceCln.setCellFactory(priceCellFactory);
-    }
 
     private void setCellFactoryListView() {
         shoppingListView.setCellFactory(param -> new ListCell<Component>() {
@@ -148,27 +230,18 @@ public class EnduserController extends TabComponentsController {
     }
 
     void updateComputerListView() {
-
-        if (ContextModel.INSTANCE.getComputer() != null)
-            shoppingListView.setItems(ContextModel.INSTANCE.getComputer().getComponentRegister().getObservableRegister());
+        if (getComputer() != null)
+            shoppingListView.setItems(getComputer().getComponentRegister().getObservableRegister());
         updateTotalPrice();
     }
 
     private void updateComponentViews() {
         endUserService.updateEndUserRegisters();
-        ComponentRegister hardDiscRegister = new ComponentRegister();
-        hardDiscRegister.getRegister().addAll(endUserService.getHardDiscRegister().getRegister());
-        System.out.println(hardDiscRegister.toString());
-        //System.out.println(endUserService.getHarddiskRegister().toString());
-        //endUserService.getHarddiskRegister().attachTableView(tblViewHarddisk);
-        //tblViewHarddisk.setItems(endUserService.getHarddiskRegister().getObservableRegister());
-        //hvorfor NPE her?
-        //tblViewComponent.refresh();
         updateTotalPrice();
     }
 
     private void updateTotalPrice() {
-        String totalpris = ContextModel.INSTANCE.getComputer().calculatePrice() + ",-";
+        String totalpris = getComputer().calculatePrice() + ",-";
         lblTotalPrice.setText(totalpris);
     }
 
@@ -176,16 +249,6 @@ public class EnduserController extends TabComponentsController {
 
     }
 
-    private void updateList() {
-        updateTotalPrice();
-        setTblProcessor(tblProcessor);
-        setTblHardDisc(tblHardDisc);
-        setTblVideoCard(tblVideoCard);
-        setTblMemory(tblMemory);
-        //setTblAnnet(tblAnnet);
-        // setTblTastatur(tblTastatur);
-        //fortsett for alle her
-    }
 
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
@@ -206,15 +269,41 @@ public class EnduserController extends TabComponentsController {
     }
 
     public void setTblHardDisc(TableView<Component> tblHardDisc) {
-        tblHardDisc.setItems(endUserService.getHardDiscRegister().getObservableRegister());
         this.tblHardDisc = tblHardDisc;
-
+        tblHardDisc.setItems(endUserService.getHardDiscRegister().getObservableRegister());
     }
 
-    public void setTblKeyboard(TableView<Component> tblTastatur) {
-        tblTastatur.setItems(endUserService.getKeyboardRegister().getObservableRegister());
-        this.tblKeyboard = tblTastatur;
+    public void setTblKeyboard(TableView<Component> tblKeyboard) {
+        tblKeyboard.setItems(endUserService.getKeyboardRegister().getObservableRegister());
+        this.tblKeyboard=tblKeyboard;
     }
+
+    public void setTblMouse(TableView<Component> tblMouse) {
+        this.tblMouse = tblMouse;
+        tblMouse.setItems(endUserService.getMouseRegister().getObservableRegister());
+    }
+
+    private void setTblMotherBoard(TableView<Component> tblMotherBoard) {
+        this.tblMotherBoard=tblMotherBoard;
+        tblMotherBoard.setItems(endUserService.getMotherboardRegister().getObservableRegister());
+    }
+
+    private void setTblCabinet(TableView<Component> tblCabinet) {
+        this.tblCabinet=tblCabinet;
+        tblCabinet.setItems(endUserService.getCabinetRegister().getObservableRegister());
+    }
+
+    private void setTblOther(TableView<Component> tblOther) {
+        this.tblOther=tblCabinet;
+        tblOther.setItems(endUserService.getOtherRegister().getObservableRegister());
+    }
+
+    private void setTblScreen(TableView<Component> tblScreen) {
+        this.tblScreen=tblScreen;
+        tblScreen.setItems(endUserService.getScreenRegister().getObservableRegister());
+    }
+
+
 
 
     private void loadElementsFromFile() {
@@ -231,7 +320,7 @@ public class EnduserController extends TabComponentsController {
     */
     private ComponentRegister getComputerComponentRegister() {
         //dette gir NPE fordi computer ikke er instansiert i contextmodel(?)
-        return ContextModel.INSTANCE.getComputer().getComponentRegister();
+        return getComputer().getComponentRegister();
     }
 
 
@@ -241,7 +330,7 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     void btnBuyProcessor(ActionEvent event) {
-        if (computerValidator.processorValidator(getComputer())) {
+        if (computerValidator.processorListValidator(getComputer())) {
             addComponentToCart(tblProcessor);
         } else {
             replaceComponentInCart("prosessor", tblProcessor);
@@ -250,7 +339,7 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     void btnBuyVideo(ActionEvent event) {
-        if (computerValidator.videoValidator(getComputer()))
+        if (computerValidator.videoCardListValidator(getComputer()))
             addComponentToCart(tblVideoCard);
         else {
             replaceComponentInCart("skjermkort", tblVideoCard);
@@ -258,7 +347,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     public void btnBuyScreen(ActionEvent event) {
-        if (computerValidator.screenValidator(getComputer())) {
+        if (computerValidator.screenListValidator(getComputer())) {
             addComponentToCart(tblScreen);
         } else {
             replaceComponentInCart("skjerm", tblScreen);
@@ -266,7 +355,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     public void btnBuyMemory(ActionEvent event) {
-        if (computerValidator.memoryValidator(getComputer())) {
+        if (computerValidator.memoryListValidator(getComputer())) {
             addComponentToCart(tblMemory);
         } else {
             replaceComponentInCart("minne", tblMemory);
@@ -274,15 +363,25 @@ public class EnduserController extends TabComponentsController {
     }
 
     public void btnBuyHardDisc(ActionEvent event) {
+        if (computerValidator.hardDiscListValidator(getComputer())) {
+            addComponentToCart(tblHardDisc);
+        } else {
+            replaceComponentInCart("harddisk", tblHardDisc);
+        }
 
     }
 
     public void btnBuyCabinet(ActionEvent event) {
+        if (computerValidator.cabinetListValidator(getComputer())) {
+            addComponentToCart(tblCabinet);
+        } else {
+            replaceComponentInCart("harddisk", tblCabinet);
+        }
 
     }
 
     public void btnBuyKeyBoard(ActionEvent event) {
-        if (computerValidator.keyboardValidator(getComputer()))
+        if (computerValidator.keyboardListValidator(getComputer()))
             addComponentToCart(tblKeyboard);
         else {
             replaceComponentInCart("tastatur", tblKeyboard);
@@ -290,7 +389,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     public void btnBuyMouse(ActionEvent event) {
-        if (computerValidator.mouseValidator(getComputer()))
+        if (computerValidator.mouseListValidator(getComputer()))
             addComponentToCart(tblMouse);
         else {
             replaceComponentInCart("mus", tblMouse);
@@ -299,10 +398,20 @@ public class EnduserController extends TabComponentsController {
     }
 
     public void btnBuyOther(ActionEvent event) {
+        if (computerValidator.otherListValidator(getComputer()))
+            addComponentToCart(tblOther);
+        else {
+            replaceComponentInCart("annet", tblOther);
+        }
 
     }
 
     public void btnBuyMotherBoard(ActionEvent event) {
+        if (computerValidator.motherboardListValidator(getComputer()))
+            addComponentToCart(tblMotherBoard);
+        else {
+            replaceComponentInCart("annet", tblMotherBoard);
+        }
 
     }
 
@@ -310,6 +419,9 @@ public class EnduserController extends TabComponentsController {
         Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette", "Vil du slette ",
                 shoppingListView.getSelectionModel().getSelectedItems().get(0).getProductName());
         alert.showAndWait();
+        if(shoppingListView.getSelectionModel().isEmpty()){
+            return;
+        }
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             Component selectedComp = shoppingListView.getSelectionModel().getSelectedItem();
             deleteComponent(selectedComp);

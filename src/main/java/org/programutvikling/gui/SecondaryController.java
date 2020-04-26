@@ -34,7 +34,6 @@ public class SecondaryController implements Initializable {
     @FXML
     void btnSaveToChosenPath(ActionEvent e) throws IOException {
         String chosenPath = FileUtility.getFilePathFromSaveJOBJDialog(this.stage);
-
         FileHandling.saveFileAs(chosenPath);
     }
 

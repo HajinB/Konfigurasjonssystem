@@ -18,21 +18,29 @@ public class Computer implements Serializable, ItemUsable {
     //private transient ObservableList<Component> listOfComponents = FXCollections.observableArrayList();
     private ComponentRegister componentRegister = new ComponentRegister();
     private transient static final long serialVersionUID = 1;
-    private  String name;
-    public void setName(String name) {
-        this.name = name;
+    private  String productNameProperty;
+    private double productPriceProperty;
+
+    public double getComputerPrice() {
+        return calculatePrice();
     }
 
-    public String getName() {
-        return name;
+    public Computer(String name){
+       // this.productPrice = calculatePrice();
+        this.productNameProperty = name;
     }
 
+    public void setProductNameProperty(String productNameProperty) {
+        this.productNameProperty = productNameProperty;
+    }
+
+    public String getProductNameProperty() {
+        return productNameProperty;
+    }
 
     public ComponentRegister getComponentRegister() {
         return componentRegister;
     }
-
-
 
     List getComponentList(){
         return componentRegister.getRegister();

@@ -36,12 +36,10 @@ public class FileHandling {
         if (chosenPath == null) {
             return;
         }
-
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                null, ContextModel.INSTANCE.getSavedPathRegister(), null);//todo her er det kanskje muilgheter for STOR
-        // BUG - setter null in i
-        // objectlisten...
+                null, ContextModel.INSTANCE.getSavedPathRegister(), null);
+        //todo kanskje det er skummelt å sette null inn i objectlisten noen ganger (?)
         System.out.println("Dette prøver man å lagre:"+objectsToSave);
         Path pathAppend = Paths.get(String.valueOf(path));
         saveFile(objectsToSave, pathAppend);
@@ -85,15 +83,8 @@ public class FileHandling {
             try {
                 Path path = Paths.get(selectedPath);
                 objectsLoaded = opener.open(register, path);
-                /**unngå addAll her, da kjøres opener mange ganger xD */
-                //objectsLoaded.addAll(opener.open(register, path));
-                //System.out.println(objectsLoaded.size() + " er størrelsen på lista inn");
-                //System.out.println("etter opener" + objectsLoaded.size());
+
             } catch (IOException e) {
-                //Here are some cases which result in IOException.
-                //
-                //Reading from a closed inputstream
-                //https://stackoverflow.com/questions/13216148/java-what-throws-an-ioexception
                 System.out.println(Arrays.toString(e.getStackTrace()));
                 Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
             }

@@ -22,16 +22,17 @@ public enum ContextModel {
     private SavedPathRegister savedPathRegister = new SavedPathRegister();
     private ComponentRegister componentRegister = new ComponentRegister();
     private ComputerRegister computerRegister = new ComputerRegister();
-    private Computer computer = new Computer();
+    private Computer computer = new Computer("current");
     private ArrayList<Object> objects = new ArrayList<>();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
-    private ArrayList<Component> tempComponent= new ArrayList<>();
-    private ContextModel(){
-        System.out.println("hi from model constructor"+ userPreferences.getPathToUser().toString());
-        if(FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
+    private ArrayList<Component> tempComponent = new ArrayList<>();
+
+    private ContextModel() {
+        System.out.println("hi from model constructor" + userPreferences.getPathToUser().toString());
+        if (FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
             loadObjectsIntoClasses();
-        }else{
+        } else {
             System.out.println("ingen config fil ble funnet.");
         }
     }
@@ -54,61 +55,47 @@ public enum ContextModel {
         return savedPathRegister;
     }
 
-    public ArrayList<Object> getCurrentObjectList(){
+    public ArrayList<Object> getCurrentObjectList() {
         return objects;
     }
 
-    public ArrayList<Object> getCleanObjectList(){
-        if(objects.size()>0){
+    public ArrayList<Object> getCleanObjectList() {
+        if (objects.size() > 0) {
             objects.clear();
         }
         return objects;
     }
 
-    public void loadComponentRegisterIntoModel(){
-        if(objects.get(0) instanceof ComponentRegister)
-        setComponentRegister((ComponentRegister) objects.get(0));
+    public void loadComponentRegisterIntoModel() {
+        if (objects.get(0) instanceof ComponentRegister)
+            setComponentRegister((ComponentRegister) objects.get(0));
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
-       /**går det ann å skrive dette på en annen måte? factory method feks??*/
-        if(objects.size()>0) {
-                //dette overwriter uansett.
-                if ((objects.size()==1) ) {
-                    if(checkIfObjectIsComponentRegister()){
-                        setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
-                    }
-                }
-                if ((objects.size()==2)) {
-                    setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
-                    computerRegister = (ComputerRegister) objects.get(1);
-                }
-                if ((objects.size()==3)) {
-                    setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
-                    computerRegister = (ComputerRegister) objects.get(1);
-                    savedPathRegister = (SavedPathRegister) objects.get(2);
-                } if ((objects.size()==4)) {
-                    setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
-                    computerRegister = (ComputerRegister) objects.get(1);
-                    savedPathRegister = (SavedPathRegister) objects.get(2);
-                    computer = (Computer) objects.get(3);
-                }
-            }
+        /**går det ann å skrive dette på en annen måte? factory method feks??*/
+        if (objects.size() > 0) {
+                //checkif
+            //checkIfObjectIsComponentRegister();
+            if (objects.get(0) != null)
+                setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
+            if (objects.get(1) != null)
+                computerRegister = (ComputerRegister) objects.get(1);
+            if (objects.get(2) != null)
+                savedPathRegister = (SavedPathRegister) objects.get(2);
+            if (objects.get(3) != null)
+            computer = (Computer) objects.get(3);
+        }
             objects.clear();
-            //denne måten kunne ha appenda - men får npe
+    //denne måten kunne ha appenda - men får npe
             /* ComponentRegister componentRegister1 = (ComponentRegister) (objects.get(0));
             ComputerRegister computerRegister1 = (ComputerRegister) objects.get(1);
 
             INSTANCE.getComponentRegister().getRegister().addAll(componentRegister1.getRegister());
             INSTANCE.getComputerRegister().getRegister().addAll(computerRegister1.getRegister());*/
-    }
+}
 
     private boolean checkIfObjectIsComponentRegister() {
         return objects.get(0) instanceof ComponentRegister;
-    }
-
-    public void setComponentRegister(ComponentRegister componentRegister) {
-        this.componentRegister = componentRegister;
     }
 
     /*
@@ -135,6 +122,10 @@ public enum ContextModel {
 */
     public ComponentRegister getComponentRegister() {
         return componentRegister;
+    }
+
+    public void setComponentRegister(ComponentRegister componentRegister) {
+        this.componentRegister = componentRegister;
     }
 
     public ComputerRegister getComputerRegister() {

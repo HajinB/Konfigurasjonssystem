@@ -21,7 +21,7 @@ class FileSaverTxtTest {
                 ".60/5" +
                 ".0GHz, Coffee Lake Refresh, uten kjøler", 5999.99);
 
-        Computer computer = new Computer();
+        Computer computer = new Computer("test");
         computer.addComponent(componentTest);
         computer.addComponent(componentTest2);
         System.out.println(computer.toString());
@@ -30,7 +30,7 @@ class FileSaverTxtTest {
 
     @Test
     void open() throws IOException {
-        Computer computer = new Computer();
+        Computer computer = new Computer("test2");
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         fileOpenerTxt.open(computer, Paths.get("FileDirectory/Admin/test.txt"));
         System.out.println(computer);
