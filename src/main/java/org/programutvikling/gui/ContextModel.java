@@ -27,7 +27,7 @@ public enum ContextModel {
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     private ArrayList<Component> tempComponent= new ArrayList<>();
     private ContextModel(){
-        System.out.println("hi from model constructor"+ userPreferences.getPathToUser().toString());
+        System.out.println("hi from model constructor "+ userPreferences.getPathToUser().toString());
         if(FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
             loadObjectsIntoClasses();
