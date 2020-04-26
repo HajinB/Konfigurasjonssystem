@@ -278,7 +278,7 @@
                                                         <PropertyValueFactory property="productDescription" />
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn fx:id="videoPriceClm" prefWidth="87.0" text="Pris">
+                                                <TableColumn fx:id="videoPriceCln" prefWidth="87.0" text="Pris">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="productPrice" />
                                                     </cellValueFactory>

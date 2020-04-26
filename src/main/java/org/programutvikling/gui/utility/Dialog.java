@@ -30,7 +30,8 @@ public class Dialog {
     public  static Alert getConfirmationAlert(String title, String header, String alertText, String selection) {
         ButtonType btnJa = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
         ButtonType btnNei = new ButtonType("Nei", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(AlertType.CONFIRMATION, alertText + selection  , btnJa, btnNei);
+        ButtonType btnAvbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.BACK_PREVIOUS);
+        Alert alert = new Alert(AlertType.CONFIRMATION, alertText + selection  , btnJa, btnNei, btnAvbryt);
         alert.setTitle(title);
         alert.setHeaderText(header);
         return alert;

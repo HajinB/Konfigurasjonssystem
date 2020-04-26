@@ -19,8 +19,6 @@ public class Computer implements Serializable, ItemUsable {
     private ComponentRegister componentRegister = new ComponentRegister();
     private transient static final long serialVersionUID = 1;
     private  String name;
-
-
     public void setName(String name) {
         this.name = name;
     }
@@ -43,7 +41,6 @@ public class Computer implements Serializable, ItemUsable {
 
     /**hvordan skal formatet på txtfilen til computer være? - tror ikke man bør lagre totalpris, da dette er noe man
      * kan regne ut lett (i excel) .*/
-
     public String toStringListView() {
         String melding = "";
         for(int i = 0; i<getComponentList().size();i++) {

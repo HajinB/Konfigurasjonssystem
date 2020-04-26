@@ -1,6 +1,7 @@
 package org.programutvikling;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,17 +45,21 @@ public class App extends Application {
     }
 
     private void initOnExitHandler(Stage stage) {
+        Platform.setImplicitExit(false);
+
         // For catching program exit via OS native close button
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we){
-                Alert alert = Dialog.getConfirmationAlert("Avslutning", "", "Vil du lagre endringene dine", "");
+                Alert alert = Dialog.getConfirmationAlert("Avslutter..", "", "Vil du lagre endringene dine?", "");
                 Optional<ButtonType> result = alert.showAndWait();
+
+                //hvis avbryt blir trykket på
+                if(result.get() == alert.getButtonTypes().get(2)){
+                        we.consume();                }
 
                 if (result.get() == alert.getButtonTypes().get(0)) {
                     System.out.println("Stage is closing - writing data to disk");
                     Thread thread = new Thread(() -> {
-                        System.out.println("Saving database to file");
-
                         try {
                             fileHandling.saveAll();
                         } catch (IOException e) {
@@ -65,7 +70,7 @@ public class App extends Application {
                     });
                     thread.run();
                 } else {
-                    System.out.println("Stage is closing - purging data");
+                    System.out.println("");
                 }
             }
         });

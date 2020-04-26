@@ -53,6 +53,8 @@ public class EndUserService {
         return screenRegister;
     }
 
+
+
     public ComponentRegister getKeyboardRegister() {
         return keyboardRegister;
     }
@@ -62,10 +64,9 @@ public class EndUserService {
     }
 
     public void updateEndUserRegisters() {
-
         clearRegisters(motherboardRegister, cabinetRegister, videoRegister, screenRegister, mouseRegister,
                 processorRegister, memoryRegister, hardDiscRegister, otherRegister, keyboardRegister);
-
+        //kan lage en componentregisterList istedet? vil det redusere codespam?
         ComponentRegister dataBaseRegister = ContextModel.INSTANCE.getComponentRegister();
         motherboardRegister.getRegister().addAll(dataBaseRegister.filterByProductType("hovedkort"));
         cabinetRegister.getRegister().addAll(dataBaseRegister.filterByProductType("kabinett"));

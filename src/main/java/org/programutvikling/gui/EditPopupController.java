@@ -3,10 +3,8 @@ package org.programutvikling.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.component.Component;
@@ -15,6 +13,7 @@ import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.TemporaryComponent;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditPopupController extends TabComponentsController implements Initializable {
@@ -51,7 +50,6 @@ public class EditPopupController extends TabComponentsController implements Init
                 txtPopupProductDescription.getText(),
                 price
         );
-        //bruker 
         TemporaryComponent.INSTANCE.setEdited(true);
         TemporaryComponent.INSTANCE.storeTempComponent(component);
         stage.close();
@@ -60,19 +58,39 @@ public class EditPopupController extends TabComponentsController implements Init
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cbType.setItems(componentTypes.getObservableTypeListName());
-
     }
 
-    void initData(Component c, Stage stage) {
+    void initData(Component c, Stage stage, int columnIndex) {
+        //tar inn stage for å kunne lukke når brukeren trykker endre
         this.stage = stage;
-        //.lookup().setText(customer.getName());
         System.out.println(componentEditNode);
-        //System.out.println(componentEditNode.lookup("#popupProductName"));
         cbType.setValue(c.getProductType());
         txtPopupProductName.setText(c.getProductName());
         txtPopupProductDescription.setText(c.getProductDescription());
         txtPopupProductPrice.setText(Double.toString(c.getProductPrice()));
-        //((TextField) componentEditNode.lookup("#popupProductName")).setText(c.getProductName());
+        setFocusOnField(columnIndex, c);
+    }
+
+    private void setFocusOnField(int columnIndex, Component c) {
+        System.out.println("kollone index er: " +columnIndex);
+
+        if(columnIndex ==0){
+            cbType.requestFocus();
+            ComponentTypes componentTypes = new ComponentTypes();
+            List<String> s = componentTypes.getObservableTypeListName();
+        }
+        if(columnIndex ==1){
+            txtPopupProductName.requestFocus();
+            txtPopupProductName.selectAll();
+        }
+        if(columnIndex==2){
+            txtPopupProductDescription.requestFocus();
+            txtPopupProductDescription.selectAll();
+        }
+        if(columnIndex==3){
+            txtPopupProductPrice.requestFocus();
+            txtPopupProductPrice.selectAll();
+        }
     }
 }
 

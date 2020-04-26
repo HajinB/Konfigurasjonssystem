@@ -1,6 +1,7 @@
 package org.programutvikling.gui;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -12,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -26,18 +28,17 @@ import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
-import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.gui.utility.Search;
-import org.programutvikling.gui.utility.TemporaryComponent;
+import org.programutvikling.gui.utility.*;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class TabComponentsController {
-    SecondaryController secondaryController;
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en rad for å redigere");
+    @FXML
+    public Label lblComponentMsg;
+    SecondaryController secondaryController;
     @FXML
     AnchorPane topLevelPane;
     ComponentTypes componentTypes = new ComponentTypes();
@@ -50,8 +51,6 @@ public class TabComponentsController {
     @FXML
     private GridPane componentRegNode;
     @FXML
-    public Label lblComponentMsg;
-    @FXML
     private ChoiceBox<String> cbType, cbTypeFilter;
     @FXML
     private ComboBox<String> cbRecentFiles;
@@ -63,21 +62,29 @@ public class TabComponentsController {
     private TableColumn productPriceColumn;
     @FXML
     private ContextMenu cm;
+
     @FXML
     public void initialize() throws IOException {
         initChoiceBoxes();
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
-        updateView();
-        productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         threadHandler = new ThreadHandler(this);
+        initTableView();
+    }
+
+    private void initTableView() {
+        productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
         tblViewComponent.setTooltip(tooltip);
         setTblCellFactory();
+        setContextMenu();
+        updateView();
+    }
 
+    private void setContextMenu() {
         tblViewComponent.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(t.getButton() == MouseButton.SECONDARY) {
+                if (t.getButton() == MouseButton.SECONDARY) {
                     cm.show(tblViewComponent, t.getScreenX(), t.getScreenY());
                 }
             }
@@ -97,20 +104,27 @@ public class TabComponentsController {
                         return new PriceFormatCell();
                     }
                 };
-
         PriceFormatCell priceFormatCell = new PriceFormatCell();
-        productPriceColumn.setCellFactory(priceCellFactory);
+        productPriceColumn.setCellFactory((priceCellFactory));
     }
+
+
 
     @FXML
     void dblClickTblRow(MouseEvent event) {
+        handlePopup();
+    }
+
+    private void handlePopup() {
+        /**detecter tablerow, for å hente ut component*/
         tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                //tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
                 TableRow row;
+                TableColumn column;
                 if (isDoubleClick(event)) {
                     Node node = ((Node) event.getTarget()).getParent();
-
                     if (node instanceof TableRow) {
                         row = (TableRow) node;
                     } else {
@@ -129,7 +143,87 @@ public class TabComponentsController {
                 return event.isPrimaryButtonDown() && event.getClickCount() == 2;
             }
         });
+
+        /**detecter tablecolumn, for å kunne fokusere på riktig celle i popupvindu*/
+        final ObservableList<TablePosition> selectedCells = tblViewComponent.getSelectionModel().getSelectedCells();
+        //gjør det mulig å detecte cell på første klikk:
+        tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
+        selectedCells.addListener(new ListChangeListener() {
+            @Override
+            public void onChanged(Change c) {
+
+                if(selectedCells.size()!=0) {
+                    TablePosition tablePosition = (TablePosition) selectedCells.get(0);
+
+                    Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
+                    TemporaryComponent.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
+                }
+                //System.out.println(selectedCells.get(0).getColumn());
+            }
+        });
     }
+
+    private void handlePopUp(Stage stage, Component c) {
+        /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
+        stage.setOnHidden(new EventHandler<WindowEvent>() {
+
+            public void handle(WindowEvent we) {
+                System.out.println("detected");
+                if (TemporaryComponent.INSTANCE.getIsEdited()) {
+                    getObservableRegister().set(getObservableRegister().indexOf(c),
+                            TemporaryComponent.INSTANCE.getTempComponent());
+                    TemporaryComponent.INSTANCE.resetTemps();
+                    updateView();
+                    tblViewComponent.refresh();
+                    try {
+                        saveAll();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    private void openEditWindow(TableRow row) throws IOException {
+
+        FXMLLoader loader = getFxmlLoader("editPopup.fxml");
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(
+                new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
+        );
+        Component c = (Component) row.getItem();
+       // tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
+
+
+        /**prøver å lytte til hvilken kolonne som blir trykket på*/
+
+      /*  final ObservableList<TablePosition> selectedCells = tblViewComponent.getSelectionModel().getSelectedCells();
+        selectedCells.addListener(new ListChangeListener<TablePosition>() {
+            @Override
+            public void onChanged(Change change) {
+                tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
+
+                int columnIndex = selectedCells.get(0).getColumn();
+                EditPopupController popupController =
+                        loader.<EditPopupController>getController();
+                popupController.initData(c, stage, columnIndex);
+                change.reset();
+                stage.show();
+                handlePopUp(stage, c, columnIndex);
+            }
+        });*/
+
+        EditPopupController popupController =
+                loader.<EditPopupController>getController();
+        popupController.initData(c, stage, TemporaryComponent.INSTANCE.getColumnIndex());
+        stage.show();
+        handlePopUp(stage, c);
+
+
+    }
+
 
     @FXML
     void search(KeyEvent event) {
@@ -140,15 +234,11 @@ public class TabComponentsController {
         }
     }
 
-    ObservableList<Component> getSearchedAndFilteredList(){
-       return Search.getFilteredList(getComponentRegister()
+    ObservableList<Component> getSearchedAndFilteredList() {
+        return Search.getFilteredList(getComponentRegister()
                 .filterByProductType(cbTypeFilter.getValue().toLowerCase()), componentSearch.getText());
     }
 
-    @FXML
-    void btnAddFromFile(ActionEvent event) throws IOException {
-
-    }
 
     @FXML
     void btnAddComponent(ActionEvent event) throws IOException {
@@ -159,11 +249,15 @@ public class TabComponentsController {
 
     @FXML
     void btnOpenRecentFile(ActionEvent event) throws IOException {
-        if((cbRecentFiles.getSelectionModel().isEmpty())){
+        if ((cbRecentFiles.getSelectionModel().isEmpty())) {
             Dialog.showErrorDialog("velg en fil fra listen");
             //System.out.println("velg en fil fra listen");
             return;
         }
+        getConfirmationThenOpen();
+    }
+
+    private void getConfirmationThenOpen() throws IOException {
         String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
 
         Alert alert = Dialog.getConfirmationAlert(
@@ -206,47 +300,30 @@ public class TabComponentsController {
         }
     }
 
-    /**utility methods for controller*/
-    private void handlePopUp(Stage stage, Component c) {
-        /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
-        stage.setOnHidden(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                System.out.println("detected");
-                if (TemporaryComponent.INSTANCE.getIsEdited()) {
-                    getObservableRegister().set(getObservableRegister().indexOf(c),
-                            TemporaryComponent.INSTANCE.getTempComponent());
-                    TemporaryComponent.INSTANCE.resetTemps();
-                    updateView();
-                    tblViewComponent.refresh();
-                    try {
-                        saveAll();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-    }
+    /**
+     * utility methods for controller
+     */
 
+
+
+/*
     private void openEditWindow(TableRow row) throws IOException {
         FXMLLoader loader = getFxmlLoader("editPopup.fxml");
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(
-                new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
-        );
+        Popup popup = new Popup();
         Component c = (Component) row.getItem();
         EditPopupController popupController =
                 loader.<EditPopupController>getController();
         popupController.initData(c, stage);
-        stage.show();
-        handlePopUp(stage, c);
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlfile));
+        popup.getContent().add((Parent)loader.load());
+       // popup.show();
+        //handlePopUp(stage, c);
     }
-
+*/
     private FXMLLoader getFxmlLoader(String fxml) throws IOException {
         FXMLGetter fxmlGetter = new FXMLGetter();
         FXMLLoader loader = fxmlGetter.getFxmlLoader("editPopup.fxml");
-       return loader;
+        return loader;
     }
 
     private ComponentRegister getComponentRegister() {
@@ -278,10 +355,12 @@ public class TabComponentsController {
         updateView();
         fileHandling.saveAll();
     }
+
     public void updateView() {
         getComponentRegister().attachTableView(tblViewComponent);
         tblViewComponent.refresh();
     }
+
     private void deleteComponent(Component selectedComp) {
         getComponentRegister().removeComponent(selectedComp);
         updateView();

@@ -30,9 +30,6 @@ public class EnduserController extends TabComponentsController {
     Stage stage;
     ComputerValidator computerValidator = new ComputerValidator();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
-    //sånn instansiering fungerer ikke likevel..blir statisk - bør lage en klasse som henter fresh data ut fra
-    // contextmodel
-    private ComponentRegister componentRegister = ContextModel.INSTANCE.getComponentRegister();
     @FXML
     private ListView<Component> shoppingListView;
     @FXML
@@ -41,12 +38,11 @@ public class EnduserController extends TabComponentsController {
     private TableView<Component> tblProcessor, tblScreen, tblOther,
             tblMemory, tblMouse, tblVideoCard, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
     @FXML
-    private TableColumn videoPriceClm;
+    private TableColumn videoPriceCln;
 
     @FXML
     public void initialize() throws IOException {
         endUserService.updateEndUserRegisters();
-        System.out.println(endUserService.getHardDiscRegister().toString());
         updateComponentViews();
         initItemFiles();
         loadElementsFromFile();
@@ -124,7 +120,7 @@ public class EnduserController extends TabComponentsController {
                 };
 
         PriceFormatCell priceFormatCell = new PriceFormatCell();
-        videoPriceClm.setCellFactory(priceCellFactory);
+        videoPriceCln.setCellFactory(priceCellFactory);
     }
 
     private void setCellFactoryListView() {

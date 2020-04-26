@@ -40,19 +40,16 @@ public class PrimaryController implements Initializable {
     }
 
     private void loadInThread(Task<Boolean> task) {
-        Alert alert = Dialog.getLoadingDialog("loading...");
+        Alert alert = Dialog.getLoadingDialog("Laster inn...");
         task.setOnRunning((e) -> alert.showAndWait());
         task.setOnSucceeded((e) -> {
             alert.close();
-            //hide dialog ?
             try {
                 Boolean returnValue = task.get();
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            } catch (ExecutionException ex) {
+            } catch (InterruptedException | ExecutionException ex) {
                 ex.printStackTrace();
             }
-            // process return value again in JavaFX thread
+
         });
         task.setOnFailed((e) -> {
             // eventual error handling by catching exceptions from task.get()
