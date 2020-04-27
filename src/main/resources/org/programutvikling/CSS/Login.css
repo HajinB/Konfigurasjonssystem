@@ -1,34 +1,32 @@
 /*Design av knapper */
 .button {
-    -fx-background-color: #70A4C8;
+    -fx-background-color: rgba(6, 100, 172, 0.62);
     -fx-font-weight: bold;
     -fx-background-radius: 6px;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-text-fill: white;
+    -fx-font-family: Verdana;
+    -fx-cursor: hand;
 }
 
 .button:hover {
-    -fx-background-color:#388DC8;
-    -fx-font-weight: bold;
-    -fx-background-radius: 6px;
-    -fx-font-size: 13px;
-    -fx-text-fill: white;
+    -fx-border-color: #005182;
+    -fx-border-radius: 6px;
 }
 
 .button:pressed {
-    -fx-background-color: #0071BF;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-text-fill: white;
-    -fx-border-radius: 6px ;
+    -fx-text-fill:#005182;
 }
 
 /*Fortsett som gjest - knapp*/
 
 .btnGuest {
-    -fx-border-color: white;
+    -fx-border-color: transparent;
     -fx-text-fill: #70A4C8 ;
     -fx-background-color: transparent;
+    -fx-font-family: Verdana;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
 
 }
 
@@ -37,13 +35,17 @@
     -fx-font-weight: bold;
     -fx-font-size: 13px;
     -fx-text-fill: #388DC8;
+    -fx-font-family: Verdana;
+    -fx-border-color: white;
 }
 
 .btnGuest:pressed {
+    -fx-border-color: white;
     -fx-font-weight: bold;
     -fx-font-size: 13px;
     -fx-text-fill: #006ec3;
     -fx-background-color: transparent;
+    -fx-font-family: Verdana;
 
 }
 /*Design av input */
@@ -52,6 +54,8 @@
     -fx-background-color: transparent;
     -fx-border-color: #70A4C8;
     -fx-border-width: 0px 0px 2px 0px;
+    -fx-font-family: Verdana;
+    -fx-cursor: text;
 }
 
 /* Design av bakgrunn */
@@ -59,10 +63,13 @@
     -fx-background-radius: 6px;
     -fx-background-color: white;
     -fx-border-radius: 5px;
-    -fx-effect: dropshadow( three-pass-box , #a8a8a8, 1 , 1 , 1 , 1 )
+    -fx-effect: dropshadow(gaussian, #ababab, 1, 0.7, 1.5, 1.5);
 }
 
 .anchorPane {
     -fx-background-color: #70A4C8;
+}
 
+.label {
+    -fx-font-family: Verdana;
 }

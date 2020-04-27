@@ -27,6 +27,8 @@ import java.util.List;
 
 public class EnduserController extends TabComponentsController {
 
+    public TableView tblKeyBoard;
+    public TableView tblComputer;
     EndUserService endUserService = new EndUserService();
     Stage stage;
     ComputerValidator computerValidator = new ComputerValidator();

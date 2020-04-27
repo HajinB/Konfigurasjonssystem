@@ -1,117 +1,64 @@
 /*Menybar */
 .menyBar {
     -fx-background-color: #ffffff;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
+    -fx-font-family: Verdana;
 }
 
 
 .anchorCenter {
-    -fx-background-color: #eeeeee;
+    -fx-background-color: #f5f5f5;
 }
 
 
 /* Tableview */
-.tblOverskrift {
-    -fx-background-color: transparent;
-    -fx-border-width: 0px 0px 0px 0px;
-    -fx-border-color: #ffffff;
-    -fx-border-radius: 10px;
-}
 
 .tblView {
     -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.4 , 0.4 , 1 , 1 );
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
-    -fx-border-width: 0.5px;
+    -fx-border-width: 1px;
     -fx-border-color: white;
 }
 
 .column {
-    -fx-background-color: #ffffff;
-    -fx-border-width: 0px 0px 0px 0px;
-    -fx-border-color: #70A4C8;
-    -fx-font-size: 14px;
+    -fx-font-size: 13px;
     -fx-font-weight: none;
+    -fx-font-family: Verdana;
 }
 
-.column:hover {
-    -fx-background-color: #ffffff;
-    -fx-border-width: 0px 0px 2px 0px;
-    -fx-border-color: #388DC8;
-    -fx-font-size: 14px;
-    -fx-font-weight: none;
-}
-
-.column:pressed {
-    -fx-background-color: #0071BF;
-    -fx-font-weight: none;
-    -fx-font-size: 14px;
+.columnPrice {
+    -fx-alignment: center-right;
 }
 
 /* Legg til ny komponent pane*/
 .nyKomponentPane {
     -fx-background-color: #ffffff;
     -fx-background-radius: 5px;
-    -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.5 , 0.5 , 1 , 1 )
+    -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.5 , 0.5 , 1 , 1 );
 }
 
-/* knapper */
-.button {
-    -fx-background-color: #70A4C8;
-    -fx-border-color: #6796B6;
-    -fx-border-width: 0.5px;
-    -fx-border-radius: 6px;
-    -fx-font-weight: bold;
-    -fx-background-radius: 6px;
-    -fx-font-size: 13px;
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(one-pass-box , #f2f2f2 , 1 , 1 , 1 , 1 )
-}
-
-.button:hover {
-    -fx-background-color:#388DC8;
-    -fx-font-weight: bold;
-    -fx-background-radius: 6px;
-    -fx-font-size: 13px;
-    -fx-text-fill: white;
-}
-
-.button:pressed {
-    -fx-background-color: #0071BF;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-text-fill: white;
-    -fx-border-radius: 6px ;
-}
 
 .btnDelete {
-    -fx-background-color: #BDBDBD;
-    -fx-border-color: #919191;
-    -fx-border-width: 0.5px;
-    -fx-border-radius: 6px;
+    -fx-background-color: rgba(6, 100, 172, 0.62);
     -fx-font-weight: bold;
     -fx-background-radius: 6px;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-text-fill: white;
-    -fx-effect: dropshadow(one-pass-box , #f2f2f2 , 1 , 1 , 1 , 1 )
+    -fx-font-family: Verdana;
+    -fx-cursor: hand;
 }
 
 .btnDelete:hover {
-    -fx-background-color:#70A4C8;
-    -fx-font-weight: bold;
-    -fx-background-radius: 6px;
-    -fx-font-size: 13px;
-    -fx-text-fill: white;
+    -fx-border-color: #005182;
+    -fx-border-radius: 6px;
 }
 
 .btnDelete:pressed {
-    -fx-background-color: #0071BF;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-text-fill: white;
-    -fx-border-radius: 6px ;
+    -fx-text-fill:#005182;
 }
 
+/*input-fields */
 .input {
     -fx-background-color: white;
     -fx-background-radius: 5px;
@@ -119,11 +66,15 @@
     -fx-border-radius: 3px ;
     -fx-border-color: #bbbbbb;
     -fx-font-size: 13px;
+    -fx-font-family: Verdana;
 
 }
 
-.inputSok {
 
-    -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.5 , 0.5 , 1 , 1 )
-
+.cb {
+    -fx-font-family: Verdana;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #bbbbbb;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
 }
