@@ -42,11 +42,11 @@ public class UserRegister {
         // the register and see if the admin property is "true"
         return false;
     }
-    public boolean usernameExists(User user) {
+    public boolean usernameExists(String username) {
         // Check if the username already exists by running
         // through the register and see if the username equals a taken username
-        for(User username : userRegister) {
-            if (user.getUsername().equals(username.getUsername())) {
+        for(User user : userRegister) {
+            if (user.equals(user.getUsername())) {
                 return false;
             }
         }
