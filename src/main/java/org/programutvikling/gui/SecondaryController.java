@@ -5,6 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.programutvikling.App;
@@ -21,7 +24,12 @@ import java.util.stream.Collectors;
 
 public class SecondaryController implements Initializable {
 
-/**
+    public Tab tabComponentRegister;
+    public Tab tabUserRegister;
+    public AnchorPane tabUsers;
+    public AnchorPane tabComponents;
+    public BorderPane topLevelPane;
+    /**
  *  https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
     https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
     https://stackoverflow.com/questions/32849277/javafx-controller-injection-does-not-work

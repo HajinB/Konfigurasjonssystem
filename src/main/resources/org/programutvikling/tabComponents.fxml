@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -22,156 +23,152 @@
 <?import javafx.scene.text.Font?>
 
 <?import org.programutvikling.gui.customTextField.PriceField?>
-<AnchorPane fx:id="topLevelPane" prefHeight="775.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
-    <ScrollPane pannable="true" prefHeight="775.0" prefWidth="1040.0">
-        <content>
-            <AnchorPane prefHeight="900.0" prefWidth="1040.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
-                <children>
-                    <Pane layoutX="29.0" layoutY="130.0" prefHeight="524.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css">
-                        <children>
-                            <GridPane fx:id="componentRegNode" layoutX="33.0" layoutY="29.0" vgap="4.0">
-                                <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                <children>
-                                    <Label text="Varetype">
-                                        <font>
-                                            <Font size="13.0" />
-                                        </font>
-                                    </Label>
-                                    <Label prefWidth="54.0" text="Varenavn" GridPane.rowIndex="2">
-                                        <font>
-                                            <Font size="13.0" />
-                                        </font>
-                                        <GridPane.margin>
-                                            <Insets top="5.0" />
-                                        </GridPane.margin>
-                                    </Label>
-                                    <TextField id="productName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn varenavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="3">
-                                        <font>
-                                            <Font size="13.0" />
-                                        </font>
-                                    </TextField>
-                                    <Label text="Beskrivelse" GridPane.rowIndex="4">
-                                        <font>
-                                            <Font size="13.0" />
-                                        </font>
-                                        <GridPane.margin>
-                                            <Insets top="5.0" />
-                                        </GridPane.margin>
-                                    </Label>
-                                    <TextArea id="productDescription" prefHeight="150.0" prefWidth="200.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5">
-                                        <font>
-                                            <Font size="13.0" />
-                                        </font>
-                                    </TextArea>
-                                    <Label text="Pris" GridPane.rowIndex="6">
-                                        <font>
-                                            <Font size="13.0" />
-                                        </font>
-                                        <GridPane.margin>
-                                            <Insets top="5.0" />
-                                        </GridPane.margin>
-                                    </Label>
-                                    <PriceField id="productPrice" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn pris" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="7">
-                                        <font>
-                                            <Font size="13.0" />
-                                        </font>
-                                    </PriceField>
-                                    <Button mnemonicParsing="false" onAction="#btnAddComponent" prefHeight="30.0" prefWidth="230.0" stylesheets="@CSS/Superbruker.css" text="Legg til komponent" GridPane.rowIndex="8">
-                                        <GridPane.margin>
-                                            <Insets top="5.0" />
-                                        </GridPane.margin>
-                                    </Button>
-                                    <Label fx:id="lblComponentMsg" prefHeight="65.0" prefWidth="230.0" textFill="#388dc8" GridPane.rowIndex="9">
-                                        <font>
-                                            <Font size="13.0" />
-                                        </font>
-                                    </Label>
-                                    <ChoiceBox id="productType" fx:id="cbType" prefHeight="30.0" prefWidth="230.0" GridPane.rowIndex="1">
-                                        <GridPane.margin>
-                                            <Insets />
-                                        </GridPane.margin>
-                                    </ChoiceBox>
-                                </children>
-                                <padding>
-                                    <Insets bottom="2.0" />
-                                </padding>
-                            </GridPane>
-                        </children>
-                    </Pane>
-                    <Label layoutX="361.0" layoutY="93.0" prefHeight="28.0" prefWidth="283.0" styleClass="tblOverskrift" stylesheets="@CSS/Superbruker.css" text="Komponenter i nettbutikk">
+<AnchorPane fx:id="topLevelPane" prefHeight="700.0" prefWidth="1040.0" stylesheets="@CSS/Superbruker.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
+    <ScrollPane pannable="true" prefHeight="700.0" prefWidth="1040.0" stylesheets="@CSS/Superbruker.css">
+        <AnchorPane prefHeight="700.0" prefWidth="1040.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
+            <Pane layoutX="29.0" layoutY="98.0" prefHeight="524.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css">
+                <GridPane fx:id="componentRegNode" layoutX="33.0" layoutY="29.0" prefHeight="477.0" prefWidth="230.0" vgap="4.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <padding>
+                        <Insets bottom="2.0" />
+                    </padding>
+                    <Label prefHeight="16.0" prefWidth="135.0" text="Produkttype: ">
                         <font>
-                            <Font name="System Bold" size="17.0" />
+                            <Font name="Verdana" size="13.0" />
                         </font>
                     </Label>
-                    <TableView fx:id="tblViewComponent" editable="true" layoutX="359.0" layoutY="130.0" onMousePressed="#dblClickTblRow" prefHeight="478.0" prefWidth="634.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
-                        <columns>
-                            <TableColumn minWidth="100.0" prefWidth="120.0" text="Varetype">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="productType" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn minWidth="100.0" prefWidth="150.0" text="Varenavn">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="productName" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn minWidth="100" prefWidth="230.0" text="Beskrivelse">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="productDescription" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn fx:id="productPriceColumn" minWidth="100" prefWidth="140.0" text="Pris">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="productPrice" />
-                                </cellValueFactory>
-                            </TableColumn>
-                        </columns>
-                  <contextMenu>
-                     <ContextMenu fx:id="cm">
-                       <items>
-                         <MenuItem onAction="#cmDeleteRow" mnemonicParsing="false" text="Delete row" />
-                       </items>
-                     </ContextMenu>
-                  </contextMenu>
-                    </TableView>
-                    <Label layoutX="426.0" layoutY="14.0" text="Velkommen *navn* ">
+                    <Label prefHeight="16.0" prefWidth="154.0" text="Produktnavn: " GridPane.rowIndex="2">
                         <font>
-                            <Font name="System Bold" size="29.0" />
+                            <Font name="Verdana" size="13.0" />
+                        </font>
+                        <GridPane.margin>
+                            <Insets top="5.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <TextField id="productName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn varenavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="3">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                    </TextField>
+                    <Label prefHeight="16.0" prefWidth="151.0" text="Beskrivelse: " GridPane.rowIndex="4">
+                        <font>
+                            <Font name="Verdana" size="13.0" />
+                        </font>
+                        <GridPane.margin>
+                            <Insets top="5.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <TextArea id="productDescription" prefHeight="150.0" prefWidth="200.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5">
+                        <font>
+                            <Font name="Verdana" size="13.0" />
+                        </font>
+                    </TextArea>
+                    <Label prefHeight="16.0" prefWidth="56.0" text="Pris:" GridPane.rowIndex="6">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                        <GridPane.margin>
+                            <Insets top="5.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <PriceField id="productPrice" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn pris" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="7">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                    </PriceField>
+                    <Button mnemonicParsing="false" onAction="#btnAddComponent" prefHeight="30.0" prefWidth="230.0" stylesheets="@CSS/Login.css" text="Legg til komponent" GridPane.rowIndex="8">
+                        <GridPane.margin>
+                            <Insets top="5.0" />
+                        </GridPane.margin>
+                    </Button>
+                    <Label fx:id="lblComponentMsg" prefHeight="65.0" prefWidth="230.0" textFill="#388dc8" GridPane.rowIndex="9">
+                        <font>
+                            <Font size="13.0" />
                         </font>
                     </Label>
-                    <Separator layoutX="28.0" layoutY="71.0" prefHeight="6.0" prefWidth="954.0" />
-                    <Separator layoutX="339.0" layoutY="134.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
-                      <TextField fx:id="componentSearch" layoutX="361.0" layoutY="622.0" onKeyTyped="#search" prefHeight="31.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css">
-                          <font>
-                              <Font size="13.0" />
-                          </font>
-                      </TextField>
-                      <ChoiceBox fx:id="cbTypeFilter" layoutX="543.0" layoutY="622.0" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" />
-               <Button layoutX="846.0" layoutY="622.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0" prefWidth="146.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Fjern komponent" />
-               <ComboBox fx:id="cbRecentFiles" layoutX="743.0" layoutY="92.0" prefHeight="30.0" prefWidth="132.0" promptText="Åpne nylige filer" />
-               <Button layoutX="882.0" layoutY="92.0" mnemonicParsing="false" onAction="#btnOpenRecentFile" prefHeight="30.0" prefWidth="110.0" text="Åpne" />
-                    <Label layoutX="29.0" layoutY="94.0" prefHeight="26.0" prefWidth="194.0" text="Legg til ny komponent">
-                        <font>
-                            <Font name="System Bold" size="17.0" />
-                        </font>
-                    </Label>
-                </children>
-            </AnchorPane>
-        </content>
+                    <ChoiceBox id="productType" fx:id="cbType" prefHeight="30.0" prefWidth="230.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets />
+                        </GridPane.margin>
+                    </ChoiceBox>
+               <columnConstraints>
+                  <ColumnConstraints />
+               </columnConstraints>
+                </GridPane>
+            </Pane>
+            <Label layoutX="361.0" layoutY="61.0" prefHeight="28.0" prefWidth="283.0" text="Komponenter i nettbutikk">
+                <font>
+                    <Font name="Verdana Bold" size="17.0" />
+                </font>
+            </Label>
+            <TableView fx:id="tblViewComponent" editable="true" layoutX="358.0" layoutY="98.0" onMousePressed="#dblClickTblRow" prefHeight="478.0" prefWidth="645.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css">
+                <columns>
+                    <TableColumn minWidth="100.0" prefWidth="120.0" styleClass="column" text="Produkttype">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productType" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn minWidth="100.0" prefWidth="150.0" styleClass="column" text="Produktnavn">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn minWidth="100" prefWidth="230.0" styleClass="column" text="Beskrivelse">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productDescription" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="productPriceColumn" minWidth="100" prefWidth="140.0" text="Pris">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productPrice" />
+                        </cellValueFactory>
+                  <styleClass>
+                     <String fx:value="columnPrice" />
+                     <String fx:value="column" />
+                  </styleClass>
+                    </TableColumn>
+                </columns>
+                <contextMenu>
+                    <ContextMenu fx:id="cm">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#cmDeleteRow" text="Delete row" />
+                        </items>
+                    </ContextMenu>
+                </contextMenu>
+            </TableView>
+            <Label layoutX="426.0" layoutY="8.0" text="Velkommen *navn* ">
+                <font>
+                    <Font name="Verdana Bold" size="26.0" />
+                </font>
+            </Label>
+            <Separator layoutX="28.0" layoutY="50.0" prefHeight="6.0" prefWidth="954.0" />
+            <Separator layoutX="339.0" layoutY="134.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
+            <TextField fx:id="componentSearch" layoutX="361.0" layoutY="590.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </TextField>
+            <ChoiceBox fx:id="cbTypeFilter" layoutX="542.0" layoutY="590.0" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" />
+            <Button layoutX="871.0" layoutY="590.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0" prefWidth="131.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett produkt" />
+            <ComboBox fx:id="cbRecentFiles" layoutX="732.0" layoutY="60.0" prefHeight="30.0" prefWidth="146.0" promptText="Åpne nylige filer" styleClass="cb" stylesheets="@CSS/Superbruker.css" />
+            <Button layoutX="889.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnOpenRecentFile" prefHeight="30.0" prefWidth="110.0" stylesheets="@CSS/Login.css" text="Åpne" />
+            <Label layoutX="29.0" layoutY="62.0" prefHeight="26.0" prefWidth="222.0" text="Legg til ny komponent">
+                <font>
+                    <Font name="Verdana Bold" size="17.0" />
+                </font>
+            </Label>
+        </AnchorPane>
     </ScrollPane>
 
 </AnchorPane>

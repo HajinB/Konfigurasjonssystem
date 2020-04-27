@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1040.0" styleClass="anchorPane" stylesheets="@CSS/Login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.PrimaryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1040.0" styleClass="anchorPane" stylesheets="@CSS/Login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.PrimaryController">
    <center>
-      <AnchorPane prefHeight="532.0" prefWidth="310.0" style="-fx-background-color: #FFFFFF;" styleClass="loggInnPane" stylesheets="@CSS/Login.css" BorderPane.alignment="CENTER">
-         <Label layoutX="78.0" layoutY="84.0" text="Logg inn">
+      <AnchorPane maxHeight="478.0" maxWidth="320.0" prefHeight="478.0" prefWidth="308.0" styleClass="loginPane" stylesheets="@CSS/Login.css">
+         <Label layoutX="62.0" layoutY="56.0" prefHeight="54.0" prefWidth="185.0" text="Logg inn" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="61.0">
             <font>
-               <Font name="System Bold" size="37.0" />
+               <Font name="Verdana Bold" size="37.0" />
             </font>
          </Label>
-         <TextField fx:id="inputUsername" layoutX="55.0" layoutY="176.0" prefHeight="40.0" prefWidth="200.0" promptText="Brukernavn eller e-post" styleClass="input" stylesheets="@CSS/Login.css">
+         <TextField fx:id="inputUsername" layoutX="55.0" layoutY="150.0" prefHeight="40.0" prefWidth="200.0" promptText="Brukernavn eller e-post" styleClass="input" stylesheets="@CSS/Login.css">
             <font>
                <Font size="13.0" />
-            </font></TextField>
-         <PasswordField fx:id="inputPassword" layoutX="55.0" layoutY="225.0" prefHeight="40.0" prefWidth="200.0" promptText="Passord" styleClass="input" stylesheets="@CSS/Login.css">
+            </font>
+         </TextField>
+         <PasswordField fx:id="inputPassword" layoutX="55.0" layoutY="199.0" prefHeight="40.0" prefWidth="200.0" promptText="Passord" styleClass="input" stylesheets="@CSS/Login.css">
             <font>
                <Font size="13.0" />
-            </font></PasswordField>
-         <Button layoutX="55.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="30.0" prefWidth="200.0" styleClass="btnLogin" stylesheets="@CSS/Login.css" text="Logg inn " textFill="#000000a1" />
-         <Button layoutX="61.0" layoutY="448.0" minHeight="20.0" minWidth="149.0" mnemonicParsing="false" onAction="#btnGuest" prefHeight="30.0" prefWidth="150.0" styleClass="btnGuest" stylesheets="@CSS/Login.css" text="Logg inn som gjest" textFill="#000000a1" />
-         <Separator layoutY="400.0" prefHeight="0.0" prefWidth="310.0" />
-         <Label layoutX="78.0" layoutY="430.0" text="Har du ikke konto?" />
+            </font>
+         </PasswordField>
+         <Button layoutX="55.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="30.0" prefWidth="200.0" stylesheets="@CSS/Login.css" text="Logg inn " textFill="#000000a1" />
+         <Button layoutX="55.0" layoutY="385.0" minHeight="20.0" minWidth="149.0" mnemonicParsing="false" onAction="#btnGuest" prefHeight="38.0" prefWidth="194.0" styleClass="btnGuest" stylesheets="@CSS/Login.css" text="Logg inn som gjest" textFill="#000000a1" />
+         <Separator layoutX="-1.0" layoutY="356.0" prefHeight="6.0" prefWidth="310.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
+         <Label layoutX="94.0" layoutY="376.0" prefHeight="18.0" prefWidth="117.0" text="Har du ikke konto?" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="97.0" />
          <effect>
             <DropShadow blurType="GAUSSIAN" color="#b7b7b7" height="10.0" radius="4.5" width="10.0" />
          </effect>
@@ -36,15 +42,18 @@
       </AnchorPane>
    </center>
    <top>
-      <AnchorPane prefHeight="115.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="115.0" BorderPane.alignment="TOP_RIGHT" />
    </top>
    <bottom>
-      <AnchorPane prefHeight="156.0" prefWidth="1040.0" BorderPane.alignment="CENTER" />
+      <AnchorPane maxHeight="200.0" minHeight="105.0" prefHeight="105.0" prefWidth="1040.0" BorderPane.alignment="BOTTOM_RIGHT" />
    </bottom>
    <left>
-      <AnchorPane prefHeight="479.0" prefWidth="370.0" BorderPane.alignment="CENTER" />
+      <AnchorPane maxWidth="450.0" minWidth="200.0" prefHeight="479.0" prefWidth="370.0" BorderPane.alignment="BOTTOM_LEFT">
+         <BorderPane.margin>
+            <Insets left="1.0" right="1.0" />
+         </BorderPane.margin></AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="479.0" prefWidth="360.0" BorderPane.alignment="CENTER" />
+      <AnchorPane maxWidth="800.0" minWidth="200.0" prefHeight="479.0" prefWidth="360.0" BorderPane.alignment="BOTTOM_RIGHT" />
    </right>
 </BorderPane>

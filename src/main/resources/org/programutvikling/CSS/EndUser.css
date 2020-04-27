@@ -1,0 +1,30 @@
+
+.titledPane .button {
+    -fx-background-color: rgba(0, 187, 0, 0.33);
+    -fx-background-radius: 100px;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+    -fx-cursor: hand;
+}
+
+.titledPane .button:hover {
+    -fx-border-color: green;
+    -fx-border-radius: 100px;
+}
+
+.titledPane .button:pressed {
+
+    -fx-text-fill: green;
+
+}
+
+.titledPane{
+    -fx-font-family: Verdana;
+    -fx-font-size: 12px;
+
+}
+
+.label {
+    -fx-font-family: Verdana;
+}
