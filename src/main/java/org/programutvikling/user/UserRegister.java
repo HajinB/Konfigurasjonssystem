@@ -19,4 +19,25 @@ public class UserRegister {
     public void addBruker(User user) {
         userRegister.add(user);
     }
+//    public boolean login(User user) {
+//        for(User user : userRegister) {
+//            if(user.getUsername().matches(username))
+//        }
+//    }
+    public boolean isAdmin(User user) {
+        // Check if the user is admin by running through
+        // the register and see if the admin property is "true"
+        return false;
+    }
+    public boolean usernameExists(User user) {
+        // Check if the username already exists by running
+        // through the register and see if the username equals a taken username
+        for(User username : userRegister) {
+            if (user.getUsername().equals(username.getUsername())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
