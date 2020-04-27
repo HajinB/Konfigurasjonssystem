@@ -6,6 +6,7 @@ import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
+import org.programutvikling.user.UserRegister;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,11 +27,16 @@ public enum ContextModel {
     private ArrayList<Object> objects = new ArrayList<>();
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     private ArrayList<Component> tempComponent = new ArrayList<>();
+    private UserRegister userRegister = new UserRegister();
+
 
     private ContextModel() {
         System.out.println("hi from model constructor" + userPreferences.getPathToUser().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
+            System.out.println(userPreferences.getPathToUser().toString());
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
+            System.out.println(objects);
+            //openFile skal åpne valgt fil, legge til objektene i en liste
             loadObjectsIntoClasses();
         } else {
             System.out.println("ingen config fil ble funnet.");
@@ -67,32 +73,49 @@ public enum ContextModel {
     }
 
     public void loadComponentRegisterIntoModel() {
-        if (objects.get(0) instanceof ComponentRegister)
+        if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null)
             setComponentRegister((ComponentRegister) objects.get(0));
+        if (objects.get(2) instanceof SavedPathRegister && objects.get(2) != null)
+            savedPathRegister = (SavedPathRegister) objects.get(2);
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
         /**går det ann å skrive dette på en annen måte? factory method feks??*/
+        System.out.println(objects.size());
         if (objects.size() > 0) {
-                //checkif
-            //checkIfObjectIsComponentRegister();
             if (objects.get(0) != null)
-                setComponentRegister((ComponentRegister) objects.get(0));//listen blir lagt til slik på Filbehandling
+                setComponentRegister((ComponentRegister) objects.get(0));
+
             if (objects.get(1) != null)
                 computerRegister = (ComputerRegister) objects.get(1);
-            if (objects.get(2) != null)
+
+            if (objects.size() > 2 && objects.get(2) != null)
                 savedPathRegister = (SavedPathRegister) objects.get(2);
-            if (objects.get(3) != null)
-            computer = (Computer) objects.get(3);
+
+            if(objects.size()>3) {
+
+                if (objects.get(3) != null && !objects.get(3).equals(""))
+                    computer = (Computer) objects.get(3);
+                else computer = (Computer) objects.get(3);
+
+                if (objects.get(4) != null)
+                    userRegister = (UserRegister) objects.get(4);
+            }
+            System.out.println("dette prøves å åpnes!!!!::::");
+            System.out.println(objects.get(0));
+            System.out.println(objects.get(1));
+            System.out.println(objects.get(2));
+            System.out.println(objects.get(3));
         }
-            objects.clear();
-    //denne måten kunne ha appenda - men får npe
+
+        objects.clear();
+        //denne måten kunne ha appenda - men får npe
             /* ComponentRegister componentRegister1 = (ComponentRegister) (objects.get(0));
             ComputerRegister computerRegister1 = (ComputerRegister) objects.get(1);
 
             INSTANCE.getComponentRegister().getRegister().addAll(componentRegister1.getRegister());
             INSTANCE.getComputerRegister().getRegister().addAll(computerRegister1.getRegister());*/
-}
+    }
 
     private boolean checkIfObjectIsComponentRegister() {
         return objects.get(0) instanceof ComponentRegister;
@@ -126,6 +149,14 @@ public enum ContextModel {
 
     public void setComponentRegister(ComponentRegister componentRegister) {
         this.componentRegister = componentRegister;
+    }
+
+    public UserRegister getUserRegister() {
+        return userRegister;
+    }
+
+    public void setUserRegister(UserRegister userRegister) {
+        this.userRegister = userRegister;
     }
 
     public ComputerRegister getComputerRegister() {

@@ -14,6 +14,7 @@ public class FileSaverJobj implements FileSaver {
         try (OutputStream os = Files.newOutputStream(filePath);
             ObjectOutputStream out = new ObjectOutputStream(os)) {
 
+            System.out.println("Dette blir lagret"+objects);
             out.reset();
 
             out.writeObject(objects);

@@ -3,6 +3,7 @@ package org.programutvikling.component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
+import org.programutvikling.computer.Computer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -140,20 +141,8 @@ public class ComponentRegister implements Serializable {
     }
 
     public void removeDuplicates() {
-/*
-        ArrayList<Component> newList = (ArrayList<Component>) getRegister().stream()
-                .distinct()
-                .collect(Collectors.toList());
-        System.out.println(getObservableRegister().size());
-*/
         System.out.println(getRegister().size());
         HashSet<Object> seen = new HashSet<>();
-/*
-        getRegister().removeIf(e-> (!seen.add(e.getProductName())) &&
-                (!seen.add(e.getProductType())) &&
-                (!seen.add(e.getProductPrice())) &&
-                (!seen.add(e.getProductDescription())) );
-                */
 
         getRegister().removeIf(e -> (!seen.add(e.getProductName())));
         //List<Component> list = seen;

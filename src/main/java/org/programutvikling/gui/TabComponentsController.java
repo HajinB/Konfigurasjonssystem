@@ -64,6 +64,8 @@ public class TabComponentsController {
 
     @FXML
     public void initialize() throws IOException {
+        System.out.println("hei fra init tabcomponents");
+        FileUtility.populateRecentFiles();
         initChoiceBoxes();
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
         threadHandler = new ThreadHandler(this);
@@ -71,7 +73,7 @@ public class TabComponentsController {
     }
 
     private void initTableView() {
-        productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
+        //productPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
         tblViewComponent.setTooltip(tooltip);
         setTblCellFactory();

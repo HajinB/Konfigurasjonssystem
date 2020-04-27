@@ -1,11 +1,19 @@
 package org.programutvikling.user;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.programutvikling.component.ComponentValidator;
+import org.programutvikling.component.io.InvalidComponentFormatException;
 import org.programutvikling.user.exceptions.InvalidPasswordException;
 import org.programutvikling.user.exceptions.InvalidUsernameException;
 
-public class User {
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public class User implements Serializable {
     private SimpleBooleanProperty admin;
     private SimpleStringProperty username;
     private SimpleStringProperty password;
@@ -114,6 +122,56 @@ public class User {
 
     public void setCity(String city) {
         this.city.set(city);
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        s.writeBoolean(getAdmin());
+        s.writeUTF(getUsername());
+        s.writeUTF(getPassword());
+        s.writeUTF(getName());
+        s.writeUTF(getEmail());
+        s.writeUTF(getPhone());
+        s.writeUTF(getAddress());
+        s.writeUTF(getZip());
+        s.writeUTF(getCity());
+    }
+
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException, InvalidComponentFormatException {
+
+        boolean admin = s.readBoolean();
+        String username = s.readUTF();
+        String password = s.readUTF();
+        String name = s.readUTF();
+        String email = s.readUTF();
+        String phone = s.readUTF();
+        String adress = s.readUTF();
+        String zip = s.readUTF();
+        String city = s.readUTF();
+
+
+
+        this.admin = new SimpleBooleanProperty();
+        this.username = new SimpleStringProperty();
+        this.password = new SimpleStringProperty();
+        this.name = new SimpleStringProperty();
+        this.email = new SimpleStringProperty();
+        this.phone = new SimpleStringProperty();
+        this.address = new SimpleStringProperty();
+        this.zip = new SimpleStringProperty();
+        this.city = new SimpleStringProperty();
+
+
+            setAdmin(admin);
+            setUsername(username);
+            setPassword(password);
+            setName(name);
+            setEmail(email);
+            setPhone(phone);
+            setAddress(adress);
+            setZip(zip);
+            setCity(city);
+
     }
 
 }

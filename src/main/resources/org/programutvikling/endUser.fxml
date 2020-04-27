@@ -76,12 +76,12 @@
             </Label>
             <TableView fx:id="tblCompletedComputers" layoutX="16.0" layoutY="430.0" prefHeight="180.0" prefWidth="219.0" styleClass="cb" stylesheets="@CSS/Superbruker.css">
                 <columns>
-                    <TableColumn fx:id="computerPriceCln"  minWidth="0.0" prefWidth="119.99999713897705" text="Navn">
+                    <TableColumn  minWidth="0.0" prefWidth="119.99999713897705" text="Navn">
                         <cellValueFactory>
                             <PropertyValueFactory property="productName" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn prefWidth="111.99996948242188" text="Pris">
+                    <TableColumn  fx:id="computerPriceCln" prefWidth="111.99996948242188" text="Pris">
                         <cellValueFactory>
                             <PropertyValueFactory property="productPrice" />
                         </cellValueFactory>
@@ -304,7 +304,7 @@
                         <graphic>
                             <Button mnemonicParsing="false" onAction="#btnBuyKeyBoard" stylesheets="@CSS/EndUser.css" text="+" />
                         </graphic>
-                        <TableView fx:id="tblKeyBoard" prefHeight="230.0">
+                        <TableView fx:id="tblKeyboard" prefHeight="230.0">
                             <columns>
                                 <TableColumn prefWidth="101.59997940063477" text="Navn">
                                     <cellValueFactory>

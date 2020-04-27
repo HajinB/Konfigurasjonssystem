@@ -10,8 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.FileHandling;
+import org.programutvikling.gui.utility.Dialog;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -23,6 +23,19 @@ public class App extends Application {
     private static Scene scene;
     FileHandling fileHandling = new FileHandling();
 
+    public static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+
+    public static void main(String[] args) throws IOException {
+        //setRoot("org/programutvikling/primary.fxml");
+        launch();
+    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -31,7 +44,8 @@ public class App extends Application {
         Pane p = fxmlLoader.load(getClass().getResource("foo.fxml").openStream());
         FooController fooController = (FooController) fxmlLoader.getController();
 
-*/      initOnExitHandler(primaryStage);
+*/
+        initOnExitHandler(primaryStage);
 
         scene = new Scene(loadFXML("primary"));
 
@@ -49,19 +63,21 @@ public class App extends Application {
 
         // For catching program exit via OS native close button
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we){
+            public void handle(WindowEvent we) {
                 Alert alert = Dialog.getConfirmationAlert("Avslutter..", "", "Vil du lagre endringene dine?", "");
                 Optional<ButtonType> result = alert.showAndWait();
 
                 //hvis avbryt blir trykket på
-                if(result.get() == alert.getButtonTypes().get(2)){
-                        we.consume();                }
+                if (result.get() == alert.getButtonTypes().get(2)) {
+                    we.consume();
+                }
 
                 if (result.get() == alert.getButtonTypes().get(0)) {
                     System.out.println("Stage is closing - writing data to disk");
                     Thread thread = new Thread(() -> {
                         try {
                             fileHandling.saveAll();
+                            System.exit(0);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -71,25 +87,10 @@ public class App extends Application {
                     thread.run();
                 } else {
                     System.out.println("");
+                    System.exit(0);
                 }
             }
         });
-    }
-
-
-
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static void main(String[] args) throws IOException {
-        //setRoot("org/programutvikling/primary.fxml");
-        launch();
     }
 
 }

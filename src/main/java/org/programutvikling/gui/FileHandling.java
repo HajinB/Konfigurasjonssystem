@@ -38,7 +38,7 @@ public class FileHandling {
         }
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                null, ContextModel.INSTANCE.getSavedPathRegister(), null);
+                null, ContextModel.INSTANCE.getSavedPathRegister(), null, null);
         //todo kanskje det er skummelt å sette null inn i objectlisten noen ganger (?)
         System.out.println("Dette prøver man å lagre:"+objectsToSave);
         Path pathAppend = Paths.get(String.valueOf(path));
@@ -83,7 +83,7 @@ public class FileHandling {
             try {
                 Path path = Paths.get(selectedPath);
                 objectsLoaded = opener.open(register, path);
-
+                System.out.println(objectsLoaded);
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
                 Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());
@@ -102,9 +102,15 @@ public class FileHandling {
 
     public void saveAll() throws IOException {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
+
         ArrayList<Object> objects = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
                 ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister(),
-                ContextModel.INSTANCE.getComputer());
+                ContextModel.INSTANCE.getComputer(), ContextModel.INSTANCE.getUserRegister());
+
+        System.out.println("computer : "+ ContextModel.INSTANCE.getComputer());
+        System.out.println("user reg :"+ ContextModel.INSTANCE.getUserRegister());
+
+        System.out.println("lagrer alle disse objects:"+objects);
         FileHandling.saveFileAuto(objects,
                 Paths.get(userPreferences.getStringPathToUser()));
     }

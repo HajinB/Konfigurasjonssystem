@@ -49,10 +49,13 @@ public class SecondaryController implements Initializable {
     void btnLogOut(ActionEvent event) throws IOException {
         App.setRoot("primary");
     }
+
     @FXML
     public void btnOpenJobj(ActionEvent actionEvent) throws IOException {
+        //open filefromchooser lagrer componentregister i index 0 og savedpath i index 2
         tabComponentsController.openFileFromChooserWithThreadSleep();
-        ContextModel.INSTANCE.loadComponentRegisterIntoModel();
+        //skal laste inn
+        ContextModel.INSTANCE.loadObjectsIntoClasses();
         tabComponentsController.updateView();
         fileHandling.saveAll();
     }
@@ -82,8 +85,6 @@ public class SecondaryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         tabComponentsController.init(this);
-
     }
 }

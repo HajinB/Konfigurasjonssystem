@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class FileOpenerJobj implements FileOpener {
-static int i = 0;
+int i = 0;
     public ArrayList<Object> open(ArrayList<Object> objects, Path selectedPath) {
         ArrayList<Object> listeInn = null;
         try (InputStream fin = Files.newInputStream(selectedPath);
@@ -21,9 +21,14 @@ static int i = 0;
             System.out.println("dette kastes til arrliobject: "+listeInn);
             objects.addAll(listeInn);
         } catch (IOException | ClassNotFoundException i) {
-
+            System.out.println(i.getMessage());
+            System.out.println(Arrays.toString(i.getStackTrace()));
             if(selectedPath.toString().equals("FileDirectory/Components/ComponentList.jobj")){
+
                 FileUtility.deleteFile("FileDirectory/Components/ComponentList.jobj");
+                Dialog.showErrorDialog("filtype er feil");
+                System.out.println(i.getMessage());
+                System.out.println(Arrays.toString(i.getStackTrace()));
             }
             Dialog.showErrorDialog("filtype er feil");
             //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");

@@ -2,10 +2,17 @@ package org.programutvikling.user;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.programutvikling.computer.Computer;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class UserRegister {
-    private ObservableList<User> userRegister = FXCollections.observableArrayList();
+public class UserRegister implements Serializable {
+    private transient ObservableList<User> userRegister = FXCollections.observableArrayList();
 
     public List<User> getRegister() {
         return userRegister;
@@ -45,6 +52,18 @@ public class UserRegister {
             }
         }
         return true;
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        s.writeObject(new ArrayList<>(userRegister));
+    }
+
+    private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+
+        List<User> list = (List<User>) inputStream.readObject();
+        userRegister = FXCollections.observableArrayList();
+        userRegister.addAll(list);
     }
 
 }

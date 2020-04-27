@@ -13,13 +13,16 @@ import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.FileOpenerTxt;
 import org.programutvikling.component.io.FileSaverTxt;
 import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerFactory;
 import org.programutvikling.computer.ComputerValidator;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
+import org.programutvikling.gui.CustomPriceTableColumn.TotalPriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.EndUserService;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
@@ -27,8 +30,6 @@ import java.util.List;
 
 public class EnduserController extends TabComponentsController {
 
-    public TableView tblKeyBoard;
-    public TableView tblComputer;
     EndUserService endUserService = new EndUserService();
     Stage stage;
     ComputerValidator computerValidator = new ComputerValidator();
@@ -47,7 +48,7 @@ public class EnduserController extends TabComponentsController {
             tblOther, tblMemory, tblMouse, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
 
     @FXML
-    TableColumn<Computer, Double> computerPriceCln;
+    TableColumn<Computer, Computer> computerPriceCln;
 
     @FXML
     private TableColumn
@@ -66,7 +67,11 @@ public class EnduserController extends TabComponentsController {
          <cellValueFactory>
                                 <PropertyValueFactory property="productPrice"/>
                             </cellValueFactory>*/
-        computerPriceCln.setCellValueFactory(new PropertyValueFactory<Computer, Double>("productPrice"));
+        //computerPriceCln.setCellValueFactory(new PropertyValueFactory<Computer, Computer>("productPrice"));
+        //computerPriceCln.setCellFactory(new TotalPriceFormatCell<Computer>());
+       computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
+
+
         //tblcomputer trenger en override av update items - som inni settexten bruker en annen metode for å hente
         // navn og totalpris.
     }
@@ -79,7 +84,7 @@ public class EnduserController extends TabComponentsController {
                     }
                 };
         PriceFormatCell priceFormatCell = new PriceFormatCell();
-
+/*
         computerPriceCln.setCellFactory(list -> new TableCell<Computer, Double>() {
             @Override
             protected void updateItem(Double item, boolean empty) {
@@ -93,7 +98,7 @@ public class EnduserController extends TabComponentsController {
                     setText(Double.toString(getPrice()));
                 }
             }
-        });
+        });*/
 
         processorPriceCln.setCellFactory(priceCellFactory);
         videoCardPriceCln.setCellFactory(priceCellFactory);
@@ -125,6 +130,7 @@ public class EnduserController extends TabComponentsController {
 
     private void updateList() {
         updateTotalPrice();
+        tblCompletedComputers.setItems(ContextModel.INSTANCE.getComputerRegister().getObservableRegister());
         setTblProcessor(tblProcessor);
         setTblVideoCard(tblVideoCard);
         setTblScreen(tblScreen);
@@ -200,7 +206,16 @@ public class EnduserController extends TabComponentsController {
             return;
         }
         fileSaverTxt.save(getComputer(), Paths.get(path));
-        ContextModel.INSTANCE.getComputerRegister().addComputer(getComputer());
+        System.out.println(path);
+
+        File file = new File(path);
+        ComputerFactory computerFactory = new ComputerFactory();
+
+        String name = FileUtility.getNameFromFilePath(file);
+        Computer computer =  computerFactory.computerFactory(getComputer().getComponentRegister(), name);
+        //lag ny pc og legg den i computerregisteret!!!!
+        //pcFactoryMethod ? tar inn navn og komponentregister?
+        ContextModel.INSTANCE.getComputerRegister().addComputer(computer);
         System.out.println(getComputer());
         updateCompletedComputers();
     }
@@ -309,6 +324,7 @@ public class EnduserController extends TabComponentsController {
 
 
     private void loadElementsFromFile() {
+        System.out.println("rett før load elements from file er det jobj?"+userPreferences.getStringPathToUser());
         FileHandling.openSelectedComputerTxtFiles(ContextModel.INSTANCE.getCleanObjectList(), userPreferences.getStringPathToUser());
     }
 

@@ -11,6 +11,7 @@ import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.ContextModel;
 import org.programutvikling.gui.SavedPathRegister;
+import org.programutvikling.user.UserRegister;
 
 import java.io.File;
 import java.io.IOException;
@@ -99,17 +100,40 @@ public class FileUtility {
         }
     }
 
+    public static ArrayList<Object> createObjectListFromAllObjects() {
+        //computer kan være tom - altså ikke null, men tom. den er instansiert i ContextModel (må være det -
+
+
+        //det bør være to forskjellige metoder - en som er SaveAS (admin) - og en som er SaveAll (admin) ?
+
+        ArrayList<Object> objects = new ArrayList<>();
+
+        objects.add(ContextModel.INSTANCE.getComponentRegister());
+        objects.add(ContextModel.INSTANCE.getComputerRegister());
+        objects.add(ContextModel.INSTANCE.getSavedPathRegister());
+        objects.add(ContextModel.INSTANCE.getComputer());
+        objects.add(ContextModel.INSTANCE.getUserRegister());
+        //
+        return objects;
+    }
+    //lager liste for saving - lagrer denne lista.
     public static ArrayList<Object> createObjectList(ComponentRegister componentRegister,
                                                      ComputerRegister computerRegister, SavedPathRegister savedPathRegister,
-                                                     Computer computer) {
+                                                     Computer computer, UserRegister userRegister) {
         ArrayList<Object> objects = new ArrayList<>();
-        objects.add(componentRegister);
-        if (componentRegister != null)
-            objects.add(computerRegister);
-        if (savedPathRegister != null)
-            objects.add(savedPathRegister);
-        if (computer != null)
-            objects.add(computer);
+
+        /**Legger alt inn i listen her - kan heller ta det på opening - altså plassene er dedikert til et objekt, de
+         * kan være null - da vil de bare ikke bli lasta inn.*/
+        objects.add(0, componentRegister);
+        //if (componentRegister != null)
+        objects.add(1, computerRegister);
+        // if (savedPathRegister != null)
+        objects.add(2, savedPathRegister);
+
+        objects.add(3, computer);
+
+        objects.add(4, userRegister);
+
         return objects;
     }
 
@@ -153,5 +177,12 @@ public class FileUtility {
         } else {
             System.out.println("File deleted.");
         }
+    }
+
+    public static String getNameFromFilePath(File file) {
+        String namePath = file.getName();
+
+        String r = namePath.split(".txt")[0].trim();
+        return r;
     }
 }

@@ -22,6 +22,7 @@ import org.programutvikling.gui.utility.FileUtility;
 public class PrimaryController implements Initializable {
 
     //ContextModel model = ContextModel.INSTANCE;
+    FileHandling fileHandling = new FileHandling();
 
     @FXML
     private TextField inputUsername;
@@ -33,9 +34,9 @@ public class PrimaryController implements Initializable {
     void btnGuest(ActionEvent event) throws IOException {
 // here runs the JavaFX thread
 // Boolean as generic parameter since you want to return it
-        Task<Boolean> task = getTask();
-
-        loadInThread(task);
+        //Task<Boolean> task = getTask();
+        //loadInThread(task);
+        App.setRoot("secondary");
 
     }
 
@@ -49,7 +50,6 @@ public class PrimaryController implements Initializable {
             } catch (InterruptedException | ExecutionException ex) {
                 ex.printStackTrace();
             }
-
         });
         task.setOnFailed((e) -> {
             // eventual error handling by catching exceptions from task.get()
@@ -60,8 +60,8 @@ public class PrimaryController implements Initializable {
     private Task<Boolean> getTask() {
         return new Task<Boolean>() {
                 @Override public Boolean call() throws IOException, InterruptedException {
-                    // do your operation in here
-                    Thread.sleep(2000); //Endre til 1000?
+                   //her skjer actionen
+                    Thread.sleep(2000);
                     App.setRoot("secondary");
                     return true;
                 }
@@ -90,9 +90,6 @@ public class PrimaryController implements Initializable {
         App.setRoot(("endUser"));
     }
 
-
-
-
     private boolean isUser() {
         return inputPassword.getText().equals("bruker");
     }
@@ -100,10 +97,8 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //loadRegisterFromFile();
-        FileUtility.populateRecentFiles();
     }
 
-    FileHandling fileHandling = new FileHandling();
 
     private void loadRegisterFromFile() throws IOException {
         File file = new File(String.valueOf(fileHandling.getPathToUser()));
