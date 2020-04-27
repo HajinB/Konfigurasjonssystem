@@ -21,12 +21,10 @@ public class User {
         if(!UserValidator.username(username)) {
             throw new InvalidUsernameException();
         }
-        //hvis brukernavn tatt
-        /* if() {
-        throw new IllegalArgumentException("Brukernavnet er allerede i bruk!");
-        }
-        *
-        */
+        // if (usernameExists) {
+        //   throw new IllegalArgumentException("Brukernavnet er allerede i bruk!");
+        // }
+
         if(!UserValidator.password(password)) {
             throw new InvalidPasswordException();
         }
@@ -117,4 +115,5 @@ public class User {
     public void setCity(String city) {
         this.city.set(city);
     }
+
 }

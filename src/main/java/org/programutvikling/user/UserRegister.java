@@ -19,11 +19,24 @@ public class UserRegister {
     public void addBruker(User user) {
         userRegister.add(user);
     }
-//    public boolean login(User user) {
-//        for(User user : userRegister) {
-//            if(user.getUsername().matches(username))
+
+    public boolean loginCredentialsMatches(String username, String password) {
+        for(User user : userRegister) {
+            if(user.getUsername().matches(username)) {
+                if(user.getPassword().matches(password)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+//    public boolean login(String username, String password) {
+//        if(loginCredentialsMatches(username,password)) {
+//
 //        }
 //    }
+
     public boolean isAdmin(User user) {
         // Check if the user is admin by running through
         // the register and see if the admin property is "true"
