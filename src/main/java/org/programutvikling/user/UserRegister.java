@@ -19,7 +19,7 @@ public class UserRegister {
         userRegister.add(user);
     }
 
-    // returns user after finding
+    // returns user after validating the correct username and password
     public User loginCredentialsMatches(String username, String password) {
         for(User user : userRegister) {
             if(user.getUsername().equalsIgnoreCase(username)) {
@@ -28,9 +28,10 @@ public class UserRegister {
                 }
             }
         }
+        // Can't find a user with the correct username or password
         return null;
     }
-
+    // Return true if user is admin.
     public boolean isAdmin(User user) {
         return user.getAdmin();
     }
