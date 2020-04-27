@@ -2,7 +2,6 @@ package org.programutvikling.user;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.util.List;
 
 public class UserRegister {
@@ -19,4 +18,33 @@ public class UserRegister {
     public void addBruker(User user) {
         userRegister.add(user);
     }
+
+    // returns user after validating the correct username and password
+    public User loginCredentialsMatches(String username, String password) {
+        for(User user : userRegister) {
+            if(user.getUsername().equalsIgnoreCase(username)) {
+                if(user.getPassword().matches(password)){
+                    return user;
+                }
+            }
+        }
+        // Can't find a user with the correct username or password
+        return null;
+    }
+    // Return true if user is admin.
+    public boolean isAdmin(User user) {
+        return user.getAdmin();
+    }
+
+    public boolean usernameExists(String username) {
+        // Check if the username already exists by running
+        // through the register and see if the username equals a taken username
+        for(User user : userRegister) {
+            if (user.getUsername().equalsIgnoreCase(user.getUsername())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

@@ -72,7 +72,7 @@ public class EditPopupController extends TabComponentsController implements Init
     }
 
     private void setFocusOnField(int columnIndex, Component c) {
-        System.out.println("kollone index er: " +columnIndex);
+        System.out.println("Kolonne index er: " +columnIndex);
 
         if(columnIndex ==0){
             cbType.requestFocus();

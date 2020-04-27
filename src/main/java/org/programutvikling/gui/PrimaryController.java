@@ -73,13 +73,6 @@ public class PrimaryController implements Initializable {
                 }
             };
     }
-/*
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(
-                getClass().getResource("Load.css").toExternalForm());
-        dialogPane.getStyleClass().add("myDialog");
-    }*/
-
 
 
     @FXML
