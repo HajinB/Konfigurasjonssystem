@@ -270,8 +270,9 @@ public class TabComponentsController {
     public void openFileConfirmation(String chosenFile) throws IOException {
         Alert alert = Dialog.getOpenOption(
                 "Åpne fil",
-                "Vil du åpne den valgte filen, og dermed " +
-                        "overskrive den nåværende listen, eller legge til i listen?",
+                "Vil du " +
+                        "overskrive den nåværende listen, eller legge til i listen? (du kan fjerne duplikater ved å " +
+                        "trykke på 'Verktøy' i menyen",
                 "Vil du åpne ",
                 cbRecentFiles.getSelectionModel().getSelectedItem() + "?");
         alert.showAndWait();

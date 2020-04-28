@@ -61,7 +61,7 @@ public class SecondaryController implements Initializable {
         }
         Alert alert = Dialog.getOpenOption(
                 "Åpne fil",
-                "Vil du åpne den valgte filen, og dermed " +
+                "Vil du " +
                         "overskrive den nåværende listen, eller legge til i listen? (du kan fjerne duplikater ved å " +
                         "trykke på 'Verktøy' i menyen",
                 "Vil du åpne ",
