@@ -28,7 +28,7 @@ public enum ContextModel {
     //temporary master list - som har alle objekter fra fil.
     private ArrayList<Object> objects = new ArrayList<>();
 
-    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
+    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppData.jobj");
     private ArrayList<Component> tempComponent = new ArrayList<>();
     private UserRegister userRegister = new UserRegister();
 
@@ -82,11 +82,17 @@ public enum ContextModel {
         return objects;
     }
 
+    public void appendComponentRegisterIntoModel() {
+        if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null) {
+            ComponentRegister componentRegisterFromFile = (ComponentRegister) objects.get(0);
+            componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
+        }
+            //componentRegister.getRegister().addAll(objects.get(0).;
+    }
+
     public void loadComponentRegisterIntoModel() {
         if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null)
             setComponentRegister((ComponentRegister) objects.get(0));
-        if (objects.get(2) instanceof SavedPathRegister && objects.get(2) != null)
-            savedPathRegister = (SavedPathRegister) objects.get(2);
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
@@ -101,8 +107,8 @@ public enum ContextModel {
             if (objects.size() > 2 && objects.get(2) != null)
                 savedPathRegister = (SavedPathRegister) objects.get(2);
 
-            if (objects.size() > 3 && objects.get(3) != null) {
-                    computer = (Computer) objects.get(3);
+            if (objects.size() > 3 && objects.get(3) != null && !objects.get(3).equals("")) {
+                computer = (Computer) objects.get(3);
 
                 if (objects.get(4) != null)
                     userRegister = (UserRegister) objects.get(4);

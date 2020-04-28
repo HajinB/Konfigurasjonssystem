@@ -1,9 +1,38 @@
 package org.programutvikling.computer;
 
+import org.programutvikling.component.Component;
+import org.programutvikling.component.ComponentTypes;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ComputerValidator {
 
-    boolean isComputerValid(Computer computer) {
-        return true;
+
+
+    //skriv en generic "remove duplicates" for lists??
+
+
+    //returner en liste med ting man mangler for at pcn skal være komplett
+    //hvis lista denne metoden returnerer er tom, er computeren i parameteret valid.
+
+    public ArrayList<String> listOfMissingComponentTypes(Computer computer) {
+        ArrayList<String> namesMissing = new ArrayList<>();
+        ArrayList<String> perfectList = ComponentTypes.getNeededComponentTypeNames();
+      // ArrayList<Component> componentsInList = (ArrayList<Component>) computer.getComponentRegister().getRegister();
+                //computer.createSortedComponentTypeList();
+        //1 . lager en unique, sortert liste av ComponentNames currently i Computer/currentComputer
+        ArrayList<String> componentsInCurrentComputer =
+                (ArrayList<String>) computer.createSortedUniqueComponentTypeList();
+        System.out.println(componentsInCurrentComputer);
+
+        perfectList.removeAll(componentsInCurrentComputer);
+        return perfectList;
+        //den er ikke sortert
+        //skal sammenligne denne med "fasit-lista" - og lage en tredje liste som har det som mangler.
+
+
+
     }
 
     // <Key, Value>

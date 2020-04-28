@@ -6,12 +6,14 @@ import javafx.collections.ObservableList;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ItemUsable;
+import org.programutvikling.gui.utility.RegisterLogic;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Computer implements Serializable, ItemUsable {
@@ -86,12 +88,14 @@ public class Computer implements Serializable, ItemUsable {
         }
     }
 
-
+/*
     @Override
     public String toString(){
         return componentRegister.toString();
     }
-   /* @Override
+    */
+
+    @Override
     public String toString() {
         //String melding =
         String melding = "";
@@ -99,31 +103,42 @@ public class Computer implements Serializable, ItemUsable {
             melding =
                     componentRegister.toString();
         }
-        return getProductName() + "\n"
-                + getProductPrice() + melding;
+        return "computer is here"+melding;
         //return this.componentRegister.toString();
         //return Integer.toString(this.hashCode());
-    } */
+    }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
+        //s.defaultWriteObject();
         s.writeUTF(getProductName());
-        s.writeObject(new ArrayList<>(componentRegister.getRegister()));
+        s.writeObject(new ArrayList<Component>(componentRegister.getRegister()));
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-
-        String name = s.readUTF();
-        this.productName = new SimpleStringProperty();
-        setProductName(name);
-        List<Component> list = (List<Component>) s.readObject();
-        //componentRegister.getRegister().clear();
-        componentRegister = new ComponentRegister();
-        componentRegister.getRegister().addAll(list);
+        if(s != null) {
+            String name = s.readUTF();
+            this.productName = new SimpleStringProperty();
+            setProductName(name);
+            ArrayList<Component> list = (ArrayList<Component>) s.readObject();
+            //componentRegister.getRegister().clear();
+            componentRegister = new ComponentRegister();
+            componentRegister.getRegister().addAll(list);
+        }
 
 
     }
 
 
+    public ArrayList<String> createSortedUniqueComponentTypeList() {
+        ArrayList<String> namesOfComponentsInList = new ArrayList<>();
+
+        for(Component  c : this.getComponentRegister().getRegister()){
+            namesOfComponentsInList.add(c.getProductType());
+        }
+        Collections.sort(namesOfComponentsInList);
+
+        return (ArrayList<String>) RegisterLogic.getDuplicateFreeList(namesOfComponentsInList);
+    }
 }
 
 

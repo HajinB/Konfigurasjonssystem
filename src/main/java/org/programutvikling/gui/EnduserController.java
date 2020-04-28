@@ -25,6 +25,7 @@ import org.programutvikling.user.UserPreferences;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,7 +34,7 @@ public class EnduserController extends TabComponentsController {
     EndUserService endUserService = new EndUserService();
     Stage stage;
     ComputerValidator computerValidator = new ComputerValidator();
-    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
+    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppData.jobj");
     @FXML
     private ListView<Component> shoppingListView;
     @FXML
@@ -48,7 +49,7 @@ public class EnduserController extends TabComponentsController {
             tblOther, tblMemory, tblMouse, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
 
     @FXML
-    TableColumn<Computer, Computer> computerPriceCln;
+    TableColumn computerPriceCln;
 
     @FXML
     private TableColumn
@@ -57,7 +58,7 @@ public class EnduserController extends TabComponentsController {
     @FXML
     public void initialize() throws IOException {
         endUserService.updateEndUserRegisters();
-        loadElementsFromFile();
+        //loadElementsFromFile();
         updateComponentViews();
         updateList();
         updateComputerListView();
@@ -199,23 +200,28 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     public void btnSavePC(ActionEvent event) throws IOException {
+
+
+        List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
+        if(whatsMissing.size()>0){
+            Dialog.showErrorDialog("Disse komponentene mangler: \n" + whatsMissing.toString() + "\nLegg de til for å " +
+                    "lagre");
+            return;
+        }
         FileSaverTxt fileSaverTxt = new FileSaverTxt();
         String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
         if(path==null){
             return;
         }
+
         fileSaverTxt.save(getComputer(), Paths.get(path));
         System.out.println(path);
 
         File file = new File(path);
         ComputerFactory computerFactory = new ComputerFactory();
-
         String name = FileUtility.getNameFromFilePath(file);
         Computer computer =  computerFactory.computerFactory(getComputer().getComponentRegister(), name);
-        //lag ny pc og legg den i computerregisteret!!!!
-        //pcFactoryMethod ? tar inn navn og komponentregister?
         ContextModel.INSTANCE.getComputerRegister().addComputer(computer);
-        System.out.println(getComputer());
         updateCompletedComputers();
     }
 
@@ -449,7 +455,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void deleteComponent(Component selectedComp) {
-        getComputer().getComponentRegister().removeComponent(selectedComp);
+        getComputer().getComponentRegister().getRegister().remove(selectedComp);
         updateComputerListView();
     }
 }

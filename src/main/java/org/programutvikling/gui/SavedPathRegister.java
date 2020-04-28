@@ -2,7 +2,6 @@ package org.programutvikling.gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.programutvikling.component.Component;
 import org.programutvikling.gui.utility.RegisterLogic;
 
 import java.io.IOException;
@@ -10,9 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SavedPathRegister implements Serializable {
     private transient static final long serialVersionUID = 1;
@@ -20,7 +17,7 @@ public class SavedPathRegister implements Serializable {
     private transient ObservableList<String> listOfSavedFilePaths = FXCollections.observableArrayList();
 
     public ObservableList<String> getListOfSavedFilePaths() {
-        return RegisterLogic.removeDuplicates(listOfSavedFilePaths);
+        return RegisterLogic.getDuplicateFreeList(listOfSavedFilePaths);
     }
 
 

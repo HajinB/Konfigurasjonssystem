@@ -37,6 +37,16 @@ public class Dialog {
         return alert;
     }
 
+    public  static Alert getOpenOption(String title, String header, String alertText, String selection) {
+        ButtonType btnLeggTil = new ButtonType("Legg til", ButtonBar.ButtonData.OK_DONE);
+        ButtonType btnOverskriv = new ButtonType("Overskriv", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType btnAvbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.BACK_PREVIOUS);
+        Alert alert = new Alert(AlertType.CONFIRMATION, alertText + selection  , btnLeggTil, btnOverskriv, btnAvbryt);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        return alert;
+    }
+
     public  static Alert getConfirmationAlert(String title, String header) {
         ButtonType btnJa = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
         ButtonType btnNei = new ButtonType("Nei", ButtonBar.ButtonData.CANCEL_CLOSE);

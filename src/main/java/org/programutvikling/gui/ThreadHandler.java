@@ -11,6 +11,7 @@ public class ThreadHandler {
         this.controller = controller;
     }
 
+
     void openInputThread(String path) {
         InputThread task = new InputThread(path);
         task.setOnSucceeded(this::threadDone);

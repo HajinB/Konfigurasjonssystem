@@ -15,7 +15,7 @@ public class PriceFormatCell extends TableCell<Object, Double> {
     protected void updateItem(Double item, boolean empty) {
         super.updateItem(item, empty);
         if (!empty && null == item) {
-            item = new Double(0.0d);
+            item = 0.0d;
         }
 
         // setter teksten som skal vises her

@@ -1,5 +1,7 @@
 package org.programutvikling.gui.utility;
 
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.programutvikling.component.ComponentRegister;
@@ -20,6 +22,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -158,7 +161,15 @@ public class FileUtility {
     private static void addWalkedFolderPathsToCBList(List<String> result) {
         System.out.println("result som scouuuring");
         result.forEach(System.out::println);
-        ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().addAll(result);
+        getListOfSavedFilePaths().addAll(result);
+        List<String> unique =
+                RegisterLogic.getDuplicateFreeList(getListOfSavedFilePaths());
+        getListOfSavedFilePaths().clear();
+        getListOfSavedFilePaths().addAll(unique);
+    }
+
+    private static ObservableList<String> getListOfSavedFilePaths() {
+        return ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths();
     }
 
     public static boolean doesFileExist(String toString) {

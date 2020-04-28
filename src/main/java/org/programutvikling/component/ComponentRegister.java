@@ -48,6 +48,7 @@ public class ComponentRegister implements Serializable {
         String description = component.getProductDescription();
         String type = component.getProductType();
         double price = component.getProductPrice();
+
         for (int i = 0; i < componentObservableList.size(); i++) {
             if (isNameAndDescriptionInList(type, name, description, price, i)) {
                 componentObservableList.remove(i);
@@ -55,10 +56,11 @@ public class ComponentRegister implements Serializable {
         }
     }
 
-    private boolean isNameAndDescriptionInList(String type, String name, String description, double Price, int i) {
+    private boolean isNameAndDescriptionInList(String type, String name, String description, double price, int i) {
         return componentObservableList.get(i).getProductName().equals(name) &&
+                componentObservableList.get(i).getProductType().equals(type) &&
                 componentObservableList.get(i).getProductDescription().equals(description) &&
-                componentObservableList.get(i).getProductDescription().equals(description);
+                componentObservableList.get(i).getProductPrice() == price ;
     }
     /*
     private void isComponentInList(Component component){
@@ -131,7 +133,6 @@ public class ComponentRegister implements Serializable {
     }
 
     private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
-
         List<Component> list = (List<Component>) inputStream.readObject();
         componentObservableList = FXCollections.observableArrayList();
         componentObservableList.addAll(list);
@@ -145,21 +146,13 @@ public class ComponentRegister implements Serializable {
     public void removeDuplicates() {
         System.out.println(getRegister().size());
         HashSet<Object> seen = new HashSet<>();
-
-        getRegister().removeIf(e -> (!seen.add(e.getProductName())));
+        getRegister().removeIf(e -> (!seen.add(e.getProductName())
+                && (!seen.add(e.getProductType()))
+                && (!seen.add(e.getProductType()))));
         //List<Component> list = seen;
         System.out.println(getRegister().size());
     }
 
-    public void removeDuplicates2() {
-        Map<String, Component> map = new LinkedHashMap<>();
-        for (Component ays : getRegister()) {
-            map.put(ays.getProductName(), ays);
-            map.put(ays.getProductName(), ays);
-        }
-        getRegister().clear();
-        getRegister().addAll(map.values());
-    }
 
     public int countByType(String s) {
         List<Component> list = filterByProductType(s);

@@ -13,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -30,7 +29,6 @@ import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.*;
-import org.programutvikling.user.User;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -124,6 +122,8 @@ public class TabComponentsController {
         tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
+
                 //tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
                 TableRow row;
                 TableColumn column;
@@ -153,6 +153,7 @@ public class TabComponentsController {
         //gjør det mulig å detecte cell på første klikk:
         tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
         selectedCells.addListener(new ListChangeListener() {
+
             @Override
             public void onChanged(Change c) {
 
@@ -258,26 +259,65 @@ public class TabComponentsController {
             //System.out.println("velg en fil fra listen");
             return;
         }
-        getConfirmationThenOpen();
+        getConfirmationThenOpenRecent();
     }
 
-    private void getConfirmationThenOpen() throws IOException {
+    private void getConfirmationThenOpenRecent() throws IOException {
         String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
+        openFileConfirmation(chosenFile);
+    }
 
-        Alert alert = Dialog.getConfirmationAlert(
-                "Åpne nylig fil",
+    public void openFileConfirmation(String chosenFile) throws IOException {
+        Alert alert = Dialog.getOpenOption(
+                "Åpne fil",
                 "Vil du åpne den valgte filen, og dermed " +
-                        "overskrive den nåværende listen?",
+                        "overskrive den nåværende listen, eller legge til i listen?",
                 "Vil du åpne ",
-                cbRecentFiles.getSelectionModel().getSelectedItem());
+                cbRecentFiles.getSelectionModel().getSelectedItem() + "?");
         alert.showAndWait();
+        handleOpenOptions(chosenFile, alert);
+    }
 
-        if (alert.getResult() == alert.getButtonTypes().get(0)) {
-            threadHandler.openInputThread(chosenFile);
+    public void handleOpenOptions(String chosenFile, Alert alert) throws IOException {
+        //button.get(2) == avbryt
+        if(alert.getResult() == alert.getButtonTypes().get(2)){
+            return;
+        }
+        //button.get(1) == overskriv
+        if (alert.getResult() == alert.getButtonTypes().get(1)) {
+            openThread(chosenFile);
             ContextModel.INSTANCE.loadComponentRegisterIntoModel();
-
             refreshTableAndSave();
         }
+        //button.get(0) == legg til
+        if(alert.getResult() == alert.getButtonTypes().get(0)){
+            openThread(chosenFile);
+            ContextModel.INSTANCE.appendComponentRegisterIntoModel();
+            //getComponentRegister().removeDuplicates();
+            refreshTableAndSave();
+        }
+
+        /*
+        //button.get(2) == avbryt
+        if (alert.getResult() == alert.getButtonTypes().get(2)){
+            return;
+        }
+        //button.get(1) == overskriv
+        if (alert.getResult() == alert.getButtonTypes().get(1)) {
+            tabComponentsController.openThread(chosenFile);
+            ContextModel.INSTANCE.loadComponentRegisterIntoModel();
+            tabComponentsController.refreshTableAndSave();
+        }
+        //button.get(0) == legg til
+        if(alert.getResult() == alert.getButtonTypes().get(0)){
+            tabComponentsController.openThread(chosenFile);
+            ContextModel.INSTANCE.appendComponentRegisterIntoModel();
+            //kan ta bort duplikater her
+            //getComponentRegister().removeDuplicates();
+            tabComponentsController.refreshTableAndSave();
+        }
+        fileHandling.saveAll();
+        */
     }
 
     private boolean isFileSelectionEmpty(String chosenFile) {
@@ -351,10 +391,10 @@ public class TabComponentsController {
     }
 
     private void updateRecentFiles() {
-        cbRecentFiles.setItems(ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
+        cbRecentFiles.setItems((ObservableList<String>) ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
     }
 
-    private void refreshTableAndSave() throws IOException {
+    void refreshTableAndSave() throws IOException {
         tblViewComponent.refresh();
         updateView();
         fileHandling.saveAll();
@@ -366,7 +406,7 @@ public class TabComponentsController {
     }
 
     private void deleteComponent(Component selectedComp) {
-        getComponentRegister().removeComponent(selectedComp);
+        getComponentRegister().getRegister().remove(selectedComp);
         updateView();
     }
 
@@ -391,6 +431,11 @@ public class TabComponentsController {
         if (chosenFile == null) {
             return;
         }
+
+        openThread(chosenFile);
+    }
+
+    public void openThread(String chosenFile) {
         threadHandler.openInputThread(chosenFile);
     }
 

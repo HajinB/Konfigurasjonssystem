@@ -23,13 +23,15 @@ int i = 0;
         } catch (IOException | ClassNotFoundException i) {
             System.out.println(i.getMessage());
             System.out.println(Arrays.toString(i.getStackTrace()));
-            if(selectedPath.toString().equals("FileDirectory/Components/ComponentList.jobj")){
+            if(selectedPath.toString().equals("FileDirectory/Components/AppData.jobj")){
 
-                FileUtility.deleteFile("FileDirectory/Components/ComponentList.jobj");
+                FileUtility.deleteFile("FileDirectory/Components/AppData.jobj");
                 Dialog.showErrorDialog("filtype er feil");
                 System.out.println(i.getMessage());
                 System.out.println(Arrays.toString(i.getStackTrace()));
             }
+            System.out.println(Arrays.toString(i.getStackTrace()));
+            System.out.println(i.getMessage());
             Dialog.showErrorDialog("filtype er feil");
             //Dialog.errorPopUp("Error", "filtype er feil", "kan ikke åpne filen - filtype må være jobj");
         }

@@ -24,6 +24,17 @@ public class ComponentTypes {
             return preList;
         }
 
+    public static ArrayList<String> getNeededComponentTypeNames() {
+        ArrayList<String> needed = new ArrayList<>();
+        needed.add(preList[0]);
+        needed.add(preList[1]);
+        needed.add(preList[2]);
+        needed.add(preList[3]);
+        needed.add(preList[4]);
+        needed.add(preList[5]);
+        return needed;
+    }
+
     public ObservableList<String> getObservableTypeListName() {
         return concreteTypeListName;
     }

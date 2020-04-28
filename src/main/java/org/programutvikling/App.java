@@ -39,17 +39,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        /*
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Pane p = fxmlLoader.load(getClass().getResource("foo.fxml").openStream());
-        FooController fooController = (FooController) fxmlLoader.getController();
-
-*/      primaryStage.setFullScreen(true);
-
         initOnExitHandler(primaryStage);
-
         scene = new Scene(loadFXML("primary"));
-
         System.out.println(App.class.getResource("primary"));
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -33,8 +33,8 @@ public class PrimaryController implements Initializable {
     void btnGuest(ActionEvent event) throws IOException {
 // here runs the JavaFX thread
 // Boolean as generic parameter since you want to return it
-        //Task<Boolean> task = getTask();
-        //loadInThread(task);
+       /* Task<Boolean> task = getTask();
+        loadInThread(task);*/
         App.setRoot("secondary");
     }
 
@@ -96,6 +96,7 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //loadRegisterFromFile();
+        ContextModel.INSTANCE.getUserRegister();
     }
 
 

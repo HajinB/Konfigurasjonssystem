@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 public class FileHandling {
     //private static UserPreferences userPreferences;
-    private static UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
+    private static UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppData.jobj");
 
     public static void saveFileTxt(Computer computer, Path directoryPath) {
         if (directoryPath != null) {
