@@ -168,7 +168,7 @@ public class TabComponentsController {
         });
     }
 
-    private void handlePopUp(Stage stage, Component c) {
+    void handlePopUp(Stage stage, Component c) {
         /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
         stage.setOnHidden(new EventHandler<WindowEvent>() {
 
@@ -199,27 +199,6 @@ public class TabComponentsController {
                 new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
         );
         Component c = (Component) row.getItem();
-       // tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
-
-
-        /**prøver å lytte til hvilken kolonne som blir trykket på*/
-
-      /*  final ObservableList<TablePosition> selectedCells = tblViewComponent.getSelectionModel().getSelectedCells();
-        selectedCells.addListener(new ListChangeListener<TablePosition>() {
-            @Override
-            public void onChanged(Change change) {
-                tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
-
-                int columnIndex = selectedCells.get(0).getColumn();
-                EditPopupController popupController =
-                        loader.<EditPopupController>getController();
-                popupController.initData(c, stage, columnIndex);
-                change.reset();
-                stage.show();
-                handlePopUp(stage, c, columnIndex);
-            }
-        });*/
-
         EditPopupController popupController =
                 loader.<EditPopupController>getController();
         popupController.initData(c, stage, TemporaryComponent.INSTANCE.getColumnIndex());
@@ -270,9 +249,7 @@ public class TabComponentsController {
     public void openFileConfirmation(String chosenFile) throws IOException {
         Alert alert = Dialog.getOpenOption(
                 "Åpne fil",
-                "Vil du " +
-                        "overskrive den nåværende listen, eller legge til i listen? (du kan fjerne duplikater ved å " +
-                        "trykke på 'Verktøy' i menyen",
+                "Legg til i listen eller overskriv. Under «Verktøy» kan du fjerne eventuelle duplikater",
                 "Vil du åpne ",
                 cbRecentFiles.getSelectionModel().getSelectedItem() + "?");
         alert.showAndWait();
@@ -365,9 +342,9 @@ public class TabComponentsController {
         //handlePopUp(stage, c);
     }
 */
-    private FXMLLoader getFxmlLoader(String fxml) throws IOException {
+    FXMLLoader getFxmlLoader(String fxml) throws IOException {
         FXMLGetter fxmlGetter = new FXMLGetter();
-        FXMLLoader loader = fxmlGetter.getFxmlLoader("editPopup.fxml");
+        FXMLLoader loader = fxmlGetter.getFxmlLoader(fxml);
         return loader;
     }
 
