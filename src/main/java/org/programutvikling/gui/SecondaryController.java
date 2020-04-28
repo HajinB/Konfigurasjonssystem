@@ -4,23 +4,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.gui.utility.RegisterLogic;
 
+import javax.swing.Timer;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class SecondaryController implements Initializable {
 
@@ -40,9 +35,12 @@ public class SecondaryController implements Initializable {
     @FXML private TabComponentsController tabComponentsController;
 
     @FXML
-    void btnSaveToChosenPath(ActionEvent e) throws IOException {
+    void btnSaveToChosenPath(ActionEvent a) throws IOException {
         String chosenPath = FileUtility.getFilePathFromSaveJOBJDialog(this.stage);
-        FileHandling.saveFileAs(chosenPath);
+        if(chosenPath != null) {
+                FileHandling.saveFileAs(chosenPath);
+        }
+        tabComponentsController.setResultLabelTimed("Lagring ferdig!");
     }
 
     @FXML
@@ -68,11 +66,6 @@ public class SecondaryController implements Initializable {
 
     public void btnRemoveDuplicates(ActionEvent event) throws IOException {
         ObservableList<Component> list  = (ObservableList<Component>) ContextModel.INSTANCE.getComponentRegister().getRegister();
-       //ArrayList<Component> listWithoutDuplicates = RegisterLogic.
-        //System.out.println(listWithoutDuplicates.toString());
-        /*ComponentRegister componentRegister = new ComponentRegister();
-        componentRegister.getRegister().addAll(listWithoutDuplicates);
-*/
         ContextModel.INSTANCE.getComponentRegister().removeDuplicates();
 
         tabComponentsController.updateView();

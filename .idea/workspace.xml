@@ -2,38 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/TotalPriceFormatCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_1_0_SNAPSHOT.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/FileDirectory/Components/ComponentList.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerJobj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaverJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaverJobj.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ContextModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ContextModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerJobj.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileSaverJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileSaverJobj.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/ComputerRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/ComputerRegister.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/ContextModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/ContextModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserRegister.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -276,14 +256,7 @@
       <workItem from="1587724730800" duration="13602000" />
       <workItem from="1587773144272" duration="5084000" />
       <workItem from="1587914502778" duration="16438000" />
-      <workItem from="1587981629385" duration="17051000" />
-    </task>
-    <task id="LOCAL-00001" summary="runConfig lagt til">
-      <created>1585505781643</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1585505781643</updated>
+      <workItem from="1587981629385" duration="25623000" />
     </task>
     <task id="LOCAL-00002" summary="runConfig lagt til">
       <created>1585509114255</created>
@@ -610,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587943848100</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="completedcomputerview + nå kan man lagre hva som helst! - mulig vi bør dele opp lagringsmetodene slik at det er en for hver case - men det fungerer nå.">
+      <created>1588006517687</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1588006517688</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +625,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fiks på tblview + fjerneknapp" />
     <MESSAGE value="6" />
     <MESSAGE value="search on key press" />
     <MESSAGE value="cleaned + autosave" />
@@ -670,7 +649,8 @@
     <MESSAGE value="la til noen feilbeskjeder + loading + høyreklikk for delete" />
     <MESSAGE value="la til fokus på riktig felt i popupen på edit :D" />
     <MESSAGE value="prøver å få til completedcomputerview" />
-    <option name="LAST_COMMIT_MESSAGE" value="prøver å få til completedcomputerview" />
+    <MESSAGE value="completedcomputerview + nå kan man lagre hva som helst! - mulig vi bør dele opp lagringsmetodene slik at det er en for hver case - men det fungerer nå." />
+    <option name="LAST_COMMIT_MESSAGE" value="completedcomputerview + nå kan man lagre hva som helst! - mulig vi bør dele opp lagringsmetodene slik at det er en for hver case - men det fungerer nå." />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1587242454320" />

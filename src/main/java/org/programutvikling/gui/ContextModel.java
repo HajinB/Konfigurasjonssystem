@@ -5,6 +5,7 @@ import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
 import org.programutvikling.gui.utility.FileUtility;
+import org.programutvikling.user.User;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.user.UserRegister;
 
@@ -13,7 +14,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public enum ContextModel {
-
     INSTANCE;
 
     //"Singletons are useful to provide a unique source of data or functionality to other Java Objects."
@@ -36,13 +36,29 @@ public enum ContextModel {
             System.out.println(userPreferences.getPathToUser().toString());
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
             System.out.println(objects);
+            User user = new User(true, "admin", "admin", "ola",
+                    "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
+
+            User user2 = new User(false, "user", "user", "ola",
+                    "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
+
+            userRegister.addBruker(user);
+
+            /**   private SimpleBooleanProperty admin;
+             private SimpleStringProperty username;
+             private SimpleStringProperty password;
+             private SimpleStringProperty name;
+             private SimpleStringProperty email;
+             private SimpleStringProperty phone;
+             private SimpleStringProperty address;
+             private SimpleStringProperty zip;
+             private SimpleStringProperty city;*/
             //openFile skal åpne valgt fil, legge til objektene i en liste
             loadObjectsIntoClasses();
         } else {
             System.out.println("ingen config fil ble funnet.");
         }
     }
-
 
     private void loadRegisterFromFile() throws IOException {
         File file = new File(String.valueOf(FileHandling.getPathToUser()));
@@ -92,7 +108,7 @@ public enum ContextModel {
             if (objects.size() > 2 && objects.get(2) != null)
                 savedPathRegister = (SavedPathRegister) objects.get(2);
 
-            if(objects.size()>3) {
+            if (objects.size() > 3) {
 
                 if (objects.get(3) != null && !objects.get(3).equals(""))
                     computer = (Computer) objects.get(3);

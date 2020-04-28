@@ -86,7 +86,12 @@ public class Computer implements Serializable, ItemUsable {
         }
     }
 
+
     @Override
+    public String toString(){
+        return componentRegister.toString();
+    }
+   /* @Override
     public String toString() {
         //String melding =
         String melding = "";
@@ -98,7 +103,7 @@ public class Computer implements Serializable, ItemUsable {
                 + getProductPrice() + melding;
         //return this.componentRegister.toString();
         //return Integer.toString(this.hashCode());
-    }
+    } */
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.writeUTF(getProductName());

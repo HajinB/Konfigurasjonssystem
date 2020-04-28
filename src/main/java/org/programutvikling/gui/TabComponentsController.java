@@ -1,5 +1,6 @@
 package org.programutvikling.gui;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -29,7 +30,9 @@ import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.*;
+import org.programutvikling.user.User;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -70,6 +73,8 @@ public class TabComponentsController {
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
         threadHandler = new ThreadHandler(this);
         initTableView();
+
+
     }
 
     private void initTableView() {
@@ -418,5 +423,21 @@ public class TabComponentsController {
     public void init(SecondaryController secondaryController) {
         this.secondaryController = secondaryController;
 
+    }
+
+    public void setResultLabelTimed(String s) {
+
+        //må gjøre setText i en egen tråd - fordi Timer er swing (som kjører på egen Swing thread (Event Dispatch
+        // Thread))
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                lblComponentMsg.setText(s);
+            }
+        });
+
+        Timer timer = new Timer(2000, e -> setResultLabelTimed(""));
+        timer.setRepeats(false);
+        timer.start();
     }
 }
