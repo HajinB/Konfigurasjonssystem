@@ -32,7 +32,6 @@ public enum ContextModel {
     private ArrayList<Component> tempComponent = new ArrayList<>();
     private UserRegister userRegister = new UserRegister();
 
-
     private ContextModel() {
         System.out.println("hi from model constructor" + userPreferences.getPathToUser().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
@@ -96,7 +95,6 @@ public enum ContextModel {
         if (objects.size() > 0) {
             if (objects.get(0) != null)
                 setComponentRegister((ComponentRegister) objects.get(0));
-
             if (objects.get(1) != null)
                 computerRegister = (ComputerRegister) objects.get(1);
 
