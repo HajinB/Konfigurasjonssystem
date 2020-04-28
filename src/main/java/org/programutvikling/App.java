@@ -44,7 +44,8 @@ public class App extends Application {
         Pane p = fxmlLoader.load(getClass().getResource("foo.fxml").openStream());
         FooController fooController = (FooController) fxmlLoader.getController();
 
-*/
+*/      primaryStage.setFullScreen(true);
+
         initOnExitHandler(primaryStage);
 
         scene = new Scene(loadFXML("primary"));

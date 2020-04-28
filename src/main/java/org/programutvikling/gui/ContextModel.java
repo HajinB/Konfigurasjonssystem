@@ -24,7 +24,10 @@ public enum ContextModel {
     private ComponentRegister componentRegister = new ComponentRegister();
     private ComputerRegister computerRegister = new ComputerRegister();
     private Computer computer = new Computer("current");
+
+    //temporary master list - som har alle objekter fra fil.
     private ArrayList<Object> objects = new ArrayList<>();
+
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/ComponentList.jobj");
     private ArrayList<Component> tempComponent = new ArrayList<>();
     private UserRegister userRegister = new UserRegister();
@@ -33,31 +36,23 @@ public enum ContextModel {
     private ContextModel() {
         System.out.println("hi from model constructor" + userPreferences.getPathToUser().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
-            System.out.println(userPreferences.getPathToUser().toString());
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
-            System.out.println(objects);
-            User user = new User(true, "admin", "admin", "ola",
-                    "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
-
-            User user2 = new User(false, "user", "user", "ola",
-                    "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
-
-            userRegister.addBruker(user);
-
-            /**   private SimpleBooleanProperty admin;
-             private SimpleStringProperty username;
-             private SimpleStringProperty password;
-             private SimpleStringProperty name;
-             private SimpleStringProperty email;
-             private SimpleStringProperty phone;
-             private SimpleStringProperty address;
-             private SimpleStringProperty zip;
-             private SimpleStringProperty city;*/
-            //openFile skal åpne valgt fil, legge til objektene i en liste
+            addDefaultUsers();
             loadObjectsIntoClasses();
         } else {
             System.out.println("ingen config fil ble funnet.");
         }
+    }
+
+    private void addDefaultUsers() {
+        User user = new User(true, "admin", "admin123", "ola",
+                "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
+
+        User user2 = new User(false, "user", "user123", "ola",
+                "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
+
+        userRegister.addBruker(user);
+        userRegister.addBruker(user2);
     }
 
     private void loadRegisterFromFile() throws IOException {
@@ -108,11 +103,8 @@ public enum ContextModel {
             if (objects.size() > 2 && objects.get(2) != null)
                 savedPathRegister = (SavedPathRegister) objects.get(2);
 
-            if (objects.size() > 3) {
-
-                if (objects.get(3) != null && !objects.get(3).equals(""))
+            if (objects.size() > 3 && objects.get(3) != null) {
                     computer = (Computer) objects.get(3);
-                else computer = (Computer) objects.get(3);
 
                 if (objects.get(4) != null)
                     userRegister = (UserRegister) objects.get(4);

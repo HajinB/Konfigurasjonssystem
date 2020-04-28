@@ -21,7 +21,6 @@ import org.programutvikling.gui.utility.FileUtility;
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 public class PrimaryController implements Initializable {
 
-    //ContextModel model = ContextModel.INSTANCE;
     FileHandling fileHandling = new FileHandling();
 
     @FXML
@@ -37,7 +36,6 @@ public class PrimaryController implements Initializable {
         //Task<Boolean> task = getTask();
         //loadInThread(task);
         App.setRoot("secondary");
-
     }
 
     private void loadInThread(Task<Boolean> task) {
@@ -77,6 +75,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
+
         openUserView();
     }
 

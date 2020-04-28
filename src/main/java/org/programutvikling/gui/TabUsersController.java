@@ -6,13 +6,19 @@ package org.programutvikling.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import org.programutvikling.user.User;
+import org.programutvikling.user.UserRegister;
 
-public class TabUsersController{
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TabUsersController implements Initializable {
     @FXML
     private GridPane userReg;
     @FXML
@@ -20,9 +26,10 @@ public class TabUsersController{
     @FXML
     private TextField userSearch;
     @FXML
-    private TableView<?> tblViewUser;
+    private TableView<User> tblViewUser;
 
     public void btnAddUser(ActionEvent actionEvent) {
+        ///
 
     }
 
@@ -48,6 +55,19 @@ public class TabUsersController{
     }
 
     public void userCity(TableColumn.CellEditEvent cellEditEvent) {
+
+    }
+
+    public UserRegister getUserRegister(){
+        return ContextModel.INSTANCE.getUserRegister();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //user lagd av inputfields
+        //getUserRegister().addBruker();
+
+
 
     }
 }

@@ -118,7 +118,6 @@ public class EnduserController extends TabComponentsController {
     }
 
     private double getPrice() {
-
         //hvordan skal man få prisen i tableview?
         return getComputer().calculatePrice();
     }
@@ -258,8 +257,10 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void updateTotalPrice() {
-        String totalpris = getComputer().calculatePrice() + ",-";
-        lblTotalPrice.setText(totalpris);
+        if(getComputer()!=null) {
+            String totalpris = getComputer().calculatePrice() + ",-";
+            lblTotalPrice.setText(totalpris);
+        }
     }
 
     void addComponentToComputer() {

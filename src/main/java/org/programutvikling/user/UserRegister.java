@@ -3,6 +3,7 @@ package org.programutvikling.user;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.programutvikling.computer.Computer;
+import org.programutvikling.gui.ContextModel;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRegister implements Serializable {
+
     private transient ObservableList<User> userRegister = FXCollections.observableArrayList();
 
     public List<User> getRegister() {
@@ -26,9 +28,10 @@ public class UserRegister implements Serializable {
         userRegister.add(user);
     }
 
+
     // returns user after validating the correct username and password
     public User loginCredentialsMatches(String username, String password) {
-        for(User user : userRegister) {
+        for(User user : this.userRegister) {
             if(user.getUsername().equalsIgnoreCase(username)) {
                 if(user.getPassword().matches(password)){
                     return user;

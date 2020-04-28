@@ -73,8 +73,6 @@ public class TabComponentsController {
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
         threadHandler = new ThreadHandler(this);
         initTableView();
-
-
     }
 
     private void initTableView() {

@@ -40,7 +40,7 @@ public class FileHandling {
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
                 null, ContextModel.INSTANCE.getSavedPathRegister(), null, null);
         //todo kanskje det er skummelt å sette null inn i objectlisten noen ganger (?)
-        System.out.println("Dette prøver man å lagre:"+objectsToSave);
+        System.out.println("Dette prøver man å lagre:" + objectsToSave);
         Path pathAppend = Paths.get(String.valueOf(path));
         saveFile(objectsToSave, pathAppend);
     }
@@ -100,6 +100,10 @@ public class FileHandling {
         return openObjects(objects, path);
     }
 
+    public static String getPathToUser() {
+        return userPreferences.getStringPathToUser();
+    }
+
     public void saveAll() throws IOException {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
 
@@ -107,10 +111,10 @@ public class FileHandling {
                 ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister(),
                 ContextModel.INSTANCE.getComputer(), ContextModel.INSTANCE.getUserRegister());
 
-        System.out.println("computer : "+ ContextModel.INSTANCE.getComputer());
-        System.out.println("user reg :"+ ContextModel.INSTANCE.getUserRegister());
+        System.out.println("computer : " + ContextModel.INSTANCE.getComputer());
+        System.out.println("user reg :" + ContextModel.INSTANCE.getUserRegister());
 
-        System.out.println("lagrer alle disse objects:"+objects);
+        System.out.println("lagrer alle disse objects:" + objects);
         FileHandling.saveFileAuto(objects,
                 Paths.get(userPreferences.getStringPathToUser()));
     }
@@ -118,12 +122,6 @@ public class FileHandling {
     public UserPreferences getUserPreferences() {
         return userPreferences;
     }
-
-    public static String getPathToUser() {
-        return userPreferences.getStringPathToUser();
-    }
-
-
 
 
 }

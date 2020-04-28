@@ -1,4 +1,6 @@
 org/programutvikling/gui/FileHandling.class
+org/programutvikling/gui/TabComponentsController$6.class
+org/programutvikling/gui/CustomPriceTableColumn/TotalPriceFormatCell.class
 org/programutvikling/computer/Saveable.class
 org/programutvikling/component/io/InvalidComponentFormatException.class
 org/programutvikling/gui/utility/Search.class
@@ -18,12 +20,15 @@ org/programutvikling/gui/utility/RegisterLogic.class
 org/programutvikling/gui/utility/TemporaryComponent.class
 org/programutvikling/computer/Computer.class
 org/programutvikling/gui/EnduserController.class
+org/programutvikling/gui/SecondaryController.class
 org/programutvikling/component/Saveable.class
 org/programutvikling/App$1.class
 org/programutvikling/gui/EnduserController$1.class
 org/programutvikling/gui/utility/FileUtility.class
+org/programutvikling/gui/TabComponentsController$5.class
 org/programutvikling/gui/RegistryComponentLogic.class
 org/programutvikling/component/ComponentValidator.class
+org/programutvikling/gui/ComputerPopupController.class
 org/programutvikling/gui/TabComponentsController$1.class
 org/programutvikling/gui/utility/Converter$DoubleStringConverter.class
 org/programutvikling/gui/TabComponentsController.class
@@ -32,6 +37,7 @@ org/programutvikling/component/io/FileSaverTxt.class
 org/programutvikling/component/io/SaverFactory.class
 org/programutvikling/gui/FXMLGetter.class
 org/programutvikling/component/io/FileOpenerJobj.class
+org/programutvikling/gui/PrimaryController$1.class
 module-info.class
 org/programutvikling/component/Component.class
 org/programutvikling/gui/EnduserController$2.class
@@ -39,7 +45,10 @@ org/programutvikling/component/ItemUsable.class
 org/programutvikling/gui/PrimaryController.class
 org/programutvikling/gui/EditPopupController.class
 org/programutvikling/gui/TabUsersController.class
+org/programutvikling/computer/ComputerFactory.class
+org/programutvikling/gui/TabComponentsController$4.class
 org/programutvikling/gui/utility/Converter.class
+org/programutvikling/gui/RegistryUserLogic.class
 org/programutvikling/gui/utility/EndUserService.class
 org/programutvikling/user/User.class
 org/programutvikling/gui/utility/Dialog.class
@@ -49,11 +58,11 @@ org/programutvikling/component/io/FileOpenerTxt.class
 org/programutvikling/gui/ContextModel.class
 org/programutvikling/user/exceptions/InvalidPasswordException.class
 org/programutvikling/user/Login.class
+org/programutvikling/gui/CustomPriceTableColumn/TotalPriceFormatCell$1.class
 org/programutvikling/component/io/iothread/InputThread.class
 org/programutvikling/gui/TabComponentsController$3.class
 org/programutvikling/gui/customTextField/PriceField.class
 org/programutvikling/user/UserValidator.class
 org/programutvikling/component/io/OpenerFactory.class
 org/programutvikling/user/exceptions/InvalidUsernameException.class
-org/programutvikling/gui/AdminController.class
 org/programutvikling/component/io/FileOpener.class
