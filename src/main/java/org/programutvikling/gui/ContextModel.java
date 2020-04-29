@@ -52,6 +52,8 @@ public enum ContextModel {
         userRegister.addBruker(user2);
     }
 
+
+
     public UserPreferences getUserPreferences() {
         return userPreferences;
     }
@@ -72,6 +74,9 @@ public enum ContextModel {
     }
 
     public void appendComponentRegisterIntoModel() {
+        if(objects.size()==0){
+            return;
+        }
         if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null) {
             ComponentRegister componentRegisterFromFile = (ComponentRegister) objects.get(0);
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
@@ -80,6 +85,9 @@ public enum ContextModel {
     }
 
     public void loadComponentRegisterIntoModel() {
+        if(objects.size()==0){
+            return;
+        }
         if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null)
             setComponentRegister((ComponentRegister) objects.get(0));
     }
