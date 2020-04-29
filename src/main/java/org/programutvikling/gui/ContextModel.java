@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public enum ContextModel {
     INSTANCE;
-
     //"Singletons are useful to provide a unique source of data or functionality to other Java Objects."
     //https://stackoverflow.com/questions/6059778/store-data-in-singleton-classes
     //todo: ContextModel er en singleton som lagrer alle objekter, som skal være mulig å aksesse fra alle controllers
@@ -127,10 +126,6 @@ public enum ContextModel {
 
     public UserRegister getUserRegister() {
         return userRegister;
-    }
-
-    public void setUserRegister(UserRegister userRegister) {
-        this.userRegister = userRegister;
     }
 
     public ComputerRegister getComputerRegister() {

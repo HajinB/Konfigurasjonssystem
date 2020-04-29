@@ -88,13 +88,6 @@ public class Computer implements Serializable, ItemUsable {
         }
     }
 
-/*
-    @Override
-    public String toString(){
-        return componentRegister.toString();
-    }
-    */
-
     @Override
     public String toString() {
         //String melding =
@@ -103,9 +96,7 @@ public class Computer implements Serializable, ItemUsable {
             melding =
                     componentRegister.toString();
         }
-        return "computer is here"+melding;
-        //return this.componentRegister.toString();
-        //return Integer.toString(this.hashCode());
+        return melding;
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
@@ -115,7 +106,7 @@ public class Computer implements Serializable, ItemUsable {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        if(s != null) {
+        if (s != null) {
             String name = s.readUTF();
             this.productName = new SimpleStringProperty();
             setProductName(name);
@@ -124,15 +115,12 @@ public class Computer implements Serializable, ItemUsable {
             componentRegister = new ComponentRegister();
             componentRegister.getRegister().addAll(list);
         }
-
-
     }
-
 
     public ArrayList<String> createSortedUniqueComponentTypeList() {
         ArrayList<String> namesOfComponentsInList = new ArrayList<>();
 
-        for(Component  c : this.getComponentRegister().getRegister()){
+        for (Component c : this.getComponentRegister().getRegister()) {
             namesOfComponentsInList.add(c.getProductType());
         }
         Collections.sort(namesOfComponentsInList);

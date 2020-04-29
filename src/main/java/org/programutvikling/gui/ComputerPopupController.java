@@ -23,9 +23,10 @@ public class ComputerPopupController extends EnduserController implements Initia
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellFactory();
-
     }
 
+
+    //todo tror denne er helt lik den i computer listview - lag en generisk?
     private void setCellFactory() {
         listContent.setCellFactory(param -> new ListCell<Component>() {
             @Override
@@ -43,8 +44,6 @@ public class ComputerPopupController extends EnduserController implements Initia
     void initData(Computer c, Stage stage) {
         //tar inn stage for å kunne lukke når brukeren trykker endre
         this.stage = stage;
-
-        //System.out.println(componentEditNode);
         lblComputerName.setText(c.getProductName());
         lblComputerPrice.setText(Double.toString(c.calculatePrice()));
         listContent.setItems(c.getComponentRegister().getObservableRegister());

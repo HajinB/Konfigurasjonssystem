@@ -160,17 +160,14 @@ public class TabComponentsController {
         tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
         selectedCells.addListener((ListChangeListener) c -> {
             if(selectedCells.size()!=0) {
-                TablePosition tablePosition = selectedCells.get(0);
                 TemporaryComponent.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
             }
-            //System.out.println(selectedCells.get(0).getColumn());
         });
     }
 
     void handlePopUp(Stage stage, Component c) {
         /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
         stage.setOnHidden(new EventHandler<WindowEvent>() {
-
             public void handle(WindowEvent we) {
                 System.out.println("detected");
                 if (TemporaryComponent.INSTANCE.getIsEdited()) {
