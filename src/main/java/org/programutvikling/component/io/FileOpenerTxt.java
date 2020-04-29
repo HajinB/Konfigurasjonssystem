@@ -1,8 +1,10 @@
 package org.programutvikling.component.io;
 
-import org.programutvikling.computer.Computer;
 import org.programutvikling.component.Component;
-
+import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.component.ComponentValidator;
+import org.programutvikling.computer.Computer;
+import org.programutvikling.gui.utility.Dialog;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,23 +13,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class FileOpenerTxt implements FileOpener {
-/*
-    @Override
-    public void open(Computer computer, Path filePath) throws IOException {
-        computer.getComponentRegister().getRegister().clear();
-        // try-with-resources lukker automatisk filen
+    ComponentValidator componentValidator = new ComponentValidator();
+    boolean allLinesOk = true;
 
-        try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
-            String line;
-
-            while ((line = bufferedReader.readLine()) != null) {
-                computer.addComponent(parseComponent(line));
-            }
-        }
-    }*/
-
-    //skal man åpne et computerregister (((skal egentlig være automatisk loada fra før - så brukeren har vel bare
-    // muglihet til å laste inn og lagre EN og en computer?
     public void open(Computer computer, Path filePath) throws IOException {
         computer.removeAll();
         //todo vi må få ut NAVN - BESKRIVELSE - "REGISTER" registeret består av componenter, så parsecomponent vil
@@ -41,26 +29,31 @@ public class FileOpenerTxt implements FileOpener {
             // så kanskje før denne while loopen ha noe (og kanskje skriv computer sånn:
             //gaming pc;2999
             //
+            //istedet for å legge til i computer - lager vi en temporary componentRegsiter
+            ComponentRegister temp = new ComponentRegister();
             while ((line = bufferedReader.readLine()) != null) {
                 //må man lage en metode som tar bort navn og description fra datamaskinen?
                 //første to feltene feks er Navn og pris - så kommer componentregisteret - bør første line være NAVN;
                 /**husk at det er tostring til både component og componentregister som gjør dette*/
-                computer.addComponent(parseComponent(line));
+                if (ComponentValidator.isComponentFromTxtValid(parseComponent(line))) {
+                    temp.getRegister().add(parseComponent(line));
+                } else {
+                    allLinesOk = false;
+                    Dialog.showErrorDialog("Innlasting feilet " +parseComponent(line)+ " ble ikke funnet i databasen");
+                }
+            }
+            if(allLinesOk){
+                computer.getComponentRegister().getRegister().addAll(temp.getRegister());
             }
         }
     }
     //todo eksempel fra tostring :
-    //Skriv de på forskjellige lines?
-    // Gamingpc, bra gaming pc ass bro,
-    // cpu1, cpu intel, bra cpu, 299,
-     //harddisk, harddisk ssd, 2999
-    //jobbPC, bra jobbpc bruh
-    //(String type, String name, String description, double price)
+
     private Component parseComponent(String line) throws InvalidComponentFormatException {
 //hvordan skal man gjøre dette????? vi parser en component
 
         String[] split = line.split(";");
-        if(split.length != 4) {
+        if (split.length != 4) {
             throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
         }
 
@@ -71,11 +64,10 @@ public class FileOpenerTxt implements FileOpener {
         double price = parseDouble(split[3], "pris må være et tall");
 
         //try {
-            //double price = doubleStringConverter.stringTilDouble(split[3]);
-            return new Component(type, name, description, price);
+        //double price = doubleStringConverter.stringTilDouble(split[3]);
+        return new Component(type, name, description, price);
 
-        }
-
+    }
 
 
     private double parseDouble(String str, String errorMessage) throws IllegalArgumentException {
