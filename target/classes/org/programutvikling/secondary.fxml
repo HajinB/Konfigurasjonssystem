@@ -1,36 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import org.programutvikling.gui.customTextField.PriceField?>
 <?import org.programutvikling.gui.customTextField.*?>
-
-<BorderPane fx:id="topLevelPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController" >
+<BorderPane fx:id="topLevelPane" maxHeight="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController">
    <top>
-       <AnchorPane prefHeight="30.0" prefWidth="1040.0" BorderPane.alignment="CENTER">
-           <MenuBar layoutY="-3.0" prefHeight="30.0" prefWidth="1040.0" styleClass="menyBar"
-                    stylesheets="@CSS/Superbruker.css">
+       <AnchorPane prefHeight="30.0">
+           <MenuBar layoutY="-3.0" prefHeight="30.0" prefWidth="1040.0" styleClass="menyBar" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <Menu mnemonicParsing="false" text="Fil">
-                   <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Velg lagringsplass"/>
-                   <MenuItem mnemonicParsing="false" onAction="#btnSaveToChosenPath" text="Lagre som..."/>
-                   <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Åpne jobj-fil"/>
-                   <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut"/>
+                   <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Åpne jobj-fil">
+                  <graphic>
+                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../Bilder/folder-13.png" />
+                        </image>
+                     </ImageView>
+                  </graphic></MenuItem>
+                   <MenuItem mnemonicParsing="false" onAction="#btnSaveToChosenPath" text="Lagre som...">
+                  <graphic>
+                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../Bilder/save.png" />
+                        </image>
+                     </ImageView>
+                  </graphic></MenuItem>
+                   <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Velg lagringsplass">
+                  <graphic>
+                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../Bilder/folder-12.png" />
+                        </image>
+                     </ImageView>
+                  </graphic></MenuItem>
+                   <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut">
+                  <graphic>
+                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../Bilder/power.png" />
+                        </image>
+                     </ImageView>
+                  </graphic></MenuItem>
                </Menu>
                <Menu mnemonicParsing="false" text="Verktøy">
-                   <MenuItem mnemonicParsing="false" onAction="#btnRemoveDuplicates"
-                             text="Fjern duplikater fra registeret"/>
+                   <MenuItem mnemonicParsing="false" onAction="#btnRemoveDuplicates" text="Fjern duplikater ">
+                  <graphic>
+                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../Bilder/garbage-1.png" />
+                        </image>
+                     </ImageView>
+                  </graphic></MenuItem>
                </Menu>
            </MenuBar>
        </AnchorPane>
    </top>
    <center>
-       <TabPane prefHeight="750.0" prefWidth="1040.0" BorderPane.alignment="CENTER">
+       <TabPane>
            <Tab fx:id="tabComponentRegister" text="Komponenter">
-               <fx:include fx:id="tabComponents" source="tabComponents.fxml"/>
+               <fx:include fx:id="tabComponents" source="tabComponents.fxml" />
            </Tab>
            <Tab fx:id="tabUserRegister" text="Brukere">
-               <fx:include fx:id="tabUsers" source="tabUsers.fxml"/>
+               <fx:include fx:id="tabUsers" source="tabUsers.fxml" />
            </Tab>
        </TabPane>
    </center>

@@ -1,30 +1,77 @@
 
-.titledPane .button {
-    -fx-background-color: rgba(0, 187, 0, 0.33);
-    -fx-background-radius: 100px;
-    -fx-font-size: 15px;
+
+.btnLogOut {
+    -fx-background-color: transparent;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px ;
+
+}
+.btnLogOut:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #388DC8;
+    -fx-cursor: hand;
+    -fx-font-size: 12px ;
+}
+
+.btnLogOut:pressed {
+    -fx-text-fill: #000000;
+}
+
+.menu-button .arrow {
+    -fx-padding: 0;
+}
+.menu-button > .arrow-button > .arrow {
+    -fx-padding: 0;
+}
+
+/* Legg til i handlekurv og bestill-knapp */
+.btnPayAdd {
+    -fx-background-color: rgba(1, 160, 1, 0.66);
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
     -fx-text-fill: white;
     -fx-font-weight: bolder;
     -fx-cursor: hand;
 }
 
-.titledPane .button:hover {
+.btnPayAdd:hover {
     -fx-border-color: green;
-    -fx-border-radius: 100px;
+    -fx-border-radius: 6px;
 }
 
-.titledPane .button:pressed {
-
+.btnPayAdd:pressed {
     -fx-text-fill: green;
-
 }
 
+/* drop down-meny PC-komponenter */
 .titledPane{
     -fx-font-family: Verdana;
     -fx-font-size: 12px;
 
 }
 
-.label {
+.titledPane .title {
+    -fx-font-size: 14px;
     -fx-font-family: Verdana;
+    -fx-background-color: rgba(208, 208, 208, 0.37);
+    -fx-border-color: rgba(199, 199, 199, 0.68);
+    -fx-border-width: 2 2 2 2;
+    -fx-pref-height: 40px;
+
 }
+
+/* Bakgrunner */
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color:white;
+}
+
+.table-view {
+    -fx-background-color: white;
+}
+
+

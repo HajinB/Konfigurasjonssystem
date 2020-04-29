@@ -25,7 +25,7 @@
     -fx-text-fill: #70A4C8 ;
     -fx-background-color: transparent;
     -fx-font-family: Verdana;
-    -fx-font-size: 12px;
+    -fx-font-size: 11px;
     -fx-cursor: hand;
 
 }
@@ -33,7 +33,7 @@
 .btnGuest:hover {
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-text-fill: #388DC8;
     -fx-font-family: Verdana;
     -fx-border-color: white;
@@ -57,6 +57,8 @@
     -fx-font-family: Verdana;
     -fx-cursor: text;
 }
+
+
 
 /* Design av bakgrunn */
 .loginPane {
