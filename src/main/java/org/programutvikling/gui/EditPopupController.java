@@ -57,11 +57,15 @@ public class EditPopupController extends TabComponentsController implements Init
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
         cbType.setItems(componentTypes.getObservableTypeListName());
     }
 
     void initData(Component c, Stage stage, int columnIndex) {
         //tar inn stage for å kunne lukke når brukeren trykker endre
+        RegistryComponentLogic registryComponentLogic = new RegistryComponentLogic(componentEditNode);
+        registryComponentLogic.setTextAreaListener(componentEditNode);
         this.stage = stage;
         System.out.println(componentEditNode);
         cbType.setValue(c.getProductType());

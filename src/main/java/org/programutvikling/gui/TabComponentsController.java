@@ -36,8 +36,13 @@ import java.util.Objects;
 
 public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en rad for å redigere");
+
+
     @FXML
     public Label lblComponentMsg;
+    @FXML
+    public TextArea productDescription;
+
     SecondaryController secondaryController;
     @FXML
     AnchorPane topLevelPane;
@@ -71,6 +76,7 @@ public class TabComponentsController {
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
         threadHandler = new ThreadHandler(this);
         initTableView();
+        registryComponentLogic.setTextAreaListener(componentRegNode);
     }
 
     private void initTableView() {
@@ -125,15 +131,15 @@ public class TabComponentsController {
                 tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
 
                 //tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
-                TableRow row;
+                TableRow<? extends Component> row;
                 TableColumn column;
                 if (isDoubleClick(event)) {
                     Node node = ((Node) event.getTarget()).getParent();
                     if (node instanceof TableRow) {
-                        row = (TableRow) node;
+                        row = (TableRow<? extends Component>) node;
                     } else {
                         //hvis man trykker på tekst
-                        row = (TableRow) node.getParent();
+                        row = (TableRow<? extends Component>) node.getParent();
                     }
                     try {
                         openEditWindow(row);
@@ -152,19 +158,12 @@ public class TabComponentsController {
         final ObservableList<TablePosition> selectedCells = tblViewComponent.getSelectionModel().getSelectedCells();
         //gjør det mulig å detecte cell på første klikk:
         tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
-        selectedCells.addListener(new ListChangeListener() {
-
-            @Override
-            public void onChanged(Change c) {
-
-                if(selectedCells.size()!=0) {
-                    TablePosition tablePosition = (TablePosition) selectedCells.get(0);
-
-                    Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
-                    TemporaryComponent.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
-                }
-                //System.out.println(selectedCells.get(0).getColumn());
+        selectedCells.addListener((ListChangeListener) c -> {
+            if(selectedCells.size()!=0) {
+                TablePosition tablePosition = selectedCells.get(0);
+                TemporaryComponent.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
             }
+            //System.out.println(selectedCells.get(0).getColumn());
         });
     }
 
@@ -190,7 +189,7 @@ public class TabComponentsController {
         });
     }
 
-    private void openEditWindow(TableRow row) throws IOException {
+    private void openEditWindow(TableRow<? extends Component> row) throws IOException {
 
         FXMLLoader loader = getFxmlLoader("editPopup.fxml");
         Stage stage = new Stage();
@@ -198,14 +197,12 @@ public class TabComponentsController {
         stage.setScene(
                 new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
         );
-        Component c = (Component) row.getItem();
+        Component c = row.getItem();
         EditPopupController popupController =
                 loader.<EditPopupController>getController();
         popupController.initData(c, stage, TemporaryComponent.INSTANCE.getColumnIndex());
         stage.show();
         handlePopUp(stage, c);
-
-
     }
 
 

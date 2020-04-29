@@ -29,7 +29,6 @@ public enum ContextModel {
     private ArrayList<Object> objects = new ArrayList<>();
 
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppData.jobj");
-    private ArrayList<Component> tempComponent = new ArrayList<>();
     private UserRegister userRegister = new UserRegister();
 
     private ContextModel() {
@@ -52,15 +51,6 @@ public enum ContextModel {
 
         userRegister.addBruker(user);
         userRegister.addBruker(user2);
-    }
-
-    private void loadRegisterFromFile() throws IOException {
-        File file = new File(String.valueOf(FileHandling.getPathToUser()));
-        String path = file.getAbsolutePath();
-        if (file.exists()) {
-            FileHandling.openFile(ContextModel.INSTANCE.getCleanObjectList(), FileHandling.getPathToUser());
-            ContextModel.INSTANCE.loadObjectsIntoClasses();
-        }
     }
 
     public UserPreferences getUserPreferences() {
@@ -121,40 +111,12 @@ public enum ContextModel {
         }
 
         objects.clear();
-        //denne måten kunne ha appenda - men får npe
-            /* ComponentRegister componentRegister1 = (ComponentRegister) (objects.get(0));
-            ComputerRegister computerRegister1 = (ComputerRegister) objects.get(1);
-
-            INSTANCE.getComponentRegister().getRegister().addAll(componentRegister1.getRegister());
-            INSTANCE.getComputerRegister().getRegister().addAll(computerRegister1.getRegister());*/
     }
 
     private boolean checkIfObjectIsComponentRegister() {
         return objects.get(0) instanceof ComponentRegister;
     }
 
-    /*
-        public static ContextModel getInstance() {
-            return INSTANCE;
-        }
-    */
-/*
-    // synchronized keyword has been removed from here
-    public static ContextModel getInstance() {
-        // needed because once there is singleton available no need to acquire
-        // monitor again & again as it is costly
-        if (INSTANCE == null) {
-            synchronized (ContextModel.class) {
-                // this is needed if two threads are waiting at the monitor at the
-                // time when singleton was getting instantiated
-                if (INSTANCE == null) {
-                    INSTANCE = new ContextModel();
-                }
-            }
-        }
-        return singleton;
-    }
-*/
     public ComponentRegister getComponentRegister() {
         return componentRegister;
     }

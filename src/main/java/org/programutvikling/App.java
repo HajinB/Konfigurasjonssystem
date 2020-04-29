@@ -61,7 +61,9 @@ public class App extends Application {
 
                 //hvis avbryt blir trykket på
                 if (result.get() == alert.getButtonTypes().get(2)) {
+                    System.out.println("button type 2");
                     we.consume();
+                    return;
                 }
 
                 if (result.get() == alert.getButtonTypes().get(0)) {

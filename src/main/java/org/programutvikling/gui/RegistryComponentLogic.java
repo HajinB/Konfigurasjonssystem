@@ -1,6 +1,9 @@
 package org.programutvikling.gui;
 
+import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
 import org.programutvikling.component.Component;
@@ -76,4 +79,15 @@ class RegistryComponentLogic {
     }
 
 
+    public void setTextAreaListener(GridPane gridPane) {
+        TextArea textArea =((TextArea) gridPane.lookup("#productDescription"));
+        textArea.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER)  {
+                    keyEvent.consume();
+                }
+            }
+        });
+    }
 }
