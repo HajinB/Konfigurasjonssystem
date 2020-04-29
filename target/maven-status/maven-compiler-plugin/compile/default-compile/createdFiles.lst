@@ -1,7 +1,9 @@
 org/programutvikling/gui/FileHandling.class
 org/programutvikling/gui/TabComponentsController$6.class
+org/programutvikling/gui/CustomPriceTableColumn/customListViewCellFactory.class
 org/programutvikling/gui/CustomPriceTableColumn/TotalPriceFormatCell.class
 org/programutvikling/computer/Saveable.class
+org/programutvikling/gui/EnduserController$3.class
 org/programutvikling/component/io/InvalidComponentFormatException.class
 org/programutvikling/gui/utility/Search.class
 org/programutvikling/App.class
@@ -38,6 +40,7 @@ org/programutvikling/component/io/SaverFactory.class
 org/programutvikling/gui/FXMLGetter.class
 org/programutvikling/component/io/FileOpenerJobj.class
 org/programutvikling/gui/PrimaryController$1.class
+org/programutvikling/gui/ComputerPopupController$1.class
 module-info.class
 org/programutvikling/component/Component.class
 org/programutvikling/gui/EnduserController$2.class

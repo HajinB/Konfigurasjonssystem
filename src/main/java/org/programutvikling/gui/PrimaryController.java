@@ -17,7 +17,6 @@ import org.programutvikling.App;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.User;
-import org.programutvikling.user.UserRegister;
 
 //https://ducmanhphan.github.io/2019-10-17-Creating-JavaFX-project-with-Maven/
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
@@ -77,8 +76,14 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
-
-        openUserView();
+        User loginUser = ContextModel.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),inputPassword.getText());
+        if(loginUser != null){
+            if(loginUser.getAdmin()) {
+                App.setRoot("secondary");
+            } else{
+                openUserView();
+            }
+        }
     }
 
     /*private void openUserView() throws IOException {
@@ -91,28 +96,11 @@ public class PrimaryController implements Initializable {
         App.setRoot(("endUser"));
     }
 
-    private boolean isUser() {
-        return inputPassword.getText().equals("bruker");
-    }
-
-    UserRegister getUserRegister(){
-        return ContextModel.INSTANCE.getUserRegister();
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //loadRegisterFromFile();
-        User user = new User(true, "admin", "admin123", "ola",
-                "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
-
-        User user2 = new User(false, "user", "user123", "ola",
-                "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
-
-        getUserRegister().addBruker(user);
-        getUserRegister().addBruker(user2);
-
-        System.out.println("usersss"+ContextModel.INSTANCE.getUserRegister().getRegister().get(1).getUsername());
-        System.out.println(ContextModel.INSTANCE.getUserRegister().getRegister().get(1));
+        ContextModel.INSTANCE.getUserRegister();
     }
 
 

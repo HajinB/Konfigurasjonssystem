@@ -36,7 +36,7 @@ public enum ContextModel {
         System.out.println("hi from model constructor" + userPreferences.getPathToUser().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
-
+            addDefaultUsers();
             loadObjectsIntoClasses();
         } else {
             System.out.println("ingen config fil ble funnet.");
@@ -44,7 +44,14 @@ public enum ContextModel {
     }
 
     private void addDefaultUsers() {
+        User user = new User(true, "admin", "admin", "ola",
+                "hhhh@gmail.com", "45505715", "trondheimsvegen 1", "0909", "Trondheim");
 
+        User user2 = new User(false, "user", "user", "ola",
+                "hhhh@gmail.com", "45505715", "trondheimsvegen 1", "0909", "Trondheim");
+
+        userRegister.addBruker(user);
+        userRegister.addBruker(user2);
     }
 
     private void loadRegisterFromFile() throws IOException {
@@ -90,7 +97,6 @@ public enum ContextModel {
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
         /**går det ann å skrive dette på en annen måte? factory method feks??*/
-        addDefaultUsers();
         System.out.println(objects.size());
         if (objects.size() > 0) {
             if (objects.get(0) != null)

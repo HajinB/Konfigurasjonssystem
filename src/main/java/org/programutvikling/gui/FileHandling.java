@@ -68,6 +68,7 @@ public class FileHandling {
         try {
             saver.save(register, directoryPath);
         } catch (IOException e) {
+            System.out.println(Arrays.toString(e.getStackTrace()));
             Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
         }
     }

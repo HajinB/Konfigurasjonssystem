@@ -14,15 +14,15 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private SimpleBooleanProperty admin;
-    private SimpleStringProperty username;
-    private SimpleStringProperty password;
-    private SimpleStringProperty name;
-    private SimpleStringProperty email;
-    private SimpleStringProperty phone;
-    private SimpleStringProperty address;
-    private SimpleStringProperty zip;
-    private SimpleStringProperty city;
+    private transient SimpleBooleanProperty admin;
+    private transient SimpleStringProperty username;
+    private transient  SimpleStringProperty password;
+    private transient SimpleStringProperty name;
+    private transient SimpleStringProperty email;
+    private transient SimpleStringProperty phone;
+    private transient SimpleStringProperty address;
+    private transient SimpleStringProperty zip;
+    private transient SimpleStringProperty city;
 
     public User(boolean admin, String username, String password, String name, String email, String phone, String address, String zip, String city) {
         // validering
@@ -36,7 +36,6 @@ public class User implements Serializable {
         if(!UserValidator.password(password)) {
             throw new InvalidPasswordException();
         }
-
         this.admin = new SimpleBooleanProperty(admin);
         this.username = new SimpleStringProperty(username);
         this.password = new SimpleStringProperty(password);
@@ -145,11 +144,9 @@ public class User implements Serializable {
         String name = s.readUTF();
         String email = s.readUTF();
         String phone = s.readUTF();
-        String adress = s.readUTF();
+        String address = s.readUTF();
         String zip = s.readUTF();
         String city = s.readUTF();
-
-
 
         this.admin = new SimpleBooleanProperty();
         this.username = new SimpleStringProperty();
@@ -168,10 +165,14 @@ public class User implements Serializable {
             setName(name);
             setEmail(email);
             setPhone(phone);
-            setAddress(adress);
+            setAddress(address);
             setZip(zip);
             setCity(city);
 
+    }
+
+    public String toString() {
+        return "name: " + getName() + ", username: " + getUsername() + ", password: " + getPassword();
     }
 
 }
