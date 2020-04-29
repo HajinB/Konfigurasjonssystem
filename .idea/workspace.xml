@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/customListViewCellFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileDirectory/Components/AppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/FileDirectory/Components/AppData.jobj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ComputerPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ComputerPopupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FXMLGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FXMLGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ContextModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ContextModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -253,13 +249,8 @@
       <workItem from="1587724730800" duration="13602000" />
       <workItem from="1587773144272" duration="5084000" />
       <workItem from="1587914502778" duration="16438000" />
-      <workItem from="1587981629385" duration="45375000" />
-    </task>
-    <task id="LOCAL−00007" summary="Omstrukturering, lagde pakken &quot;Bruker&quot;">
-      <created>1585747193288</created>
-      <option name="number" value="LOCAL−00007" />
-      <option name="presentableId" value="LOCAL−00007" />
-      <updated>1585747193288</updated>
+      <workItem from="1587981629385" duration="47055000" />
+      <workItem from="1588112198159" duration="1177000" />
     </task>
     <task id="LOCAL−00008" summary="Fjernet Logikk">
       <created>1585748498665</created>
@@ -590,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588091491683</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="dobbeltklikk på completedComputers -&gt; åpne valgt computer i listview">
+      <created>1588095671418</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1588095671418</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +623,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wth" />
     <MESSAGE value="Fixed saverFactory" />
     <MESSAGE value="La til combobox for nylige filer" />
     <MESSAGE value="To nye FXML filer for tabs og tilhørende controllers. En ny controller: MainController" />
@@ -650,7 +647,8 @@
     <MESSAGE value="testUserRegister" />
     <MESSAGE value="fixed liten ting med npe computer / nullcheck" />
     <MESSAGE value="fixed feilbeskjed på computer + åpningsvalg" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed feilbeskjed på computer + åpningsvalg" />
+    <MESSAGE value="dobbeltklikk på completedComputers -&gt; åpne valgt computer i listview" />
+    <option name="LAST_COMMIT_MESSAGE" value="dobbeltklikk på completedComputers -&gt; åpne valgt computer i listview" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1587242454320" />

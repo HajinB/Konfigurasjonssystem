@@ -19,8 +19,14 @@ public class ComputerPopupController extends EnduserController implements Initia
     @FXML private Label lblComputerPrice;
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCellFactory();
+
+    }
+
+    private void setCellFactory() {
         listContent.setCellFactory(param -> new ListCell<Component>() {
             @Override
             protected void updateItem(Component c, boolean empty) {
@@ -29,17 +35,9 @@ public class ComputerPopupController extends EnduserController implements Initia
                     setText("");
                 } else {
                     setText(c.getProductName() + "\n" + String.format("%.2f", c.getProductPrice()) + ",-");
-                    //Change listener implemented.
-                    listContent.getSelectionModel().selectedItemProperty().addListener((ObservableValue<?
-                            extends Component> observable, Component oldValue, Component newValue) -> {
-                        if (listContent.isFocused()) {
-                        }
-                    });
                 }
-
             }
         });
-
     }
 
     void initData(Computer c, Stage stage) {
