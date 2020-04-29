@@ -5,7 +5,7 @@ public class UserValidator {
     public static final String NO_NUMBERS = "^[\\D]+$";
     public static final String ONLY_NUMBERS = "^[\\d]+$";
     public static final String NO_SPACES = "^[\\S]+$";
-    public static final int PASSWORD_LENGTH = 6;
+    public static final int PASSWORD_LENGTH = 4;
     public static final int ZIP_LENGTH = 4;
     public static final String EMAIL_VERIFICATION = "^[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*@[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*\\.[a-zæøåA-ZÆØÅ]{2,3}$";
     private static final String NORSK_PHONE_VERIFICATION = "^((0047)?|(\\+47)?|(47)?)\\d{8}$";
@@ -15,7 +15,7 @@ public class UserValidator {
         return !username.isBlank() && username.matches(NO_SPACES);
     }
     static boolean password(String password) {
-        return password.length() > PASSWORD_LENGTH;
+        return password.length() >= PASSWORD_LENGTH;
     }
     static boolean name(String name) {
         return name.matches(NO_NUMBERS) && !name.isBlank();

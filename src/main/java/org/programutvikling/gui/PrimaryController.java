@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import org.programutvikling.App;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
+import org.programutvikling.user.User;
 
 //https://ducmanhphan.github.io/2019-10-17-Creating-JavaFX-project-with-Maven/
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
@@ -75,8 +76,14 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
-
-        openUserView();
+        User loginUser = ContextModel.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),inputPassword.getText());
+        if(loginUser != null){
+            if(loginUser.getAdmin()) {
+                App.setRoot("secondary");
+            } else{
+                openUserView();
+            }
+        }
     }
 
     /*private void openUserView() throws IOException {
@@ -89,9 +96,6 @@ public class PrimaryController implements Initializable {
         App.setRoot(("endUser"));
     }
 
-    private boolean isUser() {
-        return inputPassword.getText().equals("bruker");
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

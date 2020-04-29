@@ -145,7 +145,7 @@ public class User implements Serializable {
         String name = s.readUTF();
         String email = s.readUTF();
         String phone = s.readUTF();
-        String adress = s.readUTF();
+        String address = s.readUTF();
         String zip = s.readUTF();
         String city = s.readUTF();
 
@@ -168,10 +168,14 @@ public class User implements Serializable {
             setName(name);
             setEmail(email);
             setPhone(phone);
-            setAddress(adress);
+            setAddress(address);
             setZip(zip);
             setCity(city);
 
+    }
+
+    public String toString() {
+        return "name: " + getName() + ", username: " + getUsername() + ", password: " + getPassword();
     }
 
 }

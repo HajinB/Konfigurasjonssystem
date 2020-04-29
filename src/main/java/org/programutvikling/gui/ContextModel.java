@@ -44,11 +44,11 @@ public enum ContextModel {
     }
 
     private void addDefaultUsers() {
-        User user = new User(true, "admin", "admin123", "ola",
-                "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
+        User user = new User(true, "admin", "admin", "ola",
+                "hhhh@gmail.com", "45505715", "trondheimsvegen 1", "0909", "Trondheim");
 
-        User user2 = new User(false, "user", "user123", "ola",
-                "hhhh@gmail.com", "999999", "trondheimsvegen 1", "0909", "Trondheim");
+        User user2 = new User(false, "user", "user", "ola",
+                "hhhh@gmail.com", "45505715", "trondheimsvegen 1", "0909", "Trondheim");
 
         userRegister.addBruker(user);
         userRegister.addBruker(user2);

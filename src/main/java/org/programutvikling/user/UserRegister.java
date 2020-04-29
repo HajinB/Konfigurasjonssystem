@@ -31,9 +31,9 @@ public class UserRegister implements Serializable {
 
     // returns user after validating the correct username and password
     public User loginCredentialsMatches(String username, String password) {
-        for(User user : this.userRegister) {
+        for(User user : getRegister()) {
             if(user.getUsername().equalsIgnoreCase(username)) {
-                if(user.getPassword().matches(password)){
+                if(user.getPassword().equals(password)){
                     return user;
                 }
             }
@@ -67,6 +67,14 @@ public class UserRegister implements Serializable {
         List<User> list = (List<User>) inputStream.readObject();
         userRegister = FXCollections.observableArrayList();
         userRegister.addAll(list);
+    }
+
+    public String toString() {
+        String out = "";
+        for(User user : getRegister()) {
+            out += user.toString();
+        }
+        return out;
     }
 
 }
