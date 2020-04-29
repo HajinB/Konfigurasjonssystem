@@ -2,12 +2,6 @@ package org.programutvikling.component;
 
 import org.programutvikling.gui.ContextModel;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-
 public class ComponentValidator {
 
     static boolean isComponentValid(Component component) {
@@ -31,8 +25,7 @@ public class ComponentValidator {
 
     public static boolean doesPriceMatchDatabase(Component component) {
         for (Component c : ContextModel.INSTANCE.getComponentRegister().getRegister()) {
-            if (c.getProductName().equals(component.getProductName())
-                    && c.getProductType().equals(component.getProductType())) {
+            if (isPrimaryKeyAMatch(component, c)) {
 
                 //kunne ha lagd til beskrivelse her også ,men whatever - (brukeren kan endre den hvis hen vil)
                 if (c.getProductPrice() == component.getProductPrice()) {
@@ -85,13 +78,12 @@ public class ComponentValidator {
     // funnet "feil pris" hele tiden.
     public static double checkPriceAgainstDatabaseReturnComponent(Component tempComponent) {
         for (Component c : ContextModel.INSTANCE.getComponentRegister().getRegister()) {
-            if (c.getProductName().equals(tempComponent.getProductName())
-                    && c.getProductType().equals(tempComponent.getProductType())) {
+            if (isPrimaryKeyAMatch(tempComponent, c)) {
                 //hvis match på produkt - sjekk om prisen stemmer
                 if (c.getProductPrice() != tempComponent.getProductPrice()) {
                     //hvis alt bortsett fra prisen stemmer - returner c
                     return c.getProductPrice();
-                }else{
+                } else {
                     //prisen stemmer :
                     return -1.00;
                 }
@@ -99,6 +91,14 @@ public class ComponentValidator {
         }
         //hvis ingenting stemmer - return null
         return -2.00;
+    }
+
+    private static boolean isPrimaryKeyAMatch(Component tempComponent, Component c) {
+        return c.getProductName().equals(tempComponent.getProductName())
+                && c.getProductType().equals(tempComponent.getProductType())
+        && c.getProductDescription().equals(tempComponent.getProductDescription());
+
+        //todo kan legge til beskrivelse som PK her - det er de feltene som sjekkes i en loop om stemmer
     }
 }
        /* isProductPriceMatchingAlreadySaved(ArrayList<Object> objects, String toBeSearched){

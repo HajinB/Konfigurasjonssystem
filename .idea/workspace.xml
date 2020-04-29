@@ -4,7 +4,6 @@
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerTxt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentValidator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerTxt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerTxt.class" afterDir="false" />
     </list>
@@ -251,12 +250,6 @@
       <workItem from="1587914502778" duration="16438000" />
       <workItem from="1587981629385" duration="47055000" />
       <workItem from="1588112198159" duration="1177000" />
-    </task>
-    <task id="LOCAL−00013" summary="Testing User">
-      <created>1585939827004</created>
-      <option name="number" value="LOCAL−00013" />
-      <option name="presentableId" value="LOCAL−00013" />
-      <updated>1585939827004</updated>
     </task>
     <task id="LOCAL−00014" summary="Ordnet TableView, navn (engelsk) og litt design">
       <created>1586546840705</created>
@@ -590,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588166914057</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="inputvalidering av computer.txt">
+      <created>1588171523031</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1588171523031</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +625,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="prøver å legge til til computer/listview fra enduser (må få opp test av IO fra enduser asap)" />
     <MESSAGE value="fixed repeated opening - en del debugging messages :P - føler det som gjenstår på superbruker page er noen bugs i SØK / backspace fungerer ikke xD + open recent files er ikke implementert enda." />
     <MESSAGE value="open recent files skal fungere - men skjønte etterpå at den egentlig burde vært plassert i main controller - bør dn ligge i menu bar istedet?" />
     <MESSAGE value="testmetode for filesavertxt (uten navn og totalpris)" />
@@ -650,7 +649,8 @@
     <MESSAGE value="manglet transient foran alle felt i user" />
     <MESSAGE value="liten refactor" />
     <MESSAGE value="inputvalidering" />
-    <option name="LAST_COMMIT_MESSAGE" value="inputvalidering" />
+    <MESSAGE value="inputvalidering av computer.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="inputvalidering av computer.txt" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1587242454320" />
