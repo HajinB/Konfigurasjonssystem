@@ -4,6 +4,7 @@ import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentValidator;
 import org.programutvikling.computer.Computer;
+import org.programutvikling.gui.ContextModel;
 import org.programutvikling.gui.utility.Dialog;
 
 import java.io.BufferedReader;
@@ -30,22 +31,24 @@ public class FileOpenerTxt implements FileOpener {
             //gaming pc;2999
             //
             //istedet for å legge til i computer - lager vi en temporary componentRegsiter
+
             ComponentRegister temp = new ComponentRegister();
+
+
             while ((line = bufferedReader.readLine()) != null) {
                 //må man lage en metode som tar bort navn og description fra datamaskinen?
                 //første to feltene feks er Navn og pris - så kommer componentregisteret - bør første line være NAVN;
-                /**husk at det er tostring til både component og componentregister som gjør dette*/
-                if (ComponentValidator.isComponentFromTxtValid(parseComponent(line))) {
-                    temp.getRegister().add(parseComponent(line));
-                } else {
-                    allLinesOk = false;
-                    Dialog.showErrorDialog("Innlasting feilet " +parseComponent(line)+ " ble ikke funnet i databasen");
+
+                if(parseComponent(line).getProductType() == null){
+                    //IKKE LES CURRENT - hvis getproducttype er null, ikke legg til i lista
+                    bufferedReader.readLine(); //leser uten å gjøre noe
+                }else{
+                    computer.addComponent(parseComponent(line));
+                    //temp.getRegister().add(parseComponent(line));
                 }
             }
-            if(allLinesOk){
-                computer.getComponentRegister().getRegister().addAll(temp.getRegister());
-            }
         }
+       // ContextModel.INSTANCE.getComputer().getComponentRegister().getRegister().addAll(temp)
     }
     //todo eksempel fra tostring :
 
@@ -63,10 +66,32 @@ public class FileOpenerTxt implements FileOpener {
         String description = split[2];
         double price = parseDouble(split[3], "pris må være et tall");
 
-        //try {
-        //double price = doubleStringConverter.stringTilDouble(split[3]);
-        return new Component(type, name, description, price);
 
+        //todo hvis man skal validere navn, type, beskrivelse, for å så bare endre pris til den som ligger i
+        // databasen, kan man gjøre det her
+
+        //altså bare valider alt i en metode - returner den komponenten som matcher i type, navn og beskrivelse, og
+        // legg til den prisen som stemmer med databasen
+        Component tempComponent = new Component(type, name, description, price);
+        double priceState =
+                ComponentValidator.checkPriceAgainstDatabaseReturnComponent(tempComponent);
+        if (priceState > 0) {
+            //pris er feil - pricestate har riktig pris.
+            Dialog.showErrorDialog("prisen på" + tempComponent.getProductName() +" stemmer ikke med databasen, vi " +
+                    "endrer den til den riktige prisen");
+            return new Component(type, name, description, priceState);
+            //legg til dialog her evt.
+        }
+        if (priceState == -2.00) {
+            //ingenting stemmer
+            Dialog.showErrorDialog(tempComponent.getProductName() + " fins ikke i databasen vår, og blir dermed ikke " +
+                    "lagt til i listen");
+            return new Component(null, null, null, 0.00);
+        }
+        //double price = doubleStringConverter.stringTilDouble(split[3]);
+
+        //alt stemmer.
+        return new Component(type, name, description, price);
     }
 
 

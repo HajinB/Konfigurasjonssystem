@@ -5,7 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerTxt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerTxt.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -250,20 +251,6 @@
       <workItem from="1587914502778" duration="16438000" />
       <workItem from="1587981629385" duration="47055000" />
       <workItem from="1588112198159" duration="1177000" />
-    </task>
-    <task id="LOCAL-00011" summary="Oppsett for autosave - men har bugs..">
-      <created>1585927503934</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1585927503934</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Oppsett for autosave - men har bugs..">
-      <created>1585931396084</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1585931396084</updated>
     </task>
     <task id="LOCAL−00013" summary="Testing User">
       <created>1585939827004</created>
@@ -589,7 +576,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588165430584</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="inputvalidering">
+      <created>1588166905242</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1588166905242</updated>
+    </task>
+    <task id="LOCAL-00061" summary="inputvalidering">
+      <created>1588166914057</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1588166914057</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -624,7 +625,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="To nye FXML filer for tabs og tilhørende controllers. En ny controller: MainController" />
     <MESSAGE value="prøver å legge til til computer/listview fra enduser (må få opp test av IO fra enduser asap)" />
     <MESSAGE value="fixed repeated opening - en del debugging messages :P - føler det som gjenstår på superbruker page er noen bugs i SØK / backspace fungerer ikke xD + open recent files er ikke implementert enda." />
     <MESSAGE value="open recent files skal fungere - men skjønte etterpå at den egentlig burde vært plassert i main controller - bør dn ligge i menu bar istedet?" />
@@ -649,7 +649,8 @@
     <MESSAGE value="dobbeltklikk på completedComputers -&gt; åpne valgt computer i listview" />
     <MESSAGE value="manglet transient foran alle felt i user" />
     <MESSAGE value="liten refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="liten refactor" />
+    <MESSAGE value="inputvalidering" />
+    <option name="LAST_COMMIT_MESSAGE" value="inputvalidering" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1587242454320" />
