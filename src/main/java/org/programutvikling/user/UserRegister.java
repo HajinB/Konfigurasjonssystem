@@ -2,8 +2,6 @@ package org.programutvikling.user;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.programutvikling.computer.Computer;
-import org.programutvikling.gui.ContextModel;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -4,13 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentTypes;
 import org.programutvikling.gui.customTextField.PriceField;
-import org.programutvikling.gui.utility.TemporaryComponent;
+import org.programutvikling.Model.TemporaryComponent;
 
 import java.net.URL;
 import java.util.List;

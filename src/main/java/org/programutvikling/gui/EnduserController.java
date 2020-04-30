@@ -2,7 +2,6 @@ package org.programutvikling.gui;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,6 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.App;
+import org.programutvikling.Model.Model;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.io.FileOpenerTxt;
 import org.programutvikling.computer.Computer;
@@ -211,6 +211,7 @@ public class EnduserController extends TabComponentsController {
                     }
                 };
 
+
         processorPriceCln.setCellFactory(priceCellFactory);
         videoCardPriceCln.setCellFactory(priceCellFactory);
         screenPriceCln.setCellFactory(priceCellFactory);
@@ -224,13 +225,13 @@ public class EnduserController extends TabComponentsController {
 
     }
     private void updateCompletedComputers() {
-        if (ContextModel.INSTANCE.getComputerRegister().getObservableRegister().size() > 0)
-            tblCompletedComputers.setItems(ContextModel.INSTANCE.getComputerRegister().getObservableRegister());
+        if (Model.INSTANCE.getComputerRegister().getObservableRegister().size() > 0)
+            tblCompletedComputers.setItems(Model.INSTANCE.getComputerRegister().getObservableRegister());
     }
 
     private void updateList() {
         updateTotalPrice();
-        tblCompletedComputers.setItems(ContextModel.INSTANCE.getComputerRegister().getObservableRegister());
+        tblCompletedComputers.setItems(Model.INSTANCE.getComputerRegister().getObservableRegister());
         setTblProcessor(tblProcessor);
         setTblVideoCard(tblVideoCard);
         setTblScreen(tblScreen);
@@ -254,7 +255,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     Computer getComputer() {
-        return ContextModel.INSTANCE.getComputer();
+        return Model.INSTANCE.getComputer();
     }
 
     private void addComponentToCart(TableView<Component> tbl) {

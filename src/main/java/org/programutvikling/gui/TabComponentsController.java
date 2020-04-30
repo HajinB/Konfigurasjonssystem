@@ -6,6 +6,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,6 +24,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
+import org.programutvikling.Model.Model;
+import org.programutvikling.Model.TemporaryComponent;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
@@ -36,7 +39,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class TabComponentsController {
-    final Tooltip tooltip = new Tooltip("Dobbeltklikk en rad for å redigere");
+    final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
 
 
     @FXML
@@ -69,7 +72,9 @@ public class TabComponentsController {
     @FXML
     public void initialize() throws IOException {
         System.out.println("hei fra init tabcomponents");
-        FileUtility.populateRecentFiles();
+        Task<Boolean> task = ThreadHandler.getTask();
+        ThreadHandler.loadInThread(task);
+        //FileUtility.populateRecentFiles(); blir kjørt i loadInThread()
         initChoiceBoxes();
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
         threadHandler = new ThreadHandler(this);
@@ -134,10 +139,10 @@ public class TabComponentsController {
                 if (isDoubleClick(event)) {
                     Node node = ((Node) event.getTarget()).getParent();
                     if (node instanceof TableRow) {
-                        row = (TableRow<? extends Component>) node;
+                        row = (TableRow<Component>) node;
                     } else {
                         //hvis man trykker på tekst
-                        row = (TableRow<? extends Component>) node.getParent();
+                        row = (TableRow<Component>) node.getParent();
                     }
                     try {
                         openEditWindow(row);
@@ -259,7 +264,7 @@ public class TabComponentsController {
         //button.get(0) == legg til
         if(alert.getResult() == alert.getButtonTypes().get(0)){
             openThread(chosenFile);
-            ContextModel.INSTANCE.appendComponentRegisterIntoModel();
+            Model.INSTANCE.appendComponentRegisterIntoModel();
             //getComponentRegister().removeDuplicates();
             refreshTableAndSave();
         }
@@ -267,7 +272,7 @@ public class TabComponentsController {
 
     public void overwriteList(String chosenFile) throws IOException {
         openThread(chosenFile);
-        ContextModel.INSTANCE.loadComponentRegisterIntoModel();
+        Model.INSTANCE.loadComponentRegisterIntoModel();
         refreshTableAndSave();
     }
 
@@ -302,7 +307,7 @@ public class TabComponentsController {
     }
 
     private ComponentRegister getComponentRegister() {
-        return ContextModel.INSTANCE.getComponentRegister();
+        return Model.INSTANCE.getComponentRegister();
     }
 
     private void saveAll() throws IOException {
@@ -310,7 +315,7 @@ public class TabComponentsController {
     }
 
     private ObservableList<Component> getObservableRegister() {
-        return ContextModel.INSTANCE.getComponentRegister().getObservableRegister();
+        return Model.INSTANCE.getComponentRegister().getObservableRegister();
     }
 
     private void initChoiceBoxes() {
@@ -322,7 +327,7 @@ public class TabComponentsController {
     }
 
     private void updateRecentFiles() {
-        cbRecentFiles.setItems((ObservableList<String>) ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
+        cbRecentFiles.setItems((ObservableList<String>) Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
     }
 
     void refreshTableAndSave() throws IOException {

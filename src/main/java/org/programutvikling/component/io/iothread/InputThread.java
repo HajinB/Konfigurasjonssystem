@@ -5,8 +5,7 @@ import javafx.concurrent.Task;
 import java.util.ArrayList;
 
 
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.gui.ContextModel;
+import org.programutvikling.Model.Model;
 import org.programutvikling.gui.FileHandling;
 
 import static java.lang.Thread.sleep;
@@ -31,6 +30,6 @@ public class InputThread extends Task<ArrayList<Object>> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return FileHandling.openObjects(ContextModel.INSTANCE.getCleanObjectList(), filePath);
+        return FileHandling.openObjects(Model.INSTANCE.getCleanObjectList(), filePath);
     }
 }

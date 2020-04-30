@@ -1,8 +1,15 @@
 package org.programutvikling.gui;
 
+import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.scene.control.Alert;
+import org.programutvikling.App;
 import org.programutvikling.component.io.iothread.InputThread;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.FileUtility;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class ThreadHandler {
     TabComponentsController controller;
@@ -37,6 +44,44 @@ public class ThreadHandler {
         var e = event.getSource().getException();
         Dialog.showErrorDialog("Avviket sier: " + e.getMessage());
         controller.enableGUI();
+    }
+
+
+    static void loadInThread(Task<Boolean> task) {
+        Alert alert = Dialog.getLoadingDialog("Laster inn...");
+        task.setOnRunning((e) -> alert.showAndWait());
+        task.setOnSucceeded((e) -> {
+            alert.close();
+            try {
+                Boolean returnValue = task.get();
+            } catch (InterruptedException | ExecutionException ex) {
+                ex.printStackTrace();
+            }
+        });
+        task.setOnFailed((e) -> {
+            // eventual error handling by catching exceptions from task.get()
+        });
+        new Thread(task).start();
+    }
+
+    static Task<Boolean> getTask() {
+        return new Task<Boolean>() {
+            @Override public Boolean call() throws IOException, InterruptedException {
+                //her skjer actionen
+                Thread.sleep(2000);
+                //App.setRoot("secondary");
+                /** gjør tingen her: aka lad inn ting**/
+                FileUtility.populateRecentFiles();
+
+                return true;
+            }
+            @Override
+            protected void succeeded() {
+                // one hook - overriding
+                super.succeeded();
+                System.out.println("Succeded");
+            }
+        };
     }
 
 }

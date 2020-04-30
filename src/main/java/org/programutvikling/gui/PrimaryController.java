@@ -14,8 +14,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import org.programutvikling.App;
+import org.programutvikling.Model.Model;
 import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.User;
 
 //https://ducmanhphan.github.io/2019-10-17-Creating-JavaFX-project-with-Maven/
@@ -34,49 +34,15 @@ public class PrimaryController implements Initializable {
     void btnGuest(ActionEvent event) throws IOException {
 // here runs the JavaFX thread
 // Boolean as generic parameter since you want to return it
-       /* Task<Boolean> task = getTask();
-        loadInThread(task);*/
+
         App.setRoot("secondary");
     }
 
-    private void loadInThread(Task<Boolean> task) {
-        Alert alert = Dialog.getLoadingDialog("Laster inn...");
-        task.setOnRunning((e) -> alert.showAndWait());
-        task.setOnSucceeded((e) -> {
-            alert.close();
-            try {
-                Boolean returnValue = task.get();
-            } catch (InterruptedException | ExecutionException ex) {
-                ex.printStackTrace();
-            }
-        });
-        task.setOnFailed((e) -> {
-            // eventual error handling by catching exceptions from task.get()
-        });
-        new Thread(task).start();
-    }
-
-    private Task<Boolean> getTask() {
-        return new Task<Boolean>() {
-                @Override public Boolean call() throws IOException, InterruptedException {
-                   //her skjer actionen
-                    Thread.sleep(2000);
-                    App.setRoot("secondary");
-                    return true;
-                }
-                @Override
-                protected void succeeded() {
-                    // one hook - overriding
-                    super.succeeded();
-                    System.out.println("Succeded");
-                }
-            };
-    }
 
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
-        User loginUser = ContextModel.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),inputPassword.getText());
+        User loginUser = Model.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),inputPassword.getText());
         if(loginUser != null){
             if(loginUser.getAdmin()) {
                 App.setRoot("secondary");
@@ -100,7 +66,7 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //loadRegisterFromFile();
-        ContextModel.INSTANCE.getUserRegister();
+        Model.INSTANCE.getUserRegister();
     }
 
 
@@ -108,8 +74,8 @@ public class PrimaryController implements Initializable {
         File file = new File(String.valueOf(fileHandling.getPathToUser()));
         String path = file.getAbsolutePath();
         if (file.exists()) {
-            FileHandling.openFile(ContextModel.INSTANCE.getCleanObjectList(), fileHandling.getPathToUser());
-            ContextModel.INSTANCE.loadObjectsIntoClasses();
+            FileHandling.openFile(Model.INSTANCE.getCleanObjectList(), fileHandling.getPathToUser());
+            Model.INSTANCE.loadObjectsIntoClasses();
         }
     }
 

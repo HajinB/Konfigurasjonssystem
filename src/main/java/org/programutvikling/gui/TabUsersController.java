@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import org.programutvikling.Model.Model;
 import org.programutvikling.user.User;
 import org.programutvikling.user.UserRegister;
 
@@ -59,7 +60,7 @@ public class TabUsersController implements Initializable {
     }
 
     public UserRegister getUserRegister(){
-        return ContextModel.INSTANCE.getUserRegister();
+        return Model.INSTANCE.getUserRegister();
     }
 
     @Override

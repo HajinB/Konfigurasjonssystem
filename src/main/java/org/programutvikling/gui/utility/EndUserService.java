@@ -1,7 +1,7 @@
 package org.programutvikling.gui.utility;
 
 import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.gui.ContextModel;
+import org.programutvikling.Model.Model;
 
 public class EndUserService {
     ComponentRegister cabinetRegister = new ComponentRegister();
@@ -67,7 +67,7 @@ public class EndUserService {
         clearRegisters(motherboardRegister, cabinetRegister, videoRegister, screenRegister, mouseRegister,
                 processorRegister, memoryRegister, hardDiscRegister, otherRegister, keyboardRegister);
         //kan lage en componentregisterList istedet? vil det redusere codespam?
-        ComponentRegister dataBaseRegister = ContextModel.INSTANCE.getComponentRegister();
+        ComponentRegister dataBaseRegister = Model.INSTANCE.getComponentRegister();
         motherboardRegister.getRegister().addAll(dataBaseRegister.filterByProductType("hovedkort"));
         cabinetRegister.getRegister().addAll(dataBaseRegister.filterByProductType("kabinett"));
         screenRegister.getRegister().addAll(dataBaseRegister.filterByProductType("skjerm"));

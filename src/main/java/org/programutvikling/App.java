@@ -66,7 +66,7 @@ public class App extends Application {
                 if (result.get() == alert.getButtonTypes().get(0)) {
                     Thread thread = new Thread(() -> {
                         try {
-                            fileHandling.saveAll();
+                            FileHandling.saveAll();
                             System.exit(0);
                         } catch (IOException e) {
                             e.printStackTrace();

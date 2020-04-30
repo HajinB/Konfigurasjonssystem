@@ -1,6 +1,6 @@
 package org.programutvikling.component;
 
-import org.programutvikling.gui.ContextModel;
+import org.programutvikling.Model.Model;
 
 public class ComponentValidator {
 
@@ -8,6 +8,7 @@ public class ComponentValidator {
         //return true;
         return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductPriceValid(component.getProductPrice());
     }
+
     public static Component isComponentInRegisterThenReturnIt(Component component, ComponentRegister register){
         for(Component c: register.getRegister()){
             if(isPrimaryKeyAMatch(c, component)){
@@ -32,7 +33,7 @@ public class ComponentValidator {
     }
 
     public static boolean doesPriceMatchDatabase(Component component) {
-        for (Component c : ContextModel.INSTANCE.getComponentRegister().getRegister()) {
+        for (Component c : Model.INSTANCE.getComponentRegister().getRegister()) {
             if (isPrimaryKeyAMatch(component, c)) {
                 if (c.getProductPrice() == component.getProductPrice()) {
                     return true;
@@ -83,7 +84,7 @@ public class ComponentValidator {
     // funnet "feil pris" hele tiden.
     public static double checkPriceAgainstDatabaseGetPrice(Component inputComponent) {
         //sjekker input opp i mot det som nå ligger i minne/databasen.
-        for (Component c : ContextModel.INSTANCE.getComponentRegister().getRegister()) {
+        for (Component c : Model.INSTANCE.getComponentRegister().getRegister()) {
             if (isPrimaryKeyAMatch(inputComponent, c)) {
                 //hvis match på produkt - sjekk om prisen stemmer
                 if (c.getProductPrice() != inputComponent.getProductPrice()) {

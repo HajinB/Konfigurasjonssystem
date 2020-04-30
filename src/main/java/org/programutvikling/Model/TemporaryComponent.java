@@ -1,4 +1,4 @@
-package org.programutvikling.gui.utility;
+package org.programutvikling.Model;
 
 import org.programutvikling.component.Component;
 

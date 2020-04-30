@@ -1,7 +1,6 @@
 package org.programutvikling.gui.utility;
 
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.programutvikling.component.ComponentRegister;
@@ -11,7 +10,7 @@ import org.programutvikling.component.io.OpenerFactory;
 import org.programutvikling.component.io.SaverFactory;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
-import org.programutvikling.gui.ContextModel;
+import org.programutvikling.Model.Model;
 import org.programutvikling.gui.SavedPathRegister;
 import org.programutvikling.user.UserRegister;
 
@@ -22,7 +21,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -111,11 +109,11 @@ public class FileUtility {
 
         ArrayList<Object> objects = new ArrayList<>();
 
-        objects.add(ContextModel.INSTANCE.getComponentRegister());
-        objects.add(ContextModel.INSTANCE.getComputerRegister());
-        objects.add(ContextModel.INSTANCE.getSavedPathRegister());
-        objects.add(ContextModel.INSTANCE.getComputer());
-        objects.add(ContextModel.INSTANCE.getUserRegister());
+        objects.add(Model.INSTANCE.getComponentRegister());
+        objects.add(Model.INSTANCE.getComputerRegister());
+        objects.add(Model.INSTANCE.getSavedPathRegister());
+        objects.add(Model.INSTANCE.getComputer());
+        objects.add(Model.INSTANCE.getUserRegister());
         //
         return objects;
     }
@@ -146,7 +144,7 @@ public class FileUtility {
      */
     public static void populateRecentFiles() {
         //todo kanskje skriv getStringPathToMostRecentSavedFile altså slik at den søker gjennom der brukeren lagret sist
-        String pathToUser = ContextModel.INSTANCE.getUserPreferences().getStringPathToUser();
+        String pathToUser = Model.INSTANCE.getUserPreferences().getStringPathToUser();
         if (doesFileExist(pathToUser)) {
             try (Stream<Path> walk = Files.walk(Paths.get(pathToUser))) {
                 List<String> result = walk.filter(Files::isRegularFile)
@@ -169,7 +167,7 @@ public class FileUtility {
     }
 
     private static ObservableList<String> getListOfSavedFilePaths() {
-        return ContextModel.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths();
+        return Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths();
     }
 
     public static boolean doesFileExist(String toString) {

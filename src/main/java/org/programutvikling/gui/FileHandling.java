@@ -1,6 +1,7 @@
 package org.programutvikling.gui;
 
 import javafx.stage.Stage;
+import org.programutvikling.Model.Model;
 import org.programutvikling.component.io.FileOpener;
 import org.programutvikling.component.io.FileSaver;
 import org.programutvikling.component.io.FileSaverTxt;
@@ -41,8 +42,8 @@ public class FileHandling {
             return;
         }
         Path path = Paths.get(chosenPath);
-        ArrayList<Object> objectsToSave = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                null, ContextModel.INSTANCE.getSavedPathRegister(), null, null);
+        ArrayList<Object> objectsToSave = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
+                null, Model.INSTANCE.getSavedPathRegister(), null, null);
         //todo kanskje det er skummelt å sette null inn i objectlisten noen ganger (?)
         System.out.println("Dette prøver man å lagre:" + objectsToSave);
         Path pathAppend = Paths.get(String.valueOf(path));
@@ -55,7 +56,7 @@ public class FileHandling {
             saver = FileUtility.getFileSaver(directoryPath.toString());
 
             //kanskje man skal legge til savedpathregister et annet sted?
-            ContextModel.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(directoryPath.toString());
+            Model.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(directoryPath.toString());
             tryToSave(objectsToSave, directoryPath, saver);
         }
     }
@@ -77,7 +78,7 @@ public class FileHandling {
         }
     }
 
-    static void openFile(ArrayList<Object> objects, String selectedPath) {
+    public static void openFile(ArrayList<Object> objects, String selectedPath) {
         openObjects(objects, selectedPath);
     }
 
@@ -112,9 +113,9 @@ public class FileHandling {
     public static void saveAll() throws IOException {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
 
-        ArrayList<Object> objects = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
-                ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister(),
-                ContextModel.INSTANCE.getComputer(), ContextModel.INSTANCE.getUserRegister());
+        ArrayList<Object> objects = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
+                Model.INSTANCE.getComputerRegister(), Model.INSTANCE.getSavedPathRegister(),
+                Model.INSTANCE.getComputer(), Model.INSTANCE.getUserRegister());
 /*
         System.out.println("computer : " + ContextModel.INSTANCE.getComputer());
         System.out.println("user reg :" + ContextModel.INSTANCE.getUserRegister());
@@ -129,7 +130,7 @@ public class FileHandling {
     }
 
     static Computer getComputer(){
-        return ContextModel.INSTANCE.getComputer();
+        return Model.INSTANCE.getComputer();
     }
 
     public static boolean validateCartListToSave(List<String> whatsMissing, Stage stage) throws IOException {
@@ -153,7 +154,7 @@ public class FileHandling {
         String name = FileUtility.getNameFromFilePath(file);
         Computer computer = computerFactory.computerFactory(getComputer().getComponentRegister(), name);
 
-        ContextModel.INSTANCE.getComputerRegister().addComputer(computer);
+        Model.INSTANCE.getComputerRegister().addComputer(computer);
         saveAll();
         return false;
     }

@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Component implements Serializable, ItemUsable {
+public class Component implements Serializable, ItemUsable, Comparable<Component> {
     private transient ComponentTypes componentTypes = new ComponentTypes();
     private transient static final long serialVersionUID = 1;
 
@@ -167,6 +167,17 @@ public class Component implements Serializable, ItemUsable {
         }else{
             throw new InvalidComponentFormatException("Komponent er i ikke gyldig format");
         }
+    }
+
+
+    @Override
+    public int compareTo(Component cIn) {
+        String name1 = cIn.getProductName();
+        String name2 = this.getProductName();
+        if ((name1.compareTo(name2)) >0
+                && cIn.getProductType().compareTo(this.getProductType())>0
+        && cIn.getProductDescription().compareTo(this.getProductDescription())>0) return 1;
+        else return 0;
     }
 
 

@@ -3,6 +3,7 @@ package org.programutvikling.component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
+import org.programutvikling.gui.utility.RegisterUtility;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -147,17 +148,7 @@ public class ComponentRegister implements Serializable {
     }
 
     public void removeDuplicates() {
-
-        /** denne fungerer ikke helt som den skal. - den sjekker bare sistnevnte elns? CheckIfExists Til computer ???
-         *  bør ikke den computervalidator metoden funke her? altså den som har primarykey ?
-         *  **/
-        System.out.println(getRegister().size());
-        HashSet<Object> seen = new HashSet<>();
-        getRegister().removeIf(e -> (!seen.add(e.getProductName())
-                && (!seen.add(e.getProductType()))
-                && (!seen.add(e.getProductType()))));
-        //List<Component> list = seen;
-        System.out.println(getRegister().size());
+        RegisterUtility.removeDuplicates(componentObservableList);
     }
 
 

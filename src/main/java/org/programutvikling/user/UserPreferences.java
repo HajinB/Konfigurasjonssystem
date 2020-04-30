@@ -4,11 +4,13 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
-
+import static java.nio.file.Files.*;
 
 public class UserPreferences {
 
@@ -22,38 +24,55 @@ public class UserPreferences {
     //altså hvis setpreference via en button blir kjørt, er default det som blir instansiert i konstruktøren
     public UserPreferences(String pathToUser){
 
-        this.pathToUser=prefs.get("userdirectory", "FileDirectory/Database/AppData.jobj");
+        this.pathToUser=prefs.get("userdirectory", "AppFiles/Database/AppData.jobj");
     }
 
     public void clearPreferences() throws BackingStoreException {
-       // prefs.clear();
+        prefs.clear();
         prefs.remove("userdirectory");
+
     }
 
-    public void setPreference(Stage stage){
+    public void setPreference(Stage stage) throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(stage);
-        if(selectedDirectory==null){
+        //selectedDirectory.getParentFile().mkdirs();
+        Path tempPath = Files.createTempDirectory("test");
+        Path dirToCreate = tempPath.resolve("test1");
+        System.out.println("dir to create: " + dirToCreate);
+        System.out.println("dir exits: " + Files.exists(dirToCreate));
+        //creating directory
+        Path directory = Files.createDirectory(dirToCreate);
+        System.out.println("directory created: " + directory);
+        System.out.println("dir created exits: " + Files.exists(directory));
+        if(!selectedDirectory.exists()){
+            try {
+                clearPreferences();
+            } catch (BackingStoreException e) {
+                e.printStackTrace();
+            }
             return;
         }
         System.out.println(selectedDirectory.getAbsolutePath());
         //setter nøkkelverdien brukeren velger med choosedirectory
-        prefs.put("userdirectory", String.valueOf(selectedDirectory.getAbsolutePath())+"/Database/AppData.jobj");
+        prefs.put("userdirectory", String.valueOf(selectedDirectory.getAbsolutePath())+"/AppFiles/Database" +
+                "/AppData.jobj");
 
         //henter ut faktisk path og navn til appdata.jobj
-        Path defaultPath = Paths.get(("FileDirectory/Database/AppData.jobj"));
+        Path defaultPath = Paths.get(("AppFiles/Database/AppData.jobj"));
+
 
         //henter denne cachen
-        pathToUser = prefs.get("userdirectory", "FileDirectory");
+        pathToUser = prefs.get("userdirectory", "/AppFiles/Database/AppData.jobj");
         System.out.println(pathToUser);
-       // this.pathToUser=prefs.get("userdirectory", "FileDirectory/Components/AppData.jobj");
+       // this.pathToUser=prefs.get("userdirectory", "AppFiles/Components/AppData.jobj");
 
         //preferences lagrer par med verdier, en key og en verdi. - i get setter man en default, hvis man ikke finner
         // nøkkelen..
     }
 
     public String getStringPathToUser() {
-        return prefs.get("userdirectory", "FileDirectory/Database/AppData.jobj");
+        return prefs.get("userdirectory", "AppFiles/Database/AppData.jobj");
 
     }
 

@@ -2,7 +2,7 @@ package org.programutvikling.computer;
 
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentTypes;
-import org.programutvikling.gui.ContextModel;
+import org.programutvikling.Model.Model;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class ComputerValidator {
     }
 
     static Computer getCurrentComputer() {
-        return ContextModel.INSTANCE.getComputer();
+        return Model.INSTANCE.getComputer();
     }
 
     //sjekker om handlekurven er full for valgt type

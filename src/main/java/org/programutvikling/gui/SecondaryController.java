@@ -10,11 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.programutvikling.App;
+import org.programutvikling.Model.Model;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.user.UserPreferences;
 
 import java.io.IOException;
 import java.net.URL;
@@ -74,19 +74,24 @@ public class SecondaryController implements Initializable {
     }
 
     private ComponentRegister getComponentRegister() {
-        return ContextModel.INSTANCE.getComponentRegister();
+        return Model.INSTANCE.getComponentRegister();
     }
 
     @FXML
     void btnSetDirectory(ActionEvent event) {
-        fileHandling.getUserPreferences().setPreference(stage);
+        try {
+            fileHandling.getUserPreferences().setPreference(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("Ny directory path: " + fileHandling.getUserPreferences().getStringPathToUser());
     }
 
     public void btnRemoveDuplicates(ActionEvent event) throws IOException {
-        ObservableList<Component> list  = (ObservableList<Component>) ContextModel.INSTANCE.getComponentRegister().getRegister();
-        ContextModel.INSTANCE.getComponentRegister().removeDuplicates();
+        ObservableList<Component> list  = (ObservableList<Component>) Model.INSTANCE.getComponentRegister().getRegister();
+        Model.INSTANCE.getComponentRegister().removeDuplicates();
         tabComponentsController.updateView();
+        tabComponentsController.refreshTableAndSave();
     }
 
     @Override

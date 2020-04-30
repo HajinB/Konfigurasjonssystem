@@ -1,8 +1,10 @@
-package org.programutvikling.gui;
+package org.programutvikling.Model;
 
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.gui.FileHandling;
+import org.programutvikling.gui.SavedPathRegister;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.User;
 import org.programutvikling.user.UserPreferences;
@@ -10,37 +12,44 @@ import org.programutvikling.user.UserRegister;
 
 import java.util.ArrayList;
 import java.util.prefs.BackingStoreException;
-
-public enum ContextModel {
+//singleton som holder data fra fil - slik at samme data kan aksesses fra flere controllere.
+public enum Model {
     INSTANCE;
-    //"Singletons are useful to provide a unique source of data or functionality to other Java Objects."
-    //https://stackoverflow.com/questions/6059778/store-data-in-singleton-classes
-    //todo: ContextModel er en singleton som lagrer alle objekter, som skal være mulig å aksesse fra alle controllers
-    // - altså det er innom denne classen (som er oprettet EN gang, og bare en gang) -
+
     private SavedPathRegister savedPathRegister = new SavedPathRegister();
     private ComponentRegister componentRegister = new ComponentRegister();
     private ComputerRegister computerRegister = new ComputerRegister();
     private Computer computer = new Computer("current");
-
     //temporary master list - som har alle objekter fra fil.
     private ArrayList<Object> objects = new ArrayList<>();
-
     private UserPreferences userPreferences = new UserPreferences("FileDirectory/Database/AppData.jobj");
     private UserRegister userRegister = new UserRegister();
 
-    private ContextModel(){
+    private Model(){
+        /*** test - alltid reset preferences
         try {
             userPreferences.clearPreferences();
         } catch (BackingStoreException e) {
             e.printStackTrace();
         }
+         */
         System.out.println("hi from model constructor" + userPreferences.getPathToUser().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
             addDefaultUsers();
             loadObjectsIntoClasses();
         } else {
-            System.out.println("ingen config fil ble funnet.");
+
+            System.out.println("ingen config fil ble funnet - tilbake til default.");
+            try {
+                userPreferences.clearPreferences();
+            } catch (BackingStoreException e) {
+                e.printStackTrace();
+            }
+            System.out.println(userPreferences.getStringPathToUser().toString());
+            FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
+            addDefaultUsers();
+            loadObjectsIntoClasses();
         }
     }
 

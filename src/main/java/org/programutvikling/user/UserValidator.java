@@ -10,7 +10,6 @@ public class UserValidator {
     public static final String EMAIL_VERIFICATION = "^[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*@[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*\\.[a-zæøåA-ZÆØÅ]{2,3}$";
     private static final String NORSK_PHONE_VERIFICATION = "^((0047)?|(\\+47)?|(47)?)\\d{8}$";
 
-
     static boolean username(String username) {
         return !username.isBlank() && username.matches(NO_SPACES);
     }
