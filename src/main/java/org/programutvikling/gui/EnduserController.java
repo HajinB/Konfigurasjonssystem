@@ -1,48 +1,45 @@
 package org.programutvikling.gui;
 
-import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.App;
 import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.io.FileOpenerTxt;
-import org.programutvikling.component.io.FileSaverTxt;
 import org.programutvikling.computer.Computer;
-import org.programutvikling.computer.ComputerFactory;
 import org.programutvikling.computer.ComputerValidator;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.EndUserService;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.gui.utility.TemporaryComponent;
-import org.programutvikling.user.UserPreferences;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+
+import static javafx.application.Platform.runLater;
 
 
 public class EnduserController extends TabComponentsController {
-
+    @FXML
+    public BorderPane topLevelPaneEndUser;
+    Tooltip tooltipEndUser = new Tooltip("Dobbeltklikk en rad for å legge til i handlekurven");
     EndUserService endUserService = new EndUserService();
     Stage stage;
     ComputerValidator computerValidator = new ComputerValidator();
@@ -50,11 +47,11 @@ public class EnduserController extends TabComponentsController {
     TableView<Computer> tblCompletedComputers;
     @FXML
     TableColumn computerPriceCln;
-    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Database/AppData.jobj");
-    @FXML
-    private ListView<Component> shoppingListView;
+    ArrayList<TableView<Component>> tblViewList = new ArrayList<>();
     @FXML
     private Label lblTotalPrice;
+    @FXML
+    private ListView<Component> shoppingListView;
     @FXML
     private TableView<Component>
             tblProcessor, tblVideoCard, tblScreen,
@@ -66,8 +63,8 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     public void initialize() throws IOException {
+        addTableViewsToList();
         endUserService.updateEndUserRegisters();
-        //loadElementsFromFile();
         updateComponentViews();
         updateList();
         updateComputerListView();
@@ -75,27 +72,81 @@ public class EnduserController extends TabComponentsController {
         setCellFactoryListView();
         setTblCompletedComputersListener();
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
-        tblScreen.setOnMousePressed(new EventHandler<MouseEvent>() {
+        setDblClickEvent();
+        ObjectProperty<TableRow<Component>> lastSelectedRow = new SimpleObjectProperty<>();
+        //Component lastSelectedComponent
+
+        setListenerToClearSelection(lastSelectedRow);
+    }
+
+    private void setListenerToClearSelection(ObjectProperty<TableRow<Component>> lastSelectedRow) {
+        for (TableView<Component> t : tblViewList) {
+            t.setRowFactory(tableView -> {
+                TableRow<Component> row = new TableRow<Component>();
+
+                row.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
+                    if (isNowSelected) {
+                        lastSelectedRow.set(row);
+                    }
+                });
+                return row;
+            });
+        }
+
+        this.topLevelPaneEndUser.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                tblCompletedComputers.getSelectionModel().setCellSelectionEnabled(false);
+                if (lastSelectedRow.get() != null) {
+                    Bounds boundsOfSelectedRow = lastSelectedRow.get().localToScene(lastSelectedRow.get().getLayoutBounds());
+                    if (!boundsOfSelectedRow.contains(event.getSceneX(), event.getSceneY())) {
+                        for (TableView<Component> t : tblViewList) {
+                            t.getSelectionModel().clearSelection();
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    private void addTableViewsToList() {
+        tblViewList.add(tblProcessor);
+        tblViewList.add(tblVideoCard);
+        tblViewList.add(tblScreen);
+        tblViewList.add(tblOther);
+        tblViewList.add(tblMemory);
+        tblViewList.add(tblMouse);
+        tblViewList.add(tblMotherBoard);
+        tblViewList.add(tblCabinet);
+        tblViewList.add(tblHardDisc);
+        tblViewList.add(tblKeyboard);
+    }
+
+    private void setDblClickEvent() {
+
+        EventHandler<MouseEvent> tblViewDblClickEvent = new EventHandler<>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
                 TableRow row;
-                if (isDoubleClick(event)) {
-                    Node node = ((Node) event.getTarget()).getParent();
+                if (isDoubleClick(mouseEvent)) {
+                    Node node = ((Node) mouseEvent.getTarget()).getParent();
                     if (node instanceof TableRow) {
                         row = (TableRow) node;
                     } else {
                         //hvis man trykker på noe inne i cellen.
                         row = (TableRow) node.getParent();
                     }
-
                     Component c = (Component) row.getItem();
                     addComponentToComputer(c);
+                    clearSelection();
                 }
             }
-        });
-    }
+        };
 
+        for (TableView<Component> t : tblViewList) {
+            t.setTooltip(tooltipEndUser);
+            t.setOnMousePressed(tblViewDblClickEvent);
+        }
+    }
 
 
     private void setTblCompletedComputersListener() {
@@ -104,6 +155,7 @@ public class EnduserController extends TabComponentsController {
         tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                //setCellSelectionEnabled er om man kan velge en enkelt celle eller en hel rad.
                 tblCompletedComputers.getSelectionModel().setCellSelectionEnabled(false);
                 TableRow row;
                 if (isDoubleClick(event)) {
@@ -122,10 +174,9 @@ public class EnduserController extends TabComponentsController {
                     }
                 }
             }
-
-
         });
     }
+
     private boolean isDoubleClick(MouseEvent event) {
         return event.isPrimaryButtonDown() && event.getClickCount() == 2;
     }
@@ -145,7 +196,6 @@ public class EnduserController extends TabComponentsController {
         stage.setScene(
                 new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
         );
-
         Computer c = (Computer) row.getItem();
         ComputerPopupController computerPopupController =
                 loader.<ComputerPopupController>getController();
@@ -162,6 +212,7 @@ public class EnduserController extends TabComponentsController {
                         return new PriceFormatCell();
                     }
                 };
+
         processorPriceCln.setCellFactory(priceCellFactory);
         videoCardPriceCln.setCellFactory(priceCellFactory);
         screenPriceCln.setCellFactory(priceCellFactory);
@@ -198,9 +249,6 @@ public class EnduserController extends TabComponentsController {
         setTblMouse(tblMouse);
         setTblHardDisc(tblHardDisc);
         setTblKeyboard(tblKeyboard);
-        //setTblAnnet(tblAnnet);
-        // setTblTastatur(tblTastatur);
-        //fortsett for alle her
     }
 
     @FXML
@@ -217,35 +265,15 @@ public class EnduserController extends TabComponentsController {
         return ContextModel.INSTANCE.getComputer();
     }
 
-    public void initItemFiles() {
-        //computerRegister.addComponent();
-    }
-
-
     private void addComponentToCart(TableView<Component> tbl) {
         Component selectedComp = tbl.getSelectionModel().getSelectedItem();
         /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
-        if (selectedComp != null) {
-            getComputer().addComponent(selectedComp);
-            updateComputerListView();
-        }
-        updateComputerListView();
-    }
 
-    private void replaceComponentInCart(String s, TableView<Component> tblProsessor) {
-        Component selectedComp = tblProsessor.getSelectionModel().getSelectedItem();
         if (selectedComp != null) {
-            /**FJERN EN AV DE AV DEN GITTE TYPEN - så legg til*/
-            /**evt legg til confirmation alert her*/
-            List<Component> list = getComputer().getComponentRegister().filterByProductType(s);
-            if (list.size() > 0) {
-                getComputer().getComponentRegister().getRegister().remove(list.get(0));
-            }
-            getComputer().addComponent(selectedComp);
+            addComponentToComputer(selectedComp);
             updateComputerListView();
         }
     }
-
 
     @FXML
     public void btnOpenComputer(ActionEvent event) throws IOException {
@@ -260,29 +288,9 @@ public class EnduserController extends TabComponentsController {
 
         List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
 
-        if (whatsMissing.size() > 0) {
-            /**Kan lage en bra tostring av whatsMissing - evt en utility method - FileUtility.*/
-            Dialog.showErrorDialog("Legg til " + whatsMissing.toString() + " for å " +
-                    "lagre");
-            return;
-        }
-        FileSaverTxt fileSaverTxt = new FileSaverTxt();
-        String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
-        if (path == null) {
-            return;
-        }
-
-        fileSaverTxt.save(getComputer(), Paths.get(path));
-        System.out.println(path);
-
-        File file = new File(path);
-        ComputerFactory computerFactory = new ComputerFactory();
-        String name = FileUtility.getNameFromFilePath(file);
-        Computer computer = computerFactory.computerFactory(getComputer().getComponentRegister(), name);
-        ContextModel.INSTANCE.getComputerRegister().addComputer(computer);
+        if (FileHandling.validateCartListToSave(whatsMissing, stage)) return;
         updateCompletedComputers();
     }
-
 
     private void setCellFactoryListView() {
         shoppingListView.setCellFactory(param -> new ListCell<Component>() {
@@ -292,7 +300,8 @@ public class EnduserController extends TabComponentsController {
                 if (empty || c == null || c.getProductName() == null) {
                     setText("");
                 } else {
-                    setText(c.getProductName() + "\n" + String.format("%.2f", c.getProductPrice()) + ",-");
+                    setText(c.getProductType() + "\n" + c.getProductName() + "\n" + String.format("%.2f", c.getProductPrice()) +
+                            ",-");
                     //Change listener implemented.
                     shoppingListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<?
                             extends Component> observable, Component oldValue, Component newValue) -> {
@@ -303,7 +312,6 @@ public class EnduserController extends TabComponentsController {
                         }
                     });
                 }
-
             }
         });
     }
@@ -327,11 +335,32 @@ public class EnduserController extends TabComponentsController {
     }
 
     void addComponentToComputer(Component component) {
-        if(true) // validering aka sjekk type også run liste-test
-        getComputer().addComponent(component);
-        updateComputerListView();
+        // validering aka sjekk type også run liste-test
+        if (ComputerValidator.isComponentValidForList(component)) {
+            getComputer().addComponent(component);
+            updateComputerListView();
+        } else {
+            Alert alert = Dialog.getConfirmationAlert("Erstatter komponent", "",
+                    "Handlekurven har allerede nok antall av typen " + component.getProductType() +
+                            " Vil du erstatte den som ligger i handlekurven?", "");
+            alert.showAndWait();
+            //trykker ja = replace
+            if (alert.getResult() == alert.getButtonTypes().get(0)) {
+                replaceFirstComponentByType(component.getProductType(), component);
+                //getComputer().addComponent(component);
+                updateComputerListView();
+            }
+        }
     }
 
+    public void replaceFirstComponentByType(String productType, Component component) {
+        for (Component c : getComputer().getComponentRegister().getRegister()) {
+            if (productType.equalsIgnoreCase(c.getProductType())) {
+                int index = getComputer().getComponentRegister().getRegister().indexOf(c);
+                getComputer().getComponentRegister().getRegister().set(index, component);
+            }
+        }
+    }
 
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
@@ -386,38 +415,9 @@ public class EnduserController extends TabComponentsController {
         tblScreen.setItems(endUserService.getScreenRegister().getObservableRegister());
     }
 
-
-    private void loadElementsFromFile() {
-        System.out.println("rett før load elements from file er det jobj?" + userPreferences.getStringPathToUser());
-        FileHandling.openSelectedComputerTxtFiles(ContextModel.INSTANCE.getCleanObjectList(), userPreferences.getStringPathToUser());
-    }
-
-
-    /*
-        public void setTblAnnet(TableView<Component> tblAnnet) {
-            tblAnnet.setItems(endUserService.getAnnetRegister().getObservableRegister());
-            this.tblAnnet = tblAnnet;
-        }
-    */
-    private ComponentRegister getComputerComponentRegister() {
-        //dette gir NPE fordi computer ikke er instansiert i contextmodel(?)
-        return getComputer().getComponentRegister();
-    }
-
-
     public void btnBuyComputer(ActionEvent event) {
 
     }
-
-    @FXML
-    void btnBuyProcessor(ActionEvent event) {
-        if (computerValidator.processorListValidator(getComputer())) {
-            addComponentToCart(tblProcessor);
-        } else {
-            replaceComponentInCart("prosessor", tblProcessor);
-        }
-    }
-
 
     public void btnDeleteFromCart(ActionEvent event) throws IOException {
         Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette", "Vil du slette ",
@@ -438,142 +438,58 @@ public class EnduserController extends TabComponentsController {
         updateComputerListView();
     }
 
-    //Fjerner forrige trykk på en rad i tblview. Problem: Du får ikke lagt til noe i handlekurven..
-    private void removeSelection (){
-        tblProcessor.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblProcessor.getSelectionModel().clearSelection();
-            }
-        });
-        tblMotherBoard.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblMotherBoard.getSelectionModel().clearSelection();
-            }
-        });
-        tblVideoCard.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblVideoCard.getSelectionModel().clearSelection();
-            }
-        });
-        tblScreen.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblScreen.getSelectionModel().clearSelection();
-            }
-        });
-        tblHardDisc.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblHardDisc.getSelectionModel().clearSelection();
-            }
-        });
-        tblMemory.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblMemory.getSelectionModel().clearSelection();
-            }
-        });
-        tblCabinet.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblCabinet.getSelectionModel().clearSelection();
-            }
-        });
-        tblMouse.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblMouse.getSelectionModel().clearSelection();
-            }
-        });
-        tblKeyboard.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblKeyboard.getSelectionModel().clearSelection();
-            }
-        });
-        tblOther.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblOther.getSelectionModel().clearSelection();
-            }
-        });
-        tblCompletedComputers.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
-                tblCompletedComputers.getSelectionModel().clearSelection();
-            }
-        });
-
-    }
     //Fjerner forrige valgte produkt etter at du har trykket #Legg i handlekurv
     public void clearSelection() {
-        Platform.runLater( ()-> {  tblProcessor.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblMotherBoard.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblMouse.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblMemory.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblHardDisc.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblScreen.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblVideoCard.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblOther.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblCompletedComputers.getSelectionModel().clearSelection();  });
-        Platform.runLater( ()-> {  tblCabinet.getSelectionModel().clearSelection();  });
-
+        runLater(() -> {
+            tblProcessor.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblMotherBoard.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblMouse.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblMemory.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblHardDisc.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblScreen.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblVideoCard.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblOther.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblCompletedComputers.getSelectionModel().clearSelection();
+        });
+        runLater(() -> {
+            tblCabinet.getSelectionModel().clearSelection();
+        });
     }
 
+    @FXML
     public void btnAddToCart(ActionEvent event) {
-        clearSelection();
+        boolean isSomethingSelected = false;
 
-        if (computerValidator.videoCardListValidator(getComputer()))
-            addComponentToCart(tblProcessor);
-        else {
-            replaceComponentInCart("prosessor", tblProcessor);
+        for (TableView<Component> t : tblViewList) {
+            if (!t.getSelectionModel().isEmpty()) {
+                addComponentToCart(t);
+                isSomethingSelected = true;
+            }
+        }
+        if (!isSomethingSelected) {
+            System.out.println("velg en rad for å legge til i handlekurven");
+            //sett en label her hvis det ikke er valgt noe.
+            //lblComponentMsg.setText("Velg en rad for å legge til i handlekurven");
         }
 
-        if (computerValidator.videoCardListValidator(getComputer()))
-            addComponentToCart(tblVideoCard);
-        else {
-            replaceComponentInCart("skjermkort", tblVideoCard);
-        }
-
-        if (computerValidator.screenListValidator(getComputer())) {
-            addComponentToCart(tblScreen);
-        } else {
-            replaceComponentInCart("skjerm", tblScreen);
-        }
-
-        if (computerValidator.memoryListValidator(getComputer())) {
-            addComponentToCart(tblMemory);
-        } else {
-            replaceComponentInCart("minne", tblMemory);
-        }
-
-        if (computerValidator.hardDiscListValidator(getComputer())) {
-            addComponentToCart(tblHardDisc);
-        } else {
-            replaceComponentInCart("harddisk", tblHardDisc);
-        }
-
-
-        if (computerValidator.cabinetListValidator(getComputer())) {
-            addComponentToCart(tblCabinet);
-        } else {
-            replaceComponentInCart("kabinett", tblCabinet);
-        }
-
-        if (computerValidator.keyboardListValidator(getComputer()))
-            addComponentToCart(tblKeyboard);
-        else {
-            replaceComponentInCart("tastatur", tblKeyboard);
-        }
-        if (computerValidator.mouseListValidator(getComputer()))
-            addComponentToCart(tblMouse);
-        else {
-            replaceComponentInCart("mus", tblMouse);
-        }
-
-        if (computerValidator.otherListValidator(getComputer()))
-            addComponentToCart(tblOther);
-        else {
-            replaceComponentInCart("annet", tblOther);
-        }
-
-        if (computerValidator.motherboardListValidator(getComputer()))
-            addComponentToCart(tblMotherBoard);
-        else {
-            replaceComponentInCart("hovedkort", tblMotherBoard);
-        }
+        clearSelection();  //?? why gjøre dette her
     }
+
 
 }

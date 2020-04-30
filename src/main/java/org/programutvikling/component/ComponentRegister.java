@@ -163,6 +163,8 @@ public class ComponentRegister implements Serializable {
         return list.size();
     }
 
+
+
 /*
     public ObservableList<Component> getObservableRegisterForListView() {
 

@@ -99,9 +99,6 @@ public class ComponentValidator {
 
 
 
-
-
-
 }
        /* isProductPriceMatchingAlreadySaved(ArrayList<Object> objects, String toBeSearched){
 

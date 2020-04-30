@@ -20,7 +20,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.EnduserController">
+<BorderPane fx:id="topLevelPaneEndUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="700.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.EnduserController">
     <left>
         <AnchorPane prefHeight="660.0" prefWidth="264.0" style="-fx-background-color: #ffffff;">
             <ListView fx:id="shoppingListView" layoutX="19.0" layoutY="42.0" prefHeight="243.0" prefWidth="226.0" styleClass="shopCart" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="18.599999999999994" AnchorPane.topAnchor="42.0" />

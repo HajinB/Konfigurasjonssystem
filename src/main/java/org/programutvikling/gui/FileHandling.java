@@ -1,18 +1,22 @@
 package org.programutvikling.gui;
 
+import javafx.stage.Stage;
 import org.programutvikling.component.io.FileOpener;
 import org.programutvikling.component.io.FileSaver;
 import org.programutvikling.component.io.FileSaverTxt;
 import org.programutvikling.computer.Computer;
+import org.programutvikling.computer.ComputerFactory;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.user.UserPreferences;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
 
@@ -105,23 +109,53 @@ public class FileHandling {
         return userPreferences.getStringPathToUser();
     }
 
-    public void saveAll() throws IOException {
+    public static void saveAll() throws IOException {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
 
         ArrayList<Object> objects = FileUtility.createObjectList(ContextModel.INSTANCE.getComponentRegister(),
                 ContextModel.INSTANCE.getComputerRegister(), ContextModel.INSTANCE.getSavedPathRegister(),
                 ContextModel.INSTANCE.getComputer(), ContextModel.INSTANCE.getUserRegister());
-
+/*
         System.out.println("computer : " + ContextModel.INSTANCE.getComputer());
         System.out.println("user reg :" + ContextModel.INSTANCE.getUserRegister());
 
-        System.out.println("lagrer alle disse objects:" + objects);
+        System.out.println("lagrer alle disse objects:" + objects);*/
         FileHandling.saveFileAuto(objects,
                 Paths.get(userPreferences.getStringPathToUser()));
     }
 
     public UserPreferences getUserPreferences() {
         return userPreferences;
+    }
+
+    static Computer getComputer(){
+        return ContextModel.INSTANCE.getComputer();
+    }
+
+    public static boolean validateCartListToSave(List<String> whatsMissing, Stage stage) throws IOException {
+        if (whatsMissing.size() > 0) {
+            /**Kan lage en bra tostring av whatsMissing - evt en utility method - FileUtility.toLabel(whatsMissing))*/
+            Dialog.showErrorDialog("Legg til " + whatsMissing.toString() + " for å " +
+                    "lagre");
+            return true;
+        }
+        FileSaverTxt fileSaverTxt = new FileSaverTxt();
+        String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
+        if (path == null) {
+            return true;
+        }
+        fileSaverTxt.save(getComputer(), Paths.get(path));
+        System.out.println(path);
+
+        //lager en ny computer av filepath = name, current computer = componentregister
+        File file = new File(path);
+        ComputerFactory computerFactory = new ComputerFactory();
+        String name = FileUtility.getNameFromFilePath(file);
+        Computer computer = computerFactory.computerFactory(getComputer().getComponentRegister(), name);
+
+        ContextModel.INSTANCE.getComputerRegister().addComputer(computer);
+        saveAll();
+        return false;
     }
 
 
