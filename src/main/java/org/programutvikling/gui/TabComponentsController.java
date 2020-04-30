@@ -26,6 +26,7 @@ import javafx.util.Callback;
 import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentTypes;
+import org.programutvikling.component.ComponentValidator;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.*;
@@ -46,7 +47,6 @@ public class TabComponentsController {
     AnchorPane topLevelPane;
     ComponentTypes componentTypes = new ComponentTypes();
     ThreadHandler threadHandler;
-    FileHandling fileHandling = new FileHandling();
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
     private Converter.DoubleStringConverter doubleStrConverter
@@ -215,12 +215,11 @@ public class TabComponentsController {
                 .filterByProductType(cbTypeFilter.getValue().toLowerCase()), componentSearch.getText());
     }
 
-
     @FXML
     void btnAddComponent(ActionEvent event) throws IOException {
         registerComponent();
         updateView();
-        fileHandling.saveAll();
+        FileHandling.saveAll();
     }
 
     @FXML
@@ -327,7 +326,7 @@ public class TabComponentsController {
     }
 
     private void saveAll() throws IOException {
-        fileHandling.saveAll();
+        FileHandling.saveAll();
     }
 
     private ObservableList<Component> getObservableRegister() {
@@ -349,7 +348,7 @@ public class TabComponentsController {
     void refreshTableAndSave() throws IOException {
         tblViewComponent.refresh();
         updateView();
-        fileHandling.saveAll();
+        FileHandling.saveAll();
     }
 
     public void updateView() {
@@ -363,8 +362,22 @@ public class TabComponentsController {
     }
 
     private void registerComponent() {
+
         Component newComponent = registryComponentLogic.createComponentsFromGUIInputIFields();
-        if (newComponent != null) {
+        Component possibleDuplicateComponentIfNotThenNull = ComponentValidator.isComponentInRegisterThenReturnIt(newComponent,
+                getComponentRegister());
+        System.out.println(possibleDuplicateComponentIfNotThenNull);
+        if(possibleDuplicateComponentIfNotThenNull!=null){
+            Alert alert = Dialog.getConfirmationAlert("Duplikat funnet", "", "Denne komponenten eksisterer allerede i" +
+                    " databasen, vil du erstatte med den gamle med  " + newComponent.getProductName(), "");
+            alert.showAndWait();
+            if(alert.getResult() == alert.getButtonTypes().get(0)){
+                int indexToReplace =
+                        getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
+                getComponentRegister().getRegister().set(indexToReplace, newComponent);
+            }
+        }
+        else{
             getComponentRegister().addComponent(newComponent);
             updateView();
         }

@@ -8,6 +8,14 @@ public class ComponentValidator {
         //return true;
         return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductPriceValid(component.getProductPrice());
     }
+    public static Component isComponentInRegisterThenReturnIt(Component component, ComponentRegister register){
+        for(Component c: register.getRegister()){
+            if(isPrimaryKeyAMatch(c, component)){
+                return c;
+            }
+        }
+        return null;
+    }
 
     static boolean isComponentValid(String type, String name, String description, double price) {
         //return true;
@@ -91,10 +99,10 @@ public class ComponentValidator {
         return -2.00;
     }
 
-   public static boolean isPrimaryKeyAMatch(Component tempComponent, Component c) {
-        return c.getProductName().equals(tempComponent.getProductName())
-                && c.getProductType().equals(tempComponent.getProductType())
-        && c.getProductDescription().equals(tempComponent.getProductDescription());
+   public static boolean isPrimaryKeyAMatch(Component c1, Component c2) {
+        return c2.getProductName().equals(c1.getProductName())
+                && c2.getProductType().equals(c1.getProductType())
+        && c2.getProductDescription().equals(c1.getProductDescription());
     }
 
 

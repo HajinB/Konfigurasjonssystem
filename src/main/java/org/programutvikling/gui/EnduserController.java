@@ -331,7 +331,6 @@ public class EnduserController extends TabComponentsController {
             //trykker ja = replace
             if (alert.getResult() == alert.getButtonTypes().get(0)) {
                 replaceFirstComponentByType(component.getProductType(), component);
-                //getComputer().addComponent(component);
                 updateComputerListView();
             }
         }
@@ -345,7 +344,6 @@ public class EnduserController extends TabComponentsController {
             }
         }
     }
-
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
      */
@@ -409,7 +407,7 @@ public class EnduserController extends TabComponentsController {
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             Component selectedComp = shoppingListView.getSelectionModel().getSelectedItem();
             deleteComponent(selectedComp);
-            fileHandling.saveAll();
+            FileHandling.saveAll();
         }
     }
 

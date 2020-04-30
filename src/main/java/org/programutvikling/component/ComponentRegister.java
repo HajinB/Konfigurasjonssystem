@@ -3,7 +3,6 @@ package org.programutvikling.component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
-import org.programutvikling.computer.Computer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -23,6 +22,10 @@ public class ComponentRegister implements Serializable {
         ArrayList<Component> nyListe = new ArrayList<>();
         nyListe.addAll(nonReadableList);
         return nyListe;
+    }
+
+    public boolean doesComponentAlreadyExist(Component newComponent) {
+        return ComponentValidator.isComponentInRegisterThenReturnIt(newComponent, this) !=null;
     }
 
     public ArrayList<Object> objectArrayListAdapter() {

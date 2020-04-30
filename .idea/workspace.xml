@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileDirectory/Database/AppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/FileDirectory/Database/AppData.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -249,14 +256,7 @@
       <workItem from="1587981629385" duration="47055000" />
       <workItem from="1588112198159" duration="1177000" />
       <workItem from="1588208308186" duration="7954000" />
-      <workItem from="1588248697996" duration="7355000" />
-    </task>
-    <task id="LOCAL-00018" summary="search on key press">
-      <created>1586701229453</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1586701229453</updated>
+      <workItem from="1588248697996" duration="9052000" />
     </task>
     <task id="LOCAL-00019" summary="search on key press">
       <created>1586707015411</created>
@@ -593,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588256674976</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="inputvalidering + clearselection listener">
+      <created>1588256835372</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1588256835373</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
