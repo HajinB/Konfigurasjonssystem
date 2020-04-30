@@ -295,26 +295,6 @@ public class TabComponentsController {
         }
     }
 
-    /**
-     * utility methods for controller
-     */
-
-
-
-/*
-    private void openEditWindow(TableRow row) throws IOException {
-        FXMLLoader loader = getFxmlLoader("editPopup.fxml");
-        Popup popup = new Popup();
-        Component c = (Component) row.getItem();
-        EditPopupController popupController =
-                loader.<EditPopupController>getController();
-        popupController.initData(c, stage);
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlfile));
-        popup.getContent().add((Parent)loader.load());
-       // popup.show();
-        //handlePopUp(stage, c);
-    }
-*/
     FXMLLoader getFxmlLoader(String fxml) throws IOException {
         FXMLGetter fxmlGetter = new FXMLGetter();
         FXMLLoader loader = fxmlGetter.getFxmlLoader(fxml);
