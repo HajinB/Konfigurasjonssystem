@@ -74,8 +74,6 @@ public class EnduserController extends TabComponentsController {
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
         setDblClickEvent();
         ObjectProperty<TableRow<Component>> lastSelectedRow = new SimpleObjectProperty<>();
-        //Component lastSelectedComponent
-
         setListenerToClearSelection(lastSelectedRow);
     }
 
@@ -141,8 +139,8 @@ public class EnduserController extends TabComponentsController {
                 }
             }
         };
-
         for (TableView<Component> t : tblViewList) {
+            //looper gjennom tableviews i tblviewlist for å legge til tooltip og eventhandler
             t.setTooltip(tooltipEndUser);
             t.setOnMousePressed(tblViewDblClickEvent);
         }
@@ -225,12 +223,6 @@ public class EnduserController extends TabComponentsController {
         keyboardPriceCln.setCellFactory(priceCellFactory);
 
     }
-
-    private double getPrice() {
-        //hvordan skal man få prisen i tableview?
-        return getComputer().calculatePrice();
-    }
-
     private void updateCompletedComputers() {
         if (ContextModel.INSTANCE.getComputerRegister().getObservableRegister().size() > 0)
             tblCompletedComputers.setItems(ContextModel.INSTANCE.getComputerRegister().getObservableRegister());
@@ -300,17 +292,9 @@ public class EnduserController extends TabComponentsController {
                 if (empty || c == null || c.getProductName() == null) {
                     setText("");
                 } else {
+                    //bruker cell factory for å sette toString i listviewen.
                     setText(c.getProductType() + "\n" + c.getProductName() + "\n" + String.format("%.2f", c.getProductPrice()) +
                             ",-");
-                    //Change listener implemented.
-                    shoppingListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<?
-                            extends Component> observable, Component oldValue, Component newValue) -> {
-                        if (shoppingListView.isFocused()) {
-                            //prøver å displaye hele componenten hvis selectedrow er targeted ( kan gjøres på samme
-                            // måte som tableview)
-                            //lblComponentMsg.setText(selectedProperty().toString());
-                        }
-                    });
                 }
             }
         });
@@ -413,10 +397,6 @@ public class EnduserController extends TabComponentsController {
     private void setTblScreen(TableView<Component> tblScreen) {
         this.tblScreen = tblScreen;
         tblScreen.setItems(endUserService.getScreenRegister().getObservableRegister());
-    }
-
-    public void btnBuyComputer(ActionEvent event) {
-
     }
 
     public void btnDeleteFromCart(ActionEvent event) throws IOException {
