@@ -6,7 +6,7 @@ import javafx.util.Callback;
 import org.programutvikling.computer.Computer;
 
 public class TotalPriceFormatCell <T> implements Callback<TableColumn<T, Computer>, TableCell<T, Computer>> {
-
+        //metode for å sette kalkulert verdi i en Listview
         @Override
         public TableCell<T, Computer> call(TableColumn<T, Computer> col) {
             return new TableCell<T, Computer>() {

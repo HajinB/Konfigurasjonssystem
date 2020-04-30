@@ -53,21 +53,17 @@ public class App extends Application {
     private void initOnExitHandler(Stage stage) {
         Platform.setImplicitExit(false);
 
-        // For catching program exit via OS native close button
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
                 Alert alert = Dialog.getConfirmationAlert("Avslutter..", "", "Vil du lagre endringene dine?", "");
                 Optional<ButtonType> result = alert.showAndWait();
-
                 //hvis avbryt blir trykket på
                 if (result.get() == alert.getButtonTypes().get(2)) {
-                    System.out.println("button type 2");
                     we.consume();
                     return;
                 }
 
                 if (result.get() == alert.getButtonTypes().get(0)) {
-                    System.out.println("Stage is closing - writing data to disk");
                     Thread thread = new Thread(() -> {
                         try {
                             fileHandling.saveAll();
@@ -75,8 +71,6 @@ public class App extends Application {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
-                        System.out.println("Save complete");
                     });
                     thread.run();
                 } else {

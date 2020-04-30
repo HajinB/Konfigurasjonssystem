@@ -6,6 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import org.programutvikling.component.Component;
 
+
+
 public class PriceFormatCell extends TableCell<Object, Double> {
 
     public PriceFormatCell() {

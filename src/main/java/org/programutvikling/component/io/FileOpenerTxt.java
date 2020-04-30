@@ -4,7 +4,6 @@ import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.component.ComponentValidator;
 import org.programutvikling.computer.Computer;
-import org.programutvikling.gui.ContextModel;
 import org.programutvikling.gui.utility.Dialog;
 
 import java.io.BufferedReader;
@@ -34,7 +33,8 @@ public class FileOpenerTxt implements FileOpener {
 
             ComponentRegister temp = new ComponentRegister();
 
-
+            //hopper over første linje
+            bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
                 //må man lage en metode som tar bort navn og description fra datamaskinen?
                 //første to feltene feks er Navn og pris - så kommer componentregisteret - bør første line være NAVN;
@@ -59,25 +59,22 @@ public class FileOpenerTxt implements FileOpener {
         if (split.length != 4) {
             throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
         }
-
         // extract all datafields from the string
         String type = split[0];
         String name = split[1];
         String description = split[2];
         double price = parseDouble(split[3], "pris må være et tall");
-
-
         //todo hvis man skal validere navn, type, beskrivelse, for å så bare endre pris til den som ligger i
         // databasen, kan man gjøre det her
 
         //altså bare valider alt i en metode - returner den komponenten som matcher i type, navn og beskrivelse, og
-        // legg til den prisen som stemmer med databasen
+        // legg til den prisen som stemmer med "databasen"
         Component tempComponent = new Component(type, name, description, price);
         double priceState =
-                ComponentValidator.checkPriceAgainstDatabaseReturnComponent(tempComponent);
+                ComponentValidator.checkPriceAgainstDatabaseGetPrice(tempComponent);
         if (priceState > 0) {
             //pris er feil - pricestate har riktig pris.
-            Dialog.showErrorDialog("prisen på" + tempComponent.getProductName() +" stemmer ikke med databasen, vi " +
+            Dialog.showErrorDialog("prisen på " + tempComponent.getProductName() +" stemmer ikke med databasen, vi " +
                     "endrer den til den riktige prisen");
             return new Component(type, name, description, priceState);
             //legg til dialog her evt.
@@ -88,12 +85,8 @@ public class FileOpenerTxt implements FileOpener {
                     "lagt til i listen");
             return new Component(null, null, null, 0.00);
         }
-        //double price = doubleStringConverter.stringTilDouble(split[3]);
-
-        //alt stemmer.
         return new Component(type, name, description, price);
     }
-
 
     private double parseDouble(String str, String errorMessage) throws IllegalArgumentException {
         double number;

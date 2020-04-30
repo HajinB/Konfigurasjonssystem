@@ -1,5 +1,4 @@
 org/programutvikling/gui/FileHandling.class
-org/programutvikling/gui/TabComponentsController$6.class
 org/programutvikling/gui/CustomPriceTableColumn/customListViewCellFactory.class
 org/programutvikling/gui/CustomPriceTableColumn/TotalPriceFormatCell.class
 org/programutvikling/computer/Saveable.class
@@ -24,6 +23,7 @@ org/programutvikling/computer/Computer.class
 org/programutvikling/gui/EnduserController.class
 org/programutvikling/gui/SecondaryController.class
 org/programutvikling/component/Saveable.class
+org/programutvikling/gui/RegistryComponentLogic$1.class
 org/programutvikling/App$1.class
 org/programutvikling/gui/EnduserController$1.class
 org/programutvikling/gui/utility/FileUtility.class

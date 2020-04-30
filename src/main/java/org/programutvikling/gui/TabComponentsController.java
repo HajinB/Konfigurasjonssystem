@@ -40,8 +40,6 @@ public class TabComponentsController {
 
     @FXML
     public Label lblComponentMsg;
-    @FXML
-    public TextArea productDescription;
 
     SecondaryController secondaryController;
     @FXML
@@ -257,9 +255,7 @@ public class TabComponentsController {
         }
         //button.get(1) == overskriv
         if (alert.getResult() == alert.getButtonTypes().get(1)) {
-            openThread(chosenFile);
-            ContextModel.INSTANCE.loadComponentRegisterIntoModel();
-            refreshTableAndSave();
+            overwriteList(chosenFile);
         }
         //button.get(0) == legg til
         if(alert.getResult() == alert.getButtonTypes().get(0)){
@@ -268,28 +264,12 @@ public class TabComponentsController {
             //getComponentRegister().removeDuplicates();
             refreshTableAndSave();
         }
+    }
 
-        /*
-        //button.get(2) == avbryt
-        if (alert.getResult() == alert.getButtonTypes().get(2)){
-            return;
-        }
-        //button.get(1) == overskriv
-        if (alert.getResult() == alert.getButtonTypes().get(1)) {
-            tabComponentsController.openThread(chosenFile);
-            ContextModel.INSTANCE.loadComponentRegisterIntoModel();
-            tabComponentsController.refreshTableAndSave();
-        }
-        //button.get(0) == legg til
-        if(alert.getResult() == alert.getButtonTypes().get(0)){
-            tabComponentsController.openThread(chosenFile);
-            ContextModel.INSTANCE.appendComponentRegisterIntoModel();
-            //kan ta bort duplikater her
-            //getComponentRegister().removeDuplicates();
-            tabComponentsController.refreshTableAndSave();
-        }
-        fileHandling.saveAll();
-        */
+    public void overwriteList(String chosenFile) throws IOException {
+        openThread(chosenFile);
+        ContextModel.INSTANCE.loadComponentRegisterIntoModel();
+        refreshTableAndSave();
     }
 
     private boolean isFileSelectionEmpty(String chosenFile) {
@@ -398,15 +378,6 @@ public class TabComponentsController {
         topLevelPane.setDisable(false);
     }
 
-    void openFileFromChooserWithThreadSleep() throws IOException {
-        String chosenFile = FileUtility.getFilePathFromOpenJobjDialog(stage);
-        if (chosenFile == null) {
-            return;
-        }
-
-        openThread(chosenFile);
-    }
-
     public void openThread(String chosenFile) {
         threadHandler.openInputThread(chosenFile);
     }
@@ -437,7 +408,6 @@ public class TabComponentsController {
 
     public void init(SecondaryController secondaryController) {
         this.secondaryController = secondaryController;
-
     }
 
     public void setResultLabelTimed(String s) {

@@ -50,7 +50,7 @@ public class EnduserController extends TabComponentsController {
     TableView<Computer> tblCompletedComputers;
     @FXML
     TableColumn computerPriceCln;
-    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppData.jobj");
+    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Database/AppData.jobj");
     @FXML
     private ListView<Component> shoppingListView;
     @FXML
@@ -75,28 +75,47 @@ public class EnduserController extends TabComponentsController {
         setCellFactoryListView();
         setTblCompletedComputersListener();
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
-        // removeSelection(); - Denne fjerner valgte rad npr du klikker et annet sted
-    }
-
-    private void setTblCompletedComputersListener() {
-        /**detecter tablerow, for å hente ut component*/
-        tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
+        tblScreen.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 tblCompletedComputers.getSelectionModel().setCellSelectionEnabled(false);
-
-                //tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
                 TableRow row;
-                TableColumn column;
                 if (isDoubleClick(event)) {
                     Node node = ((Node) event.getTarget()).getParent();
                     if (node instanceof TableRow) {
                         row = (TableRow) node;
                     } else {
-                        //hvis man trykker på tekst
+                        //hvis man trykker på noe inne i cellen.
+                        row = (TableRow) node.getParent();
+                    }
+
+                    Component c = (Component) row.getItem();
+                    addComponentToComputer(c);
+                }
+            }
+        });
+    }
+
+
+
+    private void setTblCompletedComputersListener() {
+        /**detecter tablerow, for å hente ut component*/
+        //skal åpne en fxml, og sende cell-content til initmetoden til controlleren til denne fxmln
+        tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                tblCompletedComputers.getSelectionModel().setCellSelectionEnabled(false);
+                TableRow row;
+                if (isDoubleClick(event)) {
+                    Node node = ((Node) event.getTarget()).getParent();
+                    if (node instanceof TableRow) {
+                        row = (TableRow) node;
+                    } else {
+                        //hvis man trykker på noe inne i cellen.
                         row = (TableRow) node.getParent();
                     }
                     try {
+                        //åpne
                         openDetailedView(row);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -104,10 +123,11 @@ public class EnduserController extends TabComponentsController {
                 }
             }
 
-            private boolean isDoubleClick(MouseEvent event) {
-                return event.isPrimaryButtonDown() && event.getClickCount() == 2;
-            }
+
         });
+    }
+    private boolean isDoubleClick(MouseEvent event) {
+        return event.isPrimaryButtonDown() && event.getClickCount() == 2;
     }
 
     FXMLLoader getFxmlLoader(String fxml) throws IOException {
@@ -117,7 +137,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void openDetailedView(TableRow row) throws IOException {
-
+        //henter popup fxml
         FXMLLoader loader = getFxmlLoader("computerPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -127,39 +147,21 @@ public class EnduserController extends TabComponentsController {
         );
 
         Computer c = (Computer) row.getItem();
-
         ComputerPopupController computerPopupController =
                 loader.<ComputerPopupController>getController();
-
         computerPopupController.initData(c, stage);
         stage.show();
-        //handlePopUp(stage, c);
     }
 
     private void setTblCellFactory() {
+
+        //oppretter en cellfactory object for pris kolonnene
         Callback<TableColumn, TableCell> priceCellFactory =
                 new Callback<TableColumn, TableCell>() {
                     public TableCell call(TableColumn p) {
                         return new PriceFormatCell();
                     }
                 };
-        PriceFormatCell priceFormatCell = new PriceFormatCell();
-/*
-        computerPriceCln.setCellFactory(list -> new TableCell<Computer, Double>() {
-            @Override
-            protected void updateItem(Double item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setText(null);
-                } else {
-//todo tableviewen til completed computers finner ikke calculate price - bytt den til tableview?
-                    //hva skal man sette her for å få til å vise pris?
-                    //hvorfor får jeg ikke tak i Computeren fra her?????
-                    setText(Double.toString(getPrice()));
-                }
-            }
-        });*/
-
         processorPriceCln.setCellFactory(priceCellFactory);
         videoCardPriceCln.setCellFactory(priceCellFactory);
         screenPriceCln.setCellFactory(priceCellFactory);
@@ -171,9 +173,6 @@ public class EnduserController extends TabComponentsController {
         hardDiscPriceCln.setCellFactory(priceCellFactory);
         keyboardPriceCln.setCellFactory(priceCellFactory);
 
-
-        //tblHardDisc.getSelectionModel().getTableView().getColumns().get(2);
-        //tblHardDisc.getSelectionModel().getTableView().getColumns().get(2).setCellFactory(priceCellFactory);
     }
 
     private double getPrice() {
@@ -327,8 +326,10 @@ public class EnduserController extends TabComponentsController {
         }
     }
 
-    void addComponentToComputer() {
-
+    void addComponentToComputer(Component component) {
+        if(true) // validering aka sjekk type også run liste-test
+        getComputer().addComponent(component);
+        updateComputerListView();
     }
 
 

@@ -1,6 +1,5 @@
 package org.programutvikling.gui;
 
-import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.computer.Computer;
 import org.programutvikling.computer.ComputerRegister;
@@ -9,9 +8,8 @@ import org.programutvikling.user.User;
 import org.programutvikling.user.UserPreferences;
 import org.programutvikling.user.UserRegister;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.prefs.BackingStoreException;
 
 public enum ContextModel {
     INSTANCE;
@@ -27,10 +25,15 @@ public enum ContextModel {
     //temporary master list - som har alle objekter fra fil.
     private ArrayList<Object> objects = new ArrayList<>();
 
-    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppData.jobj");
+    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Database/AppData.jobj");
     private UserRegister userRegister = new UserRegister();
 
-    private ContextModel() {
+    private ContextModel(){
+        try {
+            userPreferences.clearPreferences();
+        } catch (BackingStoreException e) {
+            e.printStackTrace();
+        }
         System.out.println("hi from model constructor" + userPreferences.getPathToUser().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
             FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
@@ -53,7 +56,6 @@ public enum ContextModel {
     }
 
 
-
     public UserPreferences getUserPreferences() {
         return userPreferences;
     }
@@ -74,18 +76,18 @@ public enum ContextModel {
     }
 
     public void appendComponentRegisterIntoModel() {
-        if(objects.size()==0){
+        if (objects.size() == 0) {
             return;
         }
         if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null) {
             ComponentRegister componentRegisterFromFile = (ComponentRegister) objects.get(0);
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
         }
-            //componentRegister.getRegister().addAll(objects.get(0).;
+        //componentRegister.getRegister().addAll(objects.get(0).;
     }
 
     public void loadComponentRegisterIntoModel() {
-        if(objects.size()==0){
+        if (objects.size() == 0) {
             return;
         }
         if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null)

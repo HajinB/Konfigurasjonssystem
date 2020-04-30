@@ -73,7 +73,7 @@ public class FileUtility {
         return pathToFile;
     }
 
-    public static String getFilePathFromOpenJobjDialog(Stage stage) {
+    public static String getStringPathFromOpenJobjDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter =
                 new FileChooser.ExtensionFilter("JOBJ files (*.jobj)", "*.jobj");

@@ -54,11 +54,6 @@ public class Computer implements Serializable, ItemUsable {
         return componentRegister.getRegister();
     }
 
-
-    /**
-     * hvordan skal formatet på txtfilen til computer være? - tror ikke man bør lagre totalpris, da dette er noe man
-     * kan regne ut lett (i excel) .
-     */
     public String toStringListView() {
         String melding = "";
         for (int i = 0; i < getComponentList().size(); i++) {

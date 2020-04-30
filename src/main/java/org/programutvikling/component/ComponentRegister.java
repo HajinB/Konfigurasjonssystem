@@ -144,6 +144,10 @@ public class ComponentRegister implements Serializable {
     }
 
     public void removeDuplicates() {
+
+        /** denne fungerer ikke helt som den skal. - den sjekker bare sistnevnte elns? CheckIfExists Til computer ???
+         *  bør ikke den computervalidator metoden funke her? altså den som har primarykey ?
+         *  **/
         System.out.println(getRegister().size());
         HashSet<Object> seen = new HashSet<>();
         getRegister().removeIf(e -> (!seen.add(e.getProductName())

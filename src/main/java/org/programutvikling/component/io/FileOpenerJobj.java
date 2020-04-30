@@ -18,14 +18,15 @@ int i = 0;
             listeInn = (ArrayList<Object>) oin.readObject();
             System.out.println(i);
             i++;
-            System.out.println("dette kastes til arrliobject: "+listeInn);
+           // System.out.println("dette kastes til arrliobject: "+listeInn);
             objects.addAll(listeInn);
         } catch (IOException | ClassNotFoundException i) {
             System.out.println(i.getMessage());
             System.out.println(Arrays.toString(i.getStackTrace()));
-            if(selectedPath.toString().equals("FileDirectory/Components/AppData.jobj")){
+            if(selectedPath.toString().equals("FileDirectory/Database/AppData.jobj")){
 
-                FileUtility.deleteFile("FileDirectory/Components/AppData.jobj");
+                FileUtility.deleteFile("FileDirectory/Database/AppData.jobj");
+                //istedenfor å deletefile, last opp backup?
                 Dialog.showErrorDialog("filtype er feil");
                 System.out.println(i.getMessage());
                 System.out.println(Arrays.toString(i.getStackTrace()));

@@ -17,6 +17,7 @@ public class ComputerValidator {
         return perfectList;
     }
 
+    //kan bruke denne også ha parametre for == 0 osv der metoden bli kalt (?)
     public boolean checkComponentTypeAmount(Computer computer, int maxValue, String type) {
         return computer.getComponentRegister().countByType(type) < maxValue;
     }
@@ -61,5 +62,9 @@ public class ComputerValidator {
     public boolean otherListValidator(Computer computer) {
         return computer.getComponentRegister().countByType("annet") < 4;
     }
+
 }
+
+
+
 

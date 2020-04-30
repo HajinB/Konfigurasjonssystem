@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 
@@ -20,31 +21,40 @@ public class UserPreferences {
     //her setter man via konstruktøren en default path, denne går inn i put-metoden til Preferences prefs-objektet
     //altså hvis setpreference via en button blir kjørt, er default det som blir instansiert i konstruktøren
     public UserPreferences(String pathToUser){
-        this.pathToUser=pathToUser;
+
+        this.pathToUser=prefs.get("userdirectory", "FileDirectory/Database/AppData.jobj");
     }
 
-
+    public void clearPreferences() throws BackingStoreException {
+       // prefs.clear();
+        prefs.remove("userdirectory");
+    }
 
     public void setPreference(Stage stage){
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(stage);
-
+        if(selectedDirectory==null){
+            return;
+        }
+        System.out.println(selectedDirectory.getAbsolutePath());
         //setter nøkkelverdien brukeren velger med choosedirectory
-        prefs.put("userdirectory", String.valueOf(selectedDirectory)+"/Components/AppData.jobj");
+        prefs.put("userdirectory", String.valueOf(selectedDirectory.getAbsolutePath())+"/Database/AppData.jobj");
 
-        //henter ut faktisk path og navn til componentlist.jobj
-        Path defaultPath = Paths.get(("FileDirectory/Components/AppData.jobj"));
+        //henter ut faktisk path og navn til appdata.jobj
+        Path defaultPath = Paths.get(("FileDirectory/Database/AppData.jobj"));
 
         //henter denne cachen
-        //pathToUser = prefs.get("userdirectory", "FileDirectory");
-
-        this.pathToUser=prefs.get("userdirectory", "FileDirectory/Components/AppData.jobj");
+        pathToUser = prefs.get("userdirectory", "FileDirectory");
+        System.out.println(pathToUser);
+       // this.pathToUser=prefs.get("userdirectory", "FileDirectory/Components/AppData.jobj");
 
         //preferences lagrer par med verdier, en key og en verdi. - i get setter man en default, hvis man ikke finner
         // nøkkelen..
     }
+
     public String getStringPathToUser() {
-        return pathToUser;
+        return prefs.get("userdirectory", "FileDirectory/Database/AppData.jobj");
+
     }
 
     public Path getPathToUser() {

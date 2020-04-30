@@ -14,8 +14,8 @@ import org.programutvikling.component.Component;
 import org.programutvikling.component.ComponentRegister;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
+import org.programutvikling.user.UserPreferences;
 
-import javax.swing.Timer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,38 +55,21 @@ public class SecondaryController implements Initializable {
     @FXML
     public void btnOpenJobj(ActionEvent actionEvent) throws IOException {
         //open filefromchooser lagrer componentregister i index 0 og savedpath i index 2
-        String chosenFile = FileUtility.getFilePathFromOpenJobjDialog(stage);
+        String chosenFile = FileUtility.getStringPathFromOpenJobjDialog(stage);
         if (chosenFile == null) {
             return;
         }
+        if(getComponentRegister().getRegister().size()==0){
+            tabComponentsController.overwriteList(chosenFile);
+        }
+
         Alert alert = Dialog.getOpenOption(
                 "Åpne fil",
                 "Legg til i listen eller overskriv. Under «Verktøy» kan du fjerne eventuelle duplikater",
                 "Vil du åpne ",
-                chosenFile);
+                chosenFile + "?");
         alert.showAndWait();
         tabComponentsController.handleOpenOptions(chosenFile, alert);
-/*
-        //button.get(2) == avbryt
-        if (alert.getResult() == alert.getButtonTypes().get(2)){
-            return;
-        }
-        //button.get(1) == overskriv
-        if (alert.getResult() == alert.getButtonTypes().get(1)) {
-            tabComponentsController.openThread(chosenFile);
-            ContextModel.INSTANCE.loadComponentRegisterIntoModel();
-            tabComponentsController.refreshTableAndSave();
-        }
-        //button.get(0) == legg til
-        if(alert.getResult() == alert.getButtonTypes().get(0)){
-            tabComponentsController.openThread(chosenFile);
-            ContextModel.INSTANCE.appendComponentRegisterIntoModel();
-            //kan ta bort duplikater her
-            //getComponentRegister().removeDuplicates();
-            tabComponentsController.refreshTableAndSave();
-        }
-        fileHandling.saveAll();
-        */
 
     }
 
@@ -103,13 +86,7 @@ public class SecondaryController implements Initializable {
     public void btnRemoveDuplicates(ActionEvent event) throws IOException {
         ObservableList<Component> list  = (ObservableList<Component>) ContextModel.INSTANCE.getComponentRegister().getRegister();
         ContextModel.INSTANCE.getComponentRegister().removeDuplicates();
-
         tabComponentsController.updateView();
-       // tabComponentsController.lblComponentMsg.setText("button pressed");
-
-        //update controller
-
-        //det er egentlig ikke meninga å update den andre controlleren fra her - hva bør man gjøre??
     }
 
     @Override
