@@ -1,11 +1,17 @@
 package org.programutvikling.gui;
 
+import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -69,6 +75,7 @@ public class EnduserController extends TabComponentsController {
         setCellFactoryListView();
         setTblCompletedComputersListener();
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
+        // removeSelection(); - Denne fjerner valgte rad npr du klikker et annet sted
     }
 
     private void setTblCompletedComputersListener() {
@@ -410,82 +417,6 @@ public class EnduserController extends TabComponentsController {
         }
     }
 
-    @FXML
-    void btnBuyVideo(ActionEvent event) {
-        if (computerValidator.videoCardListValidator(getComputer()))
-            addComponentToCart(tblVideoCard);
-        else {
-            replaceComponentInCart("skjermkort", tblVideoCard);
-        }
-    }
-
-    public void btnBuyScreen(ActionEvent event) {
-        if (computerValidator.screenListValidator(getComputer())) {
-            addComponentToCart(tblScreen);
-        } else {
-            replaceComponentInCart("skjerm", tblScreen);
-        }
-    }
-
-    public void btnBuyMemory(ActionEvent event) {
-        if (computerValidator.memoryListValidator(getComputer())) {
-            addComponentToCart(tblMemory);
-        } else {
-            replaceComponentInCart("minne", tblMemory);
-        }
-    }
-
-    public void btnBuyHardDisc(ActionEvent event) {
-        if (computerValidator.hardDiscListValidator(getComputer())) {
-            addComponentToCart(tblHardDisc);
-        } else {
-            replaceComponentInCart("harddisk", tblHardDisc);
-        }
-
-    }
-
-    public void btnBuyCabinet(ActionEvent event) {
-        if (computerValidator.cabinetListValidator(getComputer())) {
-            addComponentToCart(tblCabinet);
-        } else {
-            replaceComponentInCart("harddisk", tblCabinet);
-        }
-
-    }
-
-    public void btnBuyKeyBoard(ActionEvent event) {
-        if (computerValidator.keyboardListValidator(getComputer()))
-            addComponentToCart(tblKeyboard);
-        else {
-            replaceComponentInCart("tastatur", tblKeyboard);
-        }
-    }
-
-    public void btnBuyMouse(ActionEvent event) {
-        if (computerValidator.mouseListValidator(getComputer()))
-            addComponentToCart(tblMouse);
-        else {
-            replaceComponentInCart("mus", tblMouse);
-        }
-
-    }
-
-    public void btnBuyOther(ActionEvent event) {
-        if (computerValidator.otherListValidator(getComputer()))
-            addComponentToCart(tblOther);
-        else {
-            replaceComponentInCart("annet", tblOther);
-        }
-
-    }
-
-    public void btnBuyMotherBoard(ActionEvent event) {
-        if (computerValidator.motherboardListValidator(getComputer()))
-            addComponentToCart(tblMotherBoard);
-        else {
-            replaceComponentInCart("annet", tblMotherBoard);
-        }
-    }
 
     public void btnDeleteFromCart(ActionEvent event) throws IOException {
         Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette", "Vil du slette ",
@@ -505,4 +436,143 @@ public class EnduserController extends TabComponentsController {
         getComputer().getComponentRegister().getRegister().remove(selectedComp);
         updateComputerListView();
     }
+
+    //Fjerner forrige trykk på en rad i tblview. Problem: Du får ikke lagt til noe i handlekurven..
+    private void removeSelection (){
+        tblProcessor.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblProcessor.getSelectionModel().clearSelection();
+            }
+        });
+        tblMotherBoard.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblMotherBoard.getSelectionModel().clearSelection();
+            }
+        });
+        tblVideoCard.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblVideoCard.getSelectionModel().clearSelection();
+            }
+        });
+        tblScreen.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblScreen.getSelectionModel().clearSelection();
+            }
+        });
+        tblHardDisc.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblHardDisc.getSelectionModel().clearSelection();
+            }
+        });
+        tblMemory.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblMemory.getSelectionModel().clearSelection();
+            }
+        });
+        tblCabinet.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblCabinet.getSelectionModel().clearSelection();
+            }
+        });
+        tblMouse.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblMouse.getSelectionModel().clearSelection();
+            }
+        });
+        tblKeyboard.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblKeyboard.getSelectionModel().clearSelection();
+            }
+        });
+        tblOther.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblOther.getSelectionModel().clearSelection();
+            }
+        });
+        tblCompletedComputers.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                tblCompletedComputers.getSelectionModel().clearSelection();
+            }
+        });
+
+    }
+    //Fjerner forrige valgte produkt etter at du har trykket #Legg i handlekurv
+    public void clearSelection() {
+        Platform.runLater( ()-> {  tblProcessor.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblMotherBoard.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblMouse.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblMemory.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblHardDisc.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblScreen.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblVideoCard.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblOther.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblCompletedComputers.getSelectionModel().clearSelection();  });
+        Platform.runLater( ()-> {  tblCabinet.getSelectionModel().clearSelection();  });
+
+    }
+
+    public void btnAddToCart(ActionEvent event) {
+        clearSelection();
+
+        if (computerValidator.videoCardListValidator(getComputer()))
+            addComponentToCart(tblProcessor);
+        else {
+            replaceComponentInCart("prosessor", tblProcessor);
+        }
+
+        if (computerValidator.videoCardListValidator(getComputer()))
+            addComponentToCart(tblVideoCard);
+        else {
+            replaceComponentInCart("skjermkort", tblVideoCard);
+        }
+
+        if (computerValidator.screenListValidator(getComputer())) {
+            addComponentToCart(tblScreen);
+        } else {
+            replaceComponentInCart("skjerm", tblScreen);
+        }
+
+        if (computerValidator.memoryListValidator(getComputer())) {
+            addComponentToCart(tblMemory);
+        } else {
+            replaceComponentInCart("minne", tblMemory);
+        }
+
+        if (computerValidator.hardDiscListValidator(getComputer())) {
+            addComponentToCart(tblHardDisc);
+        } else {
+            replaceComponentInCart("harddisk", tblHardDisc);
+        }
+
+
+        if (computerValidator.cabinetListValidator(getComputer())) {
+            addComponentToCart(tblCabinet);
+        } else {
+            replaceComponentInCart("kabinett", tblCabinet);
+        }
+
+        if (computerValidator.keyboardListValidator(getComputer()))
+            addComponentToCart(tblKeyboard);
+        else {
+            replaceComponentInCart("tastatur", tblKeyboard);
+        }
+        if (computerValidator.mouseListValidator(getComputer()))
+            addComponentToCart(tblMouse);
+        else {
+            replaceComponentInCart("mus", tblMouse);
+        }
+
+        if (computerValidator.otherListValidator(getComputer()))
+            addComponentToCart(tblOther);
+        else {
+            replaceComponentInCart("annet", tblOther);
+        }
+
+        if (computerValidator.motherboardListValidator(getComputer()))
+            addComponentToCart(tblMotherBoard);
+        else {
+            replaceComponentInCart("hovedkort", tblMotherBoard);
+        }
+    }
+
 }

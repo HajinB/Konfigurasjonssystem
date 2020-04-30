@@ -19,7 +19,6 @@ public class ComputerPopupController extends EnduserController implements Initia
     @FXML private Label lblComputerPrice;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellFactory();

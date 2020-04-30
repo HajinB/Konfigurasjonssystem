@@ -25,6 +25,7 @@
     -fx-font-size: 13px;
     -fx-font-weight: none;
     -fx-font-family: Verdana;
+    -fx-cursor: hand;
 }
 
 .columnPrice {
@@ -38,7 +39,7 @@
     -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.5 , 0.5 , 1 , 1 );
 }
 
-
+/*Andre knapper*/
 .btnDelete {
     -fx-background-color: rgba(6, 100, 172, 0.62);
     -fx-font-weight: bold;
@@ -70,11 +71,21 @@
 
 }
 
-
+/*choiceboc og combobox superbruker*/
 .cb {
     -fx-font-family: Verdana;
     -fx-background-color: #ffffff;
     -fx-border-color: #bbbbbb;
     -fx-border-radius: 4px;
     -fx-cursor: hand;
+}
+
+/*Listview, computerview og totalpris i endUser*/
+
+.shopCart {
+    -fx-font-family: Verdana;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #bbbbbb;
+    -fx-border-radius: 4px;
+
 }
