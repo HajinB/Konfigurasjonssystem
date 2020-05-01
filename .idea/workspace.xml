@@ -2,95 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/ModelIO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/AppData.jobj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/FileSaverTxtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/FileSaverTxtTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/org/programutvikling/component/io/FileSaverTxtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/component/io/FileSaverTxtTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/org/programutvikling/user/UserRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/user/UserRegisterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/org/programutvikling/user/UserValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/user/UserValidatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/Model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/Model/TemporaryComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/TemporaryComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ComponentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/ItemUsable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ItemUsable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/Saveable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/Saveable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/FileOpener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/FileOpenerJobj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileOpenerTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/FileOpenerTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/FileSaver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaverJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/FileSaverJobj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/FileSaverTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/FileSaverTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/InvalidComponentFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/InvalidComponentFormatException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/OpenerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/OpenerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/SaverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/SaverFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/component/io/iothread/InputThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/io/iothread/InputThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/ComputerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/ComputerRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/ComputerValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/ComputerValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/computer/Saveable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/Saveable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ComputerPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ComputerPopupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/PriceFormatCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/PriceFormatCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/TotalPriceFormatCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/TotalPriceFormatCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/customListViewCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/customListViewCellFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EditPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EditPopupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FXMLGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FXMLGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/PrimaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ThreadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ThreadHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/EndUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/EndUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/exceptions/InvalidPasswordException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/exceptions/InvalidPasswordException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/user/exceptions/InvalidUsernameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/exceptions/InvalidUsernameException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/Component.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentRegister.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentTypes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ComponentValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/ItemUsable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/Saveable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerJobj.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileOpenerTxt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileSaver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileSaverJobj.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/FileSaverTxt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/InvalidComponentFormatException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/OpenerFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/SaverFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/component/io/iothread/InputThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Computer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/ComputerRegister.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/computer/Saveable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/ThreadHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/ThreadHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserPreferences.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserRegister.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/UserValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/exceptions/InvalidPasswordException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/user/exceptions/InvalidUsernameException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -341,14 +254,7 @@
       <workItem from="1588112198159" duration="1177000" />
       <workItem from="1588208308186" duration="7954000" />
       <workItem from="1588248697996" duration="17623000" />
-      <workItem from="1588291589731" duration="9055000" />
-    </task>
-    <task id="LOCAL-00022" summary="Fixed saverFactory">
-      <created>1587069162788</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1587069162788</updated>
+      <workItem from="1588291589731" duration="9645000" />
     </task>
     <task id="LOCAL-00023" summary="Fixed saverFactory">
       <created>1587069264189</created>
@@ -685,7 +591,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588282153271</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="mappestruktur">
+      <created>1588328199068</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1588328199068</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -720,7 +633,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testmetode for filesavertxt (uten navn og totalpris)" />
     <MESSAGE value="mangler &quot;success dialog&quot; for saved file (alle) - hvor bør dette implementeres&#10;&#10;Bør vi ha en &quot;status-label helt nederst på siden? som sier &quot;lagrer...&quot; og &quot;åpner fil...&quot; mens filbehandling skjer?" />
     <MESSAGE value="prøver å gjøre metoder kortere (og debugge tableview og search).." />
     <MESSAGE value="prøver å fixe search og tableviewedit.." />
@@ -745,7 +657,8 @@
     <MESSAGE value="inputvalidering av computer.txt" />
     <MESSAGE value="inputvalidering + clearselection listener" />
     <MESSAGE value="prøver å fikse velg lagringsplass" />
-    <option name="LAST_COMMIT_MESSAGE" value="prøver å fikse velg lagringsplass" />
+    <MESSAGE value="mappestruktur" />
+    <option name="LAST_COMMIT_MESSAGE" value="mappestruktur" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1587242454320" />
