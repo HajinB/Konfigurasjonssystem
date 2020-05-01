@@ -1,11 +1,8 @@
 
 import org.junit.jupiter.api.Test;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.ComponentValidator;
-import org.programutvikling.component.io.FileOpenerTxt;
-import org.programutvikling.computer.Computer;
-import org.programutvikling.computer.ComputerRegister;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.io.FileOpenerTxt;
+import org.programutvikling.domain.computer.Computer;
 
 import java.io.IOException;
 import java.nio.file.Files;

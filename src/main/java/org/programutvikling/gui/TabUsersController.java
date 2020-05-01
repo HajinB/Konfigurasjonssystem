@@ -12,9 +12,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import org.programutvikling.Model.Model;
-import org.programutvikling.user.User;
-import org.programutvikling.user.UserRegister;
+import org.programutvikling.model.Model;
+import org.programutvikling.domain.user.User;
+import org.programutvikling.domain.user.UserRegister;
 
 import java.net.URL;
 import java.util.ResourceBundle;

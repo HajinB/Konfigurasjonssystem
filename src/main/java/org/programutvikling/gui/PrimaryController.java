@@ -4,19 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutionException;
 
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.*;
 import org.programutvikling.App;
-import org.programutvikling.Model.Model;
-import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.user.User;
+import org.programutvikling.model.Model;
+import org.programutvikling.domain.user.User;
 
 //https://ducmanhphan.github.io/2019-10-17-Creating-JavaFX-project-with-Maven/
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
@@ -37,8 +33,6 @@ public class PrimaryController implements Initializable {
 
         App.setRoot("secondary");
     }
-
-
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
@@ -66,15 +60,15 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //loadRegisterFromFile();
-        Model.INSTANCE.getUserRegister();
+      //  Model.INSTANCE.getUserRegister();
     }
 
 
     private void loadRegisterFromFile() throws IOException {
-        File file = new File(String.valueOf(fileHandling.getPathToUser()));
+        File file = new File(String.valueOf(FileHandling.getPathToUser()));
         String path = file.getAbsolutePath();
         if (file.exists()) {
-            FileHandling.openFile(Model.INSTANCE.getCleanObjectList(), fileHandling.getPathToUser());
+            FileHandling.openFile(Model.INSTANCE.getCleanObjectList(), FileHandling.getPathToUser());
             Model.INSTANCE.loadObjectsIntoClasses();
         }
     }

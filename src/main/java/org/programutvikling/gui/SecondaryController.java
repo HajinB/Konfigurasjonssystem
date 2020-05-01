@@ -10,9 +10,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.programutvikling.App;
-import org.programutvikling.Model.Model;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
+import org.programutvikling.model.Model;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 

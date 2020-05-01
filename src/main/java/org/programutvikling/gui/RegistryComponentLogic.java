@@ -6,7 +6,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
-import org.programutvikling.component.Component;
+import org.programutvikling.domain.component.Component;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;

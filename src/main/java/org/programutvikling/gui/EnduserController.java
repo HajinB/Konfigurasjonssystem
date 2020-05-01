@@ -18,11 +18,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.App;
-import org.programutvikling.Model.Model;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.io.FileOpenerTxt;
-import org.programutvikling.computer.Computer;
-import org.programutvikling.computer.ComputerValidator;
+import org.programutvikling.gui.utility.FXMLGetter;
+import org.programutvikling.model.Model;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.io.FileOpenerTxt;
+import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.EndUserService;
@@ -354,7 +355,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void setTblVideoCard(TableView<Component> tblVideoCard) {
-        tblVideoCard.setItems(endUserService.getVideoRegister().getObservableRegister());
+        tblVideoCard.setItems(endUserService.getVideoCardRegister().getObservableRegister());
         this.tblVideoCard = tblVideoCard;
     }
 

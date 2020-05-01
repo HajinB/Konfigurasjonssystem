@@ -1,6 +1,6 @@
 package org.programutvikling.component.io;
 
-import org.programutvikling.computer.Computer;
+import org.programutvikling.domain.computer.Computer;
 
 class FileSaverTxtTest {
     Computer computer = new Computer("test");

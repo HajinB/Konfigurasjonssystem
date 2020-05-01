@@ -3,8 +3,7 @@ package org.programutvikling.gui;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.scene.control.Alert;
-import org.programutvikling.App;
-import org.programutvikling.component.io.iothread.InputThread;
+import org.programutvikling.domain.component.io.iothread.InputThread;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 
@@ -77,9 +76,8 @@ public class ThreadHandler {
             }
             @Override
             protected void succeeded() {
-                // one hook - overriding
                 super.succeeded();
-                System.out.println("Succeded");
+                System.out.println("etter task");
             }
         };
     }

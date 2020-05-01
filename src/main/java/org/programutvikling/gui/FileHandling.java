@@ -1,15 +1,15 @@
 package org.programutvikling.gui;
 
 import javafx.stage.Stage;
-import org.programutvikling.Model.Model;
-import org.programutvikling.component.io.FileOpener;
-import org.programutvikling.component.io.FileSaver;
-import org.programutvikling.component.io.FileSaverTxt;
-import org.programutvikling.computer.Computer;
-import org.programutvikling.computer.ComputerFactory;
+import org.programutvikling.model.Model;
+import org.programutvikling.domain.component.io.FileOpener;
+import org.programutvikling.domain.component.io.FileSaver;
+import org.programutvikling.domain.component.io.FileSaverTxt;
+import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.computer.ComputerFactory;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.user.UserPreferences;
+import org.programutvikling.domain.user.UserPreferences;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import java.util.List;
 
 public class FileHandling {
     //private static UserPreferences userPreferences;
-    private static UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppData.jobj");
+    private static UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppDataBackup.jobj");
 
     public static void saveFileTxt(Computer computer, Path directoryPath) {
         if (directoryPath != null) {
@@ -79,13 +79,20 @@ public class FileHandling {
     }
 
     public static void openFile(ArrayList<Object> objects, String selectedPath) {
-        openObjects(objects, selectedPath);
+        File file = new File(selectedPath);
+        if(file.exists()) {
+            openObjects(objects, selectedPath);
+        }else {
+            File fileBackup = new File("AppFiles/Database/Backup/AppFiles.jobj");
+            if(fileBackup.exists())
+            openObjects(objects, "AppFiles/Database/Backup/AppFiles.jobj");
+        }
     }
 
     public static ArrayList<Object> openObjects(ArrayList<Object> register, String selectedPath) {
         FileOpener opener = FileUtility.getFileOpener(selectedPath);
         ArrayList<Object> objectsLoaded = new ArrayList<>();
-        if (opener != null && selectedPath != null) {
+        if (opener != null) {
             try {
                 Path path = Paths.get(selectedPath);
                 objectsLoaded = opener.open(register, path);
@@ -123,6 +130,20 @@ public class FileHandling {
         System.out.println("lagrer alle disse objects:" + objects);*/
         FileHandling.saveFileAuto(objects,
                 Paths.get(userPreferences.getStringPathToUser()));
+    }
+
+    public static void saveBackup() throws IOException {
+        ArrayList<Object> objects = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
+                Model.INSTANCE.getComputerRegister(), Model.INSTANCE.getSavedPathRegister(),
+                Model.INSTANCE.getComputer(), Model.INSTANCE.getUserRegister());
+/*
+        System.out.println("computer : " + ContextModel.INSTANCE.getComputer());
+        System.out.println("user reg :" + ContextModel.INSTANCE.getUserRegister());
+
+        System.out.println("lagrer alle disse objects:" + objects);*/
+        FileHandling.saveFileAuto(objects,
+                Paths.get("AppFiles/Database/Backup/AppDataBackup.jobj"));
+
     }
 
     public UserPreferences getUserPreferences() {

@@ -1,6 +1,7 @@
 package org.programutvikling.user;
 
 import org.junit.jupiter.api.Test;
+import org.programutvikling.domain.user.UserValidator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

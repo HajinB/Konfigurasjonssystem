@@ -6,7 +6,6 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,15 +23,15 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
-import org.programutvikling.Model.Model;
-import org.programutvikling.Model.TemporaryComponent;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.component.ComponentTypes;
-import org.programutvikling.component.ComponentValidator;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.ComponentRegister;
+import org.programutvikling.domain.component.ComponentTypes;
+import org.programutvikling.domain.component.ComponentValidator;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.*;
+import org.programutvikling.model.Model;
+import org.programutvikling.model.TemporaryComponent;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -40,8 +39,6 @@ import java.util.Objects;
 
 public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
-
-
     @FXML
     public Label lblComponentMsg;
 
@@ -72,10 +69,11 @@ public class TabComponentsController {
     @FXML
     public void initialize() throws IOException {
         System.out.println("hei fra init tabcomponents");
-        Task<Boolean> task = ThreadHandler.getTask();
-        ThreadHandler.loadInThread(task);
-        //FileUtility.populateRecentFiles(); blir kjørt i loadInThread()
+        //Task<Boolean> task = ThreadHandler.getTask();
+        //ThreadHandler.loadInThread(task);
+        FileUtility.populateRecentFiles(); //blir kjørt i loadInThread()
         initChoiceBoxes();
+        updateRecentFiles();
         registryComponentLogic = new RegistryComponentLogic(componentRegNode);
         threadHandler = new ThreadHandler(this);
         initTableView();
@@ -120,34 +118,35 @@ public class TabComponentsController {
     }
 
 
-
     @FXML
     void dblClickTblRow(MouseEvent event) {
         handlePopup();
     }
+
 
     private void handlePopup() {
         /**detecter tablerow, for å hente ut component*/
         tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
-
-                //tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
-                TableRow<? extends Component> row;
-                TableColumn column;
-                if (isDoubleClick(event)) {
-                    Node node = ((Node) event.getTarget()).getParent();
-                    if (node instanceof TableRow) {
-                        row = (TableRow<Component>) node;
-                    } else {
-                        //hvis man trykker på tekst
-                        row = (TableRow<Component>) node.getParent();
-                    }
-                    try {
-                        openEditWindow(row);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                if (getComponentRegister().getRegister().size() > 0) {
+                    tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
+                    //tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
+                    TableRow<? extends Component> row;
+                    TableColumn column;
+                    if (isDoubleClick(event)) {
+                        Node node = ((Node) event.getTarget()).getParent();
+                        if (node instanceof TableRow) {
+                            row = (TableRow<Component>) node;
+                        } else {
+                            //hvis man trykker på tekst
+                            row = (TableRow<Component>) node.getParent();
+                        }
+                        try {
+                            openEditWindow(row);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -162,7 +161,7 @@ public class TabComponentsController {
         //gjør det mulig å detecte cell på første klikk:
         tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
         selectedCells.addListener((ListChangeListener) c -> {
-            if(selectedCells.size()!=0) {
+            if (selectedCells.size() != 0) {
                 TemporaryComponent.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
             }
         });
@@ -172,13 +171,12 @@ public class TabComponentsController {
         /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
         stage.setOnHidden(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
-                System.out.println("detected");
+
                 if (TemporaryComponent.INSTANCE.getIsEdited()) {
                     getObservableRegister().set(getObservableRegister().indexOf(c),
                             TemporaryComponent.INSTANCE.getTempComponent());
                     TemporaryComponent.INSTANCE.resetTemps();
                     updateView();
-                    tblViewComponent.refresh();
                     try {
                         saveAll();
                     } catch (IOException e) {
@@ -254,7 +252,7 @@ public class TabComponentsController {
 
     public void handleOpenOptions(String chosenFile, Alert alert) throws IOException {
         //button.get(2) == avbryt
-        if(alert.getResult() == alert.getButtonTypes().get(2)){
+        if (alert.getResult() == alert.getButtonTypes().get(2)) {
             return;
         }
         //button.get(1) == overskriv
@@ -262,7 +260,7 @@ public class TabComponentsController {
             overwriteList(chosenFile);
         }
         //button.get(0) == legg til
-        if(alert.getResult() == alert.getButtonTypes().get(0)){
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
             openThread(chosenFile);
             Model.INSTANCE.appendComponentRegisterIntoModel();
             //getComponentRegister().removeDuplicates();
@@ -320,6 +318,8 @@ public class TabComponentsController {
 
     private void initChoiceBoxes() {
         cbTypeFilter.setValue("Ingen filter");
+        Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().add("AppFiles/Database/Backup/AppDataBackup" +
+                ".jobj");
         cbRecentFiles.setOnMouseClicked((MouseEvent event) -> updateRecentFiles());
         updateRecentFiles();
         cbType.setItems(componentTypes.getObservableTypeListName());
@@ -352,17 +352,16 @@ public class TabComponentsController {
         Component possibleDuplicateComponentIfNotThenNull = ComponentValidator.isComponentInRegisterThenReturnIt(newComponent,
                 getComponentRegister());
         System.out.println(possibleDuplicateComponentIfNotThenNull);
-        if(possibleDuplicateComponentIfNotThenNull!=null){
+        if (possibleDuplicateComponentIfNotThenNull != null) {
             Alert alert = Dialog.getConfirmationAlert("Duplikat funnet", "", "Denne komponenten eksisterer allerede i" +
                     " databasen, vil du erstatte med den gamle med  " + newComponent.getProductName(), "");
             alert.showAndWait();
-            if(alert.getResult() == alert.getButtonTypes().get(0)){
+            if (alert.getResult() == alert.getButtonTypes().get(0)) {
                 int indexToReplace =
                         getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
                 getComponentRegister().getRegister().set(indexToReplace, newComponent);
             }
-        }
-        else{
+        } else {
             getComponentRegister().addComponent(newComponent);
             updateView();
         }

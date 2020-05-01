@@ -3,7 +3,7 @@ package org.programutvikling.gui.utility;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import org.programutvikling.component.Component;
+import org.programutvikling.domain.component.Component;
 
 public class Search {
 

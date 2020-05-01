@@ -6,10 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.programutvikling.component.Component;
-import org.programutvikling.component.ComponentTypes;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.ComponentTypes;
 import org.programutvikling.gui.customTextField.PriceField;
-import org.programutvikling.Model.TemporaryComponent;
+import org.programutvikling.model.TemporaryComponent;
 
 import java.net.URL;
 import java.util.List;

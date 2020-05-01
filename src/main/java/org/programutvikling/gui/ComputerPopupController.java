@@ -1,14 +1,13 @@
 package org.programutvikling.gui;
 
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import org.programutvikling.component.Component;
-import org.programutvikling.computer.Computer;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.computer.Computer;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -1,12 +1,12 @@
 package org.programutvikling.gui.utility;
 
-import org.programutvikling.component.ComponentRegister;
-import org.programutvikling.Model.Model;
+import org.programutvikling.domain.component.ComponentRegister;
+import org.programutvikling.model.Model;
 
 public class EndUserService {
     ComponentRegister cabinetRegister = new ComponentRegister();
     ComponentRegister processorRegister = new ComponentRegister();
-    ComponentRegister videoRegister = new ComponentRegister();
+    ComponentRegister videoCardRegister = new ComponentRegister();
     ComponentRegister memoryRegister = new ComponentRegister();
     ComponentRegister hardDiscRegister = new ComponentRegister();
     ComponentRegister motherboardRegister = new ComponentRegister();
@@ -25,8 +25,8 @@ public class EndUserService {
         return processorRegister;
     }
 
-    public ComponentRegister getVideoRegister() {
-        return videoRegister;
+    public ComponentRegister getVideoCardRegister() {
+        return videoCardRegister;
     }
 
     public ComponentRegister getMemoryRegister() {
@@ -64,22 +64,28 @@ public class EndUserService {
     }
 
     public void updateEndUserRegisters() {
-        clearRegisters(motherboardRegister, cabinetRegister, videoRegister, screenRegister, mouseRegister,
+        clearRegisters(motherboardRegister, cabinetRegister, videoCardRegister, screenRegister, mouseRegister,
                 processorRegister, memoryRegister, hardDiscRegister, otherRegister, keyboardRegister);
         //kan lage en componentregisterList istedet? vil det redusere codespam?
-        ComponentRegister dataBaseRegister = Model.INSTANCE.getComponentRegister();
-        motherboardRegister.getRegister().addAll(dataBaseRegister.filterByProductType("hovedkort"));
-        cabinetRegister.getRegister().addAll(dataBaseRegister.filterByProductType("kabinett"));
-        screenRegister.getRegister().addAll(dataBaseRegister.filterByProductType("skjerm"));
-        mouseRegister.getRegister().addAll(dataBaseRegister.filterByProductType("mus"));
-        processorRegister.getRegister().addAll(dataBaseRegister.filterByProductType("prosessor"));
-        videoRegister.getRegister().addAll(dataBaseRegister.filterByProductType("skjermkort"));
-        memoryRegister.getRegister().addAll(dataBaseRegister.filterByProductType("minne"));
-        hardDiscRegister.getRegister().addAll(dataBaseRegister.filterByProductType("harddisk"));
-        keyboardRegister.getRegister().addAll(dataBaseRegister.filterByProductType("tastatur"));
-        otherRegister.getRegister().addAll(dataBaseRegister.filterByProductType("annet"));
+        addByName("hovedkort", motherboardRegister);
+        addByName("kabinett", cabinetRegister);
+        addByName("skjerm", screenRegister);
+        addByName("mus", mouseRegister);
+        addByName("prosessor", processorRegister);
+        addByName("skjermkort", videoCardRegister);
+        addByName("minne", memoryRegister);
+        addByName("harddisk", hardDiscRegister);
+        addByName("tastatur", keyboardRegister);
+        addByName("annet", otherRegister);
     }
 
+
+    //må man definere disse? hvorfor ikke bare si her er 8 forskjellige
+
+    public void addByName(String s, ComponentRegister componentRegister){
+        ComponentRegister dataBaseRegister = Model.INSTANCE.getComponentRegister();
+        componentRegister.getRegister().addAll(dataBaseRegister.filterByProductType(s));
+    }
 
     private void clearRegisters(ComponentRegister... c) {
         for (ComponentRegister i : c) {
