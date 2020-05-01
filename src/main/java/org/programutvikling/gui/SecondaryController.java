@@ -60,7 +60,7 @@ public class SecondaryController implements Initializable {
             return;
         }
         if(getComponentRegister().getRegister().size()==0){
-            tabComponentsController.overwriteList(chosenFile);
+            tabComponentsController.overWriteList(chosenFile);
         }
 
         Alert alert = Dialog.getOpenOption(

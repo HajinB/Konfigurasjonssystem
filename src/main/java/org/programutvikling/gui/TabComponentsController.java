@@ -243,9 +243,9 @@ public class TabComponentsController {
     public void openFileConfirmation(String chosenFile) throws IOException {
         Alert alert = Dialog.getOpenOption(
                 "Åpne fil",
-                "Legg til i listen eller overskriv. Under «Verktøy» kan du fjerne eventuelle duplikater",
-                "Vil du åpne ",
-                cbRecentFiles.getSelectionModel().getSelectedItem() + "?");
+                "Legg til i listen eller overskriv. Under «Verktøy» kan du fjerne eventuelle duplikater.",
+                "Vil du åpne '",
+                cbRecentFiles.getSelectionModel().getSelectedItem() + "'?");
         alert.showAndWait();
         handleOpenOptions(chosenFile, alert);
     }
@@ -257,7 +257,7 @@ public class TabComponentsController {
         }
         //button.get(1) == overskriv
         if (alert.getResult() == alert.getButtonTypes().get(1)) {
-            overwriteList(chosenFile);
+            overWriteList(chosenFile);
         }
         //button.get(0) == legg til
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
@@ -268,7 +268,7 @@ public class TabComponentsController {
         }
     }
 
-    public void overwriteList(String chosenFile) throws IOException {
+    public void overWriteList(String chosenFile) throws IOException {
         openThread(chosenFile);
         Model.INSTANCE.loadComponentRegisterIntoModel();
         refreshTableAndSave();
@@ -289,7 +289,7 @@ public class TabComponentsController {
     }
 
     private void askForDeletion(Component selectedItem) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette", "Vil du slette ",
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette.", "Vil du slette ",
                 selectedItem.getProductName());
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
@@ -354,7 +354,7 @@ public class TabComponentsController {
         System.out.println(possibleDuplicateComponentIfNotThenNull);
         if (possibleDuplicateComponentIfNotThenNull != null) {
             Alert alert = Dialog.getConfirmationAlert("Duplikat funnet", "", "Denne komponenten eksisterer allerede i" +
-                    " databasen, vil du erstatte med den gamle med  " + newComponent.getProductName(), "");
+                    " databasen, vil du erstatte den gamle med: " + newComponent.getProductName(), "");
             alert.showAndWait();
             if (alert.getResult() == alert.getButtonTypes().get(0)) {
                 int indexToReplace =

@@ -42,7 +42,7 @@
 .btnGuest:pressed {
     -fx-border-color: white;
     -fx-font-weight: bold;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-text-fill: #006ec3;
     -fx-background-color: transparent;
     -fx-font-family: Verdana;

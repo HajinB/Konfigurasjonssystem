@@ -327,7 +327,7 @@ public class EnduserController extends TabComponentsController {
             updateComputerListView();
         } else {
             Alert alert = Dialog.getConfirmationAlert("Erstatter komponent", "",
-                    "Handlekurven har allerede nok antall av typen " + component.getProductType() +
+                    "Handlekurven har allerede nok antall av typen:'" + component.getProductType()+"'." +
                             " Vil du erstatte den som ligger i handlekurven?", "");
             alert.showAndWait();
             //trykker ja = replace
@@ -400,7 +400,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     public void btnDeleteFromCart(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette", "Vil du slette ",
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette.", "Vil du slette ",
                 shoppingListView.getSelectionModel().getSelectedItems().get(0).getProductName());
         alert.showAndWait();
         if (shoppingListView.getSelectionModel().isEmpty()) {
@@ -463,7 +463,7 @@ public class EnduserController extends TabComponentsController {
             }
         }
         if (!isSomethingSelected) {
-            System.out.println("velg en rad for å legge til i handlekurven");
+            System.out.println("Velg en rad for å legge til i handlekurven");
             //sett en label her hvis det ikke er valgt noe.
             //lblComponentMsg.setText("Velg en rad for å legge til i handlekurven");
         }

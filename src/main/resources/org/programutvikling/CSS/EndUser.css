@@ -48,22 +48,33 @@
 .titledPane{
     -fx-font-family: Verdana;
     -fx-font-size: 12px;
+    -fx-text-fill: black;
+    -fx-alignment: baseline-left;
 
+}
+
+.titledPane .arrow {
+    -fx-background-color: #388DC8;
+    -fx-padding: 5 3 5 10;
+}
+
+.titledPane .arrow:pressed{
+    -fx-border-color: #005182;
+    -fx-padding: 3 10 5 10;
 }
 
 .titledPane .title {
     -fx-font-size: 14px;
     -fx-font-family: Verdana;
-    -fx-background-color: rgba(208, 208, 208, 0.37);
-    -fx-border-color: rgba(199, 199, 199, 0.68);
-    -fx-border-width: 2 2 2 2;
+    -fx-background-color: rgba(56, 141, 200, 0.15);
+    -fx-border-width: 0;
     -fx-pref-height: 40px;
-
+    -fx-border-radius: 50px;
 }
 
 /* Bakgrunner */
 .scroll-pane > .viewport {
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(56, 141, 200, 0.15);
 }
 
 .scroll-pane {
@@ -72,6 +83,8 @@
 
 .table-view {
     -fx-background-color: white;
+    -fx-border-color: rgba(0, 0, 0, 0.43);
+    -fx-border-width: 0;
+
+
 }
-
-
