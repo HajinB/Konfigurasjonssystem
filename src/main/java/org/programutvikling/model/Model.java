@@ -157,4 +157,7 @@ public enum Model {
     public Computer getComputer() {
         return computer;
     }
+
+    public void loadComputerIntoClass() {
+    }
 }
