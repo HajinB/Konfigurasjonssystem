@@ -68,20 +68,14 @@ public class EnduserController extends TabComponentsController {
     @FXML
     public void initialize() throws IOException {
 
-
+        addTableViewsToList();
         initTextWrapCellFactory();
         updateComponentViews();
         updateList();
         setCellFactoryListView();
         setTblCellFactory();
-
-
-        addTableViewsToList();
         endUserService.updateEndUserRegisters();
-
         updateComputerListView();
-
-
         setTblCompletedComputersListener();
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
         setDblClickEvent();
@@ -90,6 +84,9 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void initTextWrapCellFactory() {
+
+        //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
+        // en kolonne i tableview
         Callback<TableColumn, TableCell> customTextWrapCellFactory =
                 new Callback<TableColumn, TableCell>() {
                     public TableCell call(TableColumn p) {

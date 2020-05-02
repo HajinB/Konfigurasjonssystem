@@ -188,7 +188,9 @@ public class TabComponentsController {
     }
 
     private void openEditWindow(TableRow<? extends Component> row) throws IOException {
-
+        if(row.isEmpty()){
+            return;
+        }
         FXMLLoader loader = getFxmlLoader("editPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);

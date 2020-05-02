@@ -11,8 +11,6 @@ public class CustomTextWrapCellFactory extends TableCell<Object, String> {
     public CustomTextWrapCellFactory() {
 
     }
-
-
     @Override
     protected void updateItem(String item, boolean empty) {
         super.updateItem(item, empty);
