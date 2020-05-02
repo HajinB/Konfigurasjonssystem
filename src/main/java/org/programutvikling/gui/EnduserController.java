@@ -14,11 +14,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.App;
+import org.programutvikling.gui.CustomPriceTableColumn.CustomTextWrapCellFactory;
 import org.programutvikling.gui.utility.FXMLGetter;
 import org.programutvikling.model.Model;
 import org.programutvikling.domain.component.Component;
@@ -67,26 +67,21 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     public void initialize() throws IOException {
-       /* TableColumn processorDescriptionColumn =
-                tblProcessor.getSelectionModel().getTableView().getColumns().get(2);*/
-        processorDescriptionColumn.setCellFactory(tc -> {
-            TableCell<Component, String> cell = new TableCell<>();
-            Text text = new Text();
-            cell.setGraphic(text);
-            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-            text.wrappingWidthProperty().bind(processorDescriptionColumn.widthProperty());
-            text.textProperty().bind(cell.itemProperty());
-            return cell ;
-        });
+
+
+        initTextWrapCellFactory();
+        updateComponentViews();
+        updateList();
+        setCellFactoryListView();
+        setTblCellFactory();
 
 
         addTableViewsToList();
         endUserService.updateEndUserRegisters();
-        updateComponentViews();
-        updateList();
+
         updateComputerListView();
-        setTblCellFactory();
-        setCellFactoryListView();
+
+
         setTblCompletedComputersListener();
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
         setDblClickEvent();
@@ -94,12 +89,25 @@ public class EnduserController extends TabComponentsController {
         setListenerToClearSelection(lastSelectedRow);
     }
 
+    private void initTextWrapCellFactory() {
+        Callback<TableColumn, TableCell> customTextWrapCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new CustomTextWrapCellFactory();
+                    }
+                };
+
+        processorDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+    }
+
     private void setListenerToClearSelection(ObjectProperty<TableRow<Component>> lastSelectedRow) {
+
         for (TableView<Component> t : tblViewList) {
+            //går gjennom tableviewlisten for å finne den raden som sist ble valgt, blant alle tables,
+            // for å bruke den i eventfilteret på toplevel-panen.
             t.setRowFactory(tableView -> {
                 TableRow<Component> row = new TableRow<Component>();
-
-                row.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
+                row.selectedProperty().addListener((objects, wasSelected, isNowSelected) -> {
                     if (isNowSelected) {
                         lastSelectedRow.set(row);
                     }
@@ -108,12 +116,16 @@ public class EnduserController extends TabComponentsController {
             });
         }
 
+        //listener på toplevel element for å cleare selection
         this.topLevelPaneEndUser.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if (lastSelectedRow.get() != null) {
-                    Bounds boundsOfSelectedRow = lastSelectedRow.get().localToScene(lastSelectedRow.get().getLayoutBounds());
-                    if (!boundsOfSelectedRow.contains(event.getSceneX(), event.getSceneY())) {
+
+                    //legal bounds for the object that a method is trying to access.
+                    Bounds lastSelectedRowBounds =
+                            lastSelectedRow.get().localToScene(lastSelectedRow.get().getLayoutBounds());
+                    if (!lastSelectedRowBounds.contains(event.getSceneX(), event.getSceneY())) {
                         for (TableView<Component> t : tblViewList) {
                             t.getSelectionModel().clearSelection();
                         }
