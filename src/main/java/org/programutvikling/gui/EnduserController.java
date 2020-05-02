@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -58,12 +59,27 @@ public class EnduserController extends TabComponentsController {
             tblProcessor, tblVideoCard, tblScreen,
             tblOther, tblMemory, tblMouse, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
     @FXML
-    private TableColumn
+    private TableColumn processorDescriptionColumn,
             processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln,
             memoryPriceCln, mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln;
 
+
+
     @FXML
     public void initialize() throws IOException {
+       /* TableColumn processorDescriptionColumn =
+                tblProcessor.getSelectionModel().getTableView().getColumns().get(2);*/
+        processorDescriptionColumn.setCellFactory(tc -> {
+            TableCell<Component, String> cell = new TableCell<>();
+            Text text = new Text();
+            cell.setGraphic(text);
+            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+            text.wrappingWidthProperty().bind(processorDescriptionColumn.widthProperty());
+            text.textProperty().bind(cell.itemProperty());
+            return cell ;
+        });
+
+
         addTableViewsToList();
         endUserService.updateEndUserRegisters();
         updateComponentViews();
@@ -121,9 +137,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void setDblClickEvent() {
-
         EventHandler<MouseEvent> tblViewDblClickEvent = new EventHandler<>() {
-            @Override
             public void handle(MouseEvent mouseEvent) {
                 TableRow row;
                 if (isDoubleClick(mouseEvent)) {
@@ -285,13 +299,10 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     public void btnSavePC(ActionEvent event) throws IOException {
-
         List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
-
         if (FileHandling.validateCartListToSave(whatsMissing, stage)) return;
         updateCompletedComputers();
     }
-
 
     //kan definere denne i en egen klasse - se på de andre for å gjøre det. CustomListViewCellFactory
     private void setCellFactoryListView() {
@@ -354,9 +365,11 @@ public class EnduserController extends TabComponentsController {
             }
         }
     }
+
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
      */
+
     private void setTblMemory(TableView<Component> tblMemory) {
         tblMemory.setItems(endUserService.getMemoryRegister().getObservableRegister());
         this.tblMemory = tblMemory;

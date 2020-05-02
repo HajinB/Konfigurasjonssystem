@@ -98,7 +98,8 @@
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.20003509521484" text="Beskrivelse">
+                                <TableColumn  fx:id = "processorDescriptionColumn" prefWidth="175.20003509521484"
+                                              text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
