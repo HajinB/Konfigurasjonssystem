@@ -23,6 +23,8 @@
 <?import javafx.scene.text.Font?>
 
 <?import org.programutvikling.gui.customTextField.PriceField?>
+
+
 <AnchorPane fx:id="topLevelPane" prefHeight="700.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
     <ScrollPane pannable="true" prefHeight="700.0" prefWidth="1040.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane maxHeight="800.0" prefHeight="700.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
@@ -69,8 +71,7 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <TextArea  id="productDescription" prefHeight="150.0" prefWidth="200.0"
-                               promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5">
+                    <TextArea id="productDescription" prefHeight="150.0" prefWidth="200.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -108,7 +109,7 @@
                </columnConstraints>
                 </GridPane>
             </Pane>
-            <TableView fx:id="tblViewComponent" editable="true" layoutX="358.0" layoutY="98.0" onMousePressed="#dblClickTblRow" prefHeight="486.0" prefWidth="646.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="115.60000000000002" AnchorPane.leftAnchor="358.0" AnchorPane.rightAnchor="35.60000000000002">
+            <TableView fx:id="tblViewComponent" layoutX="358.0" layoutY="98.0" onMousePressed="#dblClickTblRow" prefHeight="486.0" prefWidth="646.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="115.60000000000002" AnchorPane.leftAnchor="358.0" AnchorPane.rightAnchor="35.60000000000002">
                 <columns>
                     <TableColumn minWidth="100.0" prefWidth="120.0" styleClass="column" text="Produkttype">
                         <cellValueFactory>
@@ -120,8 +121,7 @@
                             <PropertyValueFactory property="productName" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="productDescriptionColumn" minWidth="100" prefWidth="230.0" styleClass="column"
-                                 text="Beskrivelse">
+                    <TableColumn fx:id="productDescriptionColumn" minWidth="100" prefWidth="230.0" styleClass="column" text="Beskrivelse">
                         <cellValueFactory>
                             <PropertyValueFactory property="productDescription" />
                         </cellValueFactory>
