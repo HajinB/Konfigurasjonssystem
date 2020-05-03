@@ -1,5 +1,8 @@
 package org.programutvikling.gui;
 
+import javafx.event.Event;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -13,6 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +32,7 @@ import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentTypes;
 import org.programutvikling.domain.component.ComponentValidator;
+import org.programutvikling.gui.CustomPriceTableColumn.CustomTextWrapCellFactory;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.*;
@@ -34,8 +40,11 @@ import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
+
+import static javafx.application.Platform.runLater;
 
 public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
@@ -62,7 +71,7 @@ public class TabComponentsController {
     @FXML
     private TableView<Component> tblViewComponent;
     @FXML
-    private TableColumn productPriceColumn;
+    private TableColumn productPriceColumn, productDescriptionColumn;
     @FXML
     private ContextMenu cm;
 
@@ -78,6 +87,21 @@ public class TabComponentsController {
         threadHandler = new ThreadHandler(this);
         initTableView();
         registryComponentLogic.setTextAreaListener(componentRegNode);
+        initTextWrapCellFactory();
+    }
+
+    private void initTextWrapCellFactory() {
+
+        //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
+        // en kolonne i tableview
+        Callback<TableColumn, TableCell> customTextWrapCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new CustomTextWrapCellFactory();
+                    }
+                };
+
+        productDescriptionColumn.setCellFactory(customTextWrapCellFactory);
     }
 
     private void initTableView() {
@@ -150,7 +174,6 @@ public class TabComponentsController {
                     }
                 }
             }
-
             private boolean isDoubleClick(MouseEvent event) {
                 return event.isPrimaryButtonDown() && event.getClickCount() == 2;
             }
@@ -169,14 +192,14 @@ public class TabComponentsController {
 
     void handlePopUp(Stage stage, Component c) {
         /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
+
+        //todo denne kan man trekke ut av controlleren - på samme måte som textwrapfactory
         stage.setOnHidden(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
-
                 if (TemporaryComponent.INSTANCE.getIsEdited()) {
                     getObservableRegister().set(getObservableRegister().indexOf(c),
                             TemporaryComponent.INSTANCE.getTempComponent());
                     TemporaryComponent.INSTANCE.resetTemps();
-                    updateView();
                     try {
                         saveAll();
                     } catch (IOException e) {
@@ -188,7 +211,9 @@ public class TabComponentsController {
     }
 
     private void openEditWindow(TableRow<? extends Component> row) throws IOException {
-
+        if(row.isEmpty()){
+            return;
+        }
         FXMLLoader loader = getFxmlLoader("editPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -219,11 +244,27 @@ public class TabComponentsController {
     }
 
     @FXML
-    void btnAddComponent(ActionEvent event) throws IOException {
+    void btnAddComponent(ActionEvent event) throws IOException, AWTException {
         registerComponent();
-        updateView();
-        FileHandling.saveAll();
+
+        //å gjøre noe samtidig fucker cellen (?)
+        //tblViewComponent.refresh();
+
+        //updateView();
+       /* initTextWrapCellFactory();
+
+
+            try {
+                simulateMouseMoveToResetCells();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
+
+        tblViewComponent.layout();
+            tblViewComponent.refresh();
+        FileHandling.saveAll();*/
     }
+
 
     @FXML
     void btnOpenRecentFile(ActionEvent event) throws IOException {
@@ -264,7 +305,7 @@ public class TabComponentsController {
             openThread(chosenFile);
             Model.INSTANCE.appendComponentRegisterIntoModel();
             //getComponentRegister().removeDuplicates();
-            refreshTableAndSave();
+            //refreshTableAndSave();
         }
     }
 
@@ -337,13 +378,14 @@ public class TabComponentsController {
     }
 
     public void updateView() {
+        //hvis man attacher tableview på nytt ( mer enn en gang  ) - resettes cellfactories litt(?)
         getComponentRegister().attachTableView(tblViewComponent);
         tblViewComponent.refresh();
     }
 
     private void deleteComponent(Component selectedComp) {
         getComponentRegister().getRegister().remove(selectedComp);
-        updateView();
+        //updateView();
     }
 
     private void registerComponent() {
@@ -363,7 +405,6 @@ public class TabComponentsController {
             }
         } else {
             getComponentRegister().addComponent(newComponent);
-            updateView();
         }
     }
 

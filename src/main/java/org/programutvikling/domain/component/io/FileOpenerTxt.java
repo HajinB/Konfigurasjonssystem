@@ -24,7 +24,6 @@ public class FileOpenerTxt implements FileOpener {
         //finn de 2 første feltene navn og beskrivelse før man sender til parsecomponent.
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
-
             //.readline reads a line of text - så line er all tekst frem til "\n".
             // så kanskje før denne while loopen ha noe (og kanskje skriv computer sånn:
             //gaming pc;2999

@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.programutvikling.App;
@@ -27,6 +28,9 @@ public class PrimaryController implements Initializable {
     private PasswordField inputPassword;
 
     @FXML
+    Button btnLogin;
+
+    @FXML
     void btnGuest(ActionEvent event) throws IOException {
 // here runs the JavaFX thread
 // Boolean as generic parameter since you want to return it
@@ -36,6 +40,10 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
+        loginAction();
+    }
+
+    private void loginAction() throws IOException {
         User loginUser = Model.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),inputPassword.getText());
         if(loginUser != null){
             if(loginUser.getAdmin()) {
@@ -61,6 +69,8 @@ public class PrimaryController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //loadRegisterFromFile();
       //  Model.INSTANCE.getUserRegister();
+
+
     }
 
 

@@ -1,15 +1,15 @@
 package org.programutvikling.gui;
 
 import javafx.stage.Stage;
-import org.programutvikling.model.Model;
 import org.programutvikling.domain.component.io.FileOpener;
 import org.programutvikling.domain.component.io.FileSaver;
 import org.programutvikling.domain.component.io.FileSaverTxt;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerFactory;
+import org.programutvikling.domain.user.UserPreferences;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.domain.user.UserPreferences;
+import org.programutvikling.model.Model;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,12 +80,12 @@ public class FileHandling {
 
     public static void openFile(ArrayList<Object> objects, String selectedPath) {
         File file = new File(selectedPath);
-        if(file.exists()) {
+        if (file.exists()) {
             openObjects(objects, selectedPath);
-        }else {
+        } else {
             File fileBackup = new File("AppFiles/Database/Backup/AppFiles.jobj");
-            if(fileBackup.exists())
-            openObjects(objects, "AppFiles/Database/Backup/AppFiles.jobj");
+            if (fileBackup.exists())
+                openObjects(objects, "AppFiles/Database/Backup/AppFiles.jobj");
         }
     }
 
@@ -146,11 +146,7 @@ public class FileHandling {
 
     }
 
-    public UserPreferences getUserPreferences() {
-        return userPreferences;
-    }
-
-    static Computer getComputer(){
+    static Computer getComputer() {
         return Model.INSTANCE.getComputer();
     }
 
@@ -178,6 +174,10 @@ public class FileHandling {
         Model.INSTANCE.getComputerRegister().addComputer(computer);
         saveAll();
         return false;
+    }
+
+    public UserPreferences getUserPreferences() {
+        return userPreferences;
     }
 
 

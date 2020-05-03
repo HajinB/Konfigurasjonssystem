@@ -13,4 +13,9 @@
       <module name="Konfigurasjonssystem" target="13" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Konfigurasjonssystem" options="--add-exports=javafx.graphics/com.sun.glass.ui=org.programutvikling" />
+    </option>
+  </component>
 </project>

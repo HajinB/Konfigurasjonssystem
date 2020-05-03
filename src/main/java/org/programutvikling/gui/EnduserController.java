@@ -18,7 +18,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.App;
+import org.programutvikling.gui.CustomPriceTableColumn.CustomTextWrapCellFactory;
 import org.programutvikling.gui.utility.FXMLGetter;
+import org.programutvikling.logic.EndUserLogic;
 import org.programutvikling.model.Model;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.io.FileOpenerTxt;
@@ -58,19 +60,23 @@ public class EnduserController extends TabComponentsController {
             tblProcessor, tblVideoCard, tblScreen,
             tblOther, tblMemory, tblMouse, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
     @FXML
-    private TableColumn
+    private TableColumn processorDescriptionColumn,
             processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln,
             memoryPriceCln, mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln;
+
+    private EndUserLogic endUserLogic;
+
 
     @FXML
     public void initialize() throws IOException {
         addTableViewsToList();
-        endUserService.updateEndUserRegisters();
+        initTextWrapCellFactory();
         updateComponentViews();
         updateList();
-        updateComputerListView();
-        setTblCellFactory();
         setCellFactoryListView();
+        setTblCellFactory();
+        endUserService.updateEndUserRegisters();
+        updateComputerListView();
         setTblCompletedComputersListener();
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
         setDblClickEvent();
@@ -78,12 +84,28 @@ public class EnduserController extends TabComponentsController {
         setListenerToClearSelection(lastSelectedRow);
     }
 
+    private void initTextWrapCellFactory() {
+
+        //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
+        // en kolonne i tableview
+        Callback<TableColumn, TableCell> customTextWrapCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new CustomTextWrapCellFactory();
+                    }
+                };
+
+        processorDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+    }
+
     private void setListenerToClearSelection(ObjectProperty<TableRow<Component>> lastSelectedRow) {
+
         for (TableView<Component> t : tblViewList) {
+            //går gjennom tableviewlisten for å finne den raden som sist ble valgt, blant alle tables,
+            // for å bruke den i eventfilteret på toplevel-panen.
             t.setRowFactory(tableView -> {
                 TableRow<Component> row = new TableRow<Component>();
-
-                row.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
+                row.selectedProperty().addListener((objects, wasSelected, isNowSelected) -> {
                     if (isNowSelected) {
                         lastSelectedRow.set(row);
                     }
@@ -92,12 +114,16 @@ public class EnduserController extends TabComponentsController {
             });
         }
 
+        //listener på toplevel element for å cleare selection
         this.topLevelPaneEndUser.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if (lastSelectedRow.get() != null) {
-                    Bounds boundsOfSelectedRow = lastSelectedRow.get().localToScene(lastSelectedRow.get().getLayoutBounds());
-                    if (!boundsOfSelectedRow.contains(event.getSceneX(), event.getSceneY())) {
+
+                    //legal bounds for the object that a method is trying to access.
+                    Bounds lastSelectedRowBounds =
+                            lastSelectedRow.get().localToScene(lastSelectedRow.get().getLayoutBounds());
+                    if (!lastSelectedRowBounds.contains(event.getSceneX(), event.getSceneY())) {
                         for (TableView<Component> t : tblViewList) {
                             t.getSelectionModel().clearSelection();
                         }
@@ -121,9 +147,7 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void setDblClickEvent() {
-
         EventHandler<MouseEvent> tblViewDblClickEvent = new EventHandler<>() {
-            @Override
             public void handle(MouseEvent mouseEvent) {
                 TableRow row;
                 if (isDoubleClick(mouseEvent)) {
@@ -274,18 +298,23 @@ public class EnduserController extends TabComponentsController {
         String path = FileUtility.getFilePathFromOpenTxtDialog(stage);
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         fileOpenerTxt.open(getComputer(), Paths.get(path));
+
+        //kjører fileopenertxt her - trenger man fileopener factory da?? er det lurt å la det gå til samme metode?
+        // for å redusere kopi ? da kan man ta bort (Computer) fra fileopenertxt - gjør det fra objects der også?
+        //er det nødvendig å ha interface
+       // FileHandling.openObjects(Model.INSTANCE.getCleanObjectList(), path);
+        Model.INSTANCE.loadComputerIntoClass();
         updateTotalPrice();
     }
 
     @FXML
     public void btnSavePC(ActionEvent event) throws IOException {
-
         List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
-
         if (FileHandling.validateCartListToSave(whatsMissing, stage)) return;
         updateCompletedComputers();
     }
 
+    //kan definere denne i en egen klasse - se på de andre for å gjøre det. CustomListViewCellFactory
     private void setCellFactoryListView() {
         shoppingListView.setCellFactory(param -> new ListCell<Component>() {
             @Override
@@ -346,9 +375,11 @@ public class EnduserController extends TabComponentsController {
             }
         }
     }
+
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
      */
+
     private void setTblMemory(TableView<Component> tblMemory) {
         tblMemory.setItems(endUserService.getMemoryRegister().getObservableRegister());
         this.tblMemory = tblMemory;

@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Konfigurasjonssystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Konfigurasjonssystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/EndUser.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/EndUser.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/primary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabComponents.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabComponents.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/CSS/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/CSS/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/primary.fxml" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,6 +54,13 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -136,6 +129,18 @@
       <command value="mvn clean" />
       <command value="mvn install" />
       <command value="mvn verify" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -249,83 +254,8 @@
       <workItem from="1588112198159" duration="1177000" />
       <workItem from="1588208308186" duration="7954000" />
       <workItem from="1588248697996" duration="17623000" />
-      <workItem from="1588291589731" duration="9055000" />
-    </task>
-    <task id="LOCAL-00022" summary="Fixed saverFactory">
-      <created>1587069162788</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1587069162788</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Fixed saverFactory">
-      <created>1587069264189</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1587069264189</updated>
-    </task>
-    <task id="LOCAL-00024" summary="La til combobox for nylige filer">
-      <created>1587071111667</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1587071111667</updated>
-    </task>
-    <task id="LOCAL-00025" summary="La til combobox for nylige filer">
-      <created>1587071147950</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1587071147950</updated>
-    </task>
-    <task id="LOCAL−00026" summary="To nye FXML filer for tabs og tilhørende controllers. En ny controller: MainController">
-      <created>1587071883946</created>
-      <option name="number" value="LOCAL−00026" />
-      <option name="presentableId" value="LOCAL−00026" />
-      <updated>1587071883946</updated>
-    </task>
-    <task id="LOCAL-00027" summary="prøver å legge til til computer/listview fra enduser (må få opp test av IO fra enduser asap)">
-      <created>1587141886138</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1587141886139</updated>
-    </task>
-    <task id="LOCAL-00028" summary="prøver å legge til til computer/listview fra enduser (må få opp test av IO fra enduser asap)">
-      <created>1587142248576</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1587142248576</updated>
-    </task>
-    <task id="LOCAL-00029" summary="fixed repeated opening - en del debugging messages :P - føler det som gjenstår på superbruker page er noen bugs i SØK / backspace fungerer ikke xD + open recent files er ikke implementert enda.">
-      <created>1587205329284</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1587205329284</updated>
-    </task>
-    <task id="LOCAL-00030" summary="fixed repeated opening - en del debugging messages :P - føler det som gjenstår på superbruker page er noen bugs i SØK / backspace fungerer ikke xD + open recent files er ikke implementert enda.">
-      <created>1587205414022</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1587205414022</updated>
-    </task>
-    <task id="LOCAL-00031" summary="open recent files skal fungere - men skjønte etterpå at den egentlig burde vært plassert i main controller - bør dn ligge i menu bar istedet?">
-      <created>1587212464434</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1587212464434</updated>
-    </task>
-    <task id="LOCAL-00032" summary="testmetode for filesavertxt (uten navn og totalpris)">
-      <created>1587227547142</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1587227547142</updated>
+      <workItem from="1588291589731" duration="11027000" />
+      <workItem from="1588442497595" duration="16071000" />
     </task>
     <task id="LOCAL-00033" summary="mangler &quot;success dialog&quot; for saved file (alle) - hvor bør dette implementeres&#10;&#10;Bør vi ha en &quot;status-label helt nederst på siden? som sier &quot;lagrer...&quot; og &quot;åpner fil...&quot; mens filbehandling skjer?">
       <created>1587381377815</created>
@@ -593,7 +523,84 @@
       <option name="project" value="LOCAL" />
       <updated>1588282153271</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="mappestruktur">
+      <created>1588328199068</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1588328199068</updated>
+    </task>
+    <task id="LOCAL-00072" summary="mappestruktur">
+      <created>1588339607570</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1588339607570</updated>
+    </task>
+    <task id="LOCAL-00073" summary="refactor">
+      <created>1588442527470</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1588442527471</updated>
+    </task>
+    <task id="LOCAL-00074" summary="test for wraptext i cellene">
+      <created>1588443619573</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1588443619574</updated>
+    </task>
+    <task id="LOCAL-00075" summary="test for wraptext i cellene">
+      <created>1588451454414</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1588451454414</updated>
+    </task>
+    <task id="LOCAL-00076" summary="test for wraptext i cellene">
+      <created>1588452022200</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1588452022200</updated>
+    </task>
+    <task id="LOCAL-00077" summary="wrap text i beskrivelse også">
+      <created>1588453023056</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1588453023056</updated>
+    </task>
+    <task id="LOCAL-00078" summary="wrap text i beskrivelse også">
+      <created>1588500309662</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1588500309662</updated>
+    </task>
+    <task id="LOCAL-00079" summary="wrap text i beskrivelse også">
+      <created>1588502108371</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1588502108371</updated>
+    </task>
+    <task id="LOCAL-00080" summary="wooops liten bugfix - trenger ikke calle updatelist etter man har lagt til en komponent.">
+      <created>1588503078108</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1588503078108</updated>
+    </task>
+    <task id="LOCAL-00081" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
+      <created>1588503619153</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1588503619153</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,20 +626,15 @@
         </entry>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testmetode for filesavertxt (uten navn og totalpris)" />
-    <MESSAGE value="mangler &quot;success dialog&quot; for saved file (alle) - hvor bør dette implementeres&#10;&#10;Bør vi ha en &quot;status-label helt nederst på siden? som sier &quot;lagrer...&quot; og &quot;åpner fil...&quot; mens filbehandling skjer?" />
-    <MESSAGE value="prøver å gjøre metoder kortere (og debugge tableview og search).." />
-    <MESSAGE value="prøver å fixe search og tableviewedit.." />
-    <MESSAGE value="fixed search" />
-    <MESSAGE value="fungerende popup-edit-window" />
     <MESSAGE value="fungerende popup-edit-window v2" />
     <MESSAGE value="computervalidation" />
     <MESSAGE value="computervalidation + tblview formatting" />
@@ -652,7 +654,13 @@
     <MESSAGE value="inputvalidering av computer.txt" />
     <MESSAGE value="inputvalidering + clearselection listener" />
     <MESSAGE value="prøver å fikse velg lagringsplass" />
-    <option name="LAST_COMMIT_MESSAGE" value="prøver å fikse velg lagringsplass" />
+    <MESSAGE value="mappestruktur" />
+    <MESSAGE value="refactor" />
+    <MESSAGE value="test for wraptext i cellene" />
+    <MESSAGE value="wrap text i beskrivelse også" />
+    <MESSAGE value="wooops liten bugfix - trenger ikke calle updatelist etter man har lagt til en komponent." />
+    <MESSAGE value="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen." />
+    <option name="LAST_COMMIT_MESSAGE" value="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen." />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1587242454320" />

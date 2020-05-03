@@ -81,9 +81,13 @@ class RegistryComponentLogic {
 
     public void setTextAreaListener(GridPane gridPane) {
         TextArea textArea =((TextArea) gridPane.lookup("#productDescription"));
+        textArea.setWrapText(true);
+
+        //overrider ENTER keyEvent for å unngå lineshift ( brukes for å lese fra txtfil)
         textArea.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
+
                 if (keyEvent.getCode() == KeyCode.ENTER)  {
                     keyEvent.consume();
                 }

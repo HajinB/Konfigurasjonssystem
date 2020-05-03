@@ -33,7 +33,7 @@ public enum Model {
             e.printStackTrace();
         }
 
-        loadFileIntoModel();
+        loadFileIntoModel();  //kan ikke kjøre denne metoden fra en annen klasse - konstruktøren må holdes privat
     }
 
     public void loadFileIntoModel() {
@@ -156,5 +156,8 @@ public enum Model {
 
     public Computer getComputer() {
         return computer;
+    }
+
+    public void loadComputerIntoClass() {
     }
 }
