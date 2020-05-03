@@ -17,7 +17,6 @@ public class ThreadHandler {
         this.controller = controller;
     }
 
-
     void openInputThread(String path) {
         InputThread task = new InputThread(path);
         task.setOnSucceeded(this::threadDone);
@@ -58,7 +57,6 @@ public class ThreadHandler {
             }
         });
         task.setOnFailed((e) -> {
-            // eventual error handling by catching exceptions from task.get()
         });
         new Thread(task).start();
     }

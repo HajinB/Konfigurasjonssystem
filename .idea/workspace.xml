@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ThreadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ThreadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/RegisterUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/RegisterUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -256,14 +260,7 @@
       <workItem from="1588208308186" duration="7954000" />
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
-      <workItem from="1588442497595" duration="23938000" />
-    </task>
-    <task id="LOCAL-00040" summary="fungerende popup-edit-window v2">
-      <created>1587522528468</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1587522528468</updated>
+      <workItem from="1588442497595" duration="25051000" />
     </task>
     <task id="LOCAL-00041" summary="computervalidation">
       <created>1587681010328</created>
@@ -601,7 +598,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588537357635</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
+      <created>1588538134269</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1588538134269</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

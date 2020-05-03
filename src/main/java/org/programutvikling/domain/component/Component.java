@@ -94,7 +94,7 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         return String.format("%s;%s;%s;%s", productType.getValue(), productName.getValue(),
                 productDescription.getValue(), productPrice.getValue());
     }
-
+/*
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -110,6 +110,30 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     public int hashCode() {
         return Objects.hash(productType, productName, productDescription, productPrice);
     }
+*/
+    @Override
+    public boolean equals(Object obj) {
+        // TODO denne metoden er for å kunne fjerne duplikater med HashSet - må override equals og hashcode metodene
+        //  til Object for å ha kontroll på de.
+        if(obj instanceof Component)
+        {
+            Component temp = (Component) obj;
+            return this.getProductName().equals(temp.getProductName()) && this.getProductType().equals(temp.getProductType()) && this.getProductDescription().equals(temp.getProductDescription());
+        }
+        return false;
+
+    }
+    @Override
+    public int hashCode() {
+        // returnerer summen av hashcoden til hvert enkelt felt - blir en unik kode for hvert objekt.
+
+        return (this.getProductType().hashCode() + this.getProductName().hashCode() + this.getProductDescription().hashCode());
+    }
+
+
+
+
+
 /*
     @Override
     public boolean equals(final Object obj) {

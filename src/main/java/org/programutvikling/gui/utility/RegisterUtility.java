@@ -6,7 +6,14 @@ public class RegisterUtility {
 
     public static <T> List<T> removeDuplicates(List<T> inputList) {
         // overloader med 1 parameter, comparator: null betyr at den ikke sorter
-        return removeDuplicates(inputList, null);
+        Set<T> s = new HashSet<T>();
+        s.addAll(inputList);
+        System.out.println(inputList.size());
+        System.out.println(s.size());
+
+        ArrayList<T> al = new ArrayList<T>();
+        al.addAll(s);
+        return al;
     }
 
     public static <T> List<T> removeDuplicates(List<T> inputList, Comparator<? super T> comparator) {

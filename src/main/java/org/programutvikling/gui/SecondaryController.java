@@ -70,7 +70,6 @@ public class SecondaryController implements Initializable {
                 chosenFile + "?");
         alert.showAndWait();
         tabComponentsController.handleOpenOptions(chosenFile, alert);
-
     }
 
     private ComponentRegister getComponentRegister() {

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import org.programutvikling.gui.utility.RegisterUtility;
+import org.programutvikling.model.Model;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -148,7 +149,9 @@ public class ComponentRegister implements Serializable {
     }
 
     public void removeDuplicates() {
-        RegisterUtility.removeDuplicates(componentObservableList);
+       ArrayList<Component> al = (ArrayList<Component>) RegisterUtility.removeDuplicates(componentObservableList);
+        Model.INSTANCE.getComponentRegister().getRegister().clear();
+        Model.INSTANCE.getComponentRegister().getRegister().addAll(al);
     }
 
 
