@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="1040.0" styleClass="anchorPane" stylesheets="@CSS/Login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.PrimaryController">
+<BorderPane prefHeight="650.0" prefWidth="1060.0" styleClass="anchorPane" stylesheets="@CSS/Login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.PrimaryController">
    <center>
       <AnchorPane maxHeight="478.0" maxWidth="320.0" styleClass="loginPane" stylesheets="@CSS/Login.css" BorderPane.alignment="CENTER">
          <Label layoutX="62.0" layoutY="56.0" prefHeight="54.0" prefWidth="185.0" text="Logg inn" AnchorPane.bottomAnchor="368.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="56.0">

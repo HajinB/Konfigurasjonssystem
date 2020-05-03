@@ -11,64 +11,64 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane fx:id="topLevelPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController">
-   <top>
-       <AnchorPane prefHeight="30.0">
-           <MenuBar layoutY="-3.0" prefHeight="30.0" styleClass="menyBar" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <Menu mnemonicParsing="false" text="Fil">
-                   <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Åpne jobj-fil">
-                  <graphic>
-                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../Bilder/folder-13.png" />
-                        </image>
-                     </ImageView>
-                  </graphic></MenuItem>
-                   <MenuItem mnemonicParsing="false" onAction="#btnSaveToChosenPath" text="Lagre som...">
-                  <graphic>
-                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../Bilder/save.png" />
-                        </image>
-                     </ImageView>
-                  </graphic></MenuItem>
-                   <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Velg lagringsplass">
-                  <graphic>
-                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../Bilder/folder-12.png" />
-                        </image>
-                     </ImageView>
-                  </graphic></MenuItem>
-                   <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut">
-                  <graphic>
-                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../Bilder/power.png" />
-                        </image>
-                     </ImageView>
-                  </graphic></MenuItem>
-               </Menu>
-               <Menu mnemonicParsing="false" text="Verktøy">
-                   <MenuItem mnemonicParsing="false" onAction="#btnRemoveDuplicates" text="Fjern duplikater ">
-                  <graphic>
-                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../Bilder/garbage-1.png" />
-                        </image>
-                     </ImageView>
-                  </graphic></MenuItem>
-               </Menu>
-           </MenuBar>
-       </AnchorPane>
-   </top>
-   <center>
-       <TabPane tabMinHeight="30.0" tabMinWidth="350.0">
-           <Tab fx:id="tabComponentRegister" text="Komponenter">
-               <fx:include fx:id="tabComponents" source="tabComponents.fxml" />
-           </Tab>
-           <Tab fx:id="tabUserRegister" text="Brukere">
-               <fx:include fx:id="tabUsers" source="tabUsers.fxml" />
-           </Tab>
-       </TabPane>
-   </center>
+    <top>
+        <AnchorPane prefHeight="30.0">
+            <MenuBar layoutY="-3.0" prefHeight="30.0" styleClass="menyBar" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <Menu mnemonicParsing="false" text="Fil">
+                    <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Åpne jobj-fil">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../Bilder/folder-13.png" />
+                                </image>
+                            </ImageView>
+                        </graphic></MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#btnSaveToChosenPath" text="Lagre som...">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../Bilder/save.png" />
+                                </image>
+                            </ImageView>
+                        </graphic></MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Velg lagringsplass">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../Bilder/folder-12.png" />
+                                </image>
+                            </ImageView>
+                        </graphic></MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../Bilder/power.png" />
+                                </image>
+                            </ImageView>
+                        </graphic></MenuItem>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Verktøy">
+                    <MenuItem mnemonicParsing="false" onAction="#btnRemoveDuplicates" text="Fjern duplikater ">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../Bilder/garbage-1.png" />
+                                </image>
+                            </ImageView>
+                        </graphic></MenuItem>
+                </Menu>
+            </MenuBar>
+        </AnchorPane>
+    </top>
+    <center>
+        <TabPane tabMinHeight="30.0" tabMinWidth="320.0">
+            <Tab fx:id="tabComponentRegister" text="Komponenter">
+                <fx:include fx:id="tabComponents" source="tabComponents.fxml" />
+            </Tab>
+            <Tab fx:id="tabUserRegister" text="Brukere">
+                <fx:include fx:id="tabUsers" source="tabUsers.fxml" />
+            </Tab>
+        </TabPane>
+    </center>
 </BorderPane>

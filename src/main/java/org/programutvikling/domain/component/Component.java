@@ -28,7 +28,19 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public Component(String type, String name, String description, double price) {
-        // Validator av type, name og price(sjekke om den er 0?) her
+        if (!ComponentValidator.isProductNameValid(name)) {
+            throw new IllegalArgumentException("Skriv inn produktnavn");
+        }
+        if (!ComponentValidator.isProductTypeValid(type)) {
+            throw new IllegalArgumentException("Velg produkttype");
+        }
+        if (!ComponentValidator.isProductDescriptionValid(description)) {
+            throw new IllegalArgumentException("Skriv inn produktbeskrivelse");
+        }
+        if (!ComponentValidator.isProductPriceValid(price)) {
+            throw new NumberFormatException("Skriv inn pris på produktet");
+        }
+
         this.productType = new SimpleStringProperty(type);
         this.productName = new SimpleStringProperty(name);
         this.productDescription = new SimpleStringProperty(description);

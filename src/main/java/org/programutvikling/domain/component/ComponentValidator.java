@@ -6,7 +6,7 @@ public class ComponentValidator {
 
     static boolean isComponentValid(Component component) {
         //return true;
-        return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductPriceValid(component.getProductPrice());
+        return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductDescriptionValid(component.getProductDescription()) && isProductPriceValid(component.getProductPrice());
     }
 
     public static Component isComponentInRegisterThenReturnIt(Component component, ComponentRegister register){
@@ -20,7 +20,7 @@ public class ComponentValidator {
 
     static boolean isComponentValid(String type, String name, String description, double price) {
         //return true;
-        return isProductTypeValid(type) && isProductNameValid(name) && isProductPriceValid(price);
+        return isProductTypeValid(type) && isProductNameValid(name) && isProductDescriptionValid(description) && isProductPriceValid(price);
     }
 
     public static boolean isComponentFromTxtValid(Component component) {
@@ -69,7 +69,7 @@ public class ComponentValidator {
     return bol && !inputStr.isBlank();
 */
     static boolean isProductNameValid(String name) {
-        return name.length() < 100;
+        return !(name.isEmpty() && name.isBlank()) && name.length() < 100;
     }
 
     static boolean isProductPriceValid(double price) {
@@ -107,7 +107,9 @@ public class ComponentValidator {
     }
 
 
-
+    public static boolean isProductDescriptionValid(String description) {
+        return !(description.isEmpty() && description.isBlank());
+    }
 }
        /* isProductPriceMatchingAlreadySaved(ArrayList<Object> objects, String toBeSearched){
 
