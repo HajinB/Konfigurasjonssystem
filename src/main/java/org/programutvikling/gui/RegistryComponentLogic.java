@@ -1,11 +1,12 @@
 package org.programutvikling.gui;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Converter;
@@ -53,16 +54,15 @@ class RegistryComponentLogic {
     }
 
 
-
     private String getString(TextField field) {
         return field.getText();
     }
 
-    private String getCBString (ChoiceBox choiceBox) {
+    private String getCBString(ChoiceBox choiceBox) {
         return String.valueOf(choiceBox.getValue());
     }
 
-    private String getTextareaString (TextArea textArea) {
+    private String getTextareaString(TextArea textArea) {
         return textArea.getText();
     }
 
@@ -80,7 +80,7 @@ class RegistryComponentLogic {
 
 
     public void setTextAreaListener(GridPane gridPane) {
-        TextArea textArea =((TextArea) gridPane.lookup("#productDescription"));
+        TextArea textArea = ((TextArea) gridPane.lookup("#productDescription"));
         textArea.setWrapText(true);
 
         //overrider ENTER keyEvent for å unngå lineshift ( brukes for å lese fra txtfil)
@@ -88,7 +88,7 @@ class RegistryComponentLogic {
             @Override
             public void handle(KeyEvent keyEvent) {
 
-                if (keyEvent.getCode() == KeyCode.ENTER)  {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
                     keyEvent.consume();
                 }
             }

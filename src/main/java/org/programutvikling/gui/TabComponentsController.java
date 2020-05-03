@@ -1,8 +1,5 @@
 package org.programutvikling.gui;
 
-import javafx.event.Event;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -16,8 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -38,12 +33,9 @@ import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.*;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.util.Objects;
-
-import static javafx.application.Platform.runLater;
 
 public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
