@@ -91,7 +91,7 @@ public class SecondaryController implements Initializable {
         ObservableList<Component> list  = (ObservableList<Component>) Model.INSTANCE.getComponentRegister().getRegister();
         Model.INSTANCE.getComponentRegister().removeDuplicates();
         tabComponentsController.updateView();
-        tabComponentsController.refreshTableAndSave();
+        //tabComponentsController.refreshTableAndSave();
     }
 
     @Override

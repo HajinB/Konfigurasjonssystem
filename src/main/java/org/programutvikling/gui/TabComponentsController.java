@@ -40,7 +40,6 @@ import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
