@@ -50,6 +50,10 @@ public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
     @FXML
     public Label lblComponentMsg;
+    public Label lblMsgType;
+    public Label lblMsgName;
+    public Label lblMsgDescription;
+    public Label lblMsgPrice;
 
     SecondaryController secondaryController;
     @FXML

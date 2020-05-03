@@ -9,11 +9,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import org.programutvikling.gui.customTextField.*?>
-<BorderPane fx:id="topLevelPane" maxHeight="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController">
+
+<BorderPane fx:id="topLevelPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.SecondaryController">
    <top>
        <AnchorPane prefHeight="30.0">
-           <MenuBar layoutY="-3.0" prefHeight="30.0" prefWidth="1040.0" styleClass="menyBar" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+           <MenuBar layoutY="-3.0" prefHeight="30.0" styleClass="menyBar" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <Menu mnemonicParsing="false" text="Fil">
                    <MenuItem mnemonicParsing="false" onAction="#btnOpenJobj" text="Åpne jobj-fil">
                   <graphic>
@@ -62,7 +62,7 @@
        </AnchorPane>
    </top>
    <center>
-       <TabPane>
+       <TabPane tabMinHeight="30.0" tabMinWidth="350.0">
            <Tab fx:id="tabComponentRegister" text="Komponenter">
                <fx:include fx:id="tabComponents" source="tabComponents.fxml" />
            </Tab>
