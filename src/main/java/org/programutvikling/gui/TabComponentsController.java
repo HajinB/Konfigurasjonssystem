@@ -174,7 +174,6 @@ public class TabComponentsController {
                     }
                 }
             }
-
             private boolean isDoubleClick(MouseEvent event) {
                 return event.isPrimaryButtonDown() && event.getClickCount() == 2;
             }
@@ -193,6 +192,8 @@ public class TabComponentsController {
 
     void handlePopUp(Stage stage, Component c) {
         /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
+
+        //todo denne kan man trekke ut av controlleren - på samme måte som textwrapfactory
         stage.setOnHidden(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
                 if (TemporaryComponent.INSTANCE.getIsEdited()) {
@@ -403,7 +404,7 @@ public class TabComponentsController {
             }
         } else {
             getComponentRegister().addComponent(newComponent);
-            updateView();
+            //updateView();
         }
     }
 

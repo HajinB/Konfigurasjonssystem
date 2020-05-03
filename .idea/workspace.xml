@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/CustomTextWrapCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/CustomTextWrapCellFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
@@ -256,14 +256,7 @@
       <workItem from="1588208308186" duration="7954000" />
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
-      <workItem from="1588442497595" duration="13844000" />
-    </task>
-    <task id="LOCAL-00030" summary="fixed repeated opening - en del debugging messages :P - føler det som gjenstår på superbruker page er noen bugs i SØK / backspace fungerer ikke xD + open recent files er ikke implementert enda.">
-      <created>1587205414022</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1587205414022</updated>
+      <workItem from="1588442497595" duration="14742000" />
     </task>
     <task id="LOCAL-00031" summary="open recent files skal fungere - men skjønte etterpå at den egentlig burde vært plassert i main controller - bør dn ligge i menu bar istedet?">
       <created>1587212464434</created>
@@ -601,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588500309662</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="wrap text i beskrivelse også">
+      <created>1588502108371</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1588502108371</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
