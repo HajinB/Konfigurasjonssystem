@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/CustomTextWrapCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomPriceTableColumn/CustomTextWrapCellFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
@@ -256,14 +256,7 @@
       <workItem from="1588208308186" duration="7954000" />
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
-      <workItem from="1588442497595" duration="14742000" />
-    </task>
-    <task id="LOCAL-00031" summary="open recent files skal fungere - men skjønte etterpå at den egentlig burde vært plassert i main controller - bør dn ligge i menu bar istedet?">
-      <created>1587212464434</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1587212464434</updated>
+      <workItem from="1588442497595" duration="15284000" />
     </task>
     <task id="LOCAL-00032" summary="testmetode for filesavertxt (uten navn og totalpris)">
       <created>1587227547142</created>
@@ -601,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588502108371</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="wooops liten bugfix - trenger ikke calle updatelist etter man har lagt til en komponent.">
+      <created>1588503078108</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1588503078108</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,7 +636,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed search" />
     <MESSAGE value="fungerende popup-edit-window" />
     <MESSAGE value="fungerende popup-edit-window v2" />
     <MESSAGE value="computervalidation" />
@@ -661,7 +660,8 @@
     <MESSAGE value="refactor" />
     <MESSAGE value="test for wraptext i cellene" />
     <MESSAGE value="wrap text i beskrivelse også" />
-    <option name="LAST_COMMIT_MESSAGE" value="wrap text i beskrivelse også" />
+    <MESSAGE value="wooops liten bugfix - trenger ikke calle updatelist etter man har lagt til en komponent." />
+    <option name="LAST_COMMIT_MESSAGE" value="wooops liten bugfix - trenger ikke calle updatelist etter man har lagt til en komponent." />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1587242454320" />

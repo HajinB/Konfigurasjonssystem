@@ -305,7 +305,7 @@ public class TabComponentsController {
             openThread(chosenFile);
             Model.INSTANCE.appendComponentRegisterIntoModel();
             //getComponentRegister().removeDuplicates();
-            refreshTableAndSave();
+            //refreshTableAndSave();
         }
     }
 
@@ -404,7 +404,6 @@ public class TabComponentsController {
             }
         } else {
             getComponentRegister().addComponent(newComponent);
-            //updateView();
         }
     }
 
