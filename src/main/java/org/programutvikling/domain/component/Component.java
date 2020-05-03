@@ -94,23 +94,6 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         return String.format("%s;%s;%s;%s", productType.getValue(), productName.getValue(),
                 productDescription.getValue(), productPrice.getValue());
     }
-/*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Component component = (Component) o;
-        return productType.equals(component.productType) &&
-                productName.equals(component.productName) &&
-                productDescription.equals(component.productDescription) &&
-                productPrice.equals(component.productPrice);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(productType, productName, productDescription, productPrice);
-    }
-*/
     @Override
     public boolean equals(Object obj) {
         // TODO denne metoden er for å kunne fjerne duplikater med HashSet - må override equals og hashcode metodene
@@ -118,7 +101,10 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         if(obj instanceof Component)
         {
             Component temp = (Component) obj;
-            return this.getProductName().equals(temp.getProductName()) && this.getProductType().equals(temp.getProductType()) && this.getProductDescription().equals(temp.getProductDescription());
+            return this.getProductName().equals(temp.getProductName())
+                    && this.getProductType().equals(temp.getProductType())
+                    && this.getProductDescription().equals(temp.getProductDescription());
+            //bruker ikke pris her, for å sammenligne to komponenter i en liste.
         }
         return false;
 
@@ -126,7 +112,6 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     @Override
     public int hashCode() {
         // returnerer summen av hashcoden til hvert enkelt felt - blir en unik kode for hvert objekt.
-
         return (this.getProductType().hashCode() + this.getProductName().hashCode() + this.getProductDescription().hashCode());
     }
 
