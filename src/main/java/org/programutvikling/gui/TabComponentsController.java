@@ -91,7 +91,7 @@ public class TabComponentsController {
         threadHandler = new ThreadHandler(this);
         initTableView();
         registryComponentLogic.setTextAreaListener(componentRegNode);
-        //initTextWrapCellFactory();
+        initTextWrapCellFactory();
     }
 
     private void initTextWrapCellFactory() {
@@ -295,13 +295,14 @@ public class TabComponentsController {
             Model.INSTANCE.appendComponentRegisterIntoModel();
             //getComponentRegister().removeDuplicates();
             //refreshTableAndSave();
+            updateView();
         }
     }
 
     public void overWriteList(String chosenFile) throws IOException {
         openThread(chosenFile);
         Model.INSTANCE.loadComponentRegisterIntoModel();
-        refreshTableAndSave();
+        updateView();
     }
 
     private boolean isFileSelectionEmpty(String chosenFile) {
@@ -361,7 +362,7 @@ public class TabComponentsController {
     }
 
     void refreshTableAndSave() throws IOException {
-        tblViewComponent.refresh();
+        //tblViewComponent.refresh();
         updateView();
         FileHandling.saveAll();
     }

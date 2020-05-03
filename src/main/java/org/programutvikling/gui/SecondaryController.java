@@ -90,8 +90,8 @@ public class SecondaryController implements Initializable {
     public void btnRemoveDuplicates(ActionEvent event) throws IOException {
         ObservableList<Component> list  = (ObservableList<Component>) Model.INSTANCE.getComponentRegister().getRegister();
         Model.INSTANCE.getComponentRegister().removeDuplicates();
-        //tabComponentsController.updateView();
-       // tabComponentsController.refreshTableAndSave();
+        tabComponentsController.updateView();
+        tabComponentsController.refreshTableAndSave();
     }
 
     @Override

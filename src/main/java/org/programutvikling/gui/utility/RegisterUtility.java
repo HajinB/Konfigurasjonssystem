@@ -11,7 +11,9 @@ public class RegisterUtility {
 
     public static <T> List<T> removeDuplicates(List<T> inputList, Comparator<? super T> comparator) {
         Set<T> set = new TreeSet<>(comparator);
+        System.out.println(inputList.size());
         set.addAll(inputList);
+        System.out.println(set.size());
         return new ArrayList<>(set);
     }
 }
