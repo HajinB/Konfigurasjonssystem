@@ -20,6 +20,7 @@ import javafx.util.Callback;
 import org.programutvikling.App;
 import org.programutvikling.gui.CustomPriceTableColumn.CustomTextWrapCellFactory;
 import org.programutvikling.gui.utility.FXMLGetter;
+import org.programutvikling.logic.EndUserLogic;
 import org.programutvikling.model.Model;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.io.FileOpenerTxt;
@@ -63,11 +64,11 @@ public class EnduserController extends TabComponentsController {
             processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln,
             memoryPriceCln, mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln;
 
+    private EndUserLogic endUserLogic;
 
 
     @FXML
     public void initialize() throws IOException {
-
         addTableViewsToList();
         initTextWrapCellFactory();
         updateComponentViews();

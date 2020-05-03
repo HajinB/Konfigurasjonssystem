@@ -120,7 +120,7 @@
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" text="Beskrivelse">
+                                <TableColumn id="#memoryDescriptionColumn" prefWidth="175.0" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
@@ -144,7 +144,7 @@
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" text="Beskrivelse">
+                                <TableColumn id="#cabinetDescriptionColumn" prefWidth="175.0" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>

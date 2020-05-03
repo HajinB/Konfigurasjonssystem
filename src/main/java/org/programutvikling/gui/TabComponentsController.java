@@ -27,6 +27,7 @@ import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentTypes;
 import org.programutvikling.domain.component.ComponentValidator;
+import org.programutvikling.gui.CustomPriceTableColumn.CustomTextWrapCellFactory;
 import org.programutvikling.gui.CustomPriceTableColumn.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.*;
@@ -62,7 +63,7 @@ public class TabComponentsController {
     @FXML
     private TableView<Component> tblViewComponent;
     @FXML
-    private TableColumn productPriceColumn;
+    private TableColumn productPriceColumn, productDescriptionColumn;
     @FXML
     private ContextMenu cm;
 
@@ -78,6 +79,21 @@ public class TabComponentsController {
         threadHandler = new ThreadHandler(this);
         initTableView();
         registryComponentLogic.setTextAreaListener(componentRegNode);
+        initTextWrapCellFactory();
+    }
+
+    private void initTextWrapCellFactory() {
+
+        //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
+        // en kolonne i tableview
+        Callback<TableColumn, TableCell> customTextWrapCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new CustomTextWrapCellFactory();
+                    }
+                };
+
+        productDescriptionColumn.setCellFactory(customTextWrapCellFactory);
     }
 
     private void initTableView() {

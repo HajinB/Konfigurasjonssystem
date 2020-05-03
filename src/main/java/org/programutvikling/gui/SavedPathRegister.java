@@ -20,8 +20,6 @@ public class SavedPathRegister implements Serializable {
         return RegisterLogic.getDuplicateFreeList(listOfSavedFilePaths);
     }
 
-
-
     public void addPathToListOfSavedFilePaths(String s){
         listOfSavedFilePaths.add(s);
     }

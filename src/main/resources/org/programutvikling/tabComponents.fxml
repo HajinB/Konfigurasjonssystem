@@ -120,7 +120,8 @@
                             <PropertyValueFactory property="productName" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn minWidth="100" prefWidth="230.0" styleClass="column" text="Beskrivelse">
+                    <TableColumn fx:id="productDescriptionColumn" minWidth="100" prefWidth="230.0" styleClass="column"
+                                 text="Beskrivelse">
                         <cellValueFactory>
                             <PropertyValueFactory property="productDescription" />
                         </cellValueFactory>

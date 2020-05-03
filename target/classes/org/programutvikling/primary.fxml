@@ -29,7 +29,9 @@
                <Font size="13.0" />
             </font>
          </PasswordField>
-         <Button layoutX="55.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="30.0" prefWidth="200.0" stylesheets="@CSS/Login.css" text="Logg inn " textFill="#000000a1" />
+         <Button fx:id = "btnLogin" layoutX="55.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnLogin"
+                 prefHeight="30.0"
+                 prefWidth="200.0" stylesheets="@CSS/Login.css" text="Logg inn " textFill="#000000a1" />
          <Button layoutX="55.0" layoutY="385.0" minHeight="20.0" minWidth="149.0" mnemonicParsing="false" onAction="#btnGuest" prefHeight="38.0" prefWidth="194.0" styleClass="btnGuest" stylesheets="@CSS/Login.css" text="Logg inn som gjest" textFill="#000000a1" />
          <Separator layoutX="-1.0" layoutY="356.0" prefHeight="6.0" prefWidth="310.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
          <Label layoutX="94.0" layoutY="376.0" prefHeight="18.0" prefWidth="117.0" text="Har du ikke konto?" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="97.0" />
