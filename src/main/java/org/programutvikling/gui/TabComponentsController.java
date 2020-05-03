@@ -1,5 +1,8 @@
 package org.programutvikling.gui;
 
+import javafx.event.Event;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -13,6 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -35,8 +40,11 @@ import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
+
+import static javafx.application.Platform.runLater;
 
 public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
@@ -187,12 +195,10 @@ public class TabComponentsController {
         /**Detecter om brukeren trykket "endre" eller krysset ut vinduet*/
         stage.setOnHidden(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
-
                 if (TemporaryComponent.INSTANCE.getIsEdited()) {
                     getObservableRegister().set(getObservableRegister().indexOf(c),
                             TemporaryComponent.INSTANCE.getTempComponent());
                     TemporaryComponent.INSTANCE.resetTemps();
-                    updateView();
                     try {
                         saveAll();
                     } catch (IOException e) {
@@ -237,11 +243,27 @@ public class TabComponentsController {
     }
 
     @FXML
-    void btnAddComponent(ActionEvent event) throws IOException {
+    void btnAddComponent(ActionEvent event) throws IOException, AWTException {
         registerComponent();
-        updateView();
-        FileHandling.saveAll();
+
+        //å gjøre noe samtidig fucker cellen (?)
+        //tblViewComponent.refresh();
+
+        //updateView();
+       /* initTextWrapCellFactory();
+
+
+            try {
+                simulateMouseMoveToResetCells();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
+
+        tblViewComponent.layout();
+            tblViewComponent.refresh();
+        FileHandling.saveAll();*/
     }
+
 
     @FXML
     void btnOpenRecentFile(ActionEvent event) throws IOException {
