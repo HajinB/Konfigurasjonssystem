@@ -378,13 +378,14 @@ public class TabComponentsController {
     }
 
     public void updateView() {
+        //hvis man attacher tableview på nytt ( mer enn en gang  ) - resettes cellfactories litt(?)
         getComponentRegister().attachTableView(tblViewComponent);
         tblViewComponent.refresh();
     }
 
     private void deleteComponent(Component selectedComp) {
         getComponentRegister().getRegister().remove(selectedComp);
-        updateView();
+        //updateView();
     }
 
     private void registerComponent() {
