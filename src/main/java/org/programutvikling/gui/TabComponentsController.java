@@ -91,7 +91,7 @@ public class TabComponentsController {
         threadHandler = new ThreadHandler(this);
         initTableView();
         registryComponentLogic.setTextAreaListener(componentRegNode);
-        initTextWrapCellFactory();
+        //initTextWrapCellFactory();
     }
 
     private void initTextWrapCellFactory() {
@@ -204,6 +204,7 @@ public class TabComponentsController {
                     getObservableRegister().set(getObservableRegister().indexOf(c),
                             TemporaryComponent.INSTANCE.getTempComponent());
                     TemporaryComponent.INSTANCE.resetTemps();
+                    updateView();
                     try {
                         saveAll();
                     } catch (IOException e) {
@@ -248,25 +249,9 @@ public class TabComponentsController {
     }
 
     @FXML
-    void btnAddComponent(ActionEvent event) throws IOException, AWTException {
+    void btnAddComponent(ActionEvent event){
         registerComponent();
-
-        //å gjøre noe samtidig fucker cellen (?)
-        //tblViewComponent.refresh();
-
-        //updateView();
-       /* initTextWrapCellFactory();
-
-
-            try {
-                simulateMouseMoveToResetCells();
-            } catch (AWTException e) {
-                e.printStackTrace();
-            }
-
-        tblViewComponent.layout();
-            tblViewComponent.refresh();
-        FileHandling.saveAll();*/
+        updateView();
     }
 
 
@@ -384,7 +369,7 @@ public class TabComponentsController {
     public void updateView() {
         //hvis man attacher tableview på nytt ( mer enn en gang  ) - resettes cellfactories litt(?)
         getComponentRegister().attachTableView(tblViewComponent);
-        tblViewComponent.refresh();
+        //tblViewComponent.refresh();
     }
 
     private void deleteComponent(Component selectedComp) {

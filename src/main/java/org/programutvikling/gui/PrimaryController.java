@@ -70,7 +70,7 @@ public class PrimaryController implements Initializable {
         //loadRegisterFromFile();
       //  Model.INSTANCE.getUserRegister();
 
-
+    btnLogin.setDefaultButton(true);
     }
 
 

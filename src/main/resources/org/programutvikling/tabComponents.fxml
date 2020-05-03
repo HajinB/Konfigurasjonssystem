@@ -23,14 +23,15 @@
 <?import javafx.scene.text.Font?>
 
 <?import org.programutvikling.gui.customTextField.PriceField?>
-<AnchorPane fx:id="topLevelPane" prefHeight="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
-    <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="700.0" prefWidth="1040.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <AnchorPane maxHeight="800.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
-            <Pane layoutX="29.0" layoutY="14.0" prefHeight="515.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="14.0">
-                <GridPane fx:id="componentRegNode" layoutX="33.0" layoutY="67.0" vgap="2.0">
+
+
+<AnchorPane fx:id="topLevelPane" prefHeight="700.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
+    <ScrollPane pannable="true" prefHeight="700.0" prefWidth="1040.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane maxHeight="800.0" prefHeight="700.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
+            <Pane layoutX="29.0" layoutY="98.0" prefHeight="524.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="715.0">
+                <GridPane fx:id="componentRegNode" layoutX="33.0" layoutY="29.0" prefHeight="477.0" prefWidth="230.0" vgap="4.0">
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -38,101 +39,77 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="26.799993896484352" minHeight="10.0" prefHeight="26.799993896484352" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="17.999975585937477" minHeight="6.000006103515602" prefHeight="17.999975585937477" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.99998779296874" minHeight="10.0" prefHeight="41.60002441406249" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="63.800012207031216" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.99998779296874" minHeight="10.0" prefHeight="50.99998779296874" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="63.800012207031216" minHeight="10.0" prefHeight="55.800012207031216" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <padding>
                         <Insets bottom="2.0" />
                     </padding>
                     <Label prefHeight="16.0" prefWidth="135.0" text="Produkttype: ">
                         <font>
-                            <Font name="Verdana" size="13.0" />
+                            <Font size="13.0" />
                         </font>
                     </Label>
-                    <Label prefHeight="16.0" prefWidth="154.0" text="Produktnavn: " GridPane.rowIndex="3">
+                    <Label prefHeight="16.0" prefWidth="154.0" text="Produktnavn: " GridPane.rowIndex="2">
                         <font>
-                            <Font name="Verdana" size="13.0" />
+                            <Font size="13.0" />
                         </font>
                         <GridPane.margin>
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <TextField id="productName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn varenavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="4">
+                    <TextField id="productName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn varenavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="3">
                         <font>
                             <Font size="13.0" />
                         </font>
                     </TextField>
-                    <Label prefHeight="16.0" prefWidth="151.0" text="Beskrivelse: " GridPane.rowIndex="6">
+                    <Label prefHeight="16.0" prefWidth="151.0" text="Beskrivelse: " GridPane.rowIndex="4">
                         <font>
-                            <Font name="Verdana" size="13.0" />
+                            <Font size="13.0" />
                         </font>
                         <GridPane.margin>
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <TextArea id="productDescription" prefHeight="65.0" prefWidth="230.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/Superbruker.css" wrapText="true" GridPane.rowIndex="7">
+                    <TextArea id="productDescription" prefHeight="150.0" prefWidth="200.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5">
                         <font>
                             <Font size="13.0" />
                         </font>
                     </TextArea>
-                    <Label prefHeight="16.0" prefWidth="56.0" text="Pris:" GridPane.rowIndex="9">
+                    <Label prefHeight="16.0" prefWidth="56.0" text="Pris:" GridPane.rowIndex="6">
                         <font>
-                            <Font name="Verdana" size="13.0" />
+                            <Font size="13.0" />
                         </font>
                         <GridPane.margin>
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <PriceField id="productPrice" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn pris" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="10">
+                    <PriceField id="productPrice" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn pris" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="7">
                         <font>
                             <Font size="13.0" />
                         </font>
                     </PriceField>
-                    <Button mnemonicParsing="false" onAction="#btnAddComponent" prefHeight="30.0" prefWidth="230.0" stylesheets="@CSS/Login.css" text="Legg til komponent" GridPane.rowIndex="12">
+                    <Button mnemonicParsing="false" onAction="#btnAddComponent" prefHeight="30.0" prefWidth="230.0" stylesheets="@CSS/Login.css" text="Legg til komponent" GridPane.rowIndex="8">
                         <GridPane.margin>
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Button>
-                    <Label fx:id="lblComponentMsg" prefHeight="25.0" prefWidth="230.0" textFill="#388dc8" GridPane.rowIndex="13">
+                    <Label fx:id="lblComponentMsg" prefHeight="38.0" prefWidth="230.0" textFill="#388dc8" GridPane.rowIndex="9">
                         <font>
                             <Font size="13.0" />
                         </font>
                     </Label>
-               <Label fx:id="lblMsgType" prefHeight="18.0" prefWidth="221.0" textFill="#ca0c0c" GridPane.rowIndex="2">
-                  <font>
-                     <Font name="Verdana" size="11.0" />
-                  </font>
-               </Label>
-               <Label fx:id="lblMsgName" prefHeight="18.0" prefWidth="221.0" textFill="#ca0c0c" GridPane.rowIndex="5">
-                  <font>
-                     <Font name="Verdana" size="11.0" />
-                  </font>
-               </Label>
-               <Label fx:id="lblMsgDescription" prefHeight="18.0" prefWidth="221.0" textFill="#ca0c0c" GridPane.rowIndex="8">
-                  <font>
-                     <Font name="Verdana" size="11.0" />
-                  </font>
-               </Label>
-               <Label fx:id="lblMsgPrice" prefHeight="18.0" prefWidth="221.0" textFill="#ca0c0c" GridPane.rowIndex="11">
-                  <font>
-                     <Font name="Verdana" size="11.0" />
-                  </font>
-               </Label>
-                    <ChoiceBox id="productType" fx:id="cbType" prefHeight="30.0" prefWidth="230.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="1" />
+                    <ChoiceBox id="productType" fx:id="cbType" prefHeight="30.0" prefWidth="230.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets />
+                        </GridPane.margin>
+                    </ChoiceBox>
                <columnConstraints>
                   <ColumnConstraints />
                </columnConstraints>
                 </GridPane>
-               <Label layoutX="33.0" layoutY="16.0" prefHeight="26.0" prefWidth="222.0" stylesheets="@CSS/Superbruker.css" text="Legg til ny komponent" textFill="#000000ce">
-                   <font>
-                       <Font name="Verdana Bold" size="16.0" />
-                   </font>
-               </Label>
             </Pane>
-            <TableView fx:id="tblViewComponent" editable="true" layoutX="354.0" layoutY="54.0" onMousePressed="#dblClickTblRow" prefHeight="476.0" prefWidth="653.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="68.39999999999998" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="30.800000000000068" AnchorPane.topAnchor="54.0">
+            <TableView fx:id="tblViewComponent" layoutX="358.0" layoutY="98.0" onMousePressed="#dblClickTblRow" prefHeight="486.0" prefWidth="646.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="115.60000000000002" AnchorPane.leftAnchor="358.0" AnchorPane.rightAnchor="35.60000000000002">
                 <columns>
                     <TableColumn minWidth="100.0" prefWidth="120.0" styleClass="column" text="Produkttype">
                         <cellValueFactory>
@@ -166,20 +143,23 @@
                         </items>
                     </ContextMenu>
                 </contextMenu>
-            <columnResizePolicy>
-               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-            </columnResizePolicy>
             </TableView>
-            <Separator layoutX="337.0" layoutY="14.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
-            <TextField fx:id="componentSearch" layoutX="354.0" layoutY="14.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="514.0000000000001">
+            <Separator layoutX="28.0" layoutY="50.0" prefHeight="6.0" prefWidth="954.0" />
+            <Separator layoutX="339.0" layoutY="134.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
+            <TextField fx:id="componentSearch" layoutX="358.0" layoutY="60.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="358.0" AnchorPane.rightAnchor="511.6">
                 <font>
                     <Font size="13.0" />
                 </font>
             </TextField>
-            <ChoiceBox fx:id="cbTypeFilter" layoutX="531.0" layoutY="14.0" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.rightAnchor="338.6" />
-            <Button layoutX="878.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0" prefWidth="131.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett produkt" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.rightAnchor="30.799999999999955" />
-            <ComboBox fx:id="cbRecentFiles" layoutX="745.0" layoutY="14.0" prefHeight="30.0" prefWidth="146.0" promptText="Åpne nylige filer" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.rightAnchor="148.60000000000002" />
-            <Button layoutX="898.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnOpenRecentFile" prefHeight="30.0" prefWidth="110.0" stylesheets="@CSS/Login.css" text="Åpne" AnchorPane.rightAnchor="31.600000000000023" />
+            <ChoiceBox fx:id="cbTypeFilter" layoutX="543.0" layoutY="60.0" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="543.0" AnchorPane.rightAnchor="326.6" />
+            <Button layoutX="871.0" layoutY="590.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0" prefWidth="131.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett produkt" AnchorPane.leftAnchor="871.0" AnchorPane.rightAnchor="37.80000000000001" />
+            <ComboBox fx:id="cbRecentFiles" layoutX="728.0" layoutY="60.0" prefHeight="30.0" prefWidth="146.0" promptText="Åpne nylige filer" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="728.0" AnchorPane.rightAnchor="165.6" />
+            <Button layoutX="889.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnOpenRecentFile" prefHeight="30.0" prefWidth="110.0" stylesheets="@CSS/Login.css" text="Åpne" AnchorPane.leftAnchor="889.0" AnchorPane.rightAnchor="40.599999999999994" />
+            <Label layoutX="29.0" layoutY="62.0" prefHeight="26.0" prefWidth="222.0" stylesheets="@CSS/Superbruker.css" text="Legg til ny komponent">
+                <font>
+                    <Font name="System Bold" size="17.0" />
+                </font>
+            </Label>
         </AnchorPane>
     </ScrollPane>
 
