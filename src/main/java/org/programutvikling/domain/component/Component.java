@@ -27,33 +27,23 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         return serialVersionUID;
     }
 
-    public Component(String type, String name, String description, double price)  {
-        if (!ComponentValidator.isProductNameValid(name)) {
-            throw new IllegalArgumentException("Skriv inn produktnavn");
-        }
-        if (!ComponentValidator.isProductTypeValid(type)) {
-            throw new IllegalArgumentException("Velg produkttype");
-        }
-        if (!ComponentValidator.isProductDescriptionValid(description)) {
-            throw new IllegalArgumentException("Skriv inn produktbeskrivelse");
-        }
-        if (!ComponentValidator.isProductPriceValid(price)) {
-            throw new NumberFormatException("Skriv inn pris på produktet");
-        }
+    public Component(String type, String name, String description, double price) {
         // Validator av type, name og price(sjekke om den er 0?) her
-            this.productType = new SimpleStringProperty(type);
-            this.productName = new SimpleStringProperty(name);
-            this.productDescription = new SimpleStringProperty(description);
-            this.productPrice = new SimpleDoubleProperty(price);
+        this.productType = new SimpleStringProperty(type);
+        this.productName = new SimpleStringProperty(name);
+        this.productDescription = new SimpleStringProperty(description);
+        this.productPrice = new SimpleDoubleProperty(price);
     }
-
     // Get- og set-metoder
+
     public String getProductType() {
         return productType.getValue();
     }
 
     public void setProductType(String productTypeIn) {
-        if (ComponentValidator.isProductTypeValid(productTypeIn)) {
+        if (!ComponentValidator.isProductTypeValid(productTypeIn)) {
+            throw new IllegalArgumentException("Produkttype er ugyldig");
+        } else {
             this.productType.set(productTypeIn);
         }
         }
@@ -70,10 +60,10 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         return productName.getValue();
     }
 
-    public final void setProductName(String productName){
-        if (!ComponentValidator.isProductNameValid(productName)) {
-            this.productName.set(productName);
-        }
+    public final void setProductName(String productName) {
+        //validator
+
+        this.productName.set(productName);
     }
 
     public String getProductDescription() {
@@ -81,9 +71,7 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public final void setProductDescription(String productDescription) {
-        if (!ComponentValidator.isProductDescriptionValid(productDescription)) {
-            this.productDescription.set(productDescription);
-        }
+        this.productDescription.set(productDescription);
     }
 
     public double getProductPrice() {
@@ -91,9 +79,8 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public final void setProductPrice(double productPrice) {
-        if (!ComponentValidator.isProductPriceValid(productPrice)) {
-            this.productPrice.setValue(productPrice);
-        }
+        // evt validator
+        this.productPrice.setValue(productPrice);
     }
 
     public String toStringListView() {
