@@ -172,7 +172,7 @@
                         </font>
                     </Label>
                     <Separator layoutX="351.0" layoutY="49.0" prefHeight="0.0" prefWidth="671.0" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="16.200000000000045" />
-                      <TextField fx:id="userSearch" alignment="CENTER" layoutX="351.0" layoutY="535.0" prefHeight="30.0" prefWidth="230.0" promptText="Søk etter bruker" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="32.99999999999998" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="457.0000000000001">
+                      <TextField fx:id="userSearch" alignment="CENTER" layoutX="351.0" layoutY="535.0" minWidth="120.0" prefHeight="30.0" prefWidth="230.0" promptText="Søk etter bruker" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="32.99999999999998" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="457.0000000000001">
                           <font>
                               <Font size="13.0" />
                           </font>

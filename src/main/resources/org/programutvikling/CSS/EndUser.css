@@ -18,6 +18,8 @@
     -fx-text-fill: #000000;
 }
 
+/* Meny */
+
 .menu-button .arrow {
     -fx-padding: 0;
 }
@@ -46,15 +48,19 @@
 
 /* drop down-meny PC-komponenter */
 .titledPane{
+ /*   -fx-background-color: linear-gradient(rgba(3, 154, 255, 0.03), white);*/
+    -fx-border-width: 0 0 2 0;
     -fx-font-family: Verdana;
     -fx-font-size: 12px;
     -fx-text-fill: black;
     -fx-alignment: baseline-left;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 2, 0.2, -0.8, 1);
+    -fx-border-color: white;
 
 }
 
 .titledPane .arrow {
-    -fx-background-color: #388DC8;
+    -fx-background-color: rgba(56, 141, 200, 0.57);
     -fx-padding: 5 3 5 10;
 }
 
@@ -66,7 +72,7 @@
 .titledPane .title {
     -fx-font-size: 14px;
     -fx-font-family: Verdana;
-    -fx-background-color: rgba(56, 141, 200, 0.15);
+    -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-pref-height: 40px;
     -fx-border-radius: 50px;
@@ -74,17 +80,36 @@
 
 /* Bakgrunner */
 .scroll-pane > .viewport {
-    -fx-background-color: rgba(56, 141, 200, 0.15);
+    -fx-background-color: white;
+    -fx-background-radius: 30px;
 }
 
 .scroll-pane {
-    -fx-background-color:white;
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
 }
 
 .table-view {
-    -fx-background-color: white;
-    -fx-border-color: rgba(0, 0, 0, 0.43);
-    -fx-border-width: 0;
 
+    -fx-background-color: white;
+    -fx-border-color: none;
 
 }
+
+/*kolonne i tableview*/
+
+.columnUser{
+    -fx-background-color: linear-gradient(rgba(211, 211, 211, 0.21), white);
+    -fx-font-weight: none;
+    -fx-font-family: Verdana;
+    -fx-font-size: 13px;
+}
+
+.columnUser2 {
+    -fx-background-color: white;
+    -fx-font-family: Verdana;
+    -fx-font-size: 13px;
+    -fx-text-fill: rgba(0, 0, 0, 0.77);
+}
+
+

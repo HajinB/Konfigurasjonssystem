@@ -6,7 +6,10 @@ public class ComponentValidator {
 
     static boolean isComponentValid(Component component) {
         //return true;
-        return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductPriceValid(component.getProductPrice());
+        return isProductTypeValid(component.getProductType()) &&
+                isProductNameValid(component.getProductName()) &&
+                isProductPriceValid(component.getProductPrice()) &&
+                isProductDescriptionValid(component.getProductDescription());
     }
 
     public static Component isComponentInRegisterThenReturnIt(Component component, ComponentRegister register){
@@ -20,7 +23,10 @@ public class ComponentValidator {
 
     static boolean isComponentValid(String type, String name, String description, double price) {
         //return true;
-        return isProductTypeValid(type) && isProductNameValid(name) && isProductPriceValid(price);
+        return isProductTypeValid(type) &&
+                isProductNameValid(name) &&
+                isProductDescriptionValid(description) &&
+                isProductPriceValid(price);
     }
 
     public static boolean isComponentFromTxtValid(Component component) {
@@ -47,14 +53,14 @@ public class ComponentValidator {
        String[] items = ComponentTypes.getComponentTypesArray();
        return Arrays.stream(items).parallel().anyMatch(inputStr::contains);
    */
-    static boolean isProductTypeValid(String type) {
+    static boolean isProductTypeValid(String productType) {
         String[] c = ComponentTypes.getComponentTypesArray();
-        if (type.isBlank()) {
+        if (productType.isBlank() || productType.isEmpty()) {
             System.out.println("blank string");
             return false;
         }
         for (String s : c) {
-            if (type.toLowerCase().equals(s.toLowerCase())) {
+            if (productType.toLowerCase().equals(s.toLowerCase())) {
                 return true;
             }
         }
@@ -68,12 +74,16 @@ public class ComponentValidator {
     boolean bol  = Arrays.stream(items).anyMatch(inputStr::contains);
     return bol && !inputStr.isBlank();
 */
-    static boolean isProductNameValid(String name) {
-        return name.length() < 100;
+    static boolean isProductNameValid(String productName) {
+        return !productName.isBlank() && !productName.isEmpty() && productName.length() < 100;
     }
 
-    static boolean isProductPriceValid(double price) {
-        return price > 0;
+    static boolean isProductDescriptionValid(String productDescription) {
+        return !productDescription.isEmpty() && !productDescription.isBlank();
+    }
+
+    static boolean isProductPriceValid(double productPrice) {
+        return productPrice > 0;
     }
 
 

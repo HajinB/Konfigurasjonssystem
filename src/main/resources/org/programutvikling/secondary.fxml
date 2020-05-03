@@ -62,7 +62,7 @@
        </AnchorPane>
    </top>
    <center>
-       <TabPane tabMinHeight="30.0" tabMinWidth="350.0">
+       <TabPane tabMinHeight="30.0" tabMinWidth="320.0">
            <Tab fx:id="tabComponentRegister" text="Komponenter">
                <fx:include fx:id="tabComponents" source="tabComponents.fxml" />
            </Tab>
