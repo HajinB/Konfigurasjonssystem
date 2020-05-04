@@ -42,6 +42,18 @@ public class RegistryUserLogic {
                 || ((TextField) gridPane.lookup("#userCity")).getText().isEmpty();
 
     }
+
+    private void resetFields() {
+        ((CheckBox) gridPane.lookup("#userAdmin")).setSelected(false);
+        ((TextField) gridPane.lookup("#userUsername")).setText("");
+        ((TextField) gridPane.lookup("#userPassword")).setText("");
+        ((TextField) gridPane.lookup("#userName")).setText("");
+        ((TextField) gridPane.lookup("#userMail")).setText("");
+        ((TextField) gridPane.lookup("#userAddress")).setText("");
+        ((ZipField) gridPane.lookup("#userZip")).setText("");
+        ((TextField) gridPane.lookup("#userCity")).setText("");
+    }
+
     // getters from gridPane
 
     private boolean getBoolean(CheckBox checkBox) {
