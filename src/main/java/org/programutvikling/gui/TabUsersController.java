@@ -30,7 +30,6 @@ public class TabUsersController implements Initializable {
     private TableView<User> tblViewUser;
 
     public void btnAddUser(ActionEvent actionEvent) {
-        RegistryUserLogic
 
     }
 
