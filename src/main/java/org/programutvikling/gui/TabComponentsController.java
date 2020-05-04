@@ -39,9 +39,13 @@ public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
     @FXML
     private Label lblComponentMsg;
+    @FXML
     private Label lblMsgType;
+    @FXML
     private Label lblMsgName;
+    @FXML
     private Label lblMsgDescription;
+    @FXML
     private Label lblMsgPrice;
     SecondaryController secondaryController;
     @FXML
@@ -82,7 +86,6 @@ public class TabComponentsController {
         initTextWrapCellFactory();
     }
     private void initTextWrapCellFactory() {
-
         //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
         // en kolonne i tableview
         Callback<TableColumn, TableCell> customTextWrapCellFactory =
@@ -344,7 +347,7 @@ public class TabComponentsController {
                 lblComponentMsg.setText(s);
             }
         });
-        Timer timer = new Timer(2000, e -> setResultLabelTimed(""));
+        Timer timer = new Timer(3000, e -> setResultLabelTimed(""));
         timer.setRepeats(false);
         timer.start();
     }
@@ -364,9 +367,9 @@ public class TabComponentsController {
     public void setlblMsgType(String s) {
         this.lblMsgType.setText(s);
     }
-   /* public void setlblMsgPrice(String s) {
+    public void setlblMsgPrice(String s) {
         this.lblMsgPrice.setText(s);
-    }*/
+    }
 
 
 }

@@ -84,8 +84,6 @@ public class RegistryComponentLogic {
         Component componentIn = new Component(productType, productName, productDescription, productPrice);
         //kan gjøre validering på disse her - altså et felt om gangen.
 
-
-
         System.out.println(productType);
         tabComponentsController.setResultLabelTimed(componentIn.getProductName() + " er lagt til i listen");
 
@@ -111,12 +109,16 @@ public class RegistryComponentLogic {
 
 
     public void registerComponent() {
-        if (areInputFieldsEmpty()) {
-            //feilmelding her for å ta den før NPE kommer
-            System.out.println("noen av feltene er tomme");
+        if (isProductTypeEmpty()) {
+            tabComponentsController.setlblMsgType("belble");
+
+            //eksempel da, men man bør kanskje vise mange labels samtidig? hva som er feil på en måte?
             return;
         }
 
+        if(isProductDescriptionEmpty()){
+            tabComponentsController.setlblMsgDescription("Fyll inn her");
+        }
         Component newComponent = createComponentsFromGUIInputIFields();
         Component possibleDuplicateComponentIfNotThenNull = ComponentValidator.isComponentInRegisterThenReturnIt(newComponent,
                 getComponentRegister());
@@ -137,10 +139,10 @@ public class RegistryComponentLogic {
     }
 
     private boolean areInputFieldsEmpty() {
-        return isProductNameEmpty() || isProductDescriptionEmpty() || isProductPriceEmpty() || IsChoiceBoxEmpty();
+        return isProductNameEmpty() || isProductDescriptionEmpty() || isProductPriceEmpty() || isProductTypeEmpty();
     }
 
-    private boolean IsChoiceBoxEmpty() {
+    private boolean isProductTypeEmpty() {
         return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) ==null ;
     }
 
@@ -199,14 +201,12 @@ public class RegistryComponentLogic {
         }
     }
 
-
     private void resetFields() {
         ((ChoiceBox) gridPane.lookup("#productType")).setValue(null);
         ((TextField) gridPane.lookup("#productName")).setText("");
         ((TextArea) gridPane.lookup("#productDescription")).setText("");
         ((PriceField) gridPane.lookup("#productPrice")).setText("");
     }
-
 
     public void setTextAreaListener(GridPane gridPane) {
         TextArea textArea = ((TextArea) gridPane.lookup("#productDescription"));
