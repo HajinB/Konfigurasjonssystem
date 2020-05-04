@@ -72,4 +72,12 @@ public class TabUsersController implements Initializable {
         //getUserRegister().addBruker();
 
     }
+
+    public void userAdress(TableColumn.CellEditEvent cellEditEvent) {
+
+    }
+
+    public void cbAdmin(ActionEvent event) {
+
+    }
 }
