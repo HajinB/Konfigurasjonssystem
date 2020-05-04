@@ -1,6 +1,7 @@
 package org.programutvikling.gui;
 
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -8,18 +9,25 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.component.Component;
-import org.programutvikling.domain.component.io.InvalidPriceException;
+import org.programutvikling.domain.component.ComponentRegister;
+import org.programutvikling.domain.component.ComponentValidator;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.model.Model;
+import org.programutvikling.model.TemporaryComponent;
 
-class RegistryComponentLogic {
+import java.io.IOException;
+import java.util.List;
+
+public class RegistryComponentLogic {
     Converter.DoubleStringConverter doubleStringConverter = new Converter.DoubleStringConverter();
 
     private GridPane gridPane;
 
-    RegistryComponentLogic(GridPane gridPane) {
+    public RegistryComponentLogic(GridPane gridPane) {
         this.gridPane = gridPane;
+        setTextAreaListener(gridPane);
     }
 
     Component createComponentsFromGUIInputIFields() {
@@ -69,9 +77,82 @@ class RegistryComponentLogic {
     }
 
     private double getDouble(TextField field) {
-            return Double.parseDouble(getString(field));
+        return Double.parseDouble(getString(field));
     }
 
+
+    public void registerComponent() {
+        if (areInputFieldsEmpty()) {
+            //feilmelding her for å ta den før NPE kommer
+            System.out.println("noen av feltene er tomme");
+            return;
+        }
+
+        Component newComponent = createComponentsFromGUIInputIFields();
+        Component possibleDuplicateComponentIfNotThenNull = ComponentValidator.isComponentInRegisterThenReturnIt(newComponent,
+                getComponentRegister());
+
+        System.out.println(possibleDuplicateComponentIfNotThenNull);
+        if (possibleDuplicateComponentIfNotThenNull != null) {
+            Alert alert = Dialog.getConfirmationAlert("Duplikat funnet", "", "Denne komponenten eksisterer allerede i" +
+                    " databasen, vil du erstatte den gamle med: " + newComponent.getProductName(), "");
+            alert.showAndWait();
+            if (alert.getResult() == alert.getButtonTypes().get(0)) {
+                int indexToReplace =
+                        getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
+                getComponentRegister().getRegister().set(indexToReplace, newComponent);
+            }
+        } else {
+            getComponentRegister().addComponent(newComponent);
+        }
+    }
+
+    private boolean areInputFieldsEmpty() {
+        return ((TextField) gridPane.lookup("#productName")).getText().isEmpty() || ((TextArea) gridPane.lookup(
+                "#productDescription")).getText().isEmpty() || ((PriceField) gridPane.lookup("#productPrice")).getText().isEmpty();
+
+    }
+
+    private ComponentRegister getComponentRegister() {
+        return Model.INSTANCE.getComponentRegister();
+    }
+
+    private void resetSearchField() {
+        ((TextField) gridPane.lookup("#componentSearch")).setText("");
+    }
+
+    public void editComponentFromPopup(Component c) {
+        if (TemporaryComponent.INSTANCE.getIsEdited()) {
+            getObservableRegister().set(getObservableRegister().indexOf(c),
+                    TemporaryComponent.INSTANCE.getTempComponent());
+            TemporaryComponent.INSTANCE.resetTemps();
+            try {
+                FileHandling.saveAll();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private List getObservableRegister() {
+        return Model.INSTANCE.getComponentRegister().getObservableRegister();
+
+    }
+
+    private void deleteComponent(Component selectedComp) {
+        getComponentRegister().getRegister().remove(selectedComp);
+        //updateView();
+    }
+
+    void askForDeletion(Component selectedItem) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette.", "Vil du slette ",
+                selectedItem.getProductName());
+        alert.showAndWait();
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            deleteComponent(selectedItem);
+            FileHandling.saveAll();
+        }
+    }
 
 
     private void resetFields() {

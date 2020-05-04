@@ -3,14 +3,11 @@ package org.programutvikling.logic;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
-import org.programutvikling.gui.CustomPriceTableColumn.CustomTextWrapCellFactory;
+import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class EndUserLogic {

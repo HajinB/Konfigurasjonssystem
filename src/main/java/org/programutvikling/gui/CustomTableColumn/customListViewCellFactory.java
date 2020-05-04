@@ -1,8 +1,4 @@
-package org.programutvikling.gui.CustomPriceTableColumn;
-
-import javafx.scene.control.ListCell;
-import javafx.scene.control.TableView;
-import org.programutvikling.domain.component.Component;
+package org.programutvikling.gui.CustomTableColumn;
 
 
 /***

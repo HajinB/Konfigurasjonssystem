@@ -60,4 +60,13 @@ public class FXMLGetter {
         }
         return null;
     }
+
+
+
+    public static FXMLLoader fxmlLoaderFactory(String fxml) throws IOException {
+        FXMLGetter fxmlGetter = new FXMLGetter();
+        FXMLLoader loader = fxmlGetter.getFxmlLoader(fxml);
+        return loader;
+    }
+
 }

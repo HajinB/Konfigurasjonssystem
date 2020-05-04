@@ -21,8 +21,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-
 <?import org.programutvikling.gui.customTextField.PriceField?>
+
 <AnchorPane fx:id="topLevelPane" prefHeight="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="700.0" prefWidth="1040.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane maxHeight="800.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
@@ -96,7 +96,9 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Button>
-                    <Label fx:id="lblComponentMsg" prefHeight="25.0" prefWidth="230.0" textFill="#388dc8" GridPane.rowIndex="13">
+                    <Label id = "#lblComponentMsg" fx:id="lblComponentMsg" prefHeight="25.0" prefWidth="230.0"
+                           textFill="#388dc8"
+                           GridPane.rowIndex="13">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -171,7 +173,10 @@
                 </columnResizePolicy>
             </TableView>
             <Separator layoutX="337.0" layoutY="14.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
-            <TextField fx:id="componentSearch" layoutX="354.0" layoutY="14.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="514.0000000000001">
+            <TextField id="#componentSearch" fx:id="componentSearch" layoutX="354.0" layoutY="14.0"
+                       onKeyTyped="#search"
+            prefHeight="30.0"
+                        prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="514.0000000000001">
                 <font>
                     <Font size="13.0" />
                 </font>
