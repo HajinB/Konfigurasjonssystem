@@ -21,7 +21,7 @@ public class PriceFormatCell extends TableCell<Object, Double> {
 
     private String priceFormat(Double item) {
 
-        return String.format("%.2f",item ) + ",-";
+        return String.format("%.2f",item ) + " kr";
     }
 
 }
