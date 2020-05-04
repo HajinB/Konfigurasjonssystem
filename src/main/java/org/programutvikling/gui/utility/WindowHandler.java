@@ -12,6 +12,7 @@ import javafx.stage.WindowEvent;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.gui.EditPopupController;
 import org.programutvikling.gui.RegistryComponentLogic;
+import org.programutvikling.gui.TabComponentsController;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.io.IOException;

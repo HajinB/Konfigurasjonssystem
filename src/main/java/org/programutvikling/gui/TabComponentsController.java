@@ -38,12 +38,11 @@ import java.util.Objects;
 public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
     @FXML
-    public Label lblComponentMsg;
-    public Label lblMsgType;
-    public Label lblMsgName;
-    public Label lblMsgDescription;
-    public Label lblMsgPrice;
-
+    private Label lblComponentMsg;
+    private Label lblMsgType;
+    private Label lblMsgName;
+    private Label lblMsgDescription;
+    private Label lblMsgPrice;
     SecondaryController secondaryController;
     @FXML
     AnchorPane topLevelPane;
@@ -77,7 +76,7 @@ public class TabComponentsController {
         ThreadHandler.loadInThread(task);
         initChoiceBoxes();
         updateRecentFiles();
-        registryComponentLogic = new RegistryComponentLogic(componentRegNode);
+        registryComponentLogic = new RegistryComponentLogic(componentRegNode, this);
         threadHandler = new ThreadHandler(this);
         initTableView();
         initTextWrapCellFactory();
@@ -349,4 +348,25 @@ public class TabComponentsController {
         timer.setRepeats(false);
         timer.start();
     }
+
+    public void setLblComponentMsg(String s) {
+        this.lblComponentMsg.setText(s);
+    }
+    public Label getLblMsgDescription() {
+        return lblMsgDescription;
+    }
+    public void setlblMsgDescription(String s) {
+        this.lblMsgDescription.setText(s);
+    }
+    public void setlblMsgName(String s) {
+        this.lblMsgName.setText(s);
+    }
+    public void setlblMsgType(String s) {
+        this.lblMsgType.setText(s);
+    }
+   /* public void setlblMsgPrice(String s) {
+        this.lblMsgPrice.setText(s);
+    }*/
+
+
 }

@@ -1,16 +1,14 @@
 package org.programutvikling.gui;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentValidator;
+import org.programutvikling.domain.component.io.InvalidComponentFormatException;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
@@ -18,25 +16,45 @@ import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegistryComponentLogic {
     Converter.DoubleStringConverter doubleStringConverter = new Converter.DoubleStringConverter();
 
+    TabComponentsController tabComponentsController;
     private GridPane gridPane;
+
+
+    public RegistryComponentLogic(GridPane gridPane, TabComponentsController tabComponentsController) {
+        this.gridPane = gridPane;
+        setTextAreaListener(gridPane);
+        this.tabComponentsController = tabComponentsController;
+    }
 
     public RegistryComponentLogic(GridPane gridPane) {
         this.gridPane = gridPane;
         setTextAreaListener(gridPane);
     }
 
+    public RegistryComponentLogic(GridPane gridPane, ArrayList<Label> labelArrayList) {
+        this.gridPane = gridPane;
+        setTextAreaListener(gridPane);
+    }
+
     Component createComponentsFromGUIInputIFields() {
+        System.out.println(getCBString((ChoiceBox<String>) gridPane.lookup("#productType")));
         try {
             Component c = createComponent();
             resetFields();
-            Dialog.showSuccessDialog(c.getProductName() + " er lagt til i listen");
+            //Dialog.showSuccessDialog(c.getProductName() + " er lagt til i listen");
+
+            if (ComponentValidator.isComponentInRegisterThenReturnIt(c,
+                    Model.INSTANCE.getComponentRegister())==null){
+                tabComponentsController.setLblComponentMsg("Komponenten eksisterer allerede!");
+            }
             return c;
-        } catch (NumberFormatException nfe) {
+        } catch (NumberFormatException | InvalidComponentFormatException nfe) {
             Dialog.showErrorDialog("Skriv inn pris");
         } catch (IllegalArgumentException iae) {
             Dialog.showErrorDialog(iae.getMessage());
@@ -52,14 +70,25 @@ public class RegistryComponentLogic {
         ((PriceField) gridPane.lookup("#popupProductPrice")).setText(Double.toString(item.getProductPrice()));
     }
 
-    private Component createComponent() {
+    private Component createComponent() throws InvalidComponentFormatException {
+
 
         String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
+
+
         String productName = getString((TextField) gridPane.lookup("#productName"));
         String productDescription = getTextareaString((TextArea) gridPane.lookup("#productDescription"));
         double productPrice = getDouble((PriceField) gridPane.lookup("#productPrice"));
 
+
+        Component componentIn = new Component(productType, productName, productDescription, productPrice);
+        //kan gjøre validering på disse her - altså et felt om gangen.
+
+
+
         System.out.println(productType);
+        tabComponentsController.setResultLabelTimed(componentIn.getProductName() + " er lagt til i listen");
+
         return new Component(productType, productName, productDescription, productPrice);
     }
 
@@ -108,10 +137,26 @@ public class RegistryComponentLogic {
     }
 
     private boolean areInputFieldsEmpty() {
-        return ((TextField) gridPane.lookup("#productName")).getText().isEmpty() || ((TextArea) gridPane.lookup(
-                "#productDescription")).getText().isEmpty() || ((PriceField) gridPane.lookup("#productPrice")).getText().isEmpty();
-
+        return isProductNameEmpty() || isProductDescriptionEmpty() || isProductPriceEmpty() || IsChoiceBoxEmpty();
     }
+
+    private boolean IsChoiceBoxEmpty() {
+        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) ==null ;
+    }
+
+    private boolean isProductPriceEmpty() {
+        return ((PriceField) gridPane.lookup("#productPrice")).getText().isEmpty();
+    }
+
+    private boolean isProductDescriptionEmpty() {
+        return ((TextArea) gridPane.lookup(
+                "#productDescription")).getText().isEmpty();
+    }
+
+    private boolean isProductNameEmpty() {
+        return ((TextField) gridPane.lookup("#productName")).getText().isEmpty();
+    }
+
 
     private ComponentRegister getComponentRegister() {
         return Model.INSTANCE.getComponentRegister();
