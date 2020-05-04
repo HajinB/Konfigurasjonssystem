@@ -1,5 +1,6 @@
 package org.programutvikling.gui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -45,6 +46,10 @@ public class ComputerPopupController extends EnduserController implements Initia
         lblComputerName.setText(c.getProductName());
         lblComputerPrice.setText(Double.toString(c.calculatePrice()));
         listContent.setItems(c.getComponentRegister().getObservableRegister());
+
+    }
+
+    public void btnAddComputer(ActionEvent event) {
 
     }
 }

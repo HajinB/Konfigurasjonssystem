@@ -31,17 +31,17 @@
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" />
+                        <RowConstraints maxHeight="5.600012207031249" minHeight="4.000006103515624" prefHeight="4.000006103515624" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="27.199993896484372" minHeight="10.0" prefHeight="27.199993896484372" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="7.999975585937506" minHeight="1.5999816894531307" prefHeight="7.999975585937506" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="29.600018310546886" minHeight="10.0" prefHeight="23.20002441406251" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="26.799993896484352" minHeight="10.0" prefHeight="26.799993896484352" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="17.999975585937477" minHeight="6.000006103515602" prefHeight="17.999975585937477" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="50.99998779296874" minHeight="10.0" prefHeight="41.60002441406249" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="4.800024414062506" minHeight="2.4000000000000057" prefHeight="3.2000183105468807" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="28.80000000000001" minHeight="10.0" prefHeight="27.999981689453136" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="17.999975585937477" minHeight="0.8000244140624773" prefHeight="2.4000305175781023" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="59.99997558593748" minHeight="10.0" prefHeight="58.39996948242185" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="63.800012207031216" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <padding>
@@ -134,14 +134,14 @@
                     </font>
                 </Label>
             </Pane>
-            <TableView fx:id="tblViewComponent" editable="true" layoutX="354.0" layoutY="54.0" onMousePressed="#dblClickTblRow" prefHeight="476.0" prefWidth="653.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="68.39999999999998" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="30.800000000000068" AnchorPane.topAnchor="54.0">
+            <TableView fx:id="tblViewComponent" editable="true" focusTraversable="false" layoutX="354.0" layoutY="54.0" onMousePressed="#dblClickTblRow" prefHeight="476.0" prefWidth="653.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="68.39999999999998" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="30.800000000000068" AnchorPane.topAnchor="54.0">
                 <columns>
-                    <TableColumn minWidth="100.0" prefWidth="120.0" styleClass="column" text="Produkttype">
+                    <TableColumn minWidth="100.0" prefWidth="140.79998779296875" styleClass="column" text="Produkttype">
                         <cellValueFactory>
                             <PropertyValueFactory property="productType" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn minWidth="100.0" prefWidth="150.0" styleClass="column" text="Produktnavn">
+                    <TableColumn minWidth="100.0" prefWidth="184.00006103515625" styleClass="column" text="Produktnavn">
                         <cellValueFactory>
                             <PropertyValueFactory property="productName" />
                         </cellValueFactory>
