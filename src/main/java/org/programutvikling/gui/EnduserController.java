@@ -313,8 +313,7 @@ public class EnduserController extends TabComponentsController {
                     setText("");
                 } else {
                     //bruker cell factory for å sette toString i listviewen.
-                    setText(c.getProductType() + "\n" + c.getProductName() + "\n" + String.format("%.2f", c.getProductPrice()) +
-                            ",-");
+                    setText(c.getProductType() + "\n" + c.getProductName() + "\n" + String.format("%.0f", c.getProductPrice()) + " kr");
                 }
             }
         });
@@ -333,7 +332,7 @@ public class EnduserController extends TabComponentsController {
 
     private void updateTotalPrice() {
         if (getComputer() != null) {
-            String totalpris = getComputer().calculatePrice() + ",-";
+            String totalpris = String.format("%.0f",getComputer().calculatePrice()) + " kr";
             lblTotalPrice.setText(totalpris);
         }
     }

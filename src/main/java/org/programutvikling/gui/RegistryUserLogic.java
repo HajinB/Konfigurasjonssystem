@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.customTextField.ZipField;
+import org.programutvikling.gui.utility.Dialog;
 
 public class RegistryUserLogic {
     private GridPane gridPane;
@@ -16,11 +17,17 @@ public class RegistryUserLogic {
         this.gridPane = gridPane;
     }
 
-//    User createUserFromGUIInputFields() {
-//        try {
-//            User user = createUser();
-//        }
-//    }
+    User createUserFromGUIInputFields() {
+        try {
+            User user = createUser();
+            resetFields();
+            Dialog.showSuccessDialog(user.getUsername() + " er lagt til i listen!");
+            return user;
+        } catch (IllegalArgumentException iae) {
+            Dialog.showErrorDialog(iae.getMessage());
+        }
+        return null;
+    }
 
     private User createUser() {
         boolean admin = getBoolean((CheckBox) gridPane.lookup("#userAdmin"));
@@ -35,13 +42,36 @@ public class RegistryUserLogic {
         return new User(admin,username,password,name,email,address,zip,city);
     }
 
-    private boolean areInputFieldsEmpty() {
-        return ((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() || ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty()
-                || ((TextField) gridPane.lookup("#userName")).getText().isEmpty() || ((TextField) gridPane.lookup("#userMail")).getText().isEmpty()
-                || ((TextField) gridPane.lookup("#userAddress")).getText().isEmpty() || ((ZipField) gridPane.lookup("#userZip")).getText().isEmpty()
-                || ((TextField) gridPane.lookup("#userCity")).getText().isEmpty();
+    public void registerUser() {
+        if(areInputFieldsEmpty()) {
+            Dialog.showErrorDialog("Noen av feltene er tomme!");
+            return;
+        }
+
+        User newUser = createUserFromGUIInputFields();
+        // duplikat her
 
     }
+
+    private boolean areInputFieldsEmpty() {
+        return (((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() || ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty()
+                || ((TextField) gridPane.lookup("#userName")).getText().isEmpty() || ((TextField) gridPane.lookup("#userMail")).getText().isEmpty()
+                || ((TextField) gridPane.lookup("#userAddress")).getText().isEmpty() || ((ZipField) gridPane.lookup("#userZip")).getText().isEmpty()
+                || ((TextField) gridPane.lookup("#userCity")).getText().isEmpty());
+
+    }
+
+    private void resetFields() {
+        ((CheckBox) gridPane.lookup("#userAdmin")).setSelected(false);
+        ((TextField) gridPane.lookup("#userUsername")).setText("");
+        ((TextField) gridPane.lookup("#userPassword")).setText("");
+        ((TextField) gridPane.lookup("#userName")).setText("");
+        ((TextField) gridPane.lookup("#userMail")).setText("");
+        ((TextField) gridPane.lookup("#userAddress")).setText("");
+        ((ZipField) gridPane.lookup("#userZip")).setText("");
+        ((TextField) gridPane.lookup("#userCity")).setText("");
+    }
+
     // getters from gridPane
 
     private boolean getBoolean(CheckBox checkBox) {

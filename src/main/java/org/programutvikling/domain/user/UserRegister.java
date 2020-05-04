@@ -2,6 +2,8 @@ package org.programutvikling.domain.user;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
+import org.programutvikling.domain.component.Component;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -53,6 +55,17 @@ public class UserRegister implements Serializable {
             }
         }
         return true;
+    }
+
+//    public boolean usernameExists(User user) {
+//        for(User user1 : userRegister) {
+//            if(user1.getUsername().equals(user.getUser))
+//        }
+//    }
+
+    public void attachTableView(TableView<User> tv) {
+        if (!userRegister.isEmpty())
+            tv.setItems(userRegister);
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
