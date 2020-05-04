@@ -35,9 +35,6 @@ class UserValidatorTest {
     void email() {
     }
 
-    @Test
-    void phone() {
-    }
 
     @Test
     void zip() {

@@ -26,7 +26,7 @@
         <ScrollPane fitToHeight="true" fitToWidth="true" stylesheets="@CSS/EndUser.css">
             <AnchorPane prefHeight="555.0">
                 <VBox alignment="CENTER" layoutX="14.0" layoutY="56.0" AnchorPane.leftAnchor="14.0">
-                    <TitledPane contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Prosessor*" VBox.vgrow="ALWAYS">
+                    <TitledPane contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Prosessor *" VBox.vgrow="ALWAYS">
                         <TableView fx:id="tblProcessor" prefHeight="230.0">
                             <columns>
                                 <TableColumn editable="false" prefWidth="100.0" resizable="false" styleClass="columnUser" text="Navn">
@@ -54,7 +54,7 @@
                             </columnResizePolicy>
                         </TableView>
                     </TitledPane>
-                    <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne*" VBox.vgrow="ALWAYS">
+                    <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne *" VBox.vgrow="ALWAYS">
                         <TableView fx:id="tblMemory" prefHeight="230.0">
                             <columns>
                                 <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
@@ -85,7 +85,7 @@
                             <Insets />
                         </VBox.margin>
                     </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Kabinett*">
+                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Kabinett *">
                         <TableView fx:id="tblCabinet" prefHeight="230.0">
                             <columns>
                                 <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
@@ -171,7 +171,7 @@
                     </TitledPane>
                 </VBox>
                 <VBox alignment="CENTER" layoutX="388.0" layoutY="56.0" AnchorPane.leftAnchor="388.0">
-                    <TitledPane contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjermkort*" VBox.vgrow="ALWAYS">
+                    <TitledPane contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjermkort *" VBox.vgrow="ALWAYS">
                         <TableView fx:id="tblVideoCard" prefHeight="230.0" prefWidth="369.0">
                             <columns>
                                 <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
@@ -202,7 +202,7 @@
                             <Insets left="1.0" right="1.0" />
                         </VBox.margin>
                     </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Hovedkort*">
+                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Hovedkort *">
                         <TableView fx:id="tblMotherBoard" prefHeight="230.0">
                             <columns>
                                 <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
@@ -227,7 +227,7 @@
                             </columns>
                         </TableView>
                     </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk*">
+                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk *">
                         <TableView fx:id="tblHardDisc" prefHeight="230.0">
                             <columns>
                                 <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
@@ -390,8 +390,8 @@
         </AnchorPane>
     </top>
     <right>
-        <AnchorPane prefHeight="557.0" prefWidth="264.0" BorderPane.alignment="CENTER">
-            <ListView fx:id="shoppingListView" focusTraversable="false" layoutX="14.0" layoutY="238.0" prefHeight="266.0" prefWidth="230.0" styleClass="shopCart" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="238.0" />
+        <AnchorPane prefHeight="557.0" prefWidth="258.0" BorderPane.alignment="CENTER">
+            <ListView fx:id="shoppingListView" focusTraversable="false" layoutX="12.0" layoutY="238.0" prefHeight="266.0" prefWidth="241.0" styleClass="shopCart" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="238.0" />
             <Label contentDisplay="RIGHT" layoutX="54.0" layoutY="212.0" nodeOrientation="LEFT_TO_RIGHT" text="Handlekurv" textFill="#000000cc" AnchorPane.topAnchor="212.0">
                 <font>
                     <Font name="Verdana Bold" size="19.0" />
@@ -409,7 +409,7 @@
                     <Font name="Verdana Bold" size="13.0" />
                 </font>
             </Label>
-            <TableView fx:id="tblCompletedComputers" layoutX="16.0" prefHeight="194.0" prefWidth="230.0" styleClass="shopCart" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="tblCompletedComputers" layoutX="12.0" prefHeight="194.0" prefWidth="240.0" styleClass="shopCart" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
                 <columns>
                     <TableColumn editable="false" prefWidth="75.0" sortable="false" styleClass="columnUser2" text="Kjøp komplett PC">
                         <columns>

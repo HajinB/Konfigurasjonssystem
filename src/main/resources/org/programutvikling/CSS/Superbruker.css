@@ -26,12 +26,20 @@
     -fx-font-weight: none;
     -fx-font-family: Verdana;
     -fx-cursor: hand;
-    -fx-wrap-text: true;
+    -fx-text-fill: black;
 }
 
 .columnPrice {
     -fx-alignment: center-right;
 }
+
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(56, 141, 200, 0.18);
+    -fx-text-fill: black;
+}
+
+
 
 /* Legg til ny komponent pane*/
 .nyKomponentPane {

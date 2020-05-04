@@ -17,12 +17,11 @@ public class User implements Serializable {
     private transient  SimpleStringProperty password;
     private transient SimpleStringProperty name;
     private transient SimpleStringProperty email;
-    private transient SimpleStringProperty phone;
     private transient SimpleStringProperty address;
     private transient SimpleStringProperty zip;
     private transient SimpleStringProperty city;
 
-    public User(boolean admin, String username, String password, String name, String email, String phone, String address, String zip, String city) {
+    public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
         // validering
         if(!UserValidator.username(username)) {
             throw new InvalidUsernameException();
@@ -39,7 +38,6 @@ public class User implements Serializable {
         this.password = new SimpleStringProperty(password);
         this.name = new SimpleStringProperty(name);
         this.email = new SimpleStringProperty(email);
-        this.phone = new SimpleStringProperty(phone);
         this.address = new SimpleStringProperty(address);
         this.zip = new SimpleStringProperty(zip);
         this.city = new SimpleStringProperty(city);
@@ -89,14 +87,6 @@ public class User implements Serializable {
         this.email.set(email);
     }
 
-    public String getPhone() {
-        return phone.get();
-    }
-
-    public void setPhone(String phone) {
-        this.phone.set(phone);
-    }
-
     public String getAddress() {
         return address.get();
     }
@@ -128,7 +118,6 @@ public class User implements Serializable {
         s.writeUTF(getPassword());
         s.writeUTF(getName());
         s.writeUTF(getEmail());
-        s.writeUTF(getPhone());
         s.writeUTF(getAddress());
         s.writeUTF(getZip());
         s.writeUTF(getCity());
@@ -141,7 +130,6 @@ public class User implements Serializable {
         String password = s.readUTF();
         String name = s.readUTF();
         String email = s.readUTF();
-        String phone = s.readUTF();
         String address = s.readUTF();
         String zip = s.readUTF();
         String city = s.readUTF();
@@ -151,7 +139,6 @@ public class User implements Serializable {
         this.password = new SimpleStringProperty();
         this.name = new SimpleStringProperty();
         this.email = new SimpleStringProperty();
-        this.phone = new SimpleStringProperty();
         this.address = new SimpleStringProperty();
         this.zip = new SimpleStringProperty();
         this.city = new SimpleStringProperty();
@@ -162,7 +149,6 @@ public class User implements Serializable {
             setPassword(password);
             setName(name);
             setEmail(email);
-            setPhone(phone);
             setAddress(address);
             setZip(zip);
             setCity(city);

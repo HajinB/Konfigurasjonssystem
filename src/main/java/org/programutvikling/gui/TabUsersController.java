@@ -31,7 +31,6 @@ public class TabUsersController implements Initializable {
 
     public void btnAddUser(ActionEvent actionEvent) {
 
-
     }
 
     public void btnDeleteUser(ActionEvent actionEvent) {
@@ -47,7 +46,7 @@ public class TabUsersController implements Initializable {
 
     }
 
-    public void userAdress(TableColumn.CellEditEvent cellEditEvent) {
+    public void userAddress(TableColumn.CellEditEvent cellEditEvent) {
 
     }
 
@@ -63,10 +62,22 @@ public class TabUsersController implements Initializable {
         return Model.INSTANCE.getUserRegister();
     }
 
+    public void registerUser() {
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //user lagd av inputfields
         //getUserRegister().addBruker();
+
+    }
+
+    public void userAdress(TableColumn.CellEditEvent cellEditEvent) {
+
+    }
+
+    public void cbAdmin(ActionEvent event) {
 
     }
 }
