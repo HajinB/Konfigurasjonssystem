@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
@@ -23,25 +24,29 @@
 <BorderPane fx:id="topLevelPaneEndUser" prefHeight="650.0" prefWidth="1050.0" styleClass="borderPane" stylesheets="@CSS/EndUser.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.EnduserController">
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true" stylesheets="@CSS/EndUser.css">
-            <AnchorPane>
-                <VBox alignment="CENTER" layoutX="14.0" layoutY="58.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="417.2" AnchorPane.topAnchor="58.0">
+            <AnchorPane prefHeight="555.0">
+                <VBox alignment="CENTER" layoutX="14.0" layoutY="56.0" AnchorPane.leftAnchor="14.0">
                     <TitledPane contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Prosessor*" VBox.vgrow="ALWAYS">
                         <TableView fx:id="tblProcessor" prefHeight="230.0">
                             <columns>
-                                <TableColumn editable="false" prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
+                                <TableColumn editable="false" prefWidth="100.0" resizable="false" styleClass="columnUser" text="Navn">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="processorDescriptionColumn" prefWidth="175.20003509521484" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn fx:id="processorDescriptionColumn" editable="false" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="processorPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="processorPriceCln" editable="false" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                             <columnResizePolicy>
@@ -52,20 +57,24 @@
                     <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne*" VBox.vgrow="ALWAYS">
                         <TableView fx:id="tblMemory" prefHeight="230.0">
                             <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
+                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn id="#memoryDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn id="#memoryDescriptionColumn" fx:id="memoryDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="memoryPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="memoryPriceCln" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                             <columnResizePolicy>
@@ -79,20 +88,24 @@
                     <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Kabinett*">
                         <TableView fx:id="tblCabinet" prefHeight="230.0">
                             <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
+                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn id="#cabinetDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn id="#cabinetDescriptionColumn" fx:id="cabinetDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="cabinetPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="cabinetPriceCln" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                             <columnResizePolicy>
@@ -103,20 +116,24 @@
                     <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Mus">
                         <TableView fx:id="tblMouse" prefHeight="230.0">
                             <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
+                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn fx:id="mouseDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="mousePriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="mousePriceCln" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                             <columnResizePolicy>
@@ -127,20 +144,24 @@
                     <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Annet">
                         <TableView fx:id="tblOther" prefHeight="230.0">
                             <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
+                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn fx:id="otherDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="otherPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="otherPriceCln" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                             <columnResizePolicy>
@@ -149,24 +170,28 @@
                         </TableView>
                     </TitledPane>
                 </VBox>
-                <VBox alignment="CENTER" layoutX="391.0" layoutY="58.0" AnchorPane.rightAnchor="23.399999999999977">
+                <VBox alignment="CENTER" layoutX="388.0" layoutY="56.0" AnchorPane.leftAnchor="388.0">
                     <TitledPane contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjermkort*" VBox.vgrow="ALWAYS">
-                        <TableView fx:id="tblVideoCard" prefHeight="230.0">
+                        <TableView fx:id="tblVideoCard" prefHeight="230.0" prefWidth="369.0">
                             <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
+                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn fx:id="graphicDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="videoCardPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="videoCardPriceCln" prefWidth="87.20001220703125" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                             <columnResizePolicy>
@@ -185,15 +210,19 @@
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn fx:id="motherboardDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="motherBoardPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="motherBoardPriceCln" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                         </TableView>
@@ -206,15 +235,19 @@
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn fx:id="harddiskDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="hardDiscPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="hardDiscPriceCln" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                         </TableView>
@@ -227,15 +260,19 @@
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn fx:id="keyboardDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="keyboardPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="keyboardPriceCln" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                         </TableView>
@@ -248,15 +285,19 @@
                                         <PropertyValueFactory property="productName" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
+                                <TableColumn fx:id="screenDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productDescription" />
                                     </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn fx:id="screenPriceCln" prefWidth="87.0" styleClass="columnUser" text="Pris">
+                                <TableColumn fx:id="screenPriceCln" prefWidth="87.0" resizable="false" text="Pris">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productPrice" />
                                     </cellValueFactory>
+                           <styleClass>
+                              <String fx:value="columnUser" />
+                              <String fx:value="columnPrice" />
+                           </styleClass>
                                 </TableColumn>
                             </columns>
                         </TableView>
@@ -273,9 +314,9 @@
     <bottom>
         <AnchorPane prefHeight="51.0" prefWidth="1050.0" BorderPane.alignment="CENTER">
             <children>
-                <Button contentDisplay="RIGHT" layoutX="26.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnAddToCart" styleClass="btnPayAdd" stylesheets="@CSS/EndUser.css" text="Legg i handlekurv" AnchorPane.leftAnchor="26.0">
+                <Button contentDisplay="RIGHT" layoutX="26.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnAddToCart" styleClass="btnPayAdd" stylesheets="@CSS/EndUser.css" text="Legg i handlekurv" AnchorPane.leftAnchor="26.0">
                     <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.32" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.32" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../Bilder/basket-black-shape.png" />
                             </image>
@@ -285,8 +326,8 @@
                         </ImageView>
                     </graphic></Button>
                 <Label layoutX="186.0" layoutY="15.0" prefHeight="18.0" prefWidth="195.0" text="*Nødvendig for å lage en PC" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="679.0" />
-                <Button layoutX="934.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnCashier" prefHeight="31.0" prefWidth="144.0" styleClass="btnPayAdd" stylesheets="@CSS/EndUser.css" text="Bestill" AnchorPane.rightAnchor="14.0" />
-                <Button layoutX="844.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnDeleteFromCart" prefHeight="30.0" prefWidth="81.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett" AnchorPane.rightAnchor="166.39999999999998">
+                <Button layoutX="909.0000000000001" layoutY="9.0" mnemonicParsing="false" onAction="#btnCashier" prefHeight="31.0" prefWidth="126.0" styleClass="btnPayAdd" stylesheets="@CSS/EndUser.css" text="Bestill" AnchorPane.rightAnchor="15.0" />
+                <Button layoutX="808.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnDeleteFromCart" prefHeight="30.0" prefWidth="81.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett" AnchorPane.rightAnchor="160.80000000000007">
                     <font>
                         <Font size="9.0" />
                     </font>
@@ -302,7 +343,7 @@
         </AnchorPane>
     </bottom>
     <top>
-        <AnchorPane prefHeight="35.0" prefWidth="1092.0" stylesheets="@CSS/EndUser.css">
+        <AnchorPane prefHeight="35.0" stylesheets="@CSS/EndUser.css">
             <children>
                 <MenuButton alignment="CENTER" layoutX="14.0" layoutY="3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" styleClass="btnLogOut" stylesheets="@CSS/EndUser.css" text="Meny" wrapText="true" AnchorPane.leftAnchor="14.0">
                     <items>
@@ -349,7 +390,7 @@
         </AnchorPane>
     </top>
     <right>
-        <AnchorPane prefHeight="557.0" prefWidth="258.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="557.0" prefWidth="264.0" BorderPane.alignment="CENTER">
             <ListView fx:id="shoppingListView" focusTraversable="false" layoutX="14.0" layoutY="238.0" prefHeight="266.0" prefWidth="230.0" styleClass="shopCart" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="238.0" />
             <Label contentDisplay="RIGHT" layoutX="54.0" layoutY="212.0" nodeOrientation="LEFT_TO_RIGHT" text="Handlekurv" textFill="#000000cc" AnchorPane.topAnchor="212.0">
                 <font>
@@ -372,15 +413,19 @@
                 <columns>
                     <TableColumn editable="false" prefWidth="75.0" sortable="false" styleClass="columnUser2" text="Kjøp komplett PC">
                         <columns>
-                            <TableColumn editable="false" minWidth="0.0" prefWidth="119.99999713897705" styleClass="columnUser2" text="Navn">
+                            <TableColumn editable="false" minWidth="0.0" prefWidth="119.99999713897705" styleClass="columnUser" text="Navn">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="productName" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="computerPriceCln" editable="false" prefWidth="111.99996948242188" styleClass="columnUser2" text="Pris">
+                            <TableColumn fx:id="computerPriceCln" editable="false" prefWidth="111.99996948242188" text="Pris">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="productPrice" />
                                 </cellValueFactory>
+                        <styleClass>
+                           <String fx:value="columnUser" />
+                           <String fx:value="columnPrice" />
+                        </styleClass>
                             </TableColumn>
                         </columns>
                     </TableColumn>
@@ -393,7 +438,7 @@
                     <URL value="@CSS/EndUser.css" />
                 </stylesheets>
             </TableView>
-            <Label fx:id="lblTotalPrice" alignment="CENTER_RIGHT" layoutX="89.0" layoutY="516.0" prefHeight="26.0" prefWidth="141.0" styleClass="shopCart" AnchorPane.bottomAnchor="14.399999999999977">
+            <Label fx:id="lblTotalPrice" alignment="CENTER_RIGHT" layoutX="91.0" layoutY="515.0" prefHeight="26.0" prefWidth="129.0" styleClass="shopCart" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="14.0">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -405,6 +450,6 @@
         </AnchorPane>
     </right>
     <left>
-        <AnchorPane prefHeight="557.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
+        <AnchorPane prefHeight="557.0" prefWidth="14.0" BorderPane.alignment="CENTER" />
     </left>
 </BorderPane>

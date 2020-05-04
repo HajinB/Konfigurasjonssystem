@@ -58,7 +58,7 @@ public class ComponentValidator {
                 return true;
             }
         }
-        System.out.println("produkttype-navnet fins ikke i databasen vår");
+        System.out.println("Produkttypen finnes ikke i databasen vår");
         return false;
         //items.parallelStream().anyMatch(inputStr::contains);
     }
@@ -72,10 +72,13 @@ public class ComponentValidator {
         return !(name.isEmpty() && name.isBlank()) && name.length() < 100;
     }
 
-    static boolean isProductPriceValid(double price) {
-        return price > 0;
+    static boolean isProductPriceValid(Double price) {
+        return  price != 0.0 && price > 0.0;
     }
 
+    public static boolean isProductDescriptionValid(String description) {
+        return !(description.isEmpty() && description.isBlank());
+    }
 
     //hvis productname og producttype fra tempcomponent matcher en component i registeret OG prisen ikke er lik -
 // returner den riktige komponenten. hvis alt stemmer, return null.
@@ -104,11 +107,6 @@ public class ComponentValidator {
         return c2.getProductName().equals(c1.getProductName())
                 && c2.getProductType().equals(c1.getProductType())
         && c2.getProductDescription().equals(c1.getProductDescription());
-    }
-
-
-    public static boolean isProductDescriptionValid(String description) {
-        return !(description.isEmpty() && description.isBlank());
     }
 }
        /* isProductPriceMatchingAlreadySaved(ArrayList<Object> objects, String toBeSearched){

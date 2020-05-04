@@ -3,6 +3,7 @@ package org.programutvikling.domain.component;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.programutvikling.domain.component.io.InvalidComponentFormatException;
+import org.programutvikling.domain.component.io.InvalidPriceException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -38,7 +39,7 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
             throw new IllegalArgumentException("Skriv inn produktbeskrivelse");
         }
         if (!ComponentValidator.isProductPriceValid(price)) {
-            throw new NumberFormatException("Skriv inn pris på produktet");
+            throw new InvalidPriceException();
         }
 
         this.productType = new SimpleStringProperty(type);
@@ -73,9 +74,12 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public final void setProductName(String productName) {
-        //validator
+        if (!ComponentValidator.isProductNameValid(productName)) {
+            throw new IllegalArgumentException("Produktnavn er tom eller ugyldig");
+        } else{
 
-        this.productName.set(productName);
+            this.productName.set(productName);
+    }
     }
 
     public String getProductDescription() {
@@ -83,7 +87,11 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public final void setProductDescription(String productDescription) {
-        this.productDescription.set(productDescription);
+        if (!ComponentValidator.isProductDescriptionValid(productDescription)) {
+            throw new IllegalArgumentException("Produktbeskrivelse kan ikke være tom");
+        } else {
+            this.productDescription.set(productDescription);
+        }
     }
 
     public double getProductPrice() {
@@ -91,8 +99,11 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public final void setProductPrice(double productPrice) {
-        // evt validator
-        this.productPrice.setValue(productPrice);
+        if (!ComponentValidator.isProductPriceValid(productPrice)) {
+            throw new InvalidPriceException();
+        } else {
+            this.productPrice.setValue(productPrice);
+        }
     }
 
     public String toStringListView() {

@@ -1,5 +1,4 @@
-
-
+/*Logg ut knapp*/
 .btnLogOut {
     -fx-background-color: transparent;
     -fx-font-family: Verdana;
@@ -99,14 +98,10 @@
 /*kolonne i tableview*/
 
 .columnUser{
-    -fx-background-color: linear-gradient(rgba(211, 211, 211, 0.21), white);
     -fx-font-weight: none;
     -fx-font-family: Verdana;
     -fx-font-size: 13px;
-}
-
-.columnUser:pressed {
-    -fx-background-color: rgba(56, 141, 200, 0.03);
+    -fx-text-fill: black;
 }
 
 .columnUser2 {
@@ -114,4 +109,14 @@
     -fx-font-family: Verdana;
     -fx-font-size: 13px;
     -fx-text-fill: rgba(0, 0, 0, 0.77);
+}
+
+.table-row-cell {
+    -fx-selection-bar: rgba(0, 81, 130, 0.22) /* color for in-stock selected row */ ;
+
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(0, 128, 0, 0.09);
+    -fx-text-fill: black;
 }

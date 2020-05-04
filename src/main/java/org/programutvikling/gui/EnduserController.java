@@ -60,9 +60,11 @@ public class EnduserController extends TabComponentsController {
             tblProcessor, tblVideoCard, tblScreen,
             tblOther, tblMemory, tblMouse, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard;
     @FXML
-    private TableColumn processorDescriptionColumn,
-            processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln,
-            memoryPriceCln, mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln;
+    private TableColumn processorDescriptionColumn, memoryDescriptionColumn, cabinetDescriptionColumn, mouseDescriptionColumn,
+            otherDescriptionColumn, graphicDescriptionColumn, motherboardDescriptionColumn, harddiskDescriptionColumn,
+            keyboardDescriptionColumn, screenDescriptionColumn,
+            processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln, memoryPriceCln,
+            mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln;
 
     private EndUserLogic endUserLogic;
 
@@ -96,6 +98,15 @@ public class EnduserController extends TabComponentsController {
                 };
 
         processorDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        memoryDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        screenDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        cabinetDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        graphicDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        harddiskDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        keyboardDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        motherboardDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        mouseDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        otherDescriptionColumn.setCellFactory(customTextWrapCellFactory);
     }
 
     private void setListenerToClearSelection(ObjectProperty<TableRow<Component>> lastSelectedRow) {
