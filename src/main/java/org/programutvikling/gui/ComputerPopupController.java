@@ -34,7 +34,7 @@ public class ComputerPopupController extends EnduserController implements Initia
                 if (empty || c == null || c.getProductName() == null) {
                     setText("");
                 } else {
-                    setText(c.getProductName() + "\n" + String.format("%.2f", c.getProductPrice()) + ",-");
+                    setText(c.getProductName() + "\n" + String.format("%.0f", c.getProductPrice()));
                 }
             }
         });

@@ -19,7 +19,7 @@ public class TotalPriceFormatCell <T> implements Callback<TableColumn<T, Compute
                         return;
                     }
 
-                    setText(Double.toString(item.calculatePrice()) + " kr");
+                    setText(String.format("%.0f",item.calculatePrice()));
                 }
 
             };
