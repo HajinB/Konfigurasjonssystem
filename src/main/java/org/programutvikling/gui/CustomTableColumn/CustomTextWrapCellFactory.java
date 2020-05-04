@@ -17,6 +17,8 @@ public class CustomTextWrapCellFactory extends TableCell<Object, String> {
         text.setStyle("-fx-padding-right: 20px !important;");
         text.setStyle("-fx-end-margin-right: 20px !important;");
         setStyle("-fx-alignment: CENTER-RIGHT;");
+        text.setStyle("-fx-wrap-text: true;");
+
     }
     //the updateItem method can be overridden to allow for complete customisation of the cell.
     @Override
@@ -49,6 +51,7 @@ public class CustomTextWrapCellFactory extends TableCell<Object, String> {
         text.setStyle("-fx-padding: 0 20 0 0 !important;");
         setGraphic(text);
         */
+    text.setLayoutX(20);
         text.setStyle(" -fx-opacity: 1;" +
                 " -fx-font-family: \"verdena\";" +
                 " -fx-font-size: 12pt;" +
