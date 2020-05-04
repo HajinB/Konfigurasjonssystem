@@ -1,23 +1,93 @@
 package org.programutvikling.logic;
 
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
+import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.model.Model;
 
 import java.util.ArrayList;
 
 public class EndUserLogic {
+    Tooltip tooltipEndUser = new Tooltip("Dobbeltklikk en rad for å legge til i handlekurven");
 
     private final ArrayList<TableView<Component>> tblViewList;
     private BorderPane borderPane;
 
-    public EndUserLogic(BorderPane borderPane, ArrayList<TableView<Component>> tblViewList) {
-        this.borderPane = borderPane;
+    public EndUserLogic(BorderPane topLevelPaneEndUser, ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList, ArrayList<TableColumn> tblColumnPriceList) {
+        this.borderPane = topLevelPaneEndUser;
         this.tblViewList = tblViewList;
+        initView();
+    }
+
+    private void initView() {
+        setDblClickEvent();
+    }
+    private void setDblClickEvent() {
+        EventHandler<MouseEvent> tblViewDblClickEvent = new EventHandler<>() {
+            public void handle(MouseEvent mouseEvent) {
+                TableRow row;
+                if (isDoubleClick(mouseEvent)) {
+                    Node node = ((Node) mouseEvent.getTarget()).getParent();
+                    if (node instanceof TableRow) {
+                        row = (TableRow) node;
+                    } else {
+                        //hvis man trykker på noe inne i cellen.
+                        row = (TableRow) node.getParent();
+                    }
+                    Component c = (Component) row.getItem();
+                    addComponentToComputer(c);
+                   // clearSelection();
+                }
+            }
+        };
+        for (TableView<Component> t : tblViewList) {
+            //looper gjennom tableviews i tblviewlist for å legge til tooltip og eventhandler
+            t.setTooltip(tooltipEndUser);
+            t.setOnMousePressed(tblViewDblClickEvent);
+        }
+    }
+
+    public void addComponentToComputer(Component component) {
+        // validering aka sjekk type også run liste-test
+        if (ComputerValidator.isComponentValidForList(component)) {
+            getComputer().addComponent(component);
+            //updateComputerListView();
+        } else {
+            Alert alert = Dialog.getConfirmationAlert("Erstatter komponent", "",
+                    "Handlekurven har allerede nok antall av typen:'" + component.getProductType()+"'." +
+                            " Vil du erstatte den som ligger i handlekurven?", "");
+            alert.showAndWait();
+            //trykker ja = replace
+            if (alert.getResult() == alert.getButtonTypes().get(0)) {
+                replaceFirstComponentByType(component.getProductType(), component);
+               // updateComputerListView();
+            }
+        }
+    }
+
+    public void replaceFirstComponentByType(String productType, Component component) {
+        for (Component c : getComputer().getComponentRegister().getRegister()) {
+            if (productType.equalsIgnoreCase(c.getProductType())) {
+                int index = getComputer().getComponentRegister().getRegister().indexOf(c);
+                getComputer().getComponentRegister().getRegister().set(index, component);
+            }
+        }
+    }
+
+    private Computer getComputer() {
+        return Model.INSTANCE.getComputer();
+    }
+
+    private boolean isDoubleClick(MouseEvent event) {
+        return event.isPrimaryButtonDown() && event.getClickCount() == 2;
     }
 
     public void setListeners() {

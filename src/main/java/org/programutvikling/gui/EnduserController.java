@@ -34,6 +34,7 @@ import org.programutvikling.gui.utility.FileUtility;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static javafx.application.Platform.runLater;
@@ -42,7 +43,6 @@ import static javafx.application.Platform.runLater;
 public class EnduserController extends TabComponentsController {
     @FXML
     public BorderPane topLevelPaneEndUser;
-    Tooltip tooltipEndUser = new Tooltip("Dobbeltklikk en rad for å legge til i handlekurven");
     EndUserService endUserService = new EndUserService();
     Stage stage;
     ComputerValidator computerValidator = new ComputerValidator();
@@ -51,6 +51,8 @@ public class EnduserController extends TabComponentsController {
     @FXML
     TableColumn computerPriceCln;
     ArrayList<TableView<Component>> tblViewList = new ArrayList<>();
+    ArrayList<TableColumn> tblColumnPriceList = new ArrayList<>();
+    ArrayList<TableColumn> tblColumnDescriptionList = new ArrayList<>();
     @FXML
     private Label lblTotalPrice;
     @FXML
@@ -68,10 +70,14 @@ public class EnduserController extends TabComponentsController {
 
     private EndUserLogic endUserLogic;
 
-
     @FXML
     public void initialize() throws IOException {
+
+
         addTableViewsToList();
+
+        //todo så og si alle metoder under her kan trekkes ut av controlleren
+        endUserLogic = new EndUserLogic(topLevelPaneEndUser,tblViewList, tblColumnDescriptionList, tblColumnPriceList);
         initTextWrapCellFactory();
         updateComponentViews();
         updateList();
@@ -81,7 +87,9 @@ public class EnduserController extends TabComponentsController {
         updateComputerListView();
         setTblCompletedComputersListener();
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
-        setDblClickEvent();
+        //setDblClickEvent();
+        //todo se på hvordan dblclick event er hentet ut av controlleren og gjør det på ALLE tablerows..
+        //mulig man må finne en ny måte å update listene på -fra denne controlleren(?)
         ObjectProperty<TableRow<Component>> lastSelectedRow = new SimpleObjectProperty<>();
         setListenerToClearSelection(lastSelectedRow);
     }
@@ -96,21 +104,12 @@ public class EnduserController extends TabComponentsController {
                         return new CustomTextWrapCellFactory();
                     }
                 };
-
-        processorDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        memoryDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        screenDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        cabinetDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        graphicDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        harddiskDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        keyboardDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        motherboardDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        mouseDescriptionColumn.setCellFactory(customTextWrapCellFactory);
-        otherDescriptionColumn.setCellFactory(customTextWrapCellFactory);
+        for(TableColumn tc : tblColumnDescriptionList){
+            tc.setCellFactory(customTextWrapCellFactory);
+        }
     }
 
     private void setListenerToClearSelection(ObjectProperty<TableRow<Component>> lastSelectedRow) {
-
         for (TableView<Component> t : tblViewList) {
             //går gjennom tableviewlisten for å finne den raden som sist ble valgt, blant alle tables,
             // for å bruke den i eventfilteret på toplevel-panen.
@@ -145,41 +144,19 @@ public class EnduserController extends TabComponentsController {
     }
 
     private void addTableViewsToList() {
-        tblViewList.add(tblProcessor);
-        tblViewList.add(tblVideoCard);
-        tblViewList.add(tblScreen);
-        tblViewList.add(tblOther);
-        tblViewList.add(tblMemory);
-        tblViewList.add(tblMouse);
-        tblViewList.add(tblMotherBoard);
-        tblViewList.add(tblCabinet);
-        tblViewList.add(tblHardDisc);
-        tblViewList.add(tblKeyboard);
-    }
+        List<TableView<Component>> componentsViews = Arrays.asList(tblProcessor, tblVideoCard, tblScreen,
+                tblOther, tblMemory, tblMouse, tblMotherBoard, tblCabinet, tblHardDisc, tblKeyboard);
+        tblViewList.addAll(componentsViews);
 
-    private void setDblClickEvent() {
-        EventHandler<MouseEvent> tblViewDblClickEvent = new EventHandler<>() {
-            public void handle(MouseEvent mouseEvent) {
-                TableRow row;
-                if (isDoubleClick(mouseEvent)) {
-                    Node node = ((Node) mouseEvent.getTarget()).getParent();
-                    if (node instanceof TableRow) {
-                        row = (TableRow) node;
-                    } else {
-                        //hvis man trykker på noe inne i cellen.
-                        row = (TableRow) node.getParent();
-                    }
-                    Component c = (Component) row.getItem();
-                    addComponentToComputer(c);
-                    clearSelection();
-                }
-            }
-        };
-        for (TableView<Component> t : tblViewList) {
-            //looper gjennom tableviews i tblviewlist for å legge til tooltip og eventhandler
-            t.setTooltip(tooltipEndUser);
-            t.setOnMousePressed(tblViewDblClickEvent);
-        }
+        List<TableColumn> priceColumns = Arrays.asList(processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln, memoryPriceCln,
+                mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln);
+        tblColumnPriceList.addAll(priceColumns);
+
+        List<TableColumn> descriptionColumns = Arrays.asList(processorDescriptionColumn, memoryDescriptionColumn,
+                cabinetDescriptionColumn, mouseDescriptionColumn,
+                otherDescriptionColumn, graphicDescriptionColumn, motherboardDescriptionColumn, harddiskDescriptionColumn,
+                keyboardDescriptionColumn, screenDescriptionColumn);
+        tblColumnDescriptionList.addAll(descriptionColumns);
     }
 
 
@@ -223,6 +200,7 @@ public class EnduserController extends TabComponentsController {
 
     private void openDetailedView(TableRow row) throws IOException {
         //henter popup fxml
+        System.out.println("her er vi i openDetailedView");
         FXMLLoader loader = getFxmlLoader("computerPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -299,7 +277,7 @@ public class EnduserController extends TabComponentsController {
         /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
 
         if (selectedComp != null) {
-            addComponentToComputer(selectedComp);
+            endUserLogic.addComponentToComputer(selectedComp);
             updateComputerListView();
         }
     }
@@ -360,32 +338,7 @@ public class EnduserController extends TabComponentsController {
         }
     }
 
-    void addComponentToComputer(Component component) {
-        // validering aka sjekk type også run liste-test
-        if (ComputerValidator.isComponentValidForList(component)) {
-            getComputer().addComponent(component);
-            updateComputerListView();
-        } else {
-            Alert alert = Dialog.getConfirmationAlert("Erstatter komponent", "",
-                    "Handlekurven har allerede nok antall av typen:'" + component.getProductType()+"'." +
-                            " Vil du erstatte den som ligger i handlekurven?", "");
-            alert.showAndWait();
-            //trykker ja = replace
-            if (alert.getResult() == alert.getButtonTypes().get(0)) {
-                replaceFirstComponentByType(component.getProductType(), component);
-                updateComputerListView();
-            }
-        }
-    }
 
-    public void replaceFirstComponentByType(String productType, Component component) {
-        for (Component c : getComputer().getComponentRegister().getRegister()) {
-            if (productType.equalsIgnoreCase(c.getProductType())) {
-                int index = getComputer().getComponentRegister().getRegister().indexOf(c);
-                getComputer().getComponentRegister().getRegister().set(index, component);
-            }
-        }
-    }
 
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
@@ -462,36 +415,11 @@ public class EnduserController extends TabComponentsController {
 
     //Fjerner forrige valgte produkt etter at du har trykket #Legg i handlekurv
     public void clearSelection() {
-        runLater(() -> {
-            tblProcessor.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblMotherBoard.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblMouse.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblMemory.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblHardDisc.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblScreen.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblVideoCard.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblOther.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblCompletedComputers.getSelectionModel().clearSelection();
-        });
-        runLater(() -> {
-            tblCabinet.getSelectionModel().clearSelection();
-        });
+        for(TableView t : tblViewList) {
+            runLater(() -> {
+                t.getSelectionModel().clearSelection();
+            });
+        }
     }
 
     @FXML
