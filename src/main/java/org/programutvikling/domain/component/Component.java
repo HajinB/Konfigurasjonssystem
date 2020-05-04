@@ -8,24 +8,19 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Component implements Serializable, ItemUsable, Comparable<Component> {
-    private transient ComponentTypes componentTypes = new ComponentTypes();
     private transient static final long serialVersionUID = 1;
-
     /*    private transient SimpleStringProperty productType;
     private transient SimpleStringProperty productName;
     private transient SimpleStringProperty productDescription;
     private transient SimpleDoubleProperty productPrice;*/
     transient ComponentValidator componentValidator = new ComponentValidator();
+    private transient ComponentTypes componentTypes = new ComponentTypes();
     private transient SimpleStringProperty productType;
     private transient SimpleStringProperty productName;
     private transient SimpleStringProperty productDescription;
     private transient SimpleDoubleProperty productPrice;
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Component(String type, String name, String description, double price) {
         // Validator av type, name og price(sjekke om den er 0?) her
@@ -33,6 +28,10 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         this.productName = new SimpleStringProperty(name);
         this.productDescription = new SimpleStringProperty(description);
         this.productPrice = new SimpleDoubleProperty(price);
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
     // Get- og set-metoder
 
@@ -46,7 +45,7 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         } else {
             this.productType.set(productTypeIn);
         }
-        }
+    }
 
     /*public void editSetProductType(String productType) {
         if (!ComponentValidator.isProductTypeValid(productType)) {
@@ -84,8 +83,8 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public String toStringListView() {
-        return  productName.getValue() + " " +
-                 productPrice.getValue() + ",-";
+        return productName.getValue() + " " +
+                productPrice.getValue() + ",-";
     }
 
     // toString
@@ -94,12 +93,12 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         return String.format("%s;%s;%s;%s", productType.getValue(), productName.getValue(),
                 productDescription.getValue(), productPrice.getValue());
     }
+
     @Override
     public boolean equals(Object obj) {
         // TODO denne metoden er for å kunne fjerne duplikater med HashSet - må override equals og hashcode metodene
         //  til Object for å ha kontroll på de.
-        if(obj instanceof Component)
-        {
+        if (obj instanceof Component) {
             Component temp = (Component) obj;
             return this.getProductName().equals(temp.getProductName())
                     && this.getProductType().equals(temp.getProductType())
@@ -107,47 +106,13 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
             //bruker ikke pris her, for å sammenligne to komponenter i en liste.
         }
         return false;
-
     }
+
     @Override
     public int hashCode() {
         // returnerer summen av hashcoden til hvert enkelt felt - blir en unik kode for hvert objekt.
         return (this.getProductType().hashCode() + this.getProductName().hashCode() + this.getProductDescription().hashCode());
     }
-
-
-
-
-
-/*
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        final Component component = (Component) obj;
-        if (this == component) {
-            return true;
-        } else {
-            return (this.productName.getValue().equals(component.getProductName()) &&
-                    this.productDescription.getValue().equals(component.getProductDescription()) &&
-                    this.productType.getValue().equals(component.getProductType()) &&
-                            this.productPrice.getValue().equals(component.getProductPrice()));
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        int hashno = 7;
-        hashno = 13 * hashno + (productName == null ? 0 : productName.hashCode());
-        return hashno;
-    }
-
-    @Override
-    public int compareTo(Address other)
-    {
-        return (aptNo - other.aptNo);
-    } */
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
@@ -161,19 +126,19 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
         String type = s.readUTF();
         String name = s.readUTF();
         String description = s.readUTF();
-        double price =  s.readDouble();
+        double price = s.readDouble();
 
         this.productType = new SimpleStringProperty();
         this.productName = new SimpleStringProperty();
         this.productDescription = new SimpleStringProperty();
         this.productPrice = new SimpleDoubleProperty();
 
-        if(ComponentValidator.isComponentValid(type, name, description, price)) {
+        if (ComponentValidator.isComponentValid(type, name, description, price)) {
             setProductType(type);
             setProductName(name);
             setProductDescription(description);
             setProductPrice(price);
-        }else{
+        } else {
             throw new InvalidComponentFormatException("Komponent er i ikke gyldig format");
         }
     }
@@ -183,9 +148,9 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     public int compareTo(Component cIn) {
         String name1 = cIn.getProductName();
         String name2 = this.getProductName();
-        if ((name1.compareTo(name2)) >0
-                && cIn.getProductType().compareTo(this.getProductType())>0
-        && cIn.getProductDescription().compareTo(this.getProductDescription())>0) return 1;
+        if ((name1.compareTo(name2)) > 0
+                && cIn.getProductType().compareTo(this.getProductType()) > 0
+                && cIn.getProductDescription().compareTo(this.getProductDescription()) > 0) return 1;
         else return 0;
     }
 
