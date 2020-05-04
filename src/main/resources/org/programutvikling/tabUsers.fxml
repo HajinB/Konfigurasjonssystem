@@ -63,12 +63,12 @@
                                  <String fx:value="inputDescription" />
                               </styleClass>
                                     </TextField>
-                                    <Label prefHeight="16.0" prefWidth="108.0" text="E-postadresse" GridPane.rowIndex="7">
+                                    <Label prefHeight="16.0" prefWidth="108.0" text="E-postaddresse" GridPane.rowIndex="7">
                                         <font>
                                             <Font name="Verdana" size="13.0" />
                                         </font>
                                     </Label>
-                                    <TextField id="userMail" fx:id="email" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn e-postadresse" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="8">
+                                    <TextField id="userMail" fx:id="email" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn e-postaddresse" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="8">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
@@ -77,7 +77,7 @@
                                  <String fx:value="inputDescription" />
                               </styleClass>
                                     </TextField>
-                                    <Label prefHeight="19.0" prefWidth="117.0" text="Gateadresse" GridPane.rowIndex="9">
+                                    <Label prefHeight="19.0" prefWidth="117.0" text="Gateaddresse" GridPane.rowIndex="9">
                                         <font>
                                             <Font name="Verdana" size="13.0" />
                                         </font>
@@ -85,7 +85,7 @@
                                             <Insets top="5.0" />
                                         </GridPane.margin>
                                     </Label>
-                                    <TextField id="userAddress" fx:id="adress" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn gateadresse" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="10">
+                                    <TextField id="userAddress" fx:id="address" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn gateaddresse" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="10">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
@@ -115,7 +115,7 @@
                                             <Insets top="5.0" />
                                         </GridPane.margin>
                                     </Label>
-                                    <TextField id="userCity" fx:id="city" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn poststed" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="14">
+                                    <TextField id="userCity" fx:id="UserCity" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn poststed" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="14">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
@@ -148,13 +148,13 @@
                                  <Font name="Verdana" size="13.0" />
                               </font>
                            </Label>
-                           <TextField fx:id="username" prefHeight="30.0" promptText="Skriv inn ønsket brukernavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                           <TextField fx:id="UserUsername" prefHeight="30.0" promptText="Skriv inn ønsket brukernavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                            <Label text="Passord" GridPane.rowIndex="3">
                               <font>
                                  <Font name="Verdana" size="13.0" />
                               </font>
                            </Label>
-                           <PasswordField fx:id="password" prefHeight="30.0" promptText="Passordet må ha minst 6 tegn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="4" />
+                           <PasswordField fx:id="UserPassword" prefHeight="30.0" promptText="Passordet må ha minst 6 tegn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="4" />
                                 </children>
                                 <padding>
                                     <Insets bottom="2.0" />
@@ -174,14 +174,14 @@
                                     <PropertyValueFactory property="userName" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn minWidth="100.0" onEditCommit="#userMail" prefWidth="192.79998779296875" text="E-postadresse">
+                            <TableColumn minWidth="100.0" onEditCommit="#userMail" prefWidth="192.79998779296875" text="E-postaddresse">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="userMail" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn minWidth="100" onEditCommit="#userAdress" prefWidth="152.79998779296875" text="Gateadresse">
+                            <TableColumn minWidth="100" onEditCommit="#userAddress" prefWidth="152.79998779296875" text="Gateaddresse">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="UserAdress" />
+                                    <PropertyValueFactory property="UserAddress" />
                                 </cellValueFactory>
                             </TableColumn>
                             <TableColumn fx:id="userZipCode" minWidth="92.0001220703125" onEditCommit="#userZipCode" prefWidth="98.39996337890625" text="Postnummer">

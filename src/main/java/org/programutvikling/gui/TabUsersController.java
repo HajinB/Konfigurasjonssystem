@@ -29,16 +29,25 @@ public class TabUsersController implements Initializable {
     @FXML
     private TableView<User> tblViewUser;
 
-    public void btnAddUser(ActionEvent actionEvent) {
+    private RegistryUserLogic registryUserLogic;
 
+    public void btnAddUser(ActionEvent actionEvent) {
+    registryUserLogic.registerUser();
+    updateView();
     }
 
     public void btnDeleteUser(ActionEvent actionEvent) {
 
     }
 
+    public void cbAdmin(ActionEvent event) {
+
+    }
 
     public void userName(TableColumn.CellEditEvent cellEditEvent) {
+
+    }
+    public void userPassword(TableColumn.CellEditEvent cellEditEvent) {
 
     }
 
@@ -58,6 +67,10 @@ public class TabUsersController implements Initializable {
 
     }
 
+    public void updateView() {
+        getUserRegister().attachTableView(tblViewUser);
+    }
+
     public UserRegister getUserRegister(){
         return Model.INSTANCE.getUserRegister();
     }
@@ -70,14 +83,7 @@ public class TabUsersController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //user lagd av inputfields
         //getUserRegister().addBruker();
-
-    }
-
-    public void userAdress(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
-    public void cbAdmin(ActionEvent event) {
+    registryUserLogic = new RegistryUserLogic(userReg);
 
     }
 }

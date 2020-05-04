@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.customTextField.ZipField;
+import org.programutvikling.gui.utility.Dialog;
 
 public class RegistryUserLogic {
     private GridPane gridPane;
@@ -16,11 +17,17 @@ public class RegistryUserLogic {
         this.gridPane = gridPane;
     }
 
-//    User createUserFromGUIInputFields() {
-//        try {
-//            User user = createUser();
-//        }
-//    }
+    User createUserFromGUIInputFields() {
+        try {
+            User user = createUser();
+            resetFields();
+            Dialog.showSuccessDialog(user.getUsername() + " er lagt til i listen!");
+            return user;
+        } catch (IllegalArgumentException iae) {
+            Dialog.showErrorDialog(iae.getMessage());
+        }
+        return null;
+    }
 
     private User createUser() {
         boolean admin = getBoolean((CheckBox) gridPane.lookup("#userAdmin"));
@@ -33,6 +40,17 @@ public class RegistryUserLogic {
         String city = getString((TextField) gridPane.lookup("#userCity"));
 
         return new User(admin,username,password,name,email,address,zip,city);
+    }
+
+    public void registerUser() {
+        if(areInputFieldsEmpty()) {
+            Dialog.showErrorDialog("Noen av feltene er tomme!");
+            return;
+        }
+
+        User newUser = createUserFromGUIInputFields();
+        // duplikat her
+
     }
 
     private boolean areInputFieldsEmpty() {
