@@ -30,7 +30,7 @@ public class TabUsersController implements Initializable {
     private TableView<User> tblViewUser;
 
     public void btnAddUser(ActionEvent actionEvent) {
-        ///
+
 
     }
 
@@ -67,8 +67,6 @@ public class TabUsersController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //user lagd av inputfields
         //getUserRegister().addBruker();
-
-
 
     }
 }
