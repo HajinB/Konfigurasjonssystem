@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomTableColumn/CustomTextWrapCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/CustomTableColumn/CustomTextWrapCellFactory.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -255,14 +256,7 @@
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
       <workItem from="1588442497595" duration="25684000" />
-      <workItem from="1588588128651" duration="5724000" />
-    </task>
-    <task id="LOCAL-00048" summary="la til fokus på riktig felt i popupen på edit :D">
-      <created>1587918480432</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1587918480433</updated>
+      <workItem from="1588588128651" duration="6347000" />
     </task>
     <task id="LOCAL-00049" summary="prøver å få til completedcomputerview">
       <created>1587943848100</created>
@@ -600,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588593868926</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Trekker ting ut fra controllers, inn i controllerlogic klassene">
+      <created>1588593911539</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1588593911539</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

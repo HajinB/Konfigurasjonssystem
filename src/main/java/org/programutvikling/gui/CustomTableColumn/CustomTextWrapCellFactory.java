@@ -19,7 +19,8 @@ public class CustomTextWrapCellFactory extends TableCell<Object, String> {
             item = "";
             //setGraphic(null);
         }
-        //
+
+        //todo kan vi skrive om denne til å bruke label istedenfor txt?
         //har opprettet et Text object i klassen - binder dette til item-den faktiske verdien som er i cellen -
         // regner ut høyden på cellen ut i fra dette.
         //Text klassen oppfører seg mer som grafikk/bilde enn simplestring(?)
