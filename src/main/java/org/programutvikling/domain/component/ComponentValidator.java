@@ -6,7 +6,7 @@ public class ComponentValidator {
 
     static boolean isComponentValid(Component component) {
         //return true;
-        return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductPriceValid(component.getProductPrice());
+        return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductDescriptionValid(component.getProductDescription()) && isProductPriceValid(component.getProductPrice());
     }
 
     public static Component isComponentInRegisterThenReturnIt(Component component, ComponentRegister register){
@@ -20,7 +20,7 @@ public class ComponentValidator {
 
     static boolean isComponentValid(String type, String name, String description, double price) {
         //return true;
-        return isProductTypeValid(type) && isProductNameValid(name) && isProductPriceValid(price);
+        return isProductTypeValid(type) && isProductNameValid(name) && isProductDescriptionValid(description) && isProductPriceValid(price);
     }
 
     public static boolean isComponentFromTxtValid(Component component) {
@@ -58,7 +58,7 @@ public class ComponentValidator {
                 return true;
             }
         }
-        System.out.println("produkttype-navnet fins ikke i databasen vår");
+        System.out.println("Produkttypen finnes ikke i databasen vår");
         return false;
         //items.parallelStream().anyMatch(inputStr::contains);
     }
@@ -69,13 +69,16 @@ public class ComponentValidator {
     return bol && !inputStr.isBlank();
 */
     static boolean isProductNameValid(String name) {
-        return name.length() < 100;
+        return !(name.isEmpty() && name.isBlank()) && name.length() < 100;
     }
 
-    static boolean isProductPriceValid(double price) {
-        return price > 0;
+    static boolean isProductPriceValid(Double price) {
+        return  price != 0.0 && price > 0.0;
     }
 
+    public static boolean isProductDescriptionValid(String description) {
+        return !(description.isEmpty() && description.isBlank());
+    }
 
     //hvis productname og producttype fra tempcomponent matcher en component i registeret OG prisen ikke er lik -
 // returner den riktige komponenten. hvis alt stemmer, return null.
@@ -105,9 +108,6 @@ public class ComponentValidator {
                 && c2.getProductType().equals(c1.getProductType())
         && c2.getProductDescription().equals(c1.getProductDescription());
     }
-
-
-
 }
        /* isProductPriceMatchingAlreadySaved(ArrayList<Object> objects, String toBeSearched){
 

@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.io.InvalidPriceException;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
@@ -25,9 +26,10 @@ class RegistryComponentLogic {
         try {
             Component c = createComponent();
             resetFields();
+            Dialog.showSuccessDialog(c.getProductName() + " er lagt til i listen");
             return c;
         } catch (NumberFormatException nfe) {
-            org.programutvikling.gui.utility.Dialog.showErrorDialog("Skriv inn tall");
+            Dialog.showErrorDialog("Skriv inn pris");
         } catch (IllegalArgumentException iae) {
             Dialog.showErrorDialog(iae.getMessage());
         }
@@ -67,9 +69,10 @@ class RegistryComponentLogic {
     }
 
     private double getDouble(TextField field) {
-
-        return doubleStringConverter.fromString(getString(field));
+            return Double.parseDouble(getString(field));
     }
+
+
 
     private void resetFields() {
         ((ChoiceBox) gridPane.lookup("#productType")).setValue(null);

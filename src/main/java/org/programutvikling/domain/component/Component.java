@@ -3,6 +3,7 @@ package org.programutvikling.domain.component;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.programutvikling.domain.component.io.InvalidComponentFormatException;
+import org.programutvikling.domain.component.io.InvalidPriceException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -23,7 +24,19 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     private transient SimpleDoubleProperty productPrice;
 
     public Component(String type, String name, String description, double price) {
-        // Validator av type, name og price(sjekke om den er 0?) her
+        if (!ComponentValidator.isProductNameValid(name)) {
+            throw new IllegalArgumentException("Skriv inn produktnavn");
+        }
+        if (!ComponentValidator.isProductTypeValid(type)) {
+            throw new IllegalArgumentException("Velg produkttype");
+        }
+        if (!ComponentValidator.isProductDescriptionValid(description)) {
+            throw new IllegalArgumentException("Skriv inn produktbeskrivelse");
+        }
+        if (!ComponentValidator.isProductPriceValid(price)) {
+            throw new InvalidPriceException();
+        }
+
         this.productType = new SimpleStringProperty(type);
         this.productName = new SimpleStringProperty(name);
         this.productDescription = new SimpleStringProperty(description);
@@ -60,9 +73,12 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public final void setProductName(String productName) {
-        //validator
+        if (!ComponentValidator.isProductNameValid(productName)) {
+            throw new IllegalArgumentException("Produktnavn er tom eller ugyldig");
+        } else{
 
-        this.productName.set(productName);
+            this.productName.set(productName);
+    }
     }
 
     public String getProductDescription() {
@@ -70,7 +86,11 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public final void setProductDescription(String productDescription) {
-        this.productDescription.set(productDescription);
+        if (!ComponentValidator.isProductDescriptionValid(productDescription)) {
+            throw new IllegalArgumentException("Produktbeskrivelse kan ikke være tom");
+        } else {
+            this.productDescription.set(productDescription);
+        }
     }
 
     public double getProductPrice() {
@@ -78,8 +98,11 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     }
 
     public final void setProductPrice(double productPrice) {
-        // evt validator
-        this.productPrice.setValue(productPrice);
+        if (!ComponentValidator.isProductPriceValid(productPrice)) {
+            throw new InvalidPriceException();
+        } else {
+            this.productPrice.setValue(productPrice);
+        }
     }
 
     public String toStringListView() {
