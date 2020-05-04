@@ -27,11 +27,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/org/programutvikling/user/UserValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/user/UserValidatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryUserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryUserLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="SHOW_DIALOG" value="false" />
@@ -252,20 +249,6 @@
       <workItem from="1588291589731" duration="11027000" />
       <workItem from="1588442497595" duration="25202000" />
       <workItem from="1588601224927" duration="1305000" />
-    </task>
-    <task id="LOCAL-00043" summary="computervalidation + tblview formatting">
-      <created>1587733157867</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1587733157868</updated>
-    </task>
-    <task id="LOCAL-00044" summary="computervalidation + tblview formatting">
-      <created>1587734024870</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1587734024870</updated>
     </task>
     <task id="LOCAL-00045" summary="Endret GUI-enduser og endret komponentnavn til engelsk i kodingen.&#10;&#10;(cherry picked from commit d9debd9516f3cb70c01cc4888d27b50cad4048c7)">
       <created>1587734261347</created>
@@ -595,7 +578,19 @@
       <option name="presentableId" value="LOCAL−00091" />
       <updated>1588544457348</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL−00092" summary="fjernet phone + startet med input">
+      <created>1588611819745</created>
+      <option name="number" value="LOCAL−00092" />
+      <option name="presentableId" value="LOCAL−00092" />
+      <updated>1588611819745</updated>
+    </task>
+    <task id="LOCAL−00093" summary="fjernet phone + startet med input">
+      <created>1588611996673</created>
+      <option name="number" value="LOCAL−00093" />
+      <option name="presentableId" value="LOCAL−00093" />
+      <updated>1588611996673</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +636,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="computervalidation + tblview formatting" />
     <MESSAGE value="Endret GUI-enduser og endret komponentnavn til engelsk i kodingen.&#10;&#10;(cherry picked from commit d9debd9516f3cb70c01cc4888d27b50cad4048c7)" />
     <MESSAGE value="priceformat + la til funksjoner for slett og lagre og åpne&#10;er ikke testet 100%" />
     <MESSAGE value="la til noen feilbeskjeder + loading + høyreklikk for delete" />
@@ -666,7 +660,8 @@
     <MESSAGE value="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen." />
     <MESSAGE value="fiksa remove duplicates - usikker på om det bør være i ui eller om programmet bare skal fjerne duplikater automatisk hvis noen prøver å legge til duplikater vha åpne fil." />
     <MESSAGE value="design igjen, hehe. Mangler litt på productprice validating for input-empty message" />
-    <option name="LAST_COMMIT_MESSAGE" value="design igjen, hehe. Mangler litt på productprice validating for input-empty message" />
+    <MESSAGE value="fjernet phone + startet med input" />
+    <option name="LAST_COMMIT_MESSAGE" value="fjernet phone + startet med input" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1588542629921" />
@@ -687,10 +682,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588611671868" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1588601626522">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="225" y="0" key="CommitChangelistDialog2" timestamp="1588611995527">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588542629921" />
+    <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588611995527" />
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588601626522" />
     <state x="189" y="97" width="1228" height="687" key="DiffContextDialog" timestamp="1588601622287">
       <screen x="0" y="0" width="1536" height="824" />
@@ -767,10 +762,10 @@
     <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1588602148449" />
     <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1588542629921" />
     <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1588542629921" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588611793763">
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588612886808">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588611793763" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588612886808" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

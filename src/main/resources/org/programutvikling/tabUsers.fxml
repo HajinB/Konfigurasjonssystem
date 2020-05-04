@@ -17,8 +17,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-
 <?import org.programutvikling.gui.customTextField.ZipField?>
+
 <AnchorPane prefHeight="600.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabUsersController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="600.0" prefWidth="1040.0" vvalue="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -50,7 +50,7 @@
                                             <Font name="Verdana" size="13.0" />
                                         </font>
                                     </Label>
-                                    <TextField prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn navn og etternavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="1">
+                                    <TextField id="userName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn navn og etternavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="1">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
@@ -60,7 +60,7 @@
                                             <Font name="Verdana" size="13.0" />
                                         </font>
                                     </Label>
-                                    <TextField prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn e-postadresse" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="3">
+                                    <TextField id="userMail" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn e-postadresse" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="3">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
@@ -73,7 +73,7 @@
                                             <Insets top="5.0" />
                                         </GridPane.margin>
                                     </Label>
-                                    <TextField prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn gateadresse" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5">
+                                    <TextField id="userAddress" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn gateadresse" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
@@ -86,7 +86,7 @@
                                             <Insets top="5.0" />
                                         </GridPane.margin>
                                     </Label>
-                                    <ZipField layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn postnummer" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="7">
+                                    <ZipField id="userZip" layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn postnummer" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="7">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
@@ -99,7 +99,7 @@
                                             <Insets top="5.0" />
                                         </GridPane.margin>
                                     </Label>
-                                    <TextField prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn poststed" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="9">
+                                    <TextField id="userCity" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn poststed" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="9">
                                         <font>
                                             <Font size="13.0" />
                                         </font>
