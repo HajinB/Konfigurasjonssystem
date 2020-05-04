@@ -82,7 +82,6 @@ public class TabComponentsController {
         initTableView();
         initTextWrapCellFactory();
     }
-
     private void initTextWrapCellFactory() {
 
         //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
