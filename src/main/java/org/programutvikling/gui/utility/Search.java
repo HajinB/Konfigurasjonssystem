@@ -14,7 +14,7 @@ public class Search {
 
         for (Component k : list) {
             if (k.getProductDescription().toLowerCase().contains(query) ||
-                    k.getProductType().toLowerCase().contains(query) ||
+                    k.getProductName().toLowerCase().contains(query) ||
                     Double.toString(k.getProductPrice()).contains(query) ||
                     k.getProductType().contains(query)) {
                 temp.add(k);

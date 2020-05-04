@@ -10,29 +10,27 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentTypes;
 import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
 import org.programutvikling.gui.CustomTableColumn.PriceFormatCell;
+import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.gui.utility.*;
+import org.programutvikling.gui.utility.Search;
+import org.programutvikling.gui.utility.WindowHandler;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.util.Objects;
@@ -149,7 +147,6 @@ public class TabComponentsController {
                     tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
                     //tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
                     TableRow<? extends Component> row;
-                    TableColumn column;
                     if (isDoubleClick(event)) {
                         Node node = ((Node) event.getTarget()).getParent();
                         if (node instanceof TableRow) {
@@ -183,12 +180,9 @@ public class TabComponentsController {
         });
     }
 
-
-
-
-
-
-    /**Search*/
+    /**
+     * Search
+     */
     @FXML
     void search(KeyEvent event) {
         if (cbTypeFilter.getValue().equals("Ingen filter") || cbTypeFilter.getValue() == null) {
@@ -232,11 +226,11 @@ public class TabComponentsController {
         filter();
     }
 
-
-/**Search end*/
-
+    /**
+     * Search end
+     */
     @FXML
-    void btnAddComponent(ActionEvent event){
+    void btnAddComponent(ActionEvent event) {
         registryComponentLogic.registerComponent();
         updateView();
     }
@@ -318,7 +312,6 @@ public class TabComponentsController {
         cbTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
 
-
     private void updateRecentFiles() {
         cbRecentFiles.setItems((ObservableList<String>) Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
     }
@@ -328,6 +321,7 @@ public class TabComponentsController {
         getComponentRegister().attachTableView(tblViewComponent);
         //tblViewComponent.refresh();
     }
+
     void disableGUI() {
         topLevelPane.setDisable(true);
     }
@@ -340,13 +334,11 @@ public class TabComponentsController {
         threadHandler.openInputThread(chosenFile);
     }
 
-
     public void init(SecondaryController secondaryController) {
         this.secondaryController = secondaryController;
     }
 
     public void setResultLabelTimed(String s) {
-
         //må gjøre setText i en egen tråd - fordi Timer er swing (som kjører på egen Swing thread (Event Dispatch
         // Thread))
         Platform.runLater(new Runnable() {
@@ -355,7 +347,6 @@ public class TabComponentsController {
                 lblComponentMsg.setText(s);
             }
         });
-
         Timer timer = new Timer(2000, e -> setResultLabelTimed(""));
         timer.setRepeats(false);
         timer.start();
