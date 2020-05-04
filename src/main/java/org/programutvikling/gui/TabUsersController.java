@@ -30,7 +30,7 @@ public class TabUsersController implements Initializable {
     private TableView<User> tblViewUser;
 
     public void btnAddUser(ActionEvent actionEvent) {
-
+        RegistryUserLogic
 
     }
 
@@ -47,7 +47,7 @@ public class TabUsersController implements Initializable {
 
     }
 
-    public void userAdress(TableColumn.CellEditEvent cellEditEvent) {
+    public void userAddress(TableColumn.CellEditEvent cellEditEvent) {
 
     }
 
@@ -61,6 +61,10 @@ public class TabUsersController implements Initializable {
 
     public UserRegister getUserRegister(){
         return Model.INSTANCE.getUserRegister();
+    }
+
+    public void registerUser() {
+
     }
 
     @Override
