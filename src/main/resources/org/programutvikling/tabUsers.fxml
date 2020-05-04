@@ -138,7 +138,7 @@
                                             <Font size="13.0" />
                                         </font>
                                     </Label>
-                           <CheckBox fx:id="cbAdmin" mnemonicParsing="false" onAction="#cbAdmin" text="Admin">
+                           <CheckBox fx:id="cbAdmin" id="userAdmin" mnemonicParsing="false" onAction="#cbAdmin" text="Admin">
                               <font>
                                  <Font name="Verdana" size="13.0" />
                               </font>
@@ -148,13 +148,13 @@
                                  <Font name="Verdana" size="13.0" />
                               </font>
                            </Label>
-                           <TextField fx:id="UserUsername" prefHeight="30.0" promptText="Skriv inn ønsket brukernavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                           <TextField id="userUsername" prefHeight="30.0" promptText="Skriv inn ønsket brukernavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                            <Label text="Passord" GridPane.rowIndex="3">
                               <font>
                                  <Font name="Verdana" size="13.0" />
                               </font>
                            </Label>
-                           <PasswordField fx:id="UserPassword" prefHeight="30.0" promptText="Passordet må ha minst 6 tegn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="4" />
+                           <PasswordField id="userPassword" prefHeight="30.0" promptText="Passordet må ha minst 6 tegn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="4" />
                                 </children>
                                 <padding>
                                     <Insets bottom="2.0" />
@@ -184,12 +184,12 @@
                                     <PropertyValueFactory property="UserAddress" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="userZipCode" minWidth="92.0001220703125" onEditCommit="#userZipCode" prefWidth="98.39996337890625" text="Postnummer">
+                            <TableColumn id="userZip" minWidth="92.0001220703125" onEditCommit="#userZipCode" prefWidth="98.39996337890625" text="Postnummer">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="userZipCode" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="userCity" minWidth="84.0" onEditCommit="#userCity" prefWidth="99.99993896484375" text="Poststed">
+                            <TableColumn id="userCity" minWidth="84.0" onEditCommit="#userCity" prefWidth="99.99993896484375" text="Poststed">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="userCity" />
                                 </cellValueFactory>

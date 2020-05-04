@@ -54,10 +54,10 @@ public class RegistryUserLogic {
     }
 
     private boolean areInputFieldsEmpty() {
-        return ((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() || ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty()
+        return (((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() || ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty()
                 || ((TextField) gridPane.lookup("#userName")).getText().isEmpty() || ((TextField) gridPane.lookup("#userMail")).getText().isEmpty()
                 || ((TextField) gridPane.lookup("#userAddress")).getText().isEmpty() || ((ZipField) gridPane.lookup("#userZip")).getText().isEmpty()
-                || ((TextField) gridPane.lookup("#userCity")).getText().isEmpty();
+                || ((TextField) gridPane.lookup("#userCity")).getText().isEmpty());
 
     }
 
