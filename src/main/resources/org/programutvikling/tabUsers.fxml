@@ -19,8 +19,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-
 <?import org.programutvikling.gui.customTextField.ZipField?>
+
 <AnchorPane prefHeight="600.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabUsersController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="600.0" prefWidth="1040.0" vvalue="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -138,7 +138,7 @@
                                             <Font size="13.0" />
                                         </font>
                                     </Label>
-                           <CheckBox fx:id="cbAdmin" id="userAdmin" mnemonicParsing="false" onAction="#cbAdmin" text="Admin">
+                           <CheckBox id="userAdmin" fx:id="cbAdmin" mnemonicParsing="false" onAction="#cbAdmin" text="Admin">
                               <font>
                                  <Font name="Verdana" size="13.0" />
                               </font>
@@ -169,27 +169,30 @@
                     </Pane>
                     <TableView fx:id="tblViewUser" editable="true" layoutX="351.0" layoutY="59.0" prefHeight="468.0" prefWidth="666.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="71.39999999999998" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="21.000000000000114" AnchorPane.topAnchor="59.0">
                         <columns>
-                            <TableColumn minWidth="100.0" onEditCommit="#userName" prefWidth="120.0" text="Navn">
+                     <TableColumn id="userAdmin" prefWidth="70.66668701171875" text="Admin" />
+                     <TableColumn id="userUsername" prefWidth="75.0" text="Brukernavn" />
+                     <TableColumn id="userPassword" prefWidth="96.0" text="Passord" />
+                            <TableColumn id="userName" minWidth="63.333343505859375" onEditCommit="#userName" prefWidth="88.0" text="Navn">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="userName" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn minWidth="100.0" onEditCommit="#userMail" prefWidth="192.79998779296875" text="E-postaddresse">
+                            <TableColumn id="userEmail" minWidth="0.0" onEditCommit="#userMail" prefWidth="58.00006103515625" text="E-postaddresse">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="userMail" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn minWidth="100" onEditCommit="#userAddress" prefWidth="152.79998779296875" text="Gateaddresse">
+                            <TableColumn id="userAddress" minWidth="43.33331298828125" onEditCommit="#userAddress" prefWidth="207.33331298828125" text="Gateaddresse">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="UserAddress" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn id="userZip" minWidth="92.0001220703125" onEditCommit="#userZipCode" prefWidth="98.39996337890625" text="Postnummer">
+                            <TableColumn id="userZip" minWidth="17.33331298828125" onEditCommit="#userZipCode" prefWidth="17.33331298828125" text="Postnummer">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="userZipCode" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn id="userCity" minWidth="84.0" onEditCommit="#userCity" prefWidth="99.99993896484375" text="Poststed">
+                            <TableColumn id="userCity" minWidth="62.0" onEditCommit="#userCity" prefWidth="84.0" text="Poststed">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="userCity" />
                                 </cellValueFactory>
