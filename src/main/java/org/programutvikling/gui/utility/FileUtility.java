@@ -160,7 +160,7 @@ public class FileUtility {
         result.forEach(System.out::println);
         getListOfSavedFilePaths().addAll(result);
         List<String> unique =
-                RegisterLogic.getDuplicateFreeList(getListOfSavedFilePaths());
+                RegisterUtility.removeDuplicates(getListOfSavedFilePaths());
         getListOfSavedFilePaths().clear();
         getListOfSavedFilePaths().addAll(unique);
     }

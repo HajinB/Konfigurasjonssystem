@@ -69,7 +69,10 @@ public class ThreadHandler {
                 Thread.sleep(2000);
                 //App.setRoot("secondary");
                 /** gjør tingen her: aka lad inn ting**/
-                FileUtility.populateRecentFiles(Model.INSTANCE.getUserPreferences().getStringPathToUser());
+                for(String s : Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths()){
+                    FileUtility.populateRecentFiles(s);
+                    Model.INSTANCE.getSavedPathRegister().removeDuplicates();
+                }
 
                 return true;
             }

@@ -3,6 +3,7 @@ package org.programutvikling.gui;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.programutvikling.gui.utility.RegisterLogic;
+import org.programutvikling.gui.utility.RegisterUtility;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -40,5 +41,11 @@ public class SavedPathRegister implements Serializable {
         List<String> list = (List<String>) inputStream.readObject();
         listOfSavedFilePaths = FXCollections.observableArrayList();
         listOfSavedFilePaths.addAll(list);
+    }
+
+    public void removeDuplicates() {
+        ArrayList<String> al = (ArrayList<String>) RegisterUtility.removeDuplicates(this.listOfSavedFilePaths);
+        this.getListOfSavedFilePaths().clear();
+        this.getListOfSavedFilePaths().addAll(al);
     }
 }

@@ -199,7 +199,6 @@ public class RegistryComponentLogic {
 
     private List getObservableRegister() {
         return Model.INSTANCE.getComponentRegister().getObservableRegister();
-
     }
 
     private void deleteComponent(Component selectedComp) {
