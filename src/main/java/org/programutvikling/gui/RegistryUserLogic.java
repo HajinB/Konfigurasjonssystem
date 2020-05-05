@@ -1,12 +1,10 @@
 package org.programutvikling.gui;
 
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
-import org.programutvikling.gui.customTextField.PriceField;
+import org.programutvikling.domain.user.exceptions.*;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 
@@ -23,9 +21,20 @@ public class RegistryUserLogic {
             resetFields();
             Dialog.showSuccessDialog(user.getUsername() + " er lagt til i listen!");
             return user;
-        } catch (IllegalArgumentException iae) {
-            Dialog.showErrorDialog(iae.getMessage());
+        } catch (UsernameAlreadyExistsException exception) {
+            Dialog.showErrorDialog(exception.getMessage());
+        } catch (InvalidUsernameException exception) {
+            Dialog.showErrorDialog(exception.getMessage());
+        } catch (InvalidPasswordException exception) {
+            Dialog.showErrorDialog(exception.getMessage());
+        } catch (EmailExistsException exception) {
+            Dialog.showErrorDialog(exception.getMessage());
+        } catch (InvalidEmailException exception) {
+            Dialog.showErrorDialog(exception.getMessage());
+        } catch (InvalidZipException exception) {
+            Dialog.showErrorDialog(exception.getMessage());
         }
+
         return null;
     }
 

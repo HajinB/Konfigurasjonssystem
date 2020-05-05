@@ -3,8 +3,8 @@ package org.programutvikling.domain.user;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.programutvikling.domain.component.io.InvalidComponentFormatException;
-import org.programutvikling.domain.user.exceptions.InvalidPasswordException;
-import org.programutvikling.domain.user.exceptions.InvalidUsernameException;
+import org.programutvikling.domain.user.exceptions.*;
+import org.programutvikling.model.Model;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private transient SimpleBooleanProperty admin;
     private transient SimpleStringProperty username;
-    private transient  SimpleStringProperty password;
+    private transient SimpleStringProperty password;
     private transient SimpleStringProperty name;
     private transient SimpleStringProperty email;
     private transient SimpleStringProperty address;
@@ -23,15 +23,23 @@ public class User implements Serializable {
 
     public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
         // validering
+        if(Model.INSTANCE.getUserRegister().usernameExists(username)) {
+            throw new UsernameAlreadyExistsException();
+        }
         if(!UserValidator.username(username)) {
             throw new InvalidUsernameException();
         }
-        // if (usernameExists) {
-        //   throw new IllegalArgumentException("Brukernavnet er allerede i bruk!");
-        // }
-
         if(!UserValidator.password(password)) {
             throw new InvalidPasswordException();
+        }
+//        if(Model.INSTANCE.getUserRegister().emailExists(email)) {
+//            throw new EmailExistsException();
+//        }
+        if(!UserValidator.email(email)) {
+            throw new InvalidEmailException();
+        }
+        if(!UserValidator.zip(zip)) {
+            throw new InvalidZipException();
         }
         this.admin = new SimpleBooleanProperty(admin);
         this.username = new SimpleStringProperty(username);

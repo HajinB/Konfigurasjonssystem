@@ -4,6 +4,6 @@ import org.programutvikling.domain.user.UserValidator;
 
 public class InvalidPasswordException extends IllegalArgumentException {
     public InvalidPasswordException() {
-        super(String.format("The password needs to be at least %d letters!", UserValidator.PASSWORD_LENGTH));
+        super("The password needs to be at least " + UserValidator.PASSWORD_LENGTH + " letters!");
     }
 }
