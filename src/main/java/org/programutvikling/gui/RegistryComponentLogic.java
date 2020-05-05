@@ -50,7 +50,7 @@ public class RegistryComponentLogic {
             //Dialog.showSuccessDialog(c.getProductName() + " er lagt til i listen");
 
             if (ComponentValidator.isComponentInRegisterThenReturnIt(c,
-                    Model.INSTANCE.getComponentRegister())==null){
+                    Model.INSTANCE.getComponentRegister()) == null) {
                 tabComponentsController.setLblComponentMsg("Komponenten eksisterer allerede!");
             }
             return c;
@@ -116,7 +116,7 @@ public class RegistryComponentLogic {
         }
 //todo må sjekke om alle felt er tomme før man kjører CreateComponentHandleDUplicate - ellers så får man
 // nullpointerexception
-        if(isProductDescriptionEmpty()){
+        if (isProductDescriptionEmpty()) {
             tabComponentsController.setLblMsgDescription("Fyll inn her");
         }
         createComponentHandleDuplicate();
@@ -143,7 +143,7 @@ public class RegistryComponentLogic {
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             int indexToReplace =
                     getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
-            tabComponentsController.clearLabels();
+         //   tabComponentsController.clearLabels();
             getComponentRegister().getRegister().set(indexToReplace, newComponent);
         }
     }
@@ -153,7 +153,7 @@ public class RegistryComponentLogic {
     }
 
     private boolean isProductTypeEmpty() {
-        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null ;
+        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null;
     }
 
     private boolean isProductPriceEmpty() {
@@ -179,9 +179,16 @@ public class RegistryComponentLogic {
 
     public void editComponentFromPopup(Component c) {
         if (TemporaryComponent.INSTANCE.getIsEdited()) {
-            getObservableRegister().set(getObservableRegister().indexOf(c),
-                    TemporaryComponent.INSTANCE.getTempComponent());
-            TemporaryComponent.INSTANCE.resetTemps();
+            Component dup =
+                    ComponentValidator.isComponentInRegisterThenReturnIt(
+                            TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
+            if (dup == null) {
+                getObservableRegister().set(getObservableRegister().indexOf(c),
+                        TemporaryComponent.INSTANCE.getTempComponent());
+                TemporaryComponent.INSTANCE.resetTemps();
+            } else {
+                showDuplicateDialog(c, dup);
+            }
             try {
                 FileHandling.saveAll();
             } catch (IOException e) {

@@ -142,13 +142,12 @@ public class FileUtility {
      * Denne metoden leter gjennom userpath etter nylige lagrede filepaths - men hvis brukeren ikke endrer filsted,
      * finner den bare 1 fil
      */
-    public static void populateRecentFiles() {
+    public static void populateRecentFiles(String pathToUser) {
         //todo kanskje skriv getStringPathToMostRecentSavedFile altså slik at den søker gjennom der brukeren lagret sist
-        String pathToUser = Model.INSTANCE.getUserPreferences().getStringPathToUser();
         if (doesFileExist(pathToUser)) {
             try (Stream<Path> walk = Files.walk(Paths.get(pathToUser))) {
                 List<String> result = walk.filter(Files::isRegularFile)
-                        .map(x -> x.toString()).collect(Collectors.toList());
+                        .map(Path::toString).collect(Collectors.toList());
                 addWalkedFolderPathsToCBList(result);
             } catch (IOException e) {
                 e.printStackTrace();

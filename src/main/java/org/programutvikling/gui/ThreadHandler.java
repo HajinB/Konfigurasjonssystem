@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import org.programutvikling.domain.component.io.iothread.InputThread;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
+import org.programutvikling.model.Model;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -68,7 +69,7 @@ public class ThreadHandler {
                 Thread.sleep(2000);
                 //App.setRoot("secondary");
                 /** gjør tingen her: aka lad inn ting**/
-                FileUtility.populateRecentFiles();
+                FileUtility.populateRecentFiles(Model.INSTANCE.getUserPreferences().getStringPathToUser());
 
                 return true;
             }

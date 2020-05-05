@@ -38,8 +38,8 @@ public class WindowHandler {
         popupController.initData(c, stage, TemporaryComponent.INSTANCE.getColumnIndex());
         stage.show();
         handlePopUp(stage, c);
-
     }
+
     void handlePopUp(Stage stage, Component c) {
         stage.setOnHidden(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
