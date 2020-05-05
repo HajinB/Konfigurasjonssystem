@@ -20,7 +20,7 @@ import org.programutvikling.domain.user.User;
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 public class PrimaryController implements Initializable {
 
-    public Label lblFeilPassord;
+    public Label lblFeilPassword;
     FileHandling fileHandling = new FileHandling();
 
     @FXML
@@ -47,14 +47,14 @@ public class PrimaryController implements Initializable {
     private void loginAction() throws IOException {
         User loginUser = Model.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),inputPassword.getText());
         if(loginUser != null){
-            lblFeilPassord.setVisible(false);
+            lblFeilPassword.setVisible(false);
             if(loginUser.getAdmin()) {
                 App.setRoot("secondary");
             } else{
                 openUserView();
             }
         } else {
-            lblFeilPassord.setVisible(true);
+            lblFeilPassword.setVisible(true);
         }
     }
 
