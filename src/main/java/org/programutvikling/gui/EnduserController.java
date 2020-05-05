@@ -72,8 +72,6 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     public void initialize() throws IOException {
-
-
         addTableViewsToList();
 
         //todo så og si alle metoder under her kan trekkes ut av controlleren

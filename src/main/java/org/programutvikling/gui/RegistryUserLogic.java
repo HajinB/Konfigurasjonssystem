@@ -35,7 +35,6 @@ public class RegistryUserLogic {
         } catch (InvalidZipException exception) {
             Dialog.showErrorDialog(exception.getMessage());
         }
-
         return null;
     }
 

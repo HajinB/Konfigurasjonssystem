@@ -24,7 +24,6 @@ int i = 0;
             System.out.println(i.getMessage());
             System.out.println(Arrays.toString(i.getStackTrace()));
             if(selectedPath.toString().equals("FileDirectory/Database/AppDataBackup.jobj")){
-
                 FileUtility.deleteFile("FileDirectory/Database/AppDataBackup.jobj");
                 //istedenfor å deletefile, last opp backup?
                 Dialog.showErrorDialog("filtype er feil");

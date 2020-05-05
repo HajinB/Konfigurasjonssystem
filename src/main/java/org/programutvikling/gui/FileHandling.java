@@ -83,9 +83,9 @@ public class FileHandling {
         if (file.exists()) {
             openObjects(objects, selectedPath);
         } else {
-            File fileBackup = new File("AppFiles/Database/Backup/AppFiles.jobj");
+            File fileBackup = new File(Model.INSTANCE.getUserPreferences().getStringPathToBackupAppFiles());
             if (fileBackup.exists())
-                openObjects(objects, "AppFiles/Database/Backup/AppFiles.jobj");
+                openObjects(objects, Model.INSTANCE.getUserPreferences().getStringPathToBackupAppFiles());
         }
     }
 
