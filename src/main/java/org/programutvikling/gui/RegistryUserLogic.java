@@ -7,6 +7,7 @@ import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.exceptions.*;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.model.Model;
 
 public class RegistryUserLogic {
     private GridPane gridPane;
@@ -48,6 +49,10 @@ public class RegistryUserLogic {
         String zip = getString((ZipField) gridPane.lookup("#userZip"));
         String city = getString((TextField) gridPane.lookup("#userCity"));
 
+        // validation
+        usernameValidation(username);
+        emailValidation(email);
+
         return new User(admin,username,password,name,email,address,zip,city);
     }
 
@@ -81,6 +86,23 @@ public class RegistryUserLogic {
         ((TextField) gridPane.lookup("#userCity")).setText("");
     }
 
+    private void usernameValidation(String username) {
+        if(Model.INSTANCE.getUserRegister().usernameExists(username)) {
+            System.out.println("UsernameAlreadyExistsException thrown!");
+            throw new UsernameAlreadyExistsException();
+        } else {
+            System.out.println("UsernameAlreadyExistsException NOT thrown, Model.INSTANCE.getUserRegister().usernameExists(username) = " + Model.INSTANCE.getUserRegister().usernameExists(username));
+        }
+    }
+
+    private void emailValidation(String email) {
+        if(Model.INSTANCE.getUserRegister().emailExists(email)) {
+            System.out.println("EmailExistsException thrown!");
+            throw new EmailExistsException();
+        } else {
+            System.out.println("EmailExistsException NOT thrown, Model.INSTANCE.getUserRegister().emailExists(email) = " + Model.INSTANCE.getUserRegister().emailExists(email));
+        }
+    }
     // getters from gridPane
 
     private boolean getBoolean(CheckBox checkBox) {

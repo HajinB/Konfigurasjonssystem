@@ -50,18 +50,23 @@ public class UserRegister implements Serializable {
         // Check if the username already exists by running
         // through the register and see if the username equals a taken username
         for(User user : userRegister) {
-            if (user.getUsername().equalsIgnoreCase(user.getUsername())) {
-                return false;
+            if (user.getUsername().equalsIgnoreCase(username)) {
+                return true;
             }
         }
-        return true;
+        // If username not found in the loop, return false
+        return false;
     }
 
-//    public boolean usernameExists(User user) {
-//        for(User user1 : userRegister) {
-//            if(user1.getUsername().equals(user.getUser))
-//        }
-//    }
+    public boolean emailExists(String email) {
+        for(User user : userRegister) {
+            if(user.getEmail().equalsIgnoreCase(email)) {
+                return true;
+            }
+        }
+        // If email not found in the loop, return false
+        return false;
+    }
 
     public void attachTableView(TableView<User> tv) {
         if (!userRegister.isEmpty())
