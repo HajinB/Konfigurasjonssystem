@@ -37,6 +37,12 @@ import java.util.Objects;
 
 public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
+    SecondaryController secondaryController;
+    @FXML
+    AnchorPane topLevelPane;
+    ComponentTypes componentTypes = new ComponentTypes();
+    ThreadHandler threadHandler;
+    WindowHandler windowHandler = new WindowHandler();
     @FXML
     private Label lblComponentMsg;
     @FXML
@@ -47,13 +53,6 @@ public class TabComponentsController {
     private Label lblMsgDescription;
     @FXML
     private Label lblMsgPrice;
-    SecondaryController secondaryController;
-    @FXML
-    AnchorPane topLevelPane;
-    ComponentTypes componentTypes = new ComponentTypes();
-    ThreadHandler threadHandler;
-    WindowHandler windowHandler = new WindowHandler();
-
     private Stage stage;
     private RegistryComponentLogic registryComponentLogic;
     private Converter.DoubleStringConverter doubleStrConverter
@@ -85,6 +84,7 @@ public class TabComponentsController {
         initTableView();
         initTextWrapCellFactory();
     }
+
     private void initTextWrapCellFactory() {
         //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
         // en kolonne i tableview
@@ -164,6 +164,7 @@ public class TabComponentsController {
                     }
                 }
             }
+
             private boolean isDoubleClick(MouseEvent event) {
                 return event.isPrimaryButtonDown() && event.getClickCount() == 2;
             }
@@ -355,20 +356,28 @@ public class TabComponentsController {
     public void setLblComponentMsg(String s) {
         this.lblComponentMsg.setText(s);
     }
-    public Label getLblMsgDescription() {
-        return lblMsgDescription;
-    }
-    public void setlblMsgDescription(String s) {
+
+    public void setLblMsgDescription(String s) {
         this.lblMsgDescription.setText(s);
     }
-    public void setlblMsgName(String s) {
+
+    public void setLblMsgName(String s) {
         this.lblMsgName.setText(s);
     }
-    public void setlblMsgType(String s) {
+
+    public void setLblMsgType(String s) {
         this.lblMsgType.setText(s);
     }
-    public void setlblMsgPrice(String s) {
+
+    public void setLblMsgPrice(String s) {
         this.lblMsgPrice.setText(s);
+    }
+
+    public void clearLabels() {
+        setLblMsgType("");
+        setLblMsgDescription("");
+        setLblMsgName("");
+        setLblMsgPrice("");
     }
 
 

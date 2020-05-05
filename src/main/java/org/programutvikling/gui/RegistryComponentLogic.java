@@ -75,7 +75,6 @@ public class RegistryComponentLogic {
 
         String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
 
-
         String productName = getString((TextField) gridPane.lookup("#productName"));
         String productDescription = getTextareaString((TextArea) gridPane.lookup("#productDescription"));
         double productPrice = getDouble((PriceField) gridPane.lookup("#productPrice"));
@@ -109,32 +108,43 @@ public class RegistryComponentLogic {
 
 
     public void registerComponent() {
+
+        //best å gjøre validering her - business rules kan throwe exceptions lengre downstream som de gjør, bare ta
+        // bort dialogs maybe?
         if (isProductTypeEmpty()) {
-            tabComponentsController.setlblMsgType("belble");
+            tabComponentsController.setLblMsgType("belble");
 
             //eksempel da, men man bør kanskje vise mange labels samtidig? hva som er feil på en måte?
             return;
         }
 
         if(isProductDescriptionEmpty()){
-            tabComponentsController.setlblMsgDescription("Fyll inn her");
+            tabComponentsController.setLblMsgDescription("Fyll inn her");
         }
+        createComponentHandleDuplicate();
+    }
+
+    private void createComponentHandleDuplicate() {
         Component newComponent = createComponentsFromGUIInputIFields();
         Component possibleDuplicateComponentIfNotThenNull = ComponentValidator.isComponentInRegisterThenReturnIt(newComponent,
                 getComponentRegister());
 
         System.out.println(possibleDuplicateComponentIfNotThenNull);
         if (possibleDuplicateComponentIfNotThenNull != null) {
-            Alert alert = Dialog.getConfirmationAlert("Duplikat funnet", "", "Denne komponenten eksisterer allerede i" +
-                    " databasen, vil du erstatte den gamle med: " + newComponent.getProductName(), "");
-            alert.showAndWait();
-            if (alert.getResult() == alert.getButtonTypes().get(0)) {
-                int indexToReplace =
-                        getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
-                getComponentRegister().getRegister().set(indexToReplace, newComponent);
-            }
-        } else {
+            showDuplicateDialog(newComponent, possibleDuplicateComponentIfNotThenNull);
+        } else if(!areInputFieldsEmpty()) {
             getComponentRegister().addComponent(newComponent);
+        }
+    }
+
+    private void showDuplicateDialog(Component newComponent, Component possibleDuplicateComponentIfNotThenNull) {
+        Alert alert = Dialog.getConfirmationAlert("Duplikat funnet", "", "Denne komponenten eksisterer allerede i" +
+                " databasen, vil du erstatte den gamle med: " + newComponent.getProductName(), "");
+        alert.showAndWait();
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            int indexToReplace =
+                    getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
+            getComponentRegister().getRegister().set(indexToReplace, newComponent);
         }
     }
 
@@ -158,7 +168,6 @@ public class RegistryComponentLogic {
     private boolean isProductNameEmpty() {
         return ((TextField) gridPane.lookup("#productName")).getText().isEmpty();
     }
-
 
     private ComponentRegister getComponentRegister() {
         return Model.INSTANCE.getComponentRegister();
