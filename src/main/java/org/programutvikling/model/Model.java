@@ -99,18 +99,18 @@ public enum Model {
         /**går det ann å skrive dette på en annen måte? factory method feks??*/
         System.out.println(objects.size());
         if (objects.size() > 0) {
-            if (objects.get(0) != null)
+            if (objects.get(0) != null && objects.get(0) instanceof ComponentRegister)
                 setComponentRegister((ComponentRegister) objects.get(0));
-            if (objects.get(1) != null)
+            if (objects.get(1) != null && objects.get(1) instanceof ComputerRegister)
                 computerRegister = (ComputerRegister) objects.get(1);
 
-            if (objects.size() > 2 && objects.get(2) != null)
+            if (objects.size() > 2 && objects.get(2) != null && objects.get(2) instanceof SavedPathRegister)
                 savedPathRegister = (SavedPathRegister) objects.get(2);
 
-            if (objects.size() > 3 && objects.get(3) != null && !objects.get(3).equals("")) {
+            if (objects.size() > 3 && objects.get(3) != null && !objects.get(3).equals("") && objects.get(3) instanceof Computer ){
                 computer = (Computer) objects.get(3);
 
-                if (objects.get(4) != null)
+                if (objects.get(4) != null && objects.get(4) instanceof  UserRegister)
                     userRegister = (UserRegister) objects.get(4);
             }
             System.out.println("dette prøves å åpnes!!!!::::");
