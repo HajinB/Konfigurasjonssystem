@@ -114,7 +114,8 @@ public class RegistryComponentLogic {
             //eksempel da, men man bør kanskje vise mange labels samtidig? hva som er feil på en måte?
             return;
         }
-
+//todo må sjekke om alle felt er tomme før man kjører CreateComponentHandleDUplicate - ellers så får man
+// nullpointerexception
         if(isProductDescriptionEmpty()){
             tabComponentsController.setLblMsgDescription("Fyll inn her");
         }

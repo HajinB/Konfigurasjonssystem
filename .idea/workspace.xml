@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EditPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EditPopupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editPopup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -259,14 +256,7 @@
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
       <workItem from="1588442497595" duration="25684000" />
-      <workItem from="1588588128651" duration="17254000" />
-    </task>
-    <task id="LOCAL-00054" summary="fixed feilbeskjed på computer + åpningsvalg">
-      <created>1588091379067</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1588091379067</updated>
+      <workItem from="1588588128651" duration="17471000" />
     </task>
     <task id="LOCAL-00055" summary="fixed feilbeskjed på computer + åpningsvalg">
       <created>1588091491683</created>
@@ -604,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588666882828</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="set/clear metode for Labels i controller">
+      <created>1588669129441</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1588669129441</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +636,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="la til fokus på riktig felt i popupen på edit :D" />
     <MESSAGE value="prøver å få til completedcomputerview" />
     <MESSAGE value="completedcomputerview + nå kan man lagre hva som helst! - mulig vi bør dele opp lagringsmetodene slik at det er en for hver case - men det fungerer nå." />
     <MESSAGE value="testUserRegister" />
@@ -664,7 +660,8 @@
     <MESSAGE value="Trekker ting ut fra controllers, inn i controllerlogic klassene" />
     <MESSAGE value="Prøver å bytte til Label i customTableCEllWrapText" />
     <MESSAGE value="setmetode for Labels i controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="setmetode for Labels i controller" />
+    <MESSAGE value="set/clear metode for Labels i controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="set/clear metode for Labels i controller" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />
