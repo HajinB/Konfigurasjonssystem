@@ -23,6 +23,7 @@ public class User implements Serializable {
 
     public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
         // validering
+
         if(!UserValidator.username(username)) {
             throw new InvalidUsernameException();
         }

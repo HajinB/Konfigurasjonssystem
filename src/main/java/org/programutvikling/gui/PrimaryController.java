@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.programutvikling.App;
@@ -19,6 +20,7 @@ import org.programutvikling.domain.user.User;
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 public class PrimaryController implements Initializable {
 
+    public Label lblFeilPassord;
     FileHandling fileHandling = new FileHandling();
 
     @FXML
@@ -34,8 +36,7 @@ public class PrimaryController implements Initializable {
     void btnGuest(ActionEvent event) throws IOException {
 // here runs the JavaFX thread
 // Boolean as generic parameter since you want to return it
-
-        App.setRoot("secondary");
+        openUserView();
     }
 
     @FXML
@@ -46,11 +47,14 @@ public class PrimaryController implements Initializable {
     private void loginAction() throws IOException {
         User loginUser = Model.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),inputPassword.getText());
         if(loginUser != null){
+            lblFeilPassord.setVisible(false);
             if(loginUser.getAdmin()) {
                 App.setRoot("secondary");
             } else{
                 openUserView();
             }
+        } else {
+            lblFeilPassord.setVisible(true);
         }
     }
 
@@ -69,7 +73,6 @@ public class PrimaryController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //loadRegisterFromFile();
       //  Model.INSTANCE.getUserRegister();
-
     btnLogin.setDefaultButton(true);
     }
 

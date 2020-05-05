@@ -1,5 +1,9 @@
 package org.programutvikling.domain.user;
 
+import org.programutvikling.domain.user.exceptions.EmailExistsException;
+import org.programutvikling.domain.user.exceptions.UsernameAlreadyExistsException;
+import org.programutvikling.model.Model;
+
 public class UserValidator {
     // ingen tall
     public static final String NO_NUMBERS = "^[\\D]+$";
@@ -27,6 +31,24 @@ public class UserValidator {
     static boolean city(String city) {
         return city.matches(NO_NUMBERS);
     }
+
+//    static void usernameValidation(String username) {
+//        if(Model.INSTANCE.getUserRegister().usernameExists(username) && Model.INSTANCE.getUserRegister().getRegister() != null) {
+//            System.out.println("UsernameAlreadyExistsException thrown!");
+//            throw new UsernameAlreadyExistsException();
+//        } else {
+//            System.out.println("UsernameAlreadyExistsException NOT thrown, Model.INSTANCE.getUserRegister().usernameExists(username) = " + Model.INSTANCE.getUserRegister().usernameExists(username));
+//        }
+//    }
+//
+//    static public void emailValidation(String email) {
+//        if(Model.INSTANCE.getUserRegister().emailExists(email) && Model.INSTANCE.getUserRegister().getRegister() != null) {
+//            System.out.println("EmailExistsException thrown!");
+//            throw new EmailExistsException();
+//        } else {
+//            System.out.println("EmailExistsException NOT thrown, Model.INSTANCE.getUserRegister().emailExists(email) = " + Model.INSTANCE.getUserRegister().emailExists(email));
+//        }
+//    }
 }
 
 
