@@ -15,7 +15,6 @@ class UserRegisterTest {
     @Test
     void isAdmin() {
         assertTrue(Model.INSTANCE.getUserRegister().isAdmin(Model.INSTANCE.getUserRegister().loginCredentialsMatches("admin","adminadmin")));
-
     }
 
     @Test
