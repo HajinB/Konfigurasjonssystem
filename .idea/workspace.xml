@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/AppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/AppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SavedPathRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SavedPathRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ThreadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ThreadHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Konfigurasjonssystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Konfigurasjonssystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/PrimaryController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/ThreadHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/ThreadHandler.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,7 +61,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="FungerendeBranch3.mai" />
+        <entry key="$PROJECT_DIR$" value="perfBranchForTom" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -150,7 +156,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Maven.Konfigurasjonssystem [clean,install...]">
     <configuration name="BrukerValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.programutvikling.bruker.BrukerValidator" />
       <module name="Konfigurasjonssystem" />
@@ -225,8 +231,8 @@
       <item itemvalue="JUnit.UserValidatorTest" />
       <item itemvalue="JUnit.FileSaverTxtTest" />
       <item itemvalue="JUnit.UserValidatorTest.name" />
-      <item itemvalue="Maven.Konfigurasjonssystem [clean,install...]" />
       <item itemvalue="JUnit.All in Konfigurasjonssystem" />
+      <item itemvalue="Maven.Konfigurasjonssystem [clean,install...]" />
     </list>
     <recent_temporary>
       <list>
@@ -272,14 +278,8 @@
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
       <workItem from="1588442497595" duration="25684000" />
-      <workItem from="1588588128651" duration="21653000" />
-    </task>
-    <task id="LOCAL-00064" summary="inputvalidering av computer.txt">
-      <created>1588187054132</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1588187054132</updated>
+      <workItem from="1588588128651" duration="22319000" />
+      <workItem from="1588675276347" duration="5000" />
     </task>
     <task id="LOCAL-00065" summary="inputvalidering av computer.txt">
       <created>1588216414333</created>
@@ -617,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588672910391</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="duplicate checker på popupen">
+      <created>1588673596955</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1588673596955</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
