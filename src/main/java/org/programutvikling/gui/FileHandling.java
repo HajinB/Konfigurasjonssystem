@@ -23,7 +23,7 @@ import java.util.List;
 
 public class FileHandling {
     //private static UserPreferences userPreferences;
-    private static UserPreferences userPreferences = new UserPreferences("FileDirectory/Components/AppDataBackup.jobj");
+    private static UserPreferences userPreferences = new UserPreferences();
 
     public static void saveFileTxt(Computer computer, Path directoryPath) {
         if (directoryPath != null) {

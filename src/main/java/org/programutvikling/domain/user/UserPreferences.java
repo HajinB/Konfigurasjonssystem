@@ -13,6 +13,10 @@ import java.util.prefs.Preferences;
 
 public class UserPreferences {
 
+    final private String pathToAppFiles = "AppFiles/Database/AppData.jobj";
+    final private String pathToBackupAppFiles = "AppFiles/Database/Backup/AppDataBackup.jobj";
+
+    /***
     //denne metoden lager en slags cache/node som persisterer - altså lagres lokalt i en pre-definert mappe - (type
     // OS default "c/user/programfiles. ish?
     private Preferences prefs = Preferences.userNodeForPackage(UserPreferences.class);
@@ -29,22 +33,21 @@ public class UserPreferences {
     public void clearPreferences() throws BackingStoreException {
         prefs.clear();
         prefs.remove("userdirectory");
-
     }
 
     public void setPreference(Stage stage) throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(stage);
         //selectedDirectory.getParentFile().mkdirs();
-       /* Path tempPath = Files.createTempDirectory("AppFiles/Database/AppDataBackup.jobj");
+        Path tempPath = Files.createTempDirectory("AppFiles/Database/AppDataBackup.jobj");
         Path dirToCreate = tempPath.resolve("AppFiles/Database/AppDataBackup.jobj");
         System.out.println("dir to create: " + dirToCreate);
         System.out.println("dir exits: " + Files.exists(dirToCreate));
-        //creating directory */
-       /* Path directory = Files.createDirectory(dirToCreate);
+        //creating directory
+        Path directory = Files.createDirectory(dirToCreate);
         System.out.println("directory created: " + directory);
-        System.out.println("dir created exits: " + Files.exists(directory));*/
-        if(!selectedDirectory.exists()){
+        System.out.println("dir created exits: " + Files.exists(directory));
+        if(!selectedDirectory.exists() || selectedDirectory==null){
             try {
                 clearPreferences();
                 pathToUser="AppFiles/Database/AppData.jobj";
@@ -53,6 +56,7 @@ public class UserPreferences {
             }
             return;
         }
+
         System.out.println(selectedDirectory.getAbsolutePath());
         //setter nøkkelverdien brukeren velger med choosedirectory
         prefs.put("userdirectory", selectedDirectory.getAbsolutePath() +"AppFiles/Database/AppData.jobj");
@@ -67,17 +71,21 @@ public class UserPreferences {
         //preferences lagrer par med verdier, en key og en verdi. - i get setter man en default, hvis man ikke finner
         // nøkkelen..
     }
-    public String getStringPathToUser() {
-        return prefs.get("userdirectory", "AppFiles/Database/AppData.jobj");
 
+     */
+    public String getStringPathToUser() {
+        return pathToAppFiles;
     }
 
     public Path getPathToUser() {
-        return Paths.get(pathToUser);
+        return Paths.get(pathToAppFiles);
     }
 
-    private void setPrefs(){
-
+    public String getStringPathToBackupAppFiles() {
+        return pathToBackupAppFiles;
     }
 
+    public Path getPathToBackupAppFiles() {
+        return Paths.get(pathToAppFiles);
+    }
 }

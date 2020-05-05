@@ -22,17 +22,10 @@ public enum Model {
     private Computer computer = new Computer("current");
     //temporary master list - som har alle objekter fra fil.
     private ArrayList<Object> objects = new ArrayList<>();
-    private UserPreferences userPreferences = new UserPreferences("FileDirectory/Database/AppDataBackup.jobj");
+    private UserPreferences userPreferences = new UserPreferences();
     private UserRegister userRegister = new UserRegister();
 
     private Model(){
-        // test - alltid reset preferences
-        try {
-            userPreferences.clearPreferences();
-        } catch (BackingStoreException e) {
-            e.printStackTrace();
-        }
-
         loadFileIntoModel();  //kan ikke kjøre denne metoden fra en annen klasse - konstruktøren må holdes privat
     }
 
@@ -44,13 +37,9 @@ public enum Model {
             loadObjectsIntoClasses();
         } else {
             System.out.println("ingen config fil ble funnet - tilbake til default.");
-            try {
-                userPreferences.clearPreferences();
-            } catch (BackingStoreException e) {
-                e.printStackTrace();
-            }
+
             System.out.println(userPreferences.getStringPathToUser().toString());
-            FileHandling.openFile(objects, "AppFiles/Database/Backup/AppDataBackup.jobj");
+            FileHandling.openFile(objects, userPreferences.getStringPathToBackupAppFiles());
             addDefaultUsers();
             loadObjectsIntoClasses();
         }

@@ -31,14 +31,6 @@
                                 </image>
                             </ImageView>
                         </graphic></MenuItem>
-                    <MenuItem mnemonicParsing="false" onAction="#btnSetDirectory" text="Velg lagringsplass">
-                        <graphic>
-                            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@../../Bilder/folder-12.png" />
-                                </image>
-                            </ImageView>
-                        </graphic></MenuItem>
                     <MenuItem mnemonicParsing="false" onAction="#btnLogOut" text="Logg ut">
                         <graphic>
                             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">

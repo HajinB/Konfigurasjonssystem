@@ -76,21 +76,10 @@ public class SecondaryController implements Initializable {
         return Model.INSTANCE.getComponentRegister();
     }
 
-    @FXML
-    void btnSetDirectory(ActionEvent event) {
-        try {
-            fileHandling.getUserPreferences().setPreference(stage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Ny directory path: " + fileHandling.getUserPreferences().getStringPathToUser());
-    }
-
     public void btnRemoveDuplicates(ActionEvent event) throws IOException {
         ObservableList<Component> list  = (ObservableList<Component>) Model.INSTANCE.getComponentRegister().getRegister();
         Model.INSTANCE.getComponentRegister().removeDuplicates();
         tabComponentsController.updateView();
-        //tabComponentsController.refreshTableAndSave();
     }
 
     @Override
