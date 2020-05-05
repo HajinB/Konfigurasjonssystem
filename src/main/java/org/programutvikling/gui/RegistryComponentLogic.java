@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentValidator;
-import org.programutvikling.domain.component.io.InvalidComponentFormatException;
+import org.programutvikling.model.io.InvalidComponentFormatException;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;

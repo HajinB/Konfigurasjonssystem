@@ -1,4 +1,4 @@
-package org.programutvikling.domain.component.io.iothread;
+package org.programutvikling.model.io.iothread;
 
 import javafx.concurrent.Task;
 

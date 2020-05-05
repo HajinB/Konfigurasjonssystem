@@ -1,7 +1,7 @@
 
 import org.junit.jupiter.api.Test;
 import org.programutvikling.domain.component.Component;
-import org.programutvikling.domain.component.io.FileOpenerTxt;
+import org.programutvikling.model.io.FileOpenerTxt;
 import org.programutvikling.domain.computer.Computer;
 
 import java.io.IOException;

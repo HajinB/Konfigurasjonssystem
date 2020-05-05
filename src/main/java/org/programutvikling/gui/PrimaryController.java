@@ -66,9 +66,17 @@ public class PrimaryController implements Initializable {
         //loadRegisterFromFile();
         //  Model.INSTANCE.getUserRegister();
         System.out.println(Model.INSTANCE);
+        User user = new User(true, "admin", "admin", "ola",
+                "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
+
+        User user2 = new User(false, "user", "user", "ola",
+                "user@user.com",  "trondheimsvegen 1", "0909", "Trondheim");
+
+        Model.INSTANCE.getUserRegister().addBruker(user);
+        Model.INSTANCE.getUserRegister().addBruker(user2);
+
         btnLogin.setDefaultButton(true);
     }
-
 
     private void loadRegisterFromFile() throws IOException {
         File file = new File(String.valueOf(FileHandling.getPathToUser()));

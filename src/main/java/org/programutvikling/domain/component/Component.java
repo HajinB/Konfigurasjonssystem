@@ -2,8 +2,8 @@ package org.programutvikling.domain.component;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import org.programutvikling.domain.component.io.InvalidComponentFormatException;
-import org.programutvikling.domain.component.io.InvalidPriceException;
+import org.programutvikling.model.io.InvalidComponentFormatException;
+import org.programutvikling.model.io.InvalidPriceException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,12 +12,6 @@ import java.io.Serializable;
 
 public class Component implements Serializable, ItemUsable, Comparable<Component> {
     private transient static final long serialVersionUID = 1;
-    /*    private transient SimpleStringProperty productType;
-    private transient SimpleStringProperty productName;
-    private transient SimpleStringProperty productDescription;
-    private transient SimpleDoubleProperty productPrice;*/
-    transient ComponentValidator componentValidator = new ComponentValidator();
-    private transient ComponentTypes componentTypes = new ComponentTypes();
     private transient SimpleStringProperty productType;
     private transient SimpleStringProperty productName;
     private transient SimpleStringProperty productDescription;
@@ -75,10 +69,10 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     public final void setProductName(String productName) {
         if (!ComponentValidator.isProductNameValid(productName)) {
             throw new IllegalArgumentException("Produktnavn er tom eller ugyldig");
-        } else{
+        } else {
 
             this.productName.set(productName);
-    }
+        }
     }
 
     public String getProductDescription() {

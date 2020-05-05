@@ -3,7 +3,7 @@ package org.programutvikling.gui;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.scene.control.Alert;
-import org.programutvikling.domain.component.io.iothread.InputThread;
+import org.programutvikling.model.io.iothread.InputThread;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;

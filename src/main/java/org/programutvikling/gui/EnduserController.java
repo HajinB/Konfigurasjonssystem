@@ -23,7 +23,7 @@ import org.programutvikling.gui.utility.FXMLGetter;
 import org.programutvikling.logic.EndUserLogic;
 import org.programutvikling.model.Model;
 import org.programutvikling.domain.component.Component;
-import org.programutvikling.domain.component.io.FileOpenerTxt;
+import org.programutvikling.model.io.FileOpenerTxt;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.CustomTableColumn.PriceFormatCell;

@@ -1,4 +1,4 @@
-package org.programutvikling.domain.component.io;
+package org.programutvikling.model.io;
 
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;

@@ -1,9 +1,9 @@
 package org.programutvikling.gui;
 
 import javafx.stage.Stage;
-import org.programutvikling.domain.component.io.FileOpener;
-import org.programutvikling.domain.component.io.FileSaver;
-import org.programutvikling.domain.component.io.FileSaverTxt;
+import org.programutvikling.model.io.FileOpener;
+import org.programutvikling.model.io.FileSaver;
+import org.programutvikling.model.io.FileSaverTxt;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerFactory;
 import org.programutvikling.domain.user.UserPreferences;
