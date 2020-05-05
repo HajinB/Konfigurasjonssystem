@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/domain/component/ComponentValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppFiles/Database/AppData.jobj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -146,7 +145,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in Konfigurasjonssystem">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="BrukerValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.programutvikling.bruker.BrukerValidator" />
       <module name="Konfigurasjonssystem" />
@@ -268,14 +267,7 @@
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
       <workItem from="1588442497595" duration="25684000" />
-      <workItem from="1588588128651" duration="17857000" />
-    </task>
-    <task id="LOCAL-00056" summary="dobbeltklikk på completedComputers -&gt; åpne valgt computer i listview">
-      <created>1588095671418</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1588095671418</updated>
+      <workItem from="1588588128651" duration="18482000" />
     </task>
     <task id="LOCAL-00057" summary="manglet transient foran alle felt i user">
       <created>1588149452777</created>
@@ -613,7 +605,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588669336337</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="noe test">
+      <created>1588669733275</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1588669733275</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +647,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="prøver å få til completedcomputerview" />
     <MESSAGE value="completedcomputerview + nå kan man lagre hva som helst! - mulig vi bør dele opp lagringsmetodene slik at det er en for hver case - men det fungerer nå." />
     <MESSAGE value="testUserRegister" />
     <MESSAGE value="fixed liten ting med npe computer / nullcheck" />
@@ -673,7 +671,8 @@
     <MESSAGE value="Prøver å bytte til Label i customTableCEllWrapText" />
     <MESSAGE value="setmetode for Labels i controller" />
     <MESSAGE value="set/clear metode for Labels i controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="set/clear metode for Labels i controller" />
+    <MESSAGE value="noe test" />
+    <option name="LAST_COMMIT_MESSAGE" value="noe test" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />

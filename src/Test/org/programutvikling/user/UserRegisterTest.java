@@ -10,7 +10,6 @@ class UserRegisterTest {
     @Test
     void loginCredentialsMatches() {
         assertNotNull(Model.INSTANCE.getUserRegister().loginCredentialsMatches("admin","adminadmin"));
-
     }
 
     @Test
