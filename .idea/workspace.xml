@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/domain/component/ComponentValidatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,9 +36,9 @@
       <list>
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -101,6 +103,7 @@
       <recent name="org.programutvikling.gui" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.programutvikling.domain.component" />
       <recent name="org.programutvikling.component.io" />
       <recent name="org.programutvikling.user" />
     </key>
@@ -143,7 +146,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Konfigurasjonssystem [clean,install...]">
+  <component name="RunManager" selected="JUnit.All in Konfigurasjonssystem">
     <configuration name="BrukerValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.programutvikling.bruker.BrukerValidator" />
       <module name="Konfigurasjonssystem" />
@@ -160,6 +163,14 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.programutvikling.App" />
       <module name="Konfigurasjonssystem" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Konfigurasjonssystem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Konfigurasjonssystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -211,14 +222,15 @@
       <item itemvalue="JUnit.FileSaverTxtTest" />
       <item itemvalue="JUnit.UserValidatorTest.name" />
       <item itemvalue="Maven.Konfigurasjonssystem [clean,install...]" />
+      <item itemvalue="JUnit.All in Konfigurasjonssystem" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Konfigurasjonssystem" />
         <item itemvalue="JUnit.UserValidatorTest.name" />
         <item itemvalue="JUnit.FileSaverTxtTest" />
         <item itemvalue="JUnit.UserValidatorTest" />
         <item itemvalue="Application.BrukerValidator" />
-        <item itemvalue="JUnit.FileSaverTxtTest" />
       </list>
     </recent_temporary>
   </component>
@@ -256,14 +268,7 @@
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
       <workItem from="1588442497595" duration="25684000" />
-      <workItem from="1588588128651" duration="17471000" />
-    </task>
-    <task id="LOCAL-00055" summary="fixed feilbeskjed på computer + åpningsvalg">
-      <created>1588091491683</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1588091491683</updated>
+      <workItem from="1588588128651" duration="17857000" />
     </task>
     <task id="LOCAL-00056" summary="dobbeltklikk på completedComputers -&gt; åpne valgt computer i listview">
       <created>1588095671418</created>
@@ -601,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588669129441</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="set/clear metode for Labels i controller">
+      <created>1588669336337</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1588669336337</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
