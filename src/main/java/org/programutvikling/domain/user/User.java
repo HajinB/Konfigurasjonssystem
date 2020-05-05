@@ -23,18 +23,12 @@ public class User implements Serializable {
 
     public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
         // validering
-     /*   if(Model.INSTANCE.getUserRegister().usernameExists(username)) {
-            throw new UsernameAlreadyExistsException();
-        }*/
         if(!UserValidator.username(username)) {
             throw new InvalidUsernameException();
         }
         if(!UserValidator.password(password)) {
             throw new InvalidPasswordException();
         }
-//        if(Model.INSTANCE.getUserRegister().emailExists(email)) {
-//            throw new EmailExistsException();
-//        }
         if(!UserValidator.email(email)) {
             throw new InvalidEmailException();
         }
@@ -42,10 +36,10 @@ public class User implements Serializable {
             throw new InvalidZipException();
         }
         this.admin = new SimpleBooleanProperty(admin);
-        this.username = new SimpleStringProperty(username);
+        this.username = new SimpleStringProperty(username.toLowerCase());
         this.password = new SimpleStringProperty(password);
         this.name = new SimpleStringProperty(name);
-        this.email = new SimpleStringProperty(email);
+        this.email = new SimpleStringProperty(email.toLowerCase());
         this.address = new SimpleStringProperty(address);
         this.zip = new SimpleStringProperty(zip);
         this.city = new SimpleStringProperty(city);

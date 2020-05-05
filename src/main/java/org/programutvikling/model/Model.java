@@ -47,10 +47,10 @@ public enum Model {
 
     private void addDefaultUsers() {
         User user = new User(true, "admin", "admin", "ola",
-                "hhhh@gmail.com", "trondheimsvegen 1", "0909", "Trondheim");
+                "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
 
         User user2 = new User(false, "user", "user", "ola",
-                "hhhh@gmail.com",  "trondheimsvegen 1", "0909", "Trondheim");
+                "user@user.com",  "trondheimsvegen 1", "0909", "Trondheim");
 
         userRegister.addBruker(user);
         userRegister.addBruker(user2);

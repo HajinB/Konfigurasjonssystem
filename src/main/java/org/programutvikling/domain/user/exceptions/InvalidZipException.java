@@ -4,7 +4,7 @@ import org.programutvikling.domain.user.UserValidator;
 
 public class InvalidZipException extends IllegalArgumentException {
     public InvalidZipException() {
-        super(String.format("The zip-code needs to be " + UserValidator.ZIP_LENGTH + " letters!"));
+        super(String.format("The zip-code needs to be " + UserValidator.ZIP_LENGTH + " digits!"));
     }
 }
 
