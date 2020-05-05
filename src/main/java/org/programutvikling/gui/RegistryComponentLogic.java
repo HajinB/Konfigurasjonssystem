@@ -72,13 +72,10 @@ public class RegistryComponentLogic {
 
     private Component createComponent() throws InvalidComponentFormatException {
 
-
         String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
-
         String productName = getString((TextField) gridPane.lookup("#productName"));
         String productDescription = getTextareaString((TextArea) gridPane.lookup("#productDescription"));
         double productPrice = getDouble((PriceField) gridPane.lookup("#productPrice"));
-
 
         Component componentIn = new Component(productType, productName, productDescription, productPrice);
         //kan gjøre validering på disse her - altså et felt om gangen.
@@ -86,7 +83,7 @@ public class RegistryComponentLogic {
         System.out.println(productType);
         tabComponentsController.setResultLabelTimed(componentIn.getProductName() + " er lagt til i listen");
 
-        return new Component(productType, productName, productDescription, productPrice);
+        return componentIn;
     }
 
 
@@ -107,13 +104,13 @@ public class RegistryComponentLogic {
     }
 
 
-    public void registerComponent() {
+    void registerComponent() {
 
         //best å gjøre validering her - business rules kan throwe exceptions lengre downstream som de gjør, bare ta
         // bort dialogs maybe?
         if (isProductTypeEmpty()) {
             tabComponentsController.setLblMsgType("belble");
-
+            //denne
             //eksempel da, men man bør kanskje vise mange labels samtidig? hva som er feil på en måte?
             return;
         }
@@ -132,7 +129,8 @@ public class RegistryComponentLogic {
         System.out.println(possibleDuplicateComponentIfNotThenNull);
         if (possibleDuplicateComponentIfNotThenNull != null) {
             showDuplicateDialog(newComponent, possibleDuplicateComponentIfNotThenNull);
-        } else if(!areInputFieldsEmpty()) {
+        } else {
+            tabComponentsController.clearLabels();
             getComponentRegister().addComponent(newComponent);
         }
     }
@@ -144,6 +142,7 @@ public class RegistryComponentLogic {
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             int indexToReplace =
                     getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
+            tabComponentsController.clearLabels();
             getComponentRegister().getRegister().set(indexToReplace, newComponent);
         }
     }
@@ -153,7 +152,7 @@ public class RegistryComponentLogic {
     }
 
     private boolean isProductTypeEmpty() {
-        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) ==null ;
+        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null ;
     }
 
     private boolean isProductPriceEmpty() {

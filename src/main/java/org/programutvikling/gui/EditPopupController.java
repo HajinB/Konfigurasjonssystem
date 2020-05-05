@@ -21,7 +21,7 @@ public class EditPopupController extends TabComponentsController implements Init
     private GridPane componentEditNode;
 
     @FXML
-    private Label lblComponentMsg;
+    private Label lblEditPopupMessage;
 
     @FXML
     private TextField txtPopupProductName;
@@ -43,21 +43,28 @@ public class EditPopupController extends TabComponentsController implements Init
 
     @FXML
     void btnEditComponent(ActionEvent event) {
+        if(areFieldsEmpty()){
+            lblEditPopupMessage.setText("Fyll inn alle felt");
+            return;
+        }
         double price = Double.parseDouble(txtPopupProductPrice.getText());
-
         Component component = new Component(cbType.getValue(), txtPopupProductName.getText(),
                 txtPopupProductDescription.getText(),
                 price
         );
+
+        //validering her ?, det propegerer ikke ned til konstruktøren (?) -altså det throwes ikke noe her.
         TemporaryComponent.INSTANCE.setEdited(true);
         TemporaryComponent.INSTANCE.storeTempComponent(component);
         stage.close();
     }
 
+    private boolean areFieldsEmpty() {
+        return(txtPopupProductPrice.getText().isEmpty() || txtPopupProductDescription.getText().isEmpty() || txtPopupProductName.getText().isEmpty());
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
         cbType.setItems(componentTypes.getObservableTypeListName());
     }
 
