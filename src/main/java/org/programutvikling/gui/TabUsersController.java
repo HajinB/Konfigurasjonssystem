@@ -83,7 +83,8 @@ public class TabUsersController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //user lagd av inputfields
         //getUserRegister().addBruker();
-    registryUserLogic = new RegistryUserLogic(userReg);
 
+    registryUserLogic = new RegistryUserLogic(userReg);
+    updateView();
     }
 }

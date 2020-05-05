@@ -169,32 +169,43 @@
                     </Pane>
                     <TableView fx:id="tblViewUser" editable="true" layoutX="351.0" layoutY="59.0" prefHeight="468.0" prefWidth="666.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="71.39999999999998" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="21.000000000000114" AnchorPane.topAnchor="59.0">
                         <columns>
-                     <TableColumn id="userAdmin" prefWidth="70.66668701171875" text="Admin" />
-                     <TableColumn id="userUsername" prefWidth="75.0" text="Brukernavn" />
-                     <TableColumn id="userPassword" prefWidth="96.0" text="Passord" />
+                     <TableColumn id="userAdmin" prefWidth="70.66668701171875" text="Admin" >
+                            <cellValueFactory>
+                                <PropertyValueFactory property="admin" />
+                            </cellValueFactory>
+                        </TableColumn>
+                     <TableColumn id="userUsername" prefWidth="75.0" text="Brukernavn"><cellValueFactory>
+                         <PropertyValueFactory property="username" />
+                     </cellValueFactory>
+                     </TableColumn>
+                     <TableColumn id="userPassword" prefWidth="96.0" text="Passord" >
+                         <cellValueFactory>
+                         <PropertyValueFactory property="password" />
+                     </cellValueFactory>
+                     </TableColumn>
                             <TableColumn id="userName" minWidth="63.333343505859375" onEditCommit="#userName" prefWidth="88.0" text="Navn">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="userName" />
+                                    <PropertyValueFactory property="username" />
                                 </cellValueFactory>
                             </TableColumn>
                             <TableColumn id="userEmail" minWidth="0.0" onEditCommit="#userMail" prefWidth="58.00006103515625" text="E-postaddresse">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="userMail" />
+                                    <PropertyValueFactory property="email" />
                                 </cellValueFactory>
                             </TableColumn>
                             <TableColumn id="userAddress" minWidth="43.33331298828125" onEditCommit="#userAddress" prefWidth="207.33331298828125" text="Gateaddresse">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="UserAddress" />
+                                    <PropertyValueFactory property="address" />
                                 </cellValueFactory>
                             </TableColumn>
                             <TableColumn id="userZip" minWidth="17.33331298828125" onEditCommit="#userZipCode" prefWidth="17.33331298828125" text="Postnummer">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="userZipCode" />
+                                    <PropertyValueFactory property="zip" />
                                 </cellValueFactory>
                             </TableColumn>
                             <TableColumn id="userCity" minWidth="62.0" onEditCommit="#userCity" prefWidth="84.0" text="Poststed">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="userCity" />
+                                    <PropertyValueFactory property="city" />
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>
