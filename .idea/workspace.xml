@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" afterDir="false" />
-    </list>
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="" />
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -266,14 +263,7 @@
       <workItem from="1588248697996" duration="17623000" />
       <workItem from="1588291589731" duration="11027000" />
       <workItem from="1588442497595" duration="25684000" />
-      <workItem from="1588588128651" duration="20218000" />
-    </task>
-    <task id="LOCAL-00061" summary="inputvalidering">
-      <created>1588166914057</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1588166914057</updated>
+      <workItem from="1588588128651" duration="20251000" />
     </task>
     <task id="LOCAL-00062" summary="inputvalidering av computer.txt">
       <created>1588171523031</created>
@@ -611,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588671842259</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="sjekker instanceof sånn at de objektene som er nye blir loadet inn, men ikke de gamle">
+      <created>1588672176248</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1588672176249</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +643,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testUserRegister" />
     <MESSAGE value="fixed liten ting med npe computer / nullcheck" />
     <MESSAGE value="fixed feilbeskjed på computer + åpningsvalg" />
     <MESSAGE value="dobbeltklikk på completedComputers -&gt; åpne valgt computer i listview" />
@@ -671,7 +667,8 @@
     <MESSAGE value="set/clear metode for Labels i controller" />
     <MESSAGE value="noe test" />
     <MESSAGE value="sletta velg filplassering - nå er den alltid &quot;AppFiles/Database/AppData.jobj&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="sletta velg filplassering - nå er den alltid &quot;AppFiles/Database/AppData.jobj&quot;" />
+    <MESSAGE value="sjekker instanceof sånn at de objektene som er nye blir loadet inn, men ikke de gamle" />
+    <option name="LAST_COMMIT_MESSAGE" value="sjekker instanceof sånn at de objektene som er nye blir loadet inn, men ikke de gamle" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />
