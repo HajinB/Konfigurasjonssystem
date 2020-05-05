@@ -32,7 +32,7 @@ public class UserRegister implements Serializable {
     // returns user after validating the correct username and password
     public User loginCredentialsMatches(String username, String password) {
         for(User user : getRegister()) {
-            if(user.getUsername().equalsIgnoreCase(username)) {
+            if(user.getUsername().equalsIgnoreCase(username) || user.getEmail().equalsIgnoreCase(username)) {
                 if(user.getPassword().equals(password)){
                     return user;
                 }
