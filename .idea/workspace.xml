@@ -19,9 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Tableview user">
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Starter programmet i fullscreen">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/customTextField/UsernameField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/AppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/AppData.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryUserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryUserLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +96,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last.edited.regexp" value="TEst eytuiworu qrqqpipop" />
+    <property name="last.edited.regexp" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/programutvikling" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -271,14 +275,7 @@
       <workItem from="1588291589731" duration="11027000" />
       <workItem from="1588442497595" duration="25684000" />
       <workItem from="1588588128651" duration="20969000" />
-      <workItem from="1588672998630" duration="12493000" />
-    </task>
-    <task id="LOCAL-00070" summary="prøver å fikse velg lagringsplass">
-      <created>1588282153271</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1588282153271</updated>
+      <workItem from="1588672998630" duration="13922000" />
     </task>
     <task id="LOCAL-00071" summary="mappestruktur">
       <created>1588328199068</created>
@@ -609,7 +606,13 @@
       <option name="presentableId" value="LOCAL−00118" />
       <updated>1588705421699</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL−00119" summary="Starter programmet i fullscreen">
+      <created>1588708800994</created>
+      <option name="number" value="LOCAL−00119" />
+      <option name="presentableId" value="LOCAL−00119" />
+      <updated>1588708800995</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +646,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="inputvalidering + clearselection listener" />
     <MESSAGE value="prøver å fikse velg lagringsplass" />
     <MESSAGE value="mappestruktur" />
     <MESSAGE value="refactor" />
@@ -668,7 +670,8 @@
     <MESSAGE value="Feil passord label lblFeilPassword" />
     <MESSAGE value="user tableview lagt til alle kolonnene" />
     <MESSAGE value="Tableview user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tableview user" />
+    <MESSAGE value="Starter programmet i fullscreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Starter programmet i fullscreen" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1588673323966" />
@@ -687,39 +690,39 @@
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588673323966" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1588673323966" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
-    <state x="221" y="0" key="CommitChangelistDialog2" timestamp="1588708381127">
+    <state x="221" y="0" key="CommitChangelistDialog2" timestamp="1588709315501">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588708381127" />
+    <state x="221" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588709315501" />
     <state x="315" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
-    <state x="189" y="97" width="1024" height="572" key="DiffContextDialog" timestamp="1588705406048">
+    <state x="189" y="97" width="1024" height="572" key="DiffContextDialog" timestamp="1588708779154">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="189" y="97" width="1024" height="572" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1588705406048" />
+    <state x="189" y="97" width="1024" height="572" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1588708779154" />
     <state x="189" y="97" width="1228" height="687" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
     <state x="740" y="99" key="FileChooserDialogImpl" timestamp="1588673323966" />
     <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588673323966" />
     <state x="593" y="314" key="Github.CreateGistDialog" timestamp="1588673323966" />
     <state x="593" y="314" key="Github.CreateGistDialog/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
-    <state width="1237" height="119" key="GridCell.Tab.0.bottom" timestamp="1588708385558">
+    <state width="1237" height="119" key="GridCell.Tab.0.bottom" timestamp="1588753376192">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="119" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588708385558" />
+    <state width="1237" height="119" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588753376192" />
     <state width="746" height="193" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
-    <state width="1237" height="119" key="GridCell.Tab.0.center" timestamp="1588708385557">
+    <state width="1237" height="119" key="GridCell.Tab.0.center" timestamp="1588753376192">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="119" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588708385557" />
+    <state width="1237" height="119" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588753376192" />
     <state width="746" height="193" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
-    <state width="1237" height="119" key="GridCell.Tab.0.left" timestamp="1588708385557">
+    <state width="1237" height="119" key="GridCell.Tab.0.left" timestamp="1588753376192">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="119" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588708385557" />
+    <state width="1237" height="119" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588753376192" />
     <state width="746" height="193" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
-    <state width="1237" height="119" key="GridCell.Tab.0.right" timestamp="1588708385558">
+    <state width="1237" height="119" key="GridCell.Tab.0.right" timestamp="1588753376192">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="119" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588708385558" />
+    <state width="1237" height="119" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588753376192" />
     <state width="746" height="193" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
     <state width="1237" height="183" key="GridCell.Tab.1.bottom" timestamp="1588673658833">
       <screen x="0" y="0" width="1280" height="680" />
@@ -748,10 +751,10 @@
     <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1588673323966" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588673323966" />
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1588705425627">
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1588708812178">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588705425627" />
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588708812178" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588673323966" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
@@ -759,10 +762,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1588704028218" />
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588699604966">
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588752628748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1588699604966" />
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1588752628748" />
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1588673323966" />
     <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1588673323966" />
     <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1588673323966" />

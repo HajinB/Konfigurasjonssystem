@@ -19,6 +19,7 @@ public class RegistryUserLogic {
     User createUserFromGUIInputFields() {
         try {
             User user = createUser();
+            Model.INSTANCE.getUserRegister().addBruker(user);
             resetFields();
             Dialog.showSuccessDialog(user.getUsername() + " er lagt til i listen!");
             return user;
@@ -62,7 +63,7 @@ public class RegistryUserLogic {
             return;
         }
 
-        User newUser = createUserFromGUIInputFields();
+        createUserFromGUIInputFields();
         // duplikat her
 
     }
