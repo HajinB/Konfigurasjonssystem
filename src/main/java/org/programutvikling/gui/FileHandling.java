@@ -1,6 +1,8 @@
 package org.programutvikling.gui;
 
 import javafx.stage.Stage;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.model.ModelEndUser;
 import org.programutvikling.model.io.FileOpener;
 import org.programutvikling.model.io.FileSaver;
 import org.programutvikling.model.io.FileSaverTxt;
@@ -43,7 +45,7 @@ public class FileHandling {
         }
         Path path = Paths.get(chosenPath);
         ArrayList<Object> objectsToSave = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
-                null, Model.INSTANCE.getSavedPathRegister(), null, null);
+                Model.INSTANCE.getSavedPathRegister(), null);
         //todo kanskje det er skummelt å sette null inn i objectlisten noen ganger (?)
         System.out.println("Dette prøver man å lagre:" + objectsToSave);
         Path pathAppend = Paths.get(String.valueOf(path));
@@ -114,28 +116,41 @@ public class FileHandling {
     }
 
     public static String getPathToUser() {
-        return userPreferences.getStringPathToUser();
+        return userPreferences.getStringPathToSuperUserDatabase();
     }
 
-    public static void saveAll() throws IOException {
+    public static void saveAllAdminFiles() throws IOException {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
-
         ArrayList<Object> objects = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
-                Model.INSTANCE.getComputerRegister(), Model.INSTANCE.getSavedPathRegister(),
-                Model.INSTANCE.getComputer(), Model.INSTANCE.getUserRegister());
+                 Model.INSTANCE.getSavedPathRegister(),
+                 Model.INSTANCE.getUserRegister());
 /*
         System.out.println("computer : " + ContextModel.INSTANCE.getComputer());
         System.out.println("user reg :" + ContextModel.INSTANCE.getUserRegister());
 
         System.out.println("lagrer alle disse objects:" + objects);*/
         FileHandling.saveFileAuto(objects,
-                Paths.get(userPreferences.getStringPathToUser()));
+                Paths.get(getPathToUser()));
+
+    }
+
+    public static void saveAllEndUserFiles(){
+        saveEndUserState();
+    }
+
+    private static void saveEndUserState() {
+        Model.INSTANCE.getCleanEndUserObjectList();
+        ModelEndUser.INSTANCE.getComputerRegister();
+        Computer computer = ModelEndUser.INSTANCE.getComputer();
+        //lagrer handlevognen
+        saveFileTxt(computer,Paths.get(userPreferences.getStringPathToUserComputer()));
+        //kan evt lagre alle computers "på nytt" men vet ikke om det er værd det.
     }
 
     public static void saveBackup() throws IOException {
         ArrayList<Object> objects = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
-                Model.INSTANCE.getComputerRegister(), Model.INSTANCE.getSavedPathRegister(),
-                Model.INSTANCE.getComputer(), Model.INSTANCE.getUserRegister());
+                Model.INSTANCE.getSavedPathRegister(),
+                 Model.INSTANCE.getUserRegister());
 /*
         System.out.println("computer : " + ContextModel.INSTANCE.getComputer());
         System.out.println("user reg :" + ContextModel.INSTANCE.getUserRegister());
@@ -147,16 +162,12 @@ public class FileHandling {
     }
 
     static Computer getComputer() {
-        return Model.INSTANCE.getComputer();
+        return ModelEndUser.INSTANCE.getComputer();
     }
 
     public static boolean validateCartListToSave(List<String> whatsMissing, Stage stage) throws IOException {
-        if (whatsMissing.size() > 0) {
-            /**Kan lage en bra tostring av whatsMissing - evt en utility method - FileUtility.toLabel(whatsMissing))*/
-            Dialog.showErrorDialog("Legg til " + whatsMissing.toString() + " for å " +
-                    "lagre");
-            return true;
-        }
+        if (showDialogIfComponentsAreMissing(whatsMissing, stage)) return true;
+
         FileSaverTxt fileSaverTxt = new FileSaverTxt();
         String path = FileUtility.getFilePathFromSaveTXTDialog(stage);
         if (path == null) {
@@ -171,9 +182,44 @@ public class FileHandling {
         String name = FileUtility.getNameFromFilePath(file);
         Computer computer = computerFactory.computerFactory(getComputer().getComponentRegister(), name);
 
-        Model.INSTANCE.getComputerRegister().addComputer(computer);
-        saveAll();
+        ModelEndUser.INSTANCE.getComputerRegister().addComputer(computer);
+        saveAllAdminFiles();
         return false;
+    }
+
+    public static boolean showDialogIfComponentsAreMissing(List<String> whatsMissing, Stage stage) {
+        if (whatsMissing.size() > 0) {
+            /**Kan lage en bra tostring av whatsMissing - evt en utility method - FileUtility.toLabel(whatsMissing))*/
+            Dialog.showErrorDialog("Legg til " + whatsMissing.toString() + " for å " +
+                    "fortsette");
+            return true;
+        }
+        return false;
+    }
+
+    public static ArrayList<Computer> findComputers() {
+        ArrayList<Object> componentList = new ArrayList<>();
+        File folder = new File(String.valueOf(userPreferences.getPathToComputers()));
+        File[] listOfFiles = folder.listFiles();
+
+        ArrayList<Computer> computers = new ArrayList<>();
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                Computer computer = new Computer(file.getName());
+                System.out.println(file.toString());
+                //FileHandling.openSelectedComputerTxtFiles(computerList, file.getPath());
+                componentList.addAll(FileHandling.openSelectedComputerTxtFiles(componentList,file.getPath()));
+                //
+                //legg til computers her
+                for(Object o : componentList) {
+                    computer.getComponentRegister().addComponent((Component) o);
+                }
+                computers.add(computer);
+                componentList.clear();
+            }
+            //computerList blir en liste med komponenter aka en computer.
+        }
+        return computers;
     }
 
     public UserPreferences getUserPreferences() {

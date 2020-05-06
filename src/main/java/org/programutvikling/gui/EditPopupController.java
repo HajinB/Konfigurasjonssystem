@@ -1,9 +1,13 @@
 package org.programutvikling.gui;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
@@ -22,6 +26,9 @@ public class EditPopupController extends TabComponentsController implements Init
 
     @FXML
     private Label lblEditPopupMessage;
+
+    @FXML
+    private Button btnEditComponent;
 
     @FXML
     private TextField txtPopupProductName;
@@ -43,15 +50,21 @@ public class EditPopupController extends TabComponentsController implements Init
 
     @FXML
     void btnEditComponent(ActionEvent event) {
+
+        editComponent();
+    }
+
+    private void editComponent() {
         if(areFieldsEmpty()){
             lblEditPopupMessage.setText("Fyll inn alle felt");
             return;
         }
+        System.out.println(txtPopupProductPrice);
         double price = Double.parseDouble(txtPopupProductPrice.getText());
         Component component = new Component(cbType.getValue(), txtPopupProductName.getText(),
                 txtPopupProductDescription.getText(),
-                price
-        );
+                price);
+        System.out.println(txtPopupProductPrice);
 
         //validering her ?, det propegerer ikke ned til konstruktøren (?) -altså det throwes ikke noe her.
         TemporaryComponent.INSTANCE.setEdited(true);
@@ -66,6 +79,24 @@ public class EditPopupController extends TabComponentsController implements Init
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cbType.setItems(componentTypes.getObservableTypeListName());
+        btnEditComponent.setDefaultButton(true);
+        setTextAreaListener(componentEditNode);
+
+    }
+
+    public void setTextAreaListener(GridPane gridPane) {
+        TextArea textArea = ((TextArea) gridPane.lookup("#productDescription"));
+        textArea.setWrapText(true);
+
+        //overrider ENTER keyEvent for å unngå lineshift ( brukes for å lese fra txtfil)
+        textArea.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                   editComponent();
+                }
+            }
+        });
     }
 
     public void initData(Component c, Stage stage, int columnIndex) {

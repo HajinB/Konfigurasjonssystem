@@ -158,6 +158,7 @@ public class TabComponentsController {
                         try {
                             windowHandler.openEditWindow(row, componentRegNode);
                             updateView();
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

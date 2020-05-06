@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.ComponentRegister;
+import org.programutvikling.model.ModelEndUser;
 import org.programutvikling.model.io.FileOpener;
 import org.programutvikling.model.io.FileSaver;
 import org.programutvikling.model.io.OpenerFactory;
@@ -92,7 +93,6 @@ public class FileUtility {
     private static String openDialog(Stage stage, FileChooser fileChooser) {
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile == null) {
-            // handle cancellation properly
             return null;
         } else {
             String pathToFile = selectedFile.getPath();
@@ -100,40 +100,19 @@ public class FileUtility {
             return pathToFile;
         }
     }
-
-    public static ArrayList<Object> createObjectListFromAllObjects() {
-        //computer kan være tom - altså ikke null, men tom. den er instansiert i ContextModel (må være det -
-
-
-        //det bør være to forskjellige metoder - en som er SaveAS (admin) - og en som er SaveAll (admin) ?
-
-        ArrayList<Object> objects = new ArrayList<>();
-
-        objects.add(Model.INSTANCE.getComponentRegister());
-        objects.add(Model.INSTANCE.getComputerRegister());
-        objects.add(Model.INSTANCE.getSavedPathRegister());
-        objects.add(Model.INSTANCE.getComputer());
-        objects.add(Model.INSTANCE.getUserRegister());
-        //
-        return objects;
-    }
     //lager liste for saving - lagrer denne lista.
     public static ArrayList<Object> createObjectList(ComponentRegister componentRegister,
-                                                     ComputerRegister computerRegister, SavedPathRegister savedPathRegister,
-                                                     Computer computer, UserRegister userRegister) {
+                                                      SavedPathRegister savedPathRegister,
+                                                     UserRegister userRegister) {
         ArrayList<Object> objects = new ArrayList<>();
 
         /**Legger alt inn i listen her - kan heller ta det på opening - altså plassene er dedikert til et objekt, de
          * kan være null - da vil de bare ikke bli lasta inn.*/
         objects.add(0, componentRegister);
         //if (componentRegister != null)
-        objects.add(1, computerRegister);
+        objects.add(1, savedPathRegister);
         // if (savedPathRegister != null)
-        objects.add(2, savedPathRegister);
-
-        objects.add(3, computer);
-
-        objects.add(4, userRegister);
+        objects.add(2, userRegister );
 
         return objects;
     }

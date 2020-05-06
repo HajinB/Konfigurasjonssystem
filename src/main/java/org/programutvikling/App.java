@@ -67,7 +67,7 @@ public class App extends Application {
                     Thread thread = new Thread(() -> {
                         try {
                             FileHandling.saveBackup();
-                            FileHandling.saveAll();
+                            FileHandling.saveAllAdminFiles();
                             System.exit(0);
                         } catch (IOException e) {
                             e.printStackTrace();

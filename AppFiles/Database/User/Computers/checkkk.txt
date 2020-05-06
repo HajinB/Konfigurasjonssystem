@@ -1,0 +1,6 @@
+Minne;asdf;asdf;23.00
+Harddisk;asdf;asdf;23.0
+Skjermkort;asdf;asdf;23.0
+Kabinett;asdf;asdf;23.0
+Prosessor;asdf;asdf;23.0
+Hovedkort;asdf;asdf;23.0

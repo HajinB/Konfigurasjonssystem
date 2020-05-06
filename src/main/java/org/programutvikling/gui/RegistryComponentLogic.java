@@ -148,6 +148,19 @@ public class RegistryComponentLogic {
         }
     }
 
+    private void justReplaceComponent(Component newComponent, Component possibleDuplicateComponentIfNotThenNull){
+
+        int indexToReplace =
+                getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
+                System.out.println("index to replac : "+indexToReplace);
+                getComponentRegister().getRegister().set(indexToReplace, newComponent);
+
+              //  tabComponentsController.updateView();
+
+               /* getComponentRegister().getObservableRegister().remove(possibleDuplicateComponentIfNotThenNull);
+                getComponentRegister().getObservableRegister().add(newComponent);*/
+    }
+
     private boolean areInputFieldsEmpty() {
         return isProductNameEmpty() || isProductDescriptionEmpty() || isProductPriceEmpty() || isProductTypeEmpty();
     }
@@ -180,17 +193,21 @@ public class RegistryComponentLogic {
     public void editComponentFromPopup(Component c) {
         if (TemporaryComponent.INSTANCE.getIsEdited()) {
             Component dup =
-                    ComponentValidator.isComponentInRegisterThenReturnIt(
+                    ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
                             TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
+            System.out.println(TemporaryComponent.INSTANCE.getTempComponent());
             if (dup == null) {
                 getObservableRegister().set(getObservableRegister().indexOf(c),
                         TemporaryComponent.INSTANCE.getTempComponent());
                 TemporaryComponent.INSTANCE.resetTemps();
             } else {
-                showDuplicateDialog(c, dup);
+               /* getObservableRegister().set(getObservableRegister().indexOf(c),
+                        TemporaryComponent.INSTANCE.getTempComponent());
+                TemporaryComponent.INSTANCE.resetTemps();*/
+                justReplaceComponent(c, dup);
             }
             try {
-                FileHandling.saveAll();
+                FileHandling.saveAllAdminFiles();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -212,7 +229,7 @@ public class RegistryComponentLogic {
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             deleteComponent(selectedItem);
-            FileHandling.saveAll();
+            FileHandling.saveAllAdminFiles();
         }
     }
 

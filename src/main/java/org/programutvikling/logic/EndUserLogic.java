@@ -12,6 +12,7 @@ import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelEndUser;
 
 import java.util.ArrayList;
 
@@ -83,7 +84,7 @@ public class EndUserLogic {
     }
 
     private Computer getComputer() {
-        return Model.INSTANCE.getComputer();
+        return ModelEndUser.INSTANCE.getComputer();
     }
 
     private boolean isDoubleClick(MouseEvent event) {

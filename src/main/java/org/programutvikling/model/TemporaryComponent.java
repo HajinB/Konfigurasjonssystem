@@ -2,11 +2,14 @@ package org.programutvikling.model;
 
 import org.programutvikling.domain.component.Component;
 
+import java.util.ArrayList;
+
 public enum TemporaryComponent {
     INSTANCE;
     private Component tempComponent;
     boolean isEdited;
     int columnIndex;
+    ArrayList<String> errorList = new ArrayList<>();
 
     public void storeTempComponent(Component component){
         tempComponent = component;
@@ -34,5 +37,17 @@ public enum TemporaryComponent {
 
     public int getColumnIndex() {
         return columnIndex;
+    }
+
+    public ArrayList<String> getErrorList() {
+        return errorList;
+    }
+
+    public String errorListToString(){
+        String melding= "";
+        for(String s: errorList){
+            melding = melding + s +"\n";
+        }
+        return melding;
     }
 }

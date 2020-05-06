@@ -2,6 +2,8 @@ package org.programutvikling.domain.component;
 
 import org.programutvikling.model.Model;
 
+import java.util.List;
+
 public class ComponentValidator {
 
     static boolean isComponentValid(Component component) {
@@ -12,6 +14,16 @@ public class ComponentValidator {
     public static Component isComponentInRegisterThenReturnIt(Component component, ComponentRegister register){
         for(Component c: register.getRegister()){
             if(isPrimaryKeyAMatch(c, component)){
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public static Component areAllFieldsComponentInRegisterThenReturnIt(Component component,
+                                                                        ComponentRegister register){
+        for(Component c: register.getRegister()){
+            if(areAllFieldsAMatch(c, component)){
                 return c;
             }
         }
@@ -80,12 +92,9 @@ public class ComponentValidator {
         return !(description.isEmpty() && description.isBlank());
     }
 
-    //hvis productname og producttype fra tempcomponent matcher en component i registeret OG prisen ikke er lik -
-// returner den riktige komponenten. hvis alt stemmer, return null.
-
     //todo denne metoden fungerer som den skal - men hvis databasen inneholder ting med samme "primarykey" - blir det
     // funnet "feil pris" hele tiden.
-    public static double checkPriceAgainstDatabaseGetPrice(Component inputComponent) {
+    public static double checkPriceAgainstDatabaseGetPrice(Component inputComponent, List list) {
         //sjekker input opp i mot det som nå ligger i minne/databasen.
         for (Component c : Model.INSTANCE.getComponentRegister().getRegister()) {
             if (isPrimaryKeyAMatch(inputComponent, c)) {
@@ -107,6 +116,12 @@ public class ComponentValidator {
         return c2.getProductName().equals(c1.getProductName())
                 && c2.getProductType().equals(c1.getProductType())
         && c2.getProductDescription().equals(c1.getProductDescription());
+    }
+
+    public static boolean areAllFieldsAMatch(Component c1, Component c2) {
+        return c2.getProductName().equals(c1.getProductName())
+                && c2.getProductType().equals(c1.getProductType())
+                && c2.getProductDescription().equals(c1.getProductDescription()) && c2.getProductPrice()==c1.getProductPrice();
     }
 }
        /* isProductPriceMatchingAlreadySaved(ArrayList<Object> objects, String toBeSearched){

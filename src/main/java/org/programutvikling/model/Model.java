@@ -6,22 +6,21 @@ import org.programutvikling.domain.computer.ComputerRegister;
 import org.programutvikling.gui.FileHandling;
 import org.programutvikling.gui.SavedPathRegister;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserPreferences;
 import org.programutvikling.domain.user.UserRegister;
 
 import java.util.ArrayList;
-import java.util.prefs.BackingStoreException;
+
 //singleton som holder data fra fil - slik at samme data kan aksesses fra flere controllere.
 public enum Model {
     INSTANCE;
-
     private SavedPathRegister savedPathRegister = new SavedPathRegister();
     private ComponentRegister componentRegister = new ComponentRegister();
-    private ComputerRegister computerRegister = new ComputerRegister();
-    private Computer computer = new Computer("current");
+   // private ComputerRegister computerRegister = new ComputerRegister();
+   // private Computer computer = new Computer("current");
     //temporary master list - som har alle objekter fra fil.
-    private ArrayList<Object> objects = new ArrayList<>();
+    private ArrayList<Object> EndUserObjects = new ArrayList<>();
+
     private UserPreferences userPreferences = new UserPreferences();
     private UserRegister userRegister = new UserRegister();
 
@@ -30,16 +29,15 @@ public enum Model {
     }
 
     public void loadFileIntoModel() {
-        System.out.println("hi from model constructor" + userPreferences.getPathToUser().toString());
-        if (FileUtility.doesFileExist(userPreferences.getPathToUser().toString())) {
-            FileHandling.openFile(objects, userPreferences.getPathToUser().toString());
+        System.out.println("hi from model constructor" + userPreferences.getPathToAdminFiles().toString());
+        if (FileUtility.doesFileExist(userPreferences.getPathToAdminFiles().toString())) {
+            FileHandling.openFile(EndUserObjects, userPreferences.getPathToAdminFiles().toString());
             addDefaultUsers();
+            //legg til open computer her
             loadObjectsIntoClasses();
         } else {
             System.out.println("ingen config fil ble funnet - tilbake til default.");
-
-            System.out.println(userPreferences.getStringPathToUser().toString());
-            FileHandling.openFile(objects, userPreferences.getStringPathToBackupAppFiles());
+            FileHandling.openFile(EndUserObjects, userPreferences.getStringPathToBackupAppFiles());
             addDefaultUsers();
             loadObjectsIntoClasses();
         }
@@ -59,65 +57,66 @@ public enum Model {
     }
 
     public ArrayList<Object> getCurrentObjectList() {
-        return objects;
+        return EndUserObjects;
     }
 
     public ArrayList<Object> getCleanObjectList() {
-        if (objects.size() > 0) {
-            objects.clear();
+        if (EndUserObjects.size() > 0) {
+            EndUserObjects.clear();
         }
-        return objects;
+        return EndUserObjects;
     }
 
     public void appendComponentRegisterIntoModel() {
-        if (objects.size() == 0) {
+        if (EndUserObjects.size() == 0) {
             return;
         }
-        if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null) {
-            ComponentRegister componentRegisterFromFile = (ComponentRegister) objects.get(0);
+        if (EndUserObjects.get(0) instanceof ComponentRegister && EndUserObjects.get(0) != null) {
+            ComponentRegister componentRegisterFromFile = (ComponentRegister) EndUserObjects.get(0);
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
         }
         //componentRegister.getRegister().addAll(objects.get(0).;
     }
 
     public void loadComponentRegisterIntoModel() {
-        if (objects.size() == 0) {
+        if (EndUserObjects.size() == 0) {
             return;
         }
-        if (objects.get(0) instanceof ComponentRegister && objects.get(0) != null)
-            setComponentRegister((ComponentRegister) objects.get(0));
+        if (EndUserObjects.get(0) instanceof ComponentRegister && EndUserObjects.get(0) != null)
+            setComponentRegister((ComponentRegister) EndUserObjects.get(0));
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
         /**går det ann å skrive dette på en annen måte? factory method feks??*/
-        System.out.println(objects.size());
-        if (objects.size() > 0) {
-            if (objects.get(0) != null && objects.get(0) instanceof ComponentRegister)
-                setComponentRegister((ComponentRegister) objects.get(0));
-            if (objects.get(1) != null && objects.get(1) instanceof ComputerRegister)
-                computerRegister = (ComputerRegister) objects.get(1);
+        System.out.println(EndUserObjects.size());
+        if (EndUserObjects.size() > 0) {
+            if (EndUserObjects.get(0) != null && EndUserObjects.get(0) instanceof ComponentRegister)
+                setComponentRegister((ComponentRegister) EndUserObjects.get(0));
 
-            if (objects.size() > 2 && objects.get(2) != null && objects.get(2) instanceof SavedPathRegister)
-                savedPathRegister = (SavedPathRegister) objects.get(2);
+            if (EndUserObjects.size() > 1 && EndUserObjects.get(1) != null && EndUserObjects.get(1) instanceof SavedPathRegister)
+                savedPathRegister = (SavedPathRegister) EndUserObjects.get(1);
 
-            if (objects.size() > 3 && objects.get(3) != null && !objects.get(3).equals("") && objects.get(3) instanceof Computer ){
-                computer = (Computer) objects.get(3);
-
-                if (objects.get(4) != null && objects.get(4) instanceof  UserRegister)
-                    userRegister = (UserRegister) objects.get(4);
+                if (EndUserObjects.get(2) != null && EndUserObjects.get(2) instanceof  UserRegister)
+                    userRegister = (UserRegister) EndUserObjects.get(2);
             }
-            System.out.println("dette prøves å åpnes!!!!::::");
-            System.out.println(objects.get(0));
-            System.out.println(objects.get(1));
-            System.out.println(objects.get(2));
-            System.out.println(objects.get(3));
+           /* System.out.println("dette prøves å åpnes!!!!::::");
+            System.out.println(EndUserObjects.get(0));
+            System.out.println(EndUserObjects.get(1));
+            System.out.println(EndUserObjects.get(2));
+            System.out.println(EndUserObjects.get(3));*/
+        }
+/*
+    private void loadComputerRegisterFromDirectory() {
+        ArrayList<Object> computers =   FileHandling.findComputers();
+        for(Object c : computers){
+            computerRegister.addComputer((Computer) c);
         }
 
-        objects.clear();
     }
 
+*/
     private boolean checkIfObjectIsComponentRegister() {
-        return objects.get(0) instanceof ComponentRegister;
+        return EndUserObjects.get(0) instanceof ComponentRegister;
     }
 
     public ComponentRegister getComponentRegister() {
@@ -131,7 +130,7 @@ public enum Model {
     public UserRegister getUserRegister() {
         return userRegister;
     }
-
+/*
     public ComputerRegister getComputerRegister() {
         return computerRegister;
     }
@@ -139,7 +138,10 @@ public enum Model {
     public Computer getComputer() {
         return computer;
     }
+*/    public void loadComputerIntoClass() {
+}
 
-    public void loadComputerIntoClass() {
+
+    public void getCleanEndUserObjectList() {
     }
 }

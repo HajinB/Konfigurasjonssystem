@@ -3,6 +3,7 @@ package org.programutvikling.domain.computer;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentTypes;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelEndUser;
 
 import java.util.ArrayList;
 
@@ -13,11 +14,10 @@ public class ComputerValidator {
         System.out.println(type);
 
         return validatorFactory(type);
-
     }
 
     static Computer getCurrentComputer() {
-        return Model.INSTANCE.getComputer();
+        return ModelEndUser.INSTANCE.getComputer();
     }
 
     //sjekker om handlekurven er full for valgt type

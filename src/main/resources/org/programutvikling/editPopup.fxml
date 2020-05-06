@@ -76,7 +76,9 @@
                     <Font size="13.0" />
                 </font>
             </PriceField>
-            <Button mnemonicParsing="false" onAction="#btnEditComponent" prefHeight="30.0" prefWidth="230.0" stylesheets="@CSS/Login.css" text="Endre" GridPane.rowIndex="8">
+            <Button fx:id="btnEditComponent"  mnemonicParsing="false" onAction="#btnEditComponent" prefHeight="30.0"
+                    prefWidth="230.0"
+                     stylesheets="@CSS/Login.css" text="Endre" GridPane.rowIndex="8">
                 <GridPane.margin>
                     <Insets top="5.0" />
                 </GridPane.margin>

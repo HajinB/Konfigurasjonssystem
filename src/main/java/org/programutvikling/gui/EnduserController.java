@@ -19,17 +19,16 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.App;
 import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
-import org.programutvikling.gui.utility.FXMLGetter;
+import org.programutvikling.gui.utility.*;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.logic.EndUserLogic;
 import org.programutvikling.model.Model;
 import org.programutvikling.domain.component.Component;
+import org.programutvikling.model.ModelEndUser;
 import org.programutvikling.model.io.FileOpenerTxt;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.CustomTableColumn.PriceFormatCell;
-import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.gui.utility.EndUserService;
-import org.programutvikling.gui.utility.FileUtility;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -237,13 +236,13 @@ public class EnduserController extends TabComponentsController {
 
     }
     private void updateCompletedComputers() {
-        if (Model.INSTANCE.getComputerRegister().getObservableRegister().size() > 0)
-            tblCompletedComputers.setItems(Model.INSTANCE.getComputerRegister().getObservableRegister());
+        if (ModelEndUser.INSTANCE.getComputerRegister().getObservableRegister().size() > 0)
+            tblCompletedComputers.setItems(ModelEndUser.INSTANCE.getComputerRegister().getObservableRegister());
     }
 
     private void updateList() {
         updateTotalPrice();
-        tblCompletedComputers.setItems(Model.INSTANCE.getComputerRegister().getObservableRegister());
+        tblCompletedComputers.setItems(ModelEndUser.INSTANCE.getComputerRegister().getObservableRegister());
         setTblProcessor(tblProcessor);
         setTblVideoCard(tblVideoCard);
         setTblScreen(tblScreen);
@@ -262,12 +261,18 @@ public class EnduserController extends TabComponentsController {
     }
 
     @FXML
-    void btnCashier(ActionEvent event) {
+    void btnCashier(ActionEvent event) throws IOException {
+        System.out.println("this is");
+        List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
+        if (FileHandling.showDialogIfComponentsAreMissing(whatsMissing, stage)) return;
 
+
+        /*
+        updateCompletedComputers();*/
     }
 
     Computer getComputer() {
-        return Model.INSTANCE.getComputer();
+        return ModelEndUser.INSTANCE.getComputer();
     }
 
     private void addComponentToCart(TableView<Component> tbl) {
@@ -285,7 +290,6 @@ public class EnduserController extends TabComponentsController {
         String path = FileUtility.getFilePathFromOpenTxtDialog(stage);
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         fileOpenerTxt.open(getComputer(), Paths.get(path));
-
         //kjører fileopenertxt her - trenger man fileopener factory da?? er det lurt å la det gå til samme metode?
         // for å redusere kopi ? da kan man ta bort (Computer) fra fileopenertxt - gjør det fra objects der også?
         //er det nødvendig å ha interface
@@ -320,6 +324,9 @@ public class EnduserController extends TabComponentsController {
     void updateComputerListView() {
         if (getComputer() != null)
             shoppingListView.setItems(getComputer().getComponentRegister().getObservableRegister());
+        else{
+            System.out.println(getComputer() + "computer er tom");
+        }
         updateTotalPrice();
     }
 
@@ -401,7 +408,7 @@ public class EnduserController extends TabComponentsController {
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             Component selectedComp = shoppingListView.getSelectionModel().getSelectedItem();
             deleteComponent(selectedComp);
-            FileHandling.saveAll();
+            FileHandling.saveAllAdminFiles();
         }
     }
 
