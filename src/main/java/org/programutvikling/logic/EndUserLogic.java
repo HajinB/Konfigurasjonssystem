@@ -10,9 +10,9 @@ import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
+import org.programutvikling.gui.DetailsController;
 import org.programutvikling.gui.EnduserController;
 import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
 
 import java.util.ArrayList;
@@ -20,15 +20,22 @@ import java.util.ArrayList;
 public class EndUserLogic {
     Tooltip tooltipEndUser = new Tooltip("Dobbeltklikk en rad for å legge til i handlekurven");
 
-    private final ArrayList<TableView<Component>> tblViewList;
+    private ArrayList<TableView<Component>> tblViewList;
     private BorderPane borderPane;
     EnduserController endUserController;
+    DetailsController detailsController;
 
     public EndUserLogic(EnduserController endUserController, BorderPane topLevelPaneEndUser,
                         ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList, ArrayList<TableColumn> tblColumnPriceList) {
         this.endUserController = endUserController;
         this.borderPane = topLevelPaneEndUser;
-        this.tblViewList = tblViewList;
+        this.tblViewList = new ArrayList<>(tblViewList);
+        initView();
+    }
+
+    public EndUserLogic(DetailsController detailsController,
+                        TableColumn descriptionTblColumn) {
+        this.detailsController = detailsController;
         initView();
     }
 

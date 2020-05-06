@@ -9,6 +9,8 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelEndUser;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +19,7 @@ public class ComputerPopupController extends EnduserController implements Initia
     @FXML private Label lblComputerName;
     @FXML private ListView<Component> listContent;
     @FXML private Label lblComputerPrice;
+    private Computer computer;
 
 
     @Override
@@ -46,10 +49,14 @@ public class ComputerPopupController extends EnduserController implements Initia
         lblComputerName.setText(c.getProductName());
         lblComputerPrice.setText(Double.toString(c.calculatePrice()));
         listContent.setItems(c.getComponentRegister().getObservableRegister());
+        this.computer = c;
 
     }
-
+    @FXML
     public void btnAddComputer(ActionEvent event) {
+        ModelEndUser.INSTANCE.getComputer().removeAll();
+        ModelEndUser.INSTANCE.getComputer().getComponentRegister()
+                .getObservableRegister().addAll(computer.getComponentRegister().getRegister());
 
     }
 }

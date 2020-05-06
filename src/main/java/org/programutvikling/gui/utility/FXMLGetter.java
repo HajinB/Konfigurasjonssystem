@@ -53,9 +53,9 @@ public class FXMLGetter {
     }
 
     public FXMLLoader getFxmlLoader(String fxml) throws IOException {
-        if(fxml.equals("computerPopup.fxml")){
+        if(fxml.equals("computerPopup.fxml") || fxml.equals("detailsPopup.fxml")){
             return getFxmlLoaderEndUser(fxml);
-        } else if(fxml.equals("editPopup.fxml")){
+        }if(fxml.equals("editPopup.fxml")){
             return getFxmlLoaderTabComponents(fxml);
         }
         return null;

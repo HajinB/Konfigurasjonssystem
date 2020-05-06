@@ -72,7 +72,7 @@ public class EnduserController extends TabComponentsController {
     @FXML
     public void initialize() throws IOException {
         addTableViewsToList();
-
+        System.out.println(ModelEndUser.INSTANCE);
         //todo så og si alle metoder under her kan trekkes ut av controlleren
         endUserLogic = new EndUserLogic(this, topLevelPaneEndUser,tblViewList, tblColumnDescriptionList,
                 tblColumnPriceList);
@@ -268,9 +268,27 @@ public class EnduserController extends TabComponentsController {
         List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
         if (FileHandling.showDialogIfComponentsAreMissing(whatsMissing, stage)) return;
 
+        openFinalDetails();
 
         /*
         updateCompletedComputers();*/
+    }
+
+    private void openFinalDetails() throws IOException {
+
+        System.out.println("her er vi i openDetailedView");
+        FXMLLoader loader = getFxmlLoader("detailsPopup.fxml");
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        stage.setScene(
+                new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
+        );
+
+        DetailsController detailsController =
+                loader.<DetailsController>getController();
+        detailsController.initData(getComputer(), stage);
+        stage.show();
     }
 
     Computer getComputer() {
@@ -316,7 +334,6 @@ public class EnduserController extends TabComponentsController {
                 if (empty || c == null || c.getProductName() == null) {
                     setText("");
                 } else {
-                    this.setStyle("-fx-alignment: right");
                     //bruker cell factory for å sette toString i listviewen.
                     //todo hvis pris skal være i egen kollonne må man bare sette opp en listview til eller tableview.
                     setText(c.getProductType() + "\n" + c.getProductName() + "\n" + String.format("%.0f", c.getProductPrice()) + " kr");

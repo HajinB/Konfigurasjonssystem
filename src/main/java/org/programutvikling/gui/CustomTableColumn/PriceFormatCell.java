@@ -16,7 +16,7 @@ public class PriceFormatCell extends TableCell<Object, Double> {
         }
 
         // setter teksten som skal vises her
-        setText(item == null ? "" : priceFormat(item));
+        setText(item == null ? "" : priceFormat(item)+" kr");
     }
 
     private String priceFormat(Double item) {

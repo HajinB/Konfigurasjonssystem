@@ -204,7 +204,7 @@ public class FileHandling {
 
         ArrayList<Computer> computers = new ArrayList<>();
         for (File file : listOfFiles) {
-            if (file.isFile()) {
+            if (file.isFile() && file.getName().toLowerCase().endsWith(".txt")){
                 Computer computer = new Computer(file.getName());
                 System.out.println(file.toString());
                 //FileHandling.openSelectedComputerTxtFiles(computerList, file.getPath());
@@ -221,6 +221,7 @@ public class FileHandling {
         }
         return computers;
     }
+
 
     public UserPreferences getUserPreferences() {
         return userPreferences;
