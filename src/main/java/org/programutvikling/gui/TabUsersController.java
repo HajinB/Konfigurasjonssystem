@@ -9,10 +9,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.gui.utility.UserSearch;
@@ -30,6 +27,8 @@ public class TabUsersController implements Initializable {
     private Label lblUserMsg;
     @FXML
     private TextField userSearch;
+    @FXML
+    private ChoiceBox<String> cbAdminFilter;
     @FXML
     private TableView<User> tblViewUser;
 
@@ -100,7 +99,13 @@ public class TabUsersController implements Initializable {
         //user lagd av inputfields
         //getUserRegister().addBruker();
 
-    registryUserLogic = new RegistryUserLogic(userReg);
-    updateView();
+        registryUserLogic = new RegistryUserLogic(userReg);
+        initChoiceBox();
+        updateView();
+    }
+
+    private void initChoiceBox() {
+        cbAdminFilter.setValue("Ingen filter");
+        cbAdminFilter.getItems().addAll("Ingen filter","Admin","User");
     }
 }
