@@ -83,6 +83,8 @@ public class TabComponentsController {
         threadHandler = new ThreadHandler(this);
         initTableView();
         initTextWrapCellFactory();
+        Model.INSTANCE.getComponentRegister().removeDuplicates();
+        updateView();
     }
 
     private void initTextWrapCellFactory() {
@@ -275,6 +277,8 @@ public class TabComponentsController {
             openThread(chosenFile);
             Model.INSTANCE.appendComponentRegisterIntoModel();
             //getComponentRegister().removeDuplicates();
+            Model.INSTANCE.getComponentRegister().removeDuplicates();
+            updateView();
             //refreshTableAndSave();
             updateView();
         }
@@ -283,6 +287,8 @@ public class TabComponentsController {
     public void overWriteList(String chosenFile) throws IOException {
         openThread(chosenFile);
         Model.INSTANCE.loadComponentRegisterIntoModel();
+        Model.INSTANCE.getComponentRegister().removeDuplicates();
+        updateView();
         updateView();
     }
 
