@@ -23,6 +23,7 @@ public class User implements Serializable {
 
     public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
         // validering
+
         if(!UserValidator.username(username)) {
             throw new InvalidUsernameException();
         }
@@ -50,12 +51,20 @@ public class User implements Serializable {
         return admin.get();
     }
 
+    public SimpleBooleanProperty adminProperty() {
+        return admin;
+    }
+
     public void setAdmin(boolean admin) {
         this.admin.set(admin);
     }
 
     public String getUsername() {
         return username.get();
+    }
+
+    public SimpleStringProperty usernameProperty() {
+        return username;
     }
 
     public void setUsername(String username) {
@@ -69,12 +78,20 @@ public class User implements Serializable {
         return password.get();
     }
 
+    public SimpleStringProperty passwordProperty() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password.set(password);
     }
 
     public String getName() {
         return name.get();
+    }
+
+    public SimpleStringProperty nameProperty() {
+        return name;
     }
 
     public void setName(String name) {
@@ -85,12 +102,20 @@ public class User implements Serializable {
         return email.get();
     }
 
+    public SimpleStringProperty emailProperty() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email.set(email);
     }
 
     public String getAddress() {
         return address.get();
+    }
+
+    public SimpleStringProperty addressProperty() {
+        return address;
     }
 
     public void setAddress(String address) {
@@ -101,12 +126,20 @@ public class User implements Serializable {
         return zip.get();
     }
 
+    public SimpleStringProperty zipProperty() {
+        return zip;
+    }
+
     public void setZip(String zip) {
         this.zip.set(zip);
     }
 
     public String getCity() {
         return city.get();
+    }
+
+    public SimpleStringProperty cityProperty() {
+        return city;
     }
 
     public void setCity(String city) {

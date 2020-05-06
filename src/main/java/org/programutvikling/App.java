@@ -44,6 +44,7 @@ public class App extends Application {
         System.out.println(App.class.getResource("primary"));
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setMaximized(true);
 
         //scene = buildUI(primaryStage);
         if (scene == null) throw new NullPointerException();

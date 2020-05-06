@@ -19,6 +19,7 @@ public class RegistryUserLogic {
     User createUserFromGUIInputFields() {
         try {
             User user = createUser();
+            Model.INSTANCE.getUserRegister().addBruker(user);
             resetFields();
             Dialog.showSuccessDialog(user.getUsername() + " er lagt til i listen!");
             return user;
@@ -61,7 +62,7 @@ public class RegistryUserLogic {
             return;
         }
 
-        User newUser = createUserFromGUIInputFields();
+        createUserFromGUIInputFields();
         // duplikat her
 
     }
@@ -85,7 +86,7 @@ public class RegistryUserLogic {
         ((TextField) gridPane.lookup("#userCity")).setText("");
     }
 
-    private void usernameValidation(String username) {
+    public void usernameValidation(String username) {
         if(Model.INSTANCE.getUserRegister().usernameExists(username)) {
             System.out.println("UsernameAlreadyExistsException thrown!");
             throw new UsernameAlreadyExistsException();
@@ -94,7 +95,7 @@ public class RegistryUserLogic {
         }
     }
 
-    private void emailValidation(String email) {
+    public void emailValidation(String email) {
         if(Model.INSTANCE.getUserRegister().emailExists(email)) {
             System.out.println("EmailExistsException thrown!");
             throw new EmailExistsException();
