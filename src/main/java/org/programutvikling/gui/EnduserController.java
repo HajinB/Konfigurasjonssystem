@@ -316,7 +316,9 @@ public class EnduserController extends TabComponentsController {
                 if (empty || c == null || c.getProductName() == null) {
                     setText("");
                 } else {
+                    this.setStyle("-fx-alignment: right");
                     //bruker cell factory for å sette toString i listviewen.
+                    //todo hvis pris skal være i egen kollonne må man bare sette opp en listview til eller tableview.
                     setText(c.getProductType() + "\n" + c.getProductName() + "\n" + String.format("%.0f", c.getProductPrice()) + " kr");
                 }
             }
