@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/ModelEndUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/ModelEndUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -271,13 +271,6 @@
       <workItem from="1588442497595" duration="25684000" />
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
-    </task>
-    <task id="LOCAL-00076" summary="test for wraptext i cellene">
-      <created>1588452022200</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1588452022200</updated>
     </task>
     <task id="LOCAL-00077" summary="wrap text i beskrivelse også">
       <created>1588453023056</created>
@@ -615,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588760758755</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="liten bug fix i search">
+      <created>1588761069920</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1588761069920</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +650,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="inputvalidering av computer.txt" />
     <MESSAGE value="inputvalidering + clearselection listener" />
     <MESSAGE value="prøver å fikse velg lagringsplass" />
     <MESSAGE value="mappestruktur" />
@@ -675,7 +674,8 @@
     <MESSAGE value="nå er databasen txt for enduser" />
     <MESSAGE value="Popup for bestill" />
     <MESSAGE value="Popup for bestill og legg til i handlekurv fra popupen. skal vi ta bort lagre som?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Popup for bestill og legg til i handlekurv fra popupen. skal vi ta bort lagre som?" />
+    <MESSAGE value="liten bug fix i search" />
+    <option name="LAST_COMMIT_MESSAGE" value="liten bug fix i search" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />

@@ -13,6 +13,15 @@ import java.util.ArrayList;
 public enum ModelEndUser {
     INSTANCE;
 
+    public ArrayList<Object> getEndUserObjects() {
+        return endUserObjects;
+    }
+    private ArrayList<Object> endUserObjects = new ArrayList<>();
+    private ComputerRegister computerRegister = new ComputerRegister();
+    private Computer computer = new Computer("current");
+
+
+
     private ModelEndUser(){
         loadComputerRegisterFromDirectory();
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
@@ -31,18 +40,6 @@ public enum ModelEndUser {
         // holdes
         // privat
     }
-
-    public void loadComputerIntoClass() {
-    }
-
-    public ArrayList<Object> getEndUserObjects() {
-        return endUserObjects;
-    }
-
-    private ArrayList<Object> endUserObjects = new ArrayList<>();
-    private ComputerRegister computerRegister = new ComputerRegister();
-    private Computer computer = new Computer("current");
-
 
     public ComputerRegister getComputerRegister() {
         return computerRegister;
