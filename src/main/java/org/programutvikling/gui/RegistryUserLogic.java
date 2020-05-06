@@ -1,13 +1,17 @@
 package org.programutvikling.gui;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.exceptions.*;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
+
+import java.io.IOException;
 
 public class RegistryUserLogic {
     private GridPane gridPane;
@@ -102,6 +106,20 @@ public class RegistryUserLogic {
         } else {
             System.out.println("EmailExistsException NOT thrown, Model.INSTANCE.getUserRegister().emailExists(email) = " + Model.INSTANCE.getUserRegister().emailExists(email));
         }
+    }
+
+    void askForDeletion(User selectedItem) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette.", "Vil du slette ",
+                selectedItem.getName());
+        alert.showAndWait();
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            deleteUser(selectedItem);
+            FileHandling.saveAllAdminFiles();
+        }
+    }
+
+    private void deleteUser(User user) {
+        Model.INSTANCE.getUserRegister().getRegister().remove(user);
     }
     // getters from gridPane
 

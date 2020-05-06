@@ -16,6 +16,7 @@ import org.programutvikling.model.Model;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,8 +37,9 @@ public class TabUsersController implements Initializable {
     updateView();
     }
 
-    public void btnDeleteUser(ActionEvent actionEvent) {
-
+    public void btnDeleteUser(ActionEvent actionEvent) throws IOException {
+        registryUserLogic.askForDeletion(tblViewUser.getSelectionModel().getSelectedItem());
+        updateView();
     }
 
     public void cbAdmin(ActionEvent event) {
