@@ -16,7 +16,7 @@ public class UserRegister implements Serializable {
 
     private transient ObservableList<User> userRegister = FXCollections.observableArrayList();
 
-    public List<User> getRegister() {
+    public ObservableList<User> getRegister() {
         return userRegister;
     }
 

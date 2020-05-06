@@ -4,6 +4,8 @@ package org.programutvikling.gui;
 // veldig lett da (?)   ((main controlleren blir så full)) - how to avoid - beste er å enten hente input fra en annen
 // class eller sende input fra controller til andre steder på en bra måte.
 
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +13,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import org.programutvikling.gui.utility.Search;
+import org.programutvikling.gui.utility.UserSearch;
 import org.programutvikling.model.Model;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
@@ -73,12 +78,23 @@ public class TabUsersController implements Initializable {
         getUserRegister().attachTableView(tblViewUser);
     }
 
-    public UserRegister getUserRegister(){
-        return Model.INSTANCE.getUserRegister();
-    }
-
     public void registerUser() {
 
+    }
+    @FXML
+    void search(KeyEvent event) {
+            setSearchedList();
+    }
+
+    private void setSearchedList() {
+        FilteredList<User> filteredData = UserSearch.getFilteredList(getUserRegister().getRegister(), userSearch.getText());
+        SortedList<User> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tblViewUser.comparatorProperty());
+        tblViewUser.setItems(sortedData);
+    }
+
+    public UserRegister getUserRegister(){
+        return Model.INSTANCE.getUserRegister();
     }
 
     @Override
