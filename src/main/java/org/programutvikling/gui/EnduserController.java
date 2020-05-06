@@ -85,6 +85,8 @@ public class EnduserController extends TabComponentsController {
         updateComputerListView();
         setTblCompletedComputersListener();
         computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
+        final Tooltip tooltipCompletedComputers = new Tooltip("Dobbeltklikk på en datamaskin for å se detaljer");
+        tblCompletedComputers.setTooltip(tooltipCompletedComputers);
         //setDblClickEvent();
         //todo se på hvordan dblclick event er hentet ut av controlleren og gjør det på ALLE tablerows..
         //mulig man må finne en ny måte å update listene på -fra denne controlleren(?)

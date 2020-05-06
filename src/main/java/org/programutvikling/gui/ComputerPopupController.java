@@ -54,9 +54,10 @@ public class ComputerPopupController extends EnduserController implements Initia
     }
     @FXML
     public void btnAddComputer(ActionEvent event) {
+        //todo evt spørre om de vil erstatte her.
         ModelEndUser.INSTANCE.getComputer().removeAll();
         ModelEndUser.INSTANCE.getComputer().getComponentRegister()
                 .getObservableRegister().addAll(computer.getComponentRegister().getRegister());
-
+        stage.close();
     }
 }

@@ -58,6 +58,11 @@ public class DetailsController implements Initializable {
     void btnAddToComputersFolder(ActionEvent event) throws IOException {
         FileSaverTxt fileSaverTxt = new FileSaverTxt();
 
+        if(txtNameForComputer.getText().isEmpty()){
+            Dialog.showErrorDialog("Gi datamaskinen et navn for å lagre den");
+            return;
+        }
+
         ComputerFactory computerFactory = new ComputerFactory();
         Computer computerWithName = computerFactory.computerFactory(finishedComputer.getComponentRegister(),
                 txtNameForComputer.getText());
