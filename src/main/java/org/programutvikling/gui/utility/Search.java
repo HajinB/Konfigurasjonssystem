@@ -16,7 +16,7 @@ public class Search {
             if (k.getProductDescription().toLowerCase().contains(query) ||
                     k.getProductName().toLowerCase().contains(query) ||
                     Double.toString(k.getProductPrice()).contains(query) ||
-                    k.getProductType().contains(query)) {
+                    k.getProductType().toLowerCase().contains(query)) {
                 temp.add(k);
             }
         }

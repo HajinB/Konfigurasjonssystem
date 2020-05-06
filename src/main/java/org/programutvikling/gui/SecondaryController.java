@@ -43,8 +43,9 @@ public class SecondaryController implements Initializable {
         String chosenPath = FileUtility.getFilePathFromSaveJOBJDialog(this.stage);
         if(chosenPath != null) {
                 FileHandling.saveFileAs(chosenPath);
+        }else {
+            tabComponentsController.setResultLabelTimed("Lagring ferdig!");
         }
-        tabComponentsController.setResultLabelTimed("Lagring ferdig!");
     }
 
     @FXML

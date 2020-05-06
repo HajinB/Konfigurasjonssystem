@@ -53,6 +53,7 @@ public class FileUtility {
 
     public static String getFilePathFromSaveJOBJDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("AppFiles/Database/Admin/ComponentRegisters"));
         FileChooser.ExtensionFilter extFilter =
                 new FileChooser.ExtensionFilter("JOBJ files (*.jobj)", "*.jobj");
 

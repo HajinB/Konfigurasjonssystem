@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/denjjjjjjpcn.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Search.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -269,13 +271,6 @@
       <workItem from="1588442497595" duration="25684000" />
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
-    </task>
-    <task id="LOCAL-00075" summary="test for wraptext i cellene">
-      <created>1588451454414</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1588451454414</updated>
     </task>
     <task id="LOCAL-00076" summary="test for wraptext i cellene">
       <created>1588452022200</created>
@@ -613,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588760658230</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="Popup for bestill og legg til i handlekurv fra popupen. skal vi ta bort lagre som?">
+      <created>1588760758755</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1588760758755</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
