@@ -74,7 +74,8 @@ public class EnduserController extends TabComponentsController {
         addTableViewsToList();
 
         //todo så og si alle metoder under her kan trekkes ut av controlleren
-        endUserLogic = new EndUserLogic(topLevelPaneEndUser,tblViewList, tblColumnDescriptionList, tblColumnPriceList);
+        endUserLogic = new EndUserLogic(this, topLevelPaneEndUser,tblViewList, tblColumnDescriptionList,
+                tblColumnPriceList);
         initTextWrapCellFactory();
         updateComponentViews();
         updateList();
@@ -177,6 +178,7 @@ public class EnduserController extends TabComponentsController {
                     try {
                         //åpne
                         openDetailedView(row);
+                        updateTotalPrice();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -335,7 +337,7 @@ public class EnduserController extends TabComponentsController {
         updateTotalPrice();
     }
 
-    private void updateTotalPrice() {
+    public void updateTotalPrice() {
         if (getComputer() != null) {
             String totalpris = String.format("%.0f",getComputer().calculatePrice()) + " kr";
             lblTotalPrice.setText(totalpris);

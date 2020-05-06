@@ -10,6 +10,7 @@ import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
+import org.programutvikling.gui.EnduserController;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
@@ -21,8 +22,11 @@ public class EndUserLogic {
 
     private final ArrayList<TableView<Component>> tblViewList;
     private BorderPane borderPane;
+    EnduserController endUserController;
 
-    public EndUserLogic(BorderPane topLevelPaneEndUser, ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList, ArrayList<TableColumn> tblColumnPriceList) {
+    public EndUserLogic(EnduserController endUserController, BorderPane topLevelPaneEndUser,
+                        ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList, ArrayList<TableColumn> tblColumnPriceList) {
+        this.endUserController = endUserController;
         this.borderPane = topLevelPaneEndUser;
         this.tblViewList = tblViewList;
         initView();
@@ -45,6 +49,7 @@ public class EndUserLogic {
                     }
                     Component c = (Component) row.getItem();
                     addComponentToComputer(c);
+                    endUserController.updateTotalPrice();
                    // clearSelection();
                 }
             }

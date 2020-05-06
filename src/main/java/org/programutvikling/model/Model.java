@@ -3,6 +3,7 @@ package org.programutvikling.model;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerRegister;
+import org.programutvikling.domain.user.User;
 import org.programutvikling.gui.FileHandling;
 import org.programutvikling.gui.SavedPathRegister;
 import org.programutvikling.gui.utility.FileUtility;
@@ -44,6 +45,16 @@ public enum Model {
     }
 
     private void addDefaultUsers() {
+        User user = new User(true, "admin", "admin", "ola",
+                "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
+
+        User user2 = new User(false, "user", "user", "ola",
+                "user@user.com",  "trondheimsvegen 1", "0909", "Trondheim");
+
+        userRegister.addBruker(user);
+        userRegister.addBruker(user2);
+        userRegister.addBruker(user);
+        userRegister.addBruker(user2);
 
     }
 
