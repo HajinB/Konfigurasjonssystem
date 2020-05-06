@@ -19,7 +19,6 @@ import org.programutvikling.gui.utility.UserSearch;
 import org.programutvikling.model.Model;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
