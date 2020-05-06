@@ -15,7 +15,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import org.programutvikling.gui.utility.Search;
 import org.programutvikling.gui.utility.UserSearch;
 import org.programutvikling.model.Model;
 import org.programutvikling.domain.user.User;

@@ -4,7 +4,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.exceptions.*;
 import org.programutvikling.gui.customTextField.ZipField;
