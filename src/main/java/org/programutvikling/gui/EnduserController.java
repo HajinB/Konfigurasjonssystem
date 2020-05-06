@@ -69,6 +69,11 @@ public class EnduserController extends TabComponentsController {
 
     private EndUserLogic endUserLogic;
 
+
+
+    //todo hver dag fra nå av : prøv å få ut all denne koden fra kontrolleren. alt man trenger er å definere
+    // kollonenen, send de til EndUserLogic, og gjør alt som trengs der!!!!
+
     @FXML
     public void initialize() throws IOException {
         addTableViewsToList();

@@ -205,6 +205,7 @@ public class RegistryComponentLogic {
                         TemporaryComponent.INSTANCE.getTempComponent());
                 TemporaryComponent.INSTANCE.resetTemps();*/
                 justReplaceComponent(c, dup);
+                Model.INSTANCE.getComponentRegister().removeDuplicates();
             }
             try {
                 FileHandling.saveAllAdminFiles();

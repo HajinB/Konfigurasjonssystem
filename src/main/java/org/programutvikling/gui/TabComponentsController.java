@@ -159,7 +159,9 @@ public class TabComponentsController {
                         }
                         try {
                             windowHandler.openEditWindow(row, componentRegNode);
+                            Model.INSTANCE.getComponentRegister().removeDuplicates();
                             updateView();
+
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -280,7 +282,7 @@ public class TabComponentsController {
             Model.INSTANCE.getComponentRegister().removeDuplicates();
             updateView();
             //refreshTableAndSave();
-            updateView();
+
         }
     }
 

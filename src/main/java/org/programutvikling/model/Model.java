@@ -53,8 +53,6 @@ public enum Model {
 
         userRegister.addBruker(user);
         userRegister.addBruker(user2);
-        userRegister.addBruker(user);
-        userRegister.addBruker(user2);
 
     }
 
