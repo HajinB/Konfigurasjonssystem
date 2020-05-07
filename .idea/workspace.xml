@@ -20,17 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/UserPopupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/UserWindowHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/TemporaryUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/userPopup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editPopup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabComponents.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabComponents.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/UserPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/UserPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/userPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/userPopup.fxml" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="SHOW_DIALOG" value="false" />
@@ -294,14 +286,7 @@
       <workItem from="1588442497595" duration="25684000" />
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
-      <workItem from="1588826328388" duration="4317000" />
-    </task>
-    <task id="LOCAL-00085" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
-      <created>1588536682257</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1588536682257</updated>
+      <workItem from="1588826328388" duration="6557000" />
     </task>
     <task id="LOCAL-00086" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
       <created>1588536846334</created>
@@ -630,7 +615,13 @@
       <option name="presentableId" value="LOCAL−00133" />
       <updated>1588827368496</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL−00134" summary="På vei med userPopup.fxml, og rettet cbAdmin checkbox i tabUsers.fxml">
+      <created>1588830766942</created>
+      <option name="number" value="LOCAL−00134" />
+      <option name="presentableId" value="LOCAL−00134" />
+      <updated>1588830766943</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +655,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen." />
     <MESSAGE value="fiksa remove duplicates - usikker på om det bør være i ui eller om programmet bare skal fjerne duplikater automatisk hvis noen prøver å legge til duplikater vha åpne fil." />
     <MESSAGE value="kr (?)" />
     <MESSAGE value="Trekker ting ut fra componentcontroller" />
@@ -689,7 +679,8 @@
     <MESSAGE value="Filtrerer mellom admin og user" />
     <MESSAGE value="Slettet custom exceptions i User, og omgjorde valideringen." />
     <MESSAGE value="Endret tableview til &quot;Rolle&quot;, der man er &quot;Admin&quot; eller &quot;Bruker&quot; i stedet for Admin true or false ved å endre getSimpleStringProperty getAdmin() i User" />
-    <option name="LAST_COMMIT_MESSAGE" value="Endret tableview til &quot;Rolle&quot;, der man er &quot;Admin&quot; eller &quot;Bruker&quot; i stedet for Admin true or false ved å endre getSimpleStringProperty getAdmin() i User" />
+    <MESSAGE value="På vei med userPopup.fxml, og rettet cbAdmin checkbox i tabUsers.fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="På vei med userPopup.fxml, og rettet cbAdmin checkbox i tabUsers.fxml" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1588797689461" />
@@ -712,15 +703,15 @@
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588797689461" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1588797689461" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state x="149" y="0" key="CommitChangelistDialog2" timestamp="1588827367235">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1588830764895">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="149" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588827367235" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588830764895" />
     <state x="315" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state x="189" y="97" width="1228" height="687" key="DiffContextDialog" timestamp="1588827311196">
+    <state x="189" y="97" width="1228" height="687" key="DiffContextDialog" timestamp="1588830756947">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1588827311196" />
+    <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1588830756947" />
     <state x="189" y="97" width="1228" height="687" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="740" y="99" key="FileChooserDialogImpl" timestamp="1588797689461" />
     <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588797689461" />
@@ -770,10 +761,10 @@
     <state x="299" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="147" y="65" key="MergeDialog" timestamp="1588797689461" />
     <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state x="453" y="86" key="RollbackChangesDialog" timestamp="1588830363837">
+    <state x="453" y="86" key="RollbackChangesDialog" timestamp="1588830735887">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="453" y="86" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588830363837" />
+    <state x="453" y="86" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588830735887" />
     <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1588797689461" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588797689461" />
@@ -804,10 +795,10 @@
     <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1588797689461" />
     <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1588797689461" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588829596264">
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588832850245">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588829596264" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588832850245" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
