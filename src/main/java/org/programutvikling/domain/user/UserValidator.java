@@ -1,7 +1,5 @@
 package org.programutvikling.domain.user;
 
-import org.programutvikling.domain.user.exceptions.EmailExistsException;
-import org.programutvikling.domain.user.exceptions.UsernameAlreadyExistsException;
 import org.programutvikling.model.Model;
 
 public class UserValidator {
@@ -13,23 +11,31 @@ public class UserValidator {
     public static final int ZIP_LENGTH = 4;
     public static final String EMAIL_VERIFICATION = "^[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*@[a-zæøåA-ZÆØÅ0-9]+(?:[_.-][a-zæøåA-ZÆØÅ0-9]+)*\\.[a-zæøåA-ZÆØÅ]{2,}$";
 
+    /** No reason to accept spaces. Hard to see the difference between "user" and "user ".
+     */
     public static boolean username(String username) {
         return !username.isBlank() && username.matches(NO_SPACES);
     }
     public static boolean password(String password) {
         return password.length() >= PASSWORD_LENGTH;
     }
+    /** Accepts everything except a blank name.
+     * "Tom W. Hap'l, v/ Host243.no" or even the real name "X Æ A-12".
+     * */
     public static boolean name(String name) {
-        return name.matches(NO_NUMBERS) && !name.isBlank();
+        return !name.isBlank();
     }
     static boolean email(String email) {
         return email.matches(EMAIL_VERIFICATION);
     }
+    public static boolean address(String address) {
+        return !address.isBlank();
+    }
     static boolean zip(String zip) {
         return zip.matches(ONLY_NUMBERS) && zip.length() == ZIP_LENGTH;
     }
-    static boolean city(String city) {
-        return city.matches(NO_NUMBERS);
+    public static boolean city(String city) {
+        return !city.isBlank();
     }
 
 //    static void usernameValidation(String username) {

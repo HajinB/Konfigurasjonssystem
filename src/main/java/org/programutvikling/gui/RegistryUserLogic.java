@@ -5,7 +5,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
-import org.programutvikling.domain.user.exceptions.*;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
@@ -26,18 +25,8 @@ public class RegistryUserLogic {
             resetFields();
             Dialog.showSuccessDialog(user.getUsername() + " er lagt til i listen!");
             return user;
-        } catch (UsernameAlreadyExistsException exception) {
-            Dialog.showErrorDialog(exception.getMessage());
-        } catch (InvalidUsernameException exception) {
-            Dialog.showErrorDialog(exception.getMessage());
-        } catch (InvalidPasswordException exception) {
-            Dialog.showErrorDialog(exception.getMessage());
-        } catch (EmailExistsException exception) {
-            Dialog.showErrorDialog(exception.getMessage());
-        } catch (InvalidEmailException exception) {
-            Dialog.showErrorDialog(exception.getMessage());
-        } catch (InvalidZipException exception) {
-            Dialog.showErrorDialog(exception.getMessage());
+        } catch (IllegalArgumentException illegalArgumentException) {
+            Dialog.showErrorDialog(illegalArgumentException.getMessage());
         }
         return null;
     }
@@ -92,7 +81,7 @@ public class RegistryUserLogic {
     public void usernameValidation(String username) {
         if(Model.INSTANCE.getUserRegister().usernameExists(username)) {
             System.out.println("UsernameAlreadyExistsException thrown!");
-            throw new UsernameAlreadyExistsException();
+            throw new IllegalArgumentException("Brukernavnet er allerede i bruk!");
         } else {
             System.out.println("UsernameAlreadyExistsException NOT thrown, Model.INSTANCE.getUserRegister().usernameExists(username) = " + Model.INSTANCE.getUserRegister().usernameExists(username));
         }
@@ -101,7 +90,7 @@ public class RegistryUserLogic {
     public void emailValidation(String email) {
         if(Model.INSTANCE.getUserRegister().emailExists(email)) {
             System.out.println("EmailExistsException thrown!");
-            throw new EmailExistsException();
+            throw new IllegalArgumentException("Emailen er allerede registrert!");
         } else {
             System.out.println("EmailExistsException NOT thrown, Model.INSTANCE.getUserRegister().emailExists(email) = " + Model.INSTANCE.getUserRegister().emailExists(email));
         }
