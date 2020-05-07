@@ -1,19 +1,28 @@
 package org.programutvikling.gui;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.ComponentValidator;
 import org.programutvikling.domain.user.User;
+import org.programutvikling.domain.user.UserValidator;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
 
 public class RegistryUserLogic {
     private GridPane gridPane;
-
+    TabUsersController tabUsersController;
+    public RegistryUserLogic(GridPane gridPane, TabUsersController tabUsersController) {
+        this.gridPane = gridPane;
+        this.tabUsersController = tabUsersController;
+    }
     public RegistryUserLogic(GridPane gridPane) {
         this.gridPane = gridPane;
     }
@@ -106,6 +115,42 @@ public class RegistryUserLogic {
         }
     }
 
+        public void editUserFromPopup(User u) {
+        if (TemporaryUser.INSTANCE.getIsEdited()) {
+            User dup = TemporaryUser.INSTANCE.getTempUser();
+            System.out.println(TemporaryUser.INSTANCE.getTempUser());
+            if (dup == null) {
+                getRegister().set(getRegister().indexOf(u),
+                        TemporaryUser.INSTANCE.getTempUser());
+                TemporaryUser.INSTANCE.resetTemps();
+            } else {
+               /* getObservableRegister().set(getObservableRegister().indexOf(c),
+                        TemporaryComponent.INSTANCE.getTempComponent());
+                TemporaryComponent.INSTANCE.resetTemps();*/
+                justReplaceUser(u, dup);
+                Model.INSTANCE.getComponentRegister().removeDuplicates();
+            }
+            try {
+                FileHandling.saveAllAdminFiles();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void justReplaceUser(User newUser, User possibleDuplicateUserIfNotThenNull){
+
+        int indexToReplace =
+                getRegister().indexOf(possibleDuplicateUserIfNotThenNull);
+        System.out.println("index to replac : "+indexToReplace);
+        getRegister().set(indexToReplace, newUser);
+
+        //  tabComponentsController.updateView();
+
+               /* getComponentRegister().getObservableRegister().remove(possibleDuplicateComponentIfNotThenNull);
+                getComponentRegister().getObservableRegister().add(newComponent);*/
+    }
+
     private void deleteUser(User user) {
         Model.INSTANCE.getUserRegister().getRegister().remove(user);
     }
@@ -117,6 +162,10 @@ public class RegistryUserLogic {
 
     private String getString(TextField textField) {
         return textField.getText();
+    }
+
+    private ObservableList<User> getRegister() {
+        return Model.INSTANCE.getUserRegister().getRegister();
     }
 
 
