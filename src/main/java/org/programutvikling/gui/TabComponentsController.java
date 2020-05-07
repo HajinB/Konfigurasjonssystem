@@ -161,8 +161,6 @@ public class TabComponentsController {
                             windowHandler.openEditWindow(row, componentRegNode);
                             Model.INSTANCE.getComponentRegister().removeDuplicates();
                             updateView();
-
-
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

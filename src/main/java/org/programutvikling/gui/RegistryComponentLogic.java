@@ -111,6 +111,7 @@ public class RegistryComponentLogic {
         if (isProductTypeEmpty()) {
             tabComponentsController.setLblMsgType("belble");
             //denne
+            System.out.println("heheheheh");
             //eksempel da, men man bør kanskje vise mange labels samtidig? hva som er feil på en måte?
             return;
         }
@@ -118,8 +119,9 @@ public class RegistryComponentLogic {
 // nullpointerexception
         if (isProductDescriptionEmpty()) {
             tabComponentsController.setLblMsgDescription("Fyll inn her");
+        }else{
+            createComponentHandleDuplicate();
         }
-        createComponentHandleDuplicate();
     }
 
     private void createComponentHandleDuplicate() {
@@ -166,7 +168,7 @@ public class RegistryComponentLogic {
     }
 
     private boolean isProductTypeEmpty() {
-        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null;
+        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).equalsIgnoreCase("") ;
     }
 
     private boolean isProductPriceEmpty() {
