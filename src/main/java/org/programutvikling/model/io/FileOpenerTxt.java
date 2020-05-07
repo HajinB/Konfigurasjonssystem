@@ -42,13 +42,10 @@ public class FileOpenerTxt implements FileOpener {
     //todo eksempel fra tostring :
 
     private ItemUsable parseComponent(String line) throws InvalidComponentFormatException {
-//hvordan skal man gjøre dette????? vi parser en component
-
         String[] split = line.split(";");
         if (split.length != 4) {
             throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
         }
-
         String type = split[0];
         String name = split[1];
         String description = split[2];
@@ -60,22 +57,15 @@ public class FileOpenerTxt implements FileOpener {
                         Model.INSTANCE.getComponentRegister().getRegister());
         if (priceState > 0) {
             //pris er feil - pricestate har riktig pris.
-            //Dialog.showErrorDialog("prisen på " + tempComponent.getProductName() +" stemmer ikke med databasen, vi " +
-                  //  "endrer den til den riktige prisen");
             TemporaryComponent.INSTANCE.getErrorList().add("prisen på " + tempComponent.getProductName() +" stemmer ikke med databasen, vi " +
                     "endrer den til den riktige prisen");
             return new Component(type, name, description, priceState);
-            //legg til dialog her evt.
         }
         if (priceState == -2.00) {
             //ingenting stemmer
-          //  Dialog.showErrorDialog(tempComponent.getProductName() + " fins ikke i databasen vår, og blir dermed
-            //  ikke " +
-            //        "lagt til i listen");
+
             TemporaryComponent.INSTANCE.getErrorList().add(tempComponent.getProductName() + " fins ikke i databasen vår, og blir dermed ikke " +
                     "lagt til i listen");
-
-            //todo isteden for å returnere en Component, returner noe annet som arver fra samme ting som component
             return new EmptyComponent();
         }
         return new Component(type, name, description, price);
@@ -114,4 +104,29 @@ public class FileOpenerTxt implements FileOpener {
         }
         return list;
     }
-}
+
+    public void openWithoutValidation(Computer computer, Path filePath) throws IOException {
+        computer.removeAll();
+        try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
+            String line;
+            //hopper over første linje
+            bufferedReader.readLine();
+            while ((line = bufferedReader.readLine()) != null) {
+                    computer.addComponent((Component) parseComponentWithoutValidation(line));
+            }
+        }
+    }
+
+    private ItemUsable parseComponentWithoutValidation(String line) throws InvalidComponentFormatException {
+        String[] split = line.split(";");
+        if (split.length != 4) {
+            throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
+        }
+        String type = split[0];
+        String name = split[1];
+        String description = split[2];
+        double price = parseDouble(split[3], "pris må være et tall");
+
+            return new Component(type, name, description, price);
+        }
+    }

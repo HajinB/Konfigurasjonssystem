@@ -84,6 +84,7 @@ public class FileUtility {
 
     public static String getFilePathFromOpenTxtDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("AppFiles/Database/User/Computers"));
         FileChooser.ExtensionFilter extFilter =
                 new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);

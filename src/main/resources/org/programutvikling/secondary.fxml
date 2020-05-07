@@ -23,6 +23,15 @@
                                 </image>
                             </ImageView>
                         </graphic></MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#btnOpenComputerAndAddComponents"
+                              text="Åpne datamaskin og legg til komponentene">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../Bilder/folder-13.png" />
+                                </image>
+                            </ImageView>
+                        </graphic></MenuItem>
                     <MenuItem mnemonicParsing="false" onAction="#btnSaveToChosenPath" text="Lagre som...">
                         <graphic>
                             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
