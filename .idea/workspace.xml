@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/sadfasdfasdfasfd.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/logic/EndUserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/logic/EndUserLogic.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -274,13 +271,6 @@
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
-    </task>
-    <task id="LOCAL-00082" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
-      <created>1588504609598</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1588504609598</updated>
     </task>
     <task id="LOCAL-00083" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
       <created>1588528694709</created>
@@ -618,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588849428832</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="med testdata">
+      <created>1588849888380</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1588849888381</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +650,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test for wraptext i cellene" />
     <MESSAGE value="wrap text i beskrivelse også" />
     <MESSAGE value="wooops liten bugfix - trenger ikke calle updatelist etter man har lagt til en komponent." />
     <MESSAGE value="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen." />
@@ -678,7 +674,8 @@
     <MESSAGE value="prøver å refactore eventhandlers men dt er ikke så lett" />
     <MESSAGE value="fixed fxml open" />
     <MESSAGE value="fixed edit user" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed edit user" />
+    <MESSAGE value="med testdata" />
+    <option name="LAST_COMMIT_MESSAGE" value="med testdata" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />

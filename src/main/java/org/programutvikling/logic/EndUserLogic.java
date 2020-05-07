@@ -80,17 +80,30 @@ public class EndUserLogic {
             alert.showAndWait();
             //trykker ja = replace
             if (alert.getResult() == alert.getButtonTypes().get(0)) {
-                replaceFirstComponentByType(component.getProductType(), component);
+                replaceFirstComponentByType(component);
                // updateComputerListView();
             }
         }
     }
 
-    public void replaceFirstComponentByType(String productType, Component component) {
+    public void replaceFirstComponentByType(Component dblClickedComponent) {
+
+        //går igjennom hele componentregisteret i computer for å finne en component å replace
+
+        //starter loopen fra starten for å fjerne den som ble tatt bort først
+
+
         for (Component c : getComputer().getComponentRegister().getRegister()) {
-            if (productType.equalsIgnoreCase(c.getProductType())) {
+
+            //finner en(den første den finner) komponent som har samme produkttype
+            if (dblClickedComponent.getProductType().equalsIgnoreCase(c.getProductType())) {
+
+                //finner indeksen til denne.
                 int index = getComputer().getComponentRegister().getRegister().indexOf(c);
-                getComputer().getComponentRegister().getRegister().set(index, component);
+
+                System.out.println(index);
+                getComputer().getComponentRegister().getRegister().set(index, dblClickedComponent);
+                break;
             }
         }
     }
