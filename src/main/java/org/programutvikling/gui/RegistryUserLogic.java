@@ -117,21 +117,11 @@ public class RegistryUserLogic {
 
         public void editUserFromPopup(User u) {
         if (TemporaryUser.INSTANCE.getIsEdited()) {
-            //User dup = TemporaryUser.INSTANCE.getTempUser();
-            User dup =
-                    UserValidator.returnUserIfAlreadyExists(TemporaryUser.INSTANCE.getTempUser(),
-                            Model.INSTANCE.getUserRegister());
-
-            System.out.println(TemporaryUser.INSTANCE.getTempUser());
-            if (dup == null) {
-                System.out.println(getRegister().indexOf(u));
+            System.out.println("tempuserrrrr: " + TemporaryUser.INSTANCE.getTempUser() + " tempuser slutt");
+                System.out.println("RegistryUserLogic.editUserFromPopup() getRegister().indexOf(u): " + getRegister().indexOf(u));
                 getRegister().set(getRegister().indexOf(u),
-                        TemporaryUser.INSTANCE.getTempUser());
+                TemporaryUser.INSTANCE.getTempUser());
                 TemporaryUser.INSTANCE.resetTemps();
-            } else {
-                justReplaceUser(u, dup);
-                Model.INSTANCE.getComponentRegister().removeDuplicates();
-            }
             try {
                 FileHandling.saveAllAdminFiles();
             } catch (IOException e) {

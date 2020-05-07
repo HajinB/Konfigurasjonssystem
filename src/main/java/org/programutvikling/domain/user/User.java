@@ -254,7 +254,10 @@ public class User implements Serializable {
     }
 
     public String toString() {
-        return "name: " + getName() + ", username: " + getUsername() + ", password: " + getPassword();
+        return "\n" + "admin: " + getAdmin() + ", username: " + getUsername() + ", name: " + getName() +
+                ", password: " + getPassword() + ", email: " + getEmail() +
+                ", address: " + getAddress() +
+                ", zip: " + getZip() + ", city: " + getCity();
     }
 
 }

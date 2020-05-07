@@ -26,6 +26,7 @@ public class UserRegister implements Serializable, Clickable {
         userRegister.clear();
     }
 
+
     public void addBruker(User user) {
         userRegister.add(user);
     }
@@ -33,9 +34,12 @@ public class UserRegister implements Serializable, Clickable {
 
     // returns user after validating the correct username and password
     public User loginCredentialsMatches(String username, String password) {
-        for(User user : getRegister()) {
+        System.out.println("Utenfor loop, userRegister.size(): " + getRegister().size());
+        for(User user : userRegister) {
+            System.out.println("I looop! User: " + user);
             if(user.getUsername().equalsIgnoreCase(username) || user.getEmail().equalsIgnoreCase(username)) {
                 if(user.getPassword().equals(password)){
+                    System.out.println("return user from login");
                     return user;
                 }
             }
@@ -84,6 +88,15 @@ public class UserRegister implements Serializable, Clickable {
         throw new IllegalArgumentException("Feil filter i cbAdminFilter!");
     }
 
+    public boolean checkForAdmins() {
+        for(User user : userRegister) {
+            if(user.getAdmin()) {
+                return true;
+            }
+        }
+        // no admins in the register
+        return false;
+    }
     public void attachTableView(TableView<User> tv) {
         if (!userRegister.isEmpty())
             tv.setItems(userRegister);

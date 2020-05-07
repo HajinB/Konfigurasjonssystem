@@ -64,7 +64,7 @@ public class TabUsersController implements Initializable {
     }
 
     public void cbAdmin(ActionEvent event) {
-
+        System.out.println("cbAdmin: " + cbAdmin.isSelected());
     }
 
     public void userName(TableColumn.CellEditEvent cellEditEvent) {
@@ -127,7 +127,7 @@ public class TabUsersController implements Initializable {
                             System.out.println(Arrays.toString(e.getStackTrace()));
                             System.out.println(e.getLocalizedMessage());
                             System.out.println(e.getMessage());
-                            System.out.println("Her er fuckupen, row: " + row);
+                            System.out.println("Her er Exception, row: " + row);
                         }
                     }
                 }
@@ -141,7 +141,7 @@ public class TabUsersController implements Initializable {
         /**detecter tablecolumn, for å kunne fokusere på riktig celle i popupvindu*/
         final ObservableList<TablePosition> selectedCells = tblViewUser.getSelectionModel().getSelectedCells();
         //gjør det mulig å detecte cell på første klikk:
-        tblViewUser.getSelectionModel().setCellSelectionEnabled(true);
+        tblViewUser.getSelectionModel().setCellSelectionEnabled(false);
         selectedCells.addListener((ListChangeListener) u -> {
             if (selectedCells.size() != 0) {
                 TemporaryUser.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());

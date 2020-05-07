@@ -45,10 +45,9 @@ public enum Model {
     }
 
     private void addDefaultUsers() {
-        if(userRegister.getRegister().size()==0) {
+        if(userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
             User user = new User(true, "admin", "admin", "ola",
                     "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
-
             User user2 = new User(false, "user", "user", "ola",
                     "user@user.com", "trondheimsvegen 1", "0909", "Trondheim");
             User user3 = new User(false, "Tom", "password", "Tom", "tom@tom.com", "Toms vei 2", "2345", "Oslo");
@@ -57,6 +56,12 @@ public enum Model {
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
             userRegister.addBruker(user4);
+            System.out.println("--------------------------------------------------- \n" +
+                    "addDefaultUsers() UTFØRT! \n" +
+                    "userRegister.getRegister().size(): " + userRegister.getRegister().size() +  "\n" +
+                    "!userRegister.checkForAdmins() : " + !userRegister.checkForAdmins() + "\n" +
+                    "--------------------------------------------------- \n");
+            System.out.println("get1: " + userRegister.getRegister().get(1));
         }
     }
 

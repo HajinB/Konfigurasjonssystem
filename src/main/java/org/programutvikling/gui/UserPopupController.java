@@ -54,8 +54,10 @@ public class UserPopupController extends TabUsersController implements Initializ
         User user = null;
         try {
             user = new User(cbAdmin.isSelected(), userUsername.getText(), userPassword.getText(), name.getText(), email.getText(), address.getText(), userZip.getText(), UserCity.getText());
+            System.out.println(user);
         } catch (IllegalArgumentException illegalArgumentException) {
             Dialog.showErrorDialog(illegalArgumentException.getMessage());
+            return;
         }
         TemporaryUser.INSTANCE.setEdited(true);
         TemporaryUser.INSTANCE.storeTempUser(user);
@@ -100,16 +102,28 @@ public class UserPopupController extends TabUsersController implements Initializ
             userUsername.selectAll();
         }
         if (columnIndex == 2) {
-            name.requestFocus();
-            name.selectAll();
+            userPassword.requestFocus();
+            userPassword.selectAll();
         }
         if (columnIndex == 3) {
-            email.requestFocus();
-            email.selectAll();
+            name.requestFocus();
+            name.selectAll();
         }
         if (columnIndex == 4) {
             email.requestFocus();
             email.selectAll();
+        }
+        if (columnIndex == 5) {
+            address.requestFocus();
+            address.selectAll();
+
+        }
+        else if(columnIndex == 6) {
+            userZip.requestFocus();
+            userZip.selectAll();
+        } else if(columnIndex == 7) {
+            UserCity.requestFocus();
+            UserCity.selectAll();
         }
     }
     private boolean areInputFieldsEmpty() {

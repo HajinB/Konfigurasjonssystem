@@ -186,13 +186,13 @@
                             </Label>
                         </children>
                     </Pane>
-                    <TableView fx:id="tblViewUser" focusTraversable="false" editable="false"
+                    <TableView fx:id="tblViewUser" focusTraversable="false" editable="true"
                                onMousePressed="#dblClickTblRow" layoutX="351.0" layoutY="59.0" prefHeight="468.0"
                                prefWidth="666.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css"
                                AnchorPane.bottomAnchor="71.39999999999998" AnchorPane.leftAnchor="351.0"
                                AnchorPane.rightAnchor="21.000000000000114" AnchorPane.topAnchor="59.0">
                         <columns>
-                            <TableColumn id="userAdmin" prefWidth="70.66668701171875" text="Rolle">
+                            <TableColumn id="userAdmin" prefWidth="70.66668701171875" text="Rolle" onEditCommit="#cbAdmin">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="admin"/>
                                 </cellValueFactory>
@@ -202,7 +202,7 @@
                                     <PropertyValueFactory property="username"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn id="userPassword" prefWidth="96.0" text="Passord">
+                            <TableColumn id="userPassword" prefWidth="96.0" text="Passord" onEditCommit="#userPassword">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="password"/>
                                 </cellValueFactory>
