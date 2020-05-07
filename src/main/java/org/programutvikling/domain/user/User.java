@@ -103,7 +103,16 @@ public class User implements Serializable {
     }
 
     public SimpleStringProperty passwordProperty() {
-        return password;
+        // replace the length of password with asterix, for "privacy" if you open the table
+        String star = "*";
+        int starLength = getPassword().length();
+        StringBuilder starBuilder = new StringBuilder();
+
+        for(int i = 0; i < starLength; i++) {
+            starBuilder.append(star);
+        }
+
+        return new SimpleStringProperty(starBuilder.toString());
     }
 
     public String getName() {
