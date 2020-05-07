@@ -144,7 +144,7 @@ public class TabUsersController implements Initializable {
 
     private void initChoiceBox() {
         cbAdminFilter.setValue("Ingen filter");
-        cbAdminFilter.getItems().addAll("Ingen filter","Admin","User");
+        cbAdminFilter.getItems().addAll("Ingen filter","Admin","Bruker");
     }
 
 }

@@ -50,9 +50,12 @@ public enum Model {
 
         User user2 = new User(false, "user", "user", "ola",
                 "user@user.com",  "trondheimsvegen 1", "0909", "Trondheim");
-
+        User user3 = new User(false,"Tom","password","Tom","tom@tom.com","Toms vei 2","2345","Oslo");
+        User user4 = new User(true,"Hackerman","hacker","H4CK3R","h4ck@m4i1.com","Trodde du ja!","1337","Russia");
         userRegister.addBruker(user);
         userRegister.addBruker(user2);
+        userRegister.addBruker(user3);
+        userRegister.addBruker(user4);
 
     }
 
