@@ -9,7 +9,8 @@ public enum TemporaryComponent {
     private Component tempComponent;
     boolean isEdited;
     int columnIndex;
-    ArrayList<String> errorList = new ArrayList<>();
+
+    public ArrayList<String> errorList = new ArrayList<>();
 
     public void storeTempComponent(Component component){
         tempComponent = component;

@@ -3,9 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/Computers/Untitled.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/Untitled.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/Computers/checkkk.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/checkkk.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/Computers/denjjjjjjpcn.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/denjjjjjjpcn.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Dialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/ModelEndUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/ModelEndUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/TemporaryComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/TemporaryComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/io/InvalidComponentFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/io/InvalidComponentFormatException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -271,13 +280,7 @@
       <workItem from="1588442497595" duration="25684000" />
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
-    </task>
-    <task id="LOCAL-00077" summary="wrap text i beskrivelse også">
-      <created>1588453023056</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1588453023056</updated>
+      <workItem from="1588836655761" duration="28000" />
     </task>
     <task id="LOCAL-00078" summary="wrap text i beskrivelse også">
       <created>1588500309662</created>
@@ -615,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588761069920</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="liten bug fix i search">
+      <created>1588762738226</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1588762738226</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -764,27 +774,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java</url>
-          <line>113</line>
+          <line>115</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java</url>
-          <line>93</line>
+          <line>95</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java</url>
-          <line>94</line>
+          <line>96</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java</url>
-          <line>98</line>
+          <line>100</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java</url>
-          <line>97</line>
+          <line>99</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>

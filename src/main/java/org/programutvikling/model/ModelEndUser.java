@@ -1,9 +1,9 @@
 package org.programutvikling.model;
 
-import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerRegister;
 import org.programutvikling.gui.FileHandling;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.io.FileOpenerTxt;
 
 import java.io.IOException;
@@ -20,25 +20,13 @@ public enum ModelEndUser {
     private ComputerRegister computerRegister = new ComputerRegister();
     private Computer computer = new Computer("current");
 
-
-
     private ModelEndUser(){
-        loadComputerRegisterFromDirectory();
-        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
-        System.out.println("modelenduser"+endUserObjects);
-        FileHandling.openObjects(endUserObjects,
-                Model.INSTANCE.getUserPreferences().getPathPathToUserComputer().toString());
-        try {
-            fileOpenerTxt.open(computer, Paths.get(Model.INSTANCE.getUserPreferences().getPathPathToUserComputer().toString()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("modelenduser etter "+endUserObjects);
-        System.out.println(TemporaryComponent.INSTANCE.errorListToString());
-//kan ikke kjøre denne metoden fra en annen klasse -
-        // konstruktøren må
-        // holdes
-        // privat
+        loadCompleteComputers();
+        loadComputer();
+    }
+
+    private void loadComputer() {
+        FileHandling.openCart(computer);
     }
 
     public ComputerRegister getComputerRegister() {
@@ -49,10 +37,8 @@ public enum ModelEndUser {
         return computer;
     }
 
-    private void loadComputerRegisterFromDirectory() {
+    private void loadCompleteComputers() {
         //FileHandling.findComputers
-
-
         ArrayList<Computer> computers =   FileHandling.findComputers();
         for(Object c : computers){
             computerRegister.getObservableRegister().add((Computer) c);

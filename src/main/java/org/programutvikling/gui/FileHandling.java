@@ -3,7 +3,9 @@ package org.programutvikling.gui;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.model.ModelEndUser;
+import org.programutvikling.model.TemporaryComponent;
 import org.programutvikling.model.io.FileOpener;
+import org.programutvikling.model.io.FileOpenerTxt;
 import org.programutvikling.model.io.FileSaver;
 import org.programutvikling.model.io.FileSaverTxt;
 import org.programutvikling.domain.computer.Computer;
@@ -220,6 +222,19 @@ public class FileHandling {
             //computerList blir en liste med komponenter aka en computer.
         }
         return computers;
+    }
+
+    public static void openCart(Computer computer) {
+        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
+        try {
+            fileOpenerTxt.open(computer, Paths.get(Model.INSTANCE.getUserPreferences().getPathPathToUserComputer().toString()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(TemporaryComponent.INSTANCE.errorList.size()>0){
+            Dialog.showSuccessDialog(TemporaryComponent.INSTANCE.errorListToString());
+            TemporaryComponent.INSTANCE.errorList.clear();
+        }
     }
 
 

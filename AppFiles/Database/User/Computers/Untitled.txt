@@ -2,7 +2,7 @@ Harddisk;asdf;asdf;23.0
 Skjermkort;asdf;asdf;23.0
 Kabinett;Fractal Design Define S2 Vision RGB;Vifter: 3x 140mm RGB front, 1x 140mm RGB bak, ATX, mATX, ITX, Tempered Glass;2939.0
 Prosessor;asdf;asdf;233.0
-Hovedkort;Fractal Design Define S2 Vision RGB;Vifter: 3x 140mm RGB front, 1x 140mm RGB bak, ATX, mATX, ITX, Tempered Glass;2939.0
+Hovedkort;Fractal Design Define S2 Vision RGB;Vifter: 3x 140mm RGB front, 1x 140mm Glass;2939.0
 Prosessor;AMD Ryzen 7 3800X Prosessor;Socket-AM4, 8-Core, 16-Thread, 3.9/4.5GHz, 105W, 7nm, inkl. kjøler sfadjhdfsahkhjkgadfshjgkasdfjghkafdsgjhkadfsghjkadfsjhkgadfsgjkhadfsjghkdfasjghkafdsjkgh;3999.0
 Minne;asdf;3928479328794328;23.0
 Harddisk;asdf;asdf;23.0

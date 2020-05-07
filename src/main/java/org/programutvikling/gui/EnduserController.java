@@ -314,16 +314,10 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     public void btnOpenComputer(ActionEvent event) throws IOException {
-        String path = FileUtility.getFilePathFromOpenTxtDialog(stage);
-        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
-        fileOpenerTxt.open(getComputer(), Paths.get(path));
-        //kjører fileopenertxt her - trenger man fileopener factory da?? er det lurt å la det gå til samme metode?
-        // for å redusere kopi ? da kan man ta bort (Computer) fra fileopenertxt - gjør det fra objects der også?
-        //er det nødvendig å ha interface
-       // FileHandling.openObjects(Model.INSTANCE.getCleanObjectList(), path);
-
+        FileHandling.openCart(getComputer());
         updateTotalPrice();
     }
+
 
     @FXML
     public void btnSavePC(ActionEvent event) throws IOException {
