@@ -21,25 +21,25 @@ public class User implements Serializable {
     public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
         // validering
 
-        if(!UserValidator.username(username)) {
+        if (!UserValidator.username(username)) {
             throw new IllegalArgumentException("Brukernavnet kan ikke være tomt!");
         }
-        if(!UserValidator.password(password)) {
+        if (!UserValidator.password(password)) {
             throw new IllegalArgumentException("Passordet må inneholde minst " + UserValidator.PASSWORD_LENGTH + " tegn!");
         }
-        if(!UserValidator.name(name)) {
+        if (!UserValidator.name(name)) {
             throw new IllegalArgumentException("Navn kan ikke være tomt!");
         }
-        if(!UserValidator.email(email)) {
+        if (!UserValidator.email(email)) {
             throw new IllegalArgumentException("Feil email!");
         }
-        if(!UserValidator.address(address)) {
+        if (!UserValidator.address(address)) {
             throw new IllegalArgumentException("Addresse kan ikke være tomt!");
         }
-        if(!UserValidator.zip(zip)) {
+        if (!UserValidator.zip(zip)) {
             throw new IllegalArgumentException("Postnummeret må inneholde " + UserValidator.ZIP_LENGTH + " nummer!");
         }
-        if(!UserValidator.city(city)) {
+        if (!UserValidator.city(city)) {
             throw new IllegalArgumentException("Poststed kan ikke være tomt!");
         }
         this.admin = new SimpleBooleanProperty(admin);
@@ -57,8 +57,12 @@ public class User implements Serializable {
         return admin.get();
     }
 
+    public void setAdmin(boolean admin) {
+        this.admin.set(admin);
+    }
+
     public SimpleStringProperty adminProperty() {
-        if(admin.get()) {
+        if (admin.get()) {
             return new SimpleStringProperty("Admin");
         } else {
             // admin = false, the User is a "Bruker"
@@ -67,7 +71,7 @@ public class User implements Serializable {
     }
 
     public String getAdminString() {
-        if(admin.get()) {
+        if (admin.get()) {
             return "Admin";
         } else {
             // admin = false, the User is a "Bruker"
@@ -75,97 +79,125 @@ public class User implements Serializable {
         }
     }
 
-    public void setAdmin(boolean admin) {
-        this.admin.set(admin);
-    }
-
     public String getUsername() {
         return username.get();
+    }
+
+    public void setUsername(String username) {
+        if (!UserValidator.username(username)) {
+            throw new IllegalArgumentException("Brukernavnet kan ikke være tomt!");
+        }
+        this.username.set(username);
     }
 
     public SimpleStringProperty usernameProperty() {
         return username;
     }
 
-    public void setUsername(String username) {
-        if(!UserValidator.username(username)) {
-            throw new IllegalArgumentException("Brukernavnet kan ikke være tomt!");
-        }
-        this.username.set(username);
-    }
-
     public String getPassword() {
         return password.get();
-    }
-
-    public SimpleStringProperty passwordProperty() {
-        return password;
     }
 
     public void setPassword(String password) {
         this.password.set(password);
     }
 
-    public String getName() {
-        return name.get();
+    public SimpleStringProperty passwordProperty() {
+        return password;
     }
 
-    public SimpleStringProperty nameProperty() {
-        return name;
+    public String getName() {
+        return name.get();
     }
 
     public void setName(String name) {
         this.name.set(name);
     }
 
-    public String getEmail() {
-        return email.get();
+    public SimpleStringProperty nameProperty() {
+        return name;
     }
 
-    public SimpleStringProperty emailProperty() {
-        return email;
+    public String getEmail() {
+        return email.get();
     }
 
     public void setEmail(String email) {
         this.email.set(email);
     }
 
-    public String getAddress() {
-        return address.get();
+    public SimpleStringProperty emailProperty() {
+        return email;
     }
 
-    public SimpleStringProperty addressProperty() {
-        return address;
+    public String getAddress() {
+        return address.get();
     }
 
     public void setAddress(String address) {
         this.address.set(address);
     }
 
-    public String getZip() {
-        return zip.get();
+    public SimpleStringProperty addressProperty() {
+        return address;
     }
 
-    public SimpleStringProperty zipProperty() {
-        return zip;
+    public String getZip() {
+        return zip.get();
     }
 
     public void setZip(String zip) {
         this.zip.set(zip);
     }
 
+    public SimpleStringProperty zipProperty() {
+        return zip;
+    }
+
     public String getCity() {
         return city.get();
+    }
+
+    public void setCity(String city) {
+        if (UserValidator.city(city)) {
+            this.city.set(city);
+        }
     }
 
     public SimpleStringProperty cityProperty() {
         return city;
     }
 
-    public void setCity(String city) {
-        if(UserValidator.city(city)) {
-            this.city.set(city);
+    @Override
+    public boolean equals(Object obj) {
+        // TODO denne metoden er for å kunne fjerne duplikater med HashSet - må override equals og hashcode metodene
+        //  til Object for å ha kontroll på de.
+        if (obj instanceof User) {
+            User temp = (User) obj;
+            return this.getName().equals(temp.getName())
+                    && this.getAdminString().equals(temp.getAdminString())
+                    && this.getUsername().equals(temp.getUsername())
+                    && this.getEmail().equals(temp.getEmail())
+                    && this.getAddress().equals(temp.getAddress())
+                    && this.getCity().equals(temp.getCity())
+                    && this.getZip().equals(temp.getZip())
+                    && this.getPassword().equals(temp.getPassword());
+            //bruker ikke pris her, for å sammenligne to komponenter i en liste.
         }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        // returnerer summen av hashcoden til hvert enkelt felt - blir en unik kode for hvert objekt.
+        return (this.getName().hashCode() +
+                this.getAdminString().hashCode() +
+                this.getUsername().hashCode() +
+                this.getEmail().hashCode() +
+                this.getAddress().hashCode() +
+                this.getCity().hashCode()+
+                this.getZip().hashCode()+
+                this.getPassword().hashCode());
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
@@ -201,14 +233,14 @@ public class User implements Serializable {
         this.city = new SimpleStringProperty();
 
 
-            setAdmin(admin);
-            setUsername(username);
-            setPassword(password);
-            setName(name);
-            setEmail(email);
-            setAddress(address);
-            setZip(zip);
-            setCity(city);
+        setAdmin(admin);
+        setUsername(username);
+        setPassword(password);
+        setName(name);
+        setEmail(email);
+        setAddress(address);
+        setZip(zip);
+        setCity(city);
 
     }
 

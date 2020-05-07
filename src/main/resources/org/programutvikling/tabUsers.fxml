@@ -210,7 +210,7 @@
                             <TableColumn id="userName" minWidth="63.333343505859375" onEditCommit="#userName"
                                          prefWidth="88.0" text="Navn">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="username"/>
+                                    <PropertyValueFactory property="name"/>
                                 </cellValueFactory>
                             </TableColumn>
                             <TableColumn id="userEmail" minWidth="0.0" onEditCommit="#userMail"

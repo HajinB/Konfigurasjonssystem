@@ -1,5 +1,8 @@
 package org.programutvikling.domain.user;
 
+import javafx.collections.ObservableList;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.model.Model;
 
 public class UserValidator {
@@ -38,6 +41,22 @@ public class UserValidator {
         return !city.isBlank();
     }
 
+    public static User returnUserIfAlreadyExists(User user, UserRegister register){
+            for(User u: register.getRegister()){
+                if(isPrimaryKeyAMatch(u, user)){
+                    return u;
+                }
+            }
+            return null;
+        }
+
+    private static boolean isPrimaryKeyAMatch(User u1, User u2) {
+            return u2.getName().equals(u1.getName())
+                    && u2.getUsername().equals(u1.getUsername())
+                    && u2.getEmail().equals(u1.getEmail());
+        }
+    }
+
 //    static void usernameValidation(String username) {
 //        if(Model.INSTANCE.getUserRegister().usernameExists(username) && Model.INSTANCE.getUserRegister().getRegister() != null) {
 //            System.out.println("UsernameAlreadyExistsException thrown!");
@@ -55,6 +74,6 @@ public class UserValidator {
 //            System.out.println("EmailExistsException NOT thrown, Model.INSTANCE.getUserRegister().emailExists(email) = " + Model.INSTANCE.getUserRegister().emailExists(email));
 //        }
 //    }
-}
+
 
 

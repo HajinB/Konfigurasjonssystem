@@ -5,13 +5,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import org.programutvikling.domain.component.Component;
-import org.programutvikling.domain.component.ComponentValidator;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserValidator;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.TemporaryComponent;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
@@ -118,16 +117,18 @@ public class RegistryUserLogic {
 
         public void editUserFromPopup(User u) {
         if (TemporaryUser.INSTANCE.getIsEdited()) {
-            User dup = TemporaryUser.INSTANCE.getTempUser();
+            //User dup = TemporaryUser.INSTANCE.getTempUser();
+            User dup =
+                    UserValidator.returnUserIfAlreadyExists(TemporaryUser.INSTANCE.getTempUser(),
+                            Model.INSTANCE.getUserRegister());
+
             System.out.println(TemporaryUser.INSTANCE.getTempUser());
             if (dup == null) {
+                System.out.println(getRegister().indexOf(u));
                 getRegister().set(getRegister().indexOf(u),
                         TemporaryUser.INSTANCE.getTempUser());
                 TemporaryUser.INSTANCE.resetTemps();
             } else {
-               /* getObservableRegister().set(getObservableRegister().indexOf(c),
-                        TemporaryComponent.INSTANCE.getTempComponent());
-                TemporaryComponent.INSTANCE.resetTemps();*/
                 justReplaceUser(u, dup);
                 Model.INSTANCE.getComponentRegister().removeDuplicates();
             }
@@ -143,6 +144,7 @@ public class RegistryUserLogic {
 
         int indexToReplace =
                 getRegister().indexOf(possibleDuplicateUserIfNotThenNull);
+
         System.out.println("index to replac : "+indexToReplace);
         getRegister().set(indexToReplace, newUser);
 
