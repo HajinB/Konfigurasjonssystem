@@ -109,7 +109,7 @@
                     <Font size="13.0" />
                 </font>
             </TextField>
-            <Button fx:id="btnEditUser" mnemonicParsing="false" onAction="#btnAddUser" prefHeight="30.0" prefWidth="230.0" text="Rediger bruker" GridPane.rowIndex="15">
+            <Button fx:id="btnEditUser" mnemonicParsing="false" onAction="#btnEditUser" prefHeight="30.0" prefWidth="230.0" text="Rediger bruker" GridPane.rowIndex="15">
                 <GridPane.margin>
                     <Insets top="5.0" />
                 </GridPane.margin>

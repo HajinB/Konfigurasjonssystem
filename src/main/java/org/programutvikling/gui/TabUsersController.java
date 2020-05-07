@@ -113,13 +113,15 @@ public class TabUsersController implements Initializable {
                         } else {
                             //hvis man trykker på tekst
                             row = (TableRow<User>) node.getParent();
+                            System.out.println("else getParent!");
                         }
                         try {
                             userWindowHandler.openEditWindow(row, userReg);
                             updateView();
 
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
+                            System.out.println("Her er fuckupen, row: " + row);
                         }
                     }
                 }
@@ -202,8 +204,8 @@ public class TabUsersController implements Initializable {
     }
 
     private void initChoiceBox() {
-        cbAdminFilter.setValue("Ingen filter");
         cbAdminFilter.getItems().addAll("Ingen filter","Admin","Bruker");
+        cbAdminFilter.setValue("Ingen filter");
     }
 
 }
