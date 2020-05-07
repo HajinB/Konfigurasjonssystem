@@ -3,8 +3,6 @@ package org.programutvikling.domain.user;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
-import org.programutvikling.domain.component.Component;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -12,11 +10,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.toCollection;
+
 public class UserRegister implements Serializable {
 
     private transient ObservableList<User> userRegister = FXCollections.observableArrayList();
 
-    public List<User> getRegister() {
+    public ObservableList<User> getRegister() {
         return userRegister;
     }
 
@@ -66,6 +66,20 @@ public class UserRegister implements Serializable {
         }
         // If email not found in the loop, return false
         return false;
+    }
+
+    public ObservableList<User> filterByAdmin(String type) {
+        if(type.equals("Admin")) {
+            return getRegister().stream().
+                    filter(User::getAdmin).
+                    collect(toCollection(FXCollections::observableArrayList));
+        }
+        else if(type.equals("Bruker")) {
+            return getRegister().stream().
+                    filter(u -> !u.getAdmin()).
+                    collect(toCollection(FXCollections::observableArrayList));
+        }
+        throw new IllegalArgumentException("Feil filter i cbAdminFilter!");
     }
 
     public void attachTableView(TableView<User> tv) {

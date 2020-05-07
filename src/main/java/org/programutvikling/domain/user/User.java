@@ -2,9 +2,6 @@ package org.programutvikling.domain.user;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import org.programutvikling.model.Model;
-import org.programutvikling.model.io.InvalidComponentFormatException;
-import org.programutvikling.domain.user.exceptions.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,16 +22,25 @@ public class User implements Serializable {
         // validering
 
         if(!UserValidator.username(username)) {
-            throw new InvalidUsernameException();
+            throw new IllegalArgumentException("Brukernavnet kan ikke være tomt!");
         }
         if(!UserValidator.password(password)) {
-            throw new InvalidPasswordException();
+            throw new IllegalArgumentException("Passordet må inneholde minst " + UserValidator.PASSWORD_LENGTH + " tegn!");
+        }
+        if(!UserValidator.name(name)) {
+            throw new IllegalArgumentException("Navn kan ikke være tomt!");
         }
         if(!UserValidator.email(email)) {
-            throw new InvalidEmailException();
+            throw new IllegalArgumentException("Feil email!");
+        }
+        if(!UserValidator.address(address)) {
+            throw new IllegalArgumentException("Addresse kan ikke være tomt!");
         }
         if(!UserValidator.zip(zip)) {
-            throw new InvalidZipException();
+            throw new IllegalArgumentException("Postnummeret må inneholde " + UserValidator.ZIP_LENGTH + " nummer!");
+        }
+        if(!UserValidator.city(city)) {
+            throw new IllegalArgumentException("Poststed kan ikke være tomt!");
         }
         this.admin = new SimpleBooleanProperty(admin);
         this.username = new SimpleStringProperty(username.toLowerCase());
@@ -51,8 +57,13 @@ public class User implements Serializable {
         return admin.get();
     }
 
-    public SimpleBooleanProperty adminProperty() {
-        return admin;
+    public SimpleStringProperty adminProperty() {
+        if(admin.get()) {
+            return new SimpleStringProperty("Admin");
+        } else {
+            // admin = false, the User is a "Bruker"
+            return new SimpleStringProperty("Bruker");
+        }
     }
 
     public void setAdmin(boolean admin) {
@@ -69,7 +80,7 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         if(!UserValidator.username(username)) {
-            throw new InvalidUsernameException();
+            throw new IllegalArgumentException("Brukernavnet kan ikke være tomt!");
         }
         this.username.set(username);
     }
@@ -143,7 +154,9 @@ public class User implements Serializable {
     }
 
     public void setCity(String city) {
-        this.city.set(city);
+        if(UserValidator.city(city)) {
+            this.city.set(city);
+        }
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
@@ -158,7 +171,7 @@ public class User implements Serializable {
         s.writeUTF(getCity());
     }
 
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException, InvalidComponentFormatException {
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
 
         boolean admin = s.readBoolean();
         String username = s.readUTF();
