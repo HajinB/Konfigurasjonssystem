@@ -27,15 +27,18 @@ public class WindowHandler {
             return;
         }
         FXMLLoader loader =  FXMLGetter.fxmlLoaderFactory("editPopup.fxml");
+        System.out.println(loader.toString());
+        System.out.println(loader.getLocation());
+        System.out.println(loader.getClass());
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(
                 new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
         );
         Component c = row.getItem();
-        EditPopupController popupController =
+        EditPopupController editPopupController =
                 loader.<EditPopupController>getController();
-        popupController.initData(c, stage, TemporaryComponent.INSTANCE.getColumnIndex());
+        editPopupController.initData(c, stage, TemporaryComponent.INSTANCE.getColumnIndex());
         stage.show();
         handlePopUp(stage, c);
     }

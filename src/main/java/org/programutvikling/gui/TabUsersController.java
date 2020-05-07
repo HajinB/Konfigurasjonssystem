@@ -18,25 +18,23 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import org.programutvikling.domain.user.User;
+import org.programutvikling.domain.user.UserRegister;
 import org.programutvikling.gui.utility.UserSearch;
 import org.programutvikling.gui.utility.UserWindowHandler;
 import org.programutvikling.model.Model;
-import org.programutvikling.domain.user.User;
-import org.programutvikling.domain.user.UserRegister;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import static java.util.stream.Collectors.toCollection;
-
 public class TabUsersController implements Initializable {
 
-    UserWindowHandler userWindowHandler = new UserWindowHandler();
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
-
+    UserWindowHandler userWindowHandler = new UserWindowHandler();
     @FXML
     private CheckBox cbAdmin;
     @FXML
@@ -47,14 +45,17 @@ public class TabUsersController implements Initializable {
     private TextField userSearch;
     @FXML
     private ChoiceBox<String> cbAdminFilter;
+
     @FXML
     private TableView<User> tblViewUser;
 
     private RegistryUserLogic registryUserLogic;
+    private SecondaryController secondaryController;
 
+    @FXML
     public void btnAddUser(ActionEvent actionEvent) {
-    registryUserLogic.registerUser();
-    updateView();
+        registryUserLogic.registerUser();
+        updateView();
     }
 
     public void btnDeleteUser(ActionEvent actionEvent) throws IOException {
@@ -69,6 +70,7 @@ public class TabUsersController implements Initializable {
     public void userName(TableColumn.CellEditEvent cellEditEvent) {
 
     }
+
     public void userPassword(TableColumn.CellEditEvent cellEditEvent) {
 
     }
@@ -107,6 +109,7 @@ public class TabUsersController implements Initializable {
                     tblViewUser.getSelectionModel().setCellSelectionEnabled(false);
                     TableRow<? extends User> row;
                     if (isDoubleClick(event)) {
+                        System.out.println("dblclicked");
                         Node node = ((Node) event.getTarget()).getParent();
                         if (node instanceof TableRow) {
                             row = (TableRow<User>) node;
@@ -118,9 +121,12 @@ public class TabUsersController implements Initializable {
                         try {
                             userWindowHandler.openEditWindow(row, userReg);
                             updateView();
-
                         } catch (Exception e) {
                             e.printStackTrace();
+                            System.out.println(e.getCause().toString());
+                            System.out.println(Arrays.toString(e.getStackTrace()));
+                            System.out.println(e.getLocalizedMessage());
+                            System.out.println(e.getMessage());
                             System.out.println("Her er fuckupen, row: " + row);
                         }
                     }
@@ -145,7 +151,7 @@ public class TabUsersController implements Initializable {
 
     @FXML
     void search(KeyEvent event) {
-        if(cbAdminFilter.getValue().equals("Ingen filter") || cbAdminFilter.getValue() == null) {
+        if (cbAdminFilter.getValue().equals("Ingen filter") || cbAdminFilter.getValue() == null) {
             setSearchedList();
             System.out.println(cbAdminFilter.getValue());
         } else {
@@ -188,7 +194,7 @@ public class TabUsersController implements Initializable {
         return result;
     }
 
-    public UserRegister getUserRegister(){
+    public UserRegister getUserRegister() {
         return Model.INSTANCE.getUserRegister();
     }
 
@@ -204,8 +210,11 @@ public class TabUsersController implements Initializable {
     }
 
     private void initChoiceBox() {
-        cbAdminFilter.getItems().addAll("Ingen filter","Admin","Bruker");
+        cbAdminFilter.getItems().addAll("Ingen filter", "Admin", "Bruker");
         cbAdminFilter.setValue("Ingen filter");
     }
 
+    public void init(SecondaryController secondaryController) {
+        this.secondaryController = secondaryController;
+    }
 }

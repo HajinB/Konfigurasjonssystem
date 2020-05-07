@@ -2,6 +2,7 @@ package org.programutvikling.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -14,9 +15,11 @@ import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class UserPopupController extends TabUsersController implements Serializable {
+public class UserPopupController extends TabUsersController implements Initializable {
 
     @FXML
     private GridPane userEditNode;
@@ -67,7 +70,7 @@ public class UserPopupController extends TabUsersController implements Serializa
 
     private RegistryUserLogic registryUserLogic;
 
-    public void initData(User u, Stage stage, int columnIndex) {
+    public void init(User u, Stage stage, int columnIndex) {
         //tar inn stage for å kunne lukke når brukeren trykker endre
         RegistryUserLogic registryUserLogic = new RegistryUserLogic(userEditNode);
 //        registryUserLogic.setTextAreaListener(userEditNode);
@@ -114,6 +117,11 @@ public class UserPopupController extends TabUsersController implements Serializa
                 || ((TextField) userEditNode.lookup("#userName")).getText().isEmpty() || ((TextField) userEditNode.lookup("#userMail")).getText().isEmpty()
                 || ((TextField) userEditNode.lookup("#userAddress")).getText().isEmpty() || ((ZipField) userEditNode.lookup("#userZip")).getText().isEmpty()
                 || ((TextField) userEditNode.lookup("#userCity")).getText().isEmpty());
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 }

@@ -19,6 +19,7 @@ import java.io.IOException;
 public class RegistryUserLogic {
     private GridPane gridPane;
     TabUsersController tabUsersController;
+
     public RegistryUserLogic(GridPane gridPane, TabUsersController tabUsersController) {
         this.gridPane = gridPane;
         this.tabUsersController = tabUsersController;

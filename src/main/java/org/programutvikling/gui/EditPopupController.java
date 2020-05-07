@@ -81,7 +81,6 @@ public class EditPopupController extends TabComponentsController implements Init
         cbType.setItems(componentTypes.getObservableTypeListName());
         btnEditComponent.setDefaultButton(true);
         setTextAreaListener(componentEditNode);
-
     }
 
     public void setTextAreaListener(GridPane gridPane) {

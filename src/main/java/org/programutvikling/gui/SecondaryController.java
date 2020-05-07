@@ -38,6 +38,8 @@ public class SecondaryController implements Initializable {
 
     @FXML private TabComponentsController tabComponentsController;
 
+    @FXML private TabUsersController tabUsersController;
+
     @FXML
     void btnSaveToChosenPath(ActionEvent a) throws IOException {
         String chosenPath = FileUtility.getFilePathFromSaveJOBJDialog(this.stage);
@@ -85,5 +87,6 @@ public class SecondaryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tabComponentsController.init(this);
+        tabUsersController.init(this);
     }
 }

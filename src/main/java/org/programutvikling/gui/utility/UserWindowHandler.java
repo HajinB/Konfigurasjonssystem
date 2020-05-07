@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.programutvikling.App;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.gui.RegistryUserLogic;
 import org.programutvikling.gui.UserPopupController;
@@ -23,9 +24,15 @@ public class UserWindowHandler {
     public void openEditWindow(TableRow<? extends User> row, GridPane gridpane) throws IOException {
         registryUserLogic = new RegistryUserLogic(gridpane);
         if(row.isEmpty()){
+            System.out.println("er row empty?");
             return;
         }
         FXMLLoader loader =  FXMLGetter.fxmlLoaderFactory("userPopup.fxml");
+
+        //FXMLLoader loader = App.loadFXML("userPopup.fxml");
+        System.out.println(loader.toString());
+        System.out.println(loader.getLocation());
+        System.out.println(loader.getClass());
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(
@@ -34,7 +41,8 @@ public class UserWindowHandler {
         User u = row.getItem();
         UserPopupController popupController =
                 loader.<UserPopupController>getController();
-        popupController.initData(u, stage, TemporaryUser.INSTANCE.getColumnIndex());
+
+        popupController.init(u, stage, TemporaryUser.INSTANCE.getColumnIndex());
         stage.show();
         handlePopUp(stage, u);
     }
