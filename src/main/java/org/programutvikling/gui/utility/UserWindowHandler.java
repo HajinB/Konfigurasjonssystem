@@ -10,10 +10,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.programutvikling.domain.user.User;
-import org.programutvikling.gui.EditPopupController;
 import org.programutvikling.gui.RegistryUserLogic;
 import org.programutvikling.gui.UserPopupController;
-import org.programutvikling.model.TemporaryComponent;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
@@ -27,7 +25,7 @@ public class UserWindowHandler {
         if(row.isEmpty()){
             return;
         }
-        FXMLLoader loader =  FXMLGetter.fxmlLoaderFactory("editPopup.fxml");
+        FXMLLoader loader =  FXMLGetter.fxmlLoaderFactory("userPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(
@@ -35,7 +33,7 @@ public class UserWindowHandler {
         );
         User u = row.getItem();
         UserPopupController popupController =
-                loader.<EditPopupController>getController();
+                loader.<UserPopupController>getController();
         popupController.initData(u, stage, TemporaryUser.INSTANCE.getColumnIndex());
         stage.show();
         handlePopUp(stage, u);

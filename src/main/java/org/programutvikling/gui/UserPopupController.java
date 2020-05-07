@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.ComponentTypes;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.gui.customTextField.NoSpacebarField;
 import org.programutvikling.gui.customTextField.ZipField;
@@ -12,6 +14,7 @@ import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UserPopupController extends TabUsersController implements Serializable {
 
@@ -53,6 +56,7 @@ public class UserPopupController extends TabUsersController implements Serializa
         }
         TemporaryUser.INSTANCE.setEdited(true);
         TemporaryUser.INSTANCE.storeTempUser(user);
+        stage.close();
     }
 
 
@@ -77,6 +81,32 @@ public class UserPopupController extends TabUsersController implements Serializa
         address.setText(u.getAddress());
         userZip.setText(u.getZip());
         UserCity.setText(u.getCity());
+
+        setFocusOnField(columnIndex, u);
+    }
+
+    private void setFocusOnField(int columnIndex, User u) {
+        System.out.println("Kolonne index er: " + columnIndex);
+
+        if (columnIndex == 0) {
+            cbAdmin.requestFocus();
+        }
+        if (columnIndex == 1) {
+            userUsername.requestFocus();
+            userUsername.selectAll();
+        }
+        if (columnIndex == 2) {
+            name.requestFocus();
+            name.selectAll();
+        }
+        if (columnIndex == 3) {
+            email.requestFocus();
+            email.selectAll();
+        }
+        if (columnIndex == 4) {
+            email.requestFocus();
+            email.selectAll();
+        }
     }
     private boolean areInputFieldsEmpty() {
         return (((TextField) userEditNode.lookup("#userUsername")).getText().isEmpty() || ((TextField) userEditNode.lookup("#userPassword")).getText().isEmpty()
