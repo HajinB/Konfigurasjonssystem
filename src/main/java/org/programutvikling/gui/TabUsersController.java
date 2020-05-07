@@ -4,6 +4,8 @@ package org.programutvikling.gui;
 // veldig lett da (?)   ((main controlleren blir så full)) - how to avoid - beste er å enten hente input fra en annen
 // class eller sende input fra controller til andre steder på en bra måte.
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -18,7 +20,10 @@ import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static java.util.stream.Collectors.toCollection;
 
 public class TabUsersController implements Initializable {
     @FXML
@@ -80,14 +85,47 @@ public class TabUsersController implements Initializable {
     }
     @FXML
     void search(KeyEvent event) {
+        if(cbAdminFilter.getValue().equals("Ingen filter") || cbAdminFilter.getValue() == null) {
             setSearchedList();
+            System.out.println(cbAdminFilter.getValue());
+        } else {
+            tblViewUser.setItems(getSearchedAndFilteredList());
+        }
     }
+
+    ObservableList<User> getSearchedAndFilteredList() {
+        return UserSearch.getFilteredList(getUserRegister()
+                .filterByAdmin(cbAdminFilter.getValue()), userSearch.getText());
+    }
+
 
     private void setSearchedList() {
         FilteredList<User> filteredData = UserSearch.getFilteredList(getUserRegister().getRegister(), userSearch.getText());
         SortedList<User> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tblViewUser.comparatorProperty());
         tblViewUser.setItems(sortedData);
+    }
+
+    @FXML
+    private void filterByAdmin() {
+        filter();
+    }
+
+    private ObservableList<User> filter() {
+        if (cbAdminFilter.getValue().equals("Ingen filter")) {
+            updateView();
+            return getUserRegister().getRegister();
+        }
+        ObservableList<User> result = getResultFromTypeFilter();
+        tblViewUser.setItems(Objects.requireNonNullElseGet(result, FXCollections::observableArrayList));
+        return result;
+    }
+
+    private ObservableList<User> getResultFromTypeFilter() {
+        ObservableList<User> result = null;
+        String filterString = cbAdminFilter.getValue();
+        result = getUserRegister().filterByAdmin(filterString);
+        return result;
     }
 
     public UserRegister getUserRegister(){
@@ -108,4 +146,5 @@ public class TabUsersController implements Initializable {
         cbAdminFilter.setValue("Ingen filter");
         cbAdminFilter.getItems().addAll("Ingen filter","Admin","User");
     }
+
 }

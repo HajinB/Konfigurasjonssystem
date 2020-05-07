@@ -2,8 +2,6 @@ package org.programutvikling.domain.user;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import org.programutvikling.model.Model;
-import org.programutvikling.model.io.InvalidComponentFormatException;
 import org.programutvikling.domain.user.exceptions.*;
 
 import java.io.IOException;
@@ -158,7 +156,7 @@ public class User implements Serializable {
         s.writeUTF(getCity());
     }
 
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException, InvalidComponentFormatException {
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
 
         boolean admin = s.readBoolean();
         String username = s.readUTF();
