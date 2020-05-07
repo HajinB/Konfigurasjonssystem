@@ -74,7 +74,6 @@ public class UserRegister implements Serializable {
                     filter(User::getAdmin).
                     collect(toCollection(FXCollections::observableArrayList));
         }
-        // equals Bruker
         else if(type.equals("Bruker")) {
             return getRegister().stream().
                     filter(u -> !u.getAdmin()).

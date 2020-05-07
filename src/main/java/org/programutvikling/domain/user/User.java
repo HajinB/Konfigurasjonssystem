@@ -57,8 +57,13 @@ public class User implements Serializable {
         return admin.get();
     }
 
-    public SimpleBooleanProperty adminProperty() {
-        return admin;
+    public SimpleStringProperty adminProperty() {
+        if(admin.get()) {
+            return new SimpleStringProperty("Admin");
+        } else {
+            // admin = false, the User is a "Bruker"
+            return new SimpleStringProperty("Bruker");
+        }
     }
 
     public void setAdmin(boolean admin) {
