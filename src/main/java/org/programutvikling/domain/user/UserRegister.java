@@ -3,6 +3,8 @@ package org.programutvikling.domain.user;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
+import org.programutvikling.domain.Clickable;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -12,7 +14,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toCollection;
 
-public class UserRegister implements Serializable {
+public class UserRegister implements Serializable, Clickable {
 
     private transient ObservableList<User> userRegister = FXCollections.observableArrayList();
 

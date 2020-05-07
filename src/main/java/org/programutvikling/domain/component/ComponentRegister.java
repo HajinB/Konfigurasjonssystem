@@ -3,6 +3,7 @@ package org.programutvikling.domain.component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
+import org.programutvikling.domain.Clickable;
 import org.programutvikling.gui.utility.RegisterUtility;
 import org.programutvikling.model.Model;
 
@@ -15,7 +16,7 @@ import java.util.*;
 import static java.util.stream.Collectors.toCollection;
 
 
-public class ComponentRegister implements Serializable {
+public class ComponentRegister implements Serializable, Clickable {
     private transient static final long serialVersionUID = 1;
 
     private transient ObservableList<Component> componentObservableList = FXCollections.observableArrayList();
