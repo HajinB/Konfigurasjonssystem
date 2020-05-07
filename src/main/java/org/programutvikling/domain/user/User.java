@@ -66,6 +66,15 @@ public class User implements Serializable {
         }
     }
 
+    public String getAdminString() {
+        if(admin.get()) {
+            return "Admin";
+        } else {
+            // admin = false, the User is a "Bruker"
+            return "Bruker";
+        }
+    }
+
     public void setAdmin(boolean admin) {
         this.admin.set(admin);
     }

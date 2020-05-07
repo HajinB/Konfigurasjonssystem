@@ -140,7 +140,7 @@
                                             <Font size="13.0" />
                                         </font>
                                     </Label>
-                           <CheckBox id="userAdmin" fx:id="cbAdmin" mnemonicParsing="false" onAction="#cbAdmin" text="Admin">
+                           <CheckBox id="userAdmin" fx:id="cbAdmin" mnemonicParsing="false" onAction="#cbAdminSet" text="Admin">
                               <font>
                                  <Font name="Verdana" size="13.0" />
                               </font>

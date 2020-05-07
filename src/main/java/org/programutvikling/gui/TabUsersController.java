@@ -27,6 +27,8 @@ import static java.util.stream.Collectors.toCollection;
 
 public class TabUsersController implements Initializable {
     @FXML
+    private CheckBox cbAdmin;
+    @FXML
     private GridPane userReg;
     @FXML
     private Label lblUserMsg;

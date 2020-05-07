@@ -20,9 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/UserPopupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/UserWindowHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/TemporaryUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/userPopup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editPopup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabComponents.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabComponents.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,9 +60,9 @@
       <list>
         <option value="CSS File" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -286,14 +294,7 @@
       <workItem from="1588442497595" duration="25684000" />
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
-      <workItem from="1588826328388" duration="817000" />
-    </task>
-    <task id="LOCAL-00084" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
-      <created>1588528704485</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1588528704486</updated>
+      <workItem from="1588826328388" duration="4317000" />
     </task>
     <task id="LOCAL-00085" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
       <created>1588536682257</created>
@@ -623,7 +624,13 @@
       <option name="presentableId" value="LOCAL−00132" />
       <updated>1588815543297</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL−00133" summary="Endret tableview til &quot;Rolle&quot;, der man er &quot;Admin&quot; eller &quot;Bruker&quot; i stedet for Admin true or false ved å endre getSimpleStringProperty getAdmin() i User">
+      <created>1588827368494</created>
+      <option name="number" value="LOCAL−00133" />
+      <option name="presentableId" value="LOCAL−00133" />
+      <updated>1588827368496</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,7 +664,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wooops liten bugfix - trenger ikke calle updatelist etter man har lagt til en komponent." />
     <MESSAGE value="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen." />
     <MESSAGE value="fiksa remove duplicates - usikker på om det bør være i ui eller om programmet bare skal fjerne duplikater automatisk hvis noen prøver å legge til duplikater vha åpne fil." />
     <MESSAGE value="kr (?)" />
@@ -682,7 +688,8 @@
     <MESSAGE value="Search tabUsers.fxml" />
     <MESSAGE value="Filtrerer mellom admin og user" />
     <MESSAGE value="Slettet custom exceptions i User, og omgjorde valideringen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Slettet custom exceptions i User, og omgjorde valideringen." />
+    <MESSAGE value="Endret tableview til &quot;Rolle&quot;, der man er &quot;Admin&quot; eller &quot;Bruker&quot; i stedet for Admin true or false ved å endre getSimpleStringProperty getAdmin() i User" />
+    <option name="LAST_COMMIT_MESSAGE" value="Endret tableview til &quot;Rolle&quot;, der man er &quot;Admin&quot; eller &quot;Bruker&quot; i stedet for Admin true or false ved å endre getSimpleStringProperty getAdmin() i User" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1588797689461" />
@@ -705,15 +712,15 @@
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588797689461" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1588797689461" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state x="149" y="0" key="CommitChangelistDialog2" timestamp="1588815542359">
+    <state x="149" y="0" key="CommitChangelistDialog2" timestamp="1588827367235">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="149" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588815542359" />
+    <state x="149" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588827367235" />
     <state x="315" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state x="189" y="97" width="1228" height="687" key="DiffContextDialog" timestamp="1588815515973">
+    <state x="189" y="97" width="1228" height="687" key="DiffContextDialog" timestamp="1588827311196">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1588815515973" />
+    <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1588827311196" />
     <state x="189" y="97" width="1228" height="687" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="740" y="99" key="FileChooserDialogImpl" timestamp="1588797689461" />
     <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588797689461" />
@@ -723,25 +730,25 @@
     <state x="474" y="241" key="GitRewordDialog/0.0.1280.680@0.0.1280.680" timestamp="1588806977036" />
     <state x="593" y="314" key="Github.CreateGistDialog" timestamp="1588797689461" />
     <state x="593" y="314" key="Github.CreateGistDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state width="1237" height="183" key="GridCell.Tab.0.bottom" timestamp="1588826737265">
+    <state width="1237" height="119" key="GridCell.Tab.0.bottom" timestamp="1588828280583">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="183" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588826737265" />
+    <state width="1237" height="119" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588828280583" />
     <state width="746" height="193" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state width="1237" height="183" key="GridCell.Tab.0.center" timestamp="1588826737264">
+    <state width="1237" height="119" key="GridCell.Tab.0.center" timestamp="1588828280582">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="183" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588826737264" />
+    <state width="1237" height="119" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588828280582" />
     <state width="746" height="193" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state width="1237" height="183" key="GridCell.Tab.0.left" timestamp="1588826737264">
+    <state width="1237" height="119" key="GridCell.Tab.0.left" timestamp="1588828280582">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="183" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588826737264" />
+    <state width="1237" height="119" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588828280582" />
     <state width="746" height="193" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state width="1237" height="183" key="GridCell.Tab.0.right" timestamp="1588826737264">
+    <state width="1237" height="119" key="GridCell.Tab.0.right" timestamp="1588828280583">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="183" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588826737264" />
+    <state width="1237" height="119" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588828280583" />
     <state width="746" height="193" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state width="1237" height="183" key="GridCell.Tab.1.bottom" timestamp="1588826737265">
       <screen x="0" y="0" width="1280" height="680" />
@@ -763,17 +770,17 @@
     <state x="299" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="147" y="65" key="MergeDialog" timestamp="1588797689461" />
     <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
-    <state x="453" y="86" key="RollbackChangesDialog" timestamp="1588810563781">
+    <state x="453" y="86" key="RollbackChangesDialog" timestamp="1588830363837">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="453" y="86" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588810563781" />
+    <state x="453" y="86" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588830363837" />
     <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1588797689461" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588797689461" />
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1588815545479">
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1588827370700">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588815545479" />
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588827370700" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588797689461" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
@@ -790,17 +797,17 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="73" width="585" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1588814878704" />
-    <state x="475" y="41" key="refactoring.ChangeSignatureDialog" timestamp="1588805880083">
+    <state x="475" y="41" key="refactoring.ChangeSignatureDialog" timestamp="1588827527375">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1588805880083" />
+    <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1588827527375" />
     <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1588797689461" />
     <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1588797689461" />
     <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1588797689461" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588826845892">
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588829596264">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588826845892" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588829596264" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
