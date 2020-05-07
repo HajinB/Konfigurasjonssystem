@@ -60,6 +60,7 @@ public class UserPopupController extends TabUsersController implements Serializa
     }
 
 
+    @FXML
     private void btnEditUser(ActionEvent event) {
         editUser();
     }
