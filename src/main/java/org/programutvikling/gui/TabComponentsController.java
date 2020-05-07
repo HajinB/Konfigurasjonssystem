@@ -276,11 +276,8 @@ public class TabComponentsController {
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             openThread(chosenFile);
             Model.INSTANCE.appendComponentRegisterIntoModel();
-            //getComponentRegister().removeDuplicates();
             Model.INSTANCE.getComponentRegister().removeDuplicates();
             updateView();
-            //refreshTableAndSave();
-
         }
     }
 
@@ -289,11 +286,6 @@ public class TabComponentsController {
         Model.INSTANCE.loadComponentRegisterIntoModel();
         Model.INSTANCE.getComponentRegister().removeDuplicates();
         updateView();
-        updateView();
-    }
-
-    private boolean isFileSelectionEmpty(String chosenFile) {
-        return chosenFile.equals("Åpne nylige filer");
     }
 
     @FXML
