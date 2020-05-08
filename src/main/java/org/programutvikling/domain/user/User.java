@@ -19,38 +19,31 @@ public class User implements Serializable {
     private transient SimpleStringProperty city;
 
     public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
-        // validering
-
-        if (!UserValidator.username(username)) {
-            throw new IllegalArgumentException("Brukernavnet kan ikke være tomt!");
-        }
-        if (!UserValidator.password(password)) {
-            throw new IllegalArgumentException("Passordet må inneholde minst " + UserValidator.PASSWORD_LENGTH + " tegn!");
-        }
-        if (!UserValidator.name(name)) {
-            throw new IllegalArgumentException("Navn kan ikke være tomt!");
-        }
-        if (!UserValidator.email(email)) {
-            throw new IllegalArgumentException("Feil email!");
-        }
-        if (!UserValidator.address(address)) {
-            throw new IllegalArgumentException("Addresse kan ikke være tomt!");
-        }
-        if (!UserValidator.zip(zip)) {
-            throw new IllegalArgumentException("Postnummeret må inneholde " + UserValidator.ZIP_LENGTH + " nummer!");
-        }
-        if (!UserValidator.city(city)) {
-            throw new IllegalArgumentException("Poststed kan ikke være tomt!");
-        }
         this.admin = new SimpleBooleanProperty(admin);
-        this.username = new SimpleStringProperty(username.toLowerCase());
-        this.password = new SimpleStringProperty(password);
-        this.name = new SimpleStringProperty(name);
-        this.email = new SimpleStringProperty(email.toLowerCase());
-        this.address = new SimpleStringProperty(address);
-        this.zip = new SimpleStringProperty(zip);
-        this.city = new SimpleStringProperty(city);
+
+        if (UserValidator.username(username)) {
+            this.username = new SimpleStringProperty(username.toLowerCase());
+        }
+        if (UserValidator.password(password)) {
+            this.password = new SimpleStringProperty(password);
+        }
+        if (UserValidator.name(name)) {
+            this.name = new SimpleStringProperty(name);
+        }
+        if (UserValidator.email(email)) {
+            this.email = new SimpleStringProperty(email.toLowerCase());
+        }
+        if (UserValidator.address(address)) {
+            this.address = new SimpleStringProperty(address);
+        }
+        if (UserValidator.zip(zip)) {
+            this.zip = new SimpleStringProperty(zip);
+        }
+        if (UserValidator.city(city)) {
+            this.city = new SimpleStringProperty(city);
+        }
     }
+
     // Getter and setters
 
     public boolean getAdmin() {

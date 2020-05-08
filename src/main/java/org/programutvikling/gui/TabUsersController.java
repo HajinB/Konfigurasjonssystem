@@ -34,6 +34,7 @@ import java.util.ResourceBundle;
 public class TabUsersController implements Initializable {
 
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
+    public Label lblMsgPassword, lblMsgUsername, lblMsgZip, lblMsgEmail, lblMsgCity, lblMsgAdress, lblMsgName;
     UserWindowHandler userWindowHandler = new UserWindowHandler();
     @FXML
     private CheckBox cbAdmin;
@@ -56,6 +57,7 @@ public class TabUsersController implements Initializable {
     public void btnAddUser(ActionEvent actionEvent) {
         registryUserLogic.registerUser();
         updateView();
+        clearLabels();
     }
 
     public void btnDeleteUser(ActionEvent actionEvent) throws IOException {
@@ -216,5 +218,37 @@ public class TabUsersController implements Initializable {
 
     public void init(SecondaryController secondaryController) {
         this.secondaryController = secondaryController;
+    }
+
+    public void setLblMsgPassword (String s) {
+        this.lblMsgPassword.setText(s);
+    }
+    public void setLblMsgUsername (String s) {
+        this.lblMsgUsername.setText(s);
+    }
+    public void setLblMsgZip (String s) {
+        this.lblMsgZip.setText(s);
+    }
+    public void setLblMsgEmail (String s) {
+        this.lblMsgEmail.setText(s);
+    }
+    public void setLblMsgCity (String s) {
+        this.lblMsgCity.setText(s);
+    }
+    public void setLblMsgAdress (String s) {
+        this.lblMsgAdress.setText(s);
+    }
+    public void setLblMsgName (String s) {
+        this.lblMsgName.setText(s);
+    }
+
+    public void clearLabels() {
+        setLblMsgAdress("");
+        setLblMsgCity("");
+        setLblMsgName("");
+        setLblMsgEmail("");
+        setLblMsgPassword("");
+        setLblMsgUsername("");
+        setLblMsgZip("");
     }
 }
