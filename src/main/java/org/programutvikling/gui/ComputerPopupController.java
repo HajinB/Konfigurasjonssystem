@@ -20,13 +20,10 @@ public class ComputerPopupController extends EnduserController implements Initia
     @FXML private ListView<Component> listContent;
     @FXML private Label lblComputerPrice;
     private Computer computer;
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellFactory();
     }
-
 
     //todo tror denne er helt lik den i computer listview - lag en generisk?
     private void setCellFactory() {
@@ -37,7 +34,7 @@ public class ComputerPopupController extends EnduserController implements Initia
                 if (empty || c == null || c.getProductName() == null) {
                     setText("");
                 } else {
-                    setText(c.getProductName() + "\n" + String.format("%.0f", c.getProductPrice()));
+                    setText(c.getProductName() + "\n" + String.format("%.00f", c.getProductPrice())+ " kr");
                 }
             }
         });
@@ -47,11 +44,11 @@ public class ComputerPopupController extends EnduserController implements Initia
         //tar inn stage for å kunne lukke når brukeren trykker endre
         this.stage = stage;
         lblComputerName.setText(c.getProductName());
-        lblComputerPrice.setText(Double.toString(c.calculatePrice()));
+        lblComputerPrice.setText(Double.toString(c.calculatePrice())+" kr");
         listContent.setItems(c.getComponentRegister().getObservableRegister());
         this.computer = c;
-
     }
+
     @FXML
     public void btnAddComputer(ActionEvent event) {
         //todo evt spørre om de vil erstatte her.

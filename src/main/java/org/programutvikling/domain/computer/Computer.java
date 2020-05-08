@@ -73,13 +73,13 @@ public class Computer implements Serializable, ItemUsable {
 
     public double calculatePrice() {
         if (this.componentRegister.getRegister().size() > 0) {
-            Double priceTotal = 0.0;
+            Double priceTotal = 0.00;
             for (int i = 0; i < this.componentRegister.getRegister().size(); i++) {
                 priceTotal = priceTotal + componentRegister.getRegister().get(i).getProductPrice();
             }
             return priceTotal;
         } else {
-            return 0;
+            return 0.00;
         }
     }
 

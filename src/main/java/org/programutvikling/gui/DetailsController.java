@@ -54,7 +54,6 @@ public class DetailsController implements Initializable {
     @FXML
     void btnAddToComputersFolder(ActionEvent event) throws IOException {
         FileSaverTxt fileSaverTxt = new FileSaverTxt();
-
         if(txtNameForComputer.getText().isEmpty()){
             Dialog.showErrorDialog("Gi datamaskinen et navn for å lagre den");
             return;
@@ -66,9 +65,11 @@ public class DetailsController implements Initializable {
         fileSaverTxt.save(computerWithName,
                 Paths.get("AppFiles/Database/User/Computers/" + computerWithName.getProductName()+".txt"));
         Dialog.showSuccessDialog(computerWithName.getProductName() + " ble lagret i 'AppFiles/Database/User/Computers/'");
+        //todo legg inn dialog for å spørre om å erstatte handlekurven?
         ModelEndUser.INSTANCE.getComputer().removeAll();
         stage.close();
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setCellFactories();
@@ -94,6 +95,4 @@ public class DetailsController implements Initializable {
 
         productFinalPriceColumn.setCellFactory(priceCellFactory);
     }
-
-
 }

@@ -1,2 +1,3 @@
-Harddisk;asdf;asdf;23.0
-Prosessor;AMD Ryzen 7 3800X Prosessor;Socket-AM4, 8-Core, 16-Thread, 3.9/4.5GHz, 105W, 7nm, inkl. kjøler;3939.0
+Prosessor;AMD Ryzen 7 3800X Prosessor;Socket-AM4, 8-Core, 16-Thread, 3.9/4.5GHz, 105W, 7nmsfadjhdfsahkhjkgadfshjgkasdfjghkafdsgjhkadfsghjkadfsjhkgadfsgjkhadfsjghkdfasjghkafdsjkgh;3999.0
+Minne;f;f;43.0
+Kabinett;Fractal Design Define S2 Vision RGB;Vifter: 3x 140mm RGB front, 1x 140mm RGB bak, ATX, mATX, ITX, Tempered Glass;2939.0

@@ -12,11 +12,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.programutvikling.App;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.CustomViews.CustomListViewCell;
+import org.programutvikling.gui.CustomViews.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.EndUserService;
 import org.programutvikling.gui.utility.FXMLGetter;
@@ -99,6 +101,13 @@ public class EnduserController {
     }
 
     private void setTblCompletedComputersListener() {
+        Callback<TableColumn, TableCell> priceCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new PriceFormatCell();
+                    }
+                };
+        computerPriceCln.setCellFactory((priceCellFactory));
         /**detecter tablerow, for å hente ut component*/
         //skal åpne en fxml, og sende cell-content til initmetoden til controlleren til denne fxmln
         tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
