@@ -61,9 +61,9 @@ public class ComputerPopupController extends EnduserController implements Initia
     }
     String lblComputerPriceFormat(double price) {
         if(price % 1 == 0) {
-            return String.format("%.0f",price);
+            return String.format("%.0f",price) + " kr";
         } else {
-            return String.format("%.2f",price);
+            return String.format("%.2f",price) + " kr";
         }
     }
 }
