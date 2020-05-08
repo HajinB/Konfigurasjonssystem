@@ -4,7 +4,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 
 public class PriceField extends TextField {
-    private static final String DOUBLE_REGEX = "^[\\d.]*+$";
+    private static final String DOUBLE_REGEX = "^[\\d]*+$";
 
     public PriceField() {
         super();
