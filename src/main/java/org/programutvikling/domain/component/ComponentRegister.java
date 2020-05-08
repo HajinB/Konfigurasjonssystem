@@ -78,7 +78,6 @@ public class ComponentRegister implements Serializable, Clickable {
             sb.append(c.toString());
             sb.append(System.lineSeparator());
         }
-
         return sb.toString();
     }
 
@@ -95,10 +94,9 @@ public class ComponentRegister implements Serializable, Clickable {
 
     public void removeDuplicates() {
         ArrayList<Component> al = (ArrayList<Component>) RegisterUtility.removeDuplicates(componentObservableList);
-        Model.INSTANCE.getComponentRegister().getRegister().clear();
-        Model.INSTANCE.getComponentRegister().getRegister().addAll(al);
+        this.getRegister().clear();
+        this.getRegister().addAll(al);
     }
-
 
     public int countByType(String s) {
         List<Component> list = filterByProductType(s);

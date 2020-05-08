@@ -77,6 +77,7 @@ public class TabComponentsController {
 
     @FXML
     void btnOpenRecentFile(ActionEvent event) throws IOException {
+
         if ((cbRecentFiles.getSelectionModel().isEmpty())) {
             Dialog.showErrorDialog("velg en fil fra listen");
             return;
@@ -189,7 +190,11 @@ public class TabComponentsController {
 
     private void getConfirmationThenOpenRecent() throws IOException {
         String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
-        openFileConfirmation(chosenFile);
+        if (getComponentRegister().getRegister().size() == 0) {
+            registryComponentLogic.overWriteList(chosenFile);
+        }else {
+            openFileConfirmation(chosenFile);
+        }
     }
 
     private void openFileConfirmation(String chosenFile) throws IOException {
@@ -200,6 +205,7 @@ public class TabComponentsController {
                 cbRecentFiles.getSelectionModel().getSelectedItem() + "'?");
         alert.showAndWait();
         registryComponentLogic.handleOpenOptions(chosenFile, alert);
+
     }
 
     private ComponentRegister getComponentRegister() {
@@ -219,7 +225,7 @@ public class TabComponentsController {
     }
 
     void updateRecentFiles() {
-        cbRecentFiles.getItems().clear();
+        //cbRecentFiles.getItems().clear();
         Model.INSTANCE.getSavedPathRegister().removeDuplicates();
         cbRecentFiles.setItems((ObservableList<String>) Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
     }

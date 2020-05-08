@@ -366,6 +366,5 @@ public class RegistryComponentLogic {
         Model.INSTANCE.loadComponentRegisterIntoModel();
         Model.INSTANCE.getComponentRegister().removeDuplicates();
         tabComponentsController.updateView();
-
     }
 }

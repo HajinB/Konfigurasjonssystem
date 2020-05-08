@@ -3,11 +3,7 @@ package org.programutvikling.model;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerRegister;
 import org.programutvikling.gui.FileHandling;
-import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.model.io.FileOpenerTxt;
 
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public enum ModelEndUser {

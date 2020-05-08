@@ -137,6 +137,7 @@ public class EnduserController {
         return loader;
     }
 
+    //kan lett trekkes ut (se på tabcomponents for fasit)
     private void openDetailedView(TableRow row) throws IOException {
         //henter popup fxml
         System.out.println("her er vi i openDetailedView");
@@ -207,6 +208,8 @@ public class EnduserController {
         return ModelEndUser.INSTANCE.getComputer();
     }
 
+
+    //denne kan også skrives om og flyttes til enduserlogic
     private void addComponentToCart(TableView<Component> tbl) {
         Component selectedComp = tbl.getSelectionModel().getSelectedItem();
         if (selectedComp != null) {
@@ -303,6 +306,8 @@ public class EnduserController {
         tblScreen.setItems(endUserService.getScreenRegister().getObservableRegister());
     }
 
+    //denne kan også flyttes ut lett.
+    @FXML
     public void btnDeleteFromCart(ActionEvent event) throws IOException {
         Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette.", "Vil du slette ",
                 shoppingListView.getSelectionModel().getSelectedItems().get(0).getProductName());
@@ -332,6 +337,7 @@ public class EnduserController {
     }
 
     @FXML
+    //denne metoden kan hvertfall kjøres fra enduserlogic
     public void btnAddToCart(ActionEvent event) {
         boolean isSomethingSelected = false;
 

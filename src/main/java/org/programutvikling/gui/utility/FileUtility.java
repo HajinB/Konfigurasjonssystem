@@ -4,13 +4,10 @@ import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.ComponentRegister;
-import org.programutvikling.model.ModelEndUser;
-import org.programutvikling.model.io.FileOpener;
-import org.programutvikling.model.io.FileSaver;
-import org.programutvikling.model.io.OpenerFactory;
-import org.programutvikling.model.io.SaverFactory;
-import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.domain.computer.ComputerRegister;
+import org.programutvikling.domain.io.FileOpener;
+import org.programutvikling.domain.io.FileSaver;
+import org.programutvikling.domain.io.OpenerFactory;
+import org.programutvikling.domain.io.SaverFactory;
 import org.programutvikling.model.Model;
 import org.programutvikling.gui.SavedPathRegister;
 import org.programutvikling.domain.user.UserRegister;
@@ -21,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -143,7 +139,7 @@ public class FileUtility {
         ArrayList<String> al = new ArrayList<>();
 
         for (File file : listOfFiles) {
-            al.add(file.getPath());
+            al.add(file.getAbsolutePath());
         }
         addWalkedFolderPathsToCBList(al);
         return al;

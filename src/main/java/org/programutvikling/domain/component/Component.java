@@ -2,8 +2,8 @@ package org.programutvikling.domain.component;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import org.programutvikling.model.io.InvalidComponentFormatException;
-import org.programutvikling.model.io.InvalidPriceException;
+import org.programutvikling.domain.io.InvalidComponentFormatException;
+import org.programutvikling.domain.io.InvalidPriceException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

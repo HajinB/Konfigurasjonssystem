@@ -1,4 +1,4 @@
-package org.programutvikling.model.io;
+package org.programutvikling.domain.io;
 
 import java.io.IOException;
 import java.nio.file.Path;

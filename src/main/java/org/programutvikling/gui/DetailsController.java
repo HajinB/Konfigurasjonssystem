@@ -14,7 +14,7 @@ import org.programutvikling.gui.CustomViews.CustomTextWrapCellFactory;
 import org.programutvikling.gui.CustomViews.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.ModelEndUser;
-import org.programutvikling.model.io.FileSaverTxt;
+import org.programutvikling.domain.io.FileSaverTxt;
 
 import java.io.IOException;
 import java.net.URL;

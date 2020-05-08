@@ -4,6 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import org.programutvikling.domain.Clickable;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.gui.utility.RegisterUtility;
+import org.programutvikling.model.Model;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -109,4 +112,9 @@ public class UserRegister implements Serializable, Clickable {
         return out;
     }
 
+    public void removeDuplicates() {
+        ArrayList<User> al = (ArrayList<User>) RegisterUtility.removeDuplicates(userRegister);
+        this.getRegister().clear();
+        this.getRegister().addAll(al);
+    }
 }

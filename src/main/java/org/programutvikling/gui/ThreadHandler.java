@@ -5,7 +5,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.scene.control.Alert;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.model.io.iothread.InputThread;
+import org.programutvikling.domain.io.iothread.InputThread;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -43,10 +43,8 @@ public class ThreadHandler {
                 /** gjør tingen her: aka lad inn ting**/
                // FileUtility.populateRecentFiles("AppFiles/Database/Admin/ComponentRegisters");
                 FileUtility.populateRecentFilesVoid();
-
                 return true;
             }
-
             @Override
             protected void succeeded() {
                 super.succeeded();

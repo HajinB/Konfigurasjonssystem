@@ -1,8 +1,7 @@
-package org.programutvikling.model.io;
+package org.programutvikling.domain.io;
 
 import org.programutvikling.domain.component.*;
 import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 

@@ -14,9 +14,8 @@ import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
-import org.programutvikling.gui.utility.RegisterUtility;
 import org.programutvikling.model.Model;
-import org.programutvikling.model.io.FileOpenerTxt;
+import org.programutvikling.domain.io.FileOpenerTxt;
 
 import java.io.IOException;
 import java.net.URL;
@@ -74,8 +73,6 @@ public class SecondaryController implements Initializable {
             tabComponentsController.updateView();
             Model.INSTANCE.getComponentRegister().removeDuplicates();
         }
-
-
     }
 
     @FXML
@@ -84,10 +81,11 @@ public class SecondaryController implements Initializable {
         if (chosenPath != null) {
             FileHandling.saveFileAs(chosenPath);
             //Model.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(chosenPath);
-            tabComponentsController.updateRecentFiles();
+            //tabComponentsController.updateRecentFiles();
         } else {
-            tabComponentsController.setResultLabelTimed("Lagring ferdig!");
+           return;
         }
+        tabComponentsController.setResultLabelTimed("Lagring ferdig!");
     }
 
     @FXML

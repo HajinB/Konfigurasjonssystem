@@ -1,4 +1,4 @@
-package org.programutvikling.model.io;
+package org.programutvikling.domain.io;
 
 public class InvalidPriceException extends NumberFormatException {
     public InvalidPriceException () {

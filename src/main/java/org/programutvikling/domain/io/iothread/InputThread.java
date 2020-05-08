@@ -1,4 +1,4 @@
-package org.programutvikling.model.io.iothread;
+package org.programutvikling.domain.io.iothread;
 
 import javafx.concurrent.Task;
 
@@ -27,6 +27,7 @@ public class InputThread extends Task<ArrayList<Object>> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("filepath for openrecent: "+filePath);
         return FileHandling.openObjects(Model.INSTANCE.getCleanObjectList(), filePath);
     }
 }
