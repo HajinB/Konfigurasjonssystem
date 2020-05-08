@@ -21,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -136,14 +137,25 @@ public class FileUtility {
         }
     }
 
+    public static ArrayList populateRecentFilesVoid() {
+        File folder = new File("AppFiles/Database/Admin/ComponentRegisters");
+        File[] listOfFiles = folder.listFiles();
+        ArrayList<String> al = new ArrayList<>();
+
+        for (File file : listOfFiles) {
+            al.add(file.getPath());
+        }
+        addWalkedFolderPathsToCBList(al);
+        return al;
+    }
+
     private static void addWalkedFolderPathsToCBList(List<String> result) {
         System.out.println("result som scouuuring");
         result.forEach(System.out::println);
-        getListOfSavedFilePaths().addAll(result);
         List<String> unique =
                 RegisterUtility.removeDuplicates(getListOfSavedFilePaths());
         getListOfSavedFilePaths().clear();
-        getListOfSavedFilePaths().addAll(unique);
+        getListOfSavedFilePaths().addAll(result);
     }
 
     private static ObservableList<String> getListOfSavedFilePaths() {

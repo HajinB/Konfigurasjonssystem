@@ -16,11 +16,8 @@ public class FileSaverJobj implements FileSaver {
 
             System.out.println("Dette blir lagret"+objects);
             out.reset();
-
             out.writeObject(objects);
-
             out.flush();
-
         }
     }
 

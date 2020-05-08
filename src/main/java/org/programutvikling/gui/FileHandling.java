@@ -203,6 +203,7 @@ public class FileHandling {
     public static ArrayList<Computer> findComputers() {
         ArrayList<Object> componentList = new ArrayList<>();
         File folder = new File(String.valueOf(userPreferences.getPathToComputers()));
+
         File[] listOfFiles = folder.listFiles();
 
         ArrayList<Computer> computers = new ArrayList<>();

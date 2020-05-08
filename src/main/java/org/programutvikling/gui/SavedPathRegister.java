@@ -18,7 +18,7 @@ public class SavedPathRegister implements Serializable {
     private transient ObservableList<String> listOfSavedFilePaths = FXCollections.observableArrayList();
 
     public ObservableList<String> getListOfSavedFilePaths() {
-        return RegisterLogic.getDuplicateFreeList(listOfSavedFilePaths);
+        return listOfSavedFilePaths;
     }
 
     public void addPathToListOfSavedFilePaths(String s){

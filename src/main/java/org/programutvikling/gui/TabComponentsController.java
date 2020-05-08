@@ -56,8 +56,7 @@ public class TabComponentsController {
     private RegistryComponentLogic registryComponentLogic;
 
     @FXML
-    public void initialize() throws IOException {
-        System.out.println("hei fra init tabcomponents");
+    public void initialize() {
         Task<Boolean> task = ThreadHandler.getTask();
         ThreadHandler.loadInThread(task);
         initChoiceBoxes();
@@ -88,7 +87,6 @@ public class TabComponentsController {
     @FXML
     void cmDeleteRow(ActionEvent event) throws IOException {
         registryComponentLogic.askForDeletion(tblViewComponent.getSelectionModel().getSelectedItem());
-        //deleteComponent();
     }
 
     @FXML
@@ -105,7 +103,6 @@ public class TabComponentsController {
         registryComponentLogic.setTblViewEventHandler();
     }
 
-
     @FXML
     void btnDelete(ActionEvent event) throws IOException {
         registryComponentLogic.askForDeletion(tblViewComponent.getSelectionModel().getSelectedItem());
@@ -113,6 +110,7 @@ public class TabComponentsController {
 
     /**events slutt*/
 
+    /**utility views*/
     private void initTextWrapCellFactory() {
         //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
         // en kolonne i tableview
@@ -217,12 +215,12 @@ public class TabComponentsController {
         cbTypeFilter.setValue("Ingen filter");
         Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().add("AppFiles/Database/Backup/AppDataBackup" +
                 ".jobj");
-        updateRecentFiles();
         cbType.setItems(componentTypes.getObservableTypeListName());
         cbTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
 
-    private void updateRecentFiles() {
+    void updateRecentFiles() {
+        cbRecentFiles.getItems().clear();
         Model.INSTANCE.getSavedPathRegister().removeDuplicates();
         cbRecentFiles.setItems((ObservableList<String>) Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths());
     }
