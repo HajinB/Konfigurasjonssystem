@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/Computers/checkkk.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/checkkk.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/io/FileOpenerTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/io/FileOpenerTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -102,7 +94,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.46086955" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -278,13 +270,6 @@
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
-    </task>
-    <task id="LOCAL-00084" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
-      <created>1588528704485</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1588528704486</updated>
     </task>
     <task id="LOCAL-00085" summary="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen.">
       <created>1588536682257</created>
@@ -622,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588850810943</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="la til en testfunksjon for superbruker, sånn at man kan legge til computers der (gjør testing sååå mye lettere)">
+      <created>1588852450371</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1588852450371</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,7 +649,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wooops liten bugfix - trenger ikke calle updatelist etter man har lagt til en komponent." />
     <MESSAGE value="enda en bugfix - kan ikke/trenger ikke updatelist etter man har lagt til noe i listen." />
     <MESSAGE value="fiksa remove duplicates - usikker på om det bør være i ui eller om programmet bare skal fjerne duplikater automatisk hvis noen prøver å legge til duplikater vha åpne fil." />
     <MESSAGE value="kr (?)" />
@@ -682,7 +673,8 @@
     <MESSAGE value="fixed edit user" />
     <MESSAGE value="med testdata" />
     <MESSAGE value="fixed &quot;vil du erstatte den komponenten pga den typen har nok antall &quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed &quot;vil du erstatte den komponenten pga den typen har nok antall &quot;" />
+    <MESSAGE value="la til en testfunksjon for superbruker, sånn at man kan legge til computers der (gjør testing sååå mye lettere)" />
+    <option name="LAST_COMMIT_MESSAGE" value="la til en testfunksjon for superbruker, sånn at man kan legge til computers der (gjør testing sååå mye lettere)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />
