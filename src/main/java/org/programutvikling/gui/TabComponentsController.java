@@ -204,7 +204,6 @@ public class TabComponentsController {
                 cbRecentFiles.getSelectionModel().getSelectedItem() + "'?");
         alert.showAndWait();
         registryComponentLogic.handleOpenOptions(chosenFile, alert);
-
     }
 
     private ComponentRegister getComponentRegister() {

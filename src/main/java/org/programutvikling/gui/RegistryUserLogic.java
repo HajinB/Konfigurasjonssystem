@@ -27,6 +27,17 @@ public class RegistryUserLogic {
         this.gridPane = gridPane;
     }
 
+    public void registerUser() {
+        //todo legg til lbls for alle som på tabcomponents?
+        if(areInputFieldsEmpty()) {
+            Dialog.showErrorDialog("Noen av feltene er tomme!");
+
+        }else {
+            createUserFromGUIInputFields();
+        }
+        // duplikat her
+    }
+
     User createUserFromGUIInputFields() {
         try {
             User user = createUser();
@@ -57,16 +68,6 @@ public class RegistryUserLogic {
         return new User(admin,username,password,name,email,address,zip,city);
     }
 
-    public void registerUser() {
-        if(areInputFieldsEmpty()) {
-            Dialog.showErrorDialog("Noen av feltene er tomme!");
-            return;
-        }
-
-        createUserFromGUIInputFields();
-        // duplikat her
-
-    }
 
     private boolean areInputFieldsEmpty() {
         return (((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() || ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty()

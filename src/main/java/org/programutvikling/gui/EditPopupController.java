@@ -107,6 +107,7 @@ public class EditPopupController extends TabComponentsController implements Init
         cbType.setValue(c.getProductType());
         txtPopupProductName.setText(c.getProductName());
         txtPopupProductDescription.setText(c.getProductDescription());
+        System.out.println(c.getProductPrice());
         txtPopupProductPrice.setText(Double.toString(c.getProductPrice()));
         setFocusOnField(columnIndex, c);
     }

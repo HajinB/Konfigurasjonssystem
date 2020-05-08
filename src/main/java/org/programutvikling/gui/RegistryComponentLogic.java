@@ -61,6 +61,7 @@ public class RegistryComponentLogic {
 
         //best å gjøre validering her - business rules kan throwe exceptions lengre downstream som de gjør, bare ta
         // bort dialogs maybe?
+        tabComponentsController.clearLabels();
         if (areInputFieldsEmpty()) {
             if (isProductTypeEmpty()){
                 System.out.println("hva skjer");
@@ -77,8 +78,6 @@ public class RegistryComponentLogic {
             if (isProductPriceEmpty()) {
                 tabComponentsController.setLblMsgPrice("Skriv inn pris på produktet");
             }
-//todo må sjekke om alle felt er tomme før man kjører CreateComponentHandleDUplicate - ellers så får man
-// nullpointerexception
         }else {
             createComponentHandleDuplicate();
         }
