@@ -18,7 +18,7 @@ public enum Model {
     // private ComputerRegister computerRegister = new ComputerRegister();
     // private Computer computer = new Computer("current");
     //temporary master list - som har alle objekter fra fil.
-    private ArrayList<Object> endUserObjects = new ArrayList<>();
+    private ArrayList<Object> EndUserObjects = new ArrayList<>();
 
     private UserPreferences userPreferences = new UserPreferences();
     private UserRegister userRegister = new UserRegister();
@@ -30,14 +30,14 @@ public enum Model {
     public void loadFileIntoModel() {
         System.out.println("hi from model constructor" + userPreferences.getPathToAdminFiles().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToAdminFiles().toString())) {
-            FileHandling.openFile(endUserObjects, userPreferences.getPathToAdminFiles().toString());
+            FileHandling.openFile(EndUserObjects, userPreferences.getPathToAdminFiles().toString());
             addDefaultUsers();
             //legg til open computer her
             loadObjectsIntoClasses();
             removeDuplicates();
         } else {
             System.out.println("ingen config fil ble funnet - tilbake til default.");
-            FileHandling.openFile(endUserObjects, userPreferences.getStringPathToBackupAppFiles());
+            FileHandling.openFile(EndUserObjects, userPreferences.getStringPathToBackupAppFiles());
             addDefaultUsers();
             loadObjectsIntoClasses();
         }
@@ -77,22 +77,22 @@ public enum Model {
     }
 
     public ArrayList<Object> getCurrentObjectList() {
-        return endUserObjects;
+        return EndUserObjects;
     }
 
     public ArrayList<Object> getCleanObjectList() {
-        if (endUserObjects.size() > 0) {
-            endUserObjects.clear();
+        if (EndUserObjects.size() > 0) {
+            EndUserObjects.clear();
         }
-        return endUserObjects;
+        return EndUserObjects;
     }
 
     public void appendComponentRegisterIntoModel() {
-        if (endUserObjects.size() == 0) {
+        if (EndUserObjects.size() == 0) {
             return;
         }
-        if (endUserObjects.get(0) instanceof ComponentRegister && endUserObjects.get(0) != null) {
-            ComponentRegister componentRegisterFromFile = (ComponentRegister) endUserObjects.get(0);
+        if (EndUserObjects.get(0) instanceof ComponentRegister && EndUserObjects.get(0) != null) {
+            ComponentRegister componentRegisterFromFile = (ComponentRegister) EndUserObjects.get(0);
             System.out.println("size før append: " + componentRegister.getRegister().size());
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
             System.out.println("size etter append: " + componentRegister.getRegister().size());
@@ -101,27 +101,27 @@ public enum Model {
     }
 
     public void loadComponentRegisterIntoModel() {
-        if (endUserObjects.size() == 0) {
+        if (EndUserObjects.size() == 0) {
             return;
         }
-        if (endUserObjects.get(0) instanceof ComponentRegister && endUserObjects.get(0) != null)
-            setComponentRegister((ComponentRegister) endUserObjects.get(0));
+        if (EndUserObjects.get(0) instanceof ComponentRegister && EndUserObjects.get(0) != null)
+            setComponentRegister((ComponentRegister) EndUserObjects.get(0));
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
         SavedPathRegister savedPathRegisterTemp = null;
         /**går det ann å skrive dette på en annen måte? factory method feks??*/
-        System.out.println(endUserObjects.size());
-        if (endUserObjects.size() > 0) {
-            if (endUserObjects.get(0) != null && endUserObjects.get(0) instanceof ComponentRegister)
-                setComponentRegister((ComponentRegister) endUserObjects.get(0));
+        System.out.println(EndUserObjects.size());
+        if (EndUserObjects.size() > 0) {
+            if (EndUserObjects.get(0) != null && EndUserObjects.get(0) instanceof ComponentRegister)
+                setComponentRegister((ComponentRegister) EndUserObjects.get(0));
 
-            if (endUserObjects.size() > 1 && endUserObjects.get(1) != null && endUserObjects.get(1) instanceof SavedPathRegister)
-                savedPathRegister = (SavedPathRegister) endUserObjects.get(1);
+            if (EndUserObjects.size() > 1 && EndUserObjects.get(1) != null && EndUserObjects.get(1) instanceof SavedPathRegister)
+                savedPathRegister = (SavedPathRegister) EndUserObjects.get(1);
             savedPathRegister.removeDuplicates();
 
-            if (endUserObjects.get(2) != null && endUserObjects.get(2) instanceof UserRegister)
-                userRegister = (UserRegister) endUserObjects.get(2);
+            if (EndUserObjects.get(2) != null && EndUserObjects.get(2) instanceof UserRegister)
+                userRegister = (UserRegister) EndUserObjects.get(2);
         }
     }
 
