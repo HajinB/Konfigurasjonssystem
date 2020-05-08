@@ -1,37 +1,29 @@
 package org.programutvikling.gui;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.programutvikling.App;
-import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
-import org.programutvikling.gui.utility.*;
-import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.logic.EndUserLogic;
-import org.programutvikling.model.Model;
 import org.programutvikling.domain.component.Component;
-import org.programutvikling.model.ModelEndUser;
-import org.programutvikling.model.io.FileOpenerTxt;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
-import org.programutvikling.gui.CustomTableColumn.PriceFormatCell;
+import org.programutvikling.gui.CustomViews.CustomListViewCell;
+import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.EndUserService;
+import org.programutvikling.gui.utility.FXMLGetter;
+import org.programutvikling.logic.EndUserLogic;
+import org.programutvikling.model.ModelEndUser;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,19 +31,13 @@ import java.util.List;
 import static javafx.application.Platform.runLater;
 
 
-public class EnduserController extends TabComponentsController {
+public class EnduserController {
     @FXML
     public BorderPane topLevelPaneEndUser;
-    EndUserService endUserService = new EndUserService();
-    Stage stage;
-    ComputerValidator computerValidator = new ComputerValidator();
     @FXML
     TableView<Computer> tblCompletedComputers;
     @FXML
     TableColumn computerPriceCln;
-    ArrayList<TableView<Component>> tblViewList = new ArrayList<>();
-    ArrayList<TableColumn> tblColumnPriceList = new ArrayList<>();
-    ArrayList<TableColumn> tblColumnDescriptionList = new ArrayList<>();
     @FXML
     private Label lblTotalPrice;
     @FXML
@@ -67,85 +53,33 @@ public class EnduserController extends TabComponentsController {
             processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln, memoryPriceCln,
             mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln;
 
+    EndUserService endUserService = new EndUserService();
+    Stage stage;
+    ComputerValidator computerValidator = new ComputerValidator();
+
+    ArrayList<TableView<Component>> tblViewList = new ArrayList<>();
+    ArrayList<TableColumn> tblColumnPriceList = new ArrayList<>();
+    ArrayList<TableColumn> tblColumnDescriptionList = new ArrayList<>();
+
     private EndUserLogic endUserLogic;
 
-
-
     //todo hver dag fra nå av : prøv å få ut all denne koden fra kontrolleren. alt man trenger er å definere
-    // kollonenen, send de til EndUserLogic, og gjør alt som trengs der!!!!
+    // kolonnenen, send de til EndUserLogic, og gjør alt som trengs der!!!!
 
     @FXML
     public void initialize() throws IOException {
         addTableViewsToList();
         System.out.println(ModelEndUser.INSTANCE);
         //todo så og si alle metoder under her kan trekkes ut av controlleren
-        endUserLogic = new EndUserLogic(this, topLevelPaneEndUser,tblViewList, tblColumnDescriptionList,
-                tblColumnPriceList);
-        initTextWrapCellFactory();
+        endUserLogic = new EndUserLogic(this, topLevelPaneEndUser, tblViewList, tblColumnDescriptionList,
+                tblColumnPriceList, shoppingListView);
         updateComponentViews();
         updateList();
-        setCellFactoryListView();
-        setTblCellFactory();
         endUserService.updateEndUserRegisters();
         updateComputerListView();
         setTblCompletedComputersListener();
-        computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
         final Tooltip tooltipCompletedComputers = new Tooltip("Dobbeltklikk på en datamaskin for å se detaljer");
         tblCompletedComputers.setTooltip(tooltipCompletedComputers);
-        //setDblClickEvent();
-        //todo se på hvordan dblclick event er hentet ut av controlleren og gjør det på ALLE tablerows..
-        //mulig man må finne en ny måte å update listene på -fra denne controlleren(?)
-        ObjectProperty<TableRow<Component>> lastSelectedRow = new SimpleObjectProperty<>();
-        setListenerToClearSelection(lastSelectedRow);
-    }
-
-    private void initTextWrapCellFactory() {
-
-        //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
-        // en kolonne i tableview
-        Callback<TableColumn, TableCell> customTextWrapCellFactory =
-                new Callback<TableColumn, TableCell>() {
-                    public TableCell call(TableColumn p) {
-                        return new CustomTextWrapCellFactory();
-                    }
-                };
-        for(TableColumn tc : tblColumnDescriptionList){
-            tc.setCellFactory(customTextWrapCellFactory);
-        }
-    }
-
-    private void setListenerToClearSelection(ObjectProperty<TableRow<Component>> lastSelectedRow) {
-        for (TableView<Component> t : tblViewList) {
-            //går gjennom tableviewlisten for å finne den raden som sist ble valgt, blant alle tables,
-            // for å bruke den i eventfilteret på toplevel-panen.
-            t.setRowFactory(tableView -> {
-                TableRow<Component> row = new TableRow<Component>();
-                row.selectedProperty().addListener((objects, wasSelected, isNowSelected) -> {
-                    if (isNowSelected) {
-                        lastSelectedRow.set(row);
-                    }
-                });
-                return row;
-            });
-        }
-
-        //listener på toplevel element for å cleare selection
-        this.topLevelPaneEndUser.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (lastSelectedRow.get() != null) {
-
-                    //legal bounds for the object that a method is trying to access.
-                    Bounds lastSelectedRowBounds =
-                            lastSelectedRow.get().localToScene(lastSelectedRow.get().getLayoutBounds());
-                    if (!lastSelectedRowBounds.contains(event.getSceneX(), event.getSceneY())) {
-                        for (TableView<Component> t : tblViewList) {
-                            t.getSelectionModel().clearSelection();
-                        }
-                    }
-                }
-            }
-        });
     }
 
     private void addTableViewsToList() {
@@ -163,7 +97,6 @@ public class EnduserController extends TabComponentsController {
                 keyboardDescriptionColumn, screenDescriptionColumn);
         tblColumnDescriptionList.addAll(descriptionColumns);
     }
-
 
     private void setTblCompletedComputersListener() {
         /**detecter tablerow, for å hente ut component*/
@@ -221,29 +154,7 @@ public class EnduserController extends TabComponentsController {
         stage.show();
     }
 
-    private void setTblCellFactory() {
 
-        //oppretter en cellfactory object for pris kolonnene
-        Callback<TableColumn, TableCell> priceCellFactory =
-                new Callback<TableColumn, TableCell>() {
-                    public TableCell call(TableColumn p) {
-                        return new PriceFormatCell();
-                    }
-                };
-
-
-        processorPriceCln.setCellFactory(priceCellFactory);
-        videoCardPriceCln.setCellFactory(priceCellFactory);
-        screenPriceCln.setCellFactory(priceCellFactory);
-        otherPriceCln.setCellFactory(priceCellFactory);
-        memoryPriceCln.setCellFactory(priceCellFactory);
-        cabinetPriceCln.setCellFactory(priceCellFactory);
-        motherBoardPriceCln.setCellFactory(priceCellFactory);
-        mousePriceCln.setCellFactory(priceCellFactory);
-        hardDiscPriceCln.setCellFactory(priceCellFactory);
-        keyboardPriceCln.setCellFactory(priceCellFactory);
-
-    }
     private void updateCompletedComputers() {
         if (ModelEndUser.INSTANCE.getComputerRegister().getObservableRegister().size() > 0)
             tblCompletedComputers.setItems(ModelEndUser.INSTANCE.getComputerRegister().getObservableRegister());
@@ -271,27 +182,21 @@ public class EnduserController extends TabComponentsController {
 
     @FXML
     void btnCashier(ActionEvent event) throws IOException {
-        System.out.println("this is");
         List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
         if (FileHandling.showDialogIfComponentsAreMissing(whatsMissing, stage)) return;
-
         openFinalDetails();
-
-        /*
-        updateCompletedComputers();*/
     }
 
+    //todo legg dette i egen windowhandler? 0o
     private void openFinalDetails() throws IOException {
 
         System.out.println("her er vi i openDetailedView");
         FXMLLoader loader = getFxmlLoader("detailsPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-
         stage.setScene(
                 new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
         );
-
         DetailsController detailsController =
                 loader.<DetailsController>getController();
         detailsController.initData(getComputer(), stage);
@@ -304,8 +209,6 @@ public class EnduserController extends TabComponentsController {
 
     private void addComponentToCart(TableView<Component> tbl) {
         Component selectedComp = tbl.getSelectionModel().getSelectedItem();
-        /**all adding av componenter må skje via enduserservice(?) - legg til en metode der som legger til*/
-
         if (selectedComp != null) {
             endUserLogic.addComponentToComputer(selectedComp);
             updateComputerListView();
@@ -318,7 +221,6 @@ public class EnduserController extends TabComponentsController {
         updateTotalPrice();
     }
 
-
     @FXML
     public void btnSavePC(ActionEvent event) throws IOException {
         List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
@@ -326,27 +228,10 @@ public class EnduserController extends TabComponentsController {
         updateCompletedComputers();
     }
 
-    //kan definere denne i en egen klasse - se på de andre for å gjøre det. CustomListViewCellFactory
-    private void setCellFactoryListView() {
-        shoppingListView.setCellFactory(param -> new ListCell<Component>() {
-            @Override
-            protected void updateItem(Component c, boolean empty) {
-                super.updateItem(c, empty);
-                if (empty || c == null || c.getProductName() == null) {
-                    setText("");
-                } else {
-                    //bruker cell factory for å sette toString i listviewen.
-                    //todo hvis pris skal være i egen kollonne må man bare sette opp en listview til eller tableview.
-                    setText(c.getProductType() + "\n" + c.getProductName() + "\n" + String.format("%.0f", c.getProductPrice()) + " kr");
-                }
-            }
-        });
-    }
-
     void updateComputerListView() {
         if (getComputer() != null)
             shoppingListView.setItems(getComputer().getComponentRegister().getObservableRegister());
-        else{
+        else {
             System.out.println(getComputer() + "computer er tom");
         }
         updateTotalPrice();
@@ -359,12 +244,10 @@ public class EnduserController extends TabComponentsController {
 
     public void updateTotalPrice() {
         if (getComputer() != null) {
-            String totalpris = String.format("%.0f",getComputer().calculatePrice()) + " kr";
+            String totalpris = String.format("%.0f", getComputer().calculatePrice()) + " kr";
             lblTotalPrice.setText(totalpris);
         }
     }
-
-
 
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
@@ -441,7 +324,7 @@ public class EnduserController extends TabComponentsController {
 
     //Fjerner forrige valgte produkt etter at du har trykket #Legg i handlekurv
     public void clearSelection() {
-        for(TableView t : tblViewList) {
+        for (TableView t : tblViewList) {
             runLater(() -> {
                 t.getSelectionModel().clearSelection();
             });
@@ -460,12 +343,7 @@ public class EnduserController extends TabComponentsController {
         }
         if (!isSomethingSelected) {
             System.out.println("Velg en rad for å legge til i handlekurven");
-            //sett en label her hvis det ikke er valgt noe.
-            //lblComponentMsg.setText("Velg en rad for å legge til i handlekurven");
         }
-
-        clearSelection();  //?? why gjøre dette her
+        clearSelection();
     }
-
-
 }

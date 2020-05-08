@@ -1,4 +1,4 @@
-package org.programutvikling.gui.CustomTableColumn;
+package org.programutvikling.gui.CustomViews;
 
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;

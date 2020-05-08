@@ -14,6 +14,7 @@ import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
+import org.programutvikling.gui.utility.RegisterUtility;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.io.FileOpenerTxt;
 
@@ -29,6 +30,7 @@ public class SecondaryController implements Initializable {
     public AnchorPane tabUsers;
     public AnchorPane tabComponents;
     public BorderPane topLevelPane;
+    RegistryComponentLogic registryComponentLogic;
 
     /**
      * https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
@@ -43,6 +45,13 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private TabUsersController tabUsersController;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        tabComponentsController.init(this);
+        tabUsersController.init(this);
+        registryComponentLogic = new RegistryComponentLogic(tabComponentsController);
+    }
 
     @FXML
     void btnOpenComputerAndAddComponents(ActionEvent e) {
@@ -74,6 +83,8 @@ public class SecondaryController implements Initializable {
         String chosenPath = FileUtility.getFilePathFromSaveJOBJDialog(this.stage);
         if (chosenPath != null) {
             FileHandling.saveFileAs(chosenPath);
+            //Model.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(chosenPath);
+            tabComponentsController.updateRecentFiles();
         } else {
             tabComponentsController.setResultLabelTimed("Lagring ferdig!");
         }
@@ -92,16 +103,17 @@ public class SecondaryController implements Initializable {
             return;
         }
         if (getComponentRegister().getRegister().size() == 0) {
-            tabComponentsController.overWriteList(chosenFile);
-        }
+            registryComponentLogic.overWriteList(chosenFile);
+        }else {
 
-        Alert alert = Dialog.getOpenOption(
-                "Åpne fil",
-                "Legg til i listen eller overskriv. Under «Verktøy» kan du fjerne eventuelle duplikater",
-                "Vil du åpne ",
-                chosenFile + "?");
-        alert.showAndWait();
-        tabComponentsController.handleOpenOptions(chosenFile, alert);
+            Alert alert = Dialog.getOpenOption(
+                    "Åpne fil",
+                    "Legg til i listen eller overskriv. Under «Verktøy» kan du fjerne eventuelle duplikater",
+                    "Vil du åpne ",
+                    chosenFile + "?");
+            alert.showAndWait();
+            registryComponentLogic.handleOpenOptions(chosenFile, alert);
+        }
     }
 
     private ComponentRegister getComponentRegister() {
@@ -113,9 +125,5 @@ public class SecondaryController implements Initializable {
         tabComponentsController.updateView();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        tabComponentsController.init(this);
-        tabUsersController.init(this);
-    }
+
 }

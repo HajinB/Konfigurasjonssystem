@@ -3,7 +3,6 @@ package org.programutvikling.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
@@ -11,11 +10,9 @@ import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerFactory;
-import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
-import org.programutvikling.gui.CustomTableColumn.PriceFormatCell;
+import org.programutvikling.gui.CustomViews.CustomTextWrapCellFactory;
+import org.programutvikling.gui.CustomViews.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.logic.EndUserLogic;
-import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
 import org.programutvikling.model.io.FileSaverTxt;
 

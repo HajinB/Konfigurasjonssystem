@@ -198,13 +198,15 @@
                     <Font size="13.0"/>
                 </font>
             </TextField>
-            <ChoiceBox fx:id="cbTypeFilter" layoutX="531.0" layoutY="14.0" onAction="#filterByTypeSelected"
+            <ChoiceBox id="#cbTypeFilter" fx:id="cbTypeFilter" layoutX="531.0" layoutY="14.0"
+                       onAction="#filterByTypeSelected"
                        prefHeight="30.0" prefWidth="170.0" styleClass="cb" stylesheets="@CSS/Superbruker.css"
                        AnchorPane.rightAnchor="338.6"/>
             <Button layoutX="878.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0"
                     prefWidth="131.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett produkt"
                     AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.rightAnchor="30.799999999999955"/>
-            <ComboBox fx:id="cbRecentFiles" layoutX="745.0" layoutY="14.0" prefHeight="30.0" prefWidth="146.0"
+            <ComboBox id="#cbRecentFiles" fx:id="cbRecentFiles" layoutX="745.0" layoutY="14.0" prefHeight="30.0"
+                      prefWidth="146.0"
                       promptText="Åpne nylige filer" styleClass="cb" stylesheets="@CSS/Superbruker.css"
                       AnchorPane.rightAnchor="148.60000000000002"/>
             <Button layoutX="898.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnOpenRecentFile"

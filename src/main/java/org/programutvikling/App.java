@@ -46,6 +46,8 @@ public class App extends Application {
         primaryStage.show();
         primaryStage.setMaximized(true);
 
+        //scene.addEventFilter();
+
         //scene = buildUI(primaryStage);
         if (scene == null) throw new NullPointerException();
         scene.getRoot().applyCss();

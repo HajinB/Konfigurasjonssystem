@@ -9,18 +9,6 @@ import java.util.List;
 
 public class RegisterLogic {
 
-    public static boolean containsDuplicates(ObservableList<String> list) {
-        ObservableList<String> result = (ObservableList<String>) makeListUnique(list);
-        return result.size() == list.size();
-    }
-
-    public static ObservableList<String> getDuplicateFreeList(ObservableList<String> list) {
-        ArrayList<String> resultAL = new ArrayList<> (makeListUnique(list));
-        ObservableList<String> resultOL = FXCollections.observableArrayList();
-        resultOL.addAll(resultAL);
-        return resultOL;
-    }
-
     public static ArrayList<String> getDuplicateFreeList(ArrayList<String> list) {
         ArrayList<String> result = (ArrayList<String>) makeListUnique(list);
         return result;

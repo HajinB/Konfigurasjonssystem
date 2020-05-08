@@ -1,5 +1,6 @@
 package org.programutvikling.gui;
 
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.model.ModelEndUser;
@@ -202,6 +203,7 @@ public class FileHandling {
     public static ArrayList<Computer> findComputers() {
         ArrayList<Object> componentList = new ArrayList<>();
         File folder = new File(String.valueOf(userPreferences.getPathToComputers()));
+
         File[] listOfFiles = folder.listFiles();
 
         ArrayList<Computer> computers = new ArrayList<>();
@@ -235,6 +237,10 @@ public class FileHandling {
             Dialog.showSuccessDialog(TemporaryComponent.INSTANCE.errorListToString());
             TemporaryComponent.INSTANCE.errorList.clear();
         }
+    }
+
+    public static void handleOpenOptions(String chosenFile, Alert alert) {
+
     }
 
 
