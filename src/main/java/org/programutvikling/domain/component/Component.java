@@ -2,7 +2,6 @@ package org.programutvikling.domain.component;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import org.programutvikling.gui.TabComponentsController;
 import org.programutvikling.domain.io.InvalidComponentFormatException;
 import org.programutvikling.domain.io.InvalidPriceException;
 

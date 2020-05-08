@@ -25,13 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegistryComponentLogic {
-    Converter.DoubleStringConverter doubleStringConverter = new Converter.DoubleStringConverter();
-
     TabComponentsController tabComponentsController;
     WindowHandler windowHandler = new WindowHandler();
     ThreadHandler threadHandler;
-    Scene scene;
-    boolean alreadyExecuted = false;
     private GridPane gridPane;
     private TableView<Component> tblViewComponent;
 
@@ -59,7 +55,6 @@ public class RegistryComponentLogic {
     public RegistryComponentLogic(TabComponentsController tabComponentsController) {
         this.tabComponentsController = tabComponentsController;
         this.threadHandler = new ThreadHandler(tabComponentsController);
-
     }
 
     void registerComponent() {
@@ -68,7 +63,10 @@ public class RegistryComponentLogic {
         // bort dialogs maybe?
         if (areInputFieldsEmpty()) {
             if (isProductTypeEmpty()){
+                System.out.println("hva skjer");
                 tabComponentsController.setLblMsgType("Velg produkttype");
+            }else{
+                System.out.println("produkttype er ikke empty..");
             }
             if (isProductNameEmpty()){
                 tabComponentsController.setLblMsgName("Skriv inn navn på produktet");
@@ -81,8 +79,9 @@ public class RegistryComponentLogic {
             }
 //todo må sjekke om alle felt er tomme før man kjører CreateComponentHandleDUplicate - ellers så får man
 // nullpointerexception
+        }else {
+            createComponentHandleDuplicate();
         }
-        createComponentHandleDuplicate();
     }
 
     public void setTblViewEventHandler() {
@@ -230,7 +229,7 @@ public class RegistryComponentLogic {
     private boolean isProductTypeEmpty() {
         return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null ||
                 getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).equalsIgnoreCase("") ||
-                getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() ||
+                getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isBlank() ||
                 getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).contentEquals("");
     }
 
@@ -305,7 +304,7 @@ public class RegistryComponentLogic {
     }
 
     private void resetFields() {
-        ((ChoiceBox) gridPane.lookup("#productType")).setValue(null);
+        ((ChoiceBox) gridPane.lookup("#productType")).setValue("");
         ((TextField) gridPane.lookup("#productName")).setText("");
         ((TextArea) gridPane.lookup("#productDescription")).setText("");
         ((PriceField) gridPane.lookup("#productPrice")).setText("");
