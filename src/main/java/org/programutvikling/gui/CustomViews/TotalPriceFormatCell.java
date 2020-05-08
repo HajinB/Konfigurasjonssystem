@@ -18,8 +18,11 @@ public class TotalPriceFormatCell <T> implements Callback<TableColumn<T, Compute
                         setText(null);
                         return;
                     }
-
-                    setText(String.format("%.0f",item.calculatePrice()));
+                    if(item.calculatePrice() % 1 == 0) {
+                        setText(String.format("%.0f", item.calculatePrice()));
+                    } else {
+                        setText(String.format("%.2f", item.calculatePrice()));
+                    }
                 }
 
             };

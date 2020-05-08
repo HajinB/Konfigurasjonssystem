@@ -8,11 +8,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.DetailsController">
 
-    <TableView fx:id="tblFinalViewComponent" editable="true" focusTraversable="false" prefHeight="278.0"
-               prefWidth="600.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <TableView fx:id="tblFinalViewComponent" editable="true" focusTraversable="false" prefHeight="278.0" prefWidth="600.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
             <TableColumn minWidth="100.0" prefWidth="140.79998779296875" styleClass="column" text="Produkttype">
                 <cellValueFactory>
@@ -24,8 +24,7 @@
                     <PropertyValueFactory property="productName" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="productFinalDescriptionColumn" minWidth="100" prefWidth="230.0" styleClass="column"
-                         text="Beskrivelse">
+            <TableColumn fx:id="productFinalDescriptionColumn" minWidth="100" prefWidth="230.0" styleClass="column" text="Beskrivelse">
                 <cellValueFactory>
                     <PropertyValueFactory property="productDescription" />
                 </cellValueFactory>
@@ -44,7 +43,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-   <Button fx:id="btnAddToComputersFolder" layoutX="450.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnAddToComputersFolder" text="Lagre" />
-   <TextField fx:id="txtNameForComputer" layoutX="119.0" layoutY="324.0" />
-   <Label layoutX="119.0" layoutY="299.0" prefHeight="17.0" prefWidth="167.0" text="Skriv inn navn" />
+   <Button fx:id="btnAddToComputersFolder" layoutX="504.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnAddToComputersFolder" text="Lagre" />
+   <TextField fx:id="txtNameForComputer" layoutX="340.0" layoutY="324.0" />
+   <Label layoutX="340.0" layoutY="287.0" prefHeight="25.0" prefWidth="167.0" text="Skriv inn navn på PC">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
 </AnchorPane>

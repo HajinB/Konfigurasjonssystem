@@ -22,10 +22,14 @@ public class CustomListViewCell extends ListCell<Component> {
         if (component == null) {
             setText(null);
             setGraphic(null);
-        } else {
+        } else if(component.getProductPrice() % 1 == 0) {
             this.setWrapText(true);
             setText(component.getProductType() + "\n" + component.getProductName() + "\n" + String.format("%.0f",
-                    component.getProductPrice()) + " kr");
+                    component.getProductPrice()));
+        } else {
+            this.setWrapText(true);
+            setText(component.getProductType() + "\n" + component.getProductName() + "\n" + String.format("%.2f",
+                    component.getProductPrice()));
         }
 
         //metode for å sette kalkulert verdi i en Listview

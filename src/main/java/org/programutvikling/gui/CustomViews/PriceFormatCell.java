@@ -16,12 +16,15 @@ public class PriceFormatCell extends TableCell<Object, Double> {
         }
 
         // setter teksten som skal vises her
-        setText(item == null ? "" : priceFormat(item)+" kr");
+        setText(item == null ? "" : priceFormat(item));
     }
 
     private String priceFormat(Double item) {
-
-        return String.format("%.0f",item );
+        if(item % 1 == 0) {
+            return String.format("%.0f",item);
+        } else {
+            return String.format("%.2f", item);
+        }
     }
 
 }
