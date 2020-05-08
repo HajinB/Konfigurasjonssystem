@@ -46,7 +46,7 @@ public class ComputerPopupController extends EnduserController implements Initia
         //tar inn stage for å kunne lukke når brukeren trykker endre
         this.stage = stage;
         lblComputerName.setText(c.getProductName());
-        lblComputerPrice.setText(Double.toString(c.calculatePrice()));
+        lblComputerPrice.setText(lblComputerPriceFormat(c.getProductPrice()));
         listContent.setItems(c.getComponentRegister().getObservableRegister());
         this.computer = c;
     }
@@ -58,5 +58,12 @@ public class ComputerPopupController extends EnduserController implements Initia
         ModelEndUser.INSTANCE.getComputer().getComponentRegister()
                 .getObservableRegister().addAll(computer.getComponentRegister().getRegister());
         stage.close();
+    }
+    String lblComputerPriceFormat(double price) {
+        if(price % 1 == 0) {
+            return String.format("%.0f",price);
+        } else {
+            return String.format("%.2f",price);
+        }
     }
 }
