@@ -63,9 +63,8 @@ public class EnduserController {
 
     private EndUserLogic endUserLogic;
 
-
     //todo hver dag fra nå av : prøv å få ut all denne koden fra kontrolleren. alt man trenger er å definere
-    // kollonenen, send de til EndUserLogic, og gjør alt som trengs der!!!!
+    // kolonnenen, send de til EndUserLogic, og gjør alt som trengs der!!!!
 
     @FXML
     public void initialize() throws IOException {
@@ -76,23 +75,12 @@ public class EnduserController {
                 tblColumnPriceList, shoppingListView);
         updateComponentViews();
         updateList();
-
         endUserService.updateEndUserRegisters();
-
         updateComputerListView();
-
         setTblCompletedComputersListener();
-
-       // computerPriceCln.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
         final Tooltip tooltipCompletedComputers = new Tooltip("Dobbeltklikk på en datamaskin for å se detaljer");
         tblCompletedComputers.setTooltip(tooltipCompletedComputers);
-        //setDblClickEvent();
-        //todo se på hvordan dblclick event er hentet ut av controlleren og gjør det på ALLE tablerows..
-        //mulig man må finne en ny måte å update listene på -fra denne controlleren(?)
-
     }
-
-
 
     private void addTableViewsToList() {
         List<TableView<Component>> componentsViews = Arrays.asList(tblProcessor, tblVideoCard, tblScreen,
@@ -199,6 +187,7 @@ public class EnduserController {
         openFinalDetails();
     }
 
+    //todo legg dette i egen windowhandler? 0o
     private void openFinalDetails() throws IOException {
 
         System.out.println("her er vi i openDetailedView");

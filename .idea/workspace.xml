@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/Computers/Untitled.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/Computers/denjjjjjjpcn.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/Computers/sadfasdfasdfasfd.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -274,13 +273,6 @@
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
-    </task>
-    <task id="LOCAL-00091" summary="fiksa remove duplicates - usikker på om det bør være i ui eller om programmet bare skal fjerne duplikater automatisk hvis noen prøver å legge til duplikater vha åpne fil.">
-      <created>1588539433867</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1588539433867</updated>
     </task>
     <task id="LOCAL-00092" summary="kr (?)">
       <created>1588588258808</created>
@@ -618,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588941330014</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="masse flytting og rydding i tabComponentsController">
+      <created>1588941382653</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1588941382653</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

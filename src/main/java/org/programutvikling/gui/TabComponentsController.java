@@ -142,7 +142,6 @@ public class TabComponentsController {
         });
     }
 
-
     private void setTblCellFactory() {
         Callback<TableColumn, TableCell> priceCellFactory =
                 new Callback<TableColumn, TableCell>() {
