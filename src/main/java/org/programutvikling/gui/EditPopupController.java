@@ -1,7 +1,6 @@
 package org.programutvikling.gui;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -133,6 +132,7 @@ public class EditPopupController extends TabComponentsController implements Init
             txtPopupProductPrice.selectAll();
         }
     }
+
 }
 
 
