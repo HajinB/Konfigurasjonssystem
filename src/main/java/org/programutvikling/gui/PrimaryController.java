@@ -47,6 +47,7 @@ public class PrimaryController implements Initializable {
     private void loginAction() throws IOException {
         User loginUser = Model.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),inputPassword.getText());
         if(loginUser != null){
+            // Turns off the label when you get a successful login
             lblFeilPassword.setVisible(false);
             if(loginUser.getAdmin()) {
                 App.setRoot("secondary");
@@ -54,6 +55,7 @@ public class PrimaryController implements Initializable {
                 openUserView();
             }
         } else {
+            // Only one label for both wrong username
             lblFeilPassword.setVisible(true);
         }
     }
@@ -74,6 +76,8 @@ public class PrimaryController implements Initializable {
         //loadRegisterFromFile();
       //  Model.INSTANCE.getUserRegister();
     btnLogin.setDefaultButton(true);
+    // Adds users if there is no users OR there is no admin users
+        Model.INSTANCE.addDefaultUsers();
     }
 
 

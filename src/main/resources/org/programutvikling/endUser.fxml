@@ -2,7 +2,6 @@
 
 <?import java.lang.String?>
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -24,285 +23,291 @@
 <BorderPane fx:id="topLevelPaneEndUser" prefHeight="650.0" prefWidth="1050.0" styleClass="borderPane" stylesheets="@CSS/EndUser.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.EnduserController">
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true" stylesheets="@CSS/EndUser.css">
-            <AnchorPane prefHeight="555.0">
-                <VBox alignment="CENTER" layoutX="14.0" layoutY="56.0" AnchorPane.leftAnchor="14.0">
-                    <TitledPane contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Prosessor *" VBox.vgrow="ALWAYS">
-                        <TableView fx:id="tblProcessor" prefHeight="230.0">
-                            <columns>
-                                <TableColumn editable="false" prefWidth="100.0" resizable="false" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="processorDescriptionColumn" editable="false" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="processorPriceCln" editable="false" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                    </TitledPane>
-                    <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne *" VBox.vgrow="ALWAYS">
-                        <TableView fx:id="tblMemory" prefHeight="230.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn id="#memoryDescriptionColumn" fx:id="memoryDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="memoryPriceCln" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                        <VBox.margin>
-                            <Insets />
-                        </VBox.margin>
-                    </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Kabinett *">
-                        <TableView fx:id="tblCabinet" prefHeight="230.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn id="#cabinetDescriptionColumn" fx:id="cabinetDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="cabinetPriceCln" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                    </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Mus">
-                        <TableView fx:id="tblMouse" prefHeight="230.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="mouseDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="mousePriceCln" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                    </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Annet">
-                        <TableView fx:id="tblOther" prefHeight="230.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="otherDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="otherPriceCln" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                    </TitledPane>
-                </VBox>
-                <VBox alignment="CENTER" layoutX="388.0" layoutY="56.0" AnchorPane.leftAnchor="388.0">
-                    <TitledPane contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjermkort *" VBox.vgrow="ALWAYS">
-                        <TableView fx:id="tblVideoCard" prefHeight="230.0" prefWidth="369.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" resizable="false" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="graphicDescriptionColumn" prefWidth="175.0" resizable="false" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="videoCardPriceCln" prefWidth="87.20001220703125" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                        <VBox.margin>
-                            <Insets left="1.0" right="1.0" />
-                        </VBox.margin>
-                    </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Hovedkort *">
-                        <TableView fx:id="tblMotherBoard" prefHeight="230.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="motherboardDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="motherBoardPriceCln" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                        </TableView>
-                    </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk *">
-                        <TableView fx:id="tblHardDisc" prefHeight="230.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="harddiskDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="hardDiscPriceCln" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                        </TableView>
-                    </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" prefWidth="365.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Tastatur">
-                        <TableView fx:id="tblKeyboard" prefHeight="230.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="keyboardDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="keyboardPriceCln" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                        </TableView>
-                    </TitledPane>
-                    <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjerm">
-                        <TableView fx:id="tblScreen" prefHeight="230.0">
-                            <columns>
-                                <TableColumn prefWidth="101.59997940063477" styleClass="columnUser" text="Navn">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productName" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="screenDescriptionColumn" prefWidth="175.0" styleClass="columnUser" text="Beskrivelse">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productDescription" />
-                                    </cellValueFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="screenPriceCln" prefWidth="87.0" resizable="false" text="Pris">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="productPrice" />
-                                    </cellValueFactory>
-                           <styleClass>
-                              <String fx:value="columnUser" />
-                              <String fx:value="columnPrice" />
-                           </styleClass>
-                                </TableColumn>
-                            </columns>
-                        </TableView>
-                    </TitledPane>
-                </VBox>
+            <AnchorPane>
+            <VBox layoutX="14.0" layoutY="66.0" prefWidth="757.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="4.399999999999977">
+               <children>
+                       <TitledPane contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Prosessor *">
+                           <TableView fx:id="tblProcessor" prefHeight="200.0">
+                               <columns>
+                                   <TableColumn editable="false" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="processorDescriptionColumn" editable="false" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="processorPriceCln" editable="false" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                               <columnResizePolicy>
+                                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                               </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne *">
+                           <TableView fx:id="tblMemory" prefHeight="230.0">
+                               <columns>
+                                   <TableColumn prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn id="#memoryDescriptionColumn" fx:id="memoryDescriptionColumn" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="memoryPriceCln" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                               <columnResizePolicy>
+                                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                               </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Kabinett *">
+                           <TableView fx:id="tblCabinet" prefHeight="230.0">
+                               <columns>
+                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn id="#cabinetDescriptionColumn" fx:id="cabinetDescriptionColumn" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="cabinetPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                               <columnResizePolicy>
+                                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                               </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjermkort *">
+                           <TableView fx:id="tblVideoCard" prefHeight="230.0" prefWidth="369.0">
+                               <columns>
+                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="graphicDescriptionColumn" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="videoCardPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                               <columnResizePolicy>
+                                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                               </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Hovedkort *">
+                           <TableView fx:id="tblMotherBoard" prefHeight="230.0">
+                               <columns>
+                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="motherboardDescriptionColumn" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="motherBoardPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                        <columnResizePolicy>
+                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk *">
+                           <TableView fx:id="tblHardDisc" prefHeight="230.0">
+                               <columns>
+                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="harddiskDescriptionColumn" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="hardDiscPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                        <columnResizePolicy>
+                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjerm">
+                           <TableView fx:id="tblScreen" prefHeight="230.0">
+                               <columns>
+                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="screenDescriptionColumn" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="screenPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                        <columnResizePolicy>
+                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Tastatur">
+                           <TableView fx:id="tblKeyboard" prefHeight="230.0">
+                               <columns>
+                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="keyboardDescriptionColumn" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="keyboardPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                        <columnResizePolicy>
+                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Mus">
+                           <TableView fx:id="tblMouse" prefHeight="230.0">
+                               <columns>
+                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="mouseDescriptionColumn" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="mousePriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                               <columnResizePolicy>
+                                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                               </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Annet">
+                           <TableView fx:id="tblOther" prefHeight="230.0">
+                               <columns>
+                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productName" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="otherDescriptionColumn" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Beskrivelse">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productDescription" />
+                                       </cellValueFactory>
+                                   </TableColumn>
+                                   <TableColumn fx:id="otherPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                       <cellValueFactory>
+                                           <PropertyValueFactory property="productPrice" />
+                                       </cellValueFactory>
+                              <styleClass>
+                                 <String fx:value="columnUser" />
+                                 <String fx:value="columnPrice" />
+                              </styleClass>
+                                   </TableColumn>
+                               </columns>
+                               <columnResizePolicy>
+                                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                               </columnResizePolicy>
+                           </TableView>
+                       </TitledPane>
+               </children>
+            </VBox>
                 <Label layoutX="14.0" layoutY="14.0" text="Bygg din egen PC" textFill="#000000d0">
                     <font>
                         <Font name="Verdana Bold" size="20.0" />
@@ -390,7 +395,7 @@
         </AnchorPane>
     </top>
     <right>
-        <AnchorPane prefHeight="557.0" prefWidth="258.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="557.0" prefWidth="282.0" BorderPane.alignment="CENTER">
             <ListView fx:id="shoppingListView" focusTraversable="false" layoutX="12.0" layoutY="238.0" prefHeight="266.0" prefWidth="241.0" styleClass="shopCart" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="238.0" />
             <Label contentDisplay="RIGHT" layoutX="54.0" layoutY="212.0" nodeOrientation="LEFT_TO_RIGHT" text="Handlekurv" textFill="#000000cc" AnchorPane.topAnchor="212.0">
                 <font>
@@ -438,7 +443,7 @@
                     <URL value="@CSS/EndUser.css" />
                 </stylesheets>
             </TableView>
-            <Label fx:id="lblTotalPrice" alignment="CENTER_RIGHT" layoutX="91.0" layoutY="515.0" prefHeight="26.0" prefWidth="129.0" styleClass="shopCart" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="14.0">
+            <Label fx:id="lblTotalPrice" alignment="CENTER_RIGHT" layoutX="91.0" layoutY="515.0" prefHeight="26.0" prefWidth="160.0" styleClass="shopCart" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="14.0">
                 <font>
                     <Font size="14.0" />
                 </font>

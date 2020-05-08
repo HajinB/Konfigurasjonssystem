@@ -18,7 +18,8 @@ public enum Model {
     // private ComputerRegister computerRegister = new ComputerRegister();
     // private Computer computer = new Computer("current");
     //temporary master list - som har alle objekter fra fil.
-    private ArrayList<Object> superUserObjects = new ArrayList<>();
+    private ArrayList<Object> adminObjects = new ArrayList<>();
+
     private UserPreferences userPreferences = new UserPreferences();
     private UserRegister userRegister = new UserRegister();
 
@@ -29,14 +30,14 @@ public enum Model {
     public void loadFileIntoModel() {
         System.out.println("hi from model constructor" + userPreferences.getPathToAdminFiles().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToAdminFiles().toString())) {
-            FileHandling.openFile(superUserObjects, userPreferences.getPathToAdminFiles().toString());
+            FileHandling.openFile(adminObjects, userPreferences.getPathToAdminFiles().toString());
             addDefaultUsers();
             //legg til open computer her
             loadObjectsIntoClasses();
             removeDuplicates();
         } else {
             System.out.println("ingen config fil ble funnet - tilbake til default.");
-            FileHandling.openFile(superUserObjects, userPreferences.getStringPathToBackupAppFiles());
+            FileHandling.openFile(adminObjects, userPreferences.getStringPathToBackupAppFiles());
             addDefaultUsers();
             loadObjectsIntoClasses();
         }
@@ -46,7 +47,11 @@ public enum Model {
         savedPathRegister.removeDuplicates();
     }
 
-    private void addDefaultUsers() {
+    public void addDefaultUsers() {
+        System.out.println("addDefault utenfor if");
+        System.out.println("userRegister.getRegister().size(): " + userRegister.getRegister().size());
+        System.out.println("!userRegister.checkForAdmins(): " + !userRegister.checkForAdmins());
+        if (userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
             User user = new User(true, "admin", "admin", "ola",
                     "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
 
@@ -58,7 +63,7 @@ public enum Model {
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
             userRegister.addBruker(user4);
-            userRegister.removeDuplicates();
+        }
     }
 
 
@@ -71,22 +76,22 @@ public enum Model {
     }
 
     public ArrayList<Object> getCurrentObjectList() {
-        return superUserObjects;
+        return adminObjects;
     }
 
     public ArrayList<Object> getCleanObjectList() {
-        if (superUserObjects.size() > 0) {
-            superUserObjects.clear();
+        if (adminObjects.size() > 0) {
+            adminObjects.clear();
         }
-        return superUserObjects;
+        return adminObjects;
     }
 
     public void appendComponentRegisterIntoModel() {
-        if (superUserObjects.size() == 0) {
+        if (adminObjects.size() == 0) {
             return;
         }
-        if (superUserObjects.get(0) instanceof ComponentRegister && superUserObjects.get(0) != null) {
-            ComponentRegister componentRegisterFromFile = (ComponentRegister) superUserObjects.get(0);
+        if (adminObjects.get(0) instanceof ComponentRegister && adminObjects.get(0) != null) {
+            ComponentRegister componentRegisterFromFile = (ComponentRegister) adminObjects.get(0);
             System.out.println("size før append: " + componentRegister.getRegister().size());
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
             System.out.println("size etter append: " + componentRegister.getRegister().size());
@@ -95,27 +100,27 @@ public enum Model {
     }
 
     public void loadComponentRegisterIntoModel() {
-        if (superUserObjects.size() == 0) {
+        if (adminObjects.size() == 0) {
             return;
         }
-        if (superUserObjects.get(0) instanceof ComponentRegister && superUserObjects.get(0) != null)
-            setComponentRegister((ComponentRegister) superUserObjects.get(0));
+        if (adminObjects.get(0) instanceof ComponentRegister && adminObjects.get(0) != null)
+            setComponentRegister((ComponentRegister) adminObjects.get(0));
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
         SavedPathRegister savedPathRegisterTemp = null;
         /**går det ann å skrive dette på en annen måte? factory method feks??*/
-        System.out.println(superUserObjects.size());
-        if (superUserObjects.size() > 0) {
-            if (superUserObjects.get(0) != null && superUserObjects.get(0) instanceof ComponentRegister)
-                setComponentRegister((ComponentRegister) superUserObjects.get(0));
+        System.out.println(adminObjects.size());
+        if (adminObjects.size() > 0) {
+            if (adminObjects.get(0) != null && adminObjects.get(0) instanceof ComponentRegister)
+                setComponentRegister((ComponentRegister) adminObjects.get(0));
 
-            if (superUserObjects.size() > 1 && superUserObjects.get(1) != null && superUserObjects.get(1) instanceof SavedPathRegister)
-                savedPathRegister = (SavedPathRegister) superUserObjects.get(1);
+            if (adminObjects.size() > 1 && adminObjects.get(1) != null && adminObjects.get(1) instanceof SavedPathRegister)
+                savedPathRegister = (SavedPathRegister) adminObjects.get(1);
             savedPathRegister.removeDuplicates();
 
-            if (superUserObjects.get(2) != null && superUserObjects.get(2) instanceof UserRegister)
-                userRegister = (UserRegister) superUserObjects.get(2);
+            if (adminObjects.get(2) != null && adminObjects.get(2) instanceof UserRegister)
+                userRegister = (UserRegister) adminObjects.get(2);
         }
     }
 
@@ -130,6 +135,7 @@ public enum Model {
     public UserRegister getUserRegister() {
         return userRegister;
     }
+
 
     public void getCleanEndUserObjectList() {
     }
