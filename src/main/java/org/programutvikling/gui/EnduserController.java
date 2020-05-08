@@ -256,8 +256,14 @@ public class EnduserController {
 
     public void updateTotalPrice() {
         if (getComputer() != null) {
-            String totalpris = String.format("%.0f", getComputer().calculatePrice()) + " kr";
-            lblTotalPrice.setText(totalpris);
+            double doubleTotalpris = getComputer().calculatePrice();
+            if(doubleTotalpris % 1 == 0) {
+                String totalpris = String.format("%.0f", getComputer().calculatePrice()) + " kr";
+                lblTotalPrice.setText(totalpris);
+            } else {
+                String totalpris = String.format("%.2f", getComputer().calculatePrice()) + " kr";
+                lblTotalPrice.setText(totalpris);
+            }
         }
     }
 

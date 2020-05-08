@@ -33,8 +33,10 @@ public class ComputerPopupController extends EnduserController implements Initia
                 super.updateItem(c, empty);
                 if (empty || c == null || c.getProductName() == null) {
                     setText("");
+                } else if(c.getProductPrice() % 1 == 0) {
+                    setText(c.getProductName() + "\n" + String.format("%.0f", c.getProductPrice()));
                 } else {
-                    setText(c.getProductName() + "\n" + String.format("%.00f", c.getProductPrice())+ " kr");
+                    setText(c.getProductName() + "\n" + String.format("%.2f", c.getProductPrice()));
                 }
             }
         });
@@ -44,7 +46,7 @@ public class ComputerPopupController extends EnduserController implements Initia
         //tar inn stage for å kunne lukke når brukeren trykker endre
         this.stage = stage;
         lblComputerName.setText(c.getProductName());
-        lblComputerPrice.setText(Double.toString(c.calculatePrice())+" kr");
+        lblComputerPrice.setText(lblComputerPriceFormat(c.getProductPrice()));
         listContent.setItems(c.getComponentRegister().getObservableRegister());
         this.computer = c;
     }
@@ -56,5 +58,12 @@ public class ComputerPopupController extends EnduserController implements Initia
         ModelEndUser.INSTANCE.getComputer().getComponentRegister()
                 .getObservableRegister().addAll(computer.getComponentRegister().getRegister());
         stage.close();
+    }
+    String lblComputerPriceFormat(double price) {
+        if(price % 1 == 0) {
+            return String.format("%.0f",price);
+        } else {
+            return String.format("%.2f",price);
+        }
     }
 }
