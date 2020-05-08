@@ -1,6 +1,9 @@
 package org.programutvikling.logic;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -9,7 +12,9 @@ import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
-import org.programutvikling.gui.CustomTableColumn.CustomTextWrapCellFactory;
+import org.programutvikling.gui.CustomViews.CustomListViewCell;
+import org.programutvikling.gui.CustomViews.CustomTextWrapCellFactory;
+import org.programutvikling.gui.CustomViews.PriceFormatCell;
 import org.programutvikling.gui.DetailsController;
 import org.programutvikling.gui.EnduserController;
 import org.programutvikling.gui.utility.Dialog;
@@ -21,15 +26,22 @@ public class EndUserLogic {
     Tooltip tooltipEndUser = new Tooltip("Dobbeltklikk en rad for å legge til i handlekurven");
 
     private ArrayList<TableView<Component>> tblViewList;
+    private ArrayList<TableColumn> tblColumnPriceList;
+    private ArrayList<TableColumn> tblColumnDescriptionList;
+    private ListView<Component> shoppingListView;
     private BorderPane borderPane;
     EnduserController endUserController;
     DetailsController detailsController;
 
     public EndUserLogic(EnduserController endUserController, BorderPane topLevelPaneEndUser,
-                        ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList, ArrayList<TableColumn> tblColumnPriceList) {
+                        ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList,
+                        ArrayList<TableColumn> tblColumnPriceList, ListView shoppingListView) {
         this.endUserController = endUserController;
         this.borderPane = topLevelPaneEndUser;
         this.tblViewList = new ArrayList<>(tblViewList);
+        this.tblColumnPriceList = new ArrayList<>(tblColumnPriceList);
+        this.tblColumnDescriptionList = new ArrayList<>(tblColumnDescriptionList);
+        this.shoppingListView = shoppingListView;
         initView();
     }
 
@@ -40,8 +52,42 @@ public class EndUserLogic {
     }
 
     private void initView() {
+        ObjectProperty<TableRow<Component>> lastSelectedRow = new SimpleObjectProperty<>();
+        setListenerToClearSelection(lastSelectedRow);
+        setTblCellFactory();
         setDblClickEvent();
+        initTextWrapCellFactory();
+        shoppingListView.setCellFactory(lv-> new CustomListViewCell());
     }
+    private void initTextWrapCellFactory() {
+
+        //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
+        // en kolonne i tableview
+        Callback<TableColumn, TableCell> customTextWrapCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new CustomTextWrapCellFactory();
+                    }
+                };
+        for (TableColumn tc : tblColumnDescriptionList) {
+            tc.setCellFactory(customTextWrapCellFactory);
+        }
+    }
+
+    private void setTblCellFactory() {
+
+        //oppretter en cellfactory object for pris kolonnene
+        Callback<TableColumn, TableCell> priceCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new PriceFormatCell();
+                    }
+                };
+        for(TableColumn tc : tblColumnPriceList){
+            tc.setCellFactory(priceCellFactory);
+        }
+    }
+
     private void setDblClickEvent() {
         EventHandler<MouseEvent> tblViewDblClickEvent = new EventHandler<>() {
             public void handle(MouseEvent mouseEvent) {
@@ -107,6 +153,41 @@ public class EndUserLogic {
             }
         }
     }
+
+    private void setListenerToClearSelection(ObjectProperty<TableRow<Component>> lastSelectedRow) {
+        for (TableView<Component> t : tblViewList) {
+            //går gjennom tableviewlisten for å finne den raden som sist ble valgt, blant alle tables,
+            // for å bruke den i eventfilteret på toplevel-panen.
+            t.setRowFactory(tableView -> {
+                TableRow<Component> row = new TableRow<Component>();
+                row.selectedProperty().addListener((objects, wasSelected, isNowSelected) -> {
+                    if (isNowSelected) {
+                        lastSelectedRow.set(row);
+                    }
+                });
+                return row;
+            });
+        }
+
+        //listener på toplevel element for å cleare selection
+        borderPane.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (lastSelectedRow.get() != null) {
+
+                    //legal bounds for the object that a method is trying to access.
+                    Bounds lastSelectedRowBounds =
+                            lastSelectedRow.get().localToScene(lastSelectedRow.get().getLayoutBounds());
+                    if (!lastSelectedRowBounds.contains(event.getSceneX(), event.getSceneY())) {
+                        for (TableView<Component> t : tblViewList) {
+                            t.getSelectionModel().clearSelection();
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 
     private Computer getComputer() {
         return ModelEndUser.INSTANCE.getComputer();
