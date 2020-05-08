@@ -27,7 +27,7 @@ public enum Model {
         loadFileIntoModel();  //kan ikke kjøre denne metoden fra en annen klasse - konstruktøren må holdes privat
     }
 
-    public void loadFileIntoModel() {
+    private void loadFileIntoModel() {
         System.out.println("hi from model constructor" + userPreferences.getPathToAdminFiles().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToAdminFiles().toString())) {
             FileHandling.openFile(adminObjects, userPreferences.getPathToAdminFiles().toString());
@@ -47,8 +47,11 @@ public enum Model {
         savedPathRegister.removeDuplicates();
     }
 
-    private void addDefaultUsers() {
-        if (userRegister.getRegister().size() == 0) {
+    public void addDefaultUsers() {
+        System.out.println("addDefault utenfor if");
+        System.out.println("userRegister.getRegister().size(): " + userRegister.getRegister().size());
+        System.out.println("!userRegister.checkForAdmins(): " + !userRegister.checkForAdmins());
+        if (userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
             User user = new User(true, "admin", "admin", "ola",
                     "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
 
@@ -60,6 +63,7 @@ public enum Model {
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
             userRegister.addBruker(user4);
+            System.out.println("addDefault kjørt!");
         }
     }
 
