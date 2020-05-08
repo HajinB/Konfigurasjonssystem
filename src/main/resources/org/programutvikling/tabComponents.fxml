@@ -7,6 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import org.programutvikling.gui.customTextField.PriceField?>
 <?import java.lang.String?>
+
 <AnchorPane fx:id="topLevelPane" prefHeight="600.0" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="700.0" prefWidth="1040.0"
