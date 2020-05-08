@@ -1,17 +1,22 @@
 package org.programutvikling.gui;
 
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentValidator;
-import org.programutvikling.model.io.InvalidComponentFormatException;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.WindowHandler;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
@@ -23,14 +28,23 @@ public class RegistryComponentLogic {
     Converter.DoubleStringConverter doubleStringConverter = new Converter.DoubleStringConverter();
 
     TabComponentsController tabComponentsController;
+    WindowHandler windowHandler = new WindowHandler();
+    ThreadHandler threadHandler;
+    Scene scene;
+    boolean alreadyExecuted = false;
     private GridPane gridPane;
+    private TableView<Component> tblViewComponent;
 
 
-    public RegistryComponentLogic(GridPane gridPane, TabComponentsController tabComponentsController) {
+    public RegistryComponentLogic(GridPane gridPane, TabComponentsController tabComponentsController, TableView tableView) {
         this.gridPane = gridPane;
+        Model.INSTANCE.getComponentRegister().removeDuplicates();
         setTextAreaListener(gridPane);
         this.tabComponentsController = tabComponentsController;
+        this.tblViewComponent = tableView;
+        this.threadHandler = new ThreadHandler(tabComponentsController);
     }
+
 
     public RegistryComponentLogic(GridPane gridPane) {
         this.gridPane = gridPane;
@@ -40,6 +54,80 @@ public class RegistryComponentLogic {
     public RegistryComponentLogic(GridPane gridPane, ArrayList<Label> labelArrayList) {
         this.gridPane = gridPane;
         setTextAreaListener(gridPane);
+    }
+
+    public RegistryComponentLogic(TabComponentsController tabComponentsController) {
+        this.tabComponentsController = tabComponentsController;
+        this.threadHandler = new ThreadHandler(tabComponentsController);
+
+    }
+
+    void setSceneKeyEventListener() {
+        this.scene = tblViewComponent.getScene();
+        if (!alreadyExecuted) {
+            scene.addEventFilter(KeyEvent.KEY_PRESSED,
+                    new EventHandler<KeyEvent>() {
+                        @Override
+                        public void handle(KeyEvent keyEvent) {
+                            final Component selectedItem = tblViewComponent.getSelectionModel().getSelectedItem();
+                            if (selectedItem != null) {
+                                if (keyEvent.getCode().equals(KeyCode.DELETE) || keyEvent.getCode().equals(KeyCode.BACK_SPACE)) {
+                                    System.out.println("hehehehe");
+                                    //deleter her
+                                    try {
+                                        askForDeletion(tblViewComponent.getSelectionModel().getSelectedItem());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                    });
+            alreadyExecuted = true;
+        }
+    }
+
+    public void setTblViewEventHandler() {
+        /**detecter tablerow, for å hente ut component*/
+        tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (getComponentRegister().getRegister().size() > 0) {
+                    tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
+                    TableRow<? extends Component> row;
+                    if (isDoubleClick(event)) {
+                        Node node = ((Node) event.getTarget()).getParent();
+                        if (node instanceof TableRow) {
+                            row = (TableRow<Component>) node;
+                        } else {
+                            //hvis man trykker på tekst
+                            row = (TableRow<Component>) node.getParent();
+                        }
+                        try {
+                            windowHandler.openEditWindow(row, gridPane);
+                            Model.INSTANCE.getComponentRegister().removeDuplicates();
+                            tabComponentsController.updateView();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+        /**detecter tablecolumn, for å kunne fokusere på riktig celle i popupvindu*/
+        final ObservableList<TablePosition> selectedCells = tblViewComponent.getSelectionModel().getSelectedCells();
+        //gjør det mulig å detecte cell på første klikk:
+        tblViewComponent.getSelectionModel().setCellSelectionEnabled(true);
+        selectedCells.addListener((ListChangeListener) c -> {
+            if (selectedCells.size() != 0) {
+                TemporaryComponent.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
+            }
+        });
+
+    }
+
+    private boolean isDoubleClick(MouseEvent event) {
+        return event.isPrimaryButtonDown() && event.getClickCount() == 2;
     }
 
     Component createComponentsFromGUIInputIFields() {
@@ -54,7 +142,7 @@ public class RegistryComponentLogic {
                 tabComponentsController.setLblComponentMsg("Komponenten eksisterer allerede!");
             }
             return c;
-        } catch (NumberFormatException | InvalidComponentFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             Dialog.showErrorDialog("Skriv inn pris");
         } catch (IllegalArgumentException iae) {
             Dialog.showErrorDialog(iae.getMessage());
@@ -62,15 +150,7 @@ public class RegistryComponentLogic {
         return null;
     }
 
-    public void setComponentPopup(Component item) {
-        /**kanskje det bør være en metode som velger en faktisk choicebox valg her?*/
-//        ((ChoiceBox) gridPane.lookup("#popupProductType")).setValue(item.getProductType());
-        ((TextField) gridPane.lookup("#popupProductName")).setText(item.getProductName());
-        ((TextArea) gridPane.lookup("#popupProductDescription")).setText(item.getProductDescription());
-        ((PriceField) gridPane.lookup("#popupProductPrice")).setText(Double.toString(item.getProductPrice()));
-    }
-
-    private Component createComponent() throws InvalidComponentFormatException {
+    private Component createComponent() {
 
         String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
         String productName = getString((TextField) gridPane.lookup("#productName"));
@@ -119,7 +199,7 @@ public class RegistryComponentLogic {
 // nullpointerexception
         if (isProductDescriptionEmpty()) {
             tabComponentsController.setLblMsgDescription("Fyll inn her");
-        }else{
+        } else {
             createComponentHandleDuplicate();
         }
     }
@@ -145,19 +225,19 @@ public class RegistryComponentLogic {
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             int indexToReplace =
                     getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
-         //   tabComponentsController.clearLabels();
+            //   tabComponentsController.clearLabels();
             getComponentRegister().getRegister().set(indexToReplace, newComponent);
         }
     }
 
-    private void justReplaceComponent(Component newComponent, Component possibleDuplicateComponentIfNotThenNull){
+    private void justReplaceComponent(Component newComponent, Component possibleDuplicateComponentIfNotThenNull) {
 
         int indexToReplace =
                 getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
-                System.out.println("index to replac : "+indexToReplace);
-                getComponentRegister().getRegister().set(indexToReplace, newComponent);
+        System.out.println("index to replac : " + indexToReplace);
+        getComponentRegister().getRegister().set(indexToReplace, newComponent);
 
-              //  tabComponentsController.updateView();
+        //  tabComponentsController.updateView();
 
                /* getComponentRegister().getObservableRegister().remove(possibleDuplicateComponentIfNotThenNull);
                 getComponentRegister().getObservableRegister().add(newComponent);*/
@@ -168,7 +248,7 @@ public class RegistryComponentLogic {
     }
 
     private boolean isProductTypeEmpty() {
-        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).equalsIgnoreCase("") ;
+        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).equalsIgnoreCase("");
     }
 
     private boolean isProductPriceEmpty() {
@@ -257,5 +337,35 @@ public class RegistryComponentLogic {
                 }
             }
         });
+    }
+
+    void handleOpenOptions(String chosenFile, Alert alert) throws IOException {
+        //button.get(2) == avbryt
+        if (alert.getResult() == alert.getButtonTypes().get(2)) {
+            return;
+        }
+        //button.get(1) == overskriv
+        if (alert.getResult() == alert.getButtonTypes().get(1)) {
+            try {
+                overWriteList(chosenFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //button.get(0) == legg til
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            threadHandler.openInputThread(chosenFile);
+            Model.INSTANCE.appendComponentRegisterIntoModel();
+            Model.INSTANCE.getComponentRegister().removeDuplicates();
+            tabComponentsController.updateView();
+        }
+    }
+
+    public void overWriteList(String chosenFile) throws IOException {
+        threadHandler.openInputThread(chosenFile);
+        Model.INSTANCE.loadComponentRegisterIntoModel();
+        Model.INSTANCE.getComponentRegister().removeDuplicates();
+        tabComponentsController.updateView();
+
     }
 }

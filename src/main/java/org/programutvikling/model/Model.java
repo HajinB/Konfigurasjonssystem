@@ -1,8 +1,6 @@
 package org.programutvikling.model;
 
 import org.programutvikling.domain.component.ComponentRegister;
-import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.domain.computer.ComputerRegister;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.gui.FileHandling;
 import org.programutvikling.gui.SavedPathRegister;
@@ -20,7 +18,7 @@ public enum Model {
    // private ComputerRegister computerRegister = new ComputerRegister();
    // private Computer computer = new Computer("current");
     //temporary master list - som har alle objekter fra fil.
-    private ArrayList<Object> EndUserObjects = new ArrayList<>();
+    private ArrayList<Object> adminObjects = new ArrayList<>();
 
     private UserPreferences userPreferences = new UserPreferences();
     private UserRegister userRegister = new UserRegister();
@@ -32,16 +30,21 @@ public enum Model {
     public void loadFileIntoModel() {
         System.out.println("hi from model constructor" + userPreferences.getPathToAdminFiles().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToAdminFiles().toString())) {
-            FileHandling.openFile(EndUserObjects, userPreferences.getPathToAdminFiles().toString());
+            FileHandling.openFile(adminObjects, userPreferences.getPathToAdminFiles().toString());
             addDefaultUsers();
             //legg til open computer her
             loadObjectsIntoClasses();
+            removeDuplicates();
         } else {
             System.out.println("ingen config fil ble funnet - tilbake til default.");
-            FileHandling.openFile(EndUserObjects, userPreferences.getStringPathToBackupAppFiles());
+            FileHandling.openFile(adminObjects, userPreferences.getStringPathToBackupAppFiles());
             addDefaultUsers();
             loadObjectsIntoClasses();
         }
+    }
+
+    private void removeDuplicates() {
+        savedPathRegister.removeDuplicates();
     }
 
     private void addDefaultUsers() {
@@ -70,66 +73,54 @@ public enum Model {
     }
 
     public ArrayList<Object> getCurrentObjectList() {
-        return EndUserObjects;
+        return adminObjects;
     }
 
     public ArrayList<Object> getCleanObjectList() {
-        if (EndUserObjects.size() > 0) {
-            EndUserObjects.clear();
+        if (adminObjects.size() > 0) {
+            adminObjects.clear();
         }
-        return EndUserObjects;
+        return adminObjects;
     }
 
     public void appendComponentRegisterIntoModel() {
-        if (EndUserObjects.size() == 0) {
+        if (adminObjects.size() == 0) {
             return;
         }
-        if (EndUserObjects.get(0) instanceof ComponentRegister && EndUserObjects.get(0) != null) {
-            ComponentRegister componentRegisterFromFile = (ComponentRegister) EndUserObjects.get(0);
+        if (adminObjects.get(0) instanceof ComponentRegister && adminObjects.get(0) != null) {
+            ComponentRegister componentRegisterFromFile = (ComponentRegister) adminObjects.get(0);
+            System.out.println("size før append: "+componentRegister.getRegister().size());
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
+            System.out.println("size etter append: "+componentRegister.getRegister().size());
         }
         //componentRegister.getRegister().addAll(objects.get(0).;
     }
 
     public void loadComponentRegisterIntoModel() {
-        if (EndUserObjects.size() == 0) {
+        if (adminObjects.size() == 0) {
             return;
         }
-        if (EndUserObjects.get(0) instanceof ComponentRegister && EndUserObjects.get(0) != null)
-            setComponentRegister((ComponentRegister) EndUserObjects.get(0));
+        if (adminObjects.get(0) instanceof ComponentRegister && adminObjects.get(0) != null)
+            setComponentRegister((ComponentRegister) adminObjects.get(0));
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
         /**går det ann å skrive dette på en annen måte? factory method feks??*/
-        System.out.println(EndUserObjects.size());
-        if (EndUserObjects.size() > 0) {
-            if (EndUserObjects.get(0) != null && EndUserObjects.get(0) instanceof ComponentRegister)
-                setComponentRegister((ComponentRegister) EndUserObjects.get(0));
+        System.out.println(adminObjects.size());
+        if (adminObjects.size() > 0) {
+            if (adminObjects.get(0) != null && adminObjects.get(0) instanceof ComponentRegister)
+                setComponentRegister((ComponentRegister) adminObjects.get(0));
 
-            if (EndUserObjects.size() > 1 && EndUserObjects.get(1) != null && EndUserObjects.get(1) instanceof SavedPathRegister)
-                savedPathRegister = (SavedPathRegister) EndUserObjects.get(1);
+            if (adminObjects.size() > 1 && adminObjects.get(1) != null && adminObjects.get(1) instanceof SavedPathRegister)
+                savedPathRegister = (SavedPathRegister) adminObjects.get(1);
 
-                if (EndUserObjects.get(2) != null && EndUserObjects.get(2) instanceof  UserRegister)
-                    userRegister = (UserRegister) EndUserObjects.get(2);
+                if (adminObjects.get(2) != null && adminObjects.get(2) instanceof  UserRegister)
+                    userRegister = (UserRegister) adminObjects.get(2);
             }
-           /* System.out.println("dette prøves å åpnes!!!!::::");
-            System.out.println(EndUserObjects.get(0));
-            System.out.println(EndUserObjects.get(1));
-            System.out.println(EndUserObjects.get(2));
-            System.out.println(EndUserObjects.get(3));*/
-        }
-/*
-    private void loadComputerRegisterFromDirectory() {
-        ArrayList<Object> computers =   FileHandling.findComputers();
-        for(Object c : computers){
-            computerRegister.addComputer((Computer) c);
         }
 
-    }
-
-*/
     private boolean checkIfObjectIsComponentRegister() {
-        return EndUserObjects.get(0) instanceof ComponentRegister;
+        return adminObjects.get(0) instanceof ComponentRegister;
     }
 
     public ComponentRegister getComponentRegister() {

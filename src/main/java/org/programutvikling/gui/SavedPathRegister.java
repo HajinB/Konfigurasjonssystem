@@ -45,7 +45,7 @@ public class SavedPathRegister implements Serializable {
 
     public void removeDuplicates() {
         ArrayList<String> al = (ArrayList<String>) RegisterUtility.removeDuplicates(this.listOfSavedFilePaths);
-        this.getListOfSavedFilePaths().clear();
-        this.getListOfSavedFilePaths().addAll(al);
+        this.listOfSavedFilePaths.clear();
+        this.listOfSavedFilePaths.addAll(al);
     }
 }
