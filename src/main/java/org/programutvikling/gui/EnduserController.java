@@ -220,7 +220,7 @@ public class EnduserController {
 
     @FXML
     public void btnOpenComputer(ActionEvent event) throws IOException {
-        FileHandling.openCart(getComputer());
+        FileHandling.openCartFromSelectedFile(getComputer(), this.stage);
         updateTotalPrice();
     }
 

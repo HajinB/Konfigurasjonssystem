@@ -23,12 +23,9 @@ public class CustomListViewCell extends ListCell<Component> {
             setText(null);
             setGraphic(null);
         } else {
-
             this.setWrapText(true);
             setText(component.getProductType() + "\n" + component.getProductName() + "\n" + String.format("%.0f",
                     component.getProductPrice()) + " kr");
-
-
         }
 
         //metode for å sette kalkulert verdi i en Listview

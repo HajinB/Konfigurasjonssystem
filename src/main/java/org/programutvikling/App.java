@@ -71,6 +71,7 @@ public class App extends Application {
                         try {
                             FileHandling.saveBackup();
                             FileHandling.saveAllAdminFiles();
+                            FileHandling.saveAllEndUserFiles();
                             System.exit(0);
                         } catch (IOException e) {
                             e.printStackTrace();

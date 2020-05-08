@@ -3,18 +3,18 @@ package org.programutvikling.gui;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
-import org.programutvikling.model.ModelEndUser;
-import org.programutvikling.model.TemporaryComponent;
+import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.computer.ComputerFactory;
 import org.programutvikling.domain.io.FileOpener;
 import org.programutvikling.domain.io.FileOpenerTxt;
 import org.programutvikling.domain.io.FileSaver;
 import org.programutvikling.domain.io.FileSaverTxt;
-import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.domain.computer.ComputerFactory;
 import org.programutvikling.domain.user.UserPreferences;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelEndUser;
+import org.programutvikling.model.TemporaryComponent;
 
 import java.io.File;
 import java.io.IOException;
@@ -114,7 +114,6 @@ public class FileHandling {
     }
 
     public static ArrayList<Object> openSelectedComputerTxtFiles(ArrayList<Object> objects, String path) {
-        //String path = getFilePathFromFileChooser(stage);
         return openObjects(objects, path);
     }
 
@@ -125,19 +124,13 @@ public class FileHandling {
     public static void saveAllAdminFiles() throws IOException {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objects = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
-                 Model.INSTANCE.getSavedPathRegister(),
-                 Model.INSTANCE.getUserRegister());
-/*
-        System.out.println("computer : " + ContextModel.INSTANCE.getComputer());
-        System.out.println("user reg :" + ContextModel.INSTANCE.getUserRegister());
-
-        System.out.println("lagrer alle disse objects:" + objects);*/
+                Model.INSTANCE.getSavedPathRegister(),
+                Model.INSTANCE.getUserRegister());
         FileHandling.saveFileAuto(objects,
                 Paths.get(getPathToUser()));
-
     }
 
-    public static void saveAllEndUserFiles(){
+    public static void saveAllEndUserFiles() {
         saveEndUserState();
     }
 
@@ -145,23 +138,15 @@ public class FileHandling {
         Model.INSTANCE.getCleanEndUserObjectList();
         ModelEndUser.INSTANCE.getComputerRegister();
         Computer computer = ModelEndUser.INSTANCE.getComputer();
-        //lagrer handlevognen
-        saveFileTxt(computer,Paths.get(userPreferences.getStringPathToUserComputer()));
-        //kan evt lagre alle computers "på nytt" men vet ikke om det er værd det.
+        saveFileTxt(computer, Paths.get(userPreferences.getStringPathToUserComputer()));
     }
 
     public static void saveBackup() throws IOException {
         ArrayList<Object> objects = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
                 Model.INSTANCE.getSavedPathRegister(),
-                 Model.INSTANCE.getUserRegister());
-/*
-        System.out.println("computer : " + ContextModel.INSTANCE.getComputer());
-        System.out.println("user reg :" + ContextModel.INSTANCE.getUserRegister());
-
-        System.out.println("lagrer alle disse objects:" + objects);*/
+                Model.INSTANCE.getUserRegister());
         FileHandling.saveFileAuto(objects,
                 Paths.get("AppFiles/Database/Backup/AppDataBackup.jobj"));
-
     }
 
     static Computer getComputer() {
@@ -208,14 +193,14 @@ public class FileHandling {
 
         ArrayList<Computer> computers = new ArrayList<>();
         for (File file : listOfFiles) {
-            if (file.isFile() && file.getName().toLowerCase().endsWith(".txt")){
+            if (file.isFile() && file.getName().toLowerCase().endsWith(".txt")) {
                 Computer computer = new Computer(file.getName());
                 System.out.println(file.toString());
                 //FileHandling.openSelectedComputerTxtFiles(computerList, file.getPath());
-                componentList.addAll(FileHandling.openSelectedComputerTxtFiles(componentList,file.getPath()));
+                componentList.addAll(FileHandling.openSelectedComputerTxtFiles(componentList, file.getPath()));
                 //
                 //legg til computers her
-                for(Object o : componentList) {
+                for (Object o : componentList) {
                     computer.getComponentRegister().addComponent((Component) o);
                 }
                 computers.add(computer);
@@ -226,6 +211,7 @@ public class FileHandling {
         return computers;
     }
 
+
     public static void openCart(Computer computer) {
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         try {
@@ -233,20 +219,26 @@ public class FileHandling {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(TemporaryComponent.INSTANCE.errorList.size()>0){
+        if (TemporaryComponent.INSTANCE.errorList.size() > 0) {
             Dialog.showSuccessDialog(TemporaryComponent.INSTANCE.errorListToString());
             TemporaryComponent.INSTANCE.errorList.clear();
         }
     }
 
-    public static void handleOpenOptions(String chosenFile, Alert alert) {
-
+    public static void openCartFromSelectedFile(Computer computer, Stage stage) {
+        String chosenFile = FileUtility.getFilePathFromOpenTxtDialog(stage);
+        if (chosenFile == null) {
+            return;
+        }
+        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
+        try {
+            fileOpenerTxt.open(computer, Paths.get(chosenFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (TemporaryComponent.INSTANCE.errorList.size() > 0) {
+            Dialog.showSuccessDialog(TemporaryComponent.INSTANCE.errorListToString());
+            TemporaryComponent.INSTANCE.errorList.clear();
+        }
     }
-
-
-    public UserPreferences getUserPreferences() {
-        return userPreferences;
-    }
-
-
 }
