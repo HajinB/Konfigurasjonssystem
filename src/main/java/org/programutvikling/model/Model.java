@@ -6,6 +6,7 @@ import org.programutvikling.domain.user.UserPreferences;
 import org.programutvikling.domain.user.UserRegister;
 import org.programutvikling.gui.FileHandling;
 import org.programutvikling.gui.SavedPathRegister;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 
 import java.util.ArrayList;
@@ -47,19 +48,24 @@ public enum Model {
         System.out.println("addDefault utenfor if");
         System.out.println("userRegister.getRegister().size(): " + userRegister.getRegister().size());
         System.out.println("!userRegister.checkForAdmins(): " + !userRegister.checkForAdmins());
-        if (userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
-            User user = new User(true, "admin", "admin", "ola",
-                    "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
+        if (userRegister.getRegister().size() == 0) {
+            User admin = new User(true, "admin", "admin", "admin",
+                    "admin@admin.com", "Adminsgaten 1", "0909", "Adminby");
 
-            User user2 = new User(false, "user", "user", "ola",
+            User user1 = new User(false, "user", "user", "ola",
                     "user@user.com", "trondheimsvegen 1", "0909", "Trondheim");
-            User user3 = new User(false, "Tom", "password", "Tom", "tom@tom.com", "Toms vei 2", "2345", "Oslo");
-            User user4 = new User(true, "Hackerman", "hacker", "H4CK3R", "h4ck@m4i1.com", "Trodde du ja!", "1337", "Russia");
-            userRegister.addBruker(user);
+            User user2 = new User(false, "Tom", "password", "Tom", "tom@tom.com", "Toms vei 2", "2345", "Oslo");
+            User user3 = new User(true, "Hackerman", "hacker", "H4CK3R", "h4ck@m4i1.com", "Trodde du ja!", "1337", "Russia");
+            userRegister.addBruker(admin);
+            userRegister.addBruker(user1);
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
-            userRegister.addBruker(user4);
             System.out.println("addDefault kjørt!");
+        } else if(!userRegister.checkForAdmins()) {
+            User admin = new User(true, "admin", "admin", "admin",
+                    "admin@admin.com", "Adminsgaten 1", "0909", "Adminby");
+            userRegister.addBruker(admin);
+            Dialog.showInformationDialog("Ingen admins i registeret. \"admin\" har blitt lagt til i registeret.");
         }
     }
 
