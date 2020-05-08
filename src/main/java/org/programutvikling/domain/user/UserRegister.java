@@ -29,11 +29,9 @@ public class UserRegister implements Serializable, Clickable {
         userRegister.clear();
     }
 
-
     public void addBruker(User user) {
         userRegister.add(user);
     }
-
 
     // returns user after validating the correct username and password
     public User loginCredentialsMatches(String username, String password) {

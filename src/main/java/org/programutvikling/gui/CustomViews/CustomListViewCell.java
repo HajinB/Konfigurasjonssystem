@@ -16,46 +16,23 @@ public class CustomListViewCell extends ListCell<Component> {
     public CustomListViewCell() {
 
     }
+    public void updateItem(Component component, boolean empty) {
+        super.updateItem(component, empty);
 
-    @Override
-    protected void updateItem(Component item, boolean empty) {
-        super.updateItem(item, empty);
+        if (component == null) {
+            setText(null);
+            setGraphic(null);
+        } else {
 
-        Pane pane = null;
-        if (!empty) {
-            pane = new Pane();
-
-            final Text productName = new Text(item.getProductName());
-
-            productName.setTextOrigin(VPos.TOP);
-            productName.relocate(0, 0);
+            this.setWrapText(true);
+            setText(component.getProductType() + "\n" + component.getProductName() + "\n" + String.format("%.0f",
+                    component.getProductPrice()) + " kr");
 
 
-            setMinWidth(getWidth());
-            setMaxWidth(getWidth());
-            setPrefWidth(getWidth()-10);
-
-
-            setWrapText(true);
-            final Text productDescription = new Text("\n"+item.getProductDescription());
-            productDescription.wrappingWidthProperty().bind(widthProperty().subtract(50));
-
-
-            productDescription.setTextOrigin(VPos.TOP);
-            final double em = productDescription.getLayoutBounds().getHeight();
-            productDescription.relocate(0, 0);
-
-            final Text productPrice = new Text("\n"+"\n"+String.format("%.0f",
-                    item.getProductPrice()) + " kr");
-            productPrice.setTextOrigin(VPos.BOTTOM);
-            final double width = productPrice.getLayoutBounds().getWidth();
-            final double height = productDescription.getLayoutBounds().getHeight();
-            productPrice.relocate(7.1 * em - width, productDescription.getY());
-            pane.getChildren().addAll(productName, productDescription, productPrice);
         }
 
-        setText("");
-        setGraphic(pane);
+        //metode for å sette kalkulert verdi i en Listview
+
     }
 }
 
