@@ -2,6 +2,7 @@ package org.programutvikling.domain.component;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.programutvikling.gui.TabComponentsController;
 import org.programutvikling.domain.io.InvalidComponentFormatException;
 import org.programutvikling.domain.io.InvalidPriceException;
 
@@ -18,23 +19,12 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
     private transient SimpleDoubleProperty productPrice;
 
     public Component(String type, String name, String description, double price) {
-        if (!ComponentValidator.isProductNameValid(name)) {
-            throw new IllegalArgumentException("Skriv inn produktnavn");
+        if (ComponentValidator.isComponentValid(type, name, description, price)) {
+            this.productType = new SimpleStringProperty(type);
+            this.productName = new SimpleStringProperty(name);
+            this.productDescription = new SimpleStringProperty(description);
+            this.productPrice = new SimpleDoubleProperty(price);
         }
-        if (!ComponentValidator.isProductTypeValid(type)) {
-            throw new IllegalArgumentException("Velg produkttype");
-        }
-        if (!ComponentValidator.isProductDescriptionValid(description)) {
-            throw new IllegalArgumentException("Skriv inn produktbeskrivelse");
-        }
-        if (!ComponentValidator.isProductPriceValid(price)) {
-            throw new InvalidPriceException();
-        }
-
-        this.productType = new SimpleStringProperty(type);
-        this.productName = new SimpleStringProperty(name);
-        this.productDescription = new SimpleStringProperty(description);
-        this.productPrice = new SimpleDoubleProperty(price);
     }
 
     public static long getSerialVersionUID() {

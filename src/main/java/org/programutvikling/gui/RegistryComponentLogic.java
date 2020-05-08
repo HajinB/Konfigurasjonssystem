@@ -62,6 +62,29 @@ public class RegistryComponentLogic {
 
     }
 
+    void registerComponent() {
+
+        //best å gjøre validering her - business rules kan throwe exceptions lengre downstream som de gjør, bare ta
+        // bort dialogs maybe?
+        if (areInputFieldsEmpty()) {
+            if (isProductTypeEmpty()){
+                tabComponentsController.setLblMsgType("Velg produkttype");
+            }
+            if (isProductNameEmpty()){
+                tabComponentsController.setLblMsgName("Skriv inn navn på produktet");
+            }
+            if (isProductDescriptionEmpty()) {
+                tabComponentsController.setLblMsgDescription("Skriv inn en beskrivelse");
+            }
+            if (isProductPriceEmpty()) {
+                tabComponentsController.setLblMsgPrice("Skriv inn pris på produktet");
+            }
+//todo må sjekke om alle felt er tomme før man kjører CreateComponentHandleDUplicate - ellers så får man
+// nullpointerexception
+        }
+        createComponentHandleDuplicate();
+    }
+
     public void setTblViewEventHandler() {
         /**detecter tablerow, for å hente ut component*/
         tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -118,8 +141,10 @@ public class RegistryComponentLogic {
             }
             return c;
         } catch (NumberFormatException nfe) {
+            registerComponent();
             Dialog.showErrorDialog("Skriv inn pris");
         } catch (IllegalArgumentException iae) {
+            registerComponent();
             Dialog.showErrorDialog(iae.getMessage());
         }
         return null;
@@ -158,26 +183,6 @@ public class RegistryComponentLogic {
         return Double.parseDouble(getString(field));
     }
 
-
-    void registerComponent() {
-
-        //best å gjøre validering her - business rules kan throwe exceptions lengre downstream som de gjør, bare ta
-        // bort dialogs maybe?
-        if (isProductTypeEmpty()) {
-            tabComponentsController.setLblMsgType("belble");
-            //denne
-            System.out.println("heheheheh");
-            //eksempel da, men man bør kanskje vise mange labels samtidig? hva som er feil på en måte?
-            return;
-        }
-//todo må sjekke om alle felt er tomme før man kjører CreateComponentHandleDUplicate - ellers så får man
-// nullpointerexception
-        if (isProductDescriptionEmpty()) {
-            tabComponentsController.setLblMsgDescription("Fyll inn her");
-        } else {
-            createComponentHandleDuplicate();
-        }
-    }
 
     private void createComponentHandleDuplicate() {
         Component newComponent = createComponentsFromGUIInputIFields();
@@ -223,20 +228,28 @@ public class RegistryComponentLogic {
     }
 
     private boolean isProductTypeEmpty() {
-        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null || getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).equalsIgnoreCase("");
+        return getCBString((ChoiceBox<String>) gridPane.lookup("#productType")) == null ||
+                getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).equalsIgnoreCase("") ||
+                getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).isEmpty() ||
+                getCBString((ChoiceBox<String>) gridPane.lookup("#productType")).contentEquals("");
     }
 
     private boolean isProductPriceEmpty() {
-        return ((PriceField) gridPane.lookup("#productPrice")).getText().isEmpty();
+        return ((PriceField) gridPane.lookup("#productPrice")).getText().isEmpty() ||
+                ((PriceField) gridPane.lookup("#productPrice")).getText().isBlank() ||
+                ((PriceField) gridPane.lookup("#productPrice")).getText().equals("");
     }
 
     private boolean isProductDescriptionEmpty() {
-        return ((TextArea) gridPane.lookup(
-                "#productDescription")).getText().isEmpty();
+        return ((TextArea) gridPane.lookup("#productDescription")).getText().isEmpty() ||
+                ((TextArea) gridPane.lookup("#productDescription")).getText().isBlank() ||
+                ((TextArea) gridPane.lookup("#productDescription")).getText().equals("");
     }
 
     private boolean isProductNameEmpty() {
-        return ((TextField) gridPane.lookup("#productName")).getText().isEmpty();
+        return ((TextField) gridPane.lookup("#productName")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#productName")).getText().isBlank() ||
+                ((TextField) gridPane.lookup("#productName")).getText().equals("");
     }
 
     private ComponentRegister getComponentRegister() {
@@ -341,5 +354,6 @@ public class RegistryComponentLogic {
         Model.INSTANCE.loadComponentRegisterIntoModel();
         Model.INSTANCE.getComponentRegister().removeDuplicates();
         tabComponentsController.updateView();
+
     }
 }

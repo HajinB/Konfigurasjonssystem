@@ -14,25 +14,25 @@
 <BorderPane prefHeight="650.0" prefWidth="1060.0" styleClass="anchorPane" stylesheets="@CSS/Login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.PrimaryController">
    <center>
       <AnchorPane maxHeight="478.0" maxWidth="320.0" styleClass="loginPane" stylesheets="@CSS/Login.css" BorderPane.alignment="CENTER">
-         <Label layoutX="62.0" layoutY="56.0" prefHeight="54.0" prefWidth="185.0" text="Logg inn" AnchorPane.bottomAnchor="368.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="56.0">
+         <Label layoutX="65.0" layoutY="55.0" prefHeight="54.0" prefWidth="185.0" text="Logg inn" AnchorPane.bottomAnchor="369.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="55.0">
             <font>
                <Font name="Verdana Bold" size="37.0" />
             </font>
          </Label>
-         <TextField fx:id="inputUsername" layoutX="55.0" layoutY="150.0" prefHeight="40.0" prefWidth="200.0" promptText="Brukernavn eller e-post" styleClass="input" stylesheets="@CSS/Login.css" AnchorPane.bottomAnchor="288.4" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="150.0">
+         <TextField fx:id="inputUsername" layoutX="58.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" promptText="Brukernavn eller e-post" styleClass="input" stylesheets="@CSS/Login.css" AnchorPane.bottomAnchor="289.4" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="149.0">
             <font>
                <Font size="13.0" />
             </font>
          </TextField>
-         <PasswordField fx:id="inputPassword" layoutX="55.0" layoutY="199.0" prefHeight="40.0" prefWidth="200.0" promptText="Passord" styleClass="input" stylesheets="@CSS/Login.css" AnchorPane.bottomAnchor="239.39999999999998" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="199.0">
+         <PasswordField fx:id="inputPassword" layoutX="58.0" layoutY="198.0" prefHeight="40.0" prefWidth="200.0" promptText="Passord" styleClass="input" stylesheets="@CSS/Login.css" AnchorPane.bottomAnchor="240.39999999999998" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="198.0">
             <font>
                <Font size="13.0" />
             </font>
          </PasswordField>
-         <Button fx:id="btnLogin" layoutX="55.0" layoutY="272.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="30.0" prefWidth="200.0" stylesheets="@CSS/Login.css" text="Logg inn " textFill="#000000a1" AnchorPane.bottomAnchor="175.99999999999997" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="272.0" />
-         <Button layoutX="55.0" layoutY="385.0" minHeight="20.0" minWidth="149.0" mnemonicParsing="false" onAction="#btnGuest" prefHeight="38.0" prefWidth="194.0" styleClass="btnGuest" stylesheets="@CSS/Login.css" text="Logg inn som gjest" textFill="#000000a1" AnchorPane.bottomAnchor="54.99999999999998" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="70.6" AnchorPane.topAnchor="385.0" />
+         <Button fx:id="btnLogin" layoutX="58.0" layoutY="271.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="30.0" prefWidth="200.0" stylesheets="@CSS/Login.css" text="Logg inn " textFill="#000000a1" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="271.0" />
+         <Button layoutX="57.0" layoutY="384.0" minHeight="20.0" minWidth="149.0" mnemonicParsing="false" onAction="#btnGuest" prefHeight="38.0" prefWidth="194.0" styleClass="btnGuest" stylesheets="@CSS/Login.css" text="Logg inn som gjest" textFill="#000000a1" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="68.6" AnchorPane.topAnchor="384.0" />
          <Separator layoutX="-1.0" layoutY="356.0" prefHeight="6.0" prefWidth="310.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
-         <Label layoutX="94.0" layoutY="376.0" prefHeight="18.0" prefWidth="117.0" text="Har du ikke konto?" AnchorPane.bottomAnchor="83.99999999999997" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="376.0" />
+         <Label layoutX="97.0" layoutY="375.0" prefHeight="18.0" prefWidth="117.0" text="Har du ikke konto?" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="375.0" />
          <Label fx:id="lblFeilPassword" alignment="CENTER" layoutX="-2.0" layoutY="301.0" prefHeight="61.0" prefWidth="323.0" text="Feil brukernavn eller passord!" textAlignment="CENTER" visible="false">
             <font>
                <Font name="System Bold" size="14.0" />

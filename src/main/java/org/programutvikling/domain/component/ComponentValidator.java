@@ -61,7 +61,7 @@ public class ComponentValidator {
    */
     static boolean isProductTypeValid(String type) {
         String[] c = ComponentTypes.getComponentTypesArray();
-        if (type.isBlank()) {
+        if (type.isBlank() || type.isEmpty()){
             System.out.println("blank string");
             return false;
         }
@@ -88,7 +88,7 @@ public class ComponentValidator {
         return  price != 0.0 && price > 0.0;
     }
 
-    public static boolean isProductDescriptionValid(String description) {
+    static boolean isProductDescriptionValid(String description) {
         return !(description.isEmpty() && description.isBlank());
     }
 
