@@ -66,7 +66,6 @@ public class TabComponentsController {
         initTableView();
         initTextWrapCellFactory();
         updateView();
-        this.tblViewComponent.setOnMouseClicked((MouseEvent event) -> registryComponentLogic.setSceneKeyEventListener());
     }
     /**events*/
     @FXML

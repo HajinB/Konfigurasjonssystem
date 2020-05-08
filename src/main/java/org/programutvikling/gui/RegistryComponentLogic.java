@@ -62,31 +62,6 @@ public class RegistryComponentLogic {
 
     }
 
-    void setSceneKeyEventListener() {
-        this.scene = tblViewComponent.getScene();
-        if (!alreadyExecuted) {
-            scene.addEventFilter(KeyEvent.KEY_PRESSED,
-                    new EventHandler<KeyEvent>() {
-                        @Override
-                        public void handle(KeyEvent keyEvent) {
-                            final Component selectedItem = tblViewComponent.getSelectionModel().getSelectedItem();
-                            if (selectedItem != null) {
-                                if (keyEvent.getCode().equals(KeyCode.DELETE) || keyEvent.getCode().equals(KeyCode.BACK_SPACE)) {
-                                    System.out.println("hehehehe");
-                                    //deleter her
-                                    try {
-                                        askForDeletion(tblViewComponent.getSelectionModel().getSelectedItem());
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }
-                        }
-                    });
-            alreadyExecuted = true;
-        }
-    }
-
     public void setTblViewEventHandler() {
         /**detecter tablerow, for å hente ut component*/
         tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
