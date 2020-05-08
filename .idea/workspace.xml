@@ -280,13 +280,6 @@
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
     </task>
-    <task id="LOCAL-00102" summary="setmetode for Labels i controller">
-      <created>1588666882828</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1588666882828</updated>
-    </task>
     <task id="LOCAL-00103" summary="set/clear metode for Labels i controller">
       <created>1588669129441</created>
       <option name="number" value="00103" />
@@ -623,7 +616,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588950441449</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="fixed cbtype valg til å aldri være null, den starter på kabinett">
+      <created>1588952068003</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1588952068003</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,7 +658,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Trekker ting ut fra componentcontroller" />
     <MESSAGE value="Trekker ting ut fra controllers, inn i controllerlogic klassene" />
     <MESSAGE value="Prøver å bytte til Label i customTableCEllWrapText" />
     <MESSAGE value="setmetode for Labels i controller" />
@@ -683,7 +682,8 @@
     <MESSAGE value="7" />
     <MESSAGE value="masse flytting og rydding i tabComponentsController" />
     <MESSAGE value="litt flytting av ting + fixed open recent files" />
-    <option name="LAST_COMMIT_MESSAGE" value="litt flytting av ting + fixed open recent files" />
+    <MESSAGE value="fixed cbtype valg til å aldri være null, den starter på kabinett" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed cbtype valg til å aldri være null, den starter på kabinett" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />
