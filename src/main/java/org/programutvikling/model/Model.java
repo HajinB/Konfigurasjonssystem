@@ -34,7 +34,6 @@ public enum Model {
             addDefaultUsers();
             //legg til open computer her
             loadObjectsIntoClasses();
-            removeDuplicates();
         } else {
             System.out.println("ingen config fil ble funnet - tilbake til default.");
             FileHandling.openFile(EndUserObjects, userPreferences.getStringPathToBackupAppFiles());
@@ -43,9 +42,6 @@ public enum Model {
         }
     }
 
-    private void removeDuplicates() {
-        savedPathRegister.removeDuplicates();
-    }
 
     public void addDefaultUsers() {
         System.out.println("addDefault utenfor if");
@@ -118,7 +114,6 @@ public enum Model {
 
             if (EndUserObjects.size() > 1 && EndUserObjects.get(1) != null && EndUserObjects.get(1) instanceof SavedPathRegister)
                 savedPathRegister = (SavedPathRegister) EndUserObjects.get(1);
-            savedPathRegister.removeDuplicates();
 
             if (EndUserObjects.get(2) != null && EndUserObjects.get(2) instanceof UserRegister)
                 userRegister = (UserRegister) EndUserObjects.get(2);

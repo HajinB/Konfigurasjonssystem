@@ -19,8 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="addDefaultUsers() funker når det ikke er admins, eller det ikke er brukere i registret">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
@@ -270,20 +269,6 @@
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
-    </task>
-    <task id="LOCAL-00093" summary="Trekker ting ut fra componentcontroller">
-      <created>1588591637613</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1588591637613</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Trekker ting ut fra componentcontroller">
-      <created>1588591964960</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1588591964960</updated>
     </task>
     <task id="LOCAL-00095" summary="Trekker ting ut fra componentcontroller">
       <created>1588592226081</created>
@@ -613,7 +598,19 @@
       <option name="presentableId" value="LOCAL−00141" />
       <updated>1588945534326</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL−00142" summary="addDefaultUsers() funker når det ikke er admins, eller det ikke er brukere i registret">
+      <created>1588946164927</created>
+      <option name="number" value="LOCAL−00142" />
+      <option name="presentableId" value="LOCAL−00142" />
+      <updated>1588946164927</updated>
+    </task>
+    <task id="LOCAL−00143" summary="addDefaultUsers() funker når det ikke er admins, eller det ikke er brukere i registret">
+      <created>1588946269144</created>
+      <option name="number" value="LOCAL−00143" />
+      <option name="presentableId" value="LOCAL−00143" />
+      <updated>1588946269144</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,15 +686,15 @@
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588943443258" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1588943443258" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1588943443258" />
-    <state x="213" y="0" key="CommitChangelistDialog2" timestamp="1588945750754">
+    <state x="213" y="0" key="CommitChangelistDialog2" timestamp="1588946268418">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="213" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588945750754" />
+    <state x="213" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588946268418" />
     <state x="315" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588943443258" />
-    <state x="633" y="0" width="653" height="687" key="DiffContextDialog" timestamp="1588946158022">
+    <state x="0" y="0" width="1280" height="680" key="DiffContextDialog" timestamp="1588946466302">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="633" y="0" width="653" height="687" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1588946158022" />
+    <state x="0" y="0" width="1280" height="680" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1588946466302" />
     <state x="189" y="97" width="1228" height="687" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1588943443258" />
     <state x="740" y="99" key="FileChooserDialogImpl" timestamp="1588943443258" />
     <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588943443258" />
@@ -731,10 +728,10 @@
     <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588943443258" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1588943443258" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588943443258" />
-    <state x="407" y="96" key="Vcs.Push.Dialog.v2" timestamp="1588946135009">
+    <state x="762" y="113" width="482" height="543" key="Vcs.Push.Dialog.v2" timestamp="1588946477267">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="407" y="96" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588946135009" />
+    <state x="762" y="113" width="482" height="543" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588946477267" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588943443258" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588943443258" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588943443258" />
