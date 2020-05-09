@@ -91,6 +91,7 @@ public class RegistryComponentLogic implements Stageable {
             @Override
             public void handle(MouseEvent event) {
                 if (getComponentRegister().getRegister().size() > 0) {
+                    //skrur av cellebasert seleksjon.
                     tblViewComponent.getSelectionModel().setCellSelectionEnabled(false);
                     TableRow<? extends Component> row;
                     if (isDoubleClick(event)) {
