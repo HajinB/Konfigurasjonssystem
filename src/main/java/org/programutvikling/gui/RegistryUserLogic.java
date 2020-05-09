@@ -49,8 +49,7 @@ public class RegistryUserLogic implements Stageable {
             if (isNameEmpty()) {
                 tabUsersController.setLblMsgName("Skriv inn navn");
                 missingField = true;
-            }   /*  usernameValidation(username);
-        emailValidation(email);*/
+            }
             if (isEmailEmpty()) {
                 tabUsersController.setLblMsgEmail("Skriv inn e-postadresse");
                 missingField = true;
