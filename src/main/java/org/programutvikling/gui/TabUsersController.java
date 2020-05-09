@@ -57,7 +57,6 @@ public class TabUsersController implements Initializable {
     public void btnAddUser(ActionEvent actionEvent) {
         registryUserLogic.registerUser();
         updateView();
-        clearLabels();
     }
 
     public void btnDeleteUser(ActionEvent actionEvent) throws IOException {
@@ -209,6 +208,7 @@ public class TabUsersController implements Initializable {
         updateView();
         tblViewUser.setOnMouseClicked((MouseEvent event) -> tblViewUser.sort());
         tblViewUser.setTooltip(tooltip);
+        clearLabels();
     }
 
     private void initChoiceBox() {

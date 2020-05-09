@@ -20,28 +20,16 @@ public class User implements Serializable {
 
     public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
         this.admin = new SimpleBooleanProperty(admin);
-
-        if (UserValidator.username(username)) {
+        if (UserValidator.isUserValid(username, password, name, email, address, zip, city)){
             this.username = new SimpleStringProperty(username.toLowerCase());
-        }
-        if (UserValidator.password(password)) {
             this.password = new SimpleStringProperty(password);
-        }
-        if (UserValidator.name(name)) {
             this.name = new SimpleStringProperty(name);
-        }
-        if (UserValidator.email(email)) {
             this.email = new SimpleStringProperty(email.toLowerCase());
-        }
-        if (UserValidator.address(address)) {
             this.address = new SimpleStringProperty(address);
-        }
-        if (UserValidator.zip(zip)) {
             this.zip = new SimpleStringProperty(zip);
-        }
-        if (UserValidator.city(city)) {
             this.city = new SimpleStringProperty(city);
         }
+        this.admin = new SimpleBooleanProperty(admin);
     }
 
     // Getter and setters

@@ -27,36 +27,6 @@ public class RegistryUserLogic {
         this.gridPane = gridPane;
     }
 
-    public void registerUser() {
-        //todo legg til lbls for alle som på tabcomponents?
-        tabUsersController.clearLabels();
-
-        if(areInputFieldsEmpty()) {
-            if (isUsernameEmpty()) {
-                tabUsersController.setLblMsgUsername("Skriv inn brukernavn");
-            }
-            if (isPasswordEmpty()) {
-                tabUsersController.setLblMsgPassword("Skriv inn passord, minst "+ UserValidator.PASSWORD_LENGTH+" tegn" );
-            }
-            if (isNameEmpty()) {
-                tabUsersController.setLblMsgName("Skriv inn navn");
-            }
-            if (isEmailEmpty()) {
-                tabUsersController.setLblMsgEmail("Skriv inn e-postadresse");
-            }
-            if (isAdressEmpty()) {
-                tabUsersController.setLblMsgAdress("Skriv inn gateadresse");
-            }
-            if (isZipEmpty()) {
-                tabUsersController.setLblMsgZip("Skriv inn postnummer, minst " +UserValidator.ZIP_LENGTH+ " tegn");
-            }
-            if (isCityEmpty()) {
-                tabUsersController.setLblMsgCity("Skriv inn poststed");
-            }
-        }
-        createUserFromGUIInputFields();
-    }
-
     User createUserFromGUIInputFields() {
         try {
             User user = createUser();
@@ -86,6 +56,36 @@ public class RegistryUserLogic {
         emailValidation(email);
 
         return new User(admin,username,password,name,email,address,zip,city);
+    }
+
+    public void registerUser() {
+        //todo legg til lbls for alle som på tabcomponents?
+        tabUsersController.clearLabels();
+
+        if(areInputFieldsEmpty()) {
+            if (isUsernameEmpty()) {
+                tabUsersController.setLblMsgUsername("Skriv inn brukernavn");
+            }
+            if (isPasswordEmpty()) {
+                tabUsersController.setLblMsgPassword("Skriv inn passord, minst "+ UserValidator.PASSWORD_LENGTH+" tegn" );
+            }
+            if (isNameEmpty()) {
+                tabUsersController.setLblMsgName("Skriv inn navn");
+            }
+            if (isEmailEmpty()) {
+                tabUsersController.setLblMsgEmail("Skriv inn e-postadresse");
+            }
+            if (isAdressEmpty()) {
+                tabUsersController.setLblMsgAdress("Skriv inn gateadresse");
+            }
+            if (isZipEmpty()) {
+                tabUsersController.setLblMsgZip("Skriv inn postnummer, minst " +UserValidator.ZIP_LENGTH+ " tegn");
+            }
+            if (isCityEmpty()) {
+                tabUsersController.setLblMsgCity("Skriv inn poststed");
+            }
+        }
+        createUserFromGUIInputFields();
     }
 
 
