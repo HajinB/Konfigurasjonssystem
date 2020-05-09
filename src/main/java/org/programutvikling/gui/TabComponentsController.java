@@ -124,7 +124,7 @@ public class TabComponentsController {
     }
 
     private void initTableView() {
-        tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
+        //tblViewComponent.setOnMouseClicked((MouseEvent event) -> tblViewComponent.sort());
         tblViewComponent.setTooltip(tooltip);
         setTblCellFactory();
         setContextMenu();
@@ -152,6 +152,8 @@ public class TabComponentsController {
         PriceFormatCell priceFormatCell = new PriceFormatCell();
         productPriceColumn.setCellFactory((priceCellFactory));
     }
+
+    /***/
 
     ObservableList<Component> getSearchedAndFilteredList() {
         return Search.getFilteredList(getComponentRegister()

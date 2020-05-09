@@ -2,13 +2,14 @@ package org.programutvikling.domain.user;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.programutvikling.domain.utility.Clickable;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable, Clickable {
     private transient SimpleBooleanProperty admin;
     private transient SimpleStringProperty username;
     private transient SimpleStringProperty password;

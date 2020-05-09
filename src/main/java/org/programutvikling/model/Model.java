@@ -2,8 +2,8 @@ package org.programutvikling.model;
 
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.user.User;
-import org.programutvikling.domain.user.UserPreferences;
 import org.programutvikling.domain.user.UserRegister;
+import org.programutvikling.domain.utility.UserPreferences;
 import org.programutvikling.gui.FileHandling;
 import org.programutvikling.gui.SavedPathRegister;
 import org.programutvikling.gui.utility.Dialog;
@@ -14,15 +14,13 @@ import java.util.ArrayList;
 //singleton som holder data fra fil - slik at samme data kan aksesses fra flere controllere.
 public enum Model {
     INSTANCE;
+
     private SavedPathRegister savedPathRegister = new SavedPathRegister();
     private ComponentRegister componentRegister = new ComponentRegister();
-    // private ComputerRegister computerRegister = new ComputerRegister();
-    // private Computer computer = new Computer("current");
-    //temporary master list - som har alle objekter fra fil.
-    private ArrayList<Object> EndUserObjects = new ArrayList<>();
-
     private UserPreferences userPreferences = new UserPreferences();
     private UserRegister userRegister = new UserRegister();
+
+    private ArrayList<Object> EndUserObjects = new ArrayList<>();
 
     private Model() {
         loadFileIntoModel();  //kan ikke kjøre denne metoden fra en annen klasse - konstruktøren må holdes privat
@@ -65,7 +63,7 @@ public enum Model {
             userRegister.addBruker(user3);
             userRegister.addBruker(user4);
             System.out.println("addDefault kjørt!");
-        }else if(!userRegister.checkForAdmins()) {
+        } else if (!userRegister.checkForAdmins()) {
             User admin = new User(true, "admin", "admin", "admin",
                     "admin@admin.com", "Adminsgaten 1", "0909", "Adminby");
             userRegister.addBruker(admin);

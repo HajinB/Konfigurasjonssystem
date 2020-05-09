@@ -10,8 +10,10 @@ public class ComponentTypes {
 
     ObservableList<String> concreteTypeListName = FXCollections.observableArrayList();
     ObservableList<String> concreteTypeListFilterName = FXCollections.observableArrayList();
-    static String[] preList = {"Kabinett", "Prosessor", "Hovedkort", "Skjermkort", "Minne", "Harddisk", "Tastatur", "Mus", "Skjerm", "Annet"};
-    static String[] filterList = {"Ingen filter","Kabinett", "Prosessor", "Hovedkort", "Skjermkort", "Minne", "Harddisk", "Tastatur",
+    final static String[] preList = {"Kabinett", "Prosessor", "Hovedkort", "Skjermkort", "Minne", "Harddisk",
+            "Tastatur", "Mus", "Skjerm", "Annet"};
+   final static String[] filterList = {"Ingen filter","Kabinett", "Prosessor", "Hovedkort", "Skjermkort", "Minne",
+            "Harddisk", "Tastatur",
             "Mus",
             "Skjerm", "Annet"};
 

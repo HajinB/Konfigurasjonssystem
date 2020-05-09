@@ -5,7 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
-import org.programutvikling.domain.component.ItemUsable;
+import org.programutvikling.domain.utility.Item;
 import org.programutvikling.gui.utility.RegisterLogic;
 
 import java.io.IOException;
@@ -16,14 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Computer implements Serializable, ItemUsable {
-    //mange computere skal opprettes - så vi har EN computer, som består av et array av components , basically
-    // det samme som komponentregister ( computer er ikke en ordentlig datamodell som komponent er) -
-
-    //skal man ha muligheten til å si hvilken plass i arrayet som er hvilken del? altså har rekkefølgen noe å si? man
-    // skal jo endre på feltene via tableview - er på en måte lettere med felt, også en metode som har x antall
-    // parametre "lagComputer(...)
-
+public class Computer implements Serializable, Item {
     private transient static final long serialVersionUID = 1;
     private transient ObservableList<Component> listOfComponents = FXCollections.observableArrayList();
     private ComponentRegister componentRegister = new ComponentRegister();
@@ -52,15 +45,6 @@ public class Computer implements Serializable, ItemUsable {
 
     List getComponentList() {
         return componentRegister.getRegister();
-    }
-
-    public String toStringListView() {
-        String melding = "";
-        for (int i = 0; i < getComponentList().size(); i++) {
-            melding =
-                    getComponentRegister().getRegister().get(i).getProductName() + " " + getComponentRegister().getRegister().get(i).getProductPrice() + ",-";
-        }
-        return melding;
     }
 
     public void removeAll() {
@@ -93,9 +77,8 @@ public class Computer implements Serializable, ItemUsable {
         }
         return melding;
     }
-
+/*
     private void writeObject(ObjectOutputStream s) throws IOException {
-        //s.defaultWriteObject();
         s.writeUTF(getProductName());
         s.writeObject(new ArrayList<Component>(componentRegister.getRegister()));
     }
@@ -110,7 +93,7 @@ public class Computer implements Serializable, ItemUsable {
             componentRegister = new ComponentRegister();
             componentRegister.getRegister().addAll(list);
         }
-    }
+    }*/
 
     public ArrayList<String> createSortedUniqueComponentTypeList() {
         ArrayList<String> namesOfComponentsInList = new ArrayList<>();

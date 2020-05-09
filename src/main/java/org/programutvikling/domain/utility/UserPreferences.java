@@ -1,4 +1,4 @@
-package org.programutvikling.domain.user;
+package org.programutvikling.domain.utility;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,7 +29,7 @@ public class UserPreferences {
     }
     
     /**SuperUser:*/
-    public String getStringPathToSuperUserDatabase() {
+    public String getStringPath() {
         return pathToAdminAppFiles;
     }
 

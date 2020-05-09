@@ -20,9 +20,4 @@ public class FileSaverJobj implements FileSaver {
             out.flush();
         }
     }
-
-    @Override
-    public void save(Computer computer, Path filePath) throws IOException {
-
-    }
 }

@@ -13,9 +13,11 @@ import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentValidator;
+import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.gui.utility.WindowHandler;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
@@ -24,7 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegistryComponentLogic {
+public class RegistryComponentLogic implements Stageable {
     TabComponentsController tabComponentsController;
     WindowHandler windowHandler = new WindowHandler();
     ThreadHandler threadHandler;
@@ -258,7 +260,32 @@ public class RegistryComponentLogic {
         ((TextField) gridPane.lookup("#componentSearch")).setText("");
     }
 
+    /*
     public void editComponentFromPopup(Component c) {
+        if (TemporaryComponent.INSTANCE.getIsEdited()) {
+            Component dup =
+                    ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
+                            TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
+            System.out.println(TemporaryComponent.INSTANCE.getTempComponent());
+            if (dup == null) {
+                getObservableRegister().set(getObservableRegister().indexOf(c),
+                        TemporaryComponent.INSTANCE.getTempComponent());
+                TemporaryComponent.INSTANCE.resetTemps();
+            } else {
+
+                justReplaceComponent(c, dup);
+                Model.INSTANCE.getComponentRegister().removeDuplicates();
+            }
+            try {
+                FileHandling.saveAllAdminFiles();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
+
+    @Override
+    public void editClickableFromPopup(Clickable c) {
         if (TemporaryComponent.INSTANCE.getIsEdited()) {
             Component dup =
                     ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
@@ -272,7 +299,7 @@ public class RegistryComponentLogic {
                /* getObservableRegister().set(getObservableRegister().indexOf(c),
                         TemporaryComponent.INSTANCE.getTempComponent());
                 TemporaryComponent.INSTANCE.resetTemps();*/
-                justReplaceComponent(c, dup);
+                justReplaceComponent((Component) c, dup);
                 Model.INSTANCE.getComponentRegister().removeDuplicates();
             }
             try {
@@ -281,6 +308,7 @@ public class RegistryComponentLogic {
                 e.printStackTrace();
             }
         }
+
     }
 
     private List getObservableRegister() {
@@ -312,12 +340,9 @@ public class RegistryComponentLogic {
     public void setTextAreaListener(GridPane gridPane) {
         TextArea textArea = ((TextArea) gridPane.lookup("#productDescription"));
         textArea.setWrapText(true);
-
-        //overrider ENTER keyEvent for å unngå lineshift ( brukes for å lese fra txtfil)
         textArea.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-
                 if (keyEvent.getCode() == KeyCode.ENTER) {
                     keyEvent.consume();
                 }
@@ -354,4 +379,6 @@ public class RegistryComponentLogic {
         tabComponentsController.updateView();
 
     }
+
+
 }

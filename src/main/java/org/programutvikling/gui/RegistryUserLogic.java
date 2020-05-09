@@ -7,15 +7,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserValidator;
+import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
 
-public class RegistryUserLogic {
+public class RegistryUserLogic implements Stageable {
     private GridPane gridPane;
     TabUsersController tabUsersController;
 
@@ -116,19 +118,25 @@ public class RegistryUserLogic {
         }
     }
 
-        public void editUserFromPopup(User u) {
+
+    @Override
+    public void editClickableFromPopup(Clickable u) {
         if (TemporaryUser.INSTANCE.getIsEdited()) {
             System.out.println("tempuserrrrr: " + TemporaryUser.INSTANCE.getTempUser() + " tempuser slutt");
-                System.out.println("RegistryUserLogic.editUserFromPopup() getRegister().indexOf(u): " + getRegister().indexOf(u));
-                getRegister().set(getRegister().indexOf(u),
-                TemporaryUser.INSTANCE.getTempUser());
-                TemporaryUser.INSTANCE.resetTemps();
+            System.out.println("RegistryUserLogic.editUserFromPopup() getRegister().indexOf(u): " + getRegister().indexOf(u));
+            getRegister().set(getRegister().indexOf(u),
+                    TemporaryUser.INSTANCE.getTempUser());
+            TemporaryUser.INSTANCE.resetTemps();
             try {
                 FileHandling.saveAllAdminFiles();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+        public void editUserFromPopup(Clickable u) {
+
     }
 
     private void justReplaceUser(User newUser, User possibleDuplicateUserIfNotThenNull){

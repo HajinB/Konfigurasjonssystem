@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.gui.CustomViews.CustomListViewCell;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
 
@@ -27,19 +28,7 @@ public class ComputerPopupController extends EnduserController implements Initia
 
     //todo tror denne er helt lik den i computer listview - lag en generisk?
     private void setCellFactory() {
-        listContent.setCellFactory(param -> new ListCell<Component>() {
-            @Override
-            protected void updateItem(Component c, boolean empty) {
-                super.updateItem(c, empty);
-                if (empty || c == null || c.getProductName() == null) {
-                    setText("");
-                } else if(c.getProductPrice() % 1 == 0) {
-                    setText(c.getProductName() + "\n" + String.format("%.0f", c.getProductPrice()));
-                } else {
-                    setText(c.getProductName() + "\n" + String.format("%.2f", c.getProductPrice()));
-                }
-            }
-        });
+        listContent.setCellFactory(lv-> new CustomListViewCell());
     }
 
     void initData(Computer c, Stage stage) {

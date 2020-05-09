@@ -1,15 +1,14 @@
 package org.programutvikling.gui;
 
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.domain.computer.ComputerFactory;
+import org.programutvikling.domain.utility.ComputerFactory;
 import org.programutvikling.domain.io.FileOpener;
 import org.programutvikling.domain.io.FileOpenerTxt;
 import org.programutvikling.domain.io.FileSaver;
 import org.programutvikling.domain.io.FileSaverTxt;
-import org.programutvikling.domain.user.UserPreferences;
+import org.programutvikling.domain.utility.UserPreferences;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;
@@ -118,7 +117,7 @@ public class FileHandling {
     }
 
     public static String getPathToUser() {
-        return userPreferences.getStringPathToSuperUserDatabase();
+        return userPreferences.getStringPath();
     }
 
     public static void saveAllAdminFiles() throws IOException {

@@ -1,4 +1,8 @@
-package org.programutvikling.domain.io;
+package org.programutvikling.domain.utility;
+
+import org.programutvikling.domain.io.FileSaver;
+import org.programutvikling.domain.io.FileSaverJobj;
+import org.programutvikling.domain.io.FileSaverTxt;
 
 public class SaverFactory {
 
@@ -9,5 +13,4 @@ public class SaverFactory {
                 return new FileSaverTxt();
             }
         }
-
 }

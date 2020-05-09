@@ -153,11 +153,11 @@ public class EnduserController {
         FXMLLoader loader = getFxmlLoader("computerPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-
         stage.setScene(
                 new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
         );
         Computer c = (Computer) row.getItem();
+
         ComputerPopupController computerPopupController =
                 loader.<ComputerPopupController>getController();
         computerPopupController.initData(c, stage);

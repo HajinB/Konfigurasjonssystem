@@ -9,9 +9,11 @@ import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentTypes;
 import org.programutvikling.domain.user.User;
+import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.NoSpacebarField;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.IController;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class UserPopupController extends TabUsersController implements Initializable {
+public class UserPopupController extends TabUsersController implements Initializable, IController {
 
     @FXML
     private GridPane userEditNode;
@@ -28,19 +30,13 @@ public class UserPopupController extends TabUsersController implements Initializ
     @FXML
     private CheckBox cbAdmin;
     @FXML
-    private NoSpacebarField userUsername;
+    private NoSpacebarField userUsername, email;
     @FXML
     private PasswordField userPassword;
     @FXML
-    private TextField name;
-    @FXML
-    private NoSpacebarField email;
-    @FXML
-    private TextField address;
+    private TextField name, address, UserCity;
     @FXML
     private ZipField userZip;
-    @FXML
-    private TextField UserCity;
     @FXML
     private Button btnEditUser;
 
@@ -64,7 +60,6 @@ public class UserPopupController extends TabUsersController implements Initializ
         stage.close();
     }
 
-
     @FXML
     private void btnEditUser(ActionEvent event) {
         editUser();
@@ -72,13 +67,19 @@ public class UserPopupController extends TabUsersController implements Initializ
 
     private RegistryUserLogic registryUserLogic;
 
-    public void init(User u, Stage stage, int columnIndex) {
+    public void initData(User u, Stage stage, int columnIndex) {
+
+    }
+
+    @Override
+    public void initData(Clickable c, Stage stage, int columnIndex) {
+        System.out.println("kolonne for userpopup: "+ columnIndex);
+        User u = (User) c;
         //tar inn stage for å kunne lukke når brukeren trykker endre
         RegistryUserLogic registryUserLogic = new RegistryUserLogic(userEditNode);
 //        registryUserLogic.setTextAreaListener(userEditNode);
         this.stage = stage;
         System.out.println(userEditNode);
-
         cbAdmin.setSelected(u.getAdmin());
         userUsername.setText(u.getUsername());
         userPassword.setText(u.getPassword());
@@ -87,7 +88,6 @@ public class UserPopupController extends TabUsersController implements Initializ
         address.setText(u.getAddress());
         userZip.setText(u.getZip());
         UserCity.setText(u.getCity());
-
         setFocusOnField(columnIndex, u);
     }
 
@@ -116,7 +116,6 @@ public class UserPopupController extends TabUsersController implements Initializ
         if (columnIndex == 5) {
             address.requestFocus();
             address.selectAll();
-
         }
         else if(columnIndex == 6) {
             userZip.requestFocus();
@@ -138,4 +137,6 @@ public class UserPopupController extends TabUsersController implements Initializ
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+
 }

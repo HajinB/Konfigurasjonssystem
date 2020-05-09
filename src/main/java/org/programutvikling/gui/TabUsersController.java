@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
+import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.utility.UserSearch;
 import org.programutvikling.gui.utility.UserWindowHandler;
 import org.programutvikling.model.Model;
@@ -31,7 +32,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class TabUsersController implements Initializable {
+public class TabUsersController implements Initializable, Clickable {
 
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
     UserWindowHandler userWindowHandler = new UserWindowHandler();

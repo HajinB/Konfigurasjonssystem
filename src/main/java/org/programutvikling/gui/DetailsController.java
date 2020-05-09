@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.domain.computer.ComputerFactory;
+import org.programutvikling.domain.utility.ComputerFactory;
 import org.programutvikling.gui.CustomViews.CustomTextWrapCellFactory;
 import org.programutvikling.gui.CustomViews.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;

@@ -2,6 +2,8 @@ package org.programutvikling.domain.io;
 
 import org.programutvikling.domain.component.*;
 import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.utility.Item;
+import org.programutvikling.domain.utility.NullComponent;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
@@ -12,23 +14,14 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class FileOpenerTxt implements FileOpener {
-    ComponentValidator componentValidator = new ComponentValidator();
-    boolean allLinesOk = true;
 
     public void open(Computer computer, Path filePath) throws IOException {
         computer.removeAll();
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
-            ComponentRegister temp = new ComponentRegister();
 
-            //hopper over første linje
-            bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
-                //må man lage en metode som tar bort navn og description fra datamaskinen?
-                //første to feltene feks er Navn og pris - så kommer componentregisteret - bør første line være NAVN;
-
-                if(parseComponent(line) instanceof EmptyComponent){
-                    //IKKE LES CURRENT - hvis getproducttype er null, ikke legg til i lista
+                if(parseComponent(line) instanceof NullComponent){
                     bufferedReader.readLine(); //leser uten å gjøre noe
                 }else{
                     computer.addComponent((Component) parseComponent(line));
@@ -36,11 +29,8 @@ public class FileOpenerTxt implements FileOpener {
                 }
             }
         }
-       // ContextModel.INSTANCE.getComputer().getComponentRegister().getRegister().addAll(temp)
     }
-    //todo eksempel fra tostring :
-
-    private ItemUsable parseComponent(String line) throws InvalidComponentFormatException {
+    private Item parseComponent(String line) throws InvalidComponentFormatException {
         String[] split = line.split(";");
         if (split.length != 4) {
             throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
@@ -65,7 +55,7 @@ public class FileOpenerTxt implements FileOpener {
 
             TemporaryComponent.INSTANCE.getErrorList().add(tempComponent.getProductName() + " fins ikke i databasen vår, og blir dermed ikke " +
                     "lagt til i listen");
-            return new EmptyComponent();
+            return new NullComponent();
         }
         return new Component(type, name, description, price);
     }
@@ -91,7 +81,7 @@ public class FileOpenerTxt implements FileOpener {
                 //må man lage en metode som tar bort navn og description fra datamaskinen?
                 //første to feltene feks er Navn og pris - så kommer componentregisteret - bør første line være NAVN;
 
-                if(parseComponent(line) instanceof EmptyComponent){
+                if(parseComponent(line) instanceof NullComponent){
                     //IKKE LES CURRENT - hvis getproducttype er null, ikke legg til i lista
                     bufferedReader.readLine(); //leser uten å gjøre noe
                 }else{
@@ -116,7 +106,7 @@ public class FileOpenerTxt implements FileOpener {
         }
     }
 
-    private ItemUsable parseComponentWithoutValidation(String line) throws InvalidComponentFormatException {
+    private Item parseComponentWithoutValidation(String line) throws InvalidComponentFormatException {
         String[] split = line.split(";");
         if (split.length != 4) {
             throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");

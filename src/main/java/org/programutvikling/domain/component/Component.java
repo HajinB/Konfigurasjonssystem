@@ -2,6 +2,8 @@ package org.programutvikling.domain.component;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.programutvikling.domain.utility.Clickable;
+import org.programutvikling.domain.utility.Item;
 import org.programutvikling.domain.io.InvalidComponentFormatException;
 import org.programutvikling.domain.io.InvalidPriceException;
 
@@ -10,7 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Component implements Serializable, ItemUsable, Comparable<Component> {
+public class Component implements Serializable, Item, Comparable<Component>, Clickable {
     private transient static final long serialVersionUID = 1;
     private transient SimpleStringProperty productType;
     private transient SimpleStringProperty productName;
@@ -42,14 +44,6 @@ public class Component implements Serializable, ItemUsable, Comparable<Component
             this.productType.set(productTypeIn);
         }
     }
-
-    /*public void editSetProductType(String productType) {
-        if (!ComponentValidator.isProductTypeValid(productType)) {
-            throw new IllegalArgumentException("Produkttype er ugyldig");
-        } else {
-            this.productType.set(productType);
-        }
-    }*/
 
     public String getProductName() {
         return productName.getValue();

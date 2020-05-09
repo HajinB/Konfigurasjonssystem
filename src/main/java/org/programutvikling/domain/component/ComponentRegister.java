@@ -3,9 +3,8 @@ package org.programutvikling.domain.component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
-import org.programutvikling.domain.Clickable;
+import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.utility.RegisterUtility;
-import org.programutvikling.model.Model;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -21,18 +20,6 @@ public class ComponentRegister implements Serializable, Clickable {
     private transient static final long serialVersionUID = 1;
 
     private transient ObservableList<Component> componentObservableList = FXCollections.observableArrayList();
-
-    public static ArrayList<Component> getReadableList(List nonReadableList) {
-        ArrayList<Component> nyListe = new ArrayList<>();
-        nyListe.addAll(nonReadableList);
-        return nyListe;
-    }
-
-    public ArrayList<Object> objectArrayListAdapter() {
-        ArrayList<Object> objects = new ArrayList<>();
-        objects.addAll(componentObservableList);
-        return objects;
-    }
 
     public ObservableList<Component> getObservableRegister() {
         return componentObservableList;
@@ -59,7 +46,6 @@ public class ComponentRegister implements Serializable, Clickable {
                         matches(String.format("%s%s%s", ".*", type.toLowerCase(), ".*"))).
                 collect(toCollection(FXCollections::observableArrayList));
     }
-
 
     public void addComponent(Component component) {
         ComponentValidator.isComponentValid(component);
@@ -102,7 +88,6 @@ public class ComponentRegister implements Serializable, Clickable {
         List<Component> list = filterByProductType(s);
         return list.size();
     }
-
 }
 
 

@@ -1,6 +1,7 @@
-package org.programutvikling.domain.computer;
+package org.programutvikling.domain.utility;
 
 import org.programutvikling.domain.component.ComponentRegister;
+import org.programutvikling.domain.computer.Computer;
 
 public class ComputerFactory {
 

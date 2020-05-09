@@ -12,14 +12,16 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentTypes;
+import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.PriceField;
+import org.programutvikling.gui.utility.IController;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class EditPopupController extends TabComponentsController implements Initializable {
+public class EditPopupController extends TabComponentsController implements Initializable, IController {
 
     @FXML
     private GridPane componentEditNode;
@@ -73,7 +75,7 @@ public class EditPopupController extends TabComponentsController implements Init
     }
 
     private boolean areFieldsEmpty() {
-        return(txtPopupProductPrice.getText().isEmpty() || txtPopupProductDescription.getText().isEmpty() || txtPopupProductName.getText().isEmpty());
+        return(txtPopupProductPrice.getText().isEmpty() || txtPopupProductDescription.getText().isBlank() || txtPopupProductName.getText().isEmpty());
     }
 
     @Override
@@ -98,20 +100,6 @@ public class EditPopupController extends TabComponentsController implements Init
         });
     }
 
-    public void initData(Component c, Stage stage, int columnIndex) {
-        //tar inn stage for å kunne lukke når brukeren trykker endre
-        RegistryComponentLogic registryComponentLogic = new RegistryComponentLogic(componentEditNode);
-        registryComponentLogic.setTextAreaListener(componentEditNode);
-        this.stage = stage;
-        System.out.println(componentEditNode);
-        cbType.setValue(c.getProductType());
-        txtPopupProductName.setText(c.getProductName());
-        txtPopupProductDescription.setText(c.getProductDescription());
-        System.out.println(c.getProductPrice());
-        txtPopupProductPrice.setText(Double.toString(c.getProductPrice()));
-        setFocusOnField(columnIndex, c);
-    }
-
     private void setFocusOnField(int columnIndex, Component c) {
         System.out.println("Kolonne index er: " +columnIndex);
 
@@ -132,6 +120,23 @@ public class EditPopupController extends TabComponentsController implements Init
             txtPopupProductPrice.requestFocus();
             txtPopupProductPrice.selectAll();
         }
+    }
+
+    @Override
+    public void initData(Clickable c, Stage stage, int columnIndex) {
+
+        Component component = (Component) c;
+        RegistryComponentLogic registryComponentLogic = new RegistryComponentLogic(componentEditNode);
+        registryComponentLogic.setTextAreaListener(componentEditNode);
+        this.stage = stage;
+        System.out.println(componentEditNode);
+        cbType.setValue(component.getProductType());
+        txtPopupProductName.setText(component.getProductName());
+        txtPopupProductDescription.setText(component.getProductDescription());
+        System.out.println(component.getProductPrice());
+        txtPopupProductPrice.setText(Double.toString(component.getProductPrice()));
+        setFocusOnField(columnIndex, component);
+
     }
 }
 

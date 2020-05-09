@@ -35,30 +35,6 @@ public class ComponentValidator {
         return isProductTypeValid(type) && isProductNameValid(name) && isProductDescriptionValid(description) && isProductPriceValid(price);
     }
 
-    public static boolean isComponentFromTxtValid(Component component) {
-        //må sjekke at typen eksisterer, og at prisen stemmer utifra navn.
-        if (isProductTypeValid(component.getProductType()) && doesPriceMatchDatabase(component)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean doesPriceMatchDatabase(Component component) {
-        for (Component c : Model.INSTANCE.getComponentRegister().getRegister()) {
-            if (isPrimaryKeyAMatch(component, c)) {
-                if (c.getProductPrice() == component.getProductPrice()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /*
-       String[] items = ComponentTypes.getComponentTypesArray();
-       return Arrays.stream(items).parallel().anyMatch(inputStr::contains);
-   */
     static boolean isProductTypeValid(String type) {
         String[] c = ComponentTypes.getComponentTypesArray();
         if (type.isBlank() || type.isEmpty()){
@@ -75,11 +51,6 @@ public class ComponentValidator {
         //items.parallelStream().anyMatch(inputStr::contains);
     }
 
-    /*
-    String[] items = ComponentTypes.getComponentTypesArray();
-    boolean bol  = Arrays.stream(items).anyMatch(inputStr::contains);
-    return bol && !inputStr.isBlank();
-*/
     static boolean isProductNameValid(String name) {
         return !(name.isEmpty() && name.isBlank()) && name.length() < 100;
     }
@@ -92,8 +63,6 @@ public class ComponentValidator {
         return !(description.isEmpty() && description.isBlank());
     }
 
-    //todo denne metoden fungerer som den skal - men hvis databasen inneholder ting med samme "primarykey" - blir det
-    // funnet "feil pris" hele tiden.
     public static double checkPriceAgainstDatabaseGetPrice(Component inputComponent, List list) {
         //sjekker input opp i mot det som nå ligger i minne/databasen.
         for (Component c : Model.INSTANCE.getComponentRegister().getRegister()) {
@@ -104,11 +73,12 @@ public class ComponentValidator {
                     return c.getProductPrice();
                 } else {
                     //prisen stemmer:
+
+                    //todo kanskje skriv om til polymorphic? altså returnere en component eller Item
                     return -1.00;
                 }
             }
         }
-        //hvis ingenting stemmer - return null
         return -2.00;
     }
 
