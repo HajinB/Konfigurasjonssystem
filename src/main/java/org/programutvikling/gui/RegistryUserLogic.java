@@ -3,7 +3,6 @@ package org.programutvikling.gui;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
@@ -13,21 +12,20 @@ import org.programutvikling.domain.utility.UserFactory;
 import org.programutvikling.gui.customTextField.NoSpacebarField;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.TemporaryComponent;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
 
-public class RegistryUserLogic implements Stageable {
-    TabUsersController tabUsersController;
+public class RegistryUserLogic {
     private GridPane gridPane;
+    TabUsersController tabUsersController;
 
     public RegistryUserLogic(GridPane gridPane, TabUsersController tabUsersController) {
         this.gridPane = gridPane;
         this.tabUsersController = tabUsersController;
     }
-
     public RegistryUserLogic(GridPane gridPane) {
         this.gridPane = gridPane;
     }
@@ -115,17 +113,14 @@ public class RegistryUserLogic implements Stageable {
     private User createUser() {
         boolean admin = getBoolean((CheckBox) gridPane.lookup("#userAdmin"));
         String username = getString((TextField) gridPane.lookup("#userUsername"));
-        String password = getString((PasswordField) gridPane.lookup("#userPassword"));
+        String password = getString((TextField) gridPane.lookup("#userPassword"));
         String name = getString((TextField) gridPane.lookup("#userName"));
         String email = getString((TextField) gridPane.lookup("#userMail"));
         String address = getString((TextField) gridPane.lookup("#userAddress"));
         String zip = getString((ZipField) gridPane.lookup("#userZip"));
         String city = getString((TextField) gridPane.lookup("#userCity"));
 
-           /*  usernameValidation(username);
-        emailValidation(email);*/
         // validation
-
         UserFactory userFactory = new UserFactory();
         User u = userFactory.createUser(admin, username, password, name, email, address, zip, city);
 
@@ -136,47 +131,48 @@ public class RegistryUserLogic implements Stageable {
     private boolean areInputFieldsEmpty() {
         return isAdressEmpty() || isCityEmpty() || isEmailEmpty() || isNameEmpty() ||
                 isPasswordEmpty() || isUsernameEmpty() || isZipEmpty();
+
     }
 
-    boolean isUsernameEmpty() {
+    boolean isUsernameEmpty () {
         return ((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userUsername")).getText() == null ||
                 ((TextField) gridPane.lookup("#userUsername")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userUsername")).getText().equals("");
     }
 
-    boolean isPasswordEmpty() {
+    boolean isPasswordEmpty () {
         return ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userPassword")).getText() == null ||
                 ((TextField) gridPane.lookup("#userPassword")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userPassword")).getText().equals("");
     }
 
-    boolean isNameEmpty() {
+    boolean isNameEmpty () {
         return ((TextField) gridPane.lookup("#userName")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userName")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userName")).getText().equals("");
     }
 
-    boolean isEmailEmpty() {
+    boolean isEmailEmpty () {
         return ((TextField) gridPane.lookup("#userMail")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userMail")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userMail")).getText().equals("");
     }
 
-    boolean isAdressEmpty() {
+    boolean isAdressEmpty () {
         return ((TextField) gridPane.lookup("#userAddress")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userAddress")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userAddress")).getText().equals("");
     }
 
-    boolean isZipEmpty() {
+    boolean isZipEmpty () {
         return ((ZipField) gridPane.lookup("#userZip")).getText().isEmpty() ||
                 ((ZipField) gridPane.lookup("#userZip")).getText().isBlank() ||
                 ((ZipField) gridPane.lookup("#userZip")).getText().equals("");
     }
 
-    boolean isCityEmpty() {
+    boolean isCityEmpty () {
         return ((TextField) gridPane.lookup("#userCity")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userCity")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userCity")).getText().equals("");
@@ -216,10 +212,10 @@ public class RegistryUserLogic implements Stageable {
     public void editClickableFromPopup(Clickable u) {
         if (TemporaryUser.INSTANCE.getIsEdited()) {
             System.out.println("tempuserrrrr: " + TemporaryUser.INSTANCE.getTempUser() + " tempuser slutt");
-            System.out.println("RegistryUserLogic.editUserFromPopup() getRegister().indexOf(u): " + getRegister().indexOf(u));
-            getRegister().set(getRegister().indexOf(u),
-                    TemporaryUser.INSTANCE.getTempUser());
-            TemporaryUser.INSTANCE.resetTemps();
+                System.out.println("RegistryUserLogic.editUserFromPopup() getRegister().indexOf(u): " + getRegister().indexOf(u));
+                getRegister().set(getRegister().indexOf(u),
+                TemporaryUser.INSTANCE.getTempUser());
+                TemporaryUser.INSTANCE.resetTemps();
             try {
                 FileHandling.saveAllAdminFiles();
             } catch (IOException e) {
@@ -237,7 +233,7 @@ public class RegistryUserLogic implements Stageable {
         int indexToReplace =
                 getRegister().indexOf(possibleDuplicateUserIfNotThenNull);
 
-        System.out.println("index to replac : " + indexToReplace);
+        System.out.println("index to replac : "+indexToReplace);
         getRegister().set(indexToReplace, newUser);
 
         //  tabComponentsController.updateView();

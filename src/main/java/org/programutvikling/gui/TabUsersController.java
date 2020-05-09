@@ -209,6 +209,7 @@ public class TabUsersController implements Initializable, Clickable {
         updateView();
         tblViewUser.setOnMouseClicked((MouseEvent event) -> tblViewUser.sort());
         tblViewUser.setTooltip(tooltip);
+        clearLabels();
     }
 
     private void initChoiceBox() {
