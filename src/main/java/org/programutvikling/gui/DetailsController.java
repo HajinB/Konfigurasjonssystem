@@ -36,6 +36,9 @@ public class DetailsController implements Initializable {
     private Button btnAddToComputersFolder;
 
     @FXML
+    private Label lblTotalPriceDetails;
+
+    @FXML
     private TextField txtNameForComputer;
 
     Computer finishedComputer;
@@ -49,6 +52,7 @@ public class DetailsController implements Initializable {
         tblFinalViewComponent.setItems(c.getComponentRegister().getObservableRegister());
         setCellFactories();
         btnAddToComputersFolder.setDefaultButton(true);
+        lblTotalPriceDetails.setText(computerPriceFormat(c.getProductPrice()));
     }
 
     @FXML
@@ -94,5 +98,13 @@ public class DetailsController implements Initializable {
         productFinalDescriptionColumn.setCellFactory(customTextWrapCellFactory);
 
         productFinalPriceColumn.setCellFactory(priceCellFactory);
+    }
+
+    private String computerPriceFormat(Double price) {
+        if(price % 1 == 0) {
+            return String.format("%.0f",price);
+        } else {
+            return String.format("%.2f",price);
+        }
     }
 }

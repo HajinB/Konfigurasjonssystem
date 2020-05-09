@@ -331,7 +331,7 @@ public class RegistryComponentLogic implements Stageable {
     }
 
     private void resetFields() {
-        ((ChoiceBox) gridPane.lookup("#productType")).setValue("");
+        ((ChoiceBox) gridPane.lookup("#productType")).setValue(null);
         ((TextField) gridPane.lookup("#productName")).setText("");
         ((TextArea) gridPane.lookup("#productDescription")).setText("");
         ((PriceField) gridPane.lookup("#productPrice")).setText("");

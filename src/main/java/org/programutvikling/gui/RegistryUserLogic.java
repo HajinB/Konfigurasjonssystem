@@ -31,13 +31,32 @@ public class RegistryUserLogic implements Stageable {
 
     public void registerUser() {
         //todo legg til lbls for alle som på tabcomponents?
-        if(areInputFieldsEmpty()) {
-            Dialog.showErrorDialog("Noen av feltene er tomme!");
+        tabUsersController.clearLabels();
 
-        }else {
-            createUserFromGUIInputFields();
+        if(areInputFieldsEmpty()) {
+            if (isUsernameEmpty()) {
+                tabUsersController.setLblMsgUsername("Skriv inn brukernavn");
+            }
+            if (isPasswordEmpty()) {
+                tabUsersController.setLblMsgPassword("Skriv inn passord, minst "+ UserValidator.PASSWORD_LENGTH+" tegn" );
+            }
+            if (isNameEmpty()) {
+                tabUsersController.setLblMsgName("Skriv inn navn");
+            }
+            if (isEmailEmpty()) {
+                tabUsersController.setLblMsgEmail("Skriv inn e-postadresse");
+            }
+            if (isAdressEmpty()) {
+                tabUsersController.setLblMsgAdress("Skriv inn gateadresse");
+            }
+            if (isZipEmpty()) {
+                tabUsersController.setLblMsgZip("Skriv inn postnummer, minst " +UserValidator.ZIP_LENGTH+ " tegn");
+            }
+            if (isCityEmpty()) {
+                tabUsersController.setLblMsgCity("Skriv inn poststed");
+            }
         }
-        // duplikat her
+        createUserFromGUIInputFields();
     }
 
     User createUserFromGUIInputFields() {
@@ -48,6 +67,7 @@ public class RegistryUserLogic implements Stageable {
             Dialog.showSuccessDialog(user.getUsername() + " er lagt til i listen!");
             return user;
         } catch (IllegalArgumentException illegalArgumentException) {
+            registerUser();
             Dialog.showErrorDialog(illegalArgumentException.getMessage());
         }
         return null;
@@ -72,11 +92,51 @@ public class RegistryUserLogic implements Stageable {
 
 
     private boolean areInputFieldsEmpty() {
-        return (((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() || ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty()
-                || ((TextField) gridPane.lookup("#userName")).getText().isEmpty() || ((TextField) gridPane.lookup("#userMail")).getText().isEmpty()
-                || ((TextField) gridPane.lookup("#userAddress")).getText().isEmpty() || ((ZipField) gridPane.lookup("#userZip")).getText().isEmpty()
-                || ((TextField) gridPane.lookup("#userCity")).getText().isEmpty());
+        return isAdressEmpty() || isCityEmpty() || isEmailEmpty() || isNameEmpty() ||
+                isPasswordEmpty() || isUsernameEmpty() || isZipEmpty();
 
+    }
+
+    boolean isUsernameEmpty () {
+        return ((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#userUsername")).getText().isBlank() ||
+                ((TextField) gridPane.lookup("#userUsername")).getText().equals("");
+    }
+
+    boolean isPasswordEmpty () {
+        return ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#userPassword")).getText().isBlank() ||
+                ((TextField) gridPane.lookup("#userPassword")).getText().equals("");
+    }
+
+    boolean isNameEmpty () {
+        return ((TextField) gridPane.lookup("#userName")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#userName")).getText().isBlank() ||
+                ((TextField) gridPane.lookup("#userName")).getText().equals("");
+    }
+
+    boolean isEmailEmpty () {
+        return ((TextField) gridPane.lookup("#userMail")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#userMail")).getText().isBlank() ||
+                ((TextField) gridPane.lookup("#userMail")).getText().equals("");
+    }
+
+    boolean isAdressEmpty () {
+        return ((TextField) gridPane.lookup("#userAddress")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#userAddress")).getText().isBlank() ||
+                ((TextField) gridPane.lookup("#userAddress")).getText().equals("");
+    }
+
+    boolean isZipEmpty () {
+        return ((ZipField) gridPane.lookup("#userZip")).getText().isEmpty() ||
+                ((ZipField) gridPane.lookup("#userZip")).getText().isBlank() ||
+                ((ZipField) gridPane.lookup("#userZip")).getText().equals("");
+    }
+
+    boolean isCityEmpty () {
+        return ((TextField) gridPane.lookup("#userCity")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#userCity")).getText().isBlank() ||
+                ((TextField) gridPane.lookup("#userCity")).getText().equals("");
     }
 
     private void resetFields() {

@@ -221,7 +221,7 @@ public class TabComponentsController {
         Model.INSTANCE.getSavedPathRegister().getListOfSavedFilePaths().add("AppFiles/Database/Backup/AppDataBackup" +
                 ".jobj");
         cbType.setItems(componentTypes.getObservableTypeListName());
-        cbType.setValue("Kabinett");
+        cbType.setValue("");
         cbTypeFilter.setItems(componentTypes.getObservableTypeListNameForFilter());
     }
 

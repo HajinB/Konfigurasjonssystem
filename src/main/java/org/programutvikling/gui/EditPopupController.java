@@ -12,9 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentTypes;
-import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.PriceField;
-import org.programutvikling.gui.utility.IController;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.net.URL;
