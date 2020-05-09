@@ -19,15 +19,15 @@ public class Dialog {
 
     public static void showInformationDialog(String msg) {
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Error");
-        alert.setHeaderText("Ugyldig operasjon");
+        alert.setTitle("Informasjon");
+        alert.setHeaderText("");
         alert.setContentText(msg);
         alert.showAndWait();
     }
 
     public static void showSuccessDialog(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("DatamaskincomponentRegister");
+        alert.setTitle("Datamaskin componentRegister");
         alert.setHeaderText("Operasjon vellykket");
         alert.setContentText(msg);
         alert.showAndWait();

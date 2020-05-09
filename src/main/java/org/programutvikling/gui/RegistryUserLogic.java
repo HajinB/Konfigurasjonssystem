@@ -3,137 +3,181 @@ package org.programutvikling.gui;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserValidator;
 import org.programutvikling.domain.utility.Clickable;
+import org.programutvikling.domain.utility.UserFactory;
+import org.programutvikling.gui.customTextField.NoSpacebarField;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.model.Model;
-import org.programutvikling.model.TemporaryComponent;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
 
 public class RegistryUserLogic implements Stageable {
-    private GridPane gridPane;
     TabUsersController tabUsersController;
+    private GridPane gridPane;
 
     public RegistryUserLogic(GridPane gridPane, TabUsersController tabUsersController) {
         this.gridPane = gridPane;
         this.tabUsersController = tabUsersController;
     }
+
     public RegistryUserLogic(GridPane gridPane) {
         this.gridPane = gridPane;
     }
 
     public void registerUser() {
         //todo legg til lbls for alle som på tabcomponents?
+        boolean missingField = false;
         tabUsersController.clearLabels();
 
-        if(areInputFieldsEmpty()) {
+        if (areInputFieldsEmpty()) {
             if (isUsernameEmpty()) {
                 tabUsersController.setLblMsgUsername("Skriv inn brukernavn");
+                missingField = true;
             }
             if (isPasswordEmpty()) {
-                tabUsersController.setLblMsgPassword("Skriv inn passord, minst "+ UserValidator.PASSWORD_LENGTH+" tegn" );
+                tabUsersController.setLblMsgPassword("Skriv inn passord, minst " + UserValidator.PASSWORD_LENGTH + " tegn");
+                missingField = true;
             }
             if (isNameEmpty()) {
                 tabUsersController.setLblMsgName("Skriv inn navn");
-            }
+                missingField = true;
+            }   /*  usernameValidation(username);
+        emailValidation(email);*/
             if (isEmailEmpty()) {
                 tabUsersController.setLblMsgEmail("Skriv inn e-postadresse");
+                missingField = true;
             }
             if (isAdressEmpty()) {
                 tabUsersController.setLblMsgAdress("Skriv inn gateadresse");
+                missingField = true;
             }
             if (isZipEmpty()) {
-                tabUsersController.setLblMsgZip("Skriv inn postnummer, minst " +UserValidator.ZIP_LENGTH+ " tegn");
+                tabUsersController.setLblMsgZip("Skriv inn postnummer, minst " + UserValidator.ZIP_LENGTH + " tegn");
+                missingField = true;
             }
             if (isCityEmpty()) {
                 tabUsersController.setLblMsgCity("Skriv inn poststed");
+                missingField = true;
             }
+        } else {
+            if (!isEmailValid()) {
+                tabUsersController.setLblMsgEmail("E-postadressen er ikke gyldig eller eksisterer allerede");
+                return;
+            }
+            if (!isUsernameValid()) {
+                tabUsersController.setLblMsgUsername("brukernavnet eksisterer allerede ");
+                return;
+            }
+            System.out.println(missingField);
+            System.out.println(areInputFieldsEmpty());
+            createUserFromGUIInputFields();
         }
-        createUserFromGUIInputFields();
     }
 
-    User createUserFromGUIInputFields() {
+    private boolean isUsernameValid() {
+        String username = getString((NoSpacebarField) gridPane.lookup("#userUsername"));
+        return !usernameExists(username) && UserValidator.username(username);
+    }
+
+    private boolean isEmailValid() {
+        String email = getString((NoSpacebarField) gridPane.lookup("#userMail"));
+        return !emailExists(email) && UserValidator.email(email);
+    }
+
+    void createUserFromGUIInputFields() {
         try {
             User user = createUser();
+          /*  if(!isEmailValid()){
+                tabUsersController.setLblMsgEmail("Epost er ikke gyldig");
+                return;
+            }
+            if(isUsernameValid()){
+                tabUsersController.setLblMsgUsername("Brukernavnet eksisterer allerede");
+                return;
+            }*/
             Model.INSTANCE.getUserRegister().addBruker(user);
+            Dialog.showInformationDialog(user.getUsername() + " er lagt til i listen!");
             resetFields();
-            Dialog.showSuccessDialog(user.getUsername() + " er lagt til i listen!");
-            return user;
+            return;
         } catch (IllegalArgumentException illegalArgumentException) {
-            registerUser();
+            //registerUser();
             Dialog.showErrorDialog(illegalArgumentException.getMessage());
         }
-        return null;
     }
 
     private User createUser() {
         boolean admin = getBoolean((CheckBox) gridPane.lookup("#userAdmin"));
         String username = getString((TextField) gridPane.lookup("#userUsername"));
-        String password = getString((TextField) gridPane.lookup("#userPassword"));
+        String password = getString((PasswordField) gridPane.lookup("#userPassword"));
         String name = getString((TextField) gridPane.lookup("#userName"));
         String email = getString((TextField) gridPane.lookup("#userMail"));
         String address = getString((TextField) gridPane.lookup("#userAddress"));
         String zip = getString((ZipField) gridPane.lookup("#userZip"));
         String city = getString((TextField) gridPane.lookup("#userCity"));
 
+           /*  usernameValidation(username);
+        emailValidation(email);*/
         // validation
-        usernameValidation(username);
-        emailValidation(email);
 
-        return new User(admin,username,password,name,email,address,zip,city);
+        UserFactory userFactory = new UserFactory();
+        User u = userFactory.createUser(admin, username, password, name, email, address, zip, city);
+
+        return u;
     }
 
 
     private boolean areInputFieldsEmpty() {
         return isAdressEmpty() || isCityEmpty() || isEmailEmpty() || isNameEmpty() ||
                 isPasswordEmpty() || isUsernameEmpty() || isZipEmpty();
-
     }
 
-    boolean isUsernameEmpty () {
+    boolean isUsernameEmpty() {
         return ((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#userUsername")).getText() == null ||
                 ((TextField) gridPane.lookup("#userUsername")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userUsername")).getText().equals("");
     }
 
-    boolean isPasswordEmpty () {
+    boolean isPasswordEmpty() {
         return ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty() ||
+                ((TextField) gridPane.lookup("#userPassword")).getText() == null ||
                 ((TextField) gridPane.lookup("#userPassword")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userPassword")).getText().equals("");
     }
 
-    boolean isNameEmpty () {
+    boolean isNameEmpty() {
         return ((TextField) gridPane.lookup("#userName")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userName")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userName")).getText().equals("");
     }
 
-    boolean isEmailEmpty () {
+    boolean isEmailEmpty() {
         return ((TextField) gridPane.lookup("#userMail")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userMail")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userMail")).getText().equals("");
     }
 
-    boolean isAdressEmpty () {
+    boolean isAdressEmpty() {
         return ((TextField) gridPane.lookup("#userAddress")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userAddress")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userAddress")).getText().equals("");
     }
 
-    boolean isZipEmpty () {
+    boolean isZipEmpty() {
         return ((ZipField) gridPane.lookup("#userZip")).getText().isEmpty() ||
                 ((ZipField) gridPane.lookup("#userZip")).getText().isBlank() ||
                 ((ZipField) gridPane.lookup("#userZip")).getText().equals("");
     }
 
-    boolean isCityEmpty () {
+    boolean isCityEmpty() {
         return ((TextField) gridPane.lookup("#userCity")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userCity")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userCity")).getText().equals("");
@@ -150,22 +194,12 @@ public class RegistryUserLogic implements Stageable {
         ((TextField) gridPane.lookup("#userCity")).setText("");
     }
 
-    public void usernameValidation(String username) {
-        if(Model.INSTANCE.getUserRegister().usernameExists(username)) {
-            System.out.println("UsernameAlreadyExistsException thrown!");
-            throw new IllegalArgumentException("Brukernavnet er allerede i bruk!");
-        } else {
-            System.out.println("UsernameAlreadyExistsException NOT thrown, Model.INSTANCE.getUserRegister().usernameExists(username) = " + Model.INSTANCE.getUserRegister().usernameExists(username));
-        }
+    public boolean usernameExists(String username) {
+        return Model.INSTANCE.getUserRegister().usernameExists(username);
     }
 
-    public void emailValidation(String email) {
-        if(Model.INSTANCE.getUserRegister().emailExists(email)) {
-            System.out.println("EmailExistsException thrown!");
-            throw new IllegalArgumentException("Emailen er allerede registrert!");
-        } else {
-            System.out.println("EmailExistsException NOT thrown, Model.INSTANCE.getUserRegister().emailExists(email) = " + Model.INSTANCE.getUserRegister().emailExists(email));
-        }
+    public boolean emailExists(String email) {
+        return Model.INSTANCE.getUserRegister().emailExists(email);
     }
 
     void askForDeletion(User selectedItem) throws IOException {
@@ -195,16 +229,16 @@ public class RegistryUserLogic implements Stageable {
         }
     }
 
-        public void editUserFromPopup(Clickable u) {
+    public void editUserFromPopup(Clickable u) {
 
     }
 
-    private void justReplaceUser(User newUser, User possibleDuplicateUserIfNotThenNull){
+    private void justReplaceUser(User newUser, User possibleDuplicateUserIfNotThenNull) {
 
         int indexToReplace =
                 getRegister().indexOf(possibleDuplicateUserIfNotThenNull);
 
-        System.out.println("index to replac : "+indexToReplace);
+        System.out.println("index to replac : " + indexToReplace);
         getRegister().set(indexToReplace, newUser);
 
         //  tabComponentsController.updateView();

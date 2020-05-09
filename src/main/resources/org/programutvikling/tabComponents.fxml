@@ -132,7 +132,7 @@
                     </font>
                 </Label>
             </Pane>
-            <TableView fx:id="tblViewComponent" editable="false" focusTraversable="false" layoutX="354.0" layoutY="54.0" onMousePressed="#dblClickTblRow" prefHeight="476.0" prefWidth="653.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="68.39999999999998" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="30.800000000000068" AnchorPane.topAnchor="54.0">
+            <TableView fx:id="tblViewComponent" focusTraversable="false" layoutX="354.0" layoutY="54.0" onMousePressed="#dblClickTblRow" prefHeight="476.0" prefWidth="653.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="68.39999999999998" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="30.800000000000068" AnchorPane.topAnchor="54.0">
                 <columns>
                     <TableColumn minWidth="100.0" prefWidth="140.79998779296875" styleClass="column" text="Produkttype">
                         <cellValueFactory>

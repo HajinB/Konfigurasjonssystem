@@ -48,7 +48,7 @@ public class User implements Serializable, Clickable {
     // Getter and setters
 
     public boolean getAdmin() {
-        return admin.get();
+        return admin.getValue();
     }
 
     public void setAdmin(boolean admin) {
@@ -74,7 +74,7 @@ public class User implements Serializable, Clickable {
     }
 
     public String getUsername() {
-        return username.get();
+        return username.getValueSafe();
     }
 
     public void setUsername(String username) {
@@ -89,7 +89,7 @@ public class User implements Serializable, Clickable {
     }
 
     public String getPassword() {
-        return password.get();
+        return password.getValue();
     }
 
     public void setPassword(String password) {
@@ -99,7 +99,7 @@ public class User implements Serializable, Clickable {
     public SimpleStringProperty passwordProperty() {
         // replace the length of password with asterix, for "privacy" if you open the table
         String star = "*";
-        int starLength = getPassword().length();
+        int starLength = this.getPassword().length();
         StringBuilder starBuilder = new StringBuilder();
 
         for(int i = 0; i < starLength; i++) {
@@ -110,55 +110,43 @@ public class User implements Serializable, Clickable {
     }
 
     public String getName() {
-        return name.get();
+        return name.getValue();
     }
 
     public void setName(String name) {
         this.name.set(name);
     }
 
-    public SimpleStringProperty nameProperty() {
-        return name;
-    }
 
     public String getEmail() {
-        return email.get();
+        return email.getValue();
     }
 
     public void setEmail(String email) {
         this.email.set(email);
     }
 
-    public SimpleStringProperty emailProperty() {
-        return email;
-    }
 
     public String getAddress() {
-        return address.get();
+        return address.getValue();
     }
 
     public void setAddress(String address) {
         this.address.set(address);
     }
 
-    public SimpleStringProperty addressProperty() {
-        return address;
-    }
 
     public String getZip() {
-        return zip.get();
+        return zip.getValue();
     }
 
     public void setZip(String zip) {
         this.zip.set(zip);
     }
 
-    public SimpleStringProperty zipProperty() {
-        return zip;
-    }
 
     public String getCity() {
-        return city.get();
+        return city.getValue();
     }
 
     public void setCity(String city) {

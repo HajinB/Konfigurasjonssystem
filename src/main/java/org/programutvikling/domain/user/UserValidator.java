@@ -28,7 +28,7 @@ public class UserValidator {
     public static boolean name(String name) {
         return !name.isBlank();
     }
-    static boolean email(String email) {
+    public static boolean email(String email) {
         return email.matches(EMAIL_VERIFICATION);
     }
     public static boolean address(String address) {

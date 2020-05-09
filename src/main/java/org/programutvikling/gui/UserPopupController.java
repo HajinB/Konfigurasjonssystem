@@ -72,7 +72,6 @@ public class UserPopupController extends TabUsersController implements Initializ
         System.out.println("kolonne for userpopup: "+ columnIndex);
         User u = (User) c;
         //tar inn stage for å kunne lukke når brukeren trykker endre
-        RegistryUserLogic registryUserLogic = new RegistryUserLogic(userEditNode);
 //        registryUserLogic.setTextAreaListener(userEditNode);
         this.stage = stage;
         System.out.println(userEditNode);
@@ -131,6 +130,7 @@ public class UserPopupController extends TabUsersController implements Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        btnEditUser.setDefaultButton(true);
 
     }
 
