@@ -1,54 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="rydding + liten endring på labels på componentRegistry">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/CreatePopupWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/IController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Stageable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" afterDir="false" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Konfigurasjonssystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Konfigurasjonssystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/Clickable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/Clickable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/EmptyComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ItemUsable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/NullComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/Saveable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/ComputerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/ComputerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/computer/Saveable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/FileOpenerTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/FileOpenerTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/FileSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/FileSaver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/FileSaverJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/FileSaverJobj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/OpenerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/OpenerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/SaverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/SaverFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/UserPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ComputerPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ComputerPopupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/DetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/DetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EditPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EditPopupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/EnduserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/FileHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryComponentLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryUserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/RegistryUserLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabComponentsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/UserPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/UserPopupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/UserWindowHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/UserWindowHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/WindowHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/WindowHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/EnduserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/FileHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/programutvikling/gui/RegistryComponentLogic.class" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -317,14 +273,7 @@
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
-      <workItem from="1588986164951" duration="7408000" />
-    </task>
-    <task id="LOCAL-00107" summary="noe test">
-      <created>1588670413742</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1588670413743</updated>
+      <workItem from="1588986164951" duration="7635000" />
     </task>
     <task id="LOCAL-00108" summary="sletta velg filplassering - nå er den alltid &quot;AppFiles/Database/AppData.jobj&quot;">
       <created>1588671820347</created>
@@ -662,7 +611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588954732043</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata.">
+      <created>1589021227836</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1589021227838</updated>
+    </task>
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -697,7 +653,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="setmetode for Labels i controller" />
     <MESSAGE value="set/clear metode for Labels i controller" />
     <MESSAGE value="noe test" />
     <MESSAGE value="sletta velg filplassering - nå er den alltid &quot;AppFiles/Database/AppData.jobj&quot;" />
@@ -722,7 +677,8 @@
     <MESSAGE value="fixed cbtype valg til å aldri være null, den starter på kabinett" />
     <MESSAGE value="rydding" />
     <MESSAGE value="rydding + liten endring på labels på componentRegistry" />
-    <option name="LAST_COMMIT_MESSAGE" value="rydding + liten endring på labels på componentRegistry" />
+    <MESSAGE value="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata." />
+    <option name="LAST_COMMIT_MESSAGE" value="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata." />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />
@@ -831,7 +787,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/programutvikling/gui/TabUsersController.java</url>
-          <line>121</line>
+          <line>131</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>

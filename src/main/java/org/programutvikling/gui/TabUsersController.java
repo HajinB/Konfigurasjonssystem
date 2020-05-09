@@ -102,6 +102,16 @@ public class TabUsersController implements Initializable, Clickable {
     }
 
     private void handlePopup() {
+        /**detecter tablecolumn, for å kunne fokusere på riktig celle i popupvindu*/
+        final ObservableList<TablePosition> selectedCells = tblViewUser.getSelectionModel().getSelectedCells();
+        //gjør det mulig å detecte cell på første klikk:
+        tblViewUser.getSelectionModel().setCellSelectionEnabled(true);
+        selectedCells.addListener((ListChangeListener) u -> {
+            if (selectedCells.size() != 0) {
+                TemporaryUser.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
+            }
+        });
+
         /**detecter tablerow, for å hente ut users*/
         tblViewUser.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -139,15 +149,6 @@ public class TabUsersController implements Initializable, Clickable {
             }
         });
 
-        /**detecter tablecolumn, for å kunne fokusere på riktig celle i popupvindu*/
-        final ObservableList<TablePosition> selectedCells = tblViewUser.getSelectionModel().getSelectedCells();
-        //gjør det mulig å detecte cell på første klikk:
-        tblViewUser.getSelectionModel().setCellSelectionEnabled(false);
-        selectedCells.addListener((ListChangeListener) u -> {
-            if (selectedCells.size() != 0) {
-                TemporaryUser.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
-            }
-        });
     }
 
     @FXML

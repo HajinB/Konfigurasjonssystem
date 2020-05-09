@@ -40,6 +40,8 @@ public class UserPopupController extends TabUsersController implements Initializ
     @FXML
     private Button btnEditUser;
 
+    private RegistryUserLogic registryUserLogic;
+
     Stage stage;
 
     private void editUser() {
@@ -63,12 +65,6 @@ public class UserPopupController extends TabUsersController implements Initializ
     @FXML
     private void btnEditUser(ActionEvent event) {
         editUser();
-    }
-
-    private RegistryUserLogic registryUserLogic;
-
-    public void initData(User u, Stage stage, int columnIndex) {
-
     }
 
     @Override
