@@ -12,13 +12,14 @@ import org.programutvikling.domain.utility.UserFactory;
 import org.programutvikling.gui.customTextField.NoSpacebarField;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
 
-public class RegistryUserLogic {
+public class RegistryUserLogic implements Stageable {
     private GridPane gridPane;
     TabUsersController tabUsersController;
 
