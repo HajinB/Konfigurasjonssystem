@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/denjjjjjjjj.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/propropro.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
+    </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -269,14 +276,7 @@
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
-      <workItem from="1588986164951" duration="13622000" />
-    </task>
-    <task id="LOCAL-00111" summary="sjekker instanceof sånn at de objektene som er nye blir loadet inn, men ikke de gamle">
-      <created>1588672180540</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1588672180540</updated>
+      <workItem from="1588986164951" duration="13755000" />
     </task>
     <task id="LOCAL-00112" summary="duplicate checker på popupen">
       <created>1588672910390</created>
@@ -614,7 +614,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589027410616</updated>
     </task>
-    <option name="localTasksCounter" value="160" />
+    <task id="LOCAL-00160" summary="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata.">
+      <created>1589027423951</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1589027423951</updated>
+    </task>
+    <option name="localTasksCounter" value="161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

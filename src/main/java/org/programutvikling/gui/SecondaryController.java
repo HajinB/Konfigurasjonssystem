@@ -72,6 +72,7 @@ public class SecondaryController implements Initializable {
             }
             tabComponentsController.updateView();
             Model.INSTANCE.getComponentRegister().removeDuplicates();
+            tabComponentsController.setLblComponentMsg("Komponentene fra " + chosenPath + " \nble lastet inn");
         }
     }
 
