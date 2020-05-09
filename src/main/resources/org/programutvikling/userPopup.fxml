@@ -124,7 +124,7 @@
                     <String fx:value="button" />
                 </styleClass>
             </Button>
-            <Label fx:id="lblUserMsg" prefHeight="31.0" prefWidth="230.0" textFill="#388dc8" GridPane.rowIndex="16">
+            <Label fx:id="lblUserMsg" prefHeight="31.0" prefWidth="230.0" textFill="darkred" GridPane.rowIndex="16">
                 <font>
                     <Font size="13.0" />
                 </font>
@@ -145,7 +145,7 @@
                     <Font name="Verdana" size="13.0" />
                 </font>
             </Label>
-            <PasswordField fx:id="userPassword" id="userPassword" prefHeight="30.0" promptText="Passordet må ha minst 6 tegn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="4" />
+            <PasswordField fx:id="userPassword" id="userPassword" prefHeight="30.0" promptText="Passordet må ha minst 4 tegn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="4" />
         </children>
         <padding>
             <Insets bottom="2.0" />
