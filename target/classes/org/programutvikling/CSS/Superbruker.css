@@ -39,6 +39,14 @@
     -fx-text-fill: black;
 }
 
+.table-view .scroll-bar {
+    -fx-background-color: white;
+    -fx-pref-width: 6px;
+    -fx-pref-height: 5px;
+}
+.table-view .scroll-bar .thumb {
+    -fx-background-color: rgba(161, 161, 161, 0.49);
+}
 
 
 /* Legg til ny komponent pane*/
@@ -88,6 +96,15 @@
     -fx-cursor: hand;
 }
 
+.cb .scroll-bar {
+    -fx-background-color: white;
+    -fx-pref-width: 6px;
+    -fx-pref-height: 5px;
+}
+.cb .scroll-bar .thumb {
+    -fx-background-color: rgba(161, 161, 161, 0.49);
+}
+
 /*Listview, computerview og totalpris i endUser*/
 
 .shopCart {
@@ -106,3 +123,24 @@
 .scroll-pane > .viewport {
     -fx-background-color: rgba(56, 141, 200, 0.15);
 }
+
+/*Scroll-bar*/
+.scroll-pane .scroll-bar {
+    -fx-background-color: white;
+    -fx-pref-width: 6px;
+    -fx-pref-height: 5px;
+}
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: rgba(161, 161, 161, 0.49);
+}
+
+#lblTotalPriceDetails {
+    -fx-alignment: center-right;
+    -fx-padding: 0 3 0 0;
+}
+
+#lblComputerPrice {
+    -fx-alignment: center-right;
+    -fx-padding: 0 10 0 0;
+}
+

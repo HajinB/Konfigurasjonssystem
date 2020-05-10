@@ -33,7 +33,6 @@
 .btnGuest:hover {
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
     -fx-text-fill: #388DC8;
     -fx-font-family: Verdana;
     -fx-border-color: white;
@@ -42,7 +41,6 @@
 .btnGuest:pressed {
     -fx-border-color: white;
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
     -fx-text-fill: #70A4C8;
     -fx-background-color: transparent;
     -fx-font-family: Verdana;
@@ -75,3 +73,10 @@
 .label {
     -fx-font-family: Verdana;
 }
+
+#lblFeilPassword {
+    -fx-text-fill: red;
+    -fx-font-size: 13px;
+    -fx-font-family: Verdana;
+}
+
