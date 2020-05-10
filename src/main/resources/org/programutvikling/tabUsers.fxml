@@ -9,7 +9,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -21,244 +20,192 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<?import org.programutvikling.gui.customTextField.NoSpacebarField?>
 <?import org.programutvikling.gui.customTextField.ZipField?>
+<?import org.programutvikling.gui.customTextField.NoSpacebarField?>
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabUsersController">
-    <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" vvalue="1.0" AnchorPane.bottomAnchor="-39.0"
-                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane prefWidth="1050.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
-            <Pane layoutX="29.0" layoutY="16.0" minHeight="600.0" prefHeight="644.0" prefWidth="296.0"
-                  styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css"
-                  AnchorPane.bottomAnchor="47.200000000000045" AnchorPane.topAnchor="16.0">
-                <GridPane fx:id="userReg" layoutX="26.0" layoutY="60.0" prefHeight="540.0"
-                          prefWidth="244.0">
-                    <columnConstraints>
-                        <ColumnConstraints minWidth="10.0"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="20.0" prefHeight="20.0"/>
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0"/>
-                        <RowConstraints minHeight="20.0" prefHeight="27.0"/>
-                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="18.0"/>
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0"/>
-                        <RowConstraints minHeight="20.0" prefHeight="27.0"/>
-                        <RowConstraints minHeight="10.0" prefHeight="18.0"/>
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0"/>
-                        <RowConstraints minHeight="20.0" prefHeight="30.0"/>
-                        <RowConstraints minHeight="10.0" prefHeight="18.0"/>
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0"/>
-                        <RowConstraints minHeight="20.0" prefHeight="27.0"/>
-                        <RowConstraints minHeight="10.0" prefHeight="18.0"/>
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0"/>
-                        <RowConstraints minHeight="20.0" prefHeight="27.0"/>
-                        <RowConstraints minHeight="10.0" prefHeight="18.0"/>
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0"/>
-                        <RowConstraints minHeight="20.0" prefHeight="27.0"/>
-                        <RowConstraints minHeight="10.0" prefHeight="18.0"/>
-                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0"/>
-                        <RowConstraints minHeight="20.0" prefHeight="27.0"/>
-                        <RowConstraints minHeight="10.0" prefHeight="18.0"/>
-                        <RowConstraints maxHeight="55.19999999999999" minHeight="20.0" prefHeight="33.0"
-                                        valignment="CENTER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="20.0"/>
-                    </rowConstraints>
-                    <padding>
-                        <Insets bottom="2.0"/>
-                    </padding>
-                    <Label text="Navn" GridPane.rowIndex="7"/>
-                    <TextField id="userName" prefHeight="30.0" prefWidth="200.0"
-                               promptText="Skriv inn fullt navn" stylesheets="@CSS/Superbruker.css"
-                               GridPane.rowIndex="8">
-                        <styleClass>
-                            <String fx:value="input"/>
-                            <String fx:value="inputDescription"/>
-                        </styleClass>
-                    </TextField>
-                    <Label prefHeight="16.0" prefWidth="108.0" text="E-postaddresse"
-                           GridPane.rowIndex="10"/>
-                    <NoSpacebarField id="userMail" prefHeight="30.0" prefWidth="200.0"
-                                     promptText="Skriv inn e-postaddresse"
-                                     stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="11">
-                        <font>
-                            <Font size="13.0"/>
-                        </font>
-                        <styleClass>
-                            <String fx:value="input"/>
-                            <String fx:value="inputDescription"/>
-                        </styleClass>
-                    </NoSpacebarField>
-                    <Label prefHeight="19.0" prefWidth="117.0" text="Gateaddresse" GridPane.rowIndex="13">
-                        <GridPane.margin>
-                            <Insets top="5.0"/>
-                        </GridPane.margin>
-                    </Label>
-                    <TextField id="userAddress" prefHeight="30.0" prefWidth="200.0"
-                               promptText="Skriv inn gateaddresse" stylesheets="@CSS/Superbruker.css"
-                               GridPane.rowIndex="14">
-                        <font>
-                            <Font size="13.0"/>
-                        </font>
-                        <styleClass>
-                            <String fx:value="input"/>
-                            <String fx:value="inputDescription"/>
-                        </styleClass>
-                    </TextField>
-                    <Label text="Postnummer" GridPane.rowIndex="16">
-                        <GridPane.margin>
-                            <Insets top="5.0"/>
-                        </GridPane.margin>
-                    </Label>
-                    <ZipField id="userZip" layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="200.0"
-                              promptText="Skriv inn postnummer" styleClass="input"
-                              stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="17">
-                        <font>
-                            <Font size="13.0"/>
-                        </font>
-                    </ZipField>
-                    <Label text="Poststed" GridPane.rowIndex="19">
-                        <GridPane.margin>
-                            <Insets top="5.0"/>
-                        </GridPane.margin>
-                    </Label>
-                    <TextField id="userCity" prefHeight="30.0" prefWidth="200.0"
-                               promptText="Skriv inn poststed" styleClass="input"
-                               stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="20">
-                        <font>
-                            <Font size="13.0"/>
-                        </font>
-                    </TextField>
-                    <Button mnemonicParsing="false" onAction="#btnAddUser" prefHeight="32.0"
-                            prefWidth="245.0" text="Legg til bruker" GridPane.rowIndex="22">
-                        <GridPane.margin>
-                            <Insets top="5.0"/>
-                        </GridPane.margin>
-                        <stylesheets>
-                            <URL value="@CSS/Superbruker.css"/>
-                            <URL value="@CSS/Login.css"/>
-                        </stylesheets>
-                        <styleClass>
-                            <String fx:value="btnDelete"/>
-                            <String fx:value="button"/>
-                        </styleClass>
-                    </Button>
-                    <Label fx:id="lblUserMsg" prefHeight="20.0" prefWidth="230.0" textFill="#388dc8"
-                           GridPane.rowIndex="23">
-                        <font>
-                            <Font size="13.0"/>
-                        </font>
-                    </Label>
-                    <CheckBox id="userAdmin" fx:id="cbAdmin" mnemonicParsing="false" onAction="#cbAdmin"
-                              prefHeight="18.0" prefWidth="81.0" text="Admin"/>
-                    <Label text="Brukernavn" GridPane.rowIndex="1"/>
-                    <NoSpacebarField id="userUsername" prefHeight="30.0"
-                                     promptText="Skriv inn ønsket brukernavn" styleClass="input"
-                                     stylesheets="@CSS/Superbruker.css" GridPane.halignment="CENTER"
-                                     GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
-                    <Label text="Passord" GridPane.rowIndex="4"/>
-                    <PasswordField id="userPassword" prefHeight="30.0"
-                                   promptText="Passordet må ha minst 6 tegn" styleClass="input"
-                                   stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5"/>
-                    <Label fx:id="lblMsgPassword" prefHeight="18.0" prefWidth="230.0" textFill="#c20000"
-                           GridPane.rowIndex="6"/>
-                    <Label fx:id="lblMsgName" prefHeight="18.0" prefWidth="230.0" textFill="#c20000"
-                           GridPane.rowIndex="9"/>
-                    <Label fx:id="lblMsgEmail" prefHeight="18.0" prefWidth="230.0" textFill="#c20000"
-                           GridPane.rowIndex="12"/>
-                    <Label fx:id="lblMsgAdress" prefHeight="18.0" prefWidth="230.0" textFill="#c20000"
-                           GridPane.rowIndex="15"/>
-                    <Label fx:id="lblMsgZip" prefHeight="18.0" prefWidth="230.0" textFill="#c20000"
-                           GridPane.rowIndex="18"/>
-                    <Label fx:id="lblMsgCity" prefHeight="18.0" prefWidth="230.0" textFill="#c20000"
-                           GridPane.rowIndex="21"/>
-                    <Label fx:id="lblMsgUsername" prefHeight="18.0" prefWidth="230.0" textFill="#c20000"
-                           GridPane.rowIndex="3"/>
-                </GridPane>
-                <Label layoutX="82.0" layoutY="14.0" prefHeight="26.0" prefWidth="132.0" text="Opprett bruker"
-                       textFill="#000000cc">
+            <Pane layoutX="29.0" layoutY="16.0" minHeight="600.0" prefHeight="644.0" prefWidth="296.0" style="-fx-background-radius: 40 0 40 0;" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="47.200000000000045" AnchorPane.topAnchor="16.0">
+                <Label alignment="CENTER" layoutX="15.0" layoutY="13.0" prefHeight="28.0" prefWidth="267.0" style="-fx-background-color: rgba(112, 164, 200, 0.25); -fx-background-radius: 28 0 0 0;" text="Opprett bruker" textFill="#000000cc">
                     <font>
-                        <Font name="Verdana Bold" size="15.0"/>
+                        <Font name="Verdana Bold" size="17.0" />
                     </font>
                 </Label>
+                <GridPane fx:id="userReg" layoutX="26.0" layoutY="60.0" prefHeight="540.0" prefWidth="244.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="20.0" prefHeight="20.0" />
+                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" />
+                        <RowConstraints minHeight="20.0" prefHeight="27.0" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="18.0" />
+                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" />
+                        <RowConstraints minHeight="20.0" prefHeight="27.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="18.0" />
+                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" />
+                        <RowConstraints minHeight="20.0" prefHeight="30.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="18.0" />
+                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" />
+                        <RowConstraints minHeight="20.0" prefHeight="27.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="18.0" />
+                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" />
+                        <RowConstraints minHeight="20.0" prefHeight="27.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="18.0" />
+                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" />
+                        <RowConstraints minHeight="20.0" prefHeight="27.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="18.0" />
+                        <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" />
+                        <RowConstraints minHeight="20.0" prefHeight="27.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="18.0" />
+                        <RowConstraints maxHeight="55.19999999999999" minHeight="20.0" prefHeight="33.0" valignment="CENTER" />
+                        <RowConstraints minHeight="10.0" prefHeight="20.0" />
+                    </rowConstraints>
+                    <padding>
+                        <Insets bottom="2.0" />
+                    </padding>
+                    <CheckBox id="userAdmin" fx:id="cbAdmin" mnemonicParsing="false" onAction="#cbAdmin" prefHeight="18.0" prefWidth="81.0" text="Admin" />
+                    <Label text="Brukernavn" GridPane.rowIndex="1" />
+                    <NoSpacebarField id="userUsername" prefHeight="30.0" promptText="Skriv inn ønsket brukernavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                    <Label fx:id="lblMsgUsername" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="3" />
+                    <Label text="Passord" GridPane.rowIndex="4" />
+                    <PasswordField id="userPassword" prefHeight="30.0" promptText="Passordet må ha minst 6 tegn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5" />
+                    <Label fx:id="lblMsgPassword" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="6" />
+                    <Label text="Navn" GridPane.rowIndex="7" />
+                    <TextField id="userName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn fullt navn" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="8">
+                        <styleClass>
+                            <String fx:value="input" />
+                            <String fx:value="inputDescription" />
+                        </styleClass>
+                    </TextField>
+                    <Label fx:id="lblMsgName" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="9" />
+                    <Label prefHeight="16.0" prefWidth="108.0" text="E-postaddresse" GridPane.rowIndex="10" />
+                    <NoSpacebarField id="userMail" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn e-postaddresse" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="11">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                        <styleClass>
+                            <String fx:value="input" />
+                            <String fx:value="inputDescription" />
+                        </styleClass>
+                    </NoSpacebarField>
+                    <Label fx:id="lblMsgEmail" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="12" />
+                    <Label prefHeight="19.0" prefWidth="117.0" text="Gateaddresse" GridPane.rowIndex="13">
+                        <GridPane.margin>
+                            <Insets top="5.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <TextField id="userAddress" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn gateaddresse" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="14">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                        <styleClass>
+                            <String fx:value="input" />
+                            <String fx:value="inputDescription" />
+                        </styleClass>
+                    </TextField>
+                    <Label fx:id="lblMsgAdress" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="15" />
+                    <Label text="Postnummer" GridPane.rowIndex="16">
+                        <GridPane.margin>
+                            <Insets top="5.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <ZipField id="userZip" layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn postnummer" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="17">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                    </ZipField>
+                    <Label fx:id="lblMsgZip" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="18" />
+                    <Label text="Poststed" GridPane.rowIndex="19">
+                        <GridPane.margin>
+                            <Insets top="5.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <TextField id="userCity" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn poststed" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="20">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                    </TextField>
+                    <Label fx:id="lblMsgCity" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="21" />
+                    <Button mnemonicParsing="false" onAction="#btnAddUser" prefHeight="32.0" prefWidth="245.0" text="Legg til bruker" GridPane.rowIndex="22">
+                        <GridPane.margin>
+                            <Insets top="5.0" />
+                        </GridPane.margin>
+                        <stylesheets>
+                            <URL value="@CSS/Superbruker.css" />
+                            <URL value="@CSS/Login.css" />
+                        </stylesheets>
+                        <styleClass>
+                            <String fx:value="btnDelete" />
+                            <String fx:value="button" />
+                        </styleClass>
+                    </Button>
+                    <Label fx:id="lblUserMsg" prefHeight="20.0" prefWidth="230.0" textFill="#388dc8" GridPane.rowIndex="23">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                    </Label>
+                </GridPane>
             </Pane>
-            <TableView fx:id="tblViewUser" editable="false" focusTraversable="false" layoutX="351.0" layoutY="59.0"
-                       onMousePressed="#dblClickTblRow" prefHeight="555.0" prefWidth="676.0" styleClass="tblView"
-                       stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true"
-                       AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="21.0"
-                       AnchorPane.topAnchor="59.0">
+            <TableView fx:id="tblViewUser" editable="false" focusTraversable="false" layoutX="351.0" layoutY="59.0" onMousePressed="#dblClickTblRow" prefHeight="555.0" prefWidth="676.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="59.0">
                 <columns>
                     <TableColumn id="userAdmin" prefWidth="70.66668701171875" styleClass="column" text="Rolle">
                         <cellValueFactory>
-                            <PropertyValueFactory property="admin"/>
+                            <PropertyValueFactory property="admin" />
                         </cellValueFactory>
                     </TableColumn>
                     <TableColumn id="userUsername" prefWidth="75.0" styleClass="column" text="Brukernavn">
                         <cellValueFactory>
-                            <PropertyValueFactory property="username"/>
+                            <PropertyValueFactory property="username" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn id="userPassword" prefWidth="96.0" styleClass="column"
-                                 text="Passord">
+                    <TableColumn id="userPassword" prefWidth="96.0" styleClass="column" text="Passord">
                         <cellValueFactory>
-                            <PropertyValueFactory property="password"/>
+                            <PropertyValueFactory property="password" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn id="userName" minWidth="63.333343505859375"
-                                 prefWidth="88.0" styleClass="column" text="Navn">
+                    <TableColumn id="userName" minWidth="63.333343505859375" prefWidth="88.0" styleClass="column" text="Navn">
                         <cellValueFactory>
-                            <PropertyValueFactory property="name"/>
+                            <PropertyValueFactory property="name" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn id="userEmail" minWidth="0.0"
-                                 prefWidth="58.00006103515625" styleClass="column" text="E-postaddresse">
+                    <TableColumn id="userEmail" minWidth="0.0" prefWidth="58.00006103515625" styleClass="column" text="E-postaddresse">
                         <cellValueFactory>
-                            <PropertyValueFactory property="email"/>
+                            <PropertyValueFactory property="email" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn id="userAddress" minWidth="43.33331298828125"
-                                 prefWidth="207.33331298828125" styleClass="column" text="Gateaddresse">
+                    <TableColumn id="userAddress" minWidth="43.33331298828125" prefWidth="207.33331298828125" styleClass="column" text="Gateaddresse">
                         <cellValueFactory>
-                            <PropertyValueFactory property="address"/>
+                            <PropertyValueFactory property="address" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn id="userZip" minWidth="17.33331298828125"
-                                 prefWidth="17.33331298828125" styleClass="column" text="Postnummer">
+                    <TableColumn id="userZip" minWidth="17.33331298828125" prefWidth="17.33331298828125" styleClass="column" text="Postnummer">
                         <cellValueFactory>
-                            <PropertyValueFactory property="zip"/>
+                            <PropertyValueFactory property="zip" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn id="userCity" minWidth="62.0" prefWidth="84.0"
-                                 styleClass="column" text="Poststed">
+                    <TableColumn id="userCity" minWidth="62.0" prefWidth="84.0" styleClass="column" text="Poststed">
                         <cellValueFactory>
-                            <PropertyValueFactory property="city"/>
+                            <PropertyValueFactory property="city" />
                         </cellValueFactory>
                     </TableColumn>
                 </columns>
                 <columnResizePolicy>
-                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                 </columnResizePolicy>
             </TableView>
-            <Label layoutX="351.0" layoutY="4.0" prefHeight="43.0" prefWidth="155.0" text="Brukere"
-                   textFill="#000000d1">
+            <Label alignment="CENTER" layoutX="352.0" layoutY="14.0" prefHeight="28.0" prefWidth="680.0" style="-fx-background-color: rgba(112, 164, 200, 0.25); -fx-background-radius: 40 0 0 0;" text="Brukere" textFill="#000000d1" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="18.40000000000009">
                 <font>
-                    <Font name="Verdana Bold" size="29.0"/>
+                    <Font name="Verdana Bold" size="29.0" />
                 </font>
             </Label>
-            <Separator layoutX="351.0" layoutY="49.0" prefHeight="0.0" prefWidth="671.0"
-                       AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="16.200000000000045"/>
-            <TextField fx:id="userSearch" alignment="CENTER" layoutX="522.0" layoutY="618.6" onKeyTyped="#search"
-                       prefHeight="30.0" prefWidth="230.0" promptText="Søk etter bruker" styleClass="input"
-                       stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="51.0"
-                       AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="286.0000000000001">
+            <ChoiceBox fx:id="cbAdminFilter" layoutX="354.0" layoutY="618.6" onAction="#filterByAdmin" prefHeight="30.0" prefWidth="150.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="51.0" />
+            <TextField fx:id="userSearch" alignment="CENTER" layoutX="522.0" layoutY="618.6" onKeyTyped="#search" prefHeight="30.0" prefWidth="230.0" promptText="Søk etter bruker" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="286.0000000000001">
                 <font>
-                    <Font size="13.0"/>
+                    <Font size="13.0" />
                 </font>
             </TextField>
-            <Button layoutX="892.6000000000001" layoutY="618.6" mnemonicParsing="false" onAction="#btnDeleteUser"
-                    prefHeight="30.0" prefWidth="130.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css"
-                    text="Slett bruker" AnchorPane.bottomAnchor="51.0" AnchorPane.rightAnchor="19.399999999999977"/>
-            <ChoiceBox fx:id="cbAdminFilter" layoutX="354.0" layoutY="618.6" onAction="#filterByAdmin"
-                       prefHeight="30.0" prefWidth="150.0" styleClass="cb" stylesheets="@CSS/Superbruker.css"
-                       AnchorPane.bottomAnchor="51.0"/>
+            <Button layoutX="892.6000000000001" layoutY="618.6" mnemonicParsing="false" onAction="#btnDeleteUser" prefHeight="30.0" prefWidth="130.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett bruker" AnchorPane.bottomAnchor="51.0" AnchorPane.rightAnchor="19.399999999999977" />
         </AnchorPane>
     </ScrollPane>
 
