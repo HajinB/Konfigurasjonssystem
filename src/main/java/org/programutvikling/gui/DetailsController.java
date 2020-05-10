@@ -67,17 +67,17 @@ public class DetailsController implements Initializable {
         alert.showAndWait();
 
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
-            SaveComputer(fileSaverTxt);
+            saveComputer(fileSaverTxt);
             ModelEndUser.INSTANCE.getComputer().removeAll();
             stage.close();
         }
         if (alert.getResult() == alert.getButtonTypes().get(1)) {
-            SaveComputer(fileSaverTxt);
+            saveComputer(fileSaverTxt);
             stage.close();
         }
     }
 
-    private void SaveComputer(FileSaverTxt fileSaverTxt) throws IOException {
+    private void saveComputer(FileSaverTxt fileSaverTxt) throws IOException {
         ComputerFactory computerFactory = new ComputerFactory();
         Computer computerWithName = computerFactory.computerFactory(finishedComputer.getComponentRegister(),
                 txtNameForComputer.getText());
