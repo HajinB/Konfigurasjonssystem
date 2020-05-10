@@ -108,6 +108,7 @@ public class EnduserController {
                     }
                 };
         computerPriceCln.setCellFactory((priceCellFactory));
+
         /**detecter tablerow, for å hente ut component*/
         //skal åpne en fxml, og sende cell-content til initmetoden til controlleren til denne fxmln
         tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -160,7 +161,7 @@ public class EnduserController {
 
         ComputerPopupController computerPopupController =
                 loader.<ComputerPopupController>getController();
-        computerPopupController.initData(c, stage);
+        computerPopupController.initData(c, stage, this);
         stage.show();
     }
 
