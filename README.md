@@ -1,12 +1,12 @@
 # Konfigurasjonssystem
 
 Superbruker
-Brukernavn : admin
-Passord : admin
+Brukernavn : 'admin'
+Passord : 'admin'
 
 Sluttbruker
-Brukernavn : user
-Passord: user
+Brukernavn : 'user'
+Passord: 'user'
 
 Lagd av
 
