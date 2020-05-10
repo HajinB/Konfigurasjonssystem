@@ -20,17 +20,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<?import org.programutvikling.gui.customTextField.ZipField?>
 <?import org.programutvikling.gui.customTextField.NoSpacebarField?>
+<?import org.programutvikling.gui.customTextField.ZipField?>
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabUsersController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane prefWidth="1050.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
             <Pane layoutX="29.0" layoutY="16.0" minHeight="600.0" prefHeight="644.0" prefWidth="296.0" style="-fx-background-radius: 40 0 40 0;" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="47.200000000000045" AnchorPane.topAnchor="16.0">
-                <Label alignment="CENTER" layoutX="15.0" layoutY="13.0" prefHeight="28.0" prefWidth="267.0" style="-fx-background-color: rgba(112, 164, 200, 0.25); -fx-background-radius: 28 0 0 0;" text="Opprett bruker" textFill="#000000cc">
-                    <font>
-                        <Font name="Verdana Bold" size="17.0" />
-                    </font>
-                </Label>
                 <GridPane fx:id="userReg" layoutX="26.0" layoutY="60.0" prefHeight="540.0" prefWidth="244.0">
                     <columnConstraints>
                         <ColumnConstraints minWidth="10.0" />
@@ -146,6 +141,11 @@
                         </font>
                     </Label>
                 </GridPane>
+                <Label alignment="CENTER" layoutX="15.0" layoutY="13.0" prefHeight="28.0" prefWidth="267.0" styleClass="labelNewUser" text="Opprett bruker" textFill="#000000cc">
+                    <font>
+                        <Font name="Verdana Bold" size="17.0" />
+                    </font>
+                </Label>
             </Pane>
             <TableView fx:id="tblViewUser" editable="false" focusTraversable="false" layoutX="351.0" layoutY="59.0" onMousePressed="#dblClickTblRow" prefHeight="555.0" prefWidth="676.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="59.0">
                 <columns>
@@ -194,7 +194,7 @@
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                 </columnResizePolicy>
             </TableView>
-            <Label alignment="CENTER" layoutX="352.0" layoutY="14.0" prefHeight="28.0" prefWidth="680.0" style="-fx-background-color: rgba(112, 164, 200, 0.25); -fx-background-radius: 40 0 0 0;" text="Brukere" textFill="#000000d1" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="18.40000000000009">
+            <Label alignment="CENTER" layoutX="352.0" layoutY="14.0" prefHeight="38.0" prefWidth="676.0" styleClass="labelHeaderBruker" stylesheets="@CSS/Superbruker.css" text="Brukere" textFill="#000000d1" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="22.0">
                 <font>
                     <Font name="Verdana Bold" size="29.0" />
                 </font>
