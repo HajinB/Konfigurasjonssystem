@@ -62,16 +62,28 @@ public class DetailsController implements Initializable {
             Dialog.showErrorDialog("Gi datamaskinen et navn for å lagre den");
             return;
         }
+        Alert alert = Dialog.getConfirmationAlert("Operasjon", "Lagre datamaskin",
+                "Vil du tømme handlekurven etter datamaskinen blir lagret?", "");
+        alert.showAndWait();
 
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            SaveComputer(fileSaverTxt);
+            ModelEndUser.INSTANCE.getComputer().removeAll();
+            stage.close();
+        }
+        if (alert.getResult() == alert.getButtonTypes().get(1)) {
+            SaveComputer(fileSaverTxt);
+            stage.close();
+        }
+    }
+
+    private void SaveComputer(FileSaverTxt fileSaverTxt) throws IOException {
         ComputerFactory computerFactory = new ComputerFactory();
         Computer computerWithName = computerFactory.computerFactory(finishedComputer.getComponentRegister(),
                 txtNameForComputer.getText());
         fileSaverTxt.save(computerWithName,
-                Paths.get("AppFiles/Database/User/Computers/" + computerWithName.getProductName()+".txt"));
+                Paths.get("AppFiles/Database/User/Computers/" + computerWithName.getProductName() + ".txt"));
         Dialog.showSuccessDialog(computerWithName.getProductName() + " ble lagret i 'AppFiles/Database/User/Computers/'");
-        //todo legg inn dialog for å spørre om å erstatte handlekurven?
-        ModelEndUser.INSTANCE.getComputer().removeAll();
-        stage.close();
     }
 
     @Override

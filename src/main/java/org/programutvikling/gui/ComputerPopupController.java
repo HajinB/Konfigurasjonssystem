@@ -35,7 +35,6 @@ public class ComputerPopupController extends EnduserController implements Initia
     }
 
     void initData(Computer c, Stage stage, EnduserController enduserController) {
-        //tar inn stage for å kunne lukke når brukeren trykker endre
         this.stage = stage;
         lblComputerName.setText(c.getProductName());
         lblComputerPrice.setText(lblComputerPriceFormat(c.getProductPrice()));

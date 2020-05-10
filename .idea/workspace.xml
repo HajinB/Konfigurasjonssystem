@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ComputerPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/ComputerPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/DetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/DetailsController.java" afterDir="false" />
+    </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -269,14 +276,7 @@
       <workItem from="1588588128651" duration="22319000" />
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
-      <workItem from="1588986164951" duration="16080000" />
-    </task>
-    <task id="LOCAL-00118" summary="nå er databasen txt for enduser">
-      <created>1588756832746</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1588756832747</updated>
+      <workItem from="1588986164951" duration="17185000" />
     </task>
     <task id="LOCAL-00119" summary="nå er databasen txt for enduser">
       <created>1588757096709</created>
@@ -614,7 +614,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589106693969</updated>
     </task>
-    <option name="localTasksCounter" value="167" />
+    <task id="LOCAL-00167" summary="liten bug der totalpris ikke ble oppdatert når man legger til fra komplett datamaskin">
+      <created>1589106698043</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1589106698043</updated>
+    </task>
+    <option name="localTasksCounter" value="168" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
