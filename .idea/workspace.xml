@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" afterDir="false" />
-    </list>
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="" />
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -277,14 +272,7 @@
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
       <workItem from="1588986164951" duration="17707000" />
-      <workItem from="1589187040877" duration="9686000" />
-    </task>
-    <task id="LOCAL-00134" summary="7">
-      <created>1588924745599</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1588924745599</updated>
+      <workItem from="1589187040877" duration="9697000" />
     </task>
     <task id="LOCAL-00135" summary="7">
       <created>1588933247807</created>
@@ -622,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589205731976</updated>
     </task>
-    <option name="localTasksCounter" value="183" />
+    <task id="LOCAL-00183" summary="fixed package structure">
+      <created>1589205798095</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1589205798095</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,7 +652,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Popup for bestill og legg til i handlekurv fra popupen. skal vi ta bort lagre som?" />
     <MESSAGE value="liten bug fix i search" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;AppFiles/Database/Admin/AdminAppData.jobj" />
     <MESSAGE value="prøver å refactore eventhandlers men dt er ikke så lett" />
@@ -682,7 +676,8 @@
     <MESSAGE value="noe dialog på lese inn" />
     <MESSAGE value="noe dialog på lese inn på enduser" />
     <MESSAGE value="fix1" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix1" />
+    <MESSAGE value="fixed package structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed package structure" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />
