@@ -17,11 +17,11 @@ import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
-import org.programutvikling.gui.controllers.ComputerPopupController;
+import org.programutvikling.gui.controllers.CompletedComputerPopupController;
 import org.programutvikling.gui.customViews.CustomListViewCell;
 import org.programutvikling.gui.customViews.CustomTextWrapCellFactory;
 import org.programutvikling.gui.customViews.PriceFormatCell;
-import org.programutvikling.gui.controllers.DetailsController;
+import org.programutvikling.gui.controllers.OrderDetailsController;
 import org.programutvikling.gui.controllers.EnduserController;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FXMLGetter;
@@ -40,7 +40,7 @@ public class EndUserLogic {
     private TableView<Computer> tblCompletedComputers;
     private BorderPane borderPane;
     EnduserController endUserController;
-    DetailsController detailsController;
+    OrderDetailsController orderDetailsController;
 
     public EndUserLogic(EnduserController endUserController, BorderPane topLevelPaneEndUser,
                         ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList,
@@ -56,9 +56,9 @@ public class EndUserLogic {
         initView();
     }
 
-    public EndUserLogic(DetailsController detailsController,
+    public EndUserLogic(OrderDetailsController orderDetailsController,
                         TableColumn descriptionTblColumn) {
-        this.detailsController = detailsController;
+        this.orderDetailsController = orderDetailsController;
         initView();
     }
 
@@ -112,7 +112,7 @@ public class EndUserLogic {
     private void openDetailedView(TableRow row) throws IOException {
         //henter popup fxml
         System.out.println("her er vi i openDetailedView");
-        FXMLLoader loader = getFxmlLoader("computerPopup.fxml");
+        FXMLLoader loader = getFxmlLoader("completedComputersPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(
@@ -120,9 +120,9 @@ public class EndUserLogic {
         );
         Computer c = (Computer) row.getItem();
 
-        ComputerPopupController computerPopupController =
-                loader.<ComputerPopupController>getController();
-        computerPopupController.initData(c, stage, endUserController);
+        CompletedComputerPopupController completedComputerPopupController =
+                loader.<CompletedComputerPopupController>getController();
+        completedComputerPopupController.initData(c, stage, endUserController);
         stage.show();
     }
 

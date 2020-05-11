@@ -19,7 +19,7 @@ import org.programutvikling.model.TemporaryUser;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserPopupController extends TabUsersController implements Initializable, IController {
+public class EditUserPopupController extends TabUsersController implements Initializable, IController {
 
     Stage stage;
     @FXML

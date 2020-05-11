@@ -11,8 +11,8 @@ import javafx.stage.WindowEvent;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.utility.Clickable;
-import org.programutvikling.gui.controllers.EditPopupController;
-import org.programutvikling.gui.controllers.UserPopupController;
+import org.programutvikling.gui.controllers.EditComponentPopupController;
+import org.programutvikling.gui.controllers.EditUserPopupController;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.io.IOException;
@@ -47,15 +47,15 @@ public class CreatePopupWindow {
     }
 
     private static IController createController(String fxml, FXMLLoader loader) {
-        if(fxml.equals("editPopup.fxml")) {
+        if(fxml.equals("editComponentPopup.fxml")) {
             IController editPopupController =
-                    (IController) loader.<EditPopupController>getController();
+                    (IController) loader.<EditComponentPopupController>getController();
             //editPopupController.initData(c, stage, TemporaryComponent.INSTANCE.getColumnIndex());
             return editPopupController;
         }
-        else if(fxml.equals("userPopup.fxml")) {
+        else if(fxml.equals("editUserPopup.fxml")) {
             IController userPopupController =
-                    (IController) loader.<UserPopupController>getController();
+                    (IController) loader.<EditUserPopupController>getController();
             //editPopupController.initData(c, stage, TemporaryComponent.INSTANCE.getColumnIndex());
             return userPopupController;
         }

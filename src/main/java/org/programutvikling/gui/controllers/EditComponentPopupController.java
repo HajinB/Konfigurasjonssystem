@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class EditPopupController extends TabComponentsController implements Initializable, IController {
+public class EditComponentPopupController extends TabComponentsController implements Initializable, IController {
 
     @FXML
     private GridPane componentEditNode;

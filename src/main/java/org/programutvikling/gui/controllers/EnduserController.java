@@ -174,15 +174,15 @@ public class EnduserController {
     private void openFinalDetails() throws IOException {
 
         System.out.println("her er vi i openDetailedView");
-        FXMLLoader loader = FXMLGetter.fxmlLoaderFactory("detailsPopup.fxml");
+        FXMLLoader loader = FXMLGetter.fxmlLoaderFactory("orderDetailsPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(
                 new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
         );
-        DetailsController detailsController =
-                loader.<DetailsController>getController();
-        detailsController.initData(getComputer(), stage);
+        OrderDetailsController orderDetailsController =
+                loader.<OrderDetailsController>getController();
+        orderDetailsController.initData(getComputer(), stage);
         stage.show();
     }
 

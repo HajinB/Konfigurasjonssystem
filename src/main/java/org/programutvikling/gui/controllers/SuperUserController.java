@@ -22,7 +22,7 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
-public class SecondaryController implements Initializable {
+public class SuperUserController implements Initializable {
 
     public Tab tabComponentRegister;
     public Tab tabUserRegister;

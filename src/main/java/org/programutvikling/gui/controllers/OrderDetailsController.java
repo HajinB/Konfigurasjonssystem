@@ -21,7 +21,7 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
-public class DetailsController implements Initializable {
+public class OrderDetailsController implements Initializable {
 
     @FXML
     private TableView<Component> tblFinalViewComponent;

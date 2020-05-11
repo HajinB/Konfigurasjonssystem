@@ -24,8 +24,8 @@
 <?import org.programutvikling.gui.customTextField.PriceField?>
 <AnchorPane fx:id="topLevelPane" prefHeight="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.controllers.TabComponentsController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="700.0" prefWidth="1040.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <AnchorPane maxHeight="800.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
-            <Pane layoutX="29.0" layoutY="14.0" prefHeight="552.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="14.0">
+        <AnchorPane maxHeight="800.0" styleClass="anchorCenter" stylesheets="@CSS/SuperUser.css">
+            <Pane layoutX="29.0" layoutY="14.0" prefHeight="552.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/SuperUser.css" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="14.0">
                 <GridPane fx:id="componentRegNode" layoutX="33.0" layoutY="67.0" vgap="2.0">
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -59,7 +59,7 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <TextField id="productName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn varenavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="4">
+                    <TextField id="productName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn varenavn" styleClass="input" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="4">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -72,7 +72,7 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <TextArea id="productDescription" prefHeight="65.0" prefWidth="230.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/Superbruker.css" wrapText="true" GridPane.rowIndex="7">
+                    <TextArea id="productDescription" prefHeight="65.0" prefWidth="230.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/SuperUser.css" wrapText="true" GridPane.rowIndex="7">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -85,7 +85,7 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <PriceField id="productPrice" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn pris" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="10">
+                    <PriceField id="productPrice" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn pris" styleClass="input" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="10">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -120,18 +120,18 @@
                             <Font name="Verdana" size="11.0" />
                         </font>
                     </Label>
-                    <ChoiceBox id="productType" fx:id="cbType" prefHeight="30.0" prefWidth="230.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="1" />
+                    <ChoiceBox id="productType" fx:id="cbType" prefHeight="30.0" prefWidth="230.0" styleClass="cb" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="1" />
                     <columnConstraints>
                         <ColumnConstraints />
                     </columnConstraints>
                 </GridPane>
-                <Label alignment="CENTER" layoutX="15.0" layoutY="12.0" prefHeight="31.0" prefWidth="270.0" styleClass="labelNewComp" stylesheets="@CSS/Superbruker.css" text="Legg til ny komponent" textFill="#000000ce">
+                <Label alignment="CENTER" layoutX="15.0" layoutY="12.0" prefHeight="31.0" prefWidth="270.0" styleClass="labelNewComp" stylesheets="@CSS/SuperUser.css" text="Legg til ny komponent" textFill="#000000ce">
                     <font>
                         <Font name="Verdana Bold" size="16.0" />
                     </font>
                 </Label>
             </Pane>
-            <TableView fx:id="tblViewComponent" focusTraversable="false" layoutX="354.0" layoutY="54.0" onMousePressed="#dblClickTblRow" prefHeight="476.0" prefWidth="653.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="68.39999999999998" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="30.800000000000068" AnchorPane.topAnchor="54.0">
+            <TableView fx:id="tblViewComponent" focusTraversable="false" layoutX="354.0" layoutY="54.0" onMousePressed="#dblClickTblRow" prefHeight="476.0" prefWidth="653.0" styleClass="tblView" stylesheets="@CSS/SuperUser.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="68.39999999999998" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="30.800000000000068" AnchorPane.topAnchor="54.0">
                 <columns>
                     <TableColumn minWidth="100.0" prefWidth="140.79998779296875" styleClass="column" text="Produkttype">
                         <cellValueFactory>
@@ -169,16 +169,16 @@
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                 </columnResizePolicy>
             </TableView>
-            <TextField id="#componentSearch" fx:id="componentSearch" layoutX="531.0" layoutY="536.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.leftAnchor="531.0">
+            <TextField id="#componentSearch" fx:id="componentSearch" layoutX="531.0" layoutY="536.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/SuperUser.css" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.leftAnchor="531.0">
                 <font>
                     <Font size="13.0" />
                 </font>
             </TextField>
-            <ChoiceBox id="#cbTypeFilter" fx:id="cbTypeFilter" layoutX="355.0" layoutY="536.0" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.leftAnchor="355.0" />
+            <ChoiceBox id="#cbTypeFilter" fx:id="cbTypeFilter" layoutX="355.0" layoutY="536.0" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" styleClass="cb" stylesheets="@CSS/SuperUser.css" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.leftAnchor="355.0" />
             <Button layoutX="878.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0" prefWidth="131.0" stylesheets="@CSS/Login.css" text="Slett produkt" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.rightAnchor="30.799999999999955" />
-            <ComboBox id="#cbRecentFiles" fx:id="cbRecentFiles" layoutX="743.4000000000001" layoutY="17.0" prefHeight="30.0" prefWidth="146.0" promptText="Åpne nylige filer" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.rightAnchor="148.60000000000002" />
+            <ComboBox id="#cbRecentFiles" fx:id="cbRecentFiles" layoutX="743.4000000000001" layoutY="17.0" prefHeight="30.0" prefWidth="146.0" promptText="Åpne nylige filer" styleClass="cb" stylesheets="@CSS/SuperUser.css" AnchorPane.rightAnchor="148.60000000000002" />
             <Button layoutX="896.4000000000001" layoutY="17.0" mnemonicParsing="false" onAction="#btnOpenRecentFile" prefHeight="30.0" prefWidth="110.0" stylesheets="@CSS/Login.css" text="Åpne" AnchorPane.rightAnchor="31.600000000000023" />
-         <Label alignment="CENTER" layoutX="354.0" layoutY="12.0" prefHeight="37.0" prefWidth="382.0" styleClass="labelHeaderComp" stylesheets="@CSS/Superbruker.css" text="PC-komponenter" textFill="#000000ce" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="302.0">
+         <Label alignment="CENTER" layoutX="354.0" layoutY="12.0" prefHeight="37.0" prefWidth="382.0" styleClass="labelHeaderComp" stylesheets="@CSS/SuperUser.css" text="PC-komponenter" textFill="#000000ce" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="302.0">
             <font>
                <Font name="Verdana Bold" size="25.0" />
             </font>

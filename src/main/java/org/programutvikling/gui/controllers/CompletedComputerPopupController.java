@@ -16,7 +16,7 @@ import org.programutvikling.model.ModelEndUser;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ComputerPopupController extends EnduserController implements Initializable {
+public class CompletedComputerPopupController extends EnduserController implements Initializable {
     @FXML private Label lblComputerName;
     @FXML private ListView<Component> listContent;
     @FXML private Label lblComputerPrice;

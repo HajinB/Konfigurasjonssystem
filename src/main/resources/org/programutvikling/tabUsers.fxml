@@ -23,8 +23,8 @@
 <?import org.programutvikling.gui.customTextField.NoSpacebarField?>
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.controllers.TabUsersController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <AnchorPane prefWidth="1050.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
-            <Pane layoutX="29.0" layoutY="16.0" minHeight="600.0" prefHeight="644.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="47.200000000000045" AnchorPane.topAnchor="16.0">
+        <AnchorPane prefWidth="1050.0" styleClass="anchorCenter" stylesheets="@CSS/SuperUser.css">
+            <Pane layoutX="29.0" layoutY="16.0" minHeight="600.0" prefHeight="644.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/SuperUser.css" AnchorPane.bottomAnchor="47.200000000000045" AnchorPane.topAnchor="16.0">
                 <GridPane fx:id="userReg" layoutX="26.0" layoutY="60.0" prefHeight="540.0" prefWidth="244.0">
                     <columnConstraints>
                         <ColumnConstraints minWidth="10.0" />
@@ -60,16 +60,16 @@
                     </padding>
                     <CheckBox id="userAdmin" fx:id="cbAdmin" mnemonicParsing="false" onAction="#cbAdmin" prefHeight="18.0" prefWidth="81.0" text="Admin" />
                     <Label text="Brukernavn" GridPane.rowIndex="1" />
-                    <NoSpacebarField id="userUsername" prefHeight="30.0" promptText="Skriv inn ønsket brukernavn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                    <NoSpacebarField id="userUsername" prefHeight="30.0" promptText="Skriv inn ønsket brukernavn" styleClass="input" stylesheets="@CSS/SuperUser.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                     <Label fx:id="lblMsgUsername" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="3" />
                     <Label text="Passord" GridPane.rowIndex="4" />
-                    <PasswordField id="userPassword" prefHeight="30.0" promptText="Passordet må ha minst 4 tegn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="5" />
+                    <PasswordField id="userPassword" prefHeight="30.0" promptText="Passordet må ha minst 4 tegn" styleClass="input" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="5" />
                     <Label fx:id="lblMsgPassword" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="6" />
                     <Label text="Navn" GridPane.rowIndex="7" />
-                    <TextField id="userName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn fullt navn" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="8" />
+                    <TextField id="userName" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn fullt navn" styleClass="input" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="8" />
                     <Label fx:id="lblMsgName" prefHeight="18.0" prefWidth="230.0" textFill="#c20000" GridPane.rowIndex="9" />
                     <Label prefHeight="16.0" prefWidth="108.0" text="E-postaddresse" GridPane.rowIndex="10" />
-                    <NoSpacebarField id="userMail" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn e-postaddresse" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="11">
+                    <NoSpacebarField id="userMail" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn e-postaddresse" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="11">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -84,7 +84,7 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <TextField id="userAddress" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn gateaddresse" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="14">
+                    <TextField id="userAddress" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn gateaddresse" styleClass="input" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="14">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -95,7 +95,7 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <ZipField id="userZip" layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn postnummer" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="17">
+                    <ZipField id="userZip" layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn postnummer" styleClass="input" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="17">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -106,7 +106,7 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <TextField id="userCity" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn poststed" styleClass="input" stylesheets="@CSS/Superbruker.css" GridPane.rowIndex="20">
+                    <TextField id="userCity" prefHeight="30.0" prefWidth="200.0" promptText="Skriv inn poststed" styleClass="input" stylesheets="@CSS/SuperUser.css" GridPane.rowIndex="20">
                         <font>
                             <Font size="13.0" />
                         </font>
@@ -123,13 +123,13 @@
                         </font>
                     </Label>
                 </GridPane>
-                <Label alignment="CENTER" layoutX="15.0" layoutY="10.0" prefHeight="31.0" prefWidth="267.0" styleClass="labelNewUser" stylesheets="@CSS/Superbruker.css" text="Opprett bruker" textFill="#000000cc">
+                <Label alignment="CENTER" layoutX="15.0" layoutY="10.0" prefHeight="31.0" prefWidth="267.0" styleClass="labelNewUser" stylesheets="@CSS/SuperUser.css" text="Opprett bruker" textFill="#000000cc">
                     <font>
                         <Font name="Verdana Bold" size="17.0" />
                     </font>
                 </Label>
             </Pane>
-            <TableView fx:id="tblViewUser" focusTraversable="false" layoutX="351.0" layoutY="59.0" onMousePressed="#dblClickTblRow" prefHeight="555.0" prefWidth="676.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="59.0">
+            <TableView fx:id="tblViewUser" focusTraversable="false" layoutX="351.0" layoutY="59.0" onMousePressed="#dblClickTblRow" prefHeight="555.0" prefWidth="676.0" styleClass="tblView" stylesheets="@CSS/SuperUser.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="59.0">
                 <columns>
                     <TableColumn id="userAdmin" prefWidth="70.66668701171875" styleClass="column" text="Rolle">
                         <cellValueFactory>
@@ -176,13 +176,13 @@
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                 </columnResizePolicy>
             </TableView>
-            <Label alignment="CENTER" layoutX="352.0" layoutY="14.0" prefHeight="38.0" prefWidth="676.0" styleClass="labelHeaderBruker" stylesheets="@CSS/Superbruker.css" text="Brukere" textFill="#000000d1" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="22.0">
+            <Label alignment="CENTER" layoutX="352.0" layoutY="14.0" prefHeight="38.0" prefWidth="676.0" styleClass="labelHeaderBruker" stylesheets="@CSS/SuperUser.css" text="Brukere" textFill="#000000d1" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="22.0">
                 <font>
                     <Font name="Verdana Bold" size="29.0" />
                 </font>
             </Label>
-            <ChoiceBox fx:id="cbAdminFilter" layoutX="354.0" layoutY="618.6" onAction="#filterByAdmin" prefHeight="30.0" prefWidth="150.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="51.0" />
-            <TextField fx:id="userSearch" alignment="CENTER" layoutX="522.0" layoutY="618.6" onKeyTyped="#search" prefHeight="30.0" prefWidth="230.0" promptText="Søk etter bruker" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="286.0000000000001">
+            <ChoiceBox fx:id="cbAdminFilter" layoutX="354.0" layoutY="618.6" onAction="#filterByAdmin" prefHeight="30.0" prefWidth="150.0" styleClass="cb" stylesheets="@CSS/SuperUser.css" AnchorPane.bottomAnchor="51.0" />
+            <TextField fx:id="userSearch" alignment="CENTER" layoutX="522.0" layoutY="618.6" onKeyTyped="#search" prefHeight="30.0" prefWidth="230.0" promptText="Søk etter bruker" styleClass="input" stylesheets="@CSS/SuperUser.css" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="522.0" AnchorPane.rightAnchor="286.0000000000001">
                 <font>
                     <Font size="13.0" />
                 </font>

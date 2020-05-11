@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
             // Turns off the label when you get a successful login
             lblFeilPassword.setVisible(false);
             if(loginUser.getAdmin()) {
-                App.setRoot("secondary");
+                App.setRoot("superUser");
             } else{
                 openUserView();
             }

@@ -401,7 +401,7 @@
                <Insets right="5.0" />
             </opaqueInsets>
             </Label>
-            <ListView fx:id="shoppingListView" focusTraversable="false" layoutX="12.0" layoutY="238.0" prefHeight="266.0" prefWidth="241.0" styleClass="shopCart" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="238.0" />
+            <ListView fx:id="shoppingListView" focusTraversable="false" layoutX="12.0" layoutY="238.0" prefHeight="266.0" prefWidth="241.0" styleClass="shopCart" stylesheets="@CSS/SuperUser.css" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="238.0" />
             <Label contentDisplay="RIGHT" layoutX="54.0" layoutY="212.0" nodeOrientation="LEFT_TO_RIGHT" text="Handlekurv" textFill="#000000cc" AnchorPane.topAnchor="212.0">
                 <font>
                     <Font name="Verdana Bold" size="19.0" />
@@ -446,7 +446,7 @@
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                 </columnResizePolicy>
                 <stylesheets>
-                    <URL value="@CSS/Superbruker.css" />
+                    <URL value="@CSS/SuperUser.css" />
                     <URL value="@CSS/EndUser.css" />
                 </stylesheets>
             </TableView>

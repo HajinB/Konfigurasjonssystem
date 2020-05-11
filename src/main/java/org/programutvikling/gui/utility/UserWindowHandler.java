@@ -13,6 +13,6 @@ public class UserWindowHandler {
 
     public void openEditWindow(TableRow<? extends Clickable> row, GridPane gridpane) throws IOException {
         registryUserLogic = new RegistryUserLogic(gridpane);
-        CreatePopupWindow.getStageForPopup(row, "userPopup.fxml", registryUserLogic);
+        CreatePopupWindow.getStageForPopup(row, "editUserPopup.fxml", registryUserLogic);
     }
 }

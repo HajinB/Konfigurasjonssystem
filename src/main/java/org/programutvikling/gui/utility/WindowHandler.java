@@ -13,7 +13,7 @@ public class WindowHandler {
 
     public void openEditWindow(TableRow<? extends Clickable> row, GridPane gridpane) throws IOException {
         registryComponentLogic = new RegistryComponentLogic(gridpane);
-        CreatePopupWindow.getStageForPopup(row, "editPopup.fxml", registryComponentLogic);
+        CreatePopupWindow.getStageForPopup(row, "editComponentPopup.fxml", registryComponentLogic);
     }
 
 }

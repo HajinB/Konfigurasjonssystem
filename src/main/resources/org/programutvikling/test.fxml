@@ -8,6 +8,6 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.programutvikling.gui.controllers.UserPopupController"
+            fx:controller="org.programutvikling.gui.controllers.EditUserPopupController"
             prefHeight="400.0" prefWidth="600.0">
 </AnchorPane>

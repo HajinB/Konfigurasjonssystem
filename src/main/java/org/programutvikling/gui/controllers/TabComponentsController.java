@@ -33,7 +33,7 @@ public class TabComponentsController {
     final Tooltip tooltip = new Tooltip("Dobbeltklikk en celle for å redigere");
     @FXML
     AnchorPane topLevelPane;
-    SecondaryController secondaryController;
+    SuperUserController superUserController;
     ComponentTypes componentTypes = new ComponentTypes();
     ThreadHandler threadHandler;
     @FXML
@@ -242,8 +242,8 @@ public class TabComponentsController {
         topLevelPane.setDisable(false);
     }
 
-    void init(SecondaryController secondaryController) {
-        this.secondaryController = secondaryController;
+    void init(SuperUserController superUserController) {
+        this.superUserController = superUserController;
     }
 
     void setResultLabelTimed(String s) {

@@ -51,7 +51,7 @@ public class TabUsersController implements Initializable, Clickable {
     private TableView<User> tblViewUser;
 
     private RegistryUserLogic registryUserLogic;
-    private SecondaryController secondaryController;
+    private SuperUserController superUserController;
 
     @FXML
     public void btnAddUser(ActionEvent actionEvent) {
@@ -217,8 +217,8 @@ public class TabUsersController implements Initializable, Clickable {
         cbAdminFilter.setValue("Ingen filter");
     }
 
-    public void init(SecondaryController secondaryController) {
-        this.secondaryController = secondaryController;
+    public void init(SuperUserController superUserController) {
+        this.superUserController = superUserController;
     }
 
     void setLblMsgPassword(String s) {

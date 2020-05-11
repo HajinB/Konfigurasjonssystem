@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/cssdialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cssdialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ComputerPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/CompletedComputerPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/DetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/OrderDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/EditPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/EditComponentPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/EnduserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/EnduserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/TabComponentsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/TabUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/TabUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/UserPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/EditUserPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/logic/EndUserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/logic/EndUserLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/CreatePopupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/CreatePopupWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/UserWindowHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/UserWindowHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/WindowHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/WindowHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/Superbruker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/CSS/SuperUser.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/computerPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/completedComputersPopup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/detailsPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/orderDetailsPopup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editComponentPopup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/endUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/superUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabComponents.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabComponents.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/test.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/test.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/userPopup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/editUserPopup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/CSS/Superbruker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/programutvikling/secondary.fxml" beforeDir="false" />
+    </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -272,14 +302,7 @@
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
       <workItem from="1588986164951" duration="17707000" />
-      <workItem from="1589187040877" duration="9697000" />
-    </task>
-    <task id="LOCAL-00135" summary="7">
-      <created>1588933247807</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1588933247807</updated>
+      <workItem from="1589187040877" duration="11042000" />
     </task>
     <task id="LOCAL-00136" summary="7">
       <created>1588939281083</created>
@@ -617,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589205798095</updated>
     </task>
-    <option name="localTasksCounter" value="184" />
+    <task id="LOCAL-00184" summary="fixed package structure">
+      <created>1589205809056</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1589205809056</updated>
+    </task>
+    <option name="localTasksCounter" value="185" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
