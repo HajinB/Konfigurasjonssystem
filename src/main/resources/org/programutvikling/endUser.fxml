@@ -28,9 +28,9 @@
             <VBox layoutX="28.0" layoutY="46.0" prefWidth="694.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="24.0">
                <children>
                        <TitledPane contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Prosessor *">
-                           <TableView fx:id="tblProcessor" prefHeight="280.0" prefWidth="688.0" stylesheets="@CSS/EndUser.css">
+                           <TableView fx:id="tblProcessor" prefHeight="200.0" prefWidth="688.0" stylesheets="@CSS/EndUser.css">
                                <columns>
-                                   <TableColumn editable="false" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn editable="false" maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -40,7 +40,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="processorPriceCln" editable="false" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Pris">
+                                   <TableColumn fx:id="processorPriceCln" editable="false" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" styleClass="columnUser" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -52,9 +52,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne *">
-                           <TableView fx:id="tblMemory" prefHeight="280.0">
+                           <TableView fx:id="tblMemory" prefHeight="200.0">
                                <columns>
-                                   <TableColumn prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -64,7 +64,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="memoryPriceCln" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="memoryPriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -80,9 +80,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Kabinett *">
-                           <TableView fx:id="tblCabinet" prefHeight="280.0">
+                           <TableView fx:id="tblCabinet" prefHeight="200.0">
                                <columns>
-                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -92,7 +92,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="cabinetPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="cabinetPriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -108,9 +108,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjermkort *">
-                           <TableView fx:id="tblVideoCard" prefHeight="280.0" prefWidth="369.0">
+                           <TableView fx:id="tblVideoCard" prefHeight="200.0" prefWidth="369.0">
                                <columns>
-                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -120,7 +120,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="videoCardPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="videoCardPriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -136,9 +136,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Hovedkort *">
-                           <TableView fx:id="tblMotherBoard" prefHeight="280.0">
+                           <TableView fx:id="tblMotherBoard" prefHeight="200.0">
                                <columns>
-                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -148,7 +148,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="motherBoardPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="motherBoardPriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -164,9 +164,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk *">
-                           <TableView fx:id="tblHardDisc" prefHeight="280.0">
+                           <TableView fx:id="tblHardDisc" prefHeight="200.0">
                                <columns>
-                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -176,7 +176,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="hardDiscPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="hardDiscPriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -192,9 +192,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjerm">
-                           <TableView fx:id="tblScreen" prefHeight="280.0">
+                           <TableView fx:id="tblScreen" prefHeight="200.0">
                                <columns>
-                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -204,7 +204,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="screenPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="screenPriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -220,9 +220,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Tastatur">
-                           <TableView fx:id="tblKeyboard" prefHeight="280.0">
+                           <TableView fx:id="tblKeyboard" prefHeight="200.0">
                                <columns>
-                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -232,7 +232,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="keyboardPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="keyboardPriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -248,9 +248,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Mus">
-                           <TableView fx:id="tblMouse" prefHeight="280.0">
+                           <TableView fx:id="tblMouse" prefHeight="200.0">
                                <columns>
-                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -260,7 +260,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="mousePriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="mousePriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
@@ -276,9 +276,9 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Annet">
-                           <TableView fx:id="tblOther" prefHeight="280.0">
+                           <TableView fx:id="tblOther" prefHeight="200.0">
                                <columns>
-                                   <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
+                                   <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productName" />
                                        </cellValueFactory>
@@ -288,7 +288,7 @@
                                            <PropertyValueFactory property="productDescription" />
                                        </cellValueFactory>
                                    </TableColumn>
-                                   <TableColumn fx:id="otherPriceCln" minWidth="100.0" prefWidth="-1.0" text="Pris">
+                                   <TableColumn fx:id="otherPriceCln" maxWidth="500.0" minWidth="150.0" prefWidth="-1.0" text="Pris">
                                        <cellValueFactory>
                                            <PropertyValueFactory property="productPrice" />
                                        </cellValueFactory>
