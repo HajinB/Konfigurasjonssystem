@@ -347,7 +347,7 @@
     <top>
         <AnchorPane prefHeight="35.0" stylesheets="@CSS/EndUser.css">
             <children>
-                <MenuButton alignment="CENTER" layoutX="14.0" layoutY="3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" styleClass="btnLogOut" stylesheets="@CSS/EndUser.css" text="Meny" wrapText="true" AnchorPane.leftAnchor="14.0">
+                <MenuButton layoutX="42.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="115.0" styleClass="btnLogOut" stylesheets="@CSS/EndUser.css" text="Meny" wrapText="true" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="0.0">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#btnOpenComputer" text="Åpne PC">
                             <graphic>
@@ -378,10 +378,10 @@
                         </MenuItem>
                     </items>
                     <font>
-                        <Font size="4.0" />
+                        <Font size="5.0" />
                     </font>
                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="25.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20.0" fitWidth="28.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
                             <image>
                                 <Image url="@../../Bilder/menu-2.png" />
                             </image>
