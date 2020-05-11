@@ -28,7 +28,7 @@
             <VBox layoutX="28.0" layoutY="46.0" prefWidth="694.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="24.0">
                <children>
                        <TitledPane contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Prosessor *">
-                           <TableView fx:id="tblProcessor" prefHeight="280.0" prefWidth="688.0" stylesheets="@CSS/EndUser.css">
+                           <TableView fx:id="tblProcessor" prefHeight="200.0" prefWidth="688.0" stylesheets="@CSS/EndUser.css">
                                <columns>
                                    <TableColumn editable="false" maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -52,7 +52,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne *">
-                           <TableView fx:id="tblMemory" prefHeight="280.0">
+                           <TableView fx:id="tblMemory" prefHeight="200.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -80,7 +80,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Kabinett *">
-                           <TableView fx:id="tblCabinet" prefHeight="280.0">
+                           <TableView fx:id="tblCabinet" prefHeight="200.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -108,7 +108,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjermkort *">
-                           <TableView fx:id="tblVideoCard" prefHeight="280.0" prefWidth="369.0">
+                           <TableView fx:id="tblVideoCard" prefHeight="200.0" prefWidth="369.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -136,7 +136,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Hovedkort *">
-                           <TableView fx:id="tblMotherBoard" prefHeight="280.0">
+                           <TableView fx:id="tblMotherBoard" prefHeight="200.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -164,7 +164,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk *">
-                           <TableView fx:id="tblHardDisc" prefHeight="280.0">
+                           <TableView fx:id="tblHardDisc" prefHeight="200.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -192,7 +192,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjerm">
-                           <TableView fx:id="tblScreen" prefHeight="280.0">
+                           <TableView fx:id="tblScreen" prefHeight="200.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -220,7 +220,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Tastatur">
-                           <TableView fx:id="tblKeyboard" prefHeight="280.0">
+                           <TableView fx:id="tblKeyboard" prefHeight="200.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -248,7 +248,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Mus">
-                           <TableView fx:id="tblMouse" prefHeight="280.0">
+                           <TableView fx:id="tblMouse" prefHeight="200.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -276,7 +276,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Annet">
-                           <TableView fx:id="tblOther" prefHeight="280.0">
+                           <TableView fx:id="tblOther" prefHeight="200.0">
                                <columns>
                                    <TableColumn maxWidth="500.0" minWidth="250.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
