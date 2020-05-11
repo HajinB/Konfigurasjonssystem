@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/Computers/0o0o.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/Computers/0o0o.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Konfigurasjonssystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Konfigurasjonssystem.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/SecondaryController.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
@@ -274,14 +279,7 @@
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
       <workItem from="1588986164951" duration="17707000" />
-      <workItem from="1589187040877" duration="176000" />
-    </task>
-    <task id="LOCAL-00122" summary="Popup for bestill og legg til i handlekurv fra popupen. skal vi ta bort lagre som?">
-      <created>1588760430448</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1588760430448</updated>
+      <workItem from="1589187040877" duration="666000" />
     </task>
     <task id="LOCAL-00123" summary="Popup for bestill og legg til i handlekurv fra popupen. skal vi ta bort lagre som?">
       <created>1588760658230</created>
@@ -619,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589108262038</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="små endringer på validering av computer .txt input">
+      <created>1589187269057</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1589187269058</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -654,7 +659,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sjekker instanceof sånn at de objektene som er nye blir loadet inn, men ikke de gamle" />
     <MESSAGE value="duplicate checker på popupen" />
     <MESSAGE value="ii" />
     <MESSAGE value="feilmåte" />
@@ -679,7 +683,8 @@
     <MESSAGE value="prøver å redusere duplikat kode" />
     <MESSAGE value="liten bug der totalpris ikke ble oppdatert når man legger til fra komplett datamaskin" />
     <MESSAGE value="dialog for å legge til i handlekurv" />
-    <option name="LAST_COMMIT_MESSAGE" value="dialog for å legge til i handlekurv" />
+    <MESSAGE value="små endringer på validering av computer .txt input" />
+    <option name="LAST_COMMIT_MESSAGE" value="små endringer på validering av computer .txt input" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />

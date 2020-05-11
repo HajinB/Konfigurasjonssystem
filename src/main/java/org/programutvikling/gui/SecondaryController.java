@@ -12,6 +12,7 @@ import org.programutvikling.App;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.io.InvalidComponentFormatException;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;
@@ -31,12 +32,6 @@ public class SecondaryController implements Initializable {
     public BorderPane topLevelPane;
     RegistryComponentLogic registryComponentLogic;
 
-    /**
-     * https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
-     * https://stackoverflow.com/questions/32407666/javafx8-fxml-controller-injection
-     * https://stackoverflow.com/questions/32849277/javafx-controller-injection-does-not-work
-     */
-    FileHandling fileHandling = new FileHandling();
     Stage stage;
 
     @FXML
@@ -74,7 +69,7 @@ public class SecondaryController implements Initializable {
             }
             tabComponentsController.updateView();
             Model.INSTANCE.getComponentRegister().removeDuplicates();
-            tabComponentsController.setLblComponentMsg("Komponentene fra " + chosenPath + " \nble lastet inn");
+            //tabComponentsController.setLblComponentMsg("Komponentene fra " + chosenPath + " \nble lastet inn");
         }
     }
 
