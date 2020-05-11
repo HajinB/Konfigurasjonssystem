@@ -18,9 +18,9 @@ public class FileOpenerTxt implements FileOpener {
 
     public void open(Computer computer, Path filePath) throws IOException {
         computer.removeAll();
+        //hvis en datamaskin som ikke kan lastes inn åpnes, fjernes alle tingene fra computeren.
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
-
             while ((line = bufferedReader.readLine()) != null) {
                 if(parseComponent(line) instanceof NullComponent){
                     bufferedReader.readLine(); //leser uten å gjøre noe

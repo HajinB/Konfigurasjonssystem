@@ -225,12 +225,18 @@ public class FileHandling {
 
     public static void openCartFromSelectedFile(Computer computer, Stage stage) {
         String chosenFile = FileUtility.getFilePathFromOpenTxtDialog(stage);
+        Computer safetyComputer = new Computer("safety");
+        safetyComputer.getComponentRegister().getRegister().addAll(computer.getComponentRegister().getRegister());
         if (chosenFile == null) {
             return;
         }
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         try {
             fileOpenerTxt.open(computer, Paths.get(chosenFile));
+            if(computer.getComponentRegister().getRegister().size()==0){
+                computer.getComponentRegister().getRegister().addAll(safetyComputer.getComponentRegister().getRegister());
+                Dialog.showErrorDialog("Datamaskinen du prøvde å laste inn var ikke gyldig.");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
