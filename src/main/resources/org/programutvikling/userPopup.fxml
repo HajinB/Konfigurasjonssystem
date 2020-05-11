@@ -109,16 +109,14 @@
                     <Font size="13.0" />
                 </font>
             </TextField>
-            <Button fx:id="btnEditUser" mnemonicParsing="false" onAction="#btnEditUser" prefHeight="30.0" prefWidth="230.0" text="Rediger bruker" GridPane.rowIndex="15">
+            <Button fx:id="btnEditUser" mnemonicParsing="false" onAction="#btnEditUser" prefHeight="30.0" prefWidth="230.0" text="Rediger" GridPane.rowIndex="15">
                 <GridPane.margin>
                     <Insets top="5.0" />
                 </GridPane.margin>
                 <stylesheets>
-                    <URL value="@CSS/Superbruker.css" />
                     <URL value="@CSS/Login.css" />
                 </stylesheets>
                 <styleClass>
-                    <String fx:value="btnDelete" />
                     <String fx:value="button" />
                 </styleClass>
             </Button>
@@ -149,7 +147,7 @@
             <Insets bottom="2.0" />
         </padding>
     </GridPane>
-    <Label fx:id="lblRedigerBruker" layoutX="50.0" layoutY="9.0" text="REDIGER BRUKER" textFill="#000000cd">
+    <Label layoutX="63.0" layoutY="9.0" text="Rediger bruker" textFill="#000000b0">
         <font>
             <Font name="System Bold" size="24.0" />
         </font>

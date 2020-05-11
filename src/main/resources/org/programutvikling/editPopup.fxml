@@ -81,7 +81,7 @@
             </PriceField>
             <Button fx:id="btnEditComponent"  mnemonicParsing="false" onAction="#btnEditComponent" prefHeight="30.0"
                     prefWidth="230.0"
-                     stylesheets="@CSS/Login.css" text="Endre" GridPane.rowIndex="8">
+                     stylesheets="@CSS/Login.css" text="Rediger" GridPane.rowIndex="8">
                 <GridPane.margin>
                     <Insets top="5.0" />
                 </GridPane.margin>
@@ -96,7 +96,7 @@
             <Insets bottom="2.0" />
         </padding>
     </GridPane>
-   <Label layoutX="47.0" layoutY="14.0" text="Endre komponent" textFill="#000000b3">
+   <Label layoutX="40.0" layoutY="14.0" text="Rediger komponent" textFill="#000000b0" >
       <font>
          <Font name="Verdana Bold" size="19.0" />
       </font>

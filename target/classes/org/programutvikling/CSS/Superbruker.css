@@ -6,9 +6,8 @@
 }
 
 .anchorCenter {
-    -fx-background-color: #f5f5f5;
+    -fx-background-color: rgba(201, 188, 180, 0.09);
 }
-
 
 
 /* Tableview Superbruker */
@@ -55,26 +54,6 @@
     -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.5 , 0.5 , 1 , 1 );
 }
 
-/*Andre knapper*/
-.btnDelete {
-    -fx-background-color: rgba(6, 100, 172, 0.62);
-    -fx-font-weight: bold;
-    -fx-background-radius: 6px;
-    -fx-font-size: 12px;
-    -fx-text-fill: white;
-    -fx-font-family: Verdana;
-    -fx-cursor: hand;
-}
-
-.btnDelete:hover {
-    -fx-border-color: #005182;
-    -fx-border-radius: 6px;
-}
-
-.btnDelete:pressed {
-    -fx-text-fill:#005182;
-}
-
 /*input-fields */
 .input {
     -fx-background-color: white;
@@ -83,6 +62,9 @@
     -fx-border-color: #bbbbbb;
     -fx-font-size: 13px;
     -fx-font-family: Verdana;
+}
+.inputDescription {
+    -fx-wrap-text: true;
 }
 
 /*choicebox og combobox superbruker*/
@@ -132,6 +114,8 @@
     -fx-padding: 0 10 0 0;
 }
 
+/* bakgrunn-design labeloverskrifter */
+
 .labelHeaderBruker {
     -fx-background-color: rgba(243, 204, 47, 0.47);
     -fx-background-radius: 40 0 0 0;
@@ -142,16 +126,22 @@
     -fx-background-radius: 28 0 0 0;
 }
 
-.anchorCenter {
-    -fx-background-color: rgba(255, 255, 255, 0.09);
-}
-
 .labelHeaderComp {
-    -fx-background-color: rgba(56, 141, 200, 0.5);
+    -fx-background-color: rgba(243, 155, 47, 0.47);
     -fx-background-radius: 40 0 0 0;
+    -fx-text-fill: rgba(0, 0, 0, 0.78);
 }
 
 .labelNewComp {
-    -fx-background-color: rgba(56, 141, 200, 0.5);
+    -fx-background-color: rgba(243, 155, 47, 0.47);
     -fx-background-radius: 28 0 0 0;
+    -fx-text-fill: rgba(0, 0, 0, 0.78);
+}
+
+.labelRedigerBruker {
+    -fx-background-color: rgba(243, 204, 47, 0.47)
+}
+
+.labelRedigerComp {
+    -fx-background-color: rgba(243, 155, 47, 0.47);
 }

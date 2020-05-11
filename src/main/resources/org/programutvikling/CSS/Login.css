@@ -1,6 +1,6 @@
 /*Design av knapper */
 .button {
-    -fx-background-color: rgba(6, 100, 172, 0.62);
+    -fx-background-color: linear-gradient(rgba(6, 100, 172, 0.48), rgba(6, 100, 172, 0.7));
     -fx-font-weight: bold;
     -fx-background-radius: 6px;
     -fx-font-size: 12px;
@@ -65,8 +65,9 @@
 }
 
 .anchorPane {
-    -fx-background-color: rgba(112, 164, 200, 0.25);
+    -fx-background-color: rgba(201, 188, 180, 0.2);
 }
+
 
 /*Label-design*/
 

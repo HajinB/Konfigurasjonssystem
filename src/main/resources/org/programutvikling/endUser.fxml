@@ -24,11 +24,11 @@
 <BorderPane fx:id="topLevelPaneEndUser" prefHeight="650.0" prefWidth="1050.0" styleClass="borderPane" stylesheets="@CSS/EndUser.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.EnduserController">
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true" stylesheets="@CSS/EndUser.css">
-            <AnchorPane>
+            <AnchorPane styleClass="viewport" stylesheets="@CSS/EndUser.css">
             <VBox layoutX="13.0" layoutY="46.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0">
                <children>
                        <TitledPane contentDisplay="CENTER" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Prosessor *">
-                           <TableView id="my-table" fx:id="tblProcessor" prefHeight="200.0" prefWidth="688.0" stylesheets="@CSS/EndUser.css">
+                           <TableView fx:id="tblProcessor" prefHeight="180.0" prefWidth="688.0" stylesheets="@CSS/EndUser.css">
                                <columns>
                                    <TableColumn editable="false" minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -52,7 +52,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne *">
-                           <TableView fx:id="tblMemory" prefHeight="230.0">
+                           <TableView fx:id="tblMemory" prefHeight="180.0">
                                <columns>
                                    <TableColumn prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -80,7 +80,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Kabinett *">
-                           <TableView fx:id="tblCabinet" prefHeight="230.0">
+                           <TableView fx:id="tblCabinet" prefHeight="180.0">
                                <columns>
                                    <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -108,7 +108,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjermkort *">
-                           <TableView fx:id="tblVideoCard" prefHeight="230.0" prefWidth="369.0">
+                           <TableView fx:id="tblVideoCard" prefHeight="180.0" prefWidth="369.0">
                                <columns>
                                    <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -164,7 +164,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk *">
-                           <TableView fx:id="tblHardDisc" prefHeight="230.0">
+                           <TableView fx:id="tblHardDisc" prefHeight="180.0">
                                <columns>
                                    <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -192,7 +192,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Skjerm">
-                           <TableView fx:id="tblScreen" prefHeight="230.0">
+                           <TableView fx:id="tblScreen" prefHeight="180.0">
                                <columns>
                                    <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -220,7 +220,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Tastatur">
-                           <TableView fx:id="tblKeyboard" prefHeight="230.0">
+                           <TableView fx:id="tblKeyboard" prefHeight="180.0">
                                <columns>
                                    <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -248,7 +248,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Mus">
-                           <TableView fx:id="tblMouse" prefHeight="230.0">
+                           <TableView fx:id="tblMouse" prefHeight="180.0">
                                <columns>
                                    <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -276,7 +276,7 @@
                            </TableView>
                        </TitledPane>
                        <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Annet">
-                           <TableView fx:id="tblOther" prefHeight="230.0">
+                           <TableView fx:id="tblOther" prefHeight="180.0">
                                <columns>
                                    <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">
                                        <cellValueFactory>
@@ -305,7 +305,7 @@
                        </TitledPane>
                </children>
             </VBox>
-                <Label layoutX="14.0" layoutY="14.0" text="Bygg din egen PC" textFill="#000000d0">
+                <Label layoutX="21.0" layoutY="14.0" text="Bygg din egen PC" textFill="#000000d0">
                     <font>
                         <Font name="Verdana Bold" size="20.0" />
                     </font>
@@ -328,8 +328,8 @@
                         </ImageView>
                     </graphic></Button>
                 <Label layoutX="186.0" layoutY="15.0" prefHeight="18.0" prefWidth="195.0" text="*Nødvendig for å lage en PC" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="679.0" />
-                <Button layoutX="909.0000000000001" layoutY="9.0" mnemonicParsing="false" onAction="#btnCashier" prefHeight="31.0" prefWidth="126.0" styleClass="btnPayAdd" stylesheets="@CSS/EndUser.css" text="Bestill" AnchorPane.rightAnchor="15.0" />
-                <Button layoutX="808.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnDeleteFromCart" prefHeight="30.0" prefWidth="81.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett" AnchorPane.rightAnchor="160.80000000000007">
+                <Button layoutX="909.0000000000001" layoutY="9.0" mnemonicParsing="false" onAction="#btnCashier" prefHeight="31.0" prefWidth="134.0" styleClass="btnPayAdd" stylesheets="@CSS/EndUser.css" text="Bestill/Lagre" AnchorPane.rightAnchor="15.0" />
+                <Button layoutX="808.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnDeleteFromCart" prefHeight="30.0" prefWidth="106.0" stylesheets="@CSS/Login.css" text="Slett" AnchorPane.rightAnchor="161.0">
                     <font>
                         <Font size="9.0" />
                     </font>
@@ -393,14 +393,10 @@
     </top>
     <right>
         <AnchorPane prefHeight="557.0" prefWidth="282.0" BorderPane.alignment="CENTER">
-            <Label fx:id="lblTotalPrice" alignment="CENTER_RIGHT" layoutX="12.799999999999955" layoutY="513.8" prefHeight="28.0" prefWidth="257.0" styleClass="shopCart" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="12.0">
+            <Label fx:id="lblTotalPrice" alignment="CENTER_RIGHT" layoutX="12.799999999999955" layoutY="513.8" prefHeight="28.0" prefWidth="257.0" styleClass="lblShow" stylesheets="@CSS/EndUser.css" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="12.0">
                 <font>
                     <Font size="14.0" />
                 </font>
-                <stylesheets>
-                    <URL value="@CSS/EndUser.css" />
-                    <URL value="@CSS/Superbruker.css" />
-                </stylesheets>
             <opaqueInsets>
                <Insets right="5.0" />
             </opaqueInsets>

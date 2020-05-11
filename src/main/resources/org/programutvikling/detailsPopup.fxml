@@ -13,7 +13,7 @@
 
 <AnchorPane id="detailsAnchor" prefHeight="391.0" stylesheets="@CSS/EndUser.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.DetailsController">
 
-    <TableView fx:id="tblFinalViewComponent" editable="true" focusTraversable="false" layoutX="29.0" layoutY="66.0" prefHeight="273.0" prefWidth="683.0" styleClass="tblView" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="51.39999999999998" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="28.799999999999955" AnchorPane.topAnchor="66.0">
+    <TableView fx:id="tblFinalViewComponent" editable="true" focusTraversable="false" layoutX="29.0" layoutY="66.0" prefHeight="273.0" prefWidth="683.0" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="51.39999999999998" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="28.799999999999955" AnchorPane.topAnchor="66.0">
         <columns>
             <TableColumn minWidth="100.0" prefWidth="140.79998779296875" styleClass="column" text="Produkttype">
                 <cellValueFactory>
@@ -45,17 +45,17 @@
         </columnResizePolicy>
     </TableView>
    <Button fx:id="btnAddToComputersFolder" layoutX="587.6" layoutY="347.0" mnemonicParsing="false" onAction="#btnAddToComputersFolder" prefHeight="30.0" prefWidth="125.0" stylesheets="@CSS/Login.css" text="Lagre" AnchorPane.bottomAnchor="13.600000000000023" AnchorPane.rightAnchor="28.399999999999977" />
-   <TextField fx:id="txtNameForComputer" alignment="CENTER" layoutX="277.0" layoutY="14.0" prefHeight="30.0" prefWidth="188.0" promptText="Skriv inn navn på PC" styleClass="cb" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="276.6" AnchorPane.topAnchor="14.0">
+   <TextField fx:id="txtNameForComputer" alignment="CENTER" layoutX="277.0" layoutY="14.0" prefHeight="30.0" prefWidth="188.0" promptText="Skriv inn navn på PC" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="276.6" AnchorPane.topAnchor="14.0">
       <font>
-         <Font size="13.0" />
+         <Font name="Verdana" size="13.0" />
       </font></TextField>
    <Label layoutX="222.0" layoutY="20.0" prefHeight="18.0" prefWidth="54.0" text="Navn:" textFill="#000000cb" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="475.0" AnchorPane.topAnchor="20.0">
       <font>
          <Font name="Verdana Bold" size="13.0" />
       </font></Label>
-   <Label fx:id="lblTotalPriceDetails" layoutX="29.0" layoutY="347.0" prefHeight="30.0" prefWidth="283.0" styleClass="lblShow" AnchorPane.bottomAnchor="13.600000000000023" AnchorPane.leftAnchor="29.0">
+   <Label fx:id="lblTotalPriceDetails" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="347.0" prefHeight="30.0" prefWidth="283.0" styleClass="lblShow" stylesheets="@CSS/EndUser.css" textFill="#000000cd" AnchorPane.bottomAnchor="13.600000000000023" AnchorPane.leftAnchor="29.0">
       <font>
-         <Font name="Verdana" size="13.0" />
+         <Font name="Verdana Bold" size="13.0" />
       </font></Label>
    <Label layoutX="39.0" layoutY="354.0" text="Totalpris i NOK:" textFill="#00000098" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="39.0">
       <font>

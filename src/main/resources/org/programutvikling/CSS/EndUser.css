@@ -28,7 +28,7 @@
 
 /* Legg til i handlekurv og bestill-knapp */
 .btnPayAdd {
-    -fx-background-color: rgba(1, 160, 1, 0.66);
+    -fx-background-color: linear-gradient(rgba(1, 160, 1, 0.51), rgba(1, 160, 1, 0.82));
     -fx-background-radius: 6px;
     -fx-font-size: 13px;
     -fx-text-fill: white;
@@ -80,28 +80,30 @@
 /* Bakgrunner */
 .scroll-pane > .viewport {
     -fx-background-color: white;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 40 0 40 0;
 }
 
 .scroll-pane {
-    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-background-color: rgba(201, 188, 180, 0.06);
     -fx-background-radius: 20px;
 }
 
 .table-view {
-    -fx-background-color: white;
+    -fx-background-color: rgba(201, 188, 180, 0.06);
     -fx-border-color: none;
 }
 
 /*Shoppinglist tom og computerlist sin header*/
 #shoppingListView {
-    -fx-background-color: rgba(56, 141, 200, 0.21);
-    -fx-border-color: rgba(56, 141, 200, 0.21);
+    -fx-background-color: white;
+    -fx-background-radius: 40 0 40 0;
+    -fx-border-radius: 40 0 40 0;
+    -fx-border-color: rgba(201, 188, 180, 0.15);
 
 }
 
 #computerList {
-    -fx-background-color: rgba(56, 141, 200, 0.21);
+    -fx-background-color: rgba(1, 160, 1, 0.23);
     -fx-background-radius: 5px;
 }
 
@@ -112,7 +114,6 @@
     -fx-background-color: #ffffff;
     -fx-border-color: rgba(187, 187, 187, 0.32);
     -fx-border-radius: 4px;
-    -fx-background-radius: 5px;
     -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.08), 5, 0.5, 1, 1);
 }
 
@@ -139,13 +140,13 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: rgba(0, 128, 0, 0.09);
+    -fx-background-color: rgba(11, 146, 11, 0.22);
     -fx-text-fill: black;
 }
 
 /*Scroll-bar*/
 .scroll-pane .scroll-bar {
-    -fx-background-color: white;
+    -fx-background-color: rgba(201, 188, 180, 0.06);
     -fx-pref-width: 6px;
     -fx-pref-height: 5px;
 }
@@ -211,11 +212,17 @@
     -fx-alignment: center-right;
 }
 
+#computerPriceCln {
+    -fx-padding: 0 5 0 0;
+    -fx-alignment: center-right;
+}
+
 /*Labels input*/
 .lblShow {
     -fx-font-family: Verdana;
     -fx-background-color: #ffffff;
     -fx-border-color: #bbbbbb;
     -fx-border-radius: 4px;
+    -fx-padding: 0 5 0 0;
 }
 
