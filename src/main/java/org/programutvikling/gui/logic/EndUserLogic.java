@@ -18,11 +18,11 @@ import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.controllers.CompletedComputerPopupController;
+import org.programutvikling.gui.controllers.EnduserController;
+import org.programutvikling.gui.controllers.OrderDetailsController;
 import org.programutvikling.gui.customViews.CustomListViewCell;
 import org.programutvikling.gui.customViews.CustomTextWrapCellFactory;
 import org.programutvikling.gui.customViews.PriceFormatCell;
-import org.programutvikling.gui.controllers.OrderDetailsController;
-import org.programutvikling.gui.controllers.EnduserController;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FXMLGetter;
 import org.programutvikling.model.ModelEndUser;
@@ -32,15 +32,14 @@ import java.util.ArrayList;
 
 public class EndUserLogic {
     Tooltip tooltipEndUser = new Tooltip("Dobbeltklikk en rad for å legge til i handlekurven");
-
+    EnduserController endUserController;
+    OrderDetailsController orderDetailsController;
     private ArrayList<TableView<Component>> tblViewList;
     private ArrayList<TableColumn> tblColumnPriceList;
     private ArrayList<TableColumn> tblColumnDescriptionList;
     private ListView<Component> shoppingListView;
     private TableView<Computer> tblCompletedComputers;
     private BorderPane borderPane;
-    EnduserController endUserController;
-    OrderDetailsController orderDetailsController;
 
     public EndUserLogic(EnduserController endUserController, BorderPane topLevelPaneEndUser,
                         ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList,
@@ -68,39 +67,39 @@ public class EndUserLogic {
         setTblCellFactory();
         setDblClickEvent();
         initTextWrapCellFactory();
-        shoppingListView.setCellFactory(lv-> new CustomListViewCell());
+        shoppingListView.setCellFactory(lv -> new CustomListViewCell());
         setCompletedComputersEvents();
     }
 
     private void setCompletedComputersEvents() {
 
-            /**detecter tablerow, for å hente ut component*/
-            //skal åpne en fxml, og sende cell-content til initmetoden til controlleren til denne fxmln
-            tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    //setCellSelectionEnabled er om man kan velge en enkelt celle eller en hel rad.
-                    tblCompletedComputers.getSelectionModel().setCellSelectionEnabled(false);
-                    TableRow row;
-                    if (isDoubleClick(event)) {
-                        Node node = ((Node) event.getTarget()).getParent();
-                        if (node instanceof TableRow) {
-                            row = (TableRow) node;
-                        } else {
-                            //hvis man trykker på noe inne i cellen.
-                            row = (TableRow) node.getParent();
-                        }
-                        try {
-                            //åpne
-                            openDetailedView(row);
-                            endUserController.updateTotalPrice();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+        /**detecter tablerow, for å hente ut component*/
+        //skal åpne en fxml, og sende cell-content til initmetoden til controlleren til denne fxmln
+        tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                //setCellSelectionEnabled er om man kan velge en enkelt celle eller en hel rad.
+                tblCompletedComputers.getSelectionModel().setCellSelectionEnabled(false);
+                TableRow row;
+                if (isDoubleClick(event)) {
+                    Node node = ((Node) event.getTarget()).getParent();
+                    if (node instanceof TableRow) {
+                        row = (TableRow) node;
+                    } else {
+                        //hvis man trykker på noe inne i cellen.
+                        row = (TableRow) node.getParent();
+                    }
+                    try {
+                        //åpne
+                        openDetailedView(row);
+                        endUserController.updateTotalPrice();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
-            });
-        }
+            }
+        });
+    }
 
     FXMLLoader getFxmlLoader(String fxml) throws IOException {
         FXMLGetter fxmlGetter = new FXMLGetter();
@@ -150,7 +149,7 @@ public class EndUserLogic {
                         return new PriceFormatCell();
                     }
                 };
-        for(TableColumn tc : tblColumnPriceList){
+        for (TableColumn tc : tblColumnPriceList) {
             tc.setCellFactory(priceCellFactory);
         }
     }
@@ -170,7 +169,7 @@ public class EndUserLogic {
                     Component c = (Component) row.getItem();
                     addComponentToComputer(c);
                     endUserController.updateTotalPrice();
-                   // clearSelection();
+                    // clearSelection();
                 }
             }
         };
@@ -188,13 +187,13 @@ public class EndUserLogic {
             //updateComputerListView();
         } else {
             Alert alert = Dialog.getConfirmationAlert("Erstatter komponent", "",
-                    "Handlekurven har allerede nok antall av typen:'" + component.getProductType()+"'." +
+                    "Handlekurven har allerede nok antall av typen:'" + component.getProductType() + "'." +
                             " Vil du erstatte den som ligger i handlekurven?", "");
             alert.showAndWait();
             //trykker ja = replace
             if (alert.getResult() == alert.getButtonTypes().get(0)) {
                 replaceFirstComponentByType(component);
-               // updateComputerListView();
+                // updateComputerListView();
             }
         }
     }
@@ -287,8 +286,6 @@ public class EndUserLogic {
         t4.setCellFactory(customTextWrapCellFactory);*/
         t6.setCellFactory(customTextWrapCellFactory);
         t7.setCellFactory(customTextWrapCellFactory);
-
-
 
 
     }
