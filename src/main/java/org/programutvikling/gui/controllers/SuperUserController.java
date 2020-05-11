@@ -61,7 +61,6 @@ public class SuperUserController implements Initializable {
                 ex.printStackTrace();
                 tabComponentsController.setLblComponentMsg("Komponentene har ugyldig format.");
             }
-            System.out.println("yeee etter open computer, size: ");
             System.out.println(computer.getComponentRegister().getObservableRegister().size());
             for (Component c : computer.getComponentRegister().getObservableRegister()) {
                 Model.INSTANCE.getComponentRegister().addComponent(c);
