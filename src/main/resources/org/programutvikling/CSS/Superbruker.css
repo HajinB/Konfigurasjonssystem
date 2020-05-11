@@ -1,4 +1,4 @@
-/*Menybar */
+/*Menybar Superbruker*/
 .menyBar {
     -fx-background-color: #ffffff;
     -fx-font-size: 12px;
@@ -11,7 +11,7 @@
 
 
 
-/* Tableview */
+/* Tableview Superbruker */
 
 .tblView {
     -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.4 , 0.4 , 1 , 1 );
@@ -48,11 +48,10 @@
     -fx-background-color: rgba(161, 161, 161, 0.49);
 }
 
-
 /* Legg til ny komponent pane*/
 .nyKomponentPane {
     -fx-background-color: #ffffff;
-    -fx-background-radius: 5px;
+    -fx-background-radius: 40 0 40 0;
     -fx-effect: dropshadow( three-pass-box , #bbbbbb , 0.5 , 0.5 , 1 , 1 );
 }
 
@@ -80,7 +79,6 @@
 .input {
     -fx-background-color: white;
     -fx-background-radius: 5px;
-
     -fx-border-radius: 3px;
     -fx-border-color: #bbbbbb;
     -fx-font-size: 13px;
@@ -105,25 +103,6 @@
     -fx-background-color: rgba(161, 161, 161, 0.49);
 }
 
-/*Listview, computerview og totalpris i endUser*/
-
-.shopCart {
-    -fx-font-family: Verdana;
-    -fx-background-color: #ffffff;
-    -fx-border-color: rgba(187, 187, 187, 0.32);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 5px;
-    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.08), 5, 0.5, 1, 1);
-}
-
-.inputDescription {
-    -fx-wrap-text: true;
-}
-
-.scroll-pane > .viewport {
-    -fx-background-color: rgba(56, 141, 200, 0.15);
-}
-
 /*Scroll-bar*/
 .scroll-pane .scroll-bar {
     -fx-background-color: white;
@@ -133,6 +112,15 @@
 .scroll-pane .scroll-bar .thumb {
     -fx-background-color: rgba(161, 161, 161, 0.49);
 }
+
+/*bakgrunn*/
+
+.scroll-pane > .viewport {
+    -fx-background-color: rgba(56, 141, 200, 0.15);
+}
+
+
+/*Pris til høyre*/
 
 #lblTotalPriceDetails {
     -fx-alignment: center-right;
@@ -144,3 +132,26 @@
     -fx-padding: 0 10 0 0;
 }
 
+.labelHeaderBruker {
+    -fx-background-color: rgba(243, 204, 47, 0.47);
+    -fx-background-radius: 40 0 0 0;
+}
+
+.labelNewUser {
+    -fx-background-color: rgba(243, 204, 47, 0.47);
+    -fx-background-radius: 28 0 0 0;
+}
+
+.anchorCenter {
+    -fx-background-color: rgba(255, 255, 255, 0.09);
+}
+
+.labelHeaderComp {
+    -fx-background-color: rgba(56, 141, 200, 0.5);
+    -fx-background-radius: 40 0 0 0;
+}
+
+.labelNewComp {
+    -fx-background-color: rgba(56, 141, 200, 0.5);
+    -fx-background-radius: 28 0 0 0;
+}

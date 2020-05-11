@@ -16,7 +16,7 @@
             <Font name="Verdana" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblComputerName" layoutX="27.0" layoutY="39.0" prefHeight="30.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-border-color: #ababab;" styleClass="cb" stylesheets="@CSS/Superbruker.css" />
+      <Label fx:id="lblComputerName" layoutX="27.0" layoutY="39.0" prefHeight="30.0" prefWidth="282.0" styleClass="lblShow" stylesheets="@CSS/EndUser.css" />
       <Label layoutX="27.0" layoutY="81.0" prefHeight="16.0" prefWidth="88.0" text="Innhold:">
          <font>
             <Font name="Verdana" size="13.0" />
@@ -32,7 +32,7 @@
             <Font name="Verdana" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblComputerPrice" layoutX="28.0" layoutY="419.0" prefHeight="30.0" prefWidth="282.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" />
+      <Label fx:id="lblComputerPrice" layoutX="28.0" layoutY="419.0" prefHeight="30.0" prefWidth="282.0" styleClass="lblShow" stylesheets="@CSS/EndUser.css" />
       <Button contentDisplay="RIGHT" layoutX="156.0" layoutY="465.0" mnemonicParsing="false" onAction="#btnAddComputer" styleClass="btnPayAdd" stylesheets="@CSS/EndUser.css" text="Legg i handlekurv">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" opacity="0.36" pickOnBounds="true" preserveRatio="true">

@@ -26,7 +26,7 @@
 <AnchorPane fx:id="topLevelPane" prefHeight="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabComponentsController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="700.0" prefWidth="1040.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane maxHeight="800.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
-            <Pane layoutX="29.0" layoutY="14.0" prefHeight="515.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="14.0">
+            <Pane layoutX="29.0" layoutY="14.0" prefHeight="552.0" prefWidth="296.0" style="-fx-background-radius: 40 0 40 0;" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="14.0">
                 <GridPane fx:id="componentRegNode" layoutX="33.0" layoutY="67.0" vgap="2.0">
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -126,7 +126,7 @@
                         <ColumnConstraints />
                     </columnConstraints>
                 </GridPane>
-                <Label layoutX="33.0" layoutY="16.0" prefHeight="26.0" prefWidth="222.0" stylesheets="@CSS/Superbruker.css" text="Legg til ny komponent" textFill="#000000ce">
+                <Label alignment="CENTER" layoutX="15.0" layoutY="12.0" prefHeight="31.0" prefWidth="270.0" styleClass="labelNewComp" stylesheets="@CSS/Superbruker.css" text="Legg til ny komponent" textFill="#000000ce">
                     <font>
                         <Font name="Verdana Bold" size="16.0" />
                     </font>
@@ -170,16 +170,21 @@
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                 </columnResizePolicy>
             </TableView>
-            <Separator layoutX="337.0" layoutY="14.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="8.0" />
-            <TextField id="#componentSearch" fx:id="componentSearch" layoutX="354.0" layoutY="14.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="514.0000000000001">
+            <Separator layoutX="337.0" layoutY="14.0" orientation="VERTICAL" prefHeight="575.0" prefWidth="7.0" AnchorPane.bottomAnchor="9.0" AnchorPane.topAnchor="14.0" />
+            <TextField id="#componentSearch" fx:id="componentSearch" layoutX="531.0" layoutY="536.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="170.0" promptText="Skriv inn søkeord" styleClass="input" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.leftAnchor="531.0">
                 <font>
                     <Font size="13.0" />
                 </font>
             </TextField>
-            <ChoiceBox id="#cbTypeFilter" fx:id="cbTypeFilter" layoutX="531.0" layoutY="14.0" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.rightAnchor="338.6" />
+            <ChoiceBox id="#cbTypeFilter" fx:id="cbTypeFilter" layoutX="355.0" layoutY="536.0" onAction="#filterByTypeSelected" prefHeight="30.0" prefWidth="170.0" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.leftAnchor="355.0" />
             <Button layoutX="878.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0" prefWidth="131.0" styleClass="btnDelete" stylesheets="@CSS/Superbruker.css" text="Slett produkt" AnchorPane.bottomAnchor="31.99999999999998" AnchorPane.rightAnchor="30.799999999999955" />
-            <ComboBox id="#cbRecentFiles" fx:id="cbRecentFiles" layoutX="745.0" layoutY="14.0" prefHeight="30.0" prefWidth="146.0" promptText="Åpne nylige filer" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.rightAnchor="148.60000000000002" />
-            <Button layoutX="898.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnOpenRecentFile" prefHeight="30.0" prefWidth="110.0" stylesheets="@CSS/Login.css" text="Åpne" AnchorPane.rightAnchor="31.600000000000023" />
+            <ComboBox id="#cbRecentFiles" fx:id="cbRecentFiles" layoutX="743.4000000000001" layoutY="17.0" prefHeight="30.0" prefWidth="146.0" promptText="Åpne nylige filer" styleClass="cb" stylesheets="@CSS/Superbruker.css" AnchorPane.rightAnchor="148.60000000000002" />
+            <Button layoutX="896.4000000000001" layoutY="17.0" mnemonicParsing="false" onAction="#btnOpenRecentFile" prefHeight="30.0" prefWidth="110.0" stylesheets="@CSS/Login.css" text="Åpne" AnchorPane.rightAnchor="31.600000000000023" />
+         <Label alignment="CENTER" layoutX="354.0" layoutY="15.0" prefHeight="33.0" prefWidth="382.0" styleClass="labelHeaderComp" stylesheets="@CSS/Superbruker.css" text="PC-komponenter" textFill="#000000ce" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="302.0">
+            <font>
+               <Font name="Verdana Bold" size="22.0" />
+            </font>
+         </Label>
         </AnchorPane>
     </ScrollPane>
 
