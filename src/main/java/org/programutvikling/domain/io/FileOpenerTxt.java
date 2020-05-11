@@ -4,6 +4,7 @@ import org.programutvikling.domain.component.*;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.utility.Item;
 import org.programutvikling.domain.utility.NullComponent;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
@@ -33,6 +34,7 @@ public class FileOpenerTxt implements FileOpener {
     private Item parseComponent(String line) throws InvalidComponentFormatException {
         String[] split = line.split(";");
         if (split.length != 4) {
+            Dialog.showErrorDialog(" Du må bruke ; for å separere datafeltene.");
             throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
         }
         String type = split[0];

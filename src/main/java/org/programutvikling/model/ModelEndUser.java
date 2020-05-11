@@ -39,8 +39,10 @@ public enum ModelEndUser {
     private void loadCompleteComputers() {
         //FileHandling.findComputers
         ArrayList<Computer> computers =   FileHandling.findComputers();
-        for(Object c : computers){
-            computerRegister.getObservableRegister().add((Computer) c);
+        for(Computer c : computers){
+            if(c.calculatePrice()!=0) {
+                computerRegister.getObservableRegister().add((Computer) c);
+            }
         }
 
     }
