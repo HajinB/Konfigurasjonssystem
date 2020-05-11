@@ -22,32 +22,22 @@ import java.util.ResourceBundle;
 
 public class EditComponentPopupController extends TabComponentsController implements Initializable, IController {
 
+    Stage stage;
+    ComponentTypes componentTypes = new ComponentTypes();
     @FXML
     private GridPane componentEditNode;
-
     @FXML
     private Label lblEditPopupMessage;
-
     @FXML
     private Button btnEditComponent;
-
     @FXML
     private TextField txtPopupProductName;
-
     @FXML
     private TextArea txtPopupProductDescription;
-
     @FXML
     private PriceField txtPopupProductPrice;
-
     @FXML
     private ChoiceBox<String> cbType;
-
-
-    Stage stage;
-
-
-    ComponentTypes componentTypes = new ComponentTypes();
 
     @FXML
     void btnEditComponent(ActionEvent event) {
@@ -56,7 +46,7 @@ public class EditComponentPopupController extends TabComponentsController implem
     }
 
     private void editComponent() {
-        if(areFieldsEmpty()){
+        if (areFieldsEmpty()) {
             lblEditPopupMessage.setText("Fyll inn alle felt");
             return;
         }
@@ -74,7 +64,7 @@ public class EditComponentPopupController extends TabComponentsController implem
     }
 
     private boolean areFieldsEmpty() {
-        return(txtPopupProductPrice.getText().isEmpty() || txtPopupProductDescription.getText().isBlank() || txtPopupProductName.getText().isEmpty());
+        return (txtPopupProductPrice.getText().isEmpty() || txtPopupProductDescription.getText().isBlank() || txtPopupProductName.getText().isEmpty());
     }
 
     @Override
@@ -93,29 +83,29 @@ public class EditComponentPopupController extends TabComponentsController implem
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
-                   editComponent();
+                    editComponent();
                 }
             }
         });
     }
 
     private void setFocusOnField(int columnIndex, Component c) {
-        System.out.println("Kolonne index er: " +columnIndex);
+        System.out.println("Kolonne index er: " + columnIndex);
 
-        if(columnIndex ==0){
+        if (columnIndex == 0) {
             cbType.requestFocus();
             ComponentTypes componentTypes = new ComponentTypes();
             List<String> s = componentTypes.getObservableTypeListName();
         }
-        if(columnIndex ==1){
+        if (columnIndex == 1) {
             txtPopupProductName.requestFocus();
             txtPopupProductName.selectAll();
         }
-        if(columnIndex==2){
+        if (columnIndex == 2) {
             txtPopupProductDescription.requestFocus();
             txtPopupProductDescription.selectAll();
         }
-        if(columnIndex==3){
+        if (columnIndex == 3) {
             txtPopupProductPrice.requestFocus();
             txtPopupProductPrice.selectAll();
         }

@@ -1,6 +1,7 @@
 package org.programutvikling.domain.io;
 
-import org.programutvikling.domain.component.*;
+import org.programutvikling.domain.component.Component;
+import org.programutvikling.domain.component.ComponentValidator;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.utility.Item;
 import org.programutvikling.domain.utility.NullComponent;
@@ -22,15 +23,16 @@ public class FileOpenerTxt implements FileOpener {
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if(parseComponent(line) instanceof NullComponent){
+                if (parseComponent(line) instanceof NullComponent) {
                     bufferedReader.readLine(); //leser uten å gjøre noe
-                }else{
+                } else {
                     computer.addComponent((Component) parseComponent(line));
                     //temp.getRegister().add(parseComponent(line));
                 }
             }
         }
     }
+
     private Item parseComponent(String line) throws InvalidComponentFormatException {
         String[] split = line.split(";");
         if (split.length != 4) {
@@ -48,7 +50,7 @@ public class FileOpenerTxt implements FileOpener {
                         Model.INSTANCE.getComponentRegister().getRegister());
         if (priceState > 0) {
             //pris er feil - pricestate har riktig pris.
-            TemporaryComponent.INSTANCE.getErrorList().add("prisen på " + tempComponent.getProductName() +" stemmer ikke med databasen, vi " +
+            TemporaryComponent.INSTANCE.getErrorList().add("prisen på " + tempComponent.getProductName() + " stemmer ikke med databasen, vi " +
                     "endrer den til den riktige prisen");
             return new Component(type, name, description, priceState);
         }
@@ -77,18 +79,16 @@ public class FileOpenerTxt implements FileOpener {
     public ArrayList<Object> open(ArrayList<Object> list, Path filePath) throws IOException {
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
-            //hopper over første linje
-            bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
                 //må man lage en metode som tar bort navn og description fra datamaskinen?
                 //første to feltene feks er Navn og pris - så kommer componentregisteret - bør første line være NAVN;
 
-                if(parseComponent(line) instanceof NullComponent){
+                if (parseComponent(line) instanceof NullComponent) {
                     //IKKE LES CURRENT - hvis getproducttype er null, ikke legg til i lista
                     bufferedReader.readLine(); //leser uten å gjøre noe
-                }else{
+                } else {
                     list.add(parseComponent(line));
-                    System.out.println("open / parse :: "+list);
+                    System.out.println("open / parse :: " + list);
                     //temp.getRegister().add(parseComponent(line));
                 }
             }
@@ -100,10 +100,8 @@ public class FileOpenerTxt implements FileOpener {
         computer.removeAll();
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
-            //hopper over første linje
-            bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
-                    computer.addComponent((Component) parseComponentWithoutValidation(line));
+                computer.addComponent((Component) parseComponentWithoutValidation(line));
             }
         }
     }
@@ -118,6 +116,6 @@ public class FileOpenerTxt implements FileOpener {
         String description = split[2];
         double price = parseDouble(split[3], "pris må være et tall");
 
-            return new Component(type, name, description, price);
-        }
+        return new Component(type, name, description, price);
     }
+}

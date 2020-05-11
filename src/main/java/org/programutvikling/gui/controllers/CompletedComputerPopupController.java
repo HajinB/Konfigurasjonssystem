@@ -17,11 +17,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CompletedComputerPopupController extends EnduserController implements Initializable {
-    @FXML private Label lblComputerName;
-    @FXML private ListView<Component> listContent;
-    @FXML private Label lblComputerPrice;
-    private Computer computer;
     EnduserController enduserController;
+    @FXML
+    private Label lblComputerName;
+    @FXML
+    private ListView<Component> listContent;
+    @FXML
+    private Label lblComputerPrice;
+    private Computer computer;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellFactory();
@@ -29,7 +33,7 @@ public class CompletedComputerPopupController extends EnduserController implemen
 
     //todo tror denne er helt lik den i computer listview - lag en generisk?
     private void setCellFactory() {
-        listContent.setCellFactory(lv-> new CustomListViewCell());
+        listContent.setCellFactory(lv -> new CustomListViewCell());
     }
 
     public void initData(Computer c, Stage stage, EnduserController enduserController) {
@@ -37,7 +41,7 @@ public class CompletedComputerPopupController extends EnduserController implemen
         lblComputerName.setText(c.getProductName());
         lblComputerPrice.setText(lblComputerPriceFormat(c.getProductPrice()));
         listContent.setItems(c.getComponentRegister().getObservableRegister());
-        this.enduserController=enduserController;
+        this.enduserController = enduserController;
         this.computer = c;
     }
 
@@ -57,11 +61,12 @@ public class CompletedComputerPopupController extends EnduserController implemen
             stage.close();
         }
     }
+
     String lblComputerPriceFormat(double price) {
-        if(price % 1 == 0) {
-            return String.format("%.0f",price) + " kr";
+        if (price % 1 == 0) {
+            return String.format("%.0f", price) + " kr";
         } else {
-            return String.format("%.2f",price) + " kr";
+            return String.format("%.2f", price) + " kr";
         }
     }
 }
