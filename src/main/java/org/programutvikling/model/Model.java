@@ -57,7 +57,7 @@ public enum Model {
             User user2 = new User(false, "user", "user", "Bruker",
                     "user@user.com", "Brukersgate 8", "0010", "Oslo");
             User user3 = new User(false, "Ola_n", "password", "Ola Nordmann", "ola@nordmann.com", "Trondheimsveien 1", "0956", "Oslo");
-            User user4 = new User(false, "Kari_h1", "kari123", "Kari Nordmann v/ Host&Servers1", "kari@hostandservers1.no", "Postboks 32 Nydalen", "0421", "Nydalen");
+            User user4 = new User(false, "Kari_h1", "kari123", "Kari Nordmann v/ Host&Servers1", "kari@hostandservers1.no", "Postboks 183 Moholt", "7448", "Trondheim");
             userRegister.addBruker(admin);
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
