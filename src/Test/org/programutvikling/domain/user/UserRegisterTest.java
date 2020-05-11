@@ -1,4 +1,4 @@
-package org.programutvikling.user;
+package org.programutvikling.domain.user;
 
 import org.junit.jupiter.api.Test;
 import org.programutvikling.model.Model;

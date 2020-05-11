@@ -34,8 +34,9 @@ public class UserValidator {
     public static boolean address(String address) {
         return !address.isBlank();
     }
-    static boolean zip(String zip) {
-        return zip.matches(ONLY_NUMBERS) && zip.length() == ZIP_LENGTH;
+    public static boolean zip(String zip) {
+        return zip.matches(ONLY_NUMBERS) && zip.length() == ZIP_LENGTH
+                && !zip.matches("0000");
     }
     public static boolean city(String city) {
         return !city.isBlank();
