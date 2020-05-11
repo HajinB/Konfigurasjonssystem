@@ -15,10 +15,10 @@ import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.customViews.PriceFormatCell;
-import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.gui.logic.EndUserService;
-import org.programutvikling.gui.utility.FXMLGetter;
 import org.programutvikling.gui.logic.EndUserLogic;
+import org.programutvikling.gui.logic.EndUserService;
+import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.FXMLGetter;
 import org.programutvikling.model.ModelEndUser;
 
 import java.io.IOException;

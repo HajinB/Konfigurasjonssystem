@@ -1,10 +1,5 @@
 package org.programutvikling.gui.controllers;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,8 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.programutvikling.App;
-import org.programutvikling.model.Model;
 import org.programutvikling.domain.user.User;
+import org.programutvikling.model.Model;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 //https://ducmanhphan.github.io/2019-10-17-Creating-JavaFX-project-with-Maven/
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html

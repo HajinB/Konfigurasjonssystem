@@ -1,20 +1,19 @@
 package org.programutvikling.gui.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
-import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.io.FileSaverTxt;
 import org.programutvikling.domain.utility.ComputerFactory;
 import org.programutvikling.gui.customViews.CustomTextWrapCellFactory;
 import org.programutvikling.gui.customViews.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.ModelEndUser;
-import org.programutvikling.domain.io.FileSaverTxt;
 
 import java.io.IOException;
 import java.net.URL;

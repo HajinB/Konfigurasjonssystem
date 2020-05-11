@@ -12,10 +12,10 @@ import org.programutvikling.App;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.io.FileOpenerTxt;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;
-import org.programutvikling.domain.io.FileOpenerTxt;
 
 import java.io.IOException;
 import java.net.URL;
