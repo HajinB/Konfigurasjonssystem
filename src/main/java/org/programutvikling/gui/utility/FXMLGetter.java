@@ -1,7 +1,6 @@
 package org.programutvikling.gui.utility;
 
 import javafx.fxml.FXMLLoader;
-import org.programutvikling.gui.*;
 
 import java.io.IOException;
 
