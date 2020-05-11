@@ -60,7 +60,7 @@
 .loginPane {
     -fx-background-radius: 40 0 40 0;
     -fx-background-color: white;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 40 0 40 0;
     -fx-effect: dropshadow(gaussian, #ababab, 1, 0.7, 1.5, 1.5);
 }
 

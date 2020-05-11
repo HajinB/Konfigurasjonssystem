@@ -89,12 +89,11 @@
 }
 
 .table-view {
-
     -fx-background-color: white;
     -fx-border-color: none;
-
 }
 
+/*Shoppinglist tom og computerlist sin header*/
 #shoppingListView {
     -fx-background-color: rgba(56, 141, 200, 0.21);
     -fx-border-color: rgba(56, 141, 200, 0.21);
@@ -106,6 +105,16 @@
     -fx-background-radius: 5px;
 }
 
+/*Listview, computerview og totalpris i endUser*/
+
+.shopCart {
+    -fx-font-family: Verdana;
+    -fx-background-color: #ffffff;
+    -fx-border-color: rgba(187, 187, 187, 0.32);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.08), 5, 0.5, 1, 1);
+}
 
 /*kolonne i tableview*/
 

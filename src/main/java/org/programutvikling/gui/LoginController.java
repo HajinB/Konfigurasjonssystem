@@ -18,7 +18,7 @@ import org.programutvikling.domain.user.User;
 
 //https://ducmanhphan.github.io/2019-10-17-Creating-JavaFX-project-with-Maven/
 //https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
-public class PrimaryController implements Initializable {
+public class LoginController implements Initializable {
 
     public Label lblFeilPassword;
     FileHandling fileHandling = new FileHandling();

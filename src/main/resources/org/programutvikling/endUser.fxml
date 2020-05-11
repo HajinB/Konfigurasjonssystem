@@ -51,7 +51,7 @@
                                </columnResizePolicy>
                            </TableView>
                        </TitledPane>
-                       <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne(RAM) *">
+                       <TitledPane contentDisplay="CENTER" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Minne *">
                            <TableView fx:id="tblMemory" prefHeight="230.0">
                                <columns>
                                    <TableColumn prefWidth="-1.0" styleClass="columnUser" text="Navn">
@@ -163,7 +163,7 @@
                         </columnResizePolicy>
                            </TableView>
                        </TitledPane>
-                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk &amp; SSD *">
+                       <TitledPane contentDisplay="RIGHT" expanded="false" graphicTextGap="0.0" styleClass="titledPane" stylesheets="@CSS/EndUser.css" text="Harddisk *">
                            <TableView fx:id="tblHardDisc" prefHeight="230.0">
                                <columns>
                                    <TableColumn minWidth="100.0" prefWidth="-1.0" styleClass="columnUser" text="Navn">

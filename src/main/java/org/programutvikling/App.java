@@ -33,15 +33,15 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-        //setRoot("org/programutvikling/primary.fxml");
+        //setRoot("org/programutvikling/login.fxml");
         launch();
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         initOnExitHandler(primaryStage);
-        scene = new Scene(loadFXML("primary"));
-        System.out.println(App.class.getResource("primary"));
+        scene = new Scene(loadFXML("login"));
+        System.out.println(App.class.getResource("login"));
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setMaximized(true);
