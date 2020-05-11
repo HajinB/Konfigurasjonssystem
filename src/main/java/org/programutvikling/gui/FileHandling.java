@@ -3,11 +3,11 @@ package org.programutvikling.gui;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.domain.utility.ComputerFactory;
 import org.programutvikling.domain.io.FileOpener;
 import org.programutvikling.domain.io.FileOpenerTxt;
 import org.programutvikling.domain.io.FileSaver;
 import org.programutvikling.domain.io.FileSaverTxt;
+import org.programutvikling.domain.utility.ComputerFactory;
 import org.programutvikling.domain.utility.UserPreferences;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
@@ -68,6 +68,7 @@ public class FileHandling {
     public static void saveFileAuto(ArrayList<Object> register, Path directoryPath) throws IOException {
         if (directoryPath != null) {
             FileSaver saver = null;
+            System.out.println(directoryPath.toString());
             saver = FileUtility.getFileSaver(directoryPath.toString());
             tryToSave(register, directoryPath, saver);
         }
@@ -134,9 +135,7 @@ public class FileHandling {
     }
 
     private static void saveEndUserState() {
-        Model.INSTANCE.getCleanEndUserObjectList();
-        ModelEndUser.INSTANCE.getComputerRegister();
-        Computer computer = ModelEndUser.INSTANCE.getComputer();
+        Computer computer = getComputer();
         saveFileTxt(computer, Paths.get(userPreferences.getStringPathToUserComputer()));
     }
 

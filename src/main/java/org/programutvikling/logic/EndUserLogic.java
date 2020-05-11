@@ -3,23 +3,31 @@ package org.programutvikling.logic;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
+import org.programutvikling.gui.ComputerPopupController;
 import org.programutvikling.gui.CustomViews.CustomListViewCell;
 import org.programutvikling.gui.CustomViews.CustomTextWrapCellFactory;
 import org.programutvikling.gui.CustomViews.PriceFormatCell;
 import org.programutvikling.gui.DetailsController;
 import org.programutvikling.gui.EnduserController;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.FXMLGetter;
 import org.programutvikling.model.ModelEndUser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class EndUserLogic {
@@ -29,19 +37,22 @@ public class EndUserLogic {
     private ArrayList<TableColumn> tblColumnPriceList;
     private ArrayList<TableColumn> tblColumnDescriptionList;
     private ListView<Component> shoppingListView;
+    private TableView<Computer> tblCompletedComputers;
     private BorderPane borderPane;
     EnduserController endUserController;
     DetailsController detailsController;
 
     public EndUserLogic(EnduserController endUserController, BorderPane topLevelPaneEndUser,
                         ArrayList<TableView<Component>> tblViewList, ArrayList<TableColumn> tblColumnDescriptionList,
-                        ArrayList<TableColumn> tblColumnPriceList, ListView shoppingListView) {
+                        ArrayList<TableColumn> tblColumnPriceList, ListView shoppingListView,
+                        TableView<Computer> tblCompletedComputers) {
         this.endUserController = endUserController;
         this.borderPane = topLevelPaneEndUser;
         this.tblViewList = new ArrayList<>(tblViewList);
         this.tblColumnPriceList = new ArrayList<>(tblColumnPriceList);
         this.tblColumnDescriptionList = new ArrayList<>(tblColumnDescriptionList);
         this.shoppingListView = shoppingListView;
+        this.tblCompletedComputers = tblCompletedComputers;
         initView();
     }
 
@@ -58,7 +69,63 @@ public class EndUserLogic {
         setDblClickEvent();
         initTextWrapCellFactory();
         shoppingListView.setCellFactory(lv-> new CustomListViewCell());
+        setCompletedComputersEvents();
     }
+
+    private void setCompletedComputersEvents() {
+
+            /**detecter tablerow, for å hente ut component*/
+            //skal åpne en fxml, og sende cell-content til initmetoden til controlleren til denne fxmln
+            tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    //setCellSelectionEnabled er om man kan velge en enkelt celle eller en hel rad.
+                    tblCompletedComputers.getSelectionModel().setCellSelectionEnabled(false);
+                    TableRow row;
+                    if (isDoubleClick(event)) {
+                        Node node = ((Node) event.getTarget()).getParent();
+                        if (node instanceof TableRow) {
+                            row = (TableRow) node;
+                        } else {
+                            //hvis man trykker på noe inne i cellen.
+                            row = (TableRow) node.getParent();
+                        }
+                        try {
+                            //åpne
+                            openDetailedView(row);
+                            endUserController.updateTotalPrice();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
+        }
+
+    FXMLLoader getFxmlLoader(String fxml) throws IOException {
+        FXMLGetter fxmlGetter = new FXMLGetter();
+        FXMLLoader loader = fxmlGetter.getFxmlLoader(fxml);
+        return loader;
+    }
+
+    //kan lett trekkes ut (se på tabcomponents for fasit)
+    private void openDetailedView(TableRow row) throws IOException {
+        //henter popup fxml
+        System.out.println("her er vi i openDetailedView");
+        FXMLLoader loader = getFxmlLoader("computerPopup.fxml");
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(
+                new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
+        );
+        Computer c = (Computer) row.getItem();
+
+        ComputerPopupController computerPopupController =
+                loader.<ComputerPopupController>getController();
+        computerPopupController.initData(c, stage, endUserController);
+        stage.show();
+    }
+
     private void initTextWrapCellFactory() {
 
         //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på

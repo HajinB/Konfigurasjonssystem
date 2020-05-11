@@ -6,23 +6,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.programutvikling.domain.component.Component;
-import org.programutvikling.domain.component.ComponentTypes;
 import org.programutvikling.domain.user.User;
+import org.programutvikling.domain.user.UserValidator;
 import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.NoSpacebarField;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.IController;
+import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryUser;
 
-import java.io.Serializable;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserPopupController extends TabUsersController implements Initializable, IController {
 
+    Stage stage;
     @FXML
     private GridPane userEditNode;
     @FXML
@@ -39,18 +38,33 @@ public class UserPopupController extends TabUsersController implements Initializ
     private ZipField userZip;
     @FXML
     private Button btnEditUser;
-
     private RegistryUserLogic registryUserLogic;
 
-    Stage stage;
+    User tempUserIgnoreForValidation;
 
     private void editUser() {
+
+        //må fjerne den komponenten som blir edited fra listen for å kunne sjekke om det nye brukernavnet eller
+        // mailen eksisterer fra før.
+        getUserRegister().getRegister().remove(tempUserIgnoreForValidation);
         if (areInputFieldsEmpty()) {
             Dialog.showErrorDialog("Fyll inn alle felt!");
+            getUserRegister().getRegister().add(tempUserIgnoreForValidation);
+            return;
+        }
+        if (!isEmailValid()) {
+            Dialog.showErrorDialog("E-postadressen er ikke gyldig eller eksisterer allerede");
+            getUserRegister().getRegister().add(tempUserIgnoreForValidation);
+            return;
+        }
+        if (!isUsernameValid()) {
+            Dialog.showErrorDialog("Brukernavnet er ikke gyldig, eller eksisterer fra før.");
+            getUserRegister().getRegister().add(tempUserIgnoreForValidation);
             return;
         }
         User user = null;
         try {
+            getUserRegister().getRegister().add(tempUserIgnoreForValidation);
             user = new User(cbAdmin.isSelected(), userUsername.getText(), userPassword.getText(), name.getText(), email.getText(), address.getText(), userZip.getText(), UserCity.getText());
             System.out.println(user);
         } catch (IllegalArgumentException illegalArgumentException) {
@@ -62,6 +76,27 @@ public class UserPopupController extends TabUsersController implements Initializ
         stage.close();
     }
 
+    private boolean isUsernameValid() {
+        return (!usernameExists(userUsername.getText())) && UserValidator.username(userUsername.getText());
+    }
+
+    private boolean isEmailValid() {
+
+        return (!emailExists(email.getText())) && UserValidator.email(email.getText());
+    }
+
+    public boolean usernameExists(String username) {
+        System.out.println(getUserRegister().toString());
+        return Model.INSTANCE.getUserRegister().usernameExists(username);
+
+    }
+
+    public boolean emailExists(String email) {
+        System.out.println(getUserRegister().toString());
+        return Model.INSTANCE.getUserRegister().emailExists(email);
+    }
+
+
     @FXML
     private void btnEditUser(ActionEvent event) {
         editUser();
@@ -69,8 +104,10 @@ public class UserPopupController extends TabUsersController implements Initializ
 
     @Override
     public void initData(Clickable c, Stage stage, int columnIndex) {
-        System.out.println("kolonne for userpopup: "+ columnIndex);
+        System.out.println("kolonne for userpopup: " + columnIndex);
         User u = (User) c;
+        this.tempUserIgnoreForValidation = u;
+
         //tar inn stage for å kunne lukke når brukeren trykker endre
 //        registryUserLogic.setTextAreaListener(userEditNode);
         this.stage = stage;
@@ -111,15 +148,15 @@ public class UserPopupController extends TabUsersController implements Initializ
         if (columnIndex == 5) {
             address.requestFocus();
             address.selectAll();
-        }
-        else if(columnIndex == 6) {
+        } else if (columnIndex == 6) {
             userZip.requestFocus();
             userZip.selectAll();
-        } else if(columnIndex == 7) {
+        } else if (columnIndex == 7) {
             UserCity.requestFocus();
             UserCity.selectAll();
         }
     }
+
     private boolean areInputFieldsEmpty() {
         return (((TextField) userEditNode.lookup("#userUsername")).getText().isEmpty() || ((TextField) userEditNode.lookup("#userPassword")).getText().isEmpty()
                 || ((TextField) userEditNode.lookup("#userName")).getText().isEmpty() || ((TextField) userEditNode.lookup("#userMail")).getText().isEmpty()

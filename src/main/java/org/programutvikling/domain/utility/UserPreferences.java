@@ -9,17 +9,15 @@ public class UserPreferences {
     final private String pathToCurrentComputer = "AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt";
     final private String pathToBackupAppFiles = "AppFiles/Database/Admin/Backup/AppDataBackup.jobj";
     final private String pathToComputers = "AppFiles/Database/User/Computers";
-    public String getStringPathToUserAppFiles() {
-        return pathToCurrentComputer;
-    }
 
+    /**
+     * enduser:
+     */
 
-
-    /**enduser:*/
-
-    public Path getPathPathToUserComputer(){
+    public Path getPathPathToUserComputer() {
         return Paths.get(pathToCurrentComputer);
     }
+
     public String getStringPathToUserComputer() {
         return pathToCurrentComputer;
     }
@@ -27,8 +25,10 @@ public class UserPreferences {
     public Path getPathToComputers() {
         return Paths.get(pathToComputers);
     }
-    
-    /**SuperUser:*/
+
+    /**
+     * SuperUser:
+     */
     public String getStringPath() {
         return pathToAdminAppFiles;
     }
@@ -45,7 +45,6 @@ public class UserPreferences {
     public Path getPathToBackupAppFiles() {
         return Paths.get(pathToAdminAppFiles);
     }
-
 
 
 }

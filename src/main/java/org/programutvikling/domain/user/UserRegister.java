@@ -54,7 +54,7 @@ public class UserRegister implements Serializable, Clickable {
     public boolean usernameExists(String username) {
         // Check if the username already exists by running
         // through the register and see if the username equals a taken username
-        for(User user : userRegister) {
+        for(User user : this.userRegister) {
             if (user.getUsername().equalsIgnoreCase(username)) {
                 return true;
             }
@@ -64,7 +64,7 @@ public class UserRegister implements Serializable, Clickable {
     }
 
     public boolean emailExists(String email) {
-        for(User user : userRegister) {
+        for(User user : this.userRegister) {
             if(user.getEmail().equalsIgnoreCase(email)) {
                 return true;
             }

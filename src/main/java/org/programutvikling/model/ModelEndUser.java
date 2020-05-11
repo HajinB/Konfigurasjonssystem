@@ -17,11 +17,14 @@ public enum ModelEndUser {
     private Computer computer = new Computer("current");
 
     private ModelEndUser(){
-        loadCompleteComputers();
-        loadComputer();
+
+            loadCompleteComputers();
+            loadComputer();
+
     }
 
     private void loadComputer() {
+
         FileHandling.openCart(computer);
     }
 

@@ -23,6 +23,7 @@ import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.EndUserService;
 import org.programutvikling.gui.utility.FXMLGetter;
 import org.programutvikling.logic.EndUserLogic;
+import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
 
 import java.io.IOException;
@@ -65,23 +66,65 @@ public class EnduserController {
 
     private EndUserLogic endUserLogic;
 
-    //todo hver dag fra nå av : prøv å få ut all denne koden fra kontrolleren. alt man trenger er å definere
-    // kolonnenen, send de til EndUserLogic, og gjør alt som trengs der!!!!
 
     @FXML
     public void initialize() throws IOException {
         addTableViewsToList();
-        System.out.println(ModelEndUser.INSTANCE);
         //todo så og si alle metoder under her kan trekkes ut av controlleren
         endUserLogic = new EndUserLogic(this, topLevelPaneEndUser, tblViewList, tblColumnDescriptionList,
-                tblColumnPriceList, shoppingListView);
+                tblColumnPriceList, shoppingListView, tblCompletedComputers);
         updateComponentViews();
         updateList();
         endUserService.updateEndUserRegisters();
         updateComputerListView();
-        setTblCompletedComputersListener();
+       // setTblCompletedComputersListener();
         final Tooltip tooltipCompletedComputers = new Tooltip("Dobbeltklikk på en datamaskin for å se detaljer");
         tblCompletedComputers.setTooltip(tooltipCompletedComputers);
+    }
+
+    @FXML
+    public void btnOpenComputer(ActionEvent event) throws IOException {
+        FileHandling.openCartFromSelectedFile(getComputer(), this.stage);
+        updateTotalPrice();
+    }
+
+    @FXML
+    public void btnSavePC(ActionEvent event) throws IOException {
+        List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
+        if (FileHandling.validateCartListToSave(whatsMissing, stage)) return;
+        updateCompletedComputers();
+    }
+
+
+    @FXML
+    public void btnDeleteFromCart(ActionEvent event) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette.", "Vil du slette ",
+                shoppingListView.getSelectionModel().getSelectedItems().get(0).getProductName());
+        alert.showAndWait();
+        if (shoppingListView.getSelectionModel().isEmpty()) {
+            return;
+        }
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            Component selectedComp = shoppingListView.getSelectionModel().getSelectedItem();
+            deleteComponent(selectedComp);
+            FileHandling.saveAllAdminFiles();
+        }
+    }
+    @FXML
+    //denne metoden kan hvertfall kjøres fra enduserlogic
+    public void btnAddToCart(ActionEvent event) {
+        boolean isSomethingSelected = false;
+
+        for (TableView<Component> t : tblViewList) {
+            if (!t.getSelectionModel().isEmpty()) {
+                addComponentToCart(t);
+                isSomethingSelected = true;
+            }
+        }
+        if (!isSomethingSelected) {
+            System.out.println("Velg en rad for å legge til i handlekurven");
+        }
+        clearSelection();
     }
 
     private void addTableViewsToList() {
@@ -90,7 +133,7 @@ public class EnduserController {
         tblViewList.addAll(componentsViews);
 
         List<TableColumn> priceColumns = Arrays.asList(processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln, memoryPriceCln,
-                mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln);
+                mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln, computerPriceCln);
         tblColumnPriceList.addAll(priceColumns);
 
         List<TableColumn> descriptionColumns = Arrays.asList(processorDescriptionColumn, memoryDescriptionColumn,
@@ -98,71 +141,6 @@ public class EnduserController {
                 otherDescriptionColumn, graphicDescriptionColumn, motherboardDescriptionColumn, harddiskDescriptionColumn,
                 keyboardDescriptionColumn, screenDescriptionColumn);
         tblColumnDescriptionList.addAll(descriptionColumns);
-    }
-
-    private void setTblCompletedComputersListener() {
-        Callback<TableColumn, TableCell> priceCellFactory =
-                new Callback<TableColumn, TableCell>() {
-                    public TableCell call(TableColumn p) {
-                        return new PriceFormatCell();
-                    }
-                };
-        computerPriceCln.setCellFactory((priceCellFactory));
-
-        /**detecter tablerow, for å hente ut component*/
-        //skal åpne en fxml, og sende cell-content til initmetoden til controlleren til denne fxmln
-        tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                //setCellSelectionEnabled er om man kan velge en enkelt celle eller en hel rad.
-                tblCompletedComputers.getSelectionModel().setCellSelectionEnabled(false);
-                TableRow row;
-                if (isDoubleClick(event)) {
-                    Node node = ((Node) event.getTarget()).getParent();
-                    if (node instanceof TableRow) {
-                        row = (TableRow) node;
-                    } else {
-                        //hvis man trykker på noe inne i cellen.
-                        row = (TableRow) node.getParent();
-                    }
-                    try {
-                        //åpne
-                        openDetailedView(row);
-                        updateTotalPrice();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-    }
-
-    private boolean isDoubleClick(MouseEvent event) {
-        return event.isPrimaryButtonDown() && event.getClickCount() == 2;
-    }
-
-    FXMLLoader getFxmlLoader(String fxml) throws IOException {
-        FXMLGetter fxmlGetter = new FXMLGetter();
-        FXMLLoader loader = fxmlGetter.getFxmlLoader(fxml);
-        return loader;
-    }
-
-    //kan lett trekkes ut (se på tabcomponents for fasit)
-    private void openDetailedView(TableRow row) throws IOException {
-        //henter popup fxml
-        System.out.println("her er vi i openDetailedView");
-        FXMLLoader loader = getFxmlLoader("computerPopup.fxml");
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(
-                new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
-        );
-        Computer c = (Computer) row.getItem();
-
-        ComputerPopupController computerPopupController =
-                loader.<ComputerPopupController>getController();
-        computerPopupController.initData(c, stage, this);
-        stage.show();
     }
 
 
@@ -198,11 +176,10 @@ public class EnduserController {
         openFinalDetails();
     }
 
-    //todo legg dette i egen windowhandler? 0o
     private void openFinalDetails() throws IOException {
 
         System.out.println("her er vi i openDetailedView");
-        FXMLLoader loader = getFxmlLoader("detailsPopup.fxml");
+        FXMLLoader loader = FXMLGetter.fxmlLoaderFactory("detailsPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(
@@ -218,8 +195,6 @@ public class EnduserController {
         return ModelEndUser.INSTANCE.getComputer();
     }
 
-
-    //denne kan også skrives om og flyttes til enduserlogic
     private void addComponentToCart(TableView<Component> tbl) {
         Component selectedComp = tbl.getSelectionModel().getSelectedItem();
         if (selectedComp != null) {
@@ -228,18 +203,6 @@ public class EnduserController {
         }
     }
 
-    @FXML
-    public void btnOpenComputer(ActionEvent event) throws IOException {
-        FileHandling.openCartFromSelectedFile(getComputer(), this.stage);
-        updateTotalPrice();
-    }
-
-    @FXML
-    public void btnSavePC(ActionEvent event) throws IOException {
-        List<String> whatsMissing = computerValidator.listOfMissingComponentTypes(getComputer());
-        if (FileHandling.validateCartListToSave(whatsMissing, stage)) return;
-        updateCompletedComputers();
-    }
 
     void updateComputerListView() {
         if (getComputer() != null)
@@ -251,6 +214,13 @@ public class EnduserController {
     }
 
     private void updateComponentViews() {
+        Callback<TableColumn, TableCell> priceCellFactory =
+                new Callback<TableColumn, TableCell>() {
+                    public TableCell call(TableColumn p) {
+                        return new PriceFormatCell();
+                    }
+                };
+        computerPriceCln.setCellFactory((priceCellFactory));
         endUserService.updateEndUserRegisters();
         updateTotalPrice();
     }
@@ -322,21 +292,6 @@ public class EnduserController {
         tblScreen.setItems(endUserService.getScreenRegister().getObservableRegister());
     }
 
-    //denne kan også flyttes ut lett.
-    @FXML
-    public void btnDeleteFromCart(ActionEvent event) throws IOException {
-        Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette.", "Vil du slette ",
-                shoppingListView.getSelectionModel().getSelectedItems().get(0).getProductName());
-        alert.showAndWait();
-        if (shoppingListView.getSelectionModel().isEmpty()) {
-            return;
-        }
-        if (alert.getResult() == alert.getButtonTypes().get(0)) {
-            Component selectedComp = shoppingListView.getSelectionModel().getSelectedItem();
-            deleteComponent(selectedComp);
-            FileHandling.saveAllAdminFiles();
-        }
-    }
 
     private void deleteComponent(Component selectedComp) {
         getComputer().getComponentRegister().getRegister().remove(selectedComp);
@@ -352,20 +307,5 @@ public class EnduserController {
         }
     }
 
-    @FXML
-    //denne metoden kan hvertfall kjøres fra enduserlogic
-    public void btnAddToCart(ActionEvent event) {
-        boolean isSomethingSelected = false;
 
-        for (TableView<Component> t : tblViewList) {
-            if (!t.getSelectionModel().isEmpty()) {
-                addComponentToCart(t);
-                isSomethingSelected = true;
-            }
-        }
-        if (!isSomethingSelected) {
-            System.out.println("Velg en rad for å legge til i handlekurven");
-        }
-        clearSelection();
-    }
 }

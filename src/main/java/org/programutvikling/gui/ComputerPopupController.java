@@ -34,7 +34,7 @@ public class ComputerPopupController extends EnduserController implements Initia
         listContent.setCellFactory(lv-> new CustomListViewCell());
     }
 
-    void initData(Computer c, Stage stage, EnduserController enduserController) {
+    public void initData(Computer c, Stage stage, EnduserController enduserController) {
         this.stage = stage;
         lblComputerName.setText(c.getProductName());
         lblComputerPrice.setText(lblComputerPriceFormat(c.getProductPrice()));
