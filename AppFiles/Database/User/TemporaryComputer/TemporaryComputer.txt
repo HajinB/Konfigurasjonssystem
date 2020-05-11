@@ -1,3 +1,45 @@
-Prosessor;AMD Ryzen 7 3800X Prosessor;Socket-AM4, 8-Core, 16-Thread, 3.9/4.5GHz, 105W, 7nmsfadjhdfsahkhjkgadfshjgkasdfjghkafdsgjhkadfsghjkadfsjhkgadfsgjkhadfsjghkdfasjghkafdsjkgh;3999.0
-Minne;asdf;3928479328794328;23.0
-Kabinett;Fractal Design Define S2 Vision RGB;Vifter: 3x 140mm RGB front, 1x 140mm RGB bak, ATX, mATX, ITX,Glass;2939.0
+Prosessor;Intel Core i5-9600K prosessor;Få knivskarp ytelse med 9. generasjons hexa-core-prosessoren Intel Core i5-9600K. Prosessoren kan kjøres i turbomodus på opptil 4,6 GHz, har 6 tråder for solid multitasking og ulåst multiplier for å overklokke den ytterligere.
+
+6-core/6 tråder, 3,7-4,6 GHz
+LGA1151 chipset, 9 MB L3 cache
+95 W TDP, ulåst;3299.0
+Minne;Apple Memory DDR4 SO-DIMM RAM minnebrikke 16 GB;Med raske Apple Memory DDR4 SO-DIMM RAM kan du forbedre ytelsen fra din iMac 27-inch. Pakken inneholder 2 stk SO-DIMM moduler, hver på 8 GB, som passer til iMac 27-inch modeller som er fra midten av 2017 eller nyere.
+
+2 stk. 8 GB DDR4 SO-DIM RAM
+2400 MHz og CL17 timing
+For iMac 27" (fra midten av 2017 eller nyere);4990.0
+Mus;Logitech G305 trådløs gamingmus;Få fullstendig kontroll over bevegelsene dine i spillet med den trådløse gamingmusen Logitech G305. Med et lettvektig design, Hero optisk sensor med opptil 12 000 DPI og langvarig batteri kan du spille i høy hastighet.
+
+USB-mottaker
+Seks programmerbare knapper
+Opptil 12 000 dpi;649.0
+Hovedkort;MSI Z390-A Pro hovedkort;MSI Z390-A Pro hovedkortet lar deg bygge en kraftfull gaming-PC med avansert teknologi og Intel Turbo USB 3.1 Gen 2. Micro-ATX-kortet har LGA1151-sokkel for 9. generasjons Intel-prosessorer og støtter multi-GPU-oppsett.
+
+ATX-format,LGA1151-sokkel for 9.gen
+Støtter multi-GPU
+Intel Turbo USB 3.1 Gen 2;1595.0
+Kabinett;Fractal Design Meshify S2 chassis til PC;Fractal Design Meshify S2 PC case lets you build a high-performance gaming PC with extensive cooling options and clean interior layout. The case has full-size side panel from dark tempered glass, mesh top and front panels and includes 3 140 mm fans.
+
+ATX PC case, darkened glass panel
+Modular layout, robust cooling
+3x 140 mm GP-14 fans included;1499.0
+Harddisk;Samsung 860 EVO 2,5" SSD (500 GB);Forbedre ytelsen til din stasjonære eller bærbare PC med raske og pålitelige Samsung 860 EVO 2,5" SATA SSD-lagring. Lagringsenheten gir høyere lese- og skrivehastighet og beskytter filene dine med 256-bit AES-kryptering.
+
+Kapasitet: 500 GB, størrelse: 2,5"
+Opptil 550/520 MB/s lese-/skrivehastighet
+SATA 3.0-grensesnitt;1120.0
+Skjermkort;Palit Gefore GTX 1650 Super StormX OC grafikkort;Grafikkortet Palit Gefore GTX 1650 Super StormX OC tilbyr gaming- og produktivitetsytelse på inngangsnivå. Det byr på en opptil 50% høyere ytelse enn det originale 1650, og passer godt for de prisbevisste eller en gaming-PC for nybegynnere.
+
+4 GB GDDR6 RAM, Nvidia G-Sync
+1x HDMI, 1x DisplayPort, 1x DVI
+Design med en vifte;2190.0
+Skjerm;AOC G2590FX 24,5" gamingskjerm;Kjør på selv i spill der ting går fort, uten spor av hakking. AOC G2590FX 24,5" gamingskjerm lar deg utforske, kjempe og kjøre om kapp i Full HD-oppløsning og med minimalt med forsinkelser, takket være 144 Hz oppdateringsfrekvens og AMD FreeSync.
+
+24.5" Full HD 1080p TN-panel
+Rammeløst design på tre sider
+AMD FreeSync, G-Sync-kompatibel;2695.0
+Harddisk;Samsung 860 EVO 2,5" SSD (500 GB);Forbedre ytelsen til din stasjonære eller bærbare PC med raske og pålitelige Samsung 860 EVO 2,5" SATA SSD-lagring. Lagringsenheten gir høyere lese- og skrivehastighet og beskytter filene dine med 256-bit AES-kryptering.
+
+Kapasitet: 500 GB, størrelse: 2,5"
+Opptil 550/520 MB/s lese-/skrivehastighet
+SATA 3.0-grensesnitt;1120.0
