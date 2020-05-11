@@ -64,8 +64,8 @@ public enum Model {
             userRegister.addBruker(user4);
             System.out.println("addDefault kjørt!");
         } else if (!userRegister.checkForAdmins()) {
-            User admin = new User(true, "admin", "admin", "admin",
-                    "admin@admin.com", "Adminsgaten 1", "0909", "Adminby");
+            User admin = new User(true, "admin", "admin", "Administrator",
+                    "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
             userRegister.addBruker(admin);
             Dialog.showInformationDialog("Ingen admins i registeret. \"admin\" har blitt lagt til i registeret.");
         }
