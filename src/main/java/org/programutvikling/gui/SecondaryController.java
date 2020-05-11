@@ -62,8 +62,10 @@ public class SecondaryController implements Initializable {
             try {
                 System.out.println(chosenPath);
                 fileOpenerTxt.openWithoutValidation(computer, Paths.get(chosenPath));
+                tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
             } catch (IOException ex) {
                 ex.printStackTrace();
+                tabComponentsController.setLblComponentMsg("Komponentene har ugyldig format.");
             }
             System.out.println("yeee etter open computer, size: ");
             System.out.println(computer.getComponentRegister().getObservableRegister().size());
