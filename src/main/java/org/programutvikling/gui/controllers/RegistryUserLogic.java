@@ -131,10 +131,11 @@ public class RegistryUserLogic implements Stageable {
     private boolean areInputFieldsEmpty() {
         return isAdressEmpty() || isCityEmpty() || isEmailEmpty() || isNameEmpty() ||
                 isPasswordEmpty() || isUsernameEmpty() || isZipEmpty();
-
     }
 
+    //"#userUsername"
     boolean isUsernameEmpty () {
+        //return isFieldEmpty("#userUsername");
         return ((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userUsername")).getText() == null ||
                 ((TextField) gridPane.lookup("#userUsername")).getText().isBlank() ||

@@ -33,27 +33,6 @@ public class ComponentRegister implements Serializable, Clickable {
         componentObservableList.clear();
     }
 
-    public ObservableList<Component> filterByProductName(String name) {
-        return componentObservableList.stream().
-                filter(component -> component.getProductName().toLowerCase().matches(String.format("%s%s%s", ".*",
-                        name.toLowerCase(), ".*"))).
-                collect(toCollection(FXCollections::observableArrayList));
-    }
-
-    public ObservableList<Component> filterByProductType(String type) {
-        return componentObservableList.stream().
-                filter(p -> p.getProductType().toLowerCase().
-                        matches(String.format("%s%s%s", ".*", type.toLowerCase(), ".*"))).
-                collect(toCollection(FXCollections::observableArrayList));
-    }
-
-    public ObservableList<Component> filterByProductTypeEqual(String type) {
-        return componentObservableList.stream().
-                filter(p -> p.getProductType().toLowerCase().
-                        matches(String.format("%s%s%s", ".*", type.toLowerCase(), ".*"))).
-                collect(toCollection(FXCollections::observableArrayList));
-    }
-
     public ObservableList<Component> createListByType(String type){
         ObservableList<Component> componentTypeList = FXCollections.observableArrayList();
         for(Component c: componentObservableList){
@@ -62,7 +41,6 @@ public class ComponentRegister implements Serializable, Clickable {
             }
         }
         return componentTypeList;
-
     }
 
     public void addComponent(Component component) {
@@ -103,7 +81,7 @@ public class ComponentRegister implements Serializable, Clickable {
     }
 
     public int countByType(String s) {
-        List<Component> list = filterByProductType(s);
+        List<Component> list = createListByType(s);
         return list.size();
     }
 }

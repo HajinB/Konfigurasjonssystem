@@ -156,7 +156,7 @@ public class TabComponentsController {
 
     ObservableList<Component> getSearchedAndFilteredList() {
         return Search.getFilteredList(getComponentRegister()
-                .filterByProductType(cbTypeFilter.getValue().toLowerCase()), componentSearch.getText());
+                .createListByType(cbTypeFilter.getValue().toLowerCase()), componentSearch.getText());
     }
 
     private ObservableList<Component> filter() {
@@ -172,7 +172,7 @@ public class TabComponentsController {
     private ObservableList<Component> getResultFromTypeFilter() {
         ObservableList<Component> result = null;
         String filterString = cbTypeFilter.getValue().toLowerCase();
-        result = getComponentRegister().filterByProductType(filterString);
+        result = getComponentRegister().createListByType(filterString);
         return result;
     }
 
