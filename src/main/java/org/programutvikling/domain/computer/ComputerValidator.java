@@ -40,7 +40,7 @@ public class ComputerValidator {
         if (type.equalsIgnoreCase("harddisk")) {
             return hardDiscListValidator(getCurrentComputer());
         }
-        if (type.equalsIgnoreCase("keyboard")) {
+        if (type.equalsIgnoreCase("tastatur")) {
             return keyboardListValidator(getCurrentComputer());
         }
         if (type.equalsIgnoreCase("mus")) {
@@ -49,7 +49,7 @@ public class ComputerValidator {
         if (type.equalsIgnoreCase("skjerm")) {
             return screenListValidator(getCurrentComputer());
         }
-        if (type.equalsIgnoreCase("skjerm")) {
+        if (type.equalsIgnoreCase("annet")) {
             return otherListValidator(getCurrentComputer());
         }else{
             return false;
@@ -86,7 +86,7 @@ public class ComputerValidator {
     }
 
     public static boolean keyboardListValidator(Computer computer) {
-        return computer.getComponentRegister().countByType("tastatur") == 0;
+        return computer.getComponentRegister().countByType("tastatur") < 2;
     }
 
     public static boolean mouseListValidator(Computer computer) {

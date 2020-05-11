@@ -53,8 +53,6 @@ public class EndUserService {
         return screenRegister;
     }
 
-
-
     public ComponentRegister getKeyboardRegister() {
         return keyboardRegister;
     }
@@ -79,12 +77,11 @@ public class EndUserService {
         addByName("annet", otherRegister);
     }
 
-
     //må man definere disse? hvorfor ikke bare si her er 8 forskjellige
 
     public void addByName(String s, ComponentRegister componentRegister){
         ComponentRegister dataBaseRegister = Model.INSTANCE.getComponentRegister();
-        componentRegister.getRegister().addAll(dataBaseRegister.filterByProductType(s));
+        componentRegister.getRegister().addAll(dataBaseRegister.createListByType(s));
     }
 
     private void clearRegisters(ComponentRegister... c) {

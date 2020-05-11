@@ -47,6 +47,24 @@ public class ComponentRegister implements Serializable, Clickable {
                 collect(toCollection(FXCollections::observableArrayList));
     }
 
+    public ObservableList<Component> filterByProductTypeEqual(String type) {
+        return componentObservableList.stream().
+                filter(p -> p.getProductType().toLowerCase().
+                        matches(String.format("%s%s%s", ".*", type.toLowerCase(), ".*"))).
+                collect(toCollection(FXCollections::observableArrayList));
+    }
+
+    public ObservableList<Component> createListByType(String type){
+        ObservableList<Component> componentTypeList = FXCollections.observableArrayList();
+        for(Component c: componentObservableList){
+            if(type.equalsIgnoreCase(c.getProductType())){
+                componentTypeList.add(c);
+            }
+        }
+        return componentTypeList;
+
+    }
+
     public void addComponent(Component component) {
         ComponentValidator.isComponentValid(component);
         componentObservableList.add(component);
