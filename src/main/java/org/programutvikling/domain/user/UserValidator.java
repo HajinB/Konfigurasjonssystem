@@ -17,7 +17,7 @@ public class UserValidator {
     /** No reason to accept spaces. Hard to see the difference between "user" and "user ".
      */
     public static boolean username(String username) {
-        return !username.isBlank() || !username.isEmpty() && username.matches(NO_SPACES);
+        return !username.isBlank() && username.matches(NO_SPACES);
     }
     public static boolean password(String password) {
         return password.length() >= PASSWORD_LENGTH;
@@ -26,34 +26,26 @@ public class UserValidator {
      * "Tom W. Hap'l, v/ Host243.no" or even the real name "X Æ A-12".
      * */
     public static boolean name(String name) {
-        return !name.isBlank() || !name.isEmpty();
+        return !name.isBlank();
     }
     public static boolean email(String email) {
         return email.matches(EMAIL_VERIFICATION);
     }
     public static boolean address(String address) {
-        return !address.isBlank() || !address.isEmpty();
+        return !address.isBlank();
     }
-    static boolean zip(String zip) {
-        return zip.matches(ONLY_NUMBERS) && zip.length() == ZIP_LENGTH;
+    public static boolean zip(String zip) {
+        return zip.matches(ONLY_NUMBERS) && zip.length() == ZIP_LENGTH
+                && !zip.matches("0000");
     }
     public static boolean city(String city) {
-        return !city.isBlank() || !city.isEmpty();
+        return !city.isBlank();
     }
 
     public static boolean isUserValid(String username, String password, String name, String email,
                                       String address, String zip, String city) {
         return username(username) && password(password) && name(name) && email(email) && address(address) && zip(zip) && city(city);
     }
-
-    public static User returnUserIfAlreadyExists(User user, UserRegister register){
-            for(User u: register.getRegister()){
-                if(isPrimaryKeyAMatch(u, user)){
-                    return u;
-                }
-            }
-            return null;
-        }
 
     private static boolean isPrimaryKeyAMatch(User u1, User u2) {
             return u2.getName().equals(u1.getName())
