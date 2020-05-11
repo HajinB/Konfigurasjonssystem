@@ -1,10 +1,9 @@
-package org.programutvikling.gui;
+package org.programutvikling.gui.controllers;
 
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -15,7 +14,6 @@ import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentValidator;
 import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.PriceField;
-import org.programutvikling.gui.utility.Converter;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.gui.utility.WindowHandler;

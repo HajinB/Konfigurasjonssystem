@@ -1,4 +1,4 @@
-package org.programutvikling.gui.EventHandlers;
+package org.programutvikling.gui.eventHandlers;
 
 import javafx.event.EventHandler;
 import javafx.scene.Node;

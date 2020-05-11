@@ -1,4 +1,4 @@
-package org.programutvikling.gui;
+package org.programutvikling.gui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -10,8 +10,8 @@ import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.utility.ComputerFactory;
-import org.programutvikling.gui.CustomViews.CustomTextWrapCellFactory;
-import org.programutvikling.gui.CustomViews.PriceFormatCell;
+import org.programutvikling.gui.customViews.CustomTextWrapCellFactory;
+import org.programutvikling.gui.customViews.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.ModelEndUser;
 import org.programutvikling.domain.io.FileSaverTxt;

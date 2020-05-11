@@ -1,4 +1,4 @@
-package org.programutvikling.gui;
+package org.programutvikling.gui.controllers;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -14,7 +14,6 @@ import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.model.Model;
-import org.programutvikling.model.TemporaryComponent;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;

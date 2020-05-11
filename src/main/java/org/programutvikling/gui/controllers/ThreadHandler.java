@@ -1,4 +1,4 @@
-package org.programutvikling.gui;
+package org.programutvikling.gui.controllers;
 
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -13,11 +13,11 @@ import java.util.concurrent.ExecutionException;
 public class ThreadHandler {
     TabComponentsController controller;
 
-    ThreadHandler(TabComponentsController controller) {
+    public ThreadHandler(TabComponentsController controller) {
         this.controller = controller;
     }
 
-    static void loadInThread(Task<Boolean> task) {
+    public static void loadInThread(Task<Boolean> task) {
         Alert alert = Dialog.getLoadingDialog("Laster inn...");
         task.setOnRunning((e) -> alert.showAndWait());
         task.setOnSucceeded((e) -> {
@@ -33,7 +33,7 @@ public class ThreadHandler {
         new Thread(task).start();
     }
 
-    static Task<Boolean> getTask() {
+    public static Task<Boolean> getTask() {
         return new Task<Boolean>() {
             @Override
             public Boolean call() throws IOException, InterruptedException {
@@ -53,14 +53,14 @@ public class ThreadHandler {
         };
     }
 
-    void openInputThread(String path) {
+    public void openInputThread(String path) {
         InputThread task = new InputThread(path);
         task.setOnSucceeded(this::threadDone);
         task.setOnFailed(this::threadFailed);
         startThread(task);
     }
 
-    void startThread(InputThread task) {
+    public void startThread(InputThread task) {
         Thread th = new Thread(task);
         th.setDaemon(true);
         controller.disableGUI();
@@ -68,13 +68,13 @@ public class ThreadHandler {
         task.call();
     }
 
-    void threadDone(WorkerStateEvent e) {
+    public void threadDone(WorkerStateEvent e) {
         System.out.println("thread done");
         Dialog.showSuccessDialog("Opening complete");
         controller.enableGUI();
     }
 
-    void threadFailed(WorkerStateEvent event) {
+    public void threadFailed(WorkerStateEvent event) {
         var e = event.getSource().getException();
         Dialog.showErrorDialog("Avviket sier: " + e.getMessage());
         controller.enableGUI();

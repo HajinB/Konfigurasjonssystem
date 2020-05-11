@@ -2,7 +2,7 @@ package org.programutvikling.model;
 
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerRegister;
-import org.programutvikling.gui.FileHandling;
+import org.programutvikling.gui.controllers.FileHandling;
 
 import java.util.ArrayList;
 

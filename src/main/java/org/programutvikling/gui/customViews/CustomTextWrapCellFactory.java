@@ -1,4 +1,4 @@
-package org.programutvikling.gui.CustomViews;
+package org.programutvikling.gui.customViews;
 
 import javafx.scene.control.Control;
 import javafx.scene.control.TableCell;

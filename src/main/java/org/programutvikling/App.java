@@ -10,7 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.programutvikling.gui.FileHandling;
+import org.programutvikling.gui.controllers.FileHandling;
 import org.programutvikling.gui.utility.Dialog;
 
 import java.io.IOException;

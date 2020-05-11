@@ -1,8 +1,7 @@
-package org.programutvikling.gui;
+package org.programutvikling.domain.user;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.programutvikling.gui.utility.RegisterLogic;
 import org.programutvikling.gui.utility.RegisterUtility;
 
 import java.io.IOException;

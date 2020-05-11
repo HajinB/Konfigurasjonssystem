@@ -15,7 +15,7 @@ module org.programutvikling {
     requires java.desktop;
 
     opens org.programutvikling to javafx.fxml;
-    opens org.programutvikling.gui to javafx.fxml;
+    opens org.programutvikling.gui.controllers to javafx.fxml;
     opens org.programutvikling.model to javafx.fxml;
     opens org.programutvikling.domain.component to javafx.base;
     opens org.programutvikling.domain.computer to javafx.base;

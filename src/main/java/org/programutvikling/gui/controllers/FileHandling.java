@@ -1,4 +1,4 @@
-package org.programutvikling.gui;
+package org.programutvikling.gui.controllers;
 
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;

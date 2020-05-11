@@ -6,11 +6,8 @@ import javafx.collections.ObservableList;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.utility.Item;
-import org.programutvikling.gui.utility.RegisterLogic;
+import org.programutvikling.gui.logic.RegisterLogic;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;

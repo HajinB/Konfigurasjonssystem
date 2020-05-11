@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="topLevelPaneEndUser" prefHeight="650.0" prefWidth="1050.0" styleClass="borderPane" stylesheets="@CSS/EndUser.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.EnduserController">
+<BorderPane fx:id="topLevelPaneEndUser" prefHeight="650.0" prefWidth="1050.0" styleClass="borderPane" stylesheets="@CSS/EndUser.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.controllers.EnduserController">
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true" stylesheets="@CSS/EndUser.css">
             <AnchorPane styleClass="viewport" stylesheets="@CSS/EndUser.css">

@@ -9,7 +9,7 @@ import org.programutvikling.domain.io.FileSaver;
 import org.programutvikling.domain.utility.OpenerFactory;
 import org.programutvikling.domain.utility.SaverFactory;
 import org.programutvikling.model.Model;
-import org.programutvikling.gui.SavedPathRegister;
+import org.programutvikling.domain.user.SavedPathRegister;
 import org.programutvikling.domain.user.UserRegister;
 
 import java.io.File;

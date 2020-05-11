@@ -1,4 +1,4 @@
-package org.programutvikling.gui;
+package org.programutvikling.gui.controllers;
 
 //todo sett opp nested fxml controllers? altså sånn at user-tabben får en egen fxml? man kan dele opp controlleren
 // veldig lett da (?)   ((main controlleren blir så full)) - how to avoid - beste er å enten hente input fra en annen

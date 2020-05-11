@@ -11,7 +11,8 @@ import javafx.stage.WindowEvent;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.utility.Clickable;
-import org.programutvikling.gui.*;
+import org.programutvikling.gui.controllers.EditPopupController;
+import org.programutvikling.gui.controllers.UserPopupController;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.io.IOException;

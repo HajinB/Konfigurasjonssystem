@@ -1,4 +1,4 @@
-package org.programutvikling.gui;
+package org.programutvikling.gui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +12,6 @@ import org.programutvikling.App;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.domain.io.InvalidComponentFormatException;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;

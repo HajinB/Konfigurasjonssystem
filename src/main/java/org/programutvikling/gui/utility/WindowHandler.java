@@ -1,13 +1,9 @@
 package org.programutvikling.gui.utility;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.TableRow;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.utility.Clickable;
-import org.programutvikling.gui.RegistryComponentLogic;
+import org.programutvikling.gui.controllers.RegistryComponentLogic;
 
 import java.io.IOException;
 

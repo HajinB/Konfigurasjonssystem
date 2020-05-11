@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="detailsAnchor" prefHeight="391.0" stylesheets="@CSS/EndUser.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.DetailsController">
+<AnchorPane id="detailsAnchor" prefHeight="391.0" stylesheets="@CSS/EndUser.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.controllers.DetailsController">
 
     <TableView fx:id="tblFinalViewComponent" editable="true" focusTraversable="false" layoutX="29.0" layoutY="66.0" prefHeight="273.0" prefWidth="683.0" stylesheets="@CSS/Superbruker.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="51.39999999999998" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="28.799999999999955" AnchorPane.topAnchor="66.0">
         <columns>

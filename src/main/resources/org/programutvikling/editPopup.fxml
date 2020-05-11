@@ -17,7 +17,7 @@
 
 
 <AnchorPane prefHeight="500.0" prefWidth="284.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.programutvikling.gui.EditPopupController">
+            fx:controller="org.programutvikling.gui.controllers.EditPopupController">
     <GridPane fx:id="componentEditNode" layoutX="27.0" layoutY="65.0" vgap="4.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />

@@ -4,8 +4,8 @@ import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
 import org.programutvikling.domain.utility.UserPreferences;
-import org.programutvikling.gui.FileHandling;
-import org.programutvikling.gui.SavedPathRegister;
+import org.programutvikling.gui.controllers.FileHandling;
+import org.programutvikling.domain.user.SavedPathRegister;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 

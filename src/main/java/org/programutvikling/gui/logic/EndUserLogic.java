@@ -1,4 +1,4 @@
-package org.programutvikling.logic;
+package org.programutvikling.gui.logic;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -17,12 +17,12 @@ import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
 import org.programutvikling.domain.computer.ComputerValidator;
-import org.programutvikling.gui.ComputerPopupController;
-import org.programutvikling.gui.CustomViews.CustomListViewCell;
-import org.programutvikling.gui.CustomViews.CustomTextWrapCellFactory;
-import org.programutvikling.gui.CustomViews.PriceFormatCell;
-import org.programutvikling.gui.DetailsController;
-import org.programutvikling.gui.EnduserController;
+import org.programutvikling.gui.controllers.ComputerPopupController;
+import org.programutvikling.gui.customViews.CustomListViewCell;
+import org.programutvikling.gui.customViews.CustomTextWrapCellFactory;
+import org.programutvikling.gui.customViews.PriceFormatCell;
+import org.programutvikling.gui.controllers.DetailsController;
+import org.programutvikling.gui.controllers.EnduserController;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FXMLGetter;
 import org.programutvikling.model.ModelEndUser;

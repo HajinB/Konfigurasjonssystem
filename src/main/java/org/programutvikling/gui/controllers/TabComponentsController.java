@@ -1,4 +1,4 @@
-package org.programutvikling.gui;
+package org.programutvikling.gui.controllers;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -19,10 +19,9 @@ import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentTypes;
-import org.programutvikling.gui.CustomViews.CustomTextWrapCellFactory;
-import org.programutvikling.gui.CustomViews.PriceFormatCell;
+import org.programutvikling.gui.customViews.CustomTextWrapCellFactory;
+import org.programutvikling.gui.customViews.PriceFormatCell;
 import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.gui.utility.RegisterUtility;
 import org.programutvikling.gui.utility.Search;
 import org.programutvikling.model.Model;
 

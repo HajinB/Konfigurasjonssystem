@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 import org.programutvikling.model.Model;
-import org.programutvikling.gui.FileHandling;
+import org.programutvikling.gui.controllers.FileHandling;
 
 import static java.lang.Thread.sleep;
 

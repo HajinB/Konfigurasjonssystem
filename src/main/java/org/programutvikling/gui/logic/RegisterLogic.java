@@ -1,4 +1,4 @@
-package org.programutvikling.gui.utility;
+package org.programutvikling.gui.logic;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

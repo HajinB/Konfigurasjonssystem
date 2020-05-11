@@ -1,4 +1,4 @@
-package org.programutvikling.gui.utility;
+package org.programutvikling.gui.logic;
 
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.model.Model;

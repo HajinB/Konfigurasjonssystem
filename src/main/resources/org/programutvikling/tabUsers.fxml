@@ -21,7 +21,7 @@
 
 <?import org.programutvikling.gui.customTextField.ZipField?>
 <?import org.programutvikling.gui.customTextField.NoSpacebarField?>
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.TabUsersController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.programutvikling.gui.controllers.TabUsersController">
     <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane prefWidth="1050.0" styleClass="anchorCenter" stylesheets="@CSS/Superbruker.css">
             <Pane layoutX="29.0" layoutY="16.0" minHeight="600.0" prefHeight="644.0" prefWidth="296.0" styleClass="nyKomponentPane" stylesheets="@CSS/Superbruker.css" AnchorPane.bottomAnchor="47.200000000000045" AnchorPane.topAnchor="16.0">
