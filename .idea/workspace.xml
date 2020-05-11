@@ -272,14 +272,7 @@
       <workItem from="1588675276347" duration="3095000" />
       <workItem from="1588836655761" duration="28000" />
       <workItem from="1588986164951" duration="17707000" />
-      <workItem from="1589187040877" duration="8270000" />
-    </task>
-    <task id="LOCAL-00131" summary="med testdata">
-      <created>1588849888380</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1588849888381</updated>
+      <workItem from="1589187040877" duration="8781000" />
     </task>
     <task id="LOCAL-00132" summary="fixed &quot;vil du erstatte den komponenten pga den typen har nok antall &quot;">
       <created>1588850810943</created>
@@ -617,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589200465525</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="noe dialog på lese inn på enduser">
+      <created>1589200522714</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1589200522714</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
