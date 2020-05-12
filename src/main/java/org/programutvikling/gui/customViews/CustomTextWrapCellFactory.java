@@ -37,7 +37,7 @@ public class CustomTextWrapCellFactory extends TableCell<Object, String> {
         text.textProperty().bind(itemProperty());
 
         //setter litt padding
-        Insets newInset = new Insets((double) 0, 20, 4, 2);
+        Insets newInset = new Insets((double) 0, 20, 20, 2);
         setPadding(newInset);
 
 
