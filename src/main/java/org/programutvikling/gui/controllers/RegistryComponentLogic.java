@@ -88,7 +88,7 @@ public class RegistryComponentLogic implements Stageable {
                         if (node instanceof TableRow) {
                             row = (TableRow<Component>) node;
                         } else {
-                            //hvis man trykker på tekst
+                            //hvis man trykker på tekst, altså en child av den noden vi vil ha
                             row = (TableRow<Component>) node.getParent();
                         }
                         try {
