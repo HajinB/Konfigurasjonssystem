@@ -15,7 +15,6 @@ public enum Model {
     private SavedPathRegister savedPathRegister = new SavedPathRegister();
     private ComponentRegister componentRegister = new ComponentRegister();
     private UserPreferences userPreferences = new UserPreferences();
-    //private UserRegister userRegister = new UserRegister();
     private boolean endUserLoggedIn = false;
     private ArrayList<Object> adminObjects = new ArrayList<>();
 
@@ -38,28 +37,6 @@ public enum Model {
     private void removeDuplicates() {
         savedPathRegister.removeDuplicates();
     }
-
-  /*  public void addDefaultUsers() {
-        if (userRegister.getRegister().size() == 0) {
-            User admin = new User(true, "admin", "admin", "Administrator",
-                    "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
-
-            User user2 = new User(false, "user", "user", "Bruker",
-                    "user@user.com", "Brukersgate 8", "0010", "Oslo");
-            User user3 = new User(false, "Ola_n", "password", "Ola Nordmann", "ola@nordmann.com", "Trondheimsveien 1", "0956", "Oslo");
-            User user4 = new User(false, "Kari_h1", "kari123", "Kari Nordmann v/ Host&Servers1", "kari@hostandservers1.no", "Postboks 183 Moholt", "7448", "Trondheim");
-            userRegister.addBruker(admin);
-            userRegister.addBruker(user2);
-            userRegister.addBruker(user3);
-            userRegister.addBruker(user4);
-            System.out.println("Default brukere lagt til i registeret!");
-        } else if (!userRegister.checkForAdmins()) {
-            User admin = new User(true, "admin", "admin", "Administrator",
-                    "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
-            userRegister.addBruker(admin);
-            Dialog.showInformationDialog("Ingen admins i registeret. \"admin\" har blitt lagt til i registeret.");
-        }
-    }*/
 
     public void appendComponentRegisterIntoModel() {
         if (adminObjects.size() == 0) {
@@ -89,9 +66,6 @@ public enum Model {
 
             if (adminObjects.size() > 1 && adminObjects.get(1) != null && adminObjects.get(1) instanceof SavedPathRegister)
                 savedPathRegister = (SavedPathRegister) adminObjects.get(1);
-
-           /* if (adminObjects.get(2) != null && adminObjects.get(2) instanceof UserRegister)
-                userRegister = (UserRegister) adminObjects.get(2);*/
         }
     }
 
@@ -130,8 +104,5 @@ public enum Model {
         this.componentRegister = componentRegister;
     }
 
-   /* public UserRegister getUserRegister() {
-        return userRegister;
-    }*/
 
 }

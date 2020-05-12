@@ -56,8 +56,6 @@ public class TabComponentsController {
 
     @FXML
     public void initialize() {
-        Task<Boolean> task = ThreadHandler.getTask();
-        ThreadHandler.loadInThread(task);
         initChoiceBoxes();
         updateRecentFiles();
         registryComponentLogic = new RegistryComponentLogic(componentRegNode, this, tblViewComponent);

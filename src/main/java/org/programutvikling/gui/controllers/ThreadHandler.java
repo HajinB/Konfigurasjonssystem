@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import org.programutvikling.domain.io.iothread.InputThread;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
+import org.programutvikling.model.Model;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -41,6 +42,7 @@ public class ThreadHandler {
                 Thread.sleep(2000);
                 //App.setRoot("secondary");
                 /** gjør tingen her: aka lad inn ting**/
+                System.out.println("Loader adminModel"+Model.INSTANCE);
                 // FileUtility.populateRecentFiles("AppFiles/Database/Admin/ComponentRegisters");
                 FileUtility.populateRecentFilesVoid();
                 return true;

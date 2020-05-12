@@ -1,5 +1,6 @@
 package org.programutvikling.gui.controllers;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +43,8 @@ public class SuperUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Task<Boolean> task = ThreadHandler.getTask();
+        ThreadHandler.loadInThread(task);
         tabComponentsController.init(this);
         tabUsersController.init(this);
         registryComponentLogic = new RegistryComponentLogic(tabComponentsController);

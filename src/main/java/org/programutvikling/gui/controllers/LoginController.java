@@ -9,7 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.programutvikling.App;
 import org.programutvikling.domain.user.User;
-import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelUserRegister;
 
 import java.io.IOException;
