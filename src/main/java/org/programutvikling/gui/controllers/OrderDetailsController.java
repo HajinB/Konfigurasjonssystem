@@ -17,6 +17,7 @@ import org.programutvikling.model.ModelEndUser;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
@@ -66,12 +67,22 @@ public class OrderDetailsController implements Initializable {
         alert.showAndWait();
 
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
-            saveComputer(fileSaverTxt);
+            try {
+                saveComputer(fileSaverTxt);
+            } catch (InvalidPathException invalidPathException) {
+                Dialog.showErrorDialog("Feil tegn i PC-navnet, prøv igjen!");
+                return;
+            }
             ModelEndUser.INSTANCE.getComputer().removeAll();
             stage.close();
         }
         if (alert.getResult() == alert.getButtonTypes().get(1)) {
-            saveComputer(fileSaverTxt);
+            try {
+                saveComputer(fileSaverTxt);
+            } catch (InvalidPathException invalidPathException) {
+                Dialog.showErrorDialog("Feil tegn i PC-navnet, prøv igjen!");
+                return;
+            }
             stage.close();
         }
     }
