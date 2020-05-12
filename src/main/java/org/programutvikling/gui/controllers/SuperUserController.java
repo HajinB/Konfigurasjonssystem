@@ -119,5 +119,23 @@ public class SuperUserController implements Initializable {
         tabComponentsController.updateView();
     }
 
+    public void btnRemoveAllComponents(ActionEvent event) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Operasjon", "Tømme komponentregisteret",
+                "Vil du slette alle komponenter i registeret?","");
+        alert.showAndWait();
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            Model.INSTANCE.getComponentRegister().getRegister().clear();
+            tabComponentsController.updateView();
+        }
+    }
 
+    public void btnRemoveAllUsers(ActionEvent event) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Operasjon", "Tømme brukerregisteret",
+                "Vil du slette alle admin og brukere i registeret?","");
+        alert.showAndWait();
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            Model.INSTANCE.getUserRegister().getRegister().clear();
+            tabUsersController.updateView();
+        }
+    }
 }
