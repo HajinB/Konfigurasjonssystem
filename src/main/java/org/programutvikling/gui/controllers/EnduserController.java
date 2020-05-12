@@ -19,6 +19,7 @@ import org.programutvikling.gui.logic.EndUserLogic;
 import org.programutvikling.gui.logic.EndUserService;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FXMLGetter;
+import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
 
 import java.io.IOException;
@@ -36,6 +37,12 @@ public class EnduserController {
     TableView<Computer> tblCompletedComputers;
     @FXML
     TableColumn computerPriceCln;
+    EndUserService endUserService = new EndUserService();
+    Stage stage;
+    ComputerValidator computerValidator = new ComputerValidator();
+    ArrayList<TableView<Component>> tblViewList = new ArrayList<>();
+    ArrayList<TableColumn> tblColumnPriceList = new ArrayList<>();
+    ArrayList<TableColumn> tblColumnDescriptionList = new ArrayList<>();
     @FXML
     private Label lblTotalPrice;
     @FXML
@@ -50,29 +57,23 @@ public class EnduserController {
             keyboardDescriptionColumn, screenDescriptionColumn,
             processorPriceCln, videoCardPriceCln, screenPriceCln, otherPriceCln, memoryPriceCln,
             mousePriceCln, motherBoardPriceCln, cabinetPriceCln, hardDiscPriceCln, keyboardPriceCln;
-
-    EndUserService endUserService = new EndUserService();
-    Stage stage;
-    ComputerValidator computerValidator = new ComputerValidator();
-
-    ArrayList<TableView<Component>> tblViewList = new ArrayList<>();
-    ArrayList<TableColumn> tblColumnPriceList = new ArrayList<>();
-    ArrayList<TableColumn> tblColumnDescriptionList = new ArrayList<>();
-
     private EndUserLogic endUserLogic;
 
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
+        Model.INSTANCE.setEndUserLoggedIn(true);
         addTableViewsToList();
-        //todo så og si alle metoder under her kan trekkes ut av controlleren
         endUserLogic = new EndUserLogic(this, topLevelPaneEndUser, tblViewList, tblColumnDescriptionList,
                 tblColumnPriceList, shoppingListView, tblCompletedComputers);
         updateComponentViews();
         updateList();
         endUserService.updateEndUserRegisters();
         updateComputerListView();
-       // setTblCompletedComputersListener();
+        setTooltipForCompletedComputers();
+    }
+
+    private void setTooltipForCompletedComputers() {
         final Tooltip tooltipCompletedComputers = new Tooltip("Dobbeltklikk på en datamaskin for å se detaljer");
         tblCompletedComputers.setTooltip(tooltipCompletedComputers);
     }
@@ -105,6 +106,7 @@ public class EnduserController {
             FileHandling.saveAllAdminFiles();
         }
     }
+
     @FXML
     //denne metoden kan hvertfall kjøres fra enduserlogic
     public void btnAddToCart(ActionEvent event) {
@@ -223,7 +225,7 @@ public class EnduserController {
     public void updateTotalPrice() {
         if (getComputer() != null) {
             double doubleTotalpris = getComputer().calculatePrice();
-            if(doubleTotalpris % 1 == 0) {
+            if (doubleTotalpris % 1 == 0) {
                 String totalpris = String.format("%.0f", getComputer().calculatePrice()) + " kr";
                 lblTotalPrice.setText(totalpris);
             } else {

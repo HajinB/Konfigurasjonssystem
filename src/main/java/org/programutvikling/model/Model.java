@@ -19,7 +19,7 @@ public enum Model {
     private ComponentRegister componentRegister = new ComponentRegister();
     private UserPreferences userPreferences = new UserPreferences();
     private UserRegister userRegister = new UserRegister();
-
+    private boolean endUserLoggedIn = false;
     private ArrayList<Object> EndUserObjects = new ArrayList<>();
 
     private Model() {
@@ -90,6 +90,14 @@ public enum Model {
         return EndUserObjects;
     }
 
+    public void setEndUserLoggedIn(boolean endUserLoggedIn) {
+        this.endUserLoggedIn = endUserLoggedIn;
+    }
+
+    public boolean isEndUserLoggedIn() {
+        return endUserLoggedIn;
+    }
+
     public void appendComponentRegisterIntoModel() {
         if (EndUserObjects.size() == 0) {
             return;
@@ -112,8 +120,6 @@ public enum Model {
     }
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
-        SavedPathRegister savedPathRegisterTemp = null;
-        /**går det ann å skrive dette på en annen måte? factory method feks??*/
         System.out.println(EndUserObjects.size());
         if (EndUserObjects.size() > 0) {
             if (EndUserObjects.get(0) != null && EndUserObjects.get(0) instanceof ComponentRegister)

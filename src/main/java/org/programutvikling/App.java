@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.programutvikling.gui.controllers.FileHandling;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.model.Model;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -71,7 +72,9 @@ public class App extends Application {
                         try {
                             FileHandling.saveBackup();
                             FileHandling.saveAllAdminFiles();
-                            FileHandling.saveAllEndUserFiles();
+                            if(Model.INSTANCE.isEndUserLoggedIn()) {
+                                FileHandling.saveAllEndUserFiles();
+                            }
                             System.exit(0);
                         } catch (IOException e) {
                             e.printStackTrace();
