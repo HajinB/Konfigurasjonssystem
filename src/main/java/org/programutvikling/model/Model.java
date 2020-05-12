@@ -6,6 +6,7 @@ import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
 import org.programutvikling.domain.utility.UserPreferences;
 import org.programutvikling.gui.controllers.FileHandling;
+import org.programutvikling.domain.user.SavedPathRegister;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 
@@ -27,7 +28,6 @@ public enum Model {
     }
 
     public void loadFileIntoModel() {
-        System.out.println("hi from model constructor" + userPreferences.getPathToAdminFiles().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToAdminFiles().toString())) {
             FileHandling.openFile(EndUserObjects, userPreferences.getPathToAdminFiles().toString());
             addDefaultUsers();
@@ -35,7 +35,7 @@ public enum Model {
             loadObjectsIntoClasses();
             removeDuplicates();
         } else {
-            System.out.println("ingen config fil ble funnet - tilbake til default.");
+            System.out.println("Ingen config fil ble funnet - tilbake til default.");
             FileHandling.openFile(EndUserObjects, userPreferences.getStringPathToBackupAppFiles());
             addDefaultUsers();
             loadObjectsIntoClasses();
@@ -47,9 +47,6 @@ public enum Model {
     }
 
     public void addDefaultUsers() {
-        System.out.println("addDefault utenfor if");
-        System.out.println("userRegister.getRegister().size(): " + userRegister.getRegister().size());
-        System.out.println("!userRegister.checkForAdmins(): " + !userRegister.checkForAdmins());
         if (userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
             User admin = new User(true, "admin", "admin", "Administrator",
                     "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
@@ -62,7 +59,7 @@ public enum Model {
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
             userRegister.addBruker(user4);
-            System.out.println("addDefault kjørt!");
+            System.out.println("Default brukere lagt til i registeret!");
         } else if (!userRegister.checkForAdmins()) {
             User admin = new User(true, "admin", "admin", "Administrator",
                     "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
