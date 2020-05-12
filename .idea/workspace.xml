@@ -273,14 +273,7 @@
       <workItem from="1588836655761" duration="28000" />
       <workItem from="1588986164951" duration="17707000" />
       <workItem from="1589187040877" duration="17620000" />
-      <workItem from="1589291745741" duration="2759000" />
-    </task>
-    <task id="LOCAL-00147" summary="litt flytting av ting + fixed open recent files">
-      <created>1588950215111</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1588950215111</updated>
+      <workItem from="1589291745741" duration="2915000" />
     </task>
     <task id="LOCAL-00148" summary="litt flytting av ting + fixed open recent files">
       <created>1588950226866</created>
@@ -618,7 +611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589294509280</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer + fixed fokus på userpopup">
+      <created>1589294665539</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1589294665539</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +653,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed edit user" />
     <MESSAGE value="med testdata" />
     <MESSAGE value="fixed &quot;vil du erstatte den komponenten pga den typen har nok antall &quot;" />
     <MESSAGE value="la til en testfunksjon for superbruker, sånn at man kan legge til computers der (gjør testing sååå mye lettere)" />
@@ -678,7 +677,8 @@
     <MESSAGE value="fixed søk, at skjerm er skjerm og skjermkort er skjermkort" />
     <MESSAGE value="fixed bug i opentxtfile" />
     <MESSAGE value="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer" />
-    <option name="LAST_COMMIT_MESSAGE" value="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer" />
+    <MESSAGE value="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer + fixed fokus på userpopup" />
+    <option name="LAST_COMMIT_MESSAGE" value="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer + fixed fokus på userpopup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />
