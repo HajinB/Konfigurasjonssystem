@@ -226,7 +226,7 @@ public class FileHandling {
             e.printStackTrace();
         }
         if (TemporaryComponent.INSTANCE.errorList.size() > 0) {
-            Dialog.showSuccessDialog(TemporaryComponent.INSTANCE.errorListToString());
+            Dialog.showInformationDialog(TemporaryComponent.INSTANCE.errorListToString());
             TemporaryComponent.INSTANCE.errorList.clear();
         }
     }

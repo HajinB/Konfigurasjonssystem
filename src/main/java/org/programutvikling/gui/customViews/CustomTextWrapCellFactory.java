@@ -31,7 +31,6 @@ public class CustomTextWrapCellFactory extends TableCell<Object, String> {
         text.setLineSpacing(5);
         text.setStyle("-fx-padding: 5px 30px 5px 5px;"
                 + "-fx-text-alignment:justify;");
-
         //her binder vi text til faktisk verdien i cellen
         textProperty().bind(itemProperty());
         text.textProperty().bind(itemProperty());

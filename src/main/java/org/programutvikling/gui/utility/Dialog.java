@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.text.Text;
 
 public class Dialog {
 
@@ -26,7 +27,7 @@ public class Dialog {
 
     public static void showSuccessDialog(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Datamaskin componentRegister");
+        alert.setTitle("");
         alert.setHeaderText("Operasjon vellykket");
         alert.setContentText(msg);
         alert.showAndWait();
