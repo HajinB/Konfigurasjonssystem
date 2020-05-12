@@ -24,6 +24,7 @@ import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.utility.UserSearch;
 import org.programutvikling.gui.utility.UserWindowHandler;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelUserRegister;
 
 import java.io.IOException;
 import java.net.URL;
@@ -121,7 +122,7 @@ public class TabUsersController implements Initializable, Clickable {
     }
 
     public UserRegister getUserRegister() {
-        return Model.INSTANCE.getUserRegister();
+        return ModelUserRegister.INSTANCE.getUserRegister();
     }
 
     @Override

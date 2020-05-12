@@ -16,6 +16,7 @@ import org.programutvikling.domain.io.FileOpenerTxt;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelUserRegister;
 
 import java.io.IOException;
 import java.net.URL;
@@ -129,7 +130,7 @@ public class SuperUserController implements Initializable {
                 "Vil du slette alle admin og brukere i registeret?", "");
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
-            Model.INSTANCE.getUserRegister().getRegister().clear();
+            ModelUserRegister.INSTANCE.getUserRegister().getRegister().clear();
             tabUsersController.updateView();
             Dialog.showInformationDialog("Hvis brukerregisteret er tomt ved utlogging,\n" +
                     "vil standardbrukere gjenopprettes.");

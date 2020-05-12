@@ -2,6 +2,7 @@ package org.programutvikling.domain.user;
 
 import org.junit.jupiter.api.Test;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelUserRegister;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,12 +10,12 @@ class UserRegisterTest {
 
     @Test
     void loginCredentialsMatches() {
-        assertNotNull(Model.INSTANCE.getUserRegister().loginCredentialsMatches("admin","adminadmin"));
+        assertNotNull(ModelUserRegister.INSTANCE.getUserRegister().loginCredentialsMatches("admin","adminadmin"));
     }
 
     @Test
     void isAdmin() {
-        assertTrue(Model.INSTANCE.getUserRegister().isAdmin(Model.INSTANCE.getUserRegister().loginCredentialsMatches("admin","adminadmin")));
+        assertTrue(ModelUserRegister.INSTANCE.getUserRegister().isAdmin(ModelUserRegister.INSTANCE.getUserRegister().loginCredentialsMatches("admin","adminadmin")));
     }
 
     @Test
@@ -22,6 +23,6 @@ class UserRegisterTest {
     }
     @Test
     void systemOut() {
-        System.out.println(Model.INSTANCE.getUserRegister());
+        System.out.println(ModelUserRegister.INSTANCE.getUserRegister());
     }
 }

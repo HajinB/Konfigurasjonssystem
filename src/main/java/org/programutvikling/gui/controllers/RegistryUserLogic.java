@@ -17,6 +17,7 @@ import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.gui.utility.UserWindowHandler;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelUserRegister;
 import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
@@ -103,7 +104,7 @@ public class RegistryUserLogic implements Stageable {
     void createUserFromGUIInputFields() {
         try {
             User user = createUser();
-            Model.INSTANCE.getUserRegister().addBruker(user);
+            ModelUserRegister.INSTANCE.getUserRegister().addBruker(user);
             Dialog.showInformationDialog(user.getUsername() + " er lagt til i listen!");
             resetFields();
             return;
@@ -194,11 +195,11 @@ public class RegistryUserLogic implements Stageable {
     }
 
     public boolean usernameExists(String username) {
-        return Model.INSTANCE.getUserRegister().usernameExists(username);
+        return ModelUserRegister.INSTANCE.getUserRegister().usernameExists(username);
     }
 
     public boolean emailExists(String email) {
-        return Model.INSTANCE.getUserRegister().emailExists(email);
+        return ModelUserRegister.INSTANCE.getUserRegister().emailExists(email);
     }
 
     void askForDeletion(User selectedItem) throws IOException {
@@ -241,7 +242,7 @@ public class RegistryUserLogic implements Stageable {
         tblViewUser.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (Model.INSTANCE.getUserRegister().getRegister().size() > 0) {
+                if (ModelUserRegister.INSTANCE.getUserRegister().getRegister().size() > 0) {
                     tblViewUser.getSelectionModel().setCellSelectionEnabled(false);
                     TableRow<? extends User> row;
                     if (isDoubleClick(event)) {
@@ -290,7 +291,7 @@ public class RegistryUserLogic implements Stageable {
     }
 
     private void deleteUser(User user) {
-        Model.INSTANCE.getUserRegister().getRegister().remove(user);
+        ModelUserRegister.INSTANCE.getUserRegister().getRegister().remove(user);
     }
     // getters from gridPane
 
@@ -303,7 +304,7 @@ public class RegistryUserLogic implements Stageable {
     }
 
     private ObservableList<User> getRegister() {
-        return Model.INSTANCE.getUserRegister().getRegister();
+        return ModelUserRegister.INSTANCE.getUserRegister().getRegister();
     }
 
 }

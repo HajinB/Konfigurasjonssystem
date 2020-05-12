@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import org.programutvikling.App;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelUserRegister;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,7 +39,8 @@ public class LoginController implements Initializable {
     }
 
     private void loginAction() throws IOException {
-        User loginUser = Model.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(), inputPassword.getText());
+        User loginUser = ModelUserRegister.INSTANCE.getUserRegister().loginCredentialsMatches(inputUsername.getText(),
+                inputPassword.getText());
         if (loginUser != null) {
             // Turns off the label when you get a successful login
             lblFeilPassword.setVisible(false);
@@ -62,8 +64,9 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         btnLogin.setDefaultButton(true);
+        System.out.println(ModelUserRegister.INSTANCE);
         // Adds users if there is no users OR there is no admin users
-        Model.INSTANCE.addDefaultUsers();
+        ModelUserRegister.INSTANCE.addDefaultUsers();
     }
 
 }

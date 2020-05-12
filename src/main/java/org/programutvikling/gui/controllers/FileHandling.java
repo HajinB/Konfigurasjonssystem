@@ -13,6 +13,7 @@ import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
+import org.programutvikling.model.ModelUserRegister;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.io.File;
@@ -129,7 +130,7 @@ public class FileHandling {
         //lager en SVÆR arraylist som holder alle de objektene vi trenger for ikke la data gå tapt.
         ArrayList<Object> objects = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
                 Model.INSTANCE.getSavedPathRegister(),
-                Model.INSTANCE.getUserRegister());
+                ModelUserRegister.INSTANCE.getUserRegister());
         FileHandling.saveFileAuto(objects,
                 Paths.get(getPathToUser()));
     }
@@ -150,7 +151,7 @@ public class FileHandling {
     public static void saveBackup() throws IOException {
         ArrayList<Object> objects = FileUtility.createObjectList(Model.INSTANCE.getComponentRegister(),
                 Model.INSTANCE.getSavedPathRegister(),
-                Model.INSTANCE.getUserRegister());
+                ModelUserRegister.INSTANCE.getUserRegister());
         FileHandling.saveFileAuto(objects,
                 Paths.get("AppFiles/Database/Backup/AppDataBackup.jobj"));
     }

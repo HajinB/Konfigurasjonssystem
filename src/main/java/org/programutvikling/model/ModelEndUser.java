@@ -12,7 +12,6 @@ public enum ModelEndUser {
     private ComputerRegister computerRegister = new ComputerRegister();
     private Computer computer = new Computer("current");
 
-
     private ModelEndUser(){
             loadCompleteComputers();
             loadComputer();

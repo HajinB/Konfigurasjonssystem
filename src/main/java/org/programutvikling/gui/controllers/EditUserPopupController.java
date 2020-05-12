@@ -14,6 +14,7 @@ import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.IController;
 import org.programutvikling.model.Model;
+import org.programutvikling.model.ModelUserRegister;
 import org.programutvikling.model.TemporaryUser;
 
 import java.net.URL;
@@ -86,13 +87,13 @@ public class EditUserPopupController extends TabUsersController implements Initi
 
     public boolean usernameExists(String username) {
         System.out.println(getUserRegister().toString());
-        return Model.INSTANCE.getUserRegister().usernameExists(username);
+        return ModelUserRegister.INSTANCE.getUserRegister().usernameExists(username);
 
     }
 
     public boolean emailExists(String email) {
         System.out.println(getUserRegister().toString());
-        return Model.INSTANCE.getUserRegister().emailExists(email);
+        return ModelUserRegister.INSTANCE.getUserRegister().emailExists(email);
     }
 
     @FXML
