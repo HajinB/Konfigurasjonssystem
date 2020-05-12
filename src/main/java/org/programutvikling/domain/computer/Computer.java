@@ -20,7 +20,6 @@ public class Computer implements Serializable, Item {
     private transient SimpleStringProperty productName;
 
     public Computer(String name) {
-        // this.productPrice = calculatePrice();
         this.productName = new SimpleStringProperty(name);
     }
 
@@ -74,23 +73,6 @@ public class Computer implements Serializable, Item {
         }
         return melding;
     }
-/*
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.writeUTF(getProductName());
-        s.writeObject(new ArrayList<Component>(componentRegister.getRegister()));
-    }
-
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        if (s != null) {
-            String name = s.readUTF();
-            this.productName = new SimpleStringProperty();
-            setProductName(name);
-            ArrayList<Component> list = (ArrayList<Component>) s.readObject();
-            //componentRegister.getRegister().clear();
-            componentRegister = new ComponentRegister();
-            componentRegister.getRegister().addAll(list);
-        }
-    }*/
 
     public ArrayList<String> createSortedUniqueComponentTypeList() {
         ArrayList<String> namesOfComponentsInList = new ArrayList<>();
