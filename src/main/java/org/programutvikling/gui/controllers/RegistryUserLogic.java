@@ -19,7 +19,6 @@ import org.programutvikling.gui.utility.UserWindowHandler;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryUser;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.Arrays;
 
