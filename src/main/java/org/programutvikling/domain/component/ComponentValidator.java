@@ -88,7 +88,8 @@ public class ComponentValidator {
     public static boolean areAllFieldsAMatch(Component c1, Component c2) {
         return c2.getProductName().equals(c1.getProductName())
                 && c2.getProductType().equals(c1.getProductType())
-                && c2.getProductDescription().equals(c1.getProductDescription()) && c2.getProductPrice()==c1.getProductPrice();
+                && c2.getProductDescription().equals(c1.getProductDescription())
+                && c2.getProductPrice()==c1.getProductPrice();
     }
 }
 

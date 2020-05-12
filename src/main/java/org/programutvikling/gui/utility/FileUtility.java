@@ -42,7 +42,7 @@ public class FileUtility {
     public static String getFilePathFromSaveTXTDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+                new FileChooser.ExtensionFilter("TEXT org.programutvikling.files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
 
         return saveDialog(stage, fileChooser);
@@ -52,7 +52,7 @@ public class FileUtility {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("AppFiles/Database/Admin/ComponentRegisters"));
         FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("JOBJ files (*.jobj)", "*.jobj");
+                new FileChooser.ExtensionFilter("JOBJ org.programutvikling.files (*.jobj)", "*.jobj");
 
         fileChooser.getExtensionFilters().add(extFilter);
 
@@ -73,7 +73,7 @@ public class FileUtility {
     public static String getStringPathFromOpenJobjDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("JOBJ files (*.jobj)", "*.jobj");
+                new FileChooser.ExtensionFilter("JOBJ org.programutvikling.files (*.jobj)", "*.jobj");
         fileChooser.getExtensionFilters().add(extFilter);
 
         return openDialog(stage, fileChooser);
@@ -83,7 +83,7 @@ public class FileUtility {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("AppFiles/Database/User/Computers"));
         FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+                new FileChooser.ExtensionFilter("TXT org.programutvikling.files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
 
         return openDialog(stage, fileChooser);
