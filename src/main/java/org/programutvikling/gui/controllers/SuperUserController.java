@@ -43,8 +43,6 @@ public class SuperUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Task<Boolean> task = ThreadHandler.getTask();
-        ThreadHandler.loadInThread(task);
         tabComponentsController.init(this);
         tabUsersController.init(this);
         registryComponentLogic = new RegistryComponentLogic(tabComponentsController);

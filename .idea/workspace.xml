@@ -25,11 +25,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Lagde ModelUserRegister, sånn at det bare er den som lastes inn på innlogging skjerm">
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/UserPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/UserPreferences.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/TabComponentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/TabComponentsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ThreadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ThreadHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" afterDir="false" />
     </list>
@@ -143,11 +143,11 @@
       <recent name="$PROJECT_DIR$/AppFiles/Database/Backup" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/AppFiles/Database/Admin" />
       <recent name="$PROJECT_DIR$/src/Test/org/programutvikling/files" />
       <recent name="$PROJECT_DIR$/AppFiles/Database/User/Computers" />
       <recent name="$PROJECT_DIR$/AppFiles" />
       <recent name="$PROJECT_DIR$/AppFiles/Database/Backup" />
-      <recent name="$PROJECT_DIR$/src/main/resources/org/programutvikling" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -299,13 +299,6 @@
       <workItem from="1588986164951" duration="17707000" />
       <workItem from="1589187040877" duration="17620000" />
       <workItem from="1589291745741" duration="9313000" />
-    </task>
-    <task id="LOCAL-00169" summary="liten bug der totalpris ikke ble oppdatert når man legger til fra komplett datamaskin">
-      <created>1589107902605</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
-      <option name="project" value="LOCAL" />
-      <updated>1589107902606</updated>
     </task>
     <task id="LOCAL-00170" summary="dialog for å legge til i handlekurv">
       <created>1589108262038</created>
@@ -643,7 +636,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589316601314</updated>
     </task>
-    <option name="localTasksCounter" value="218" />
+    <task id="LOCAL-00218" summary="Lagde ModelUserRegister, sånn at det bare er den som lastes inn på innlogging skjerm">
+      <created>1589316895100</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1589316895100</updated>
+    </task>
+    <option name="localTasksCounter" value="219" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

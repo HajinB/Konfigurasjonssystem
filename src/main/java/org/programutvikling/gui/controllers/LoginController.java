@@ -1,5 +1,6 @@
 package org.programutvikling.gui.controllers;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,7 +45,9 @@ public class LoginController implements Initializable {
             // Turns off the label when you get a successful login
             lblFeilPassword.setVisible(false);
             if (loginUser.getAdmin()) {
-                App.setRoot("superUser");
+                Task<Boolean> task = ThreadHandler.getTask();
+                ThreadHandler.loadInThread(task);
+
             } else {
                 openUserView();
             }

@@ -3,6 +3,7 @@ package org.programutvikling.gui.controllers;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.scene.control.Alert;
+import org.programutvikling.App;
 import org.programutvikling.domain.io.iothread.InputThread;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
@@ -42,6 +43,7 @@ public class ThreadHandler {
                 Thread.sleep(2000);
                 //App.setRoot("secondary");
                 /** gjør tingen her: aka lad inn ting**/
+                App.setRoot("superUser");
                 System.out.println("Loader adminModel"+Model.INSTANCE);
                 // FileUtility.populateRecentFiles("AppFiles/Database/Admin/ComponentRegisters");
                 FileUtility.populateRecentFilesVoid();

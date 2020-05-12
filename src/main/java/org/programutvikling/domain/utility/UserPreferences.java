@@ -7,7 +7,7 @@ public class UserPreferences {
 
     final private String pathToAdminAppFiles = "AppFiles/Database/Admin/AdminAppData.jobj";
     final private String pathToCurrentComputer = "AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt";
-    final private String pathToBackupAppFiles = "AppFiles/Database/Admin/Backup/AppDataBackup.jobj";
+    final private String pathToBackupAppFiles = "AppFiles/Database/Backup/AppDataBackup.jobj";
     final private String pathToComputers = "AppFiles/Database/User/Computers";
 
     /**

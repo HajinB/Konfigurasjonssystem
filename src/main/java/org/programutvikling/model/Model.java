@@ -28,8 +28,11 @@ public enum Model {
             loadObjectsIntoClasses();
             removeDuplicates();
         } else {
-            System.out.println("Ingen config fil ble funnet - tilbake til default.");
-            FileHandling.openFile(adminObjects, userPreferences.getStringPathToBackupAppFiles());
+            System.out.println("Ingen datafil ble funnet - prøv backup");
+            if (FileUtility.doesFileExist(userPreferences.getStringPathToBackupAppFiles())) {
+                FileHandling.openFile(adminObjects, userPreferences.getStringPathToBackupAppFiles());
+                removeDuplicates();
+            }
             loadObjectsIntoClasses();
         }
     }
