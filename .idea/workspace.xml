@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/superUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/superUser.fxml" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -275,21 +277,7 @@
       <workItem from="1588836655761" duration="28000" />
       <workItem from="1588986164951" duration="17707000" />
       <workItem from="1589187040877" duration="17620000" />
-      <workItem from="1589291745741" duration="5009000" />
-    </task>
-    <task id="LOCAL-00155" summary="rydding + liten endring på labels på componentRegistry">
-      <created>1588954732043</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1588954732043</updated>
-    </task>
-    <task id="LOCAL-00156" summary="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata.">
-      <created>1589021227836</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1589021227838</updated>
+      <workItem from="1589291745741" duration="5211000" />
     </task>
     <task id="LOCAL-00157" summary="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata.">
       <created>1589021493180</created>
@@ -620,7 +608,21 @@
       <option name="project" value="LOCAL" />
       <updated>1589296739831</updated>
     </task>
-    <option name="localTasksCounter" value="204" />
+    <task id="LOCAL-00204" summary="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer + fixed fokus på userpopup">
+      <created>1589296775453</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1589296775453</updated>
+    </task>
+    <task id="LOCAL-00205" summary="fixed feil path for mac">
+      <created>1589296791254</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1589296791254</updated>
+    </task>
+    <option name="localTasksCounter" value="206" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +657,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="med testdata" />
     <MESSAGE value="fixed &quot;vil du erstatte den komponenten pga den typen har nok antall &quot;" />
     <MESSAGE value="la til en testfunksjon for superbruker, sånn at man kan legge til computers der (gjør testing sååå mye lettere)" />
     <MESSAGE value="7" />
@@ -680,7 +681,8 @@
     <MESSAGE value="fixed bug i opentxtfile" />
     <MESSAGE value="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer" />
     <MESSAGE value="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer + fixed fokus på userpopup" />
-    <option name="LAST_COMMIT_MESSAGE" value="hvis man ikke har logget inn på user denne sessionen, trenger vi ikke å lagre currentcomputer + fixed fokus på userpopup" />
+    <MESSAGE value="fixed feil path for mac" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed feil path for mac" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />

@@ -79,7 +79,7 @@ public class SuperUserController implements Initializable {
             //Model.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(chosenPath);
             //tabComponentsController.updateRecentFiles();
         } else {
-           return;
+            return;
         }
         tabComponentsController.setResultLabelTimed("Lagring ferdig!");
     }
@@ -98,7 +98,7 @@ public class SuperUserController implements Initializable {
         }
         if (getComponentRegister().getRegister().size() == 0) {
             registryComponentLogic.overWriteList(chosenFile);
-        }else {
+        } else {
 
             Alert alert = Dialog.getOpenOption(
                     "Åpne fil",
@@ -114,14 +114,9 @@ public class SuperUserController implements Initializable {
         return Model.INSTANCE.getComponentRegister();
     }
 
-    public void btnRemoveDuplicates(ActionEvent event) throws IOException {
-        Model.INSTANCE.getComponentRegister().removeDuplicates();
-        tabComponentsController.updateView();
-    }
-
     public void btnRemoveAllComponents(ActionEvent event) throws IOException {
         Alert alert = Dialog.getConfirmationAlert("Operasjon", "Tømme komponentregisteret",
-                "Vil du slette alle komponenter i registeret?","");
+                "Vil du slette alle komponenter i registeret?", "");
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             Model.INSTANCE.getComponentRegister().getRegister().clear();
@@ -131,7 +126,7 @@ public class SuperUserController implements Initializable {
 
     public void btnRemoveAllUsers(ActionEvent event) throws IOException {
         Alert alert = Dialog.getConfirmationAlert("Operasjon", "Tømme brukerregisteret",
-                "Vil du slette alle admin og brukere i registeret?","");
+                "Vil du slette alle admin og brukere i registeret?", "");
         alert.showAndWait();
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             Model.INSTANCE.getUserRegister().getRegister().clear();
