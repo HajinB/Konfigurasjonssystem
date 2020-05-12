@@ -307,5 +307,4 @@ public class RegistryUserLogic implements Stageable {
         return Model.INSTANCE.getUserRegister().getRegister();
     }
 
-
 }

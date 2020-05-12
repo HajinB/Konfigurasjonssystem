@@ -112,7 +112,7 @@ public class EditComponentPopupController extends TabComponentsController implem
     }
 
     @Override
-    public void initData(Clickable c, Stage stage, int columnIndex) {
+    public void initData(Clickable c, Stage stage) {
 
         Component component = (Component) c;
         RegistryComponentLogic registryComponentLogic = new RegistryComponentLogic(componentEditNode);
@@ -124,7 +124,7 @@ public class EditComponentPopupController extends TabComponentsController implem
         txtPopupProductDescription.setText(component.getProductDescription());
         System.out.println(component.getProductPrice());
         txtPopupProductPrice.setText(Double.toString(component.getProductPrice()));
-        setFocusOnField(columnIndex, component);
+        setFocusOnField(TemporaryComponent.INSTANCE.getColumnIndex(), component);
 
     }
 

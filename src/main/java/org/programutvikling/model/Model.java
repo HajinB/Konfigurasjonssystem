@@ -1,17 +1,17 @@
 package org.programutvikling.model;
 
 import org.programutvikling.domain.component.ComponentRegister;
+import org.programutvikling.domain.user.SavedPathRegister;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
 import org.programutvikling.domain.utility.UserPreferences;
 import org.programutvikling.gui.controllers.FileHandling;
-import org.programutvikling.domain.user.SavedPathRegister;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 
 import java.util.ArrayList;
 
-//singleton som holder data fra fil - slik at samme data kan aksesses fra flere controllere.
+//singleton som holder data fra fil - slik at samme data enkelt kan aksesses fra flere controllere.
 public enum Model {
     INSTANCE;
 
@@ -71,33 +71,6 @@ public enum Model {
         }
     }
 
-    public UserPreferences getUserPreferences() {
-        return userPreferences;
-    }
-
-    public SavedPathRegister getSavedPathRegister() {
-        return savedPathRegister;
-    }
-
-    public ArrayList<Object> getCurrentObjectList() {
-        return EndUserObjects;
-    }
-
-    public ArrayList<Object> getCleanObjectList() {
-        if (EndUserObjects.size() > 0) {
-            EndUserObjects.clear();
-        }
-        return EndUserObjects;
-    }
-
-    public void setEndUserLoggedIn(boolean endUserLoggedIn) {
-        this.endUserLoggedIn = endUserLoggedIn;
-    }
-
-    public boolean isEndUserLoggedIn() {
-        return endUserLoggedIn;
-    }
-
     public void appendComponentRegisterIntoModel() {
         if (EndUserObjects.size() == 0) {
             return;
@@ -108,7 +81,6 @@ public enum Model {
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
             System.out.println("size etter append: " + componentRegister.getRegister().size());
         }
-        //componentRegister.getRegister().addAll(objects.get(0).;
     }
 
     public void loadComponentRegisterIntoModel() {
@@ -119,7 +91,7 @@ public enum Model {
             setComponentRegister((ComponentRegister) EndUserObjects.get(0));
     }
 
-    public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
+    public void loadObjectsIntoClasses() {
         System.out.println(EndUserObjects.size());
         if (EndUserObjects.size() > 0) {
             if (EndUserObjects.get(0) != null && EndUserObjects.get(0) instanceof ComponentRegister)
@@ -131,6 +103,31 @@ public enum Model {
             if (EndUserObjects.get(2) != null && EndUserObjects.get(2) instanceof UserRegister)
                 userRegister = (UserRegister) EndUserObjects.get(2);
         }
+    }
+
+    /**Get/Set*/
+
+    public UserPreferences getUserPreferences() {
+        return userPreferences;
+    }
+
+    public SavedPathRegister getSavedPathRegister() {
+        return savedPathRegister;
+    }
+
+    public ArrayList<Object> getCleanObjectList() {
+        if (EndUserObjects.size() > 0) {
+            EndUserObjects.clear();
+        }
+        return EndUserObjects;
+    }
+
+    public boolean isEndUserLoggedIn() {
+        return endUserLoggedIn;
+    }
+
+    public void setEndUserLoggedIn(boolean endUserLoggedIn) {
+        this.endUserLoggedIn = endUserLoggedIn;
     }
 
     public ComponentRegister getComponentRegister() {
@@ -145,7 +142,4 @@ public enum Model {
         return userRegister;
     }
 
-
-    public void getCleanEndUserObjectList() {
-    }
 }

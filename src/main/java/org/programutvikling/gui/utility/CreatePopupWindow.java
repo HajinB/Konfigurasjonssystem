@@ -20,10 +20,12 @@ import java.util.Objects;
 
 public class CreatePopupWindow {
 
+    //bruker Clickable for å kunne bruke user eller component.
     static void getStageForPopup(TableRow<? extends Clickable> row, String fxml, Stageable registryComponentLogic) throws IOException {
         if(row.isEmpty()){
             return;
         }
+        //laster inn fxml og gjør klar stage
         FXMLLoader loader =  FXMLGetter.fxmlLoaderFactory(fxml);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -31,7 +33,7 @@ public class CreatePopupWindow {
                 new Scene((Pane) loader.load())     //for å loade inn fxml og sende parameter må man loade ikke-statisk
         );
         Clickable clickable = getRowObject(row);
-        Objects.requireNonNull(createController(fxml, loader)).initData(clickable, stage, TemporaryComponent.INSTANCE.getColumnIndex());
+        Objects.requireNonNull(createController(fxml, loader)).initData(clickable, stage);
         stage.show();
         handlePopUp(stage, clickable, registryComponentLogic);
     }

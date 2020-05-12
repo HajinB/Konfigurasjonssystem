@@ -26,7 +26,6 @@ import java.util.List;
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
 
 public class FileHandling {
-    //private static UserPreferences userPreferences;
     private static UserPreferences userPreferences = new UserPreferences();
 
     public static void saveFileTxt(Computer computer, Path directoryPath) {
@@ -233,7 +232,7 @@ public class FileHandling {
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         try {
             fileOpenerTxt.open(computer, Paths.get(chosenFile));
-            if(computer.getComponentRegister().getRegister().size()==0){
+            if (computer.getComponentRegister().getRegister().size() == 0) {
                 computer.getComponentRegister().getRegister().addAll(safetyComputer.getComponentRegister().getRegister());
                 Dialog.showErrorDialog("Datamaskinen du prøvde å laste inn var ikke gyldig.");
             }

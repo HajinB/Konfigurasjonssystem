@@ -91,7 +91,6 @@ public class EnduserController {
         updateCompletedComputers();
     }
 
-
     @FXML
     public void btnDeleteFromCart(ActionEvent event) throws IOException {
         Alert alert = Dialog.getConfirmationAlert("Vil du slette valgt rad?", "Trykk ja for å slette.", "Vil du slette ",
@@ -140,7 +139,6 @@ public class EnduserController {
         tblColumnDescriptionList.addAll(descriptionColumns);
     }
 
-
     private void updateCompletedComputers() {
         if (ModelEndUser.INSTANCE.getComputerRegister().getObservableRegister().size() > 0)
             tblCompletedComputers.setItems(ModelEndUser.INSTANCE.getComputerRegister().getObservableRegister());
@@ -174,7 +172,6 @@ public class EnduserController {
     }
 
     private void openFinalDetails() throws IOException {
-
         System.out.println("her er vi i openDetailedView");
         FXMLLoader loader = FXMLGetter.fxmlLoaderFactory("orderDetailsPopup.fxml");
         Stage stage = new Stage();
@@ -199,7 +196,6 @@ public class EnduserController {
             updateComputerListView();
         }
     }
-
 
     void updateComputerListView() {
         if (getComputer() != null)
@@ -234,11 +230,9 @@ public class EnduserController {
             }
         }
     }
-
     /**
      * går via endUserService for å hente lister som er filtrert på produkttype
      */
-
     private void setTblMemory(TableView<Component> tblMemory) {
         tblMemory.setItems(endUserService.getMemoryRegister().getObservableRegister());
         this.tblMemory = tblMemory;
@@ -303,6 +297,4 @@ public class EnduserController {
             });
         }
     }
-
-
 }

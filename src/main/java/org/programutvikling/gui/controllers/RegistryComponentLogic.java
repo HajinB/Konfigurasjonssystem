@@ -21,7 +21,6 @@ import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RegistryComponentLogic implements Stageable {
@@ -47,29 +46,21 @@ public class RegistryComponentLogic implements Stageable {
         setTextAreaListener(gridPane);
     }
 
-    public RegistryComponentLogic(GridPane gridPane, ArrayList<Label> labelArrayList) {
-        this.gridPane = gridPane;
-        setTextAreaListener(gridPane);
-    }
-
     public RegistryComponentLogic(TabComponentsController tabComponentsController) {
         this.tabComponentsController = tabComponentsController;
         this.threadHandler = new ThreadHandler(tabComponentsController);
     }
 
     void registerComponent() {
-
-        //best å gjøre validering her - business rules kan throwe exceptions lengre downstream som de gjør, bare ta
-        // bort dialogs maybe?
         tabComponentsController.clearLabels();
         if (areInputFieldsEmpty()) {
-            if (isProductTypeEmpty()){
+            if (isProductTypeEmpty()) {
                 System.out.println("hva skjer");
                 tabComponentsController.setLblMsgType("Velg produkttype");
-            }else{
+            } else {
                 System.out.println("produkttype er ikke empty..");
             }
-            if (isProductNameEmpty()){
+            if (isProductNameEmpty()) {
                 tabComponentsController.setLblMsgName("Skriv inn navn på produktet");
             }
             if (isProductDescriptionEmpty()) {
@@ -78,13 +69,13 @@ public class RegistryComponentLogic implements Stageable {
             if (isProductPriceEmpty()) {
                 tabComponentsController.setLblMsgPrice("Skriv inn pris på produktet");
             }
-        }else {
+        } else {
             createComponentHandleDuplicate();
         }
     }
 
     public void setTblViewEventHandler() {
-        /**detecter tablerow, for å hente ut component*/
+        /**detecter tablerow, for å hente ut component, for å kunne åpne edit-window*/
         tblViewComponent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -215,11 +206,30 @@ public class RegistryComponentLogic implements Stageable {
                 getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
         System.out.println("index to replac : " + indexToReplace);
         getComponentRegister().getRegister().set(indexToReplace, newComponent);
+    }
 
-        //  tabComponentsController.updateView();
 
-               /* getComponentRegister().getObservableRegister().remove(possibleDuplicateComponentIfNotThenNull);
-                getComponentRegister().getObservableRegister().add(newComponent);*/
+    @Override
+    public void editClickableFromPopup(Clickable c) {
+        if (TemporaryComponent.INSTANCE.getIsEdited()) {
+            Component dup =
+                    ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
+                            TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
+            System.out.println(TemporaryComponent.INSTANCE.getTempComponent());
+            if (dup == null) {
+                getObservableRegister().set(getObservableRegister().indexOf(c),
+                        TemporaryComponent.INSTANCE.getTempComponent());
+                TemporaryComponent.INSTANCE.resetTemps();
+            } else {
+                justReplaceComponent((Component) c, dup);
+                Model.INSTANCE.getComponentRegister().removeDuplicates();
+            }
+            try {
+                FileHandling.saveAllAdminFiles();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private boolean areInputFieldsEmpty() {
@@ -259,56 +269,6 @@ public class RegistryComponentLogic implements Stageable {
         ((TextField) gridPane.lookup("#componentSearch")).setText("");
     }
 
-    /*
-    public void editComponentFromPopup(Component c) {
-        if (TemporaryComponent.INSTANCE.getIsEdited()) {
-            Component dup =
-                    ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
-                            TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
-            System.out.println(TemporaryComponent.INSTANCE.getTempComponent());
-            if (dup == null) {
-                getObservableRegister().set(getObservableRegister().indexOf(c),
-                        TemporaryComponent.INSTANCE.getTempComponent());
-                TemporaryComponent.INSTANCE.resetTemps();
-            } else {
-
-                justReplaceComponent(c, dup);
-                Model.INSTANCE.getComponentRegister().removeDuplicates();
-            }
-            try {
-                FileHandling.saveAllAdminFiles();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
-    @Override
-    public void editClickableFromPopup(Clickable c) {
-        if (TemporaryComponent.INSTANCE.getIsEdited()) {
-            Component dup =
-                    ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
-                            TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
-            System.out.println(TemporaryComponent.INSTANCE.getTempComponent());
-            if (dup == null) {
-                getObservableRegister().set(getObservableRegister().indexOf(c),
-                        TemporaryComponent.INSTANCE.getTempComponent());
-                TemporaryComponent.INSTANCE.resetTemps();
-            } else {
-               /* getObservableRegister().set(getObservableRegister().indexOf(c),
-                        TemporaryComponent.INSTANCE.getTempComponent());
-                TemporaryComponent.INSTANCE.resetTemps();*/
-                justReplaceComponent((Component) c, dup);
-                Model.INSTANCE.getComponentRegister().removeDuplicates();
-            }
-            try {
-                FileHandling.saveAllAdminFiles();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
 
     private List getObservableRegister() {
         return Model.INSTANCE.getComponentRegister().getObservableRegister();
@@ -378,6 +338,4 @@ public class RegistryComponentLogic implements Stageable {
         tabComponentsController.updateView();
 
     }
-
-
 }

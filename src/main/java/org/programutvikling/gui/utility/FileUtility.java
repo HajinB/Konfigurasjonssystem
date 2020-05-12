@@ -99,9 +99,10 @@ public class FileUtility {
             return pathToFile;
         }
     }
+
     //lager liste for saving - lagrer denne lista.
     public static ArrayList<Object> createObjectList(ComponentRegister componentRegister,
-                                                      SavedPathRegister savedPathRegister,
+                                                     SavedPathRegister savedPathRegister,
                                                      UserRegister userRegister) {
         ArrayList<Object> objects = new ArrayList<>();
 
@@ -111,7 +112,7 @@ public class FileUtility {
         //if (componentRegister != null)
         objects.add(1, savedPathRegister);
         // if (savedPathRegister != null)
-        objects.add(2, userRegister );
+        objects.add(2, userRegister);
 
         return objects;
     }
