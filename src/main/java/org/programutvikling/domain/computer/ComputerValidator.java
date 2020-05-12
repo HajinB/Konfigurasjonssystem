@@ -66,7 +66,7 @@ public class ComputerValidator {
     }
 
     public static boolean processorListValidator(Computer computer) {
-        return computer.getComponentRegister().countByType("prosessor") < 2;
+        return computer.getComponentRegister().countByType("prosessor") == 0;
     }
 
     public static boolean videoCardListValidator(Computer computer) {
