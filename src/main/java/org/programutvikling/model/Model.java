@@ -47,7 +47,7 @@ public enum Model {
     }
 
     public void addDefaultUsers() {
-        if (userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
+        if (userRegister.getRegister().size() == 0) {
             User admin = new User(true, "admin", "admin", "Administrator",
                     "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
 

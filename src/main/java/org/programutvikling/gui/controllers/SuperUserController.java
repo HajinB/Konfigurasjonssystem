@@ -131,6 +131,8 @@ public class SuperUserController implements Initializable {
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             Model.INSTANCE.getUserRegister().getRegister().clear();
             tabUsersController.updateView();
+            Dialog.showInformationDialog("Hvis brukerregisteret er tomt ved utlogging,\n" +
+                    "vil standardbrukere gjenopprettes.");
         }
     }
 }
