@@ -59,7 +59,7 @@ public class SuperUserController implements Initializable {
                 tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
             } catch (IOException ex) {
                 ex.printStackTrace();
-                tabComponentsController.setLblComponentMsg("Komponentene har ugyldig format.");
+                tabComponentsController.setLblComponentMsg("En eller flere av komponentene har ugyldig format.");
             }
             System.out.println(computer.getComponentRegister().getObservableRegister().size());
             for (Component c : computer.getComponentRegister().getObservableRegister()) {

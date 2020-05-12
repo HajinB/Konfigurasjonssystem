@@ -109,6 +109,7 @@ public class FileOpenerTxt implements FileOpener {
     private Item parseComponentWithoutValidation(String line) throws InvalidComponentFormatException {
         String[] split = line.split(";");
         if (split.length != 4) {
+
             throw new InvalidComponentFormatException("Du må bruke ; for å separere datafeltene.");
         }
         String type = split[0];
