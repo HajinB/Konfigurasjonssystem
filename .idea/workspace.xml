@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/gui/utility/DialogTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/utility/guiTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/FileHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/FileHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/customViews/CustomTextWrapCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/customViews/CustomTextWrapCellFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/TemporaryComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/TemporaryComponent.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -285,14 +280,7 @@
       <workItem from="1588836655761" duration="28000" />
       <workItem from="1588986164951" duration="17707000" />
       <workItem from="1589187040877" duration="17620000" />
-      <workItem from="1589291745741" duration="8875000" />
-    </task>
-    <task id="LOCAL-00162" summary="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata.">
-      <created>1589027595771</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
-      <option name="project" value="LOCAL" />
-      <updated>1589027595771</updated>
+      <workItem from="1589291745741" duration="9191000" />
     </task>
     <task id="LOCAL-00163" summary="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata.">
       <created>1589027951973</created>
@@ -630,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589298579473</updated>
     </task>
-    <option name="localTasksCounter" value="211" />
+    <task id="LOCAL-00211" summary=".">
+      <created>1589304268625</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
+      <option name="project" value="LOCAL" />
+      <updated>1589304268625</updated>
+    </task>
+    <option name="localTasksCounter" value="212" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +660,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="7" />
     <MESSAGE value="masse flytting og rydding i tabComponentsController" />
     <MESSAGE value="litt flytting av ting + fixed open recent files" />
     <MESSAGE value="fixed cbtype valg til å aldri være null, den starter på kabinett" />
@@ -690,7 +684,8 @@
     <MESSAGE value="fixed feil path for mac" />
     <MESSAGE value="slettet fjern duplikater fra SuperUserController" />
     <MESSAGE value="PADDING OMG" />
-    <option name="LAST_COMMIT_MESSAGE" value="PADDING OMG" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" />

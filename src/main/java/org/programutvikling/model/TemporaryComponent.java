@@ -49,7 +49,7 @@ public enum TemporaryComponent {
     public String errorListToString(){
         String melding= "";
         for(String s: errorList){
-            melding = melding + s +"\n";
+            melding = melding + s +"\n\n";
         }
         return melding;
     }
