@@ -93,7 +93,7 @@ public class OrderDetailsController implements Initializable {
         } catch (IOException i) {
             Dialog.showErrorDialog("Noe galt skjedde under lagring av " + computerWithName.getProductName() + "\n prøv et" +
                     " nytt navn");
-            throw new IOException("");
+            throw new IOException(i.getMessage());
         }
     }
 
