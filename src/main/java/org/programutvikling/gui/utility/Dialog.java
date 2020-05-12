@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.text.Text;
+import javafx.scene.control.TextArea;
 
 public class Dialog {
 
@@ -14,22 +14,33 @@ public class Dialog {
         alert.setTitle("Error");
         alert.setHeaderText("Ugyldig operasjon");
         alert.setContentText(msg);
+        alert.getDialogPane().setPrefHeight(200);
+        alert.getDialogPane().setPrefWidth(400);
+        alert.resizableProperty().setValue(true);
         alert.showAndWait();
     }
 
     public static void showInformationDialog(String msg) {
         Alert alert = new Alert(AlertType.INFORMATION);
+        TextArea area = new TextArea(msg);
+        area.setEditable(false);
+        area.setWrapText(true);
         alert.setTitle("Informasjon");
         alert.setHeaderText("");
-        alert.setContentText(msg);
+        alert.getDialogPane().setContent(area);
+        alert.resizableProperty().setValue(true);
         alert.showAndWait();
     }
 
     public static void showSuccessDialog(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        TextArea area = new TextArea(msg);
+        area.setEditable(false);
+        area.setWrapText(true);
         alert.setTitle("");
         alert.setHeaderText("Operasjon vellykket");
-        alert.setContentText(msg);
+        alert.getDialogPane().setContent(area);
+        alert.resizableProperty().setValue(true);
         alert.showAndWait();
     }
 
@@ -38,8 +49,12 @@ public class Dialog {
         ButtonType btnNei = new ButtonType("Nei", ButtonBar.ButtonData.CANCEL_CLOSE);
         ButtonType btnAvbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.BACK_PREVIOUS);
         Alert alert = new Alert(AlertType.CONFIRMATION, alertText + selection, btnJa, btnNei, btnAvbryt);
+        alert.getDialogPane().setPrefHeight(200);
+        alert.getDialogPane().setPrefWidth(400);
+        alert.resizableProperty().setValue(true);
         alert.setTitle(title);
         alert.setHeaderText(header);
+        alert.resizableProperty().setValue(true);
         return alert;
     }
 
@@ -48,8 +63,12 @@ public class Dialog {
         ButtonType btnOverskriv = new ButtonType("Overskriv", ButtonBar.ButtonData.CANCEL_CLOSE);
         ButtonType btnAvbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.BACK_PREVIOUS);
         Alert alert = new Alert(AlertType.CONFIRMATION, alertText + selection, btnLeggTil, btnOverskriv, btnAvbryt);
+        alert.getDialogPane().setPrefHeight(200);
+        alert.getDialogPane().setPrefWidth(400);
+        alert.resizableProperty().setValue(true);
         alert.setTitle(title);
         alert.setHeaderText(header);
+        alert.resizableProperty().setValue(true);
         return alert;
     }
 
@@ -57,7 +76,11 @@ public class Dialog {
         ButtonType btnJa = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
         ButtonType btnNei = new ButtonType("Nei", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(AlertType.CONFIRMATION, title, btnJa, btnNei);
+        alert.getDialogPane().setPrefHeight(200);
+        alert.getDialogPane().setPrefWidth(400);
+        alert.resizableProperty().setValue(true);
         alert.setHeaderText(header);
+        alert.resizableProperty().setValue(true);
         return alert;
     }
 
