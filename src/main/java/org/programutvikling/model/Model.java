@@ -27,7 +27,6 @@ public enum Model {
     }
 
     public void loadFileIntoModel() {
-        System.out.println("hi from model constructor" + userPreferences.getPathToAdminFiles().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToAdminFiles().toString())) {
             FileHandling.openFile(EndUserObjects, userPreferences.getPathToAdminFiles().toString());
             addDefaultUsers();
@@ -35,7 +34,7 @@ public enum Model {
             loadObjectsIntoClasses();
             removeDuplicates();
         } else {
-            System.out.println("ingen config fil ble funnet - tilbake til default.");
+            System.out.println("Ingen config fil ble funnet - tilbake til default.");
             FileHandling.openFile(EndUserObjects, userPreferences.getStringPathToBackupAppFiles());
             addDefaultUsers();
             loadObjectsIntoClasses();
@@ -47,9 +46,6 @@ public enum Model {
     }
 
     public void addDefaultUsers() {
-        System.out.println("addDefault utenfor if");
-        System.out.println("userRegister.getRegister().size(): " + userRegister.getRegister().size());
-        System.out.println("!userRegister.checkForAdmins(): " + !userRegister.checkForAdmins());
         if (userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
             User admin = new User(true, "admin", "admin", "Administrator",
                     "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
@@ -62,7 +58,7 @@ public enum Model {
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
             userRegister.addBruker(user4);
-            System.out.println("addDefault kjørt!");
+            System.out.println("Default brukere lagt til i registeret!");
         } else if (!userRegister.checkForAdmins()) {
             User admin = new User(true, "admin", "admin", "Administrator",
                     "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
@@ -96,9 +92,7 @@ public enum Model {
         }
         if (EndUserObjects.get(0) instanceof ComponentRegister && EndUserObjects.get(0) != null) {
             ComponentRegister componentRegisterFromFile = (ComponentRegister) EndUserObjects.get(0);
-            System.out.println("size før append: " + componentRegister.getRegister().size());
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
-            System.out.println("size etter append: " + componentRegister.getRegister().size());
         }
         //componentRegister.getRegister().addAll(objects.get(0).;
     }
@@ -113,8 +107,7 @@ public enum Model {
 
     public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
         SavedPathRegister savedPathRegisterTemp = null;
-        /**går det ann å skrive dette på en annen måte? factory method feks??*/
-        System.out.println(EndUserObjects.size());
+
         if (EndUserObjects.size() > 0) {
             if (EndUserObjects.get(0) != null && EndUserObjects.get(0) instanceof ComponentRegister)
                 setComponentRegister((ComponentRegister) EndUserObjects.get(0));
