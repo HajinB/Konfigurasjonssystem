@@ -13,7 +13,6 @@ public class UserPreferences {
     /**
      * enduser:
      */
-
     public Path getPathPathToUserComputer() {
         return Paths.get(pathToCurrentComputer);
     }

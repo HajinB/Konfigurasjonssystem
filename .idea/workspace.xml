@@ -25,7 +25,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="" />
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/UserPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/utility/UserPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ThreadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ThreadHandler.java" afterDir="false" />
+    </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,13 +296,6 @@
       <workItem from="1588986164951" duration="17707000" />
       <workItem from="1589187040877" duration="17620000" />
       <workItem from="1589291745741" duration="9313000" />
-    </task>
-    <task id="LOCAL-00172" summary="små endringer på validering av computer .txt input">
-      <created>1589187716341</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1589187716341</updated>
     </task>
     <task id="LOCAL-00173" summary="rydder i endusercontroller">
       <created>1589191523433</created>
@@ -636,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589317430389</updated>
     </task>
-    <option name="localTasksCounter" value="221" />
+    <task id="LOCAL-00221" summary="fix med fresh komponenter">
+      <created>1589317723595</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1589317723595</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +675,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rydding + liten endring på labels på componentRegistry" />
     <MESSAGE value="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata." />
     <MESSAGE value="prøver å redusere duplikat kode" />
     <MESSAGE value="liten bug der totalpris ikke ble oppdatert når man legger til fra komplett datamaskin" />
@@ -696,7 +699,8 @@
     <MESSAGE value="tok bort en library far module-info, håper på performance xD" />
     <MESSAGE value="fikset på noen test-klasser sånn at de ikke kaster masse NPE :P" />
     <MESSAGE value="Lagde ModelUserRegister, sånn at det bare er den som lastes inn på innlogging skjerm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lagde ModelUserRegister, sånn at det bare er den som lastes inn på innlogging skjerm" />
+    <MESSAGE value="fix med fresh komponenter" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix med fresh komponenter" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1589306062470" />

@@ -44,6 +44,8 @@ public class ThreadHandler {
                 //App.setRoot("secondary");
                 /** gjør tingen her: aka lad inn ting**/
                 App.setRoot("superUser");
+                //dette er det første kallet til Model.INSTANCE, da kjøres konstruktøren, som betyr at dataen lastes
+                // fra fil til Model.
                 System.out.println("Loader adminModel"+Model.INSTANCE);
                 // FileUtility.populateRecentFiles("AppFiles/Database/Admin/ComponentRegisters");
                 FileUtility.populateRecentFilesVoid();
