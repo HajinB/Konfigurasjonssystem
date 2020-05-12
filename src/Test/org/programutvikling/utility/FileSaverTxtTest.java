@@ -50,7 +50,6 @@ class FileSaverTxtTest {
         System.out.println(computer);
         System.out.println(Arrays.toString(exception.getStackTrace()));
 
-
         Component componentTest = new Component("MINNE", "Intel Core i9-9900K", "Socket-LGA1151, 8-Core, 16-Thread, 3" +
                 ".60/5" +
                 ".0GHz, Coffee Lake Refresh, uten kjøler", 6999.99);

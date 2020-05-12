@@ -27,11 +27,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/FileSaverTxtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/utility/FileSaverTxtTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/org/programutvikling/component/io/FileSaverTxtTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/component/ComponentValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/org/programutvikling/utility/FileSaverTxtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/org/programutvikling/utility/FileSaverTxtTest.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="SHOW_DIALOG" value="false" />
@@ -298,13 +294,6 @@
       <workItem from="1588986164951" duration="17707000" />
       <workItem from="1589187040877" duration="17620000" />
       <workItem from="1589291745741" duration="9313000" />
-    </task>
-    <task id="LOCAL-00165" summary="prøver å redusere duplikat kode">
-      <created>1589105669557</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1589105669557</updated>
     </task>
     <task id="LOCAL-00166" summary="liten bug der totalpris ikke ble oppdatert når man legger til fra komplett datamaskin">
       <created>1589106693968</created>
@@ -642,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589311182202</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="fikset på noen test-klasser sånn at de ikke kaster masse NPE :P">
+      <created>1589314714625</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1589314714625</updated>
+    </task>
+    <option name="localTasksCounter" value="215" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,7 +673,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed cbtype valg til å aldri være null, den starter på kabinett" />
     <MESSAGE value="rydding" />
     <MESSAGE value="rydding + liten endring på labels på componentRegistry" />
     <MESSAGE value="reduserte duplikat kode ved å lage en CreatePopup class - som brukes for å åpne controller med initdata." />
@@ -702,7 +697,8 @@
     <MESSAGE value="." />
     <MESSAGE value="fiksa den ene Dialogen" />
     <MESSAGE value="tok bort en library far module-info, håper på performance xD" />
-    <option name="LAST_COMMIT_MESSAGE" value="tok bort en library far module-info, håper på performance xD" />
+    <MESSAGE value="fikset på noen test-klasser sånn at de ikke kaster masse NPE :P" />
+    <option name="LAST_COMMIT_MESSAGE" value="fikset på noen test-klasser sånn at de ikke kaster masse NPE :P" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1589306062470" />
