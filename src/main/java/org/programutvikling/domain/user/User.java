@@ -20,16 +20,39 @@ public class User implements Serializable, Clickable {
     private transient SimpleStringProperty city;
 
     public User(boolean admin, String username, String password, String name, String email, String address, String zip, String city) {
-        this.admin = new SimpleBooleanProperty(admin);
-        if (UserValidator.isUserValid(username, password, name, email, address, zip, city)){
-            this.username = new SimpleStringProperty(username.toLowerCase());
-            this.password = new SimpleStringProperty(password);
-            this.name = new SimpleStringProperty(name);
-            this.email = new SimpleStringProperty(email.toLowerCase());
-            this.address = new SimpleStringProperty(address);
-            this.zip = new SimpleStringProperty(zip);
-            this.city = new SimpleStringProperty(city);
+
+        // Validation
+        if(!UserValidator.username(username)) {
+            throw new IllegalArgumentException("Brukernavnet kan ikke inneholde mellomrom!");
         }
+        if(!UserValidator.password(password)) {
+            throw new IllegalArgumentException("Passordet må være minst " + UserValidator.PASSWORD_LENGTH + " tegn!");
+        }
+        if(!UserValidator.name(name)) {
+            throw new IllegalArgumentException("Navnet kan ikke være tomt!");
+        }
+        if(!UserValidator.email(email)) {
+            throw new IllegalArgumentException("Feil email!");
+        }
+        if(!UserValidator.address(address)) {
+            throw new IllegalArgumentException("Adressen kan ikke være tom!");
+        }
+        if(!UserValidator.zip(zip)) {
+            throw new IllegalArgumentException("Postnummeret må inneholde minst " + UserValidator.ZIP_LENGTH + " tall!");
+        }
+        if(!UserValidator.city(city)) {
+            throw new IllegalArgumentException("Poststed kan ikke være tomt!");
+        }
+        // If no exception thrown, the constructor will set the properties
+
+        this.admin = new SimpleBooleanProperty(admin);
+        this.username = new SimpleStringProperty(username.toLowerCase());
+        this.password = new SimpleStringProperty(password);
+        this.name = new SimpleStringProperty(name);
+        this.email = new SimpleStringProperty(email.toLowerCase());
+        this.address = new SimpleStringProperty(address);
+        this.zip = new SimpleStringProperty(zip);
+        this.city = new SimpleStringProperty(city);
         this.admin = new SimpleBooleanProperty(admin);
     }
 
@@ -66,10 +89,9 @@ public class User implements Serializable, Clickable {
     }
 
     public void setUsername(String username) {
-        if (!UserValidator.username(username)) {
-            throw new IllegalArgumentException("Brukernavnet kan ikke være tomt!");
+        if (UserValidator.username(username)) {
+            this.username.set(username);
         }
-        this.username.set(username);
     }
 
     public SimpleStringProperty usernameProperty() {
@@ -81,7 +103,9 @@ public class User implements Serializable, Clickable {
     }
 
     public void setPassword(String password) {
-        this.password.set(password);
+        if(UserValidator.password(password)) {
+            this.password.set(password);
+        }
     }
 
     public SimpleStringProperty passwordProperty() {
@@ -102,7 +126,9 @@ public class User implements Serializable, Clickable {
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        if(UserValidator.name(name)) {
+            this.name.set(name);
+        }
     }
 
 
@@ -111,7 +137,9 @@ public class User implements Serializable, Clickable {
     }
 
     public void setEmail(String email) {
-        this.email.set(email);
+        if(UserValidator.email(email)) {
+            this.email.set(email);
+        }
     }
 
 
@@ -120,7 +148,9 @@ public class User implements Serializable, Clickable {
     }
 
     public void setAddress(String address) {
-        this.address.set(address);
+        if(UserValidator.address(address)) {
+            this.address.set(address);
+        }
     }
 
 
@@ -129,7 +159,9 @@ public class User implements Serializable, Clickable {
     }
 
     public void setZip(String zip) {
-        this.zip.set(zip);
+        if (UserValidator.zip(zip)) {
+            this.zip.set(zip);
+        }
     }
 
 
@@ -161,7 +193,7 @@ public class User implements Serializable, Clickable {
                     && this.getCity().equals(temp.getCity())
                     && this.getZip().equals(temp.getZip())
                     && this.getPassword().equals(temp.getPassword());
-            //bruker ikke pris her, for å sammenligne to komponenter i en liste.
+
         }
         return false;
     }

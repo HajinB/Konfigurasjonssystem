@@ -33,12 +33,9 @@ public class UserRegister implements Serializable, Clickable {
 
     // returns user after validating the correct username and password
     public User loginCredentialsMatches(String username, String password) {
-        System.out.println("Utenfor loop, userRegister.size(): " + getRegister().size());
         for(User user : userRegister) {
-            System.out.println("I looop! User: " + user);
             if(user.getUsername().equalsIgnoreCase(username) || user.getEmail().equalsIgnoreCase(username)) {
                 if(user.getPassword().equals(password)){
-                    System.out.println("return user from login");
                     return user;
                 }
             }
@@ -84,6 +81,7 @@ public class UserRegister implements Serializable, Clickable {
                     filter(u -> !u.getAdmin()).
                     collect(toCollection(FXCollections::observableArrayList));
         }
+        // Only "Admin" and "Bruker" filter exists
         throw new IllegalArgumentException("Feil filter i cbAdminFilter!");
     }
 

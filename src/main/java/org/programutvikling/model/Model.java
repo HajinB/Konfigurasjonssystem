@@ -51,21 +51,21 @@ public enum Model {
         System.out.println("userRegister.getRegister().size(): " + userRegister.getRegister().size());
         System.out.println("!userRegister.checkForAdmins(): " + !userRegister.checkForAdmins());
         if (userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
-            User admin = new User(true, "admin", "admin", "ola",
-                    "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
+            User admin = new User(true, "admin", "admin", "Administrator",
+                    "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
 
-            User user2 = new User(false, "user", "user", "ola",
-                    "user@user.com", "trondheimsvegen 1", "0909", "Trondheim");
-            User user3 = new User(false, "Tom", "password", "Tom", "tom@tom.com", "Toms vei 2", "2345", "Oslo");
-            User user4 = new User(true, "Hackerman", "hacker", "H4CK3R", "h4ck@m4i1.com", "Trodde du ja!", "1337", "Russia");
+            User user2 = new User(false, "user", "user", "Bruker",
+                    "user@user.com", "Brukersgate 8", "0010", "Oslo");
+            User user3 = new User(false, "Ola_n", "password", "Ola Nordmann", "ola@nordmann.com", "Trondheimsveien 1", "0956", "Oslo");
+            User user4 = new User(false, "Kari_h1", "kari123", "Kari Nordmann v/ Host&Servers1", "kari@hostandservers1.no", "Postboks 183 Moholt", "7448", "Trondheim");
             userRegister.addBruker(admin);
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
             userRegister.addBruker(user4);
             System.out.println("addDefault kjørt!");
         } else if (!userRegister.checkForAdmins()) {
-            User admin = new User(true, "admin", "admin", "admin",
-                    "admin@admin.com", "Adminsgaten 1", "0909", "Adminby");
+            User admin = new User(true, "admin", "admin", "Administrator",
+                    "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
             userRegister.addBruker(admin);
             Dialog.showInformationDialog("Ingen admins i registeret. \"admin\" har blitt lagt til i registeret.");
         }

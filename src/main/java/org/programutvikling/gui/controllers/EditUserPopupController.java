@@ -44,7 +44,7 @@ public class EditUserPopupController extends TabUsersController implements Initi
 
     private void editUser() {
 
-        //må fjerne den komponenten som blir edited fra listen for å kunne sjekke om det nye brukernavnet eller
+        //må fjerne den user som blir edited fra listen for å kunne sjekke om det nye brukernavnet eller
         // mailen eksisterer fra før.
         getUserRegister().getRegister().remove(tempUserIgnoreForValidation);
         if (areInputFieldsEmpty()) {

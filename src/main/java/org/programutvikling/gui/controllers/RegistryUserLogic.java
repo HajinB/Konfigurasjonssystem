@@ -66,11 +66,14 @@ public class RegistryUserLogic implements Stageable {
             }
         } else {
             if (!isEmailValid()) {
-                tabUsersController.setLblMsgEmail("E-postadressen er ikke gyldig eller eksisterer allerede");
+                tabUsersController.setLblMsgEmail("E-postadressen er ikke gyldig");
+                return;
+            } else if (!doesEmailExists()) {
+                tabUsersController.setLblMsgEmail("E-postadressen eksisterer allerede");
                 return;
             }
             if (!isUsernameValid()) {
-                tabUsersController.setLblMsgUsername("brukernavnet eksisterer allerede ");
+                tabUsersController.setLblMsgUsername("Brukernavnet eksisterer allerede");
                 return;
             }
             System.out.println(missingField);
@@ -86,7 +89,12 @@ public class RegistryUserLogic implements Stageable {
 
     private boolean isEmailValid() {
         String email = getString((NoSpacebarField) gridPane.lookup("#userMail"));
-        return !emailExists(email) && UserValidator.email(email);
+        return UserValidator.email(email);
+    }
+
+    private boolean doesEmailExists() {
+        String email = getString((NoSpacebarField) gridPane.lookup("#userMail"));
+        return !emailExists(email);
     }
 
     void createUserFromGUIInputFields() {
