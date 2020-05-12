@@ -1,9 +1,11 @@
 package org.programutvikling.gui.controllers;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserValidator;
@@ -13,10 +15,13 @@ import org.programutvikling.gui.customTextField.NoSpacebarField;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.Stageable;
+import org.programutvikling.gui.utility.UserWindowHandler;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryUser;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class RegistryUserLogic implements Stageable {
     private GridPane gridPane;
@@ -31,7 +36,6 @@ public class RegistryUserLogic implements Stageable {
     }
 
     public void registerUser() {
-        //todo legg til lbls for alle som på tabcomponents?
         boolean missingField = false;
         tabUsersController.clearLabels();
 
@@ -100,14 +104,6 @@ public class RegistryUserLogic implements Stageable {
     void createUserFromGUIInputFields() {
         try {
             User user = createUser();
-          /*  if(!isEmailValid()){
-                tabUsersController.setLblMsgEmail("Epost er ikke gyldig");
-                return;
-            }
-            if(isUsernameValid()){
-                tabUsersController.setLblMsgUsername("Brukernavnet eksisterer allerede");
-                return;
-            }*/
             Model.INSTANCE.getUserRegister().addBruker(user);
             Dialog.showInformationDialog(user.getUsername() + " er lagt til i listen!");
             resetFields();
@@ -220,8 +216,6 @@ public class RegistryUserLogic implements Stageable {
     @Override
     public void editClickableFromPopup(Clickable u) {
         if (TemporaryUser.INSTANCE.getIsEdited()) {
-            System.out.println("tempuserrrrr: " + TemporaryUser.INSTANCE.getTempUser() + " tempuser slutt");
-                System.out.println("RegistryUserLogic.editUserFromPopup() getRegister().indexOf(u): " + getRegister().indexOf(u));
                 getRegister().set(getRegister().indexOf(u),
                 TemporaryUser.INSTANCE.getTempUser());
                 TemporaryUser.INSTANCE.resetTemps();
@@ -231,6 +225,56 @@ public class RegistryUserLogic implements Stageable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void handlePopup(TableView<User> tblViewUser, UserWindowHandler userWindowHandler, GridPane userReg) {
+        // detecter tablecolumn, for å kunne fokusere på riktig celle i popupvindu
+        final ObservableList<TablePosition> selectedCells = tblViewUser.getSelectionModel().getSelectedCells();
+        // gjør det mulig å detecte cell på første klikk:
+        tblViewUser.getSelectionModel().setCellSelectionEnabled(true);
+        selectedCells.addListener((ListChangeListener) u -> {
+            if (selectedCells.size() != 0) {
+                TemporaryUser.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
+            }
+        });
+
+        // detecter tablerow, for å hente ut users
+        tblViewUser.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (Model.INSTANCE.getUserRegister().getRegister().size() > 0) {
+                    tblViewUser.getSelectionModel().setCellSelectionEnabled(false);
+                    TableRow<? extends User> row;
+                    if (isDoubleClick(event)) {
+                        System.out.println("dblclicked");
+                        Node node = ((Node) event.getTarget()).getParent();
+                        if (node instanceof TableRow) {
+                            row = (TableRow<User>) node;
+                        } else {
+                            //hvis man trykker på tekst
+                            row = (TableRow<User>) node.getParent();
+                            System.out.println("else getParent!");
+                        }
+                        try {
+                            userWindowHandler.openEditWindow(row, userReg);
+                            tabUsersController.updateView();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            System.out.println(e.getCause().toString());
+                            System.out.println(Arrays.toString(e.getStackTrace()));
+                            System.out.println(e.getLocalizedMessage());
+                            System.out.println(e.getMessage());
+                            System.out.println("Her er Exception, row: " + row);
+                        }
+                    }
+                }
+            }
+
+            private boolean isDoubleClick(MouseEvent event) {
+                return event.isPrimaryButtonDown() && event.getClickCount() == 2;
+            }
+        });
+
     }
 
     public void editUserFromPopup(Clickable u) {
@@ -244,11 +288,6 @@ public class RegistryUserLogic implements Stageable {
 
         System.out.println("index to replac : "+indexToReplace);
         getRegister().set(indexToReplace, newUser);
-
-        //  tabComponentsController.updateView();
-
-               /* getComponentRegister().getObservableRegister().remove(possibleDuplicateComponentIfNotThenNull);
-                getComponentRegister().getObservableRegister().add(newComponent);*/
     }
 
     private void deleteUser(User user) {
@@ -267,6 +306,5 @@ public class RegistryUserLogic implements Stageable {
     private ObservableList<User> getRegister() {
         return Model.INSTANCE.getUserRegister().getRegister();
     }
-
 
 }

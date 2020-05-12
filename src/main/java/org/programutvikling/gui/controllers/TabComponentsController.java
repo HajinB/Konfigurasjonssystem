@@ -66,7 +66,10 @@ public class TabComponentsController {
         initTextWrapCellFactory();
         updateView();
     }
-    /**events*/
+
+    /**
+     * events
+     */
     @FXML
     void btnAddComponent(ActionEvent event) {
         registryComponentLogic.registerComponent();
@@ -109,7 +112,9 @@ public class TabComponentsController {
 
     /**events slutt*/
 
-    /**utility views*/
+    /**
+     * utility views
+     */
     private void initTextWrapCellFactory() {
         //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
         // en kolonne i tableview
@@ -192,7 +197,7 @@ public class TabComponentsController {
         String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
         if (getComponentRegister().getRegister().size() == 0) {
             registryComponentLogic.overWriteList(chosenFile);
-        }else {
+        } else {
             openFileConfirmation(chosenFile);
         }
     }

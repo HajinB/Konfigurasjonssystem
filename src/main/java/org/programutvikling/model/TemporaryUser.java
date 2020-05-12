@@ -4,6 +4,8 @@ import org.programutvikling.domain.user.User;
 
 import java.util.ArrayList;
 
+//brukes i popup for å kontrollere editing av bruker.
+
 public enum TemporaryUser {
     INSTANCE;
     private User tempUser;

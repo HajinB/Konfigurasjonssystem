@@ -59,9 +59,8 @@ public class SuperUserController implements Initializable {
                 tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
             } catch (IOException ex) {
                 ex.printStackTrace();
-                tabComponentsController.setLblComponentMsg("Komponentene har ugyldig format.");
+                tabComponentsController.setLblComponentMsg("En eller flere av komponentene har ugyldig format.");
             }
-            System.out.println("yeee etter open computer, size: ");
             System.out.println(computer.getComponentRegister().getObservableRegister().size());
             for (Component c : computer.getComponentRegister().getObservableRegister()) {
                 Model.INSTANCE.getComponentRegister().addComponent(c);
@@ -80,7 +79,7 @@ public class SuperUserController implements Initializable {
             //Model.INSTANCE.getSavedPathRegister().addPathToListOfSavedFilePaths(chosenPath);
             //tabComponentsController.updateRecentFiles();
         } else {
-           return;
+            return;
         }
         tabComponentsController.setResultLabelTimed("Lagring ferdig!");
     }
@@ -99,7 +98,7 @@ public class SuperUserController implements Initializable {
         }
         if (getComponentRegister().getRegister().size() == 0) {
             registryComponentLogic.overWriteList(chosenFile);
-        }else {
+        } else {
 
             Alert alert = Dialog.getOpenOption(
                     "Åpne fil",
@@ -115,10 +114,25 @@ public class SuperUserController implements Initializable {
         return Model.INSTANCE.getComponentRegister();
     }
 
-    public void btnRemoveDuplicates(ActionEvent event) throws IOException {
-        Model.INSTANCE.getComponentRegister().removeDuplicates();
-        tabComponentsController.updateView();
+    public void btnRemoveAllComponents(ActionEvent event) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Operasjon", "Tømme komponentregisteret",
+                "Vil du slette alle komponenter i registeret?", "");
+        alert.showAndWait();
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            Model.INSTANCE.getComponentRegister().getRegister().clear();
+            tabComponentsController.updateView();
+        }
     }
 
-
+    public void btnRemoveAllUsers(ActionEvent event) throws IOException {
+        Alert alert = Dialog.getConfirmationAlert("Operasjon", "Tømme brukerregisteret",
+                "Vil du slette alle admin og brukere i registeret?", "");
+        alert.showAndWait();
+        if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            Model.INSTANCE.getUserRegister().getRegister().clear();
+            tabUsersController.updateView();
+            Dialog.showInformationDialog("Hvis brukerregisteret er tomt ved utlogging,\n" +
+                    "vil standardbrukere gjenopprettes.");
+        }
+    }
 }

@@ -17,6 +17,7 @@ import org.programutvikling.model.TemporaryComponent;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -26,18 +27,21 @@ import java.util.List;
 //todo: må lage metode som lagrer path til ConfigMain i jobj - slik at den er brukervalgt (?)
 
 public class FileHandling {
-    //private static UserPreferences userPreferences;
     private static UserPreferences userPreferences = new UserPreferences();
 
-    public static void saveFileTxt(Computer computer, Path directoryPath) {
+    public static void saveFileTxt(Computer computer, Path directoryPath) throws IOException {
         if (directoryPath != null) {
             FileSaverTxt saver = new FileSaverTxt();
             try {
                 saver.save(computer, directoryPath);
-                Dialog.showSuccessDialog("Registeret ble lagret!");
-            } catch (IOException e) {
-                Dialog.showErrorDialog("Lagring til fil feilet. Grunn: " + e.getMessage());
+            } catch (NoSuchFileException e) {
+                Dialog.showErrorDialog("Noe galt skjedde under lagring av "+directoryPath.getFileName()+  "\n prøv et" +
+                        " nytt navn");
+                e.printStackTrace();
+                throw new IOException("Noe galt skjedde under lagring av "+directoryPath.getFileName()+  "\n prøv et" +
+                        " nytt navn");
             }
+            Dialog.showSuccessDialog("Registeret ble lagret!");
         }
     }
 
@@ -136,7 +140,11 @@ public class FileHandling {
 
     private static void saveEndUserState() {
         Computer computer = getComputer();
-        saveFileTxt(computer, Paths.get(userPreferences.getStringPathToUserComputer()));
+        try {
+            saveFileTxt(computer, Paths.get(userPreferences.getStringPathToUserComputer()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void saveBackup() throws IOException {
@@ -233,7 +241,7 @@ public class FileHandling {
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         try {
             fileOpenerTxt.open(computer, Paths.get(chosenFile));
-            if(computer.getComponentRegister().getRegister().size()==0){
+            if (computer.getComponentRegister().getRegister().size() == 0) {
                 computer.getComponentRegister().getRegister().addAll(safetyComputer.getComponentRegister().getRegister());
                 Dialog.showErrorDialog("Datamaskinen du prøvde å laste inn var ikke gyldig.");
             }

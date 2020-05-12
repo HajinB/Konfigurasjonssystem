@@ -55,12 +55,6 @@ public class EndUserLogic {
         initView();
     }
 
-    public EndUserLogic(OrderDetailsController orderDetailsController,
-                        TableColumn descriptionTblColumn) {
-        this.orderDetailsController = orderDetailsController;
-        initView();
-    }
-
     private void initView() {
         ObjectProperty<TableRow<Component>> lastSelectedRow = new SimpleObjectProperty<>();
         setListenerToClearSelection(lastSelectedRow);
@@ -72,7 +66,6 @@ public class EndUserLogic {
     }
 
     private void setCompletedComputersEvents() {
-
         /**detecter tablerow, for å hente ut component*/
         //skal åpne en fxml, og sende cell-content til initmetoden til controlleren til denne fxmln
         tblCompletedComputers.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -126,7 +119,6 @@ public class EndUserLogic {
     }
 
     private void initTextWrapCellFactory() {
-
         //oppretter en Callback, som gjør at vi kan sette en klasse som extender tablecell på
         // en kolonne i tableview
         Callback<TableColumn, TableCell> customTextWrapCellFactory =
@@ -141,7 +133,6 @@ public class EndUserLogic {
     }
 
     private void setTblCellFactory() {
-
         //oppretter en cellfactory object for pris kolonnene
         Callback<TableColumn, TableCell> priceCellFactory =
                 new Callback<TableColumn, TableCell>() {
@@ -203,16 +194,11 @@ public class EndUserLogic {
         //går igjennom hele componentregisteret i computer for å finne en component å replace
 
         //starter loopen fra starten for å fjerne den som ble tatt bort først
-
-
         for (Component c : getComputer().getComponentRegister().getRegister()) {
-
             //finner en(den første den finner) komponent som har samme produkttype
             if (dblClickedComponent.getProductType().equalsIgnoreCase(c.getProductType())) {
-
                 //finner indeksen til denne.
                 int index = getComputer().getComponentRegister().getRegister().indexOf(c);
-
                 System.out.println(index);
                 getComputer().getComponentRegister().getRegister().set(index, dblClickedComponent);
                 break;
@@ -234,7 +220,6 @@ public class EndUserLogic {
                 return row;
             });
         }
-
         //listener på toplevel element for å cleare selection
         borderPane.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -261,32 +246,5 @@ public class EndUserLogic {
 
     private boolean isDoubleClick(MouseEvent event) {
         return event.isPrimaryButtonDown() && event.getClickCount() == 2;
-    }
-
-    public void setListeners() {
-
-  /*TableColumn t1 = (TableColumn) tblViewList.get(0).getColumns().get(1);
-        TableColumn t2 = (TableColumn) tblViewList.get(1).getColumns().get(1);
-        TableColumn t3 = (TableColumn) tblViewList.get(2).getColumns().get(1);
-
-        TableColumn t4 = (TableColumn) tblViewList.get(3).getColumns().get(1);
-        TableColumn t5 = (TableColumn) tblViewList.get(4).getColumns().get(1);*/
-        TableColumn t6 = (TableColumn) borderPane.lookupAll("#memoryDescriptionColumn");
-        TableColumn t7 = (TableColumn) borderPane.lookupAll("#cabinetDescriptionColumn");
-
-        Callback<TableColumn, TableCell> customTextWrapCellFactory =
-                new Callback<TableColumn, TableCell>() {
-                    public TableCell call(TableColumn p) {
-                        return new CustomTextWrapCellFactory();
-                    }
-                };
-       /* t1.setCellFactory(customTextWrapCellFactory);
-        t2.setCellFactory(customTextWrapCellFactory);
-        t3.setCellFactory(customTextWrapCellFactory);
-        t4.setCellFactory(customTextWrapCellFactory);*/
-        t6.setCellFactory(customTextWrapCellFactory);
-        t7.setCellFactory(customTextWrapCellFactory);
-
-
     }
 }

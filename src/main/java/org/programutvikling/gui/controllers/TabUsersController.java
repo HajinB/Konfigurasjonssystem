@@ -24,11 +24,9 @@ import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.utility.UserSearch;
 import org.programutvikling.gui.utility.UserWindowHandler;
 import org.programutvikling.model.Model;
-import org.programutvikling.model.TemporaryUser;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -68,87 +66,13 @@ public class TabUsersController implements Initializable, Clickable {
         System.out.println("cbAdmin: " + cbAdmin.isSelected());
     }
 
-    public void userName(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
-    public void userPassword(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
-    public void userMail(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
-    public void userAddress(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
-    public void userZipCode(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
-    public void userCity(TableColumn.CellEditEvent cellEditEvent) {
-
-    }
-
     public void updateView() {
         getUserRegister().attachTableView(tblViewUser);
     }
 
     @FXML
     void dblClickTblRow(MouseEvent event) {
-        handlePopup();
-    }
-
-    private void handlePopup() {
-        /**detecter tablecolumn, for å kunne fokusere på riktig celle i popupvindu*/
-        final ObservableList<TablePosition> selectedCells = tblViewUser.getSelectionModel().getSelectedCells();
-        //gjør det mulig å detecte cell på første klikk:
-        tblViewUser.getSelectionModel().setCellSelectionEnabled(true);
-        selectedCells.addListener((ListChangeListener) u -> {
-            if (selectedCells.size() != 0) {
-                TemporaryUser.INSTANCE.setColumnIndex(selectedCells.get(0).getColumn());
-            }
-        });
-
-        /**detecter tablerow, for å hente ut users*/
-        tblViewUser.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (getUserRegister().getRegister().size() > 0) {
-                    tblViewUser.getSelectionModel().setCellSelectionEnabled(false);
-                    TableRow<? extends User> row;
-                    if (isDoubleClick(event)) {
-                        System.out.println("dblclicked");
-                        Node node = ((Node) event.getTarget()).getParent();
-                        if (node instanceof TableRow) {
-                            row = (TableRow<User>) node;
-                        } else {
-                            //hvis man trykker på tekst
-                            row = (TableRow<User>) node.getParent();
-                            System.out.println("else getParent!");
-                        }
-                        try {
-                            userWindowHandler.openEditWindow(row, userReg);
-                            updateView();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            System.out.println(e.getCause().toString());
-                            System.out.println(Arrays.toString(e.getStackTrace()));
-                            System.out.println(e.getLocalizedMessage());
-                            System.out.println(e.getMessage());
-                            System.out.println("Her er Exception, row: " + row);
-                        }
-                    }
-                }
-            }
-
-            private boolean isDoubleClick(MouseEvent event) {
-                return event.isPrimaryButtonDown() && event.getClickCount() == 2;
-            }
-        });
-
+        registryUserLogic.handlePopup(tblViewUser,userWindowHandler,userReg);
     }
 
     @FXML

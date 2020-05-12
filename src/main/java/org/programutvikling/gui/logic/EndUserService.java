@@ -20,6 +20,32 @@ public class EndUserService {
     public EndUserService() {
         updateEndUserRegisters();
     }
+    public void updateEndUserRegisters() {
+        clearRegisters(motherboardRegister, cabinetRegister, videoCardRegister, screenRegister, mouseRegister,
+                processorRegister, memoryRegister, hardDiscRegister, otherRegister, keyboardRegister);
+        //kan lage en componentregisterList istedet? vil det redusere codespam?
+        addByName("hovedkort", motherboardRegister);
+        addByName("kabinett", cabinetRegister);
+        addByName("skjerm", screenRegister);
+        addByName("mus", mouseRegister);
+        addByName("prosessor", processorRegister);
+        addByName("skjermkort", videoCardRegister);
+        addByName("minne", memoryRegister);
+        addByName("harddisk", hardDiscRegister);
+        addByName("tastatur", keyboardRegister);
+        addByName("annet", otherRegister);
+    }
+
+    public void addByName(String s, ComponentRegister componentRegister){
+        ComponentRegister dataBaseRegister = Model.INSTANCE.getComponentRegister();
+        componentRegister.getRegister().addAll(dataBaseRegister.createListByType(s));
+    }
+
+    private void clearRegisters(ComponentRegister... c) {
+        for (ComponentRegister i : c) {
+            i.getRegister().clear();
+        }
+    }
 
     public ComponentRegister getProcessorRegister() {
         return processorRegister;
@@ -61,32 +87,5 @@ public class EndUserService {
         return otherRegister;
     }
 
-    public void updateEndUserRegisters() {
-        clearRegisters(motherboardRegister, cabinetRegister, videoCardRegister, screenRegister, mouseRegister,
-                processorRegister, memoryRegister, hardDiscRegister, otherRegister, keyboardRegister);
-        //kan lage en componentregisterList istedet? vil det redusere codespam?
-        addByName("hovedkort", motherboardRegister);
-        addByName("kabinett", cabinetRegister);
-        addByName("skjerm", screenRegister);
-        addByName("mus", mouseRegister);
-        addByName("prosessor", processorRegister);
-        addByName("skjermkort", videoCardRegister);
-        addByName("minne", memoryRegister);
-        addByName("harddisk", hardDiscRegister);
-        addByName("tastatur", keyboardRegister);
-        addByName("annet", otherRegister);
-    }
 
-    //må man definere disse? hvorfor ikke bare si her er 8 forskjellige
-
-    public void addByName(String s, ComponentRegister componentRegister){
-        ComponentRegister dataBaseRegister = Model.INSTANCE.getComponentRegister();
-        componentRegister.getRegister().addAll(dataBaseRegister.createListByType(s));
-    }
-
-    private void clearRegisters(ComponentRegister... c) {
-        for (ComponentRegister i : c) {
-            i.getRegister().clear();
-        }
-    }
 }

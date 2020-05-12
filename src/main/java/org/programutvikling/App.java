@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.programutvikling.gui.controllers.FileHandling;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.model.Model;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -21,7 +22,6 @@ import java.util.Optional;
  */
 public class App extends Application {
     private static Scene scene;
-    FileHandling fileHandling = new FileHandling();
 
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
@@ -46,9 +46,6 @@ public class App extends Application {
         primaryStage.show();
         primaryStage.setMaximized(true);
 
-        //scene.addEventFilter();
-
-        //scene = buildUI(primaryStage);
         if (scene == null) throw new NullPointerException();
         scene.getRoot().applyCss();
     }
@@ -71,7 +68,9 @@ public class App extends Application {
                         try {
                             FileHandling.saveBackup();
                             FileHandling.saveAllAdminFiles();
-                            FileHandling.saveAllEndUserFiles();
+                            if(Model.INSTANCE.isEndUserLoggedIn()) {
+                                FileHandling.saveAllEndUserFiles();
+                            }
                             System.exit(0);
                         } catch (IOException e) {
                             e.printStackTrace();

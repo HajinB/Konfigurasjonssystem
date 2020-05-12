@@ -38,12 +38,11 @@ public class EditUserPopupController extends TabUsersController implements Initi
     private ZipField userZip;
     @FXML
     private Button btnEditUser;
-    private RegistryUserLogic registryUserLogic;
+    int columnIndex;
 
     User tempUserIgnoreForValidation;
 
     private void editUser() {
-
         //må fjerne den user som blir edited fra listen for å kunne sjekke om det nye brukernavnet eller
         // mailen eksisterer fra før.
         getUserRegister().getRegister().remove(tempUserIgnoreForValidation);
@@ -96,17 +95,18 @@ public class EditUserPopupController extends TabUsersController implements Initi
         return Model.INSTANCE.getUserRegister().emailExists(email);
     }
 
-
     @FXML
     private void btnEditUser(ActionEvent event) {
         editUser();
     }
 
     @Override
-    public void initData(Clickable c, Stage stage, int columnIndex) {
+    public void initData(Clickable c, Stage stage) {
+
         System.out.println("kolonne for userpopup: " + columnIndex);
         User u = (User) c;
         this.tempUserIgnoreForValidation = u;
+        this.columnIndex = TemporaryUser.INSTANCE.getColumnIndex();
 
         //tar inn stage for å kunne lukke når brukeren trykker endre
 //        registryUserLogic.setTextAreaListener(userEditNode);
@@ -170,6 +170,4 @@ public class EditUserPopupController extends TabUsersController implements Initi
         btnEditUser.setDefaultButton(true);
 
     }
-
-
 }

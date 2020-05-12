@@ -1,6 +1,7 @@
 package org.programutvikling.model;
 
 import org.programutvikling.domain.component.ComponentRegister;
+import org.programutvikling.domain.user.SavedPathRegister;
 import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.user.UserRegister;
 import org.programutvikling.domain.utility.UserPreferences;
@@ -11,7 +12,7 @@ import org.programutvikling.gui.utility.FileUtility;
 
 import java.util.ArrayList;
 
-//singleton som holder data fra fil - slik at samme data kan aksesses fra flere controllere.
+//singleton som holder data fra fil - slik at samme data enkelt kan aksesses fra flere controllere.
 public enum Model {
     INSTANCE;
 
@@ -19,7 +20,7 @@ public enum Model {
     private ComponentRegister componentRegister = new ComponentRegister();
     private UserPreferences userPreferences = new UserPreferences();
     private UserRegister userRegister = new UserRegister();
-
+    private boolean endUserLoggedIn = false;
     private ArrayList<Object> EndUserObjects = new ArrayList<>();
 
     private Model() {
@@ -27,7 +28,6 @@ public enum Model {
     }
 
     public void loadFileIntoModel() {
-        System.out.println("hi from model constructor" + userPreferences.getPathToAdminFiles().toString());
         if (FileUtility.doesFileExist(userPreferences.getPathToAdminFiles().toString())) {
             FileHandling.openFile(EndUserObjects, userPreferences.getPathToAdminFiles().toString());
             addDefaultUsers();
@@ -35,7 +35,7 @@ public enum Model {
             loadObjectsIntoClasses();
             removeDuplicates();
         } else {
-            System.out.println("ingen config fil ble funnet - tilbake til default.");
+            System.out.println("Ingen config fil ble funnet - tilbake til default.");
             FileHandling.openFile(EndUserObjects, userPreferences.getStringPathToBackupAppFiles());
             addDefaultUsers();
             loadObjectsIntoClasses();
@@ -47,47 +47,25 @@ public enum Model {
     }
 
     public void addDefaultUsers() {
-        System.out.println("addDefault utenfor if");
-        System.out.println("userRegister.getRegister().size(): " + userRegister.getRegister().size());
-        System.out.println("!userRegister.checkForAdmins(): " + !userRegister.checkForAdmins());
-        if (userRegister.getRegister().size() == 0 || !userRegister.checkForAdmins()) {
-            User admin = new User(true, "admin", "admin", "ola",
-                    "admin@admin.com", "trondheimsvegen 1", "0909", "Trondheim");
+        if (userRegister.getRegister().size() == 0) {
+            User admin = new User(true, "admin", "admin", "Administrator",
+                    "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
 
-            User user2 = new User(false, "user", "user", "ola",
-                    "user@user.com", "trondheimsvegen 1", "0909", "Trondheim");
-            User user3 = new User(false, "Tom", "password", "Tom", "tom@tom.com", "Toms vei 2", "2345", "Oslo");
-            User user4 = new User(true, "Hackerman", "hacker", "H4CK3R", "h4ck@m4i1.com", "Trodde du ja!", "1337", "Russia");
+            User user2 = new User(false, "user", "user", "Bruker",
+                    "user@user.com", "Brukersgate 8", "0010", "Oslo");
+            User user3 = new User(false, "Ola_n", "password", "Ola Nordmann", "ola@nordmann.com", "Trondheimsveien 1", "0956", "Oslo");
+            User user4 = new User(false, "Kari_h1", "kari123", "Kari Nordmann v/ Host&Servers1", "kari@hostandservers1.no", "Postboks 183 Moholt", "7448", "Trondheim");
             userRegister.addBruker(admin);
             userRegister.addBruker(user2);
             userRegister.addBruker(user3);
             userRegister.addBruker(user4);
-            System.out.println("addDefault kjørt!");
+            System.out.println("Default brukere lagt til i registeret!");
         } else if (!userRegister.checkForAdmins()) {
-            User admin = new User(true, "admin", "admin", "admin",
-                    "admin@admin.com", "Adminsgaten 1", "0909", "Adminby");
+            User admin = new User(true, "admin", "admin", "Administrator",
+                    "admin@admin.com", "Adminsgate 7", "0001", "Oslo");
             userRegister.addBruker(admin);
             Dialog.showInformationDialog("Ingen admins i registeret. \"admin\" har blitt lagt til i registeret.");
         }
-    }
-
-    public UserPreferences getUserPreferences() {
-        return userPreferences;
-    }
-
-    public SavedPathRegister getSavedPathRegister() {
-        return savedPathRegister;
-    }
-
-    public ArrayList<Object> getCurrentObjectList() {
-        return EndUserObjects;
-    }
-
-    public ArrayList<Object> getCleanObjectList() {
-        if (EndUserObjects.size() > 0) {
-            EndUserObjects.clear();
-        }
-        return EndUserObjects;
     }
 
     public void appendComponentRegisterIntoModel() {
@@ -100,7 +78,6 @@ public enum Model {
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
             System.out.println("size etter append: " + componentRegister.getRegister().size());
         }
-        //componentRegister.getRegister().addAll(objects.get(0).;
     }
 
     public void loadComponentRegisterIntoModel() {
@@ -111,9 +88,7 @@ public enum Model {
             setComponentRegister((ComponentRegister) EndUserObjects.get(0));
     }
 
-    public void loadObjectsIntoClasses() {   //kan strengt talt være i en annen klasse....
-        SavedPathRegister savedPathRegisterTemp = null;
-        /**går det ann å skrive dette på en annen måte? factory method feks??*/
+    public void loadObjectsIntoClasses() {
         System.out.println(EndUserObjects.size());
         if (EndUserObjects.size() > 0) {
             if (EndUserObjects.get(0) != null && EndUserObjects.get(0) instanceof ComponentRegister)
@@ -125,6 +100,31 @@ public enum Model {
             if (EndUserObjects.get(2) != null && EndUserObjects.get(2) instanceof UserRegister)
                 userRegister = (UserRegister) EndUserObjects.get(2);
         }
+    }
+
+    /**Get/Set*/
+
+    public UserPreferences getUserPreferences() {
+        return userPreferences;
+    }
+
+    public SavedPathRegister getSavedPathRegister() {
+        return savedPathRegister;
+    }
+
+    public ArrayList<Object> getCleanObjectList() {
+        if (EndUserObjects.size() > 0) {
+            EndUserObjects.clear();
+        }
+        return EndUserObjects;
+    }
+
+    public boolean isEndUserLoggedIn() {
+        return endUserLoggedIn;
+    }
+
+    public void setEndUserLoggedIn(boolean endUserLoggedIn) {
+        this.endUserLoggedIn = endUserLoggedIn;
     }
 
     public ComponentRegister getComponentRegister() {
@@ -139,7 +139,4 @@ public enum Model {
         return userRegister;
     }
 
-
-    public void getCleanEndUserObjectList() {
-    }
 }
