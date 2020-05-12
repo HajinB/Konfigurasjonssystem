@@ -5,6 +5,7 @@
     -fx-font-family: Verdana;
 }
 
+/*Bakgrunn*/
 .anchorCenter {
     -fx-background-color: rgba(201, 188, 180, 0.09);
 }
