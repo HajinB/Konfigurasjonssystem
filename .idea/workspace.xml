@@ -26,11 +26,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+    <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="Fikset tableview tabUsers.fxml">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/user/UserRegister.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="SHOW_DIALOG" value="false" />
@@ -269,13 +271,7 @@
       <workItem from="1588836655761" duration="28000" />
       <workItem from="1588986164951" duration="17707000" />
       <workItem from="1589187040877" duration="16588000" />
-    </task>
-    <task id="LOCAL-00145" summary="litt flytting av ting + fixed open recent files">
-      <created>1588947726114</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1588947726114</updated>
+      <workItem from="1589289389780" duration="600000" />
     </task>
     <task id="LOCAL-00146" summary="litt flytting av ting + fixed open recent files">
       <created>1588949254969</created>
@@ -609,11 +605,17 @@
       <option name="presentableId" value="LOCAL−00193" />
       <updated>1589236456725</updated>
     </task>
-    <option name="localTasksCounter" value="194" />
+    <task id="LOCAL−00194" summary="Fikset tableview tabUsers.fxml">
+      <created>1589236570570</created>
+      <option name="number" value="LOCAL−00194" />
+      <option name="presentableId" value="LOCAL−00194" />
+      <updated>1589236570570</updated>
+    </task>
+    <option name="localTasksCounter" value="195" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -675,8 +677,10 @@
     <state x="238" y="0" key="#UserValidatorTest/0.0.1280.680@0.0.1280.680" timestamp="1589232014763" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589232014763" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1589232014763" />
-    <state x="535" y="30" key="#com.intellij.ide.util.MemberChooser" timestamp="1589232014763" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1589232014763" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1589289627557">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1589289627557" />
     <state x="535" y="30" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
     <state x="473" y="261" key="#com.intellij.refactoring.memberPullUp.PullUpDialog" timestamp="1589232014763" />
     <state x="473" y="261" key="#com.intellij.refactoring.memberPullUp.PullUpDialog/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
@@ -685,15 +689,15 @@
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589232014763" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1589232014763" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
-    <state x="211" y="0" key="CommitChangelistDialog2" timestamp="1589236456067">
+    <state x="211" y="0" key="CommitChangelistDialog2" timestamp="1589289412425">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="211" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589236456067" />
+    <state x="211" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589289412425" />
     <state x="315" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
-    <state x="189" y="97" width="1228" height="687" key="DiffContextDialog" timestamp="1589236451281">
+    <state x="189" y="97" width="1228" height="687" key="DiffContextDialog" timestamp="1589289409895">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1589236451281" />
+    <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1589289409895" />
     <state x="189" y="97" width="1228" height="687" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
     <state x="740" y="99" key="FileChooserDialogImpl" timestamp="1589232014763" />
     <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589232014763" />
@@ -754,28 +758,32 @@
     <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1589232014763" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589232014763" />
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1589236459269">
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2" timestamp="1589289993692">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1589236459269" />
+    <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1589289993692" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589232014763" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589235310988">
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589289392922">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1589235310988" />
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1589289392922" />
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
     <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1589232014763" />
     <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1589232014763" />
+    <state x="348" y="73" width="585" height="534" key="find.popup" timestamp="1589250788385">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="348" y="73" width="585" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1589250788385" />
     <state x="475" y="41" key="refactoring.ChangeSignatureDialog" timestamp="1589232014763" />
     <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1589232014763" />
     <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1589232014763" />
     <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1589232014763" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1589236342652">
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1589289532167">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1589236342652" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1589289532167" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
