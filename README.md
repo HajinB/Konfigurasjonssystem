@@ -9,7 +9,7 @@ Laget av kandidatnr:
 
 ## Innlogging
 
-|   Tilgang     | Brukernavn | Passord |
+| Tilgang       | Brukernavn | Passord |
 |---------------|------------|---------|
 | *Superbruker* | admin      | admin   |
 | *Bruker*      | user       | user    |
