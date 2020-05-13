@@ -1,6 +1,5 @@
 package org.programutvikling.gui.controllers;
 
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,10 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.programutvikling.App;
-import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
-import org.programutvikling.domain.computer.Computer;
-import org.programutvikling.domain.io.FileOpenerTxt;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.model.Model;
@@ -21,7 +17,6 @@ import org.programutvikling.model.ModelUserRegister;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class SuperUserController implements Initializable {
@@ -50,27 +45,7 @@ public class SuperUserController implements Initializable {
 
     @FXML
     void btnOpenComputerAndAddComponents(ActionEvent e) {
-        Computer computer = new Computer("temporary");
-        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
-        String chosenPath = FileUtility.getFilePathFromOpenTxtDialog(this.stage);
-
-        if (chosenPath != null) {
-            try {
-                System.out.println(chosenPath);
-                fileOpenerTxt.openWithoutValidation(computer, Paths.get(chosenPath));
-                tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                tabComponentsController.setLblComponentMsg("En eller flere av komponentene har ugyldig format.");
-            }
-            System.out.println(computer.getComponentRegister().getObservableRegister().size());
-            for (Component c : computer.getComponentRegister().getObservableRegister()) {
-                Model.INSTANCE.getComponentRegister().addComponent(c);
-            }
-            tabComponentsController.updateView();
-            Model.INSTANCE.getComponentRegister().removeDuplicates();
-            //tabComponentsController.setLblComponentMsg("Komponentene fra " + chosenPath + " \nble lastet inn");
-        }
+        registryComponentLogic.dialogForComputerTxtOpen();
     }
 
     @FXML

@@ -75,6 +75,7 @@ public class ComponentRegister implements Serializable, Clickable {
     }
 
     public void removeDuplicates() {
+        //skulle ønske det var enkelt å bruke Set istedenfor obsvablelist
         ArrayList<Component> al = (ArrayList<Component>) RegisterUtility.removeDuplicates(componentObservableList);
         this.getRegister().clear();
         this.getRegister().addAll(al);

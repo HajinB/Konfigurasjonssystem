@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,6 +14,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
@@ -81,7 +81,7 @@ public class TabComponentsController {
             Dialog.showErrorDialog("velg en fil fra listen");
             return;
         }
-        getConfirmationThenOpenRecent();
+        getConfirmationToOpenRecent();
     }
 
     @FXML
@@ -191,7 +191,7 @@ public class TabComponentsController {
         filter();
     }
 
-    private void getConfirmationThenOpenRecent() throws IOException {
+    private void getConfirmationToOpenRecent() throws IOException {
         String chosenFile = cbRecentFiles.getSelectionModel().getSelectedItem();
         if (getComponentRegister().getRegister().size() == 0) {
             registryComponentLogic.overWriteList(chosenFile);
@@ -289,4 +289,5 @@ public class TabComponentsController {
         setLblMsgName("");
         setLblMsgPrice("");
     }
+
 }

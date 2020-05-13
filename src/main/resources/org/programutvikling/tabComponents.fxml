@@ -161,7 +161,7 @@
                 <contextMenu>
                     <ContextMenu fx:id="cm">
                         <items>
-                            <MenuItem mnemonicParsing="false" onAction="#cmDeleteRow" text="Delete row" />
+                            <MenuItem mnemonicParsing="false" onAction="#cmDeleteRow" text="Slett rad" />
                         </items>
                     </ContextMenu>
                 </contextMenu>

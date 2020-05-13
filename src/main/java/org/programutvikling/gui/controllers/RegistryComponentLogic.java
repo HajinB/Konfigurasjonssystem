@@ -12,15 +12,19 @@ import javafx.scene.layout.GridPane;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentRegister;
 import org.programutvikling.domain.component.ComponentValidator;
+import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.io.FileOpenerTxt;
 import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Dialog;
+import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.gui.utility.WindowHandler;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.TemporaryComponent;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class RegistryComponentLogic implements Stageable {
@@ -45,6 +49,7 @@ public class RegistryComponentLogic implements Stageable {
         this.gridPane = gridPane;
         setTextAreaListener(gridPane);
     }
+
 
     public RegistryComponentLogic(TabComponentsController tabComponentsController) {
         this.tabComponentsController = tabComponentsController;
@@ -317,6 +322,10 @@ public class RegistryComponentLogic implements Stageable {
         //button.get(1) == overskriv
         if (alert.getResult() == alert.getButtonTypes().get(1)) {
             try {
+                if(chosenFile.endsWith(".txt")){
+                    //open txt like the computer in the menu
+                    dialogForComputerTxtOpen();
+                }
                 overWriteList(chosenFile);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -324,6 +333,10 @@ public class RegistryComponentLogic implements Stageable {
         }
         //button.get(0) == legg til
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            if(chosenFile.endsWith(".txt")){
+                //open txt like the computer in the menu
+                dialogForComputerTxtOpen();
+            }
             threadHandler.openInputThread(chosenFile);
             Model.INSTANCE.appendComponentRegisterIntoModel();
             Model.INSTANCE.getComponentRegister().removeDuplicates();
@@ -332,10 +345,65 @@ public class RegistryComponentLogic implements Stageable {
     }
 
     public void overWriteList(String chosenFile) throws IOException {
-        threadHandler.openInputThread(chosenFile);
-        Model.INSTANCE.loadComponentRegisterIntoModel();
-        Model.INSTANCE.getComponentRegister().removeDuplicates();
+        if(chosenFile.endsWith(".txt")){
+            openComputerTxt(chosenFile);
+            //fileOpenerTxt.openWithoutValidation(computer, Paths.get(chosenPath));
+        }else {
+            threadHandler.openInputThread(chosenFile);
+            Model.INSTANCE.loadComponentRegisterIntoModel();
+            Model.INSTANCE.getComponentRegister().removeDuplicates();
+        }
         tabComponentsController.updateView();
 
+    }
+
+    private void openComputerTxt(String chosenPath) {
+        Computer computer = new Computer("temp");
+        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
+        try {
+            System.out.println(chosenPath);
+            fileOpenerTxt.openWithoutValidation(computer, Paths.get(chosenPath));
+            tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
+            loadComputerIntoComponentRegister(computer);
+            removeDuplicates();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            tabComponentsController.setLblComponentMsg("En eller flere av komponentene har ugyldig format.");
+        }
+
+    }
+
+
+    public void dialogForComputerTxtOpen() {
+        Computer computer = new Computer("temp");
+        FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
+        String chosenPath = FileUtility.getFilePathFromOpenTxtDialog(null);
+
+        if (chosenPath != null) {
+            try {
+                System.out.println(chosenPath);
+                fileOpenerTxt.openWithoutValidation(computer, Paths.get(chosenPath));
+                tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                tabComponentsController.setLblComponentMsg("En eller flere av komponentene har ugyldig format.");
+            }
+            System.out.println(computer.getComponentRegister().getObservableRegister().size());
+            loadComputerIntoComponentRegister(computer);
+            removeDuplicates();
+
+            //tabComponentsController.setLblComponentMsg("Komponentene fra " + chosenPath + " \nble lastet inn");
+        }
+    }
+
+    private void removeDuplicates() {
+        tabComponentsController.updateView();
+        Model.INSTANCE.getComponentRegister().removeDuplicates();
+    }
+
+    private void loadComputerIntoComponentRegister(Computer computer) {
+        for (Component c : computer.getComponentRegister().getObservableRegister()) {
+            Model.INSTANCE.getComponentRegister().addComponent(c);
+        }
     }
 }
