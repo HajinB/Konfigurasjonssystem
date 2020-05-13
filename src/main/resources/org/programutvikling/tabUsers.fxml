@@ -131,7 +131,7 @@
             </Pane>
             <TableView fx:id="tblViewUser" focusTraversable="false" layoutX="351.0" layoutY="59.0" onMousePressed="#dblClickTblRow" prefHeight="555.0" prefWidth="676.0" styleClass="tblView" stylesheets="@CSS/SuperUser.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="59.0">
                 <columns>
-                    <TableColumn id="userAdmin" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" styleClass="column" text="Rolle">
+                    <TableColumn id="userAdmin" minWidth="60.0" prefWidth="60.0" styleClass="column" text="Rolle">
                         <cellValueFactory>
                             <PropertyValueFactory property="admin" />
                         </cellValueFactory>
@@ -161,12 +161,12 @@
                             <PropertyValueFactory property="address" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn id="userZip" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" styleClass="column" text="Postnr">
+                    <TableColumn id="userZip"  minWidth="60.0" prefWidth="60.0" styleClass="column" text="Postnr">
                         <cellValueFactory>
                             <PropertyValueFactory property="zip" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn id="userCity" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" styleClass="column" text="Poststed">
+                    <TableColumn id="userCity" minWidth="100.0" prefWidth="100.0" styleClass="column" text="Poststed">
                         <cellValueFactory>
                             <PropertyValueFactory property="city" />
                         </cellValueFactory>
