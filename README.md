@@ -8,13 +8,11 @@ Laget av kandidatnr:
 * 139
 
 ## Innlogging
-**Superbruker:**\
-Brukernavn : **admin**\
-Passord : **admin**
 
-**Sluttbruker:**\
-Brukernavn : **user**\
-Passord: **user**
+|   Tilgang     | Brukernavn | Passord |
+|---------------|------------|---------|
+| *Superbruker* | admin      | admin   |
+| *Bruker*      | user       | user    |
 
 ## Laget med
 * [Java 13](https://www.oracle.com/java/technologies/javase-jdk13-downloads.html) 
