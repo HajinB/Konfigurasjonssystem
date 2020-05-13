@@ -2,19 +2,17 @@
 **DATA1600 (2020 VÅR ORD) Gruppeprosjekt**\
 **Alternativ 1: Datamaskin**
 
-Laget av kandidatnr:
+Laget av gruppe 2020, kandidatnr:
 * 133
 * 134
 * 139
 
 ## Innlogging
-**Superbruker:**\
-Brukernavn : **admin**\
-Passord : **admin**
 
-**Sluttbruker:**\
-Brukernavn : **user**\
-Passord: **user**
+| Tilgang       | Brukernavn | Passord |
+|---------------|------------|---------|
+| *Superbruker* | admin      | admin   |
+| *Bruker*      | user       | user    |
 
 ## Laget med
 * [Java 13](https://www.oracle.com/java/technologies/javase-jdk13-downloads.html) 

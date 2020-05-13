@@ -20,7 +20,7 @@ public class ThreadHandler {
     }
 
     public static void loadInThread(Task<Boolean> task) {
-        Alert alert = Dialog.getLoadingDialog("Laster inn...");
+        Alert alert = Dialog.getLoadingDialog();
         task.setOnRunning((e) -> alert.showAndWait());
         task.setOnSucceeded((e) -> {
             alert.close();

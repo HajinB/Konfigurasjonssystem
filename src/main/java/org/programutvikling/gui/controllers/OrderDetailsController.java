@@ -63,7 +63,7 @@ public class OrderDetailsController implements Initializable {
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
             try {
                 saveComputer(fileSaverTxt);
-            } catch (InvalidPathException | NoSuchFileException invalidPathException) {
+            } catch (InvalidPathException | NoSuchFileException exception) {
                 Dialog.showErrorDialog("Feil tegn i PC-navnet, prøv igjen!");
                 return;
             }
