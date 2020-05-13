@@ -27,13 +27,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/ComponentRegisters/AlleKomponenter.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/ComponentRegisters/AlleKomponenter.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/iothread/InputThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/iothread/InputThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/RegistryComponentLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ThreadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ThreadHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/FileUtility.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -303,14 +297,7 @@
       <workItem from="1589187040877" duration="17620000" />
       <workItem from="1589291745741" duration="9313000" />
       <workItem from="1589356903889" duration="817000" />
-      <workItem from="1589364936297" duration="6082000" />
-    </task>
-    <task id="LOCAL-00180" summary="noe dialog på lese inn på enduser">
-      <created>1589200522714</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1589200522714</updated>
+      <workItem from="1589364936297" duration="6342000" />
     </task>
     <task id="LOCAL-00181" summary="fix1">
       <created>1589204883649</created>
@@ -648,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589400290042</updated>
     </task>
-    <option name="localTasksCounter" value="229" />
+    <task id="LOCAL-00229" summary="gjerne test en del, er ikke bare/bare å åpne en av delene fra recent pågrunn av forskjellige feilmeldinger osv">
+      <created>1589402760363</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1589402760363</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -683,7 +677,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="liten bug der totalpris ikke ble oppdatert når man legger til fra komplett datamaskin" />
     <MESSAGE value="dialog for å legge til i handlekurv" />
     <MESSAGE value="små endringer på validering av computer .txt input" />
     <MESSAGE value="rydder i endusercontroller" />
@@ -708,7 +701,8 @@
     <MESSAGE value="fix med fresh komponenter" />
     <MESSAGE value="rydder litt - bør vi ta bort de souts som printer hele registeret? tar opp hele konsollen?" />
     <MESSAGE value="klarer å refactore en del mer, men jeg må gjøre databaser xD" />
-    <option name="LAST_COMMIT_MESSAGE" value="klarer å refactore en del mer, men jeg må gjøre databaser xD" />
+    <MESSAGE value="gjerne test en del, er ikke bare/bare å åpne en av delene fra recent pågrunn av forskjellige feilmeldinger osv" />
+    <option name="LAST_COMMIT_MESSAGE" value="gjerne test en del, er ikke bare/bare å åpne en av delene fra recent pågrunn av forskjellige feilmeldinger osv" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1589306062470" />

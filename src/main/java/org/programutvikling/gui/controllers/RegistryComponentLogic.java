@@ -350,15 +350,12 @@ public class RegistryComponentLogic implements Stageable {
         threadHandler.openInputThread(chosenFile, this);
         Model.INSTANCE.loadComponentRegisterIntoModel();
         Model.INSTANCE.getComponentRegister().removeDuplicates();
-
         tabComponentsController.updateView();
-
     }
 
     public void openComputer(String chosenPath) {
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         Computer computer = new Computer("temp");
-
         if (chosenPath != null) {
             System.out.println(chosenPath);
                     try {
