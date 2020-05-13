@@ -1,11 +1,8 @@
 package org.programutvikling.gui.utility;
 
 
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextArea;
 
 public class Dialog {
 
@@ -84,9 +81,16 @@ public class Dialog {
         return alert;
     }
 
-    public static Alert getLoadingDialog(String s) {
-        Alert alert = new Alert(AlertType.NONE, s);
+    public static Alert getLoadingDialog() {
+        Alert alert = new Alert(AlertType.NONE);
         alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        alert.setHeaderText("Laster inn..");
+        ProgressBar pbs = new ProgressBar();
+        pbs.setPrefWidth(100);
+        pbs.setProgress(-1.0f);
+        alert.getDialogPane().setPrefWidth(300);
+        alert.getDialogPane().setPrefHeight(120);
+        alert.getDialogPane().setContent(pbs);
         return alert;
     }
 }

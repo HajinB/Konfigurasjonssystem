@@ -26,10 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/OrderDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/OrderDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/TabUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/TabUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/programutvikling/tabUsers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ThreadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/ThreadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/utility/Dialog.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="SHOW_DIALOG" value="false" />
@@ -286,14 +287,6 @@
       <workItem from="1588986164951" duration="17707000" />
       <workItem from="1589187040877" duration="17620000" />
       <workItem from="1589291745741" duration="9313000" />
-      <workItem from="1589379739934" duration="365000" />
-    </task>
-    <task id="LOCAL-00174" summary="fixed bugs på enduser">
-      <created>1589197277970</created>
-      <option name="number" value="00174" />
-      <option name="presentableId" value="LOCAL-00174" />
-      <option name="project" value="LOCAL" />
-      <updated>1589197277971</updated>
     </task>
     <task id="LOCAL-00175" summary="fixed bugs på enduser">
       <created>1589197320051</created>
@@ -630,11 +623,17 @@
       <option name="presentableId" value="LOCAL−00222" />
       <updated>1589318121712</updated>
     </task>
-    <option name="localTasksCounter" value="223" />
+    <task id="LOCAL−00223" summary="Alle komponentene i .txt">
+      <created>1589320501026</created>
+      <option name="number" value="LOCAL−00223" />
+      <option name="presentableId" value="LOCAL−00223" />
+      <updated>1589320501026</updated>
+    </task>
+    <option name="localTasksCounter" value="224" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -665,7 +664,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="prøver å redusere duplikat kode" />
     <MESSAGE value="liten bug der totalpris ikke ble oppdatert når man legger til fra komplett datamaskin" />
     <MESSAGE value="dialog for å legge til i handlekurv" />
     <MESSAGE value="små endringer på validering av computer .txt input" />
@@ -690,7 +688,8 @@
     <MESSAGE value="Lagde ModelUserRegister, sånn at det bare er den som lastes inn på innlogging skjerm" />
     <MESSAGE value="fix med fresh komponenter" />
     <MESSAGE value="label login + Enduser-tabell-høyder" />
-    <option name="LAST_COMMIT_MESSAGE" value="label login + Enduser-tabell-høyder" />
+    <MESSAGE value="Alle komponentene i .txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alle komponentene i .txt" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1589306062470" />
@@ -707,11 +706,11 @@
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589306062470" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
     <state x="260" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1589306062470" />
-    <state x="315" y="0" key="CommitChangelistDialog2" timestamp="1589318120355">
+    <state x="315" y="0" key="CommitChangelistDialog2" timestamp="1589320499870">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="225" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
-    <state x="315" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589318120355" />
+    <state x="315" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589320499870" />
     <state x="189" y="97" width="1228" height="687" key="DiffContextDialog" timestamp="1589306062470" />
     <state x="189" y="97" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
     <state x="189" y="97" width="1228" height="687" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1589306062470" />
@@ -719,66 +718,50 @@
     <state x="740" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
     <state x="593" y="314" key="Github.CreateGistDialog" timestamp="1589306062470" />
     <state x="593" y="314" key="Github.CreateGistDialog/0.0.1536.824@0.0.1536.824" timestamp="1589306062470" />
-    <state width="1237" height="224" key="GridCell.Tab.0.bottom" timestamp="1589379996419">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="196" key="GridCell.Tab.0.bottom" timestamp="1589394866706">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1237" height="224" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589379996419" />
-    <state width="1493" height="196" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589319882710" />
-    <state width="1237" height="224" key="GridCell.Tab.0.center" timestamp="1589379996419">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
+    <state width="1493" height="196" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589394866706" />
+    <state width="1493" height="196" key="GridCell.Tab.0.center" timestamp="1589394866706">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1237" height="224" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589379996419" />
-    <state width="1493" height="196" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589319882710" />
-    <state width="1237" height="224" key="GridCell.Tab.0.left" timestamp="1589379996419">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
+    <state width="1493" height="196" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589394866706" />
+    <state width="1493" height="196" key="GridCell.Tab.0.left" timestamp="1589394866705">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1237" height="224" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589379996419" />
-    <state width="1493" height="196" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589319882710" />
-    <state width="1237" height="224" key="GridCell.Tab.0.right" timestamp="1589379996419">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
+    <state width="1493" height="196" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589394866705" />
+    <state width="1493" height="196" key="GridCell.Tab.0.right" timestamp="1589394866706">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1237" height="224" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589379996419" />
-    <state width="1493" height="196" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589319882710" />
-    <state width="1237" height="183" key="GridCell.Tab.1.bottom" timestamp="1589379967661">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="183" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589379967661" />
-    <state width="1237" height="183" key="GridCell.Tab.1.center" timestamp="1589379967661">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="183" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1589379967661" />
-    <state width="1237" height="183" key="GridCell.Tab.1.left" timestamp="1589379967661">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="183" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1589379967661" />
-    <state width="1237" height="183" key="GridCell.Tab.1.right" timestamp="1589379967661">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="183" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1589379967661" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
+    <state width="1493" height="196" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589394866706" />
     <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1589306062470" />
     <state x="299" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1589306062470" />
-    <state x="147" y="65" key="MergeDialog" timestamp="1589319747550">
+    <state x="147" y="65" key="MergeDialog" timestamp="1589391910519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1589319747550" />
-    <state x="453" y="134" key="RollbackChangesDialog" timestamp="1589319879104">
+    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1589391910519" />
+    <state x="453" y="134" key="RollbackChangesDialog" timestamp="1589392937931">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589319879104" />
+    <state x="453" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589392937931" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1589306062470" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589318123689">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589320582454">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="301" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589318123689" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589320582454" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589306062470" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589306062470" />
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589379741769">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589391915171">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1589379741769" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1589319760223" />
+    <state x="482" y="272" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1589391915171" />
     <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1589306062470" />
     <state x="412" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1589306062470" />
     <state x="475" y="41" key="refactoring.ChangeSignatureDialog" timestamp="1589306062470" />
@@ -822,7 +805,7 @@
           <properties class="org.programutvikling.gui.controllers.TabUsersController" method="initChoiceBox">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
