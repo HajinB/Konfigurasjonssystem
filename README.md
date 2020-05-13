@@ -2,7 +2,7 @@
 **DATA1600 (2020 VÅR ORD) Gruppeprosjekt**\
 **Alternativ 1: Datamaskin**
 
-Laget av kandidatnr:
+Laget av gruppe 2020, kandidatnr:
 * 133
 * 134
 * 139
