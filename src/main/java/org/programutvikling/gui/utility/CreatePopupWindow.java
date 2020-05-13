@@ -13,7 +13,6 @@ import org.programutvikling.domain.user.User;
 import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.controllers.EditComponentPopupController;
 import org.programutvikling.gui.controllers.EditUserPopupController;
-import org.programutvikling.model.TemporaryComponent;
 
 import java.io.IOException;
 import java.util.Objects;
