@@ -60,8 +60,8 @@ public class ThreadHandler {
         };
     }
 
-    public void openInputThread(String path) {
-        InputThread task = new InputThread(path);
+    public void openInputThread(String path, RegistryComponentLogic registryComponentLogic) {
+        InputThread task = new InputThread(path, registryComponentLogic);
         task.setOnSucceeded(this::threadDone);
         task.setOnFailed(this::threadFailed);
         startThread(task);

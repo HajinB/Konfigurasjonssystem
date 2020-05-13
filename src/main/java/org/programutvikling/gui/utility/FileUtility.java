@@ -72,6 +72,8 @@ public class FileUtility {
 
     public static String getStringPathFromOpenJobjDialog(Stage stage) {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("AppFiles/Database/Admin/ComponentRegisters"));
+
         FileChooser.ExtensionFilter extFilter =
                 new FileChooser.ExtensionFilter("JOBJ org.programutvikling.files (*.jobj)", "*.jobj");
         fileChooser.getExtensionFilters().add(extFilter);
