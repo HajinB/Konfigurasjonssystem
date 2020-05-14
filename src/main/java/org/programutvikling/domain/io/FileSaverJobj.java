@@ -1,7 +1,5 @@
 package org.programutvikling.domain.io;
 
-import org.programutvikling.domain.computer.Computer;
-
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;

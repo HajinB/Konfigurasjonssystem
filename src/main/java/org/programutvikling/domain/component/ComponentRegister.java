@@ -13,8 +13,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.stream.Collectors.toCollection;
-
 
 public class ComponentRegister implements Serializable, Clickable {
     private transient static final long serialVersionUID = 1;

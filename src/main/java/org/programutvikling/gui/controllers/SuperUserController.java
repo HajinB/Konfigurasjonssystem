@@ -88,10 +88,9 @@ public class SuperUserController implements Initializable {
         if (getComponentRegister().getRegister().size() == 0) {
             registryComponentLogic.overWriteList(chosenFile);
         } else {
-
             Alert alert = Dialog.getOpenOption(
                     "Åpne fil",
-                    "Legg til i listen eller overskriv. Under «Verktøy» kan du fjerne eventuelle duplikater",
+                    "Legg til i listen eller overskriv.",
                     "Vil du åpne ",
                     chosenFile + "?");
             alert.showAndWait();

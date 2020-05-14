@@ -320,6 +320,7 @@ public class RegistryComponentLogic implements Stageable {
         }
         //button.get(1) == overskriv
         if (alert.getResult() == alert.getButtonTypes().get(1)) {
+            System.out.println("OVERSKRIV");
             try {
                 overWriteList(chosenFile);
             } catch (IOException e) {
@@ -328,9 +329,9 @@ public class RegistryComponentLogic implements Stageable {
         }
         //button.get(0) == legg til
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
+            System.out.println("LEGG TIL");
 
             threadHandler.openInputThread(chosenFile, this);
-            System.out.println(Model.INSTANCE.getCleanObjectList());
             Model.INSTANCE.appendComponentRegisterIntoModel();
             Model.INSTANCE.getComponentRegister().removeDuplicates();
             tabComponentsController.updateView();
@@ -338,7 +339,6 @@ public class RegistryComponentLogic implements Stageable {
     }
 
     public void overWriteList(String chosenFile) throws IOException {
-
         threadHandler.openInputThread(chosenFile, this);
         Model.INSTANCE.loadComponentRegisterIntoModel();
         Model.INSTANCE.getComponentRegister().removeDuplicates();
@@ -355,7 +355,6 @@ public class RegistryComponentLogic implements Stageable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
             System.out.println(computer.getComponentRegister().getObservableRegister().size());
             loadComputerIntoComponentRegister(computer);

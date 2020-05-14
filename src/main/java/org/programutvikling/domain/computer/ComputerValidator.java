@@ -2,7 +2,6 @@ package org.programutvikling.domain.computer;
 
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentTypes;
-import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
 
 import java.util.ArrayList;

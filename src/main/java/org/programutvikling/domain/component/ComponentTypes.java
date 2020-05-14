@@ -3,7 +3,6 @@ package org.programutvikling.domain.component;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ComponentTypes {

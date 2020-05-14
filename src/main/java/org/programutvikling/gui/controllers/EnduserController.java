@@ -13,12 +13,14 @@ import javafx.util.Callback;
 import org.programutvikling.App;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.computer.Computer;
+import org.programutvikling.domain.computer.ComputerRegister;
 import org.programutvikling.domain.computer.ComputerValidator;
 import org.programutvikling.gui.customViews.PriceFormatCell;
 import org.programutvikling.gui.logic.EndUserLogic;
 import org.programutvikling.gui.logic.EndUserService;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.FXMLGetter;
+import org.programutvikling.gui.utility.RegisterUtility;
 import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelEndUser;
 
@@ -63,6 +65,7 @@ public class EnduserController {
     @FXML
     public void initialize() {
         Model.INSTANCE.setEndUserLoggedIn(true);
+        ModelEndUser.INSTANCE.loadCompleteComputers();
         addTableViewsToList();
         endUserLogic = new EndUserLogic(this, topLevelPaneEndUser, tblViewList, tblColumnDescriptionList,
                 tblColumnPriceList, shoppingListView, tblCompletedComputers);
@@ -72,6 +75,7 @@ public class EnduserController {
         updateComputerListView();
         setTooltipForCompletedComputers();
     }
+
 
     private void setTooltipForCompletedComputers() {
         final Tooltip tooltipCompletedComputers = new Tooltip("Dobbeltklikk på en datamaskin for å se detaljer");
@@ -297,4 +301,6 @@ public class EnduserController {
             });
         }
     }
+
+
 }

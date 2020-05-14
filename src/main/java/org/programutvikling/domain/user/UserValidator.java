@@ -1,10 +1,5 @@
 package org.programutvikling.domain.user;
 
-import javafx.collections.ObservableList;
-import org.programutvikling.domain.component.Component;
-import org.programutvikling.domain.component.ComponentRegister;
-import org.programutvikling.model.Model;
-
 public class UserValidator {
     // ingen tall
     public static final String NO_NUMBERS = "^[\\D]+$";

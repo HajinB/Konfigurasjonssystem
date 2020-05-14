@@ -1,7 +1,6 @@
 package org.programutvikling.domain.user;
 
 import org.junit.jupiter.api.Test;
-import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelUserRegister;
 
 import static org.junit.jupiter.api.Assertions.*;

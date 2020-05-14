@@ -4,7 +4,6 @@ import org.programutvikling.domain.component.Component;
 
 import java.util.ArrayList;
 
-
 //brukes i popup for å kontrollere editing av komponent.
 public enum TemporaryComponent {
     INSTANCE;

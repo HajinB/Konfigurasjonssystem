@@ -13,7 +13,6 @@ import org.programutvikling.gui.customTextField.NoSpacebarField;
 import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.IController;
-import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelUserRegister;
 import org.programutvikling.model.TemporaryUser;
 

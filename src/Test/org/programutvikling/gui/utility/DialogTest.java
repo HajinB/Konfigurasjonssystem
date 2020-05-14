@@ -2,8 +2,6 @@ package org.programutvikling.gui.utility;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class DialogTest {
 
     @Test

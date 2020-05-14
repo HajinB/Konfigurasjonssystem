@@ -12,13 +12,12 @@ public enum ModelEndUser {
     private ComputerRegister computerRegister = new ComputerRegister();
     private Computer computer = new Computer("current");
 
-    private ModelEndUser(){
-            loadCompleteComputers();
-            loadComputer();
+    private ModelEndUser() {
+        loadCompleteComputers();
+        loadComputer();
     }
 
     private void loadComputer() {
-
         FileHandling.openCart(computer);
     }
 
@@ -30,14 +29,14 @@ public enum ModelEndUser {
         return computer;
     }
 
-    private void loadCompleteComputers() {
+    public void loadCompleteComputers() {
         //FileHandling.findComputers
-        ArrayList<Computer> computers =   FileHandling.findComputers();
-        for(Computer c : computers){
-            if(c.calculatePrice()!=0) {
+        computerRegister.getObservableRegister().clear();
+        ArrayList<Computer> computers = FileHandling.findComputers();
+        for (Computer c : computers) {
+            if (c.calculatePrice() != 0) {
                 computerRegister.getObservableRegister().add((Computer) c);
             }
         }
-
     }
 }
