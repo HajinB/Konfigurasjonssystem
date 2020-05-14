@@ -23,7 +23,6 @@ public class FileOpenerJobj implements FileOpener {
         } catch (IOException | ClassNotFoundException i) {
             System.out.println(i.getMessage());
             System.out.println(Arrays.toString(i.getStackTrace()));
-
             if (selectedPath.toString().equals("FileDirectory/Database/AppDataBackup.jobj")) {
                 FileUtility.deleteFile("FileDirectory/Database/AppDataBackup.jobj");
                 //istedenfor å deletefile, last opp backup?
