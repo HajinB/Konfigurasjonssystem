@@ -373,7 +373,10 @@ public class RegistryComponentLogic implements Stageable {
 
     public void dialogForComputerTxtOpen() {
         String chosenPath = FileUtility.getFilePathFromOpenTxtDialog(null);
-        openComputer(chosenPath);
+        if(chosenPath == null){
+            return;
+        }
+        threadHandler.openInputThread(chosenPath, this);
 
         //tabComponentsController.setLblComponentMsg("Komponentene fra " + chosenPath + " \nble lastet inn");
     }

@@ -27,7 +27,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/RegistryComponentLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,9 +115,9 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.13642055" />
     <property name="project.structure.side.proportion" value="0.46086955" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -297,14 +301,8 @@
       <workItem from="1589187040877" duration="17620000" />
       <workItem from="1589291745741" duration="9313000" />
       <workItem from="1589356903889" duration="817000" />
-      <workItem from="1589364936297" duration="6342000" />
-    </task>
-    <task id="LOCAL-00181" summary="fix1">
-      <created>1589204883649</created>
-      <option name="number" value="00181" />
-      <option name="presentableId" value="LOCAL-00181" />
-      <option name="project" value="LOCAL" />
-      <updated>1589204883649</updated>
+      <workItem from="1589364936297" duration="8494000" />
+      <workItem from="1589455562145" duration="521000" />
     </task>
     <task id="LOCAL-00182" summary="fix1">
       <created>1589205731975</created>
@@ -642,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589402760363</updated>
     </task>
-    <option name="localTasksCounter" value="230" />
+    <task id="LOCAL-00230" summary="22.50 13. mai">
+      <created>1589403048881</created>
+      <option name="number" value="00230" />
+      <option name="presentableId" value="LOCAL-00230" />
+      <option name="project" value="LOCAL" />
+      <updated>1589403048881</updated>
+    </task>
+    <option name="localTasksCounter" value="231" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,8 +682,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dialog for å legge til i handlekurv" />
-    <MESSAGE value="små endringer på validering av computer .txt input" />
     <MESSAGE value="rydder i endusercontroller" />
     <MESSAGE value="fixed bugs på enduser" />
     <MESSAGE value="noe dialog på lese inn" />
@@ -702,7 +705,9 @@
     <MESSAGE value="rydder litt - bør vi ta bort de souts som printer hele registeret? tar opp hele konsollen?" />
     <MESSAGE value="klarer å refactore en del mer, men jeg må gjøre databaser xD" />
     <MESSAGE value="gjerne test en del, er ikke bare/bare å åpne en av delene fra recent pågrunn av forskjellige feilmeldinger osv" />
-    <option name="LAST_COMMIT_MESSAGE" value="gjerne test en del, er ikke bare/bare å åpne en av delene fra recent pågrunn av forskjellige feilmeldinger osv" />
+    <MESSAGE value="1." />
+    <MESSAGE value="22.50 13. mai" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.50 13. mai" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1589306062470" />

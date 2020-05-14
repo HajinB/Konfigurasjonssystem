@@ -45,6 +45,7 @@ public class SuperUserController implements Initializable {
 
     @FXML
     void btnOpenComputerAndAddComponents(ActionEvent e) {
+
         registryComponentLogic.dialogForComputerTxtOpen();
     }
 
