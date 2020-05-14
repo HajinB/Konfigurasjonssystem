@@ -57,6 +57,13 @@ public class RegistryComponentLogic implements Stageable {
 
     void registerComponent() {
         tabComponentsController.clearLabels();
+        if(ComponentValidator.isThereASemiColon(returnTempComponent())){
+            Dialog.showErrorDialog("Et eller flere av av tekstfeltene innholder en semikolon. På grunn av at " +
+                    "komponentene skal være " +
+                    "kompatible med Excel, er ikke semikolon et gyldig tegn. Vennligst fjern " +
+                    "semikolon.");
+            return;
+        }
         if (areInputFieldsEmpty()) {
             if (isProductTypeEmpty()) {
                 tabComponentsController.setLblMsgType("Velg produkttype");
@@ -142,6 +149,15 @@ public class RegistryComponentLogic implements Stageable {
         return null;
     }
 
+    Component returnTempComponent(){
+        String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
+        String productName = getString((TextField) gridPane.lookup("#productName"));
+        String productDescription = getTextareaString((TextArea) gridPane.lookup("#productDescription"));
+        double productPrice = getDouble((PriceField) gridPane.lookup("#productPrice"));
+        return new Component(productType, productName, productDescription, productPrice);
+    }
+
+
     private Component createComponent() {
 
         String productType = getCBString((ChoiceBox<String>) gridPane.lookup("#productType"));
@@ -149,11 +165,12 @@ public class RegistryComponentLogic implements Stageable {
         String productDescription = getTextareaString((TextArea) gridPane.lookup("#productDescription"));
         double productPrice = getDouble((PriceField) gridPane.lookup("#productPrice"));
 
+
         Component componentIn = new Component(productType, productName, productDescription, productPrice);
         //kan gjøre validering på disse her - altså et felt om gangen.
 
         tabComponentsController.setResultLabelTimed(componentIn.getProductName() + " er lagt til i listen");
-
+        tabComponentsController.scrollToItem();
         return componentIn;
     }
 
@@ -208,10 +225,17 @@ public class RegistryComponentLogic implements Stageable {
         getComponentRegister().getRegister().set(indexToReplace, newComponent);
     }
 
-
     @Override
     public void editClickableFromPopup(Clickable c) {
         if (TemporaryComponent.INSTANCE.getIsEdited()) {
+            if(ComponentValidator.isThereASemiColon(returnTempComponent())){
+                Dialog.showErrorDialog("Et eller flere av av tekstfeltene innholder en semikolon. På grunn av at " +
+                        "komponentene skal være " +
+                        "kompatible med Excel, er ikke semikolon et gyldig tegn. Vennligst fjern " +
+                        "semikolon.");
+                //open popup again
+                return;
+            }
             Component dup =
                     ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
                             TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
@@ -221,6 +245,7 @@ public class RegistryComponentLogic implements Stageable {
                 TemporaryComponent.INSTANCE.resetTemps();
             } else {
                 justReplaceComponent((Component) c, dup);
+
                 Model.INSTANCE.getComponentRegister().removeDuplicates();
             }
             try {

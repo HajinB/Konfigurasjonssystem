@@ -71,6 +71,20 @@ public class TabComponentsController {
     void btnAddComponent(ActionEvent event) {
         registryComponentLogic.registerComponent();
         updateView();
+
+    }
+
+    public void scrollToItem() {
+        Platform.runLater(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                tblViewComponent.requestFocus();
+                tblViewComponent.getSelectionModel().select(getComponentRegister().getRegister().size()-1);
+                tblViewComponent.scrollTo(getComponentRegister().getRegister().size()-1);
+            }
+        });
     }
 
     @FXML

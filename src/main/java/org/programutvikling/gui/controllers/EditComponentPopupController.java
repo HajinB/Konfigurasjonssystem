@@ -11,8 +11,10 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.programutvikling.domain.component.Component;
 import org.programutvikling.domain.component.ComponentTypes;
+import org.programutvikling.domain.component.ComponentValidator;
 import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.PriceField;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.IController;
 import org.programutvikling.model.TemporaryComponent;
 
@@ -46,19 +48,29 @@ public class EditComponentPopupController extends TabComponentsController implem
     }
 
     private void editComponent() {
+        if(ComponentValidator.isThereASemiColon(getEnteredComponent())){
+            Dialog.showErrorDialog("Et eller flere av av tekstfeltene innholder en semikolon. På grunn av at " +
+                    "komponentene skal være " +
+                    "kompatible med Excel, er ikke semikolon et gyldig tegn. Vennligst fjern " +
+                    "semikolon.");
+            return;
+        }
         if (areFieldsEmpty()) {
             lblEditPopupMessage.setText("Fyll inn alle felt");
             return;
         }
-        double price = Double.parseDouble(txtPopupProductPrice.getText());
-        Component component = new Component(cbType.getValue(), txtPopupProductName.getText(),
-                txtPopupProductDescription.getText(),
-                price);
-
-        //validering her ?, det propegerer ikke ned til konstruktøren (?) -altså det throwes ikke noe her.
+        Component component = getEnteredComponent();
         TemporaryComponent.INSTANCE.setEdited(true);
         TemporaryComponent.INSTANCE.storeTempComponent(component);
         stage.close();
+    }
+
+    private Component getEnteredComponent() {
+        double price = Double.parseDouble(txtPopupProductPrice.getText());
+
+       return new Component(cbType.getValue(), txtPopupProductName.getText(),
+                txtPopupProductDescription.getText(),
+                price);
     }
 
     private boolean areFieldsEmpty() {
@@ -67,6 +79,8 @@ public class EditComponentPopupController extends TabComponentsController implem
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        txtPopupProductDescription.setTextFormatter(new TextFormatter<String>(change ->
+                change.getControlNewText().length() <= 2500 ? change : null));
         cbType.setItems(componentTypes.getObservableTypeListName());
         btnEditComponent.setDefaultButton(true);
         setTextAreaListener(componentEditNode);

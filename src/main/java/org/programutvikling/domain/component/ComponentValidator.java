@@ -1,13 +1,31 @@
 package org.programutvikling.domain.component;
 
+import org.programutvikling.domain.io.InvalidComponentFormatException;
+import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.model.Model;
 
 import java.util.List;
 
 public class ComponentValidator {
 
-    static boolean isComponentValid(Component component) {
-        return isProductTypeValid(component.getProductType()) && isProductNameValid(component.getProductName()) && isProductDescriptionValid(component.getProductDescription()) && isProductPriceValid(component.getProductPrice());
+    static boolean isComponentValid(Component component)  {
+        return isProductTypeValid(component.getProductType())
+                && isProductNameValid(component.getProductName())
+                && isProductDescriptionValid(component.getProductDescription())
+                && isProductPriceValid(component.getProductPrice());
+    }
+
+    static boolean isComponentValid(String type, String name, String description, double price) {
+        return isProductTypeValid(type) && isProductNameValid(name) && isProductDescriptionValid(description) && isProductPriceValid(price);
+    }
+
+    public static boolean isThereASemiColon(Component component) {
+        String alltxt = component.getProductDescription() + component.getProductName() + component.getProductType();
+        if(alltxt.contains(";")) {
+          return true;
+        }
+        return false;
+
     }
 
     public static Component isComponentInRegisterThenReturnIt(Component component, ComponentRegister register){
@@ -29,10 +47,6 @@ public class ComponentValidator {
         return null;
     }
 
-    static boolean isComponentValid(String type, String name, String description, double price) {
-        return isProductTypeValid(type) && isProductNameValid(name) && isProductDescriptionValid(description) && isProductPriceValid(price);
-    }
-
     static boolean isProductTypeValid(String type) {
         String[] c = ComponentTypes.getComponentTypesArray();
         if (type.isBlank() || type.isEmpty()){
@@ -49,6 +63,7 @@ public class ComponentValidator {
     }
 
     static boolean isProductNameValid(String name) {
+        //ikke tom, ikke blank, og ikke under 100
         return !(name.isEmpty() && name.isBlank()) && name.length() < 100;
     }
 
@@ -56,8 +71,8 @@ public class ComponentValidator {
         return  price != 0.0 && price > 0.0;
     }
 
-    static boolean isProductDescriptionValid(String description) {
-        return !(description.isEmpty() && description.isBlank());
+    public static boolean isProductDescriptionValid(String description) {
+        return !(description.isEmpty() && description.isBlank()) && !(description.length()>3000) ;
     }
 
     public static double checkPriceAgainstDatabaseGetPrice(Component inputComponent, List list) {
@@ -90,6 +105,10 @@ public class ComponentValidator {
                 && c2.getProductType().equals(c1.getProductType())
                 && c2.getProductDescription().equals(c1.getProductDescription())
                 && c2.getProductPrice()==c1.getProductPrice();
+    }
+
+    public static boolean isProductDescriptionTooLong(String productDescription) {
+        return productDescription.length()>2500;
     }
 }
 

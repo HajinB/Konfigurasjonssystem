@@ -8,11 +8,12 @@ public class PriceField extends TextField {
 
     public PriceField() {
         super();
-
         this.textProperty().addListener((ObservableValue<? extends String> observableValue, String oldValue, String newValue) -> {
-            if(!newValue.matches(DOUBLE_REGEX)) {
+            if(!newValue.matches(DOUBLE_REGEX) || newValue.length()>19 ) {
+               //setter den gamle verdien aka umulig å inputte mer
                 this.setText(oldValue);
             }
         });
     }
+
 }

@@ -8,7 +8,6 @@ public class NoSpacebarField extends TextField {
 
     public NoSpacebarField() {
         super();
-
         this.textProperty().addListener((ObservableValue<? extends String> observableValue, String oldValue, String newValue) -> {
             if(!newValue.matches(SPACEBAR_REGEX)) {
                 this.setText(oldValue);

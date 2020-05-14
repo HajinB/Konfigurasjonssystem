@@ -42,8 +42,16 @@ public class FileOpenerTxt implements FileOpener {
         String type = split[0];
         String name = split[1];
         String description = split[2];
-        double price = parseDouble(split[3], "pris må være et tall");
+        double price = 0;
+        try {
+            price = parseDouble(split[3], "pris må være et tall");
+        }catch(NumberFormatException nf){
+            return new NullComponent();
 
+        }
+        if(description.length()>3000 || name.length()>3000){
+            return new NullComponent();
+        }
         Component tempComponent = new Component(type, name, description, price);
         double priceState =
                 ComponentValidator.checkPriceAgainstDatabaseGetPrice(tempComponent,

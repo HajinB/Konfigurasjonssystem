@@ -23,6 +23,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FileUtility {
+    public static String removeAllSemiColonFromInput(String s){
+        return s.replaceAll(";", "");
+    }
+
     private static String getFileName(String fileName) {
         return fileName.substring(fileName.lastIndexOf('.'));
     }
