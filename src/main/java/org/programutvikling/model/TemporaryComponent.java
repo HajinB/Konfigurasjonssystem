@@ -8,13 +8,12 @@ import java.util.ArrayList;
 //brukes i popup for å kontrollere editing av komponent.
 public enum TemporaryComponent {
     INSTANCE;
-    private Component tempComponent;
+    public ArrayList<String> errorList = new ArrayList<>();
     boolean isEdited;
     int columnIndex;
+    private Component tempComponent;
 
-    public ArrayList<String> errorList = new ArrayList<>();
-
-    public void storeTempComponent(Component component){
+    public void storeTempComponent(Component component) {
         tempComponent = component;
     }
 
@@ -34,22 +33,22 @@ public enum TemporaryComponent {
         isEdited = false;
     }
 
-    public void setColumnIndex(int column) {
-        this.columnIndex = column;
-    }
-
     public int getColumnIndex() {
         return columnIndex;
+    }
+
+    public void setColumnIndex(int column) {
+        this.columnIndex = column;
     }
 
     public ArrayList<String> getErrorList() {
         return errorList;
     }
 
-    public String errorListToString(){
-        String melding= "";
-        for(String s: errorList){
-            melding = melding + s +"\n\n";
+    public String errorListToString() {
+        String melding = "";
+        for (String s : errorList) {
+            melding = melding + s + "\n\n";
         }
         return melding;
     }

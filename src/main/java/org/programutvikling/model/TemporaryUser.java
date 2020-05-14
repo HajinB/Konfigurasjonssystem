@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 public enum TemporaryUser {
     INSTANCE;
-    private User tempUser;
     boolean isEdited;
     int columnIndex;
     ArrayList<String> errorList = new ArrayList<>();
+    private User tempUser;
 
-    public void storeTempUser(User user){
+    public void storeTempUser(User user) {
         tempUser = user;
     }
 
@@ -33,22 +33,22 @@ public enum TemporaryUser {
         isEdited = false;
     }
 
-    public void setColumnIndex(int column) {
-        this.columnIndex = column;
-    }
-
     public int getColumnIndex() {
         return columnIndex;
+    }
+
+    public void setColumnIndex(int column) {
+        this.columnIndex = column;
     }
 
     public ArrayList<String> getErrorList() {
         return errorList;
     }
 
-    public String errorListToString(){
-        String melding= "";
-        for(String s: errorList){
-            melding = melding + s +"\n";
+    public String errorListToString() {
+        String melding = "";
+        for (String s : errorList) {
+            melding = melding + s + "\n";
         }
         return melding;
     }

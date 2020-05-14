@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
 
-
     public Label lblFeilPassword;
     @FXML
     Button btnLogin;

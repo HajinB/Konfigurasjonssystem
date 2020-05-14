@@ -36,10 +36,10 @@ public class FileHandling {
             try {
                 saver.save(computer, directoryPath);
             } catch (NoSuchFileException e) {
-                Dialog.showErrorDialog("Noe galt skjedde under lagring av "+directoryPath.getFileName()+  "\n prøv et" +
+                Dialog.showErrorDialog("Noe galt skjedde under lagring av " + directoryPath.getFileName() + "\n prøv et" +
                         " nytt navn");
                 e.printStackTrace();
-                throw new IOException("Noe galt skjedde under lagring av "+directoryPath.getFileName()+  "\n prøv et" +
+                throw new IOException("Noe galt skjedde under lagring av " + directoryPath.getFileName() + "\n prøv et" +
                         " nytt navn");
             }
             Dialog.showSuccessDialog("Registeret ble lagret!");

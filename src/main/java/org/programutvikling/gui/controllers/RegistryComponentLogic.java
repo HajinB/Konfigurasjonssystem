@@ -17,7 +17,6 @@ import org.programutvikling.domain.io.FileOpenerTxt;
 import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.customTextField.PriceField;
 import org.programutvikling.gui.utility.Dialog;
-import org.programutvikling.gui.utility.FileUtility;
 import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.gui.utility.WindowHandler;
 import org.programutvikling.model.Model;
@@ -322,10 +321,6 @@ public class RegistryComponentLogic implements Stageable {
         //button.get(1) == overskriv
         if (alert.getResult() == alert.getButtonTypes().get(1)) {
             try {
-               /* if (chosenFile.endsWith(".txt")) {
-
-                    openComputerTxt(chosenFile);
-                }*/
                 overWriteList(chosenFile);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -333,10 +328,7 @@ public class RegistryComponentLogic implements Stageable {
         }
         //button.get(0) == legg til
         if (alert.getResult() == alert.getButtonTypes().get(0)) {
-           /* if (chosenFile.endsWith(".txt")) {
-                //open txt like the computer in the menu
-                openComputerTxt(chosenFile);
-            }*/
+
             threadHandler.openInputThread(chosenFile, this);
             System.out.println(Model.INSTANCE.getCleanObjectList());
             Model.INSTANCE.appendComponentRegisterIntoModel();
@@ -358,27 +350,17 @@ public class RegistryComponentLogic implements Stageable {
         Computer computer = new Computer("temp");
         if (chosenPath != null) {
             System.out.println(chosenPath);
-                    try {
-                        fileOpenerTxt.openWithoutValidation(computer, Paths.get(chosenPath));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+            try {
+                fileOpenerTxt.openWithoutValidation(computer, Paths.get(chosenPath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
             System.out.println(computer.getComponentRegister().getObservableRegister().size());
             loadComputerIntoComponentRegister(computer);
             removeDuplicates();
         }
-    }
-
-    public void dialogForComputerTxtOpen() {
-        String chosenPath = FileUtility.getFilePathFromOpenTxtDialog(null);
-        if(chosenPath == null){
-            return;
-        }
-        threadHandler.openInputThread(chosenPath, this);
-
-        //tabComponentsController.setLblComponentMsg("Komponentene fra " + chosenPath + " \nble lastet inn");
     }
 
 

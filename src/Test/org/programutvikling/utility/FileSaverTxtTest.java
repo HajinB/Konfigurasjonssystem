@@ -13,7 +13,8 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FileSaverTxtTest {
     @Test
@@ -30,7 +31,7 @@ class FileSaverTxtTest {
         Computer computer = computerFactory.computerFactory(componentRegister, "test");
         FileSaverTxt fileSaverTxt = new FileSaverTxt();
 
-       // fileSaverTxt.save(computer, Paths.get("org/programutvikling/files/test.txt"));
+        // fileSaverTxt.save(computer, Paths.get("org/programutvikling/files/test.txt"));
 
 
         //assertTrue(actualMessage.contains("java.nio.file.NoSuchFileException: FileDirectory/Admin/test.txt"));
@@ -62,7 +63,7 @@ class FileSaverTxtTest {
         computer2.getComponentRegister().getRegister().add(componentTest);
         computer2.getComponentRegister().getRegister().add(componentTest2);
 
-       // fileSaverTxt.save(computer, Paths.get("org/programutvikling/files/test.txt"));
+        // fileSaverTxt.save(computer, Paths.get("org/programutvikling/files/test.txt"));
 
         Computer computerIn = new Computer("test");
 

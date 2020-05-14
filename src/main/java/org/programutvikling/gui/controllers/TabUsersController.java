@@ -1,15 +1,12 @@
 package org.programutvikling.gui.controllers;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +16,6 @@ import org.programutvikling.domain.user.UserRegister;
 import org.programutvikling.domain.utility.Clickable;
 import org.programutvikling.gui.utility.UserSearch;
 import org.programutvikling.gui.utility.UserWindowHandler;
-import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelUserRegister;
 
 import java.io.IOException;
@@ -69,7 +65,7 @@ public class TabUsersController implements Initializable, Clickable {
 
     @FXML
     void dblClickTblRow(MouseEvent event) {
-        registryUserLogic.handlePopup(tblViewUser,userWindowHandler,userReg);
+        registryUserLogic.handlePopup(tblViewUser, userWindowHandler, userReg);
     }
 
     @FXML
@@ -145,21 +141,27 @@ public class TabUsersController implements Initializable, Clickable {
     void setLblMsgPassword(String s) {
         lblMsgPassword.setText(s);
     }
+
     void setLblMsgUsername(String s) {
         lblMsgUsername.setText(s);
     }
+
     void setLblMsgZip(String s) {
         this.lblMsgZip.setText(s);
     }
-    public void setLblMsgEmail (String s) {
+
+    public void setLblMsgEmail(String s) {
         this.lblMsgEmail.setText(s);
     }
+
     void setLblMsgCity(String s) {
         this.lblMsgCity.setText(s);
     }
+
     void setLblMsgAdress(String s) {
         this.lblMsgAdress.setText(s);
     }
+
     void setLblMsgName(String s) {
         this.lblMsgName.setText(s);
     }

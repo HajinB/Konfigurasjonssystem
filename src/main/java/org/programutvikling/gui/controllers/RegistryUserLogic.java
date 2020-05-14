@@ -16,7 +16,6 @@ import org.programutvikling.gui.customTextField.ZipField;
 import org.programutvikling.gui.utility.Dialog;
 import org.programutvikling.gui.utility.Stageable;
 import org.programutvikling.gui.utility.UserWindowHandler;
-import org.programutvikling.model.Model;
 import org.programutvikling.model.ModelUserRegister;
 import org.programutvikling.model.TemporaryUser;
 
@@ -24,13 +23,14 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class RegistryUserLogic implements Stageable {
-    private GridPane gridPane;
     TabUsersController tabUsersController;
+    private GridPane gridPane;
 
     public RegistryUserLogic(GridPane gridPane, TabUsersController tabUsersController) {
         this.gridPane = gridPane;
         this.tabUsersController = tabUsersController;
     }
+
     public RegistryUserLogic(GridPane gridPane) {
         this.gridPane = gridPane;
     }
@@ -138,7 +138,7 @@ public class RegistryUserLogic implements Stageable {
     }
 
     //"#userUsername"
-    boolean isUsernameEmpty () {
+    boolean isUsernameEmpty() {
         //return isFieldEmpty("#userUsername");
         return ((TextField) gridPane.lookup("#userUsername")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userUsername")).getText() == null ||
@@ -146,38 +146,38 @@ public class RegistryUserLogic implements Stageable {
                 ((TextField) gridPane.lookup("#userUsername")).getText().equals("");
     }
 
-    boolean isPasswordEmpty () {
+    boolean isPasswordEmpty() {
         return ((TextField) gridPane.lookup("#userPassword")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userPassword")).getText() == null ||
                 ((TextField) gridPane.lookup("#userPassword")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userPassword")).getText().equals("");
     }
 
-    boolean isNameEmpty () {
+    boolean isNameEmpty() {
         return ((TextField) gridPane.lookup("#userName")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userName")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userName")).getText().equals("");
     }
 
-    boolean isEmailEmpty () {
+    boolean isEmailEmpty() {
         return ((TextField) gridPane.lookup("#userMail")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userMail")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userMail")).getText().equals("");
     }
 
-    boolean isAdressEmpty () {
+    boolean isAdressEmpty() {
         return ((TextField) gridPane.lookup("#userAddress")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userAddress")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userAddress")).getText().equals("");
     }
 
-    boolean isZipEmpty () {
+    boolean isZipEmpty() {
         return ((ZipField) gridPane.lookup("#userZip")).getText().isEmpty() ||
                 ((ZipField) gridPane.lookup("#userZip")).getText().isBlank() ||
                 ((ZipField) gridPane.lookup("#userZip")).getText().equals("");
     }
 
-    boolean isCityEmpty () {
+    boolean isCityEmpty() {
         return ((TextField) gridPane.lookup("#userCity")).getText().isEmpty() ||
                 ((TextField) gridPane.lookup("#userCity")).getText().isBlank() ||
                 ((TextField) gridPane.lookup("#userCity")).getText().equals("");
@@ -216,9 +216,9 @@ public class RegistryUserLogic implements Stageable {
     @Override
     public void editClickableFromPopup(Clickable u) {
         if (TemporaryUser.INSTANCE.getIsEdited()) {
-                getRegister().set(getRegister().indexOf(u),
-                TemporaryUser.INSTANCE.getTempUser());
-                TemporaryUser.INSTANCE.resetTemps();
+            getRegister().set(getRegister().indexOf(u),
+                    TemporaryUser.INSTANCE.getTempUser());
+            TemporaryUser.INSTANCE.resetTemps();
             try {
                 FileHandling.saveAllAdminFiles();
             } catch (IOException e) {
@@ -277,18 +277,6 @@ public class RegistryUserLogic implements Stageable {
 
     }
 
-    public void editUserFromPopup(Clickable u) {
-
-    }
-
-    private void justReplaceUser(User newUser, User possibleDuplicateUserIfNotThenNull) {
-
-        int indexToReplace =
-                getRegister().indexOf(possibleDuplicateUserIfNotThenNull);
-
-        System.out.println("index to replac : "+indexToReplace);
-        getRegister().set(indexToReplace, newUser);
-    }
 
     private void deleteUser(User user) {
         ModelUserRegister.INSTANCE.getUserRegister().getRegister().remove(user);
