@@ -103,7 +103,6 @@ public class EndUserLogic {
     //kan lett trekkes ut (se på tabcomponents for fasit)
     private void openDetailedView(TableRow row) throws IOException {
         //henter popup fxml
-        System.out.println("her er vi i openDetailedView");
         FXMLLoader loader = getFxmlLoader("completedComputersPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -199,7 +198,6 @@ public class EndUserLogic {
             if (dblClickedComponent.getProductType().equalsIgnoreCase(c.getProductType())) {
                 //finner indeksen til denne.
                 int index = getComputer().getComponentRegister().getRegister().indexOf(c);
-                System.out.println(index);
                 getComputer().getComponentRegister().getRegister().set(index, dblClickedComponent);
                 break;
             }

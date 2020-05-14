@@ -55,7 +55,6 @@ public class ThreadHandler {
             @Override
             protected void succeeded() {
                 super.succeeded();
-                System.out.println("etter task");
             }
         };
     }

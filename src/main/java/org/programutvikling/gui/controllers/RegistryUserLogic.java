@@ -80,8 +80,6 @@ public class RegistryUserLogic implements Stageable {
                 tabUsersController.setLblMsgUsername("Brukernavnet eksisterer allerede");
                 return;
             }
-            System.out.println(missingField);
-            System.out.println(areInputFieldsEmpty());
             createUserFromGUIInputFields();
         }
     }
@@ -253,7 +251,6 @@ public class RegistryUserLogic implements Stageable {
                         } else {
                             //hvis man trykker på tekst
                             row = (TableRow<User>) node.getParent();
-                            System.out.println("else getParent!");
                         }
                         try {
                             userWindowHandler.openEditWindow(row, userReg);

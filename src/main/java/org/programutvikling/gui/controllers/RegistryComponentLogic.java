@@ -59,7 +59,6 @@ public class RegistryComponentLogic implements Stageable {
         tabComponentsController.clearLabels();
         if (areInputFieldsEmpty()) {
             if (isProductTypeEmpty()) {
-                System.out.println("hva skjer");
                 tabComponentsController.setLblMsgType("Velg produkttype");
             } else {
                 System.out.println("produkttype er ikke empty..");
@@ -123,7 +122,6 @@ public class RegistryComponentLogic implements Stageable {
     }
 
     Component createComponentsFromGUIInputIFields() {
-        System.out.println(getCBString((ChoiceBox<String>) gridPane.lookup("#productType")));
         try {
             Component c = createComponent();
             resetFields();
@@ -154,7 +152,6 @@ public class RegistryComponentLogic implements Stageable {
         Component componentIn = new Component(productType, productName, productDescription, productPrice);
         //kan gjøre validering på disse her - altså et felt om gangen.
 
-        System.out.println(productType);
         tabComponentsController.setResultLabelTimed(componentIn.getProductName() + " er lagt til i listen");
 
         return componentIn;
@@ -183,7 +180,6 @@ public class RegistryComponentLogic implements Stageable {
         Component possibleDuplicateComponentIfNotThenNull = ComponentValidator.isComponentInRegisterThenReturnIt(newComponent,
                 getComponentRegister());
 
-        System.out.println(possibleDuplicateComponentIfNotThenNull);
         if (possibleDuplicateComponentIfNotThenNull != null) {
             showDuplicateDialog(newComponent, possibleDuplicateComponentIfNotThenNull);
         } else {
@@ -208,7 +204,7 @@ public class RegistryComponentLogic implements Stageable {
 
         int indexToReplace =
                 getComponentRegister().getRegister().indexOf(possibleDuplicateComponentIfNotThenNull);
-        System.out.println("index to replac : " + indexToReplace);
+        System.out.println("index to replace : " + indexToReplace);
         getComponentRegister().getRegister().set(indexToReplace, newComponent);
     }
 
@@ -219,7 +215,6 @@ public class RegistryComponentLogic implements Stageable {
             Component dup =
                     ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
                             TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
-            System.out.println(TemporaryComponent.INSTANCE.getTempComponent());
             if (dup == null) {
                 getObservableRegister().set(getObservableRegister().indexOf(c),
                         TemporaryComponent.INSTANCE.getTempComponent());
@@ -349,14 +344,12 @@ public class RegistryComponentLogic implements Stageable {
         FileOpenerTxt fileOpenerTxt = new FileOpenerTxt();
         Computer computer = new Computer("temp");
         if (chosenPath != null) {
-            System.out.println(chosenPath);
             try {
                 fileOpenerTxt.openWithoutValidation(computer, Paths.get(chosenPath));
             } catch (IOException e) {
                 e.printStackTrace();
             }
             tabComponentsController.setLblComponentMsg("Komponentene ble lastet inn!");
-            System.out.println(computer.getComponentRegister().getObservableRegister().size());
             loadComputerIntoComponentRegister(computer);
             removeDuplicates();
         }

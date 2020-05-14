@@ -10,8 +10,6 @@ public class ComputerValidator {
 
     public static boolean isComponentValidForList(Component component) {
         String type = component.getProductType().toLowerCase();
-        System.out.println(type);
-
         return validatorFactory(type);
     }
 

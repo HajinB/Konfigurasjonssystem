@@ -176,7 +176,6 @@ public class EnduserController {
     }
 
     private void openFinalDetails() throws IOException {
-        System.out.println("her er vi i openDetailedView");
         FXMLLoader loader = FXMLGetter.fxmlLoaderFactory("orderDetailsPopup.fxml");
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);

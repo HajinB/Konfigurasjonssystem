@@ -65,7 +65,6 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         btnLogin.setDefaultButton(true);
-        System.out.println(ModelUserRegister.INSTANCE);
         // Adds users if there is no users OR there is no admin users
         ModelUserRegister.INSTANCE.addDefaultUsers();
     }

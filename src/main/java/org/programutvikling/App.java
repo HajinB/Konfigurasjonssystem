@@ -41,7 +41,6 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         initOnExitHandler(primaryStage);
         scene = new Scene(loadFXML("login"));
-        System.out.println(App.class.getResource("login"));
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setMaximized(true);
@@ -78,7 +77,6 @@ public class App extends Application {
                     });
                     thread.run();
                 } else {
-                    System.out.println("");
                     System.exit(0);
                 }
             }

@@ -149,7 +149,6 @@ public class FileUtility {
     }
 
     private static void addWalkedFolderPathsToCBList(List<String> result) {
-        System.out.println("result som scouuuring");
         result.forEach(System.out::println);
         List<String> unique =
                 RegisterUtility.removeDuplicates(getListOfSavedFilePaths());
@@ -172,8 +171,6 @@ public class FileUtility {
 
         if (!success) {
             System.out.println("Deletion failed.");
-
-            //System.exit(0);
         } else {
             System.out.println("File deleted.");
         }
