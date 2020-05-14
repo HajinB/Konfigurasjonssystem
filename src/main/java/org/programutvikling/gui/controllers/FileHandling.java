@@ -106,7 +106,6 @@ public class FileHandling {
             try {
                 Path path = Paths.get(selectedPath);
                 objectsLoaded = opener.open(register, path);
-                System.out.println(objectsLoaded);
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
                 Dialog.showErrorDialog("Åpning av filen feilet. Grunn: " + e.getMessage());

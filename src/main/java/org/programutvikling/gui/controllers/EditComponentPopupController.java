@@ -50,12 +50,10 @@ public class EditComponentPopupController extends TabComponentsController implem
             lblEditPopupMessage.setText("Fyll inn alle felt");
             return;
         }
-        System.out.println(txtPopupProductPrice);
         double price = Double.parseDouble(txtPopupProductPrice.getText());
         Component component = new Component(cbType.getValue(), txtPopupProductName.getText(),
                 txtPopupProductDescription.getText(),
                 price);
-        System.out.println(txtPopupProductPrice);
 
         //validering her ?, det propegerer ikke ned til konstruktøren (?) -altså det throwes ikke noe her.
         TemporaryComponent.INSTANCE.setEdited(true);
@@ -118,11 +116,9 @@ public class EditComponentPopupController extends TabComponentsController implem
         RegistryComponentLogic registryComponentLogic = new RegistryComponentLogic(componentEditNode);
         registryComponentLogic.setTextAreaListener(componentEditNode);
         this.stage = stage;
-        System.out.println(componentEditNode);
         cbType.setValue(component.getProductType());
         txtPopupProductName.setText(component.getProductName());
         txtPopupProductDescription.setText(component.getProductDescription());
-        System.out.println(component.getProductPrice());
         txtPopupProductPrice.setText(Double.toString(component.getProductPrice()));
         setFocusOnField(TemporaryComponent.INSTANCE.getColumnIndex(), component);
 

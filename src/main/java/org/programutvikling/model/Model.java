@@ -47,9 +47,7 @@ public enum Model {
         }
         if (adminObjects.get(0) instanceof ComponentRegister && adminObjects.get(0) != null) {
             ComponentRegister componentRegisterFromFile = (ComponentRegister) adminObjects.get(0);
-            System.out.println("size før append: " + componentRegister.getRegister().size());
             componentRegister.getRegister().addAll(componentRegisterFromFile.getRegister());
-            System.out.println("size etter append: " + componentRegister.getRegister().size());
         }
     }
 
@@ -62,7 +60,6 @@ public enum Model {
     }
 
     public void loadObjectsIntoClasses() {
-        System.out.println(adminObjects.size());
         if (adminObjects.size() > 0) {
             if (adminObjects.get(0) != null && adminObjects.get(0) instanceof ComponentRegister)
                 setComponentRegister((ComponentRegister) adminObjects.get(0));

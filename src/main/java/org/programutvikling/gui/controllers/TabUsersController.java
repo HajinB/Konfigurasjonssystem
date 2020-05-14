@@ -56,7 +56,6 @@ public class TabUsersController implements Initializable, Clickable {
     }
 
     public void cbAdmin(ActionEvent event) {
-        System.out.println("cbAdmin: " + cbAdmin.isSelected());
     }
 
     public void updateView() {
@@ -72,7 +71,6 @@ public class TabUsersController implements Initializable, Clickable {
     void search(KeyEvent event) {
         if (cbAdminFilter.getValue().equals("Ingen filter") || cbAdminFilter.getValue() == null) {
             setSearchedList();
-            System.out.println(cbAdminFilter.getValue());
         } else {
             tblViewUser.setItems(getSearchedAndFilteredList());
         }

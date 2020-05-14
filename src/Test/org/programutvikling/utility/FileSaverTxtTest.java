@@ -48,7 +48,6 @@ class FileSaverTxtTest {
             fileSaverTxt.save(computer, Paths.get("org/programutvikling/:::()/&%$/#)&/!:;.txt"));
 
         });
-        System.out.println(computer);
         System.out.println(Arrays.toString(exception.getStackTrace()));
 
         Component componentTest = new Component("MINNE", "Intel Core i9-9900K", "Socket-LGA1151, 8-Core, 16-Thread, 3" +

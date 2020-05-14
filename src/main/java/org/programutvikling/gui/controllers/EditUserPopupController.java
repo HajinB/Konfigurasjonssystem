@@ -65,7 +65,6 @@ public class EditUserPopupController extends TabUsersController implements Initi
         try {
             getUserRegister().getRegister().add(tempUserIgnoreForValidation);
             user = new User(cbAdmin.isSelected(), userUsername.getText(), userPassword.getText(), name.getText(), email.getText(), address.getText(), userZip.getText(), UserCity.getText());
-            System.out.println(user);
         } catch (IllegalArgumentException illegalArgumentException) {
             Dialog.showErrorDialog(illegalArgumentException.getMessage());
             return;
@@ -85,13 +84,11 @@ public class EditUserPopupController extends TabUsersController implements Initi
     }
 
     public boolean usernameExists(String username) {
-        System.out.println(getUserRegister().toString());
         return ModelUserRegister.INSTANCE.getUserRegister().usernameExists(username);
 
     }
 
     public boolean emailExists(String email) {
-        System.out.println(getUserRegister().toString());
         return ModelUserRegister.INSTANCE.getUserRegister().emailExists(email);
     }
 
@@ -103,7 +100,6 @@ public class EditUserPopupController extends TabUsersController implements Initi
     @Override
     public void initData(Clickable c, Stage stage) {
 
-        System.out.println("kolonne for userpopup: " + columnIndex);
         User u = (User) c;
         this.tempUserIgnoreForValidation = u;
         this.columnIndex = TemporaryUser.INSTANCE.getColumnIndex();
@@ -111,7 +107,6 @@ public class EditUserPopupController extends TabUsersController implements Initi
         //tar inn stage for å kunne lukke når brukeren trykker endre
 //        registryUserLogic.setTextAreaListener(userEditNode);
         this.stage = stage;
-        System.out.println(userEditNode);
         cbAdmin.setSelected(u.getAdmin());
         userUsername.setText(u.getUsername());
         userPassword.setText(u.getPassword());

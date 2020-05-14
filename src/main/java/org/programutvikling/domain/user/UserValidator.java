@@ -49,23 +49,5 @@ public class UserValidator {
         }
     }
 
-//    static void usernameValidation(String username) {
-//        if(Model.INSTANCE.getUserRegister().usernameExists(username) && Model.INSTANCE.getUserRegister().getRegister() != null) {
-//            System.out.println("UsernameAlreadyExistsException thrown!");
-//            throw new UsernameAlreadyExistsException();
-//        } else {
-//            System.out.println("UsernameAlreadyExistsException NOT thrown, Model.INSTANCE.getUserRegister().usernameExists(username) = " + Model.INSTANCE.getUserRegister().usernameExists(username));
-//        }
-//    }
-//
-//    static public void emailValidation(String email) {
-//        if(Model.INSTANCE.getUserRegister().emailExists(email) && Model.INSTANCE.getUserRegister().getRegister() != null) {
-//            System.out.println("EmailExistsException thrown!");
-//            throw new EmailExistsException();
-//        } else {
-//            System.out.println("EmailExistsException NOT thrown, Model.INSTANCE.getUserRegister().emailExists(email) = " + Model.INSTANCE.getUserRegister().emailExists(email));
-//        }
-//    }
-
 
 
