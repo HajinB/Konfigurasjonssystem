@@ -46,8 +46,11 @@ public class SuperUserController implements Initializable {
     @FXML
     void btnOpenComputerAndAddComponents(ActionEvent e) {
 
-        registryComponentLogic.dialogForComputerTxtOpen();
+        openTxtFileWithOptions();
+
     }
+
+
 
     @FXML
     void btnSaveToChosenPath(ActionEvent a) throws IOException {
@@ -70,7 +73,15 @@ public class SuperUserController implements Initializable {
     @FXML
     public void btnOpenJobj(ActionEvent actionEvent) throws IOException {
         //open filefromchooser lagrer componentregister i index 0 og savedpath i index 2
+        openJobjFileWithOptions();
+    }
+
+    private void openJobjFileWithOptions() throws IOException {
         String chosenFile = FileUtility.getStringPathFromOpenJobjDialog(stage);
+        openFile(chosenFile);
+    }
+
+    private void openFile(String chosenFile) throws IOException {
         if (chosenFile == null) {
             return;
         }
@@ -86,6 +97,16 @@ public class SuperUserController implements Initializable {
             alert.showAndWait();
             registryComponentLogic.handleOpenOptions(chosenFile, alert);
         }
+    }
+
+    private void openTxtFileWithOptions() {
+        String chosenFile = FileUtility.getFilePathFromOpenTxtDialog(stage);
+        try {
+            openFile(chosenFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private ComponentRegister getComponentRegister() {

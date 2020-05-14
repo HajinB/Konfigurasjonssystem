@@ -10,6 +10,7 @@ import org.programutvikling.model.Model;
 import org.programutvikling.gui.controllers.FileHandling;
 
 import static java.lang.Thread.sleep;
+import static javafx.application.Platform.runLater;
 
 public class InputThread extends Task<ArrayList<Object>> {
 
@@ -33,7 +34,10 @@ public class InputThread extends Task<ArrayList<Object>> {
         }
         System.out.println("filepath for openrecent: "+filePath);
         if(filePath.endsWith(".txt")){
-            registryComponentLogic.openComputer(filePath);
+            //bruker runlater for å unngå concurrent modification
+            runLater(() -> {
+                registryComponentLogic.openComputer(filePath);
+            });
             return null;
         }
         return FileHandling.openObjects(Model.INSTANCE.getCleanObjectList(), filePath);

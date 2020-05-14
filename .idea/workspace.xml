@@ -28,9 +28,7 @@
     <list default="true" id="f0409933-a63d-4efa-bed9-196ff20dad93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Admin/AdminAppData.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/Backup/AppDataBackup.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Database/User/TemporaryComputer/TemporaryComputer.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/RegistryComponentLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/RegistryComponentLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/iothread/InputThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/domain/io/iothread/InputThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/programutvikling/gui/controllers/SuperUserController.java" afterDir="false" />
     </list>
     <list id="0ced7f0e-c1a2-451a-a513-d9e9375ea4df" name="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;" comment="Revert &quot;Delt opp SuperUser i flere FXML-filer og controllers.&quot;&#10;&#10;This reverts commit 42a532aa" />
@@ -302,14 +300,7 @@
       <workItem from="1589291745741" duration="9313000" />
       <workItem from="1589356903889" duration="817000" />
       <workItem from="1589364936297" duration="8494000" />
-      <workItem from="1589455562145" duration="521000" />
-    </task>
-    <task id="LOCAL-00182" summary="fix1">
-      <created>1589205731975</created>
-      <option name="number" value="00182" />
-      <option name="presentableId" value="LOCAL-00182" />
-      <option name="project" value="LOCAL" />
-      <updated>1589205731976</updated>
+      <workItem from="1589455562145" duration="1818000" />
     </task>
     <task id="LOCAL-00183" summary="fixed package structure">
       <created>1589205798095</created>
@@ -647,7 +638,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589403048881</updated>
     </task>
-    <option name="localTasksCounter" value="231" />
+    <task id="LOCAL-00231" summary="all filbehandling på adminsiden skjer i egen tråd">
+      <created>1589456125373</created>
+      <option name="number" value="00231" />
+      <option name="presentableId" value="LOCAL-00231" />
+      <option name="project" value="LOCAL" />
+      <updated>1589456125373</updated>
+    </task>
+    <option name="localTasksCounter" value="232" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -682,7 +680,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rydder i endusercontroller" />
     <MESSAGE value="fixed bugs på enduser" />
     <MESSAGE value="noe dialog på lese inn" />
     <MESSAGE value="noe dialog på lese inn på enduser" />
@@ -707,7 +704,8 @@
     <MESSAGE value="gjerne test en del, er ikke bare/bare å åpne en av delene fra recent pågrunn av forskjellige feilmeldinger osv" />
     <MESSAGE value="1." />
     <MESSAGE value="22.50 13. mai" />
-    <option name="LAST_COMMIT_MESSAGE" value="22.50 13. mai" />
+    <MESSAGE value="all filbehandling på adminsiden skjer i egen tråd" />
+    <option name="LAST_COMMIT_MESSAGE" value="all filbehandling på adminsiden skjer i egen tråd" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1589306062470" />
