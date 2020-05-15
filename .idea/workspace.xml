@@ -301,20 +301,6 @@
       <workItem from="1589364936297" duration="8494000" />
       <workItem from="1589455562145" duration="7347000" />
     </task>
-    <task id="LOCAL-00187" summary="fixed søk, at skjerm er skjerm og skjermkort er skjermkort">
-      <created>1589230473692</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1589230473692</updated>
-    </task>
-    <task id="LOCAL-00188" summary="fixed bug i opentxtfile">
-      <created>1589231763115</created>
-      <option name="number" value="00188" />
-      <option name="presentableId" value="LOCAL-00188" />
-      <option name="project" value="LOCAL" />
-      <updated>1589231763115</updated>
-    </task>
     <task id="LOCAL-00189" summary="fixed bug i opentxtfile">
       <created>1589231859149</created>
       <option name="number" value="00189" />
@@ -644,7 +630,21 @@
       <option name="project" value="LOCAL" />
       <updated>1589494995597</updated>
     </task>
-    <option name="localTasksCounter" value="236" />
+    <task id="LOCAL-00236" summary="TextFOrmatter på popupen + dialog for semikolon + max digits i pris(hvis man hadde over 30 digits blir prisen sletta hvis man trykker på i tableview">
+      <created>1589495535653</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1589495535653</updated>
+    </task>
+    <task id="LOCAL-00237" summary="TextFOrmatter på popupen + dialog for semikolon + max digits i pris(hvis man hadde over 30 digits blir prisen sletta hvis man trykker på i tableview">
+      <created>1589495563581</created>
+      <option name="number" value="00237" />
+      <option name="presentableId" value="LOCAL-00237" />
+      <option name="project" value="LOCAL" />
+      <updated>1589495563581</updated>
+    </task>
+    <option name="localTasksCounter" value="238" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
