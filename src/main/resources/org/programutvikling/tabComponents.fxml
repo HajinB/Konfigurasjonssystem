@@ -72,7 +72,7 @@
                             <Insets top="5.0" />
                         </GridPane.margin>
                     </Label>
-                    <TextArea id="productDescription" prefHeight="65.0" prefWidth="230.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/SuperUser.css" wrapText="true" GridPane.rowIndex="7">
+                    <TextArea fx:id="productDescription" id="productDescription" prefHeight="65.0" prefWidth="230.0" promptText="Gi en kort beskrivelse av varen. For eksempel størrelse, effekt etc.. " styleClass="input" stylesheets="@CSS/SuperUser.css" wrapText="true" GridPane.rowIndex="7">
                         <font>
                             <Font size="13.0" />
                         </font>

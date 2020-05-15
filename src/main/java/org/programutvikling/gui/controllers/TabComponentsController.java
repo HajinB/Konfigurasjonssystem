@@ -44,6 +44,8 @@ public class TabComponentsController {
     @FXML
     private ComboBox<String> cbRecentFiles;
     @FXML
+    TextArea productDescription;
+    @FXML
     private TextField componentSearch;
     @FXML
     private TableView<Component> tblViewComponent;
@@ -60,6 +62,7 @@ public class TabComponentsController {
         registryComponentLogic = new RegistryComponentLogic(componentRegNode, this, tblViewComponent);
         threadHandler = new ThreadHandler(this);
         initTableView();
+        registryComponentLogic.setTextAreaMaxLength(productDescription);
         initTextWrapCellFactory();
         updateView();
     }
@@ -302,5 +305,4 @@ public class TabComponentsController {
         setLblMsgName("");
         setLblMsgPrice("");
     }
-
 }

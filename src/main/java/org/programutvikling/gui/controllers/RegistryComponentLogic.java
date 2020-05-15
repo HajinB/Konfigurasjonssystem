@@ -333,6 +333,12 @@ public class RegistryComponentLogic implements Stageable {
         });
     }
 
+     void setTextAreaMaxLength(TextArea textArea) {
+        // Limit the TextArea to more than 2500 characters to prevent OutOfMemoryError
+        textArea.setTextFormatter(new TextFormatter<String>(newChars ->
+                newChars.getControlNewText().length() <= 2500 ? newChars : null));
+    }
+
     void handleOpenOptions(String chosenFile, Alert alert) throws IOException {
         //button.get(2) == avbryt
         if (alert.getResult() == alert.getButtonTypes().get(2)) {
