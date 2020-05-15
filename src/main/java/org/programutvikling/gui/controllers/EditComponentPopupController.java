@@ -68,21 +68,22 @@ public class EditComponentPopupController extends TabComponentsController implem
 
     private Component getEnteredComponent() {
         double price = Double.parseDouble(txtPopupProductPrice.getText());
-
        return new Component(cbType.getValue(), txtPopupProductName.getText(),
                 txtPopupProductDescription.getText(),
                 price);
     }
 
     private boolean areFieldsEmpty() {
-        return (txtPopupProductPrice.getText().isEmpty() || txtPopupProductDescription.getText().isBlank() || txtPopupProductName.getText().isEmpty());
+        return (txtPopupProductPrice.getText().isBlank()
+                || txtPopupProductDescription.getText().isBlank()
+                || txtPopupProductName.getText().isBlank());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        txtPopupProductDescription.setTextFormatter(new TextFormatter<String>(change ->
+        /*txtPopupProductDescription.setTextFormatter(new TextFormatter<String>(change ->
                 !change.getControlNewText().contains(";") ? change : null));
-
+*/
         txtPopupProductDescription.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 2500 ? change : null));
 

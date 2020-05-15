@@ -228,14 +228,6 @@ public class RegistryComponentLogic implements Stageable {
     @Override
     public void editClickableFromPopup(Clickable c) {
         if (TemporaryComponent.INSTANCE.getIsEdited()) {
-            if(ComponentValidator.isThereASemiColon(returnTempComponent())){
-                Dialog.showErrorDialog("Et eller flere av av tekstfeltene innholder en semikolon. På grunn av at " +
-                        "komponentene skal være " +
-                        "kompatible med Excel, er ikke semikolon et gyldig tegn. Vennligst fjern " +
-                        "semikolon.");
-                //open popup again
-                return;
-            }
             Component dup =
                     ComponentValidator.areAllFieldsComponentInRegisterThenReturnIt(
                             TemporaryComponent.INSTANCE.getTempComponent(), getComponentRegister());
