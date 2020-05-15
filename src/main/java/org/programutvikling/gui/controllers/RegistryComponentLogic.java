@@ -57,13 +57,6 @@ public class RegistryComponentLogic implements Stageable {
 
     void registerComponent() {
         tabComponentsController.clearLabels();
-        if(ComponentValidator.isThereASemiColon(returnTempComponent())){
-            Dialog.showErrorDialog("Et eller flere av av tekstfeltene innholder en semikolon. På grunn av at " +
-                    "komponentene skal være " +
-                    "kompatible med Excel, er ikke semikolon et gyldig tegn. Vennligst fjern " +
-                    "semikolon.");
-            return;
-        }
         if (areInputFieldsEmpty()) {
             if (isProductTypeEmpty()) {
                 tabComponentsController.setLblMsgType("Velg produkttype");
@@ -80,6 +73,13 @@ public class RegistryComponentLogic implements Stageable {
                 tabComponentsController.setLblMsgPrice("Skriv inn pris på produktet");
             }
         } else {
+            if(ComponentValidator.isThereASemiColon(returnTempComponent())){
+                Dialog.showErrorDialog("Et eller flere av av tekstfeltene innholder en semikolon. På grunn av at " +
+                        "komponentene skal være " +
+                        "kompatible med Excel, er ikke semikolon et gyldig tegn. Vennligst fjern " +
+                        "semikolon.");
+                return;
+            }
             createComponentHandleDuplicate();
         }
     }

@@ -64,7 +64,7 @@ public class ComponentValidator {
 
     static boolean isProductNameValid(String name) {
         //ikke tom, ikke blank, og ikke under 100
-        return !(name.isEmpty() && name.isBlank()) && name.length() < 100;
+        return !(name.isEmpty() && name.isBlank()) && !(name.length() > 1000);
     }
 
     static boolean isProductPriceValid(Double price) {
