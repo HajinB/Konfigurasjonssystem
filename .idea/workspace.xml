@@ -301,13 +301,6 @@
       <workItem from="1589364936297" duration="8494000" />
       <workItem from="1589455562145" duration="7347000" />
     </task>
-    <task id="LOCAL-00191" summary="fixed bug i opentxtfile">
-      <created>1589232389257</created>
-      <option name="number" value="00191" />
-      <option name="presentableId" value="LOCAL-00191" />
-      <option name="project" value="LOCAL" />
-      <updated>1589232389257</updated>
-    </task>
     <task id="LOCAL-00192" summary="fixed bug i opentxtfile">
       <created>1589291762692</created>
       <option name="number" value="00192" />
@@ -644,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589527062503</updated>
     </task>
-    <option name="localTasksCounter" value="240" />
+    <task id="LOCAL-00240" summary="woops liten bug, flyttet dialogen for å sjekke semikolon(kanskje tar den bort)">
+      <created>1589527168042</created>
+      <option name="number" value="00240" />
+      <option name="presentableId" value="LOCAL-00240" />
+      <option name="project" value="LOCAL" />
+      <updated>1589527168042</updated>
+    </task>
+    <option name="localTasksCounter" value="241" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,7 +679,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed package structure" />
     <MESSAGE value="fixed refactoring av controller+fxml names" />
     <MESSAGE value="fixed søk, at skjerm er skjerm og skjermkort er skjermkort" />
     <MESSAGE value="fixed bug i opentxtfile" />
@@ -704,7 +703,8 @@
     <MESSAGE value="litt rydding + fiksa hopping mellom brukere litt" />
     <MESSAGE value="TextFOrmatter på popupen + dialog for semikolon + max digits i pris(hvis man hadde over 30 digits blir prisen sletta hvis man trykker på i tableview" />
     <MESSAGE value="woops liten bug, flyttet dialogen for" />
-    <option name="LAST_COMMIT_MESSAGE" value="woops liten bug, flyttet dialogen for" />
+    <MESSAGE value="woops liten bug, flyttet dialogen for å sjekke semikolon(kanskje tar den bort)" />
+    <option name="LAST_COMMIT_MESSAGE" value="woops liten bug, flyttet dialogen for å sjekke semikolon(kanskje tar den bort)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="238" y="0" key="#UserValidatorTest" timestamp="1589306062470" />

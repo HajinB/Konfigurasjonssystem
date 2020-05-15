@@ -81,10 +81,11 @@ public class EditComponentPopupController extends TabComponentsController implem
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txtPopupProductDescription.setTextFormatter(new TextFormatter<String>(change ->
-                change.getControlNewText().length() <= 2500 ? change : null));
+                !change.getControlNewText().contains(";") ? change : null));
 
         txtPopupProductDescription.setTextFormatter(new TextFormatter<String>(change ->
-                !change.getControlNewText().contains(";") ? change : null));
+                change.getControlNewText().length() <= 2500 ? change : null));
+
 
         cbType.setItems(componentTypes.getObservableTypeListName());
         btnEditComponent.setDefaultButton(true);
