@@ -48,15 +48,16 @@ public class EditComponentPopupController extends TabComponentsController implem
     }
 
     private void editComponent() {
+
+        if (areFieldsEmpty()) {
+            lblEditPopupMessage.setText("Fyll inn alle felt");
+            return;
+        }
         if(ComponentValidator.isThereASemiColon(getEnteredComponent())){
             Dialog.showErrorDialog("Et eller flere av av tekstfeltene innholder en semikolon. På grunn av at " +
                     "komponentene skal være " +
                     "kompatible med Excel, er ikke semikolon et gyldig tegn. Vennligst fjern " +
                     "semikolon.");
-            return;
-        }
-        if (areFieldsEmpty()) {
-            lblEditPopupMessage.setText("Fyll inn alle felt");
             return;
         }
         Component component = getEnteredComponent();
