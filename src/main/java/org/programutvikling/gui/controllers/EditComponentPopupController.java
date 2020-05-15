@@ -48,15 +48,16 @@ public class EditComponentPopupController extends TabComponentsController implem
     }
 
     private void editComponent() {
+
+        if (areFieldsEmpty()) {
+            lblEditPopupMessage.setText("Fyll inn alle felt");
+            return;
+        }
         if(ComponentValidator.isThereASemiColon(getEnteredComponent())){
             Dialog.showErrorDialog("Et eller flere av av tekstfeltene innholder en semikolon. På grunn av at " +
                     "komponentene skal være " +
                     "kompatible med Excel, er ikke semikolon et gyldig tegn. Vennligst fjern " +
                     "semikolon.");
-            return;
-        }
-        if (areFieldsEmpty()) {
-            lblEditPopupMessage.setText("Fyll inn alle felt");
             return;
         }
         Component component = getEnteredComponent();
@@ -81,12 +82,15 @@ public class EditComponentPopupController extends TabComponentsController implem
     public void initialize(URL location, ResourceBundle resources) {
         txtPopupProductDescription.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 2500 ? change : null));
+
         txtPopupProductDescription.setTextFormatter(new TextFormatter<String>(change ->
                 !change.getControlNewText().contains(";") ? change : null));
+
         cbType.setItems(componentTypes.getObservableTypeListName());
         btnEditComponent.setDefaultButton(true);
         setTextAreaListener(componentEditNode);
     }
+
 
     public void setTextAreaListener(GridPane gridPane) {
         TextArea textArea = ((TextArea) gridPane.lookup("#productDescription"));
