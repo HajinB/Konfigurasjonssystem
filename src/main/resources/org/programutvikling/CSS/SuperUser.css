@@ -118,31 +118,31 @@
 /* bakgrunn-design labeloverskrifter */
 
 .labelHeaderBruker {
-    -fx-background-color: rgba(243, 204, 47, 0.47);
+    -fx-background-color: rgba(255, 255, 255, 0.47);
     -fx-background-radius: 40 0 0 0;
 }
 
 .labelNewUser {
-    -fx-background-color: rgba(243, 204, 47, 0.47);
+    -fx-background-color: rgba(255, 255, 255, 0.47);
     -fx-background-radius: 28 0 0 0;
 }
 
 .labelHeaderComp {
-    -fx-background-color: rgba(243, 155, 47, 0.47);
+    -fx-background-color: rgba(255, 255, 255, 0.47);
     -fx-background-radius: 40 0 0 0;
     -fx-text-fill: rgba(0, 0, 0, 0.78);
 }
 
 .labelNewComp {
-    -fx-background-color: rgba(243, 155, 47, 0.47);
+    -fx-background-color: rgba(255, 255, 255, 0.47);
     -fx-background-radius: 28 0 0 0;
     -fx-text-fill: rgba(0, 0, 0, 0.78);
 }
 
 .labelRedigerBruker {
-    -fx-background-color: rgba(243, 204, 47, 0.47)
+    -fx-background-color: rgba(252, 252, 252, 0.47)
 }
 
 .labelRedigerComp {
-    -fx-background-color: rgba(243, 155, 47, 0.47);
+    -fx-background-color: rgba(255, 255, 255, 0.47);
 }
